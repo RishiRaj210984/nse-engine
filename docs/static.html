@@ -1,0 +1,100 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"></head><body><title>NSE Daily Plan</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#f6f7f5;--panel:#ffffff;--ink:#14201c;--dim:#5d6b66;--line:#dfe4e1;--accent:#0f6b5c;
+--up:#13804b;--down:#c03a2b;--warn:#a86a00;--chip:#eef2f0;
+--sans:'IBM Plex Sans',system-ui,-apple-system,Segoe UI,sans-serif;--mono:'IBM Plex Mono',ui-monospace,Consolas,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1412;--panel:#141d1a;--ink:#e3ebe7;--dim:#8fa19a;
+--line:#24312d;--accent:#3fb59f;--up:#3ccf84;--down:#ff6b5b;--warn:#f0b23a;--chip:#1b2622;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0d1412;--panel:#141d1a;--ink:#e3ebe7;--dim:#8fa19a;--line:#24312d;--accent:#3fb59f;
+--up:#3ccf84;--down:#ff6b5b;--warn:#f0b23a;--chip:#1b2622;color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5}
+.wrap{max-width:760px;margin:0 auto;padding-block:20px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));
+padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:22px}
+h1{font-size:1.15rem;margin:0;font-weight:600;letter-spacing:.01em}
+h2{font-size:.78rem;text-transform:uppercase;letter-spacing:.09em;color:var(--dim);margin:0 0 8px;font-weight:600}
+.meta{color:var(--dim);font-size:.85rem}
+.mono,td.n,.n{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.verdict{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px;display:grid;gap:6px}
+.verdict .label{font-family:var(--mono);font-size:2rem;font-weight:600;letter-spacing:.04em;line-height:1.1}
+.BULLISH{color:var(--up)}.BEARISH{color:var(--down)}.RANGEBOUND{color:var(--warn)}
+.trade{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;display:grid;gap:10px}
+.trade header{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:baseline}
+.chip{background:var(--chip);border-radius:999px;padding:2px 10px;font-size:.8rem;color:var(--dim);font-family:var(--mono)}
+.legs{display:flex;flex-wrap:wrap;gap:6px}
+.leg{font-family:var(--mono);font-size:.85rem;padding:4px 8px;border-radius:6px;border:1px solid var(--line)}
+.leg.SELL{color:var(--down)}.leg.BUY{color:var(--up)}
+dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;margin:0}
+dt{color:var(--dim)}dd{margin:0;min-width:0}
+.risk{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--mono);font-size:.9rem}
+.risk b{display:block;font-size:.72rem;color:var(--dim);font-family:var(--sans);font-weight:500;text-transform:uppercase;letter-spacing:.06em}
+.gate{border-left:3px solid var(--warn);padding:10px 14px;background:var(--panel);border-radius:0 8px 8px 0}
+.tbl{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:.88rem}
+th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+th{color:var(--dim);font-weight:500;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em}
+tr:last-child td{border-bottom:0}td.n{text-align:right}
+.up{color:var(--up)}.down{color:var(--down)}.warn{color:var(--warn)}
+ol.time{list-style:none;margin:0;padding:0;display:grid;gap:0;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+ol.time li{display:grid;grid-template-columns:11.5rem 1fr;gap:12px;padding:10px 14px;border-bottom:1px solid var(--line)}
+ol.time li:last-child{border-bottom:0}
+ol.time .when{font-family:var(--mono);font-size:.82rem;color:var(--accent)}
+@media (max-width:520px){ol.time li{grid-template-columns:1fr;gap:2px}}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.stat .v{font-family:var(--mono);font-size:1.3rem;font-weight:600}
+.stat p{margin:2px 0 0;color:var(--dim);font-size:.82rem}
+ul.rules{margin:0;padding-left:1.1rem;display:grid;gap:4px}
+.fine{font-size:.78rem;color:var(--dim);line-height:1.5}
+</style>
+<main class="wrap">
+<div><h1>Plan for Tuesday 20 October 2026</h1><div class="meta">Built 2026-10-19 17:03 IST from the US session of 2026-10-19 and NSE close of 2026-10-19</div></div>
+<section class="verdict"><div class="label RANGEBOUND">RANGEBOUND</div><div><strong>Market bias SIDEWAYS — favour hedged premium selling</strong></div><div class="meta">Model expects Nifty +0.14% (typical day ±0.79%) · India VIX 14.77 · out-of-sample hit rate 65.7% on 105 directional calls</div></section>
+<section><h2>Options</h2><div style='display:grid;gap:12px'>
+<article class="trade"><header><strong>NIFTY · Iron Condor</strong><span class="chip">expiry 2026-10-20 · lot 65</span></header><div class="legs"><span class="leg SELL">SELL 23050 CE · ≈₹12.2</span><span class="leg BUY">BUY 23150 CE · ≈₹3.0</span><span class="leg SELL">SELL 22750 PE · ≈₹14.5</span><span class="leg BUY">BUY 22650 PE · ≈₹3.7</span></div><dl><dt>Enter</dt><dd>Enter at 10:15 (after the first hour) only if NIFTY is between 22,750 and 23,050</dd><dt>Target</dt><dd class="up">Buy back at ₹9.0 (keep ~55% of credit), else hold to expiry Tue 20 Oct</dd><dt>Stop</dt><dd class="down">Exit if the loss reaches 1× credit (≈₹1,300 per lot)</dd><dt>Breakeven</dt><dd class="mono">22,730 / 23,070</dd></dl><div class="risk"><div><b>Max loss / lot</b><span class="down">₹5,200</span></div><div><b>Max reward / lot</b><span class="up">₹1,300</span></div><div><b>Reward : risk</b>0.25</div><div><b>Spot / expected move</b>22,889 ± 153</div></div><div class="fine">Hedged premium selling. Check SPAN margin with your broker. Premiums are Black-Scholes estimates from India VIX; check the live option chain.</div></article>
+<article class="trade"><header><strong>BANKNIFTY · Iron Condor</strong><span class="chip">expiry 2026-10-27 · lot 30</span></header><div class="legs"><span class="leg SELL">SELL 56400 CE · ≈₹126.6</span><span class="leg BUY">BUY 56900 CE · ≈₹51.2</span><span class="leg SELL">SELL 54600 PE · ≈₹97.0</span><span class="leg BUY">BUY 54100 PE · ≈₹35.5</span></div><dl><dt>Enter</dt><dd>Enter at 10:15 (after the first hour) only if BANKNIFTY is between 54,600 and 56,400</dd><dt>Target</dt><dd class="up">Buy back at ₹61.6 (keep ~55% of credit), else hold to expiry Tue 27 Oct</dd><dt>Stop</dt><dd class="down">Exit if the loss reaches 1× credit (≈₹4,107 per lot)</dd><dt>Breakeven</dt><dd class="mono">54,463 / 56,537</dd></dl><div class="risk"><div><b>Max loss / lot</b><span class="down">₹10,893</span></div><div><b>Max reward / lot</b><span class="up">₹4,107</span></div><div><b>Reward : risk</b>0.38</div><div><b>Spot / expected move</b>55,488 ± 1,039</div></div><div class="fine">Hedged premium selling. Check SPAN margin with your broker. Premiums are Black-Scholes estimates from India VIX; check the live option chain.</div></article>
+</div></section>
+<section><h2>Stocks for 1–2 days</h2>
+<div class="gate">Market gate is <strong>closed</strong>: Nifty is below its 50-day average or down over 20 days. Momentum buys are paused, so the list below is a watchlist, not a buy list.</div>
+<div class="tbl" style="margin-top:10px"><table><thead><tr><th>Stock</th><th>Grade</th><th>Rules</th><th>Close</th><th>Day</th><th>Vol</th><th>RSI</th><th>SL</th><th>T1</th><th>T2</th><th>Note</th></tr></thead><tbody>
+<tr><td><strong>PNB</strong></td><td>C</td><td class="n">4/4</td><td class="n">121.90</td><td class="n up">+4.82%</td><td class="n">5.6x</td><td class="n">63</td><td class="n down">119.41</td><td class="n up">126.88</td><td class="n up">131.87</td><td class="warn" style="white-space:normal;min-width:12rem">Market gate closed: Nifty below 50-DMA or down over 20 days</td></tr>
+<tr><td><strong>FEDERALBNK</strong></td><td>C</td><td class="n">4/4</td><td class="n">348.85</td><td class="n up">+3.21%</td><td class="n">3.9x</td><td class="n">64</td><td class="n down">341.31</td><td class="n up">363.93</td><td class="n up">379.00</td><td class="warn" style="white-space:normal;min-width:12rem">Market gate closed: Nifty below 50-DMA or down over 20 days</td></tr>
+<tr><td><strong>ICICIBANK</strong></td><td>C</td><td class="n">3/4</td><td class="n">1,381.00</td><td class="n down">-1.15%</td><td class="n">2.5x</td><td class="n">55</td><td class="n down">1,362.02</td><td class="n up">1,418.97</td><td class="n up">1,456.93</td><td class="warn" style="white-space:normal;min-width:12rem">Market gate closed: Nifty below 50-DMA or down over 20 days</td></tr>
+<tr><td><strong>KOTAKBANK</strong></td><td>C</td><td class="n">3/4</td><td class="n">442.30</td><td class="n down">-1.14%</td><td class="n">0.6x</td><td class="n">63</td><td class="n down">435.40</td><td class="n up">456.09</td><td class="n up">469.89</td><td class="warn" style="white-space:normal;min-width:12rem">Market gate closed: Nifty below 50-DMA or down over 20 days</td></tr>
+</tbody></table></div>
+</section>
+<section><h2>Timeline (IST)</h2><ol class="time">
+<li><span class="when">Tue 20 Oct · 07:45–09:00</span><span>The 07:30 run is final (US close, Dow and US futures, Europe, Asia open). Read the expected open, bias and trades. Set price alerts at each entry and stop-loss.</span></li>
+<li><span class="when">Tue 20 Oct · 09:00–09:15</span><span>Place no market orders. Note where your stocks are indicated to open.</span></li>
+<li><span class="when">Tue 20 Oct · 09:15–09:30</span><span>Opening 15 min is the most volatile. Cancel any stock that opens above its T1 or below its SL.</span></li>
+<li><span class="when">Tue 20 Oct · 09:30–10:30</span><span>Buy only if price is holding above the entry and the 15-min opening high. Place the SL order immediately.</span></li>
+<li><span class="when">Tue 20 Oct · 09:45–11:00</span><span>Spreads / ATM buys only if the index respects the support/resistance shown. Iron condor / fly only after 10:00 with the index inside the range.</span></li>
+<li><span class="when">Tue 20 Oct · 11:30–14:30</span><span>No new stock entries. If it did not trigger, skip it. Keep stop-loss orders in place.</span></li>
+<li><span class="when">Tue 20 Oct · 14:30–15:00</span><span>Exit option buys by 15:00 if target not hit (time decay). Spreads/condors: hold only if still inside the plan.</span></li>
+<li><span class="when">Tue 20 Oct · 16:30–17:00</span><span>The engine grades today&#x27;s plan. Check the Results tab: what worked, what the gap was.</span></li>
+<li><span class="when">Wed 21 Oct · 09:15–15:15</span><span>Book half at T1, trail SL to entry. Exit everything still open by 15:15 (this is a 1–2 day setup).</span></li>
+<li><span class="when">Expiry 2026-10-20</span><span>Do not hold short options into the last hour of expiry day.</span></li>
+</ol></section>
+<section><h2>Global close</h2><div class="tbl"><table><thead><tr><th>Market</th><th style="text-align:right">Last</th><th style="text-align:right">Change</th><th>As of</th></tr></thead><tbody>
+<tr><td>S&amp;P 500</td><td class="n">7,659.44</td><td class="n down">-1.09%</td><td class="mono">2026-10-16</td></tr>
+<tr><td>Nasdaq</td><td class="n">26,140.03</td><td class="n down">-2.15%</td><td class="mono">2026-10-16</td></tr>
+<tr><td>Dow Jones</td><td class="n">52,002.41</td><td class="n down">-0.34%</td><td class="mono">2026-10-16</td></tr>
+<tr><td>US 10Y Yield</td><td class="n">5.10</td><td class="n up">+0.01 pts</td><td class="mono">2026-10-16</td></tr>
+<tr><td>Crude Oil</td><td class="n">98.22</td><td class="n down">-3.15%</td><td class="mono">2026-10-19</td></tr>
+<tr><td>Dollar Index</td><td class="n">101.78</td><td class="n down">-0.06%</td><td class="mono">2026-10-19</td></tr>
+<tr><td>Nikkei 225</td><td class="n">64,916.70</td><td class="n down">-0.62%</td><td class="mono">2026-10-19</td></tr>
+<tr><td>Hang Seng</td><td class="n">24,186.83</td><td class="n up">+0.52%</td><td class="mono">2026-10-16</td></tr>
+<tr><td>India VIX</td><td class="n">14.77</td><td class="n up">+5.07%</td><td class="mono">2026-10-19</td></tr>
+<tr><td>Nifty 50</td><td class="n">22,888.95</td><td class="n down">-1.11%</td><td class="mono">2026-10-19</td></tr>
+<tr><td>Bank Nifty</td><td class="n">55,488.10</td><td class="n down">-0.64%</td><td class="mono">2026-10-19</td></tr>
+</tbody></table></div></section>
+<section><h2>Track record so far</h2><div class="stats">
+<div class="stat"><div class="v">61.2%</div><p>Bias calls correct, out-of-sample, 209 calls in 500 days</p></div>
+<div class="stat"><div class="v">47.5%</div><p>Stock win rate, 2-year backtest, 99 trades</p></div>
+<div class="stat"><div class="v">-0.01R</div><p>Average result per stock trade after costs (1R = planned risk)</p></div>
+<div class="stat"><div class="v">0</div><p>Live trades graded. Live results start 2 trading days after the first signal.</p></div>
+</div></section>
+<section><h2>Rules</h2><ul class="rules"><li>Only grade A/B stocks. C = watch, don&#x27;t trade.</li><li>Stop-loss order goes in the moment you buy. Never move it down.</li><li>Risk max 1% of capital per trade, max 3 open trades.</li><li>No trigger in the buy window = no trade. Missing a trade costs nothing.</li><li>If the app&#x27;s live hit-rate (Learning tab) drops below its backtest, cut size in half.</li></ul></section>
+<p class="fine">Algorithmic research output based on technical rules and statistics. Not investment advice. Not a SEBI-registered investment adviser or research analyst. No returns are guaranteed; options can lose 100% of premium and more for sellers. Verify every level with your broker and consult a SEBI-registered adviser before trading.</p>
+</main></body></html>
