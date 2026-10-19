@@ -1,0 +1,489 @@
+{
+ "generated_at": "2026-10-19T09:39:20.381144+05:30",
+ "target_session": "2026-10-19",
+ "reference_date": "2026-10-16",
+ "us_session_used": "2026-10-16",
+ "tickers": [
+  {
+   "name": "S&P 500",
+   "symbol": "^GSPC",
+   "last": 7659.44,
+   "change": -1.093,
+   "change_unit": "%",
+   "as_of": "2026-10-16"
+  },
+  {
+   "name": "Nasdaq",
+   "symbol": "^IXIC",
+   "last": 26140.03,
+   "change": -2.145,
+   "change_unit": "%",
+   "as_of": "2026-10-16"
+  },
+  {
+   "name": "Dow Jones",
+   "symbol": "^DJI",
+   "last": 52002.41,
+   "change": -0.336,
+   "change_unit": "%",
+   "as_of": "2026-10-16"
+  },
+  {
+   "name": "US 10Y Yield",
+   "symbol": "^TNX",
+   "last": 5.1,
+   "change": 0.009,
+   "change_unit": "pts",
+   "as_of": "2026-10-16"
+  },
+  {
+   "name": "Crude Oil",
+   "symbol": "CL=F",
+   "last": 101.41,
+   "change": 3.511,
+   "change_unit": "%",
+   "as_of": "2026-10-16"
+  },
+  {
+   "name": "Dollar Index",
+   "symbol": "DX-Y.NYB",
+   "last": 101.84,
+   "change": -0.157,
+   "change_unit": "%",
+   "as_of": "2026-10-16"
+  },
+  {
+   "name": "Nikkei 225",
+   "symbol": "^N225",
+   "last": 64812.02,
+   "change": -0.784,
+   "change_unit": "%",
+   "as_of": "2026-10-19"
+  },
+  {
+   "name": "Hang Seng",
+   "symbol": "^HSI",
+   "last": 24186.83,
+   "change": 0.516,
+   "change_unit": "%",
+   "as_of": "2026-10-16"
+  },
+  {
+   "name": "India VIX",
+   "symbol": "^INDIAVIX",
+   "last": 14.51,
+   "change": 3.183,
+   "change_unit": "%",
+   "as_of": "2026-10-19"
+  },
+  {
+   "name": "Nifty 50",
+   "symbol": "^NSEI",
+   "last": 23132.05,
+   "change": -0.061,
+   "change_unit": "%",
+   "as_of": "2026-10-19"
+  },
+  {
+   "name": "Bank Nifty",
+   "symbol": "^NSEBANK",
+   "last": 55606.2,
+   "change": -0.426,
+   "change_unit": "%",
+   "as_of": "2026-10-19"
+  }
+ ],
+ "bias": {
+  "label": "RANGEBOUND",
+  "score": 1,
+  "z": 0.009,
+  "model_z": 0.009,
+  "predicted_nifty_move_pct": 0.007,
+  "typical_daily_move_pct": 0.793,
+  "india_vix": 14.06,
+  "components": [
+   {
+    "feature": "spx",
+    "label": "S&P 500 overnight %",
+    "value": -1.093,
+    "contribution_pct": -0.35
+   },
+   {
+    "feature": "ndx",
+    "label": "Nasdaq minus S&P (tech tilt) %",
+    "value": -1.052,
+    "contribution_pct": 0.323
+   },
+   {
+    "feature": "dxy",
+    "label": "Dollar index %",
+    "value": -0.157,
+    "contribution_pct": 0.038
+   },
+   {
+    "feature": "nifty_prev",
+    "label": "Nifty previous day %",
+    "value": 0.647,
+    "contribution_pct": -0.022
+   },
+   {
+    "feature": "tnx",
+    "label": "US 10Y yield chg (pts)",
+    "value": 0.009,
+    "contribution_pct": -0.006
+   },
+   {
+    "feature": "nifty_ext",
+    "label": "Nifty vs EMA20 %",
+    "value": 1.11,
+    "contribution_pct": -0.003
+   },
+   {
+    "feature": "vix_chg",
+    "label": "India VIX change",
+    "value": 0.03,
+    "contribution_pct": 0.002
+   },
+   {
+    "feature": "vix",
+    "label": "India VIX level",
+    "value": 14.06,
+    "contribution_pct": -0.001
+   },
+   {
+    "feature": "crude",
+    "label": "Crude oil %",
+    "value": 3.511,
+    "contribution_pct": 0.0
+   }
+  ]
+ },
+ "news": {
+  "summary": {
+   "score": 0.172,
+   "count": 39,
+   "label": "POSITIVE"
+  },
+  "weight": 0.0,
+  "headlines": [
+   {
+    "title": "Axis Bank shares in focus after Q2 results. Why Jefferies remains bullish even as other brokerages reduce target prices",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/axis-bank-shares-in-focus-after-q2-results-why-jefferies-remains-bullish-even-as-other-brokerages-reduce-target-prices/articleshow/135039127.cms",
+    "published": "Mon, 19 Oct 2026 09:21:26 +0530",
+    "sentiment": 0.612
+   },
+   {
+    "title": "RBI announces $10.5 billion liquidity infusion via repo",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/forex/rbi-announces-10-5-billion-liquidity-infusion-via-repo/articleshow/135038836.cms",
+    "published": "Mon, 19 Oct 2026 09:03:42 +0530",
+    "sentiment": 0.0
+   },
+   {
+    "title": "IDBI Bank shares in focus as Q2 net profit falls 39%; NII tanks nearly 50% YoY",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/idbi-bank-shares-in-focus-as-q2-net-profit-falls-39-nii-tanks-nearly-50-yoy/articleshow/135038766.cms",
+    "published": "Mon, 19 Oct 2026 08:57:46 +0530",
+    "sentiment": 0.25
+   },
+   {
+    "title": "Tonbo Imaging India IPO Day 3: GMP at 74%, issue subscribed over 7x. Check key details",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/ipos/fpos/tonbo-imaging-india-ipo-day-3-gmp-at-74-issue-subscribed-over-7x-check-key-details/articleshow/135038712.cms",
+    "published": "Mon, 19 Oct 2026 08:55:02 +0530",
+    "sentiment": 0.0
+   },
+   {
+    "title": "ICICI Bank Share Price Live Updates: ICICI Bank's Breakout Above Resistance Level Highlights Market Strength",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/stock-liveblog/icici-bank-share-price-live-updates-19-oct-2026/liveblog/135038693.cms",
+    "published": "Mon, 19 Oct 2026 08:50:37 +0530",
+    "sentiment": 0.784
+   },
+   {
+    "title": "L&amp;T Finance among 4 F&amp;O stocks with a sharp rise in futures open interest",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/lampt-finance-among-4-fampo-stocks-with-a-sharp-rise-in-futures-open-interest/slideshow/135038726.cms",
+    "published": "Mon, 19 Oct 2026 08:49:00 +0530",
+    "sentiment": 0.459
+   },
+   {
+    "title": "U-turn from regulator may be new lifeline to Indian derivatives",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/u-turn-from-regulator-may-be-new-lifeline-to-indian-derivatives/articleshow/135038625.cms",
+    "published": "Mon, 19 Oct 2026 08:47:36 +0530",
+    "sentiment": 0.0
+   },
+   {
+    "title": "Axis Bank Share Price Live Updates: Axis Bank's bearish movement below EMA",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/stock-liveblog/axis-bank-share-price-today-live-updates-19-oct-2026/liveblog/135038578.cms",
+    "published": "Mon, 19 Oct 2026 08:40:43 +0530",
+    "sentiment": -0.153
+   },
+   {
+    "title": "UPL Share Price Live Updates: UPL Falls Below Key Moving Average",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/stock-liveblog/upl-share-price-today-live-updates-19-oct-2026/liveblog/135038574.cms",
+    "published": "Mon, 19 Oct 2026 08:40:27 +0530",
+    "sentiment": 0.0
+   },
+   {
+    "title": "HFCL among 3 stocks closing above VWAP",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/hfcl-among-3-stocks-closing-above-vwap/slideshow/135038565.cms",
+    "published": "Mon, 19 Oct 2026 08:35:59 +0530",
+    "sentiment": 0.0
+   },
+   {
+    "title": "\u200bHBL Engineering among 4 stocks showing RSI trending up",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/hbl-engineering-among-4-stocks-showing-rsi-trending-up/slideshow/135038502.cms",
+    "published": "Mon, 19 Oct 2026 08:30:37 +0530",
+    "sentiment": 0.0
+   },
+   {
+    "title": "HDFC Bank Share Price Live Updates: HDFC Bank's price action signals a bearish trend",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/stock-liveblog/hdfc-bank-share-price-live-updates-19-oct-2026/liveblog/135038428.cms",
+    "published": "Mon, 19 Oct 2026 08:28:25 +0530",
+    "sentiment": -0.153
+   }
+  ]
+ },
+ "model": {
+  "oos_days": 250,
+  "directional_calls": 57,
+  "directional_accuracy": 70.2,
+  "sign_accuracy_all_days": 59.6,
+  "trained_rows": 750,
+  "version": 3,
+  "bias_threshold": 0.3
+ },
+ "options": {
+  "NIFTY": {
+   "index": "NIFTY",
+   "spot": 23132.05,
+   "atm": 23150,
+   "lot_size": 65,
+   "expiry": "2026-10-20",
+   "days_to_expiry": 1.75,
+   "iv_used_pct": 14.06,
+   "expected_move": 225,
+   "levels": {
+    "prev_close": 23146.15,
+    "ema20": 22892.1,
+    "support": 22990.02,
+    "resistance": 23226.07,
+    "atr": 270.6,
+    "pivots": {
+     "P": 23069.93,
+     "R1": 23226.07,
+     "S1": 22990.02,
+     "R2": 23305.98,
+     "S2": 22833.88
+    }
+   },
+   "strategies": [
+    {
+     "name": "Iron Condor",
+     "legs": [
+      {
+       "action": "SELL",
+       "strike": 23350,
+       "type": "CE",
+       "est_premium": 21.4
+      },
+      {
+       "action": "BUY",
+       "strike": 23450,
+       "type": "CE",
+       "est_premium": 8.9
+      },
+      {
+       "action": "SELL",
+       "strike": 22950,
+       "type": "PE",
+       "est_premium": 24.9
+      },
+      {
+       "action": "BUY",
+       "strike": 22850,
+       "type": "PE",
+       "est_premium": 10.4
+      }
+     ],
+     "net_premium": 27.0,
+     "max_loss": 4745,
+     "max_reward": 1755,
+     "reward_risk": 0.37,
+     "entry": "Enter after the first 30 min if NIFTY stays between 22,990 and 23,226",
+     "target": "Buy back at \u20b912.2 (keep ~55% of credit)",
+     "stop_loss": "NIFTY breaks 22,950 / 23,350 on a 15-min close, or loss reaches 1\u00d7 credit",
+     "breakeven": [
+      22923,
+      23377
+     ],
+     "notes": "Hedged premium selling. Check SPAN margin with your broker."
+    },
+    {
+     "name": "Iron Fly (hedged short straddle)",
+     "legs": [
+      {
+       "action": "SELL",
+       "strike": 23150,
+       "type": "CE",
+       "est_premium": 84.6
+      },
+      {
+       "action": "SELL",
+       "strike": 23150,
+       "type": "PE",
+       "est_premium": 95.3
+      },
+      {
+       "action": "BUY",
+       "strike": 23350,
+       "type": "CE",
+       "est_premium": 21.4
+      },
+      {
+       "action": "BUY",
+       "strike": 22950,
+       "type": "PE",
+       "est_premium": 24.9
+      }
+     ],
+     "net_premium": 133.6,
+     "max_loss": 4316,
+     "max_reward": 8684,
+     "reward_risk": 2.01,
+     "entry": "Enter only if NIFTY opens within \u00b150 of 23,150",
+     "target": "Buy back at \u20b993.5 (keep ~30% of credit)",
+     "stop_loss": "NIFTY moves beyond 23,050 / 23,250",
+     "breakeven": [
+      23016,
+      23284
+     ],
+     "notes": "Higher reward, tighter range. Never run an unhedged straddle."
+    }
+   ],
+   "premium_note": "Premiums are Black-Scholes estimates from India VIX, not live quotes."
+  },
+  "BANKNIFTY": {
+   "index": "BANKNIFTY",
+   "spot": 55606.2,
+   "atm": 55600,
+   "lot_size": 30,
+   "expiry": "2026-10-27",
+   "days_to_expiry": 8.75,
+   "iv_used_pct": 12.53,
+   "expected_move": 1079,
+   "levels": {
+    "prev_close": 55844.0,
+    "ema20": 55493.54,
+    "support": 55583.68,
+    "resistance": 56046.93,
+    "atr": 676.74,
+    "pivots": {
+     "P": 55786.62,
+     "R1": 56046.93,
+     "S1": 55583.68,
+     "R2": 56249.87,
+     "S2": 55323.37
+    }
+   },
+   "strategies": [
+    {
+     "name": "Iron Condor",
+     "legs": [
+      {
+       "action": "SELL",
+       "strike": 56600,
+       "type": "CE",
+       "est_premium": 123.3
+      },
+      {
+       "action": "BUY",
+       "strike": 57100,
+       "type": "CE",
+       "est_premium": 51.2
+      },
+      {
+       "action": "SELL",
+       "strike": 54600,
+       "type": "PE",
+       "est_premium": 85.4
+      },
+      {
+       "action": "BUY",
+       "strike": 54100,
+       "type": "PE",
+       "est_premium": 31.4
+      }
+     ],
+     "net_premium": 126.1,
+     "max_loss": 11217,
+     "max_reward": 3783,
+     "reward_risk": 0.34,
+     "entry": "Enter after the first 30 min if BANKNIFTY stays between 55,584 and 56,047",
+     "target": "Buy back at \u20b956.7 (keep ~55% of credit)",
+     "stop_loss": "BANKNIFTY breaks 54,600 / 56,600 on a 15-min close, or loss reaches 1\u00d7 credit",
+     "breakeven": [
+      54474,
+      56726
+     ],
+     "notes": "Hedged premium selling. Check SPAN margin with your broker."
+    },
+    {
+     "name": "Iron Fly (hedged short straddle)",
+     "legs": [
+      {
+       "action": "SELL",
+       "strike": 55600,
+       "type": "CE",
+       "est_premium": 477.9
+      },
+      {
+       "action": "SELL",
+       "strike": 55600,
+       "type": "PE",
+       "est_premium": 385.2
+      },
+      {
+       "action": "BUY",
+       "strike": 56600,
+       "type": "CE",
+       "est_premium": 123.3
+      },
+      {
+       "action": "BUY",
+       "strike": 54600,
+       "type": "PE",
+       "est_premium": 85.4
+      }
+     ],
+     "net_premium": 654.4,
+     "max_loss": 10368,
+     "max_reward": 19632,
+     "reward_risk": 1.89,
+     "entry": "Enter only if BANKNIFTY opens within \u00b1100 of 55,600",
+     "target": "Buy back at \u20b9458.1 (keep ~30% of credit)",
+     "stop_loss": "BANKNIFTY moves beyond 55,100 / 56,100",
+     "breakeven": [
+      54946,
+      56254
+     ],
+     "notes": "Higher reward, tighter range. Never run an unhedged straddle."
+    }
+   ],
+   "premium_note": "Premiums are Black-Scholes estimates from India VIX, not live quotes."
+  }
+ },
+ "notes": [
+  "GIFT Nifty is not on Yahoo Finance; overnight US moves are used as the proxy.",
+  "Option premiums are theoretical estimates. Confirm on a live option chain."
+ ],
+ "disclaimer": "Algorithmic research output based on technical rules and statistics. Not investment advice. Not a SEBI-registered investment adviser or research analyst. No returns are guaranteed; options can lose 100% of premium and more for sellers. Verify every level with your broker and consult a SEBI-registered adviser before trading."
+}

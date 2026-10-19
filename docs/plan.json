@@ -1,0 +1,86 @@
+{
+ "generated_at": "2026-10-19T09:39:37.003261+05:30",
+ "session": "2026-10-19",
+ "headline": "Market bias SIDEWAYS \u2014 favour hedged premium selling",
+ "bias": "RANGEBOUND",
+ "score": 1,
+ "bias_track_record_pct": 70.2,
+ "options": [
+  {
+   "index": "NIFTY",
+   "strategy": "Iron Condor",
+   "legs": "SELL 23350 CE + BUY 23450 CE + SELL 22950 PE + BUY 22850 PE",
+   "expiry": "2026-10-20",
+   "lot_size": 65,
+   "entry": "Enter after the first 30 min if NIFTY stays between 22,990 and 23,226",
+   "target": "Buy back at \u20b912.2 (keep ~55% of credit)",
+   "stop_loss": "NIFTY breaks 22,950 / 23,350 on a 15-min close, or loss reaches 1\u00d7 credit",
+   "max_loss": 4745,
+   "max_reward": 1755,
+   "reward_risk": 0.37
+  },
+  {
+   "index": "BANKNIFTY",
+   "strategy": "Iron Condor",
+   "legs": "SELL 56600 CE + BUY 57100 CE + SELL 54600 PE + BUY 54100 PE",
+   "expiry": "2026-10-27",
+   "lot_size": 30,
+   "entry": "Enter after the first 30 min if BANKNIFTY stays between 55,584 and 56,047",
+   "target": "Buy back at \u20b956.7 (keep ~55% of credit)",
+   "stop_loss": "BANKNIFTY breaks 54,600 / 56,600 on a 15-min close, or loss reaches 1\u00d7 credit",
+   "max_loss": 11217,
+   "max_reward": 3783,
+   "reward_risk": 0.34
+  }
+ ],
+ "stocks": [],
+ "market_gate_open": false,
+ "stock_track_record": null,
+ "no_trade_reason": "No stock passed all 4 rules with a positive expected value. Sitting out is a valid decision.",
+ "timeline": [
+  {
+   "when": "Mon 19 Oct \u00b7 08:00\u201309:00",
+   "do": "Open the app. Read the bias and plan. Set price alerts at each entry and stop-loss."
+  },
+  {
+   "when": "Mon 19 Oct \u00b7 09:00\u201309:15",
+   "do": "Pre-open. Place no market orders. Note where your stocks are indicated to open."
+  },
+  {
+   "when": "Mon 19 Oct \u00b7 09:15\u201309:30",
+   "do": "WAIT. Opening 15 min is the most volatile. Cancel any stock that opens above its T1 or below its SL."
+  },
+  {
+   "when": "Mon 19 Oct \u00b7 09:30\u201310:30",
+   "do": "STOCK BUY WINDOW. Buy only if price is holding above the entry and the 15-min opening high. Place the SL order immediately."
+  },
+  {
+   "when": "Mon 19 Oct \u00b7 09:45\u201311:00",
+   "do": "OPTIONS WINDOW. Spreads / ATM buys only if the index respects the support/resistance shown. Iron condor / fly only after 10:00 with the index inside the range."
+  },
+  {
+   "when": "Mon 19 Oct \u00b7 after 11:30",
+   "do": "No new stock entries. If it did not trigger, skip it."
+  },
+  {
+   "when": "Mon 19 Oct \u00b7 14:30\u201315:00",
+   "do": "Option BUYERS: exit by 15:00 if target not hit (time decay). Spreads/condors: hold only if still inside the plan."
+  },
+  {
+   "when": "Tue 20 Oct \u00b7 09:15\u201315:15",
+   "do": "DAY 2. Book half at T1, trail SL to entry. EXIT everything still open by 15:15 (this is a 1\u20132 day setup)."
+  },
+  {
+   "when": "Expiry 2026-10-20",
+   "do": "Do not hold short options into the last hour of expiry day."
+  }
+ ],
+ "golden_rules": [
+  "Only grade A/B stocks. C = watch, don't trade.",
+  "Stop-loss order goes in the moment you buy. Never move it down.",
+  "Risk max 1% of capital per trade, max 3 open trades.",
+  "No trigger in the buy window = no trade. Missing a trade costs nothing.",
+  "If the app's live hit-rate (Learning tab) drops below its backtest, cut size in half."
+ ],
+ "disclaimer": "Algorithmic research output based on technical rules and statistics. Not investment advice. Not a SEBI-registered investment adviser or research analyst. No returns are guaranteed; options can lose 100% of premium and more for sellers. Verify every level with your broker and consult a SEBI-registered adviser before trading."
+}
