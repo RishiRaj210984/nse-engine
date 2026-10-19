@@ -173,6 +173,25 @@ def global_bias(force=False):
 
     wf = walk_forward(frame)
     metrics = wf_metrics(wf, p)
+    typical = m["resid_sd"]
+
+    # Pre-open global snapshot (US futures, Dow, Europe, Asia, crude, gold, dollar, rupee).
+    # Used for the bias whenever its out-of-sample record is at least as good as the daily model's.
+    import premodel
+    pre, bias_source = None, "daily close model"
+    try:
+        pre = premodel.predict(target_date, p, now)
+        wf_r = pre.pop("_wf_ret")
+        pre_metrics = wf_metrics(wf_r, p)
+        if (pre_metrics.get("directional_calls") or 0) >= 20 and                 (pre_metrics.get("directional_accuracy") or 0) >= (metrics.get("directional_accuracy") or 0) - 1:
+            z_model, pred, typical = pre["z"], pre["expected_day_pct"], pre["typical_daily_move_pct"]
+            components = pre["drivers"]
+            metrics = {**pre_metrics, "gap_corr": pre["wf"]["gap_corr"], "gap_sign_pct": pre["wf"]["gap_sign_pct"]}
+            bias_source = "pre-open global snapshot"
+    except Exception as exc:
+        pre = {"error": str(exc)[:200]}
+    z = z_model + p["news_weight"] * news_z
+    label = label_for(z, raw["vix"], p)
 
     # Options structures for both indices
     idx_opts = {}
@@ -196,12 +215,13 @@ def global_bias(force=False):
     except Exception:
         events = []
     lab = options_lab.load()
-    rank = {"TRADE": 0, "CAUTION": 1, "SKIP": 2}
+    def rank(v):  # TRADE, then tested-but-thin CAUTION, then SKIP; untested ideas never lead
+        return {"TRADE": 0, "CAUTION": 1 if v.get("stats") else 3, "SKIP": 2}[v["decision"]]
     for name, o in idx_opts.items():
         for s in o["strategies"]:
             s["verdict"] = options_lab.setup_verdict(name, s["name"], target_date.isoformat(), lab, events)
-        # best evidence first: TRADE before CAUTION before SKIP, then by historical average P&L
-        o["strategies"].sort(key=lambda s: (rank[s["verdict"]["decision"]],
+        # best evidence first, then by historical average P&L
+        o["strategies"].sort(key=lambda s: (rank(s["verdict"]),
                                             -((s["verdict"].get("stats") or {}).get("avg_pnl") or -10**9)))
         o["setup"] = o["strategies"][0]["verdict"]
         if o["setup"]["decision"] == "SKIP":
@@ -219,7 +239,8 @@ def global_bias(force=False):
             "label": label, "score": score, "z": round(float(z), 3),
             "model_z": round(float(z_model), 3),
             "predicted_nifty_move_pct": round(pred, 3),
-            "typical_daily_move_pct": round(m["resid_sd"], 3),
+            "typical_daily_move_pct": round(typical, 3),
+            "source": bias_source,
             "india_vix": round(raw["vix"], 2),
             "components": components,
         },
@@ -228,8 +249,9 @@ def global_bias(force=False):
                   "version": state["version"], "bias_threshold": p["bias_threshold"]},
         "options": idx_opts,
         "events": events,
+        "preopen": pre,
         "notes": [
-            "GIFT Nifty is not on Yahoo Finance; overnight US moves are used as the proxy.",
+            "GIFT Nifty has no free data feed; the pre-open model reads what drives it (US/Dow futures, Europe, Asia, crude, rupee).",
             "Option premiums are theoretical estimates. Confirm on a live option chain.",
         ],
     }

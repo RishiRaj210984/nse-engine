@@ -119,3 +119,19 @@ bias model actually called that direction (out-of-sample). Each morning every op
 
 First run's findings: condors pay on the right days (Nifty 3–5 days before expiry, BankNifty
 ≥3 days before); expiry-day condors and all directional spreads lost money after costs.
+
+## Pre-open global model and run times (added 19 Oct 2026)
+`backend/premodel.py` measures every market's move since Nifty's last close: S&P, Nasdaq and Dow
+futures, Europe's close (DAX, FTSE, Euro Stoxx), Nikkei, crude, gold, dollar index and USD/INR,
+plus Nifty's previous day and India VIX. It predicts the opening gap and the full-day move,
+trained on the same time-of-day snapshot over ~2 years and refit on every run. Out-of-sample at
+07:30 IST: gap correlation 0.74, day-direction calls right 75% (156 of 300 days). GIFT Nifty has no
+free feed; these inputs drive it.
+
+| Run (IST) | What it is |
+|---|---|
+| 00:00 | Overnight **preview**: Europe closed, US mid-session. Not graded. |
+| 07:30 | **Final** plan: US close, futures, Asia open. Graded by the evening review. |
+| 16:30 | Scan, grade, re-learn (rules, options lab, review), publish the next session. |
+
+GitHub can start scheduled jobs 5–30 minutes late.

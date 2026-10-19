@@ -4,7 +4,8 @@ name: daily-engine
 
 on:
   schedule:
-    - cron: "30 2 * * 1-5"    # 08:00 IST  pre-market bias + options
+    - cron: "30 18 * * 0-4"   # 00:00 IST  overnight PREVIEW (Europe closed, US mid-session)
+    - cron: "0 2 * * 1-5"     # 07:30 IST  FINAL pre-market plan (US close, futures, Asia open)
     - cron: "0 11 * * 1-5"    # 16:30 IST  scan, grade results, retrain, publish
   workflow_dispatch:
     inputs:
@@ -35,10 +36,10 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             TASK="${{ inputs.task }}"
-          elif [ "${{ github.event.schedule }}" = "30 2 * * 1-5" ]; then
-            TASK=premarket
-          else
+          elif [ "${{ github.event.schedule }}" = "0 11 * * 1-5" ]; then
             TASK=postclose
+          else
+            TASK=premarket
           fi
           echo "TASK=$TASK" >> "$GITHUB_ENV"
           cd backend && python engine.py "$TASK"

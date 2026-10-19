@@ -32,7 +32,7 @@ def timeline(session, expiry):
     d1 = date.fromisoformat(session)
     d2 = _next_weekday(d1)
     steps = [
-        (d1, "08:00", "09:00", "prep", "Read the plan", "Open the app. Read the bias and plan. Set price alerts at each entry and stop-loss."),
+        (d1, "07:45", "09:00", "prep", "Read the final plan", "The 07:30 run is final (US close, Dow and US futures, Europe, Asia open). Read the expected open, bias and trades. Set price alerts at each entry and stop-loss."),
         (d1, "09:00", "09:15", "wait", "Pre-open", "Place no market orders. Note where your stocks are indicated to open."),
         (d1, "09:15", "09:30", "wait", "Wait", "Opening 15 min is the most volatile. Cancel any stock that opens above its T1 or below its SL."),
         (d1, "09:30", "10:30", "act", "Stock buy window", "Buy only if price is holding above the entry and the 15-min opening high. Place the SL order immediately."),
@@ -49,6 +49,23 @@ def timeline(session, expiry):
     return out
 
 
+def _expected_open(bias):
+    pre = bias.get("preopen") or {}
+    if "expected_gap_pct" not in pre:
+        return None
+    g = pre["expected_gap_pct"]
+    if abs(g) >= 0.5:
+        tip = (f"Big gap {'up' if g > 0 else 'down'} expected. Place no market orders at 09:15. Stocks that open above "
+               "their T1 are skipped. Let the first hour settle before any option entry.")
+    elif abs(g) >= 0.2:
+        tip = f"Moderate gap {'up' if g > 0 else 'down'} expected. Use limit orders only, and wait for 09:30."
+    else:
+        tip = "Flat open expected. Normal entry windows apply."
+    return {"gap_pct": g, "error_pct": pre.get("gap_typical_error_pct"), "day_pct": pre.get("expected_day_pct"),
+            "snapshot": pre.get("snapshot_ist"), "stage": pre.get("stage"), "tip": tip,
+            "markets": pre.get("markets", []), "drivers": pre.get("drivers", []), "wf": pre.get("wf", {})}
+
+
 def build_plan(bias, scan):
     """One-screen decision summary for the app's home tab."""
     label = bias["bias"]["label"]
@@ -61,6 +78,8 @@ def build_plan(bias, scan):
             "lot_size": o["lot_size"], "entry": s["entry"], "target": s["target"], "stop_loss": s["stop_loss"],
             "max_loss": s["max_loss"], "max_reward": s["max_reward"], "reward_risk": s["reward_risk"],
             "decision": o.get("setup", {}).get("decision", "TRADE"), "decision_reason": o.get("setup", {}).get("reason"),
+            "enter_at": "10:15 IST, after the first hour" if s["net_premium"] > 0 else "09:45–11:00 IST",
+            "exit_by": f"target / stop, else expiry {o['expiry']}" if s["net_premium"] > 0 else "15:00 IST same day if no target",
             "setup_stats": o.get("setup", {}).get("stats"),
         })
     picks = [c for c in scan["candidates"] if c["grade"] in ("A", "B")][:5]
@@ -68,6 +87,8 @@ def build_plan(bias, scan):
     return {
         "generated_at": store.now_ist().isoformat(),
         "session": bias["target_session"],
+        "stage": (bias.get("preopen") or {}).get("stage", "final"),
+        "expected_open": _expected_open(bias),
         "headline": {"BULLISH": "Market bias UP — favour buying dips",
                      "BEARISH": "Market bias DOWN — favour selling rallies / puts",
                      "RANGEBOUND": "Market bias SIDEWAYS — favour hedged premium selling"}[label],
@@ -75,6 +96,7 @@ def build_plan(bias, scan):
         "bias_track_record_pct": conf,
         "options": opts,
         "stocks": [{"symbol": c["symbol"], "grade": c["grade"], "action": c["action"], "entry": c["entry"],
+                    "enter_at": "09:30–10:30 IST, only above the 15-min opening high", "exit_by": "day 2, 15:15 IST",
                     "stop": c["stop"], "t1": c["t1"], "t2": c["t2"], "win_prob": c["win_prob"],
                     "vol_badge": c["vol_badge"]} for c in picks],
         "market_gate_open": scan.get("market_gate_open"),
@@ -117,10 +139,13 @@ def publish_all(bias=None, scan=None):
 
 def premarket():
     bias = macro.global_bias(force=True)
-    learning.log_bias(bias)
-    learning.journal_index_views(bias)
+    stage = (bias.get("preopen") or {}).get("stage", "final")
+    if stage == "final":  # only the 07:30 run is graded; the midnight run is a preview
+        learning.log_bias(bias)
+        learning.journal_index_views(bias)
     publish_all(bias=bias)
-    return {"bias": bias["bias"]["label"], "session": bias["target_session"]}
+    return {"bias": bias["bias"]["label"], "session": bias["target_session"], "stage": stage,
+            "source": bias["bias"].get("source")}
 
 
 def postclose():

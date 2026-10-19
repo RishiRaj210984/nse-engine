@@ -227,6 +227,20 @@ function vToday() {
   else h += `<div class="big">Nothing scheduled</div><div class="dim">The next plan arrives after today's 16:30 run.</div>`;
   h += `</section>`;
 
+  const eo = p.expected_open;
+  if (eo) {
+    const stageTxt = eo.stage === 'final' ? 'FINAL · 07:30 run' : 'PREVIEW · updates at 07:30';
+    h += `<section class="card"><div class="row"><div class="eyebrow">Expected open · ${esc(eo.snapshot || '')}</div><span class="pill ${eo.stage === 'final' ? 'gA' : 'gB'}">${stageTxt}</span></div>
+      <div class="grid2"><div class="stat"><b>Nifty opening gap</b><span class="n ${cls(eo.gap_pct)}">${sgn(eo.gap_pct)}</span> <span class="fine">±${eo.error_pct ?? '—'}%</span></div>
+      <div class="stat"><b>Full day (model)</b><span class="n ${cls(eo.day_pct)}">${sgn(eo.day_pct)}</span></div></div>
+      <div>${esc(eo.tip)}</div>
+      <details><summary class="fine" style="cursor:pointer">Global markets since Nifty's last close ▾</summary>
+        ${(eo.markets || []).map((m) => `<div class="row"><span>${esc(m.name)}</span><span class="n ${cls(m.move_pct)}">${sgn(m.move_pct)}</span></div>`).join('')}
+        <div class="eyebrow" style="margin-top:6px">Biggest drivers of today's call</div>
+        ${(eo.drivers || []).map((d) => `<div class="row"><span>${esc(d.label)}</span><span class="n ${cls(d.contribution_pct)}">${sgn(d.contribution_pct, 2)}</span></div>`).join('')}
+        <div class="fine">Out-of-sample: opening-gap direction right ${eo.wf?.gap_sign_pct ?? '—'}% of days; day-direction calls right ${eo.wf?.directional_accuracy ?? '—'}% (${eo.wf?.directional_calls ?? '—'} calls). GIFT Nifty has no free feed; these markets drive it.</div>
+      </details></section>`;
+  }
   h += `<section class="card"><div class="eyebrow">Plan for ${esc(sessLabel)}</div>
     <div class="verdict ${esc(p.bias)}">${esc(p.bias)}</div><div><strong>${esc(p.headline)}</strong></div>
     <div class="fine">Bias model track record: ${p.bias_track_record_pct ?? '—'}% correct on its directional calls (tested on unseen data)</div></section>`;
@@ -236,11 +250,12 @@ function vToday() {
     h += `<div><div class="row"><strong>${esc(o.index)} · ${esc(o.strategy)}</strong><span class="fine">exp ${esc(o.expiry)}</span></div>
       ${decision(o.decision, o.decision_reason, o.setup_stats)}
       <div class="n info" style="font-size:.85rem${o.decision === 'SKIP' ? ';text-decoration:line-through;opacity:.6' : ''}">${esc(o.legs)}</div>
-      <div class="fine">Enter: ${esc(o.entry)}</div>
+      <div class="fine"><strong>Enter at:</strong> ${esc(o.enter_at || '')} · ${esc(o.entry)}</div>
+      <div class="fine"><strong>Exit:</strong> ${esc(o.exit_by || '')}</div>
       <div class="row"><span>Max loss / reward per lot</span><span class="n"><span class="down">${inr(o.max_loss)}</span> / <span class="up">${o.max_reward == null ? 'open' : inr(o.max_reward)}</span></span></div></div>`;
   });
   if (p.market_gate_open === false) h += `<div class="banner">Market gate closed: Nifty is below its 50-day average or down over 20 days, so there are no stock buys today.</div>`;
-  if ((p.stocks || []).length) p.stocks.forEach((s) => { h += `<div><span class="pill g${s.grade}">${s.grade}</span> ${esc(s.action)}</div>`; });
+  if ((p.stocks || []).length) p.stocks.forEach((s) => { h += `<div><span class="pill g${s.grade}">${s.grade}</span> ${esc(s.action)}<div class="fine"><strong>Enter:</strong> ${esc(s.enter_at || '')} · <strong>Exit by:</strong> ${esc(s.exit_by || '')}</div></div>`; });
   else h += `<div class="dim">${esc(p.no_trade_reason || 'No stock trades today.')}</div>`;
   h += `</section>`;
 

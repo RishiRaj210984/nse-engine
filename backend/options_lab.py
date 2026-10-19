@@ -111,7 +111,14 @@ def _value(legs, S, T, iv):
 
 
 def _bias_labels(hist, params):
-    """Out-of-sample bias label per session date."""
+    """Out-of-sample bias label per session date, from the same pre-open model the plan uses."""
+    try:
+        import premodel
+        wf = premodel.history_z(params)
+        if len(wf) > 200:
+            return {ts.date(): macro.label_for(z, v, params) for ts, z, v in zip(wf.index, wf["z"], wf["vix"])}
+    except Exception as exc:
+        log.warning("pre-open labels unavailable, using daily model: %s", exc)
     wf = macro.walk_forward(macro.build_dataset(hist), test=560)
     return {ts.date(): macro.label_for(z, v, params) for ts, z, v in zip(wf.index, wf["z"], wf["vix"])}
 
@@ -236,12 +243,14 @@ def _summarise(index, R):
         by = {}
         for b in BUCKET_LABELS[index]:
             all_b = S_use[S_use.bucket == b]
+            if strat == "condor" and len(all_b) < rule["min_trades"]:
+                all_b = S[S.bucket == b]          # too few sideways days in this bucket: use all days
             reg_b = all_b[pd.to_datetime(all_b.date) >= regime_start]
             use = reg_b if len(reg_b) >= rule["min_trades"] else all_b
             g = _group(use)
             if g is None:
                 continue
-            g["sample"] = "current expiry schedule" if use is reg_b else "full 2 years"
+            g["sample"] = ("current expiry schedule" if use is reg_b else "full 2 years") +                 ("" if strat != "condor" or len(S_use[S_use.bucket == b]) >= rule["min_trades"] else ", all days")
             g["allowed"] = bool(g["trades"] >= rule["min_trades"] and g["win_pct"] >= rule["min_win"] and g["avg_pnl"] >= MIN_EDGE)
             g["marginal"] = bool(not g["allowed"] and g["trades"] >= rule["min_trades"] and 0 < g["avg_pnl"] < MIN_EDGE)
             if strat == "condor":
