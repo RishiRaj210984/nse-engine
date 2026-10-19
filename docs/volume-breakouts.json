@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-19T18:20:17.909904+05:30",
+ "generated_at": "2026-10-19T22:51:09.010431+05:30",
  "market_open": false,
  "volume_projected": false,
  "bias": {
   "label": "RANGEBOUND",
-  "score": 13
+  "score": -1
  },
  "rules": {
   "vol_mult": 2.0,
@@ -19,8 +19,8 @@
  },
  "market_gate_open": false,
  "model": {
-  "version": 4,
-  "updated": "2026-10-19T17:03:04.147603+05:30",
+  "version": 5,
+  "updated": "2026-10-19T22:50:47.570287+05:30",
   "ranker_on": false,
   "samples": 2121,
   "live_samples": 0,
@@ -77,8 +77,8 @@
     "day_chg": 4.8151318376396635,
     "ret5": 5.086208211964571,
     "rs20": 5.9075658309839625,
-    "bias_score": 13.0,
-    "news_sent": 0.543,
+    "bias_score": -1.0,
+    "news_sent": 0.459,
     "mkt_above50": 0.0,
     "mkt_ret20": -1.9594077211949723
    },
@@ -122,7 +122,7 @@
     }
    ],
    "news_sentiment": {
-    "score": 0.543,
+    "score": 0.459,
     "count": 8,
     "label": "POSITIVE"
    },
@@ -180,14 +180,21 @@
     "day_chg": 3.210060977371487,
     "ret5": 6.291893092148393,
     "rs20": 6.797876873265773,
-    "bias_score": 13.0,
-    "news_sent": 0.051,
+    "bias_score": -1.0,
+    "news_sent": 0.117,
     "mkt_above50": 0.0,
     "mkt_ret20": -1.9594077211949723
    },
    "r1_a": 1.353028822204183,
    "r2_a": 2.7060576444083604,
    "news": [
+    {
+     "title": "Jana SFB shares fall 13% to hit 6-month low as Federal Bank says no plan to buy stake",
+     "source": "Moneycontrol.com",
+     "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxOdkRZdG15QllmVWNPTHhLWjdJUDV4XzB3SV9FdXAzYWlXN3ZOQ0t2SUhLQi1HN0FlWXdjeWh0d1ZxRWx2elBXb2JvYnpwcGUtb0tzbmVYQnpWQzJyNWpTbV9xWlllVE91bW1nS3dSYW1IZ0RDdGd3WGNxei1jOHc3bU50SnBBTDhXTy1IX3NPbE5YcnVfN1JkOFhqekxkRkEydlRlV29nSnFjc2Q5RTNOdXFucmZHc1l5SmZCMDN2enktUUd6bTdpSkVqc1ZKbVMzR19SMjNzek9JRFBOYloyWmxoMNIB6AFBVV95cUxPQThrVjJsSHR1d18tNGc5SzE5MEx1REhVWmo0cGxPb19jTnFFUXo0TlpiSkFQdlF2c2RKY19STXU0VHdmN0lGYUt6TkdkeHo2NjdSejMwQy1UOXFEbnhUMUdrYmRDNGxBeWRkTHR0U1hCVTdpeXpCUXlncElRNXd4Q1ZOa2hDWGRkYm1TRGxnWlZ3cU9uYWE5ZERHSnZ0M2NoWWRoZDZGMzdxVWNwVGdfS1BzVlh3Vm1IMEN1cE1fZkJxekNLS1ZYOVFIZXBhVklzXzNEZkx1bjV4LWxlOTRZVXcwZGFRcFJ5?oc=5",
+     "published": "Mon, 19 Oct 2026 11:07:47 GMT",
+     "sentiment": -0.273
+    },
     {
      "title": "Federal Bank Shares Jump 4% After Acquisition Comments, Jana SFB Falls Nearly 10%",
      "source": "NDTV Profit",
@@ -203,13 +210,6 @@
      "sentiment": -0.273
     },
     {
-     "title": "Jana SFB shares fall 13% to hit 6-month low as Federal Bank says no plan to buy stake",
-     "source": "Moneycontrol.com",
-     "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxOdkRZdG15QllmVWNPTHhLWjdJUDV4XzB3SV9FdXAzYWlXN3ZOQ0t2SUhLQi1HN0FlWXdjeWh0d1ZxRWx2elBXb2JvYnpwcGUtb0tzbmVYQnpWQzJyNWpTbV9xWlllVE91bW1nS3dSYW1IZ0RDdGd3WGNxei1jOHc3bU50SnBBTDhXTy1IX3NPbE5YcnVfN1JkOFhqekxkRkEydlRlV29nSnFjc2Q5RTNOdXFucmZHc1l5SmZCMDN2enktUUd6bTdpSkVqc1ZKbVMzR19SMjNzek9JRFBOYloyWmxoMNIB6AFBVV95cUxPQThrVjJsSHR1d18tNGc5SzE5MEx1REhVWmo0cGxPb19jTnFFUXo0TlpiSkFQdlF2c2RKY19STXU0VHdmN0lGYUt6TkdkeHo2NjdSejMwQy1UOXFEbnhUMUdrYmRDNGxBeWRkTHR0U1hCVTdpeXpCUXlncElRNXd4Q1ZOa2hDWGRkYm1TRGxnWlZ3cU9uYWE5ZERHSnZ0M2NoWWRoZDZGMzdxVWNwVGdfS1BzVlh3Vm1IMEN1cE1fZkJxekNLS1ZYOVFIZXBhVklzXzNEZkx1bjV4LWxlOTRZVXcwZGFRcFJ5?oc=5",
-     "published": "Mon, 19 Oct 2026 11:07:47 GMT",
-     "sentiment": -0.273
-    },
-    {
      "title": "Federal Bank shares rise 5% as NPAs hit decadal low, brokerages on price targets",
      "source": "Business Today",
      "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxQZEtVZ2plaGJBUUI0LWZ5WXIwNU10T0d5ZkhHTzJXbzQzZGVVWlZzQlFpMElhdU5xRHJxNGR2RVFJSXBoRzY0dGk5d3pnX3YtX2x5RXMyODU1T2JKUG9BZWUxUEtPaG5oU01HWk5mZ1NTU3FDY2N2blM4VUNvR3A4UnNibW9fWURmZWFfb0dQUExyLVF5N0ozRW5PZmNpNnJnblpnZ1oyMkhFaE5DRkVEX2doNnpqaTJudUNqcDgwSnhIX0NzSGszT0czdjBIcFlaanpOcHVDbHpRTHBT0gHiAUFVX3lxTE1obmc2R1dySVV4S0lULTBZdVdyZ0RUVmFJMFIwSUprZDBPb01NSGszVUsxZjFTY216ZUd3OFZrSHdXdFhXRjJ4UGo0TFFMUThLYjhaSXpyRVV3dy1sVW1fTVZBMDBuZWJiQVhLNGtKSkRKelhBbmpnNDQ0N200a3RVRXhvRXMyczhHdkpZWGdkd1B6WVI4OTY2RDhocDFnRS0xTVVocVdSQUlva1VNckJ2RVpUQi1fcjNJM1dhaHpMQWRmVHFJbVpKUGNydDFCRDBGcXZRQXljdW02VjNpbm5fTGc?oc=5",
@@ -217,17 +217,17 @@
      "sentiment": 0.026
     },
     {
-     "title": "Federal Bank Share Price - Live NSE: FEDERALBNK Stock Price & Chart",
-     "source": "Upstox",
-     "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5BcE9nQTIzUUlNWXVVNTB4OTZVZkV3cXJLRVB1N1VyMzUzc1RGaFgyZnhtemZiUjhWMHBaRzJSWkdZQXhqM2NFRDNDbXdNaG9fYnhEdnloczl3UzFvUXdJeTJsNE5GZw?oc=5",
-     "published": "Sat, 17 Oct 2026 08:21:01 GMT",
-     "sentiment": 0.296
+     "title": "federal bank ltd spurts 3 71 gains for five straight sessions",
+     "source": "Capital Market",
+     "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNRlNlRjdzUGVqaGxYNXVaRzQ1Y0c0OWd4MERINEJ4eDNpeFI0T0R3ZUFVc1IyQk9ld2hSei1GQkI2ZFRUYTRXNVZTT2tEbVVxQXdDc3I0a3FLYUJCY0lUWTg2VEs5R2Y5WHh3VGdlc3VuYmFNd3ZPTVFXTjR4YlZvUkZTdTEzSzItWnAyOU9FdDZlY21qNkVZa29wbmJueDJzYUtUTkNMRTJzTUFmdWZtbUFXbGZkSXU2X2dZNXVKbml6anRQWHFlMg?oc=5",
+     "published": "Mon, 19 Oct 2026 13:24:30 GMT",
+     "sentiment": 0.477
     }
    ],
    "news_sentiment": {
-    "score": 0.051,
+    "score": 0.117,
     "count": 8,
-    "label": "NEUTRAL"
+    "label": "POSITIVE"
    },
    "win_prob": 47.2,
    "expected_r": 0.07,
@@ -285,8 +285,8 @@
     "day_chg": -1.145311381531855,
     "ret5": 3.0597014925373145,
     "rs20": 5.103778086290866,
-    "bias_score": 13.0,
-    "news_sent": 0.282,
+    "bias_score": -1.0,
+    "news_sent": 0.206,
     "mkt_above50": 0.0,
     "mkt_ret20": -1.9594077211949723
    },
@@ -294,11 +294,11 @@
    "r2_a": 1.7041956808055152,
    "news": [
     {
-     "title": "ICICI Bank stock falls 1% after Q2 results, among top Nifty losers; brokerages bullish on growth,...",
-     "source": "Moneycontrol.com",
-     "link": "https://news.google.com/rss/articles/CBMiggJBVV95cUxQeUZNakZueDdQbFZ4X2xmNnkyaEotVWUwaDhtSWJGUGd0YWJZR3dCTWpWRlh0Y0tLcF9TVnhaM2tpTEVNRWNXZ2d2dGt6V1BzNFJ2amZyVkE2WTdZemtZcUZFQWVQc0JKaGw2cF82LWNHS2ZqS0swWHMtTHJBWFdGMWFMTWVvWmV2ZmRLMVpxMkxXOW5Td2FZblkwa1o5LVpSOUhaR29sTzRGZVlwZm8wSm9lUkdFQUlrRk9BUDExcDhDUmtadlphS2JaLUlOUno2SFhKUlhMQWNEa1dDN3JLRGpSMGZjRGMyOEk1WXY1ZldpS2xHZWhFN0hSMW9CTXc2dUHSAYcCQVVfeXFMUG9la0Jubk5VNHFROVFObTZVWmpKcGRQaTgwRlVZbXZzM25IaWJ5bDJxTWdvVnE1NnZxWWEtVkl2YVRkS2RKbWtJcXZXVnV0UlVKUHRFVjNVU3JjTVZZTUxIeWJTcUJhNFZkTWYtWGNzdWZnV1NqUUl5Mllua3RVajEzZEFyQnVScEFqa0JkVU5oejU2OW51RlZTZWR2THJVRHRqQkY2dmdJUW12Z1lUeGdkc1ZzSTlTMXpVUmlzN09RX01GQjJSRDh5dlA2LTc2aEhaVnBGeUdSQnBKVDJQU3R2YUQtUXpvcEVqTDk2ck9fMER5d254YzV3WUtuYWZfeXBqT2tkQTQ?oc=5",
-     "published": "Mon, 19 Oct 2026 06:07:53 GMT",
-     "sentiment": 0.511
+     "title": "ICICI Bank Limited Stock 12\u2011Month Price Target Raised to $37.18, Implies 24% Upside",
+     "source": "TradingView",
+     "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxQbUVqVm41OUh0WFljTkFBTVU4RVppeURmeFpMVlA4NjNhVUd4aEZwZmRkTnZXY2l1bUVPamF5TmlLeE5HVE5UektfMy1BQk4tLU1TOTdlOHVJQWd5X1JXd21YU0FUSjc3OWZzY1ZjM250SlRpa0UzQVg2NEdjc3VoaFFVTDhCMTNKZUllLVpLOUoxcVA3TmhBM3NsaDBfaGplalhiNkx1MjZxZG1ZWTZRY0ZjaWFlQnUwOVdwMWpzZ0NlTVRaa016V0ZFRmtTczUxNk1hQnFqdURtUQ?oc=5",
+     "published": "Mon, 19 Oct 2026 16:20:00 GMT",
+     "sentiment": -0.226
     },
     {
      "title": "Heavyweight India Bank Stocks in Focus After Earnings-Packed Weekend",
@@ -308,29 +308,29 @@
      "sentiment": 0.0
     },
     {
+     "title": "ICICI Bank Limited (IBN) stock price, news, quote and history",
+     "source": "Yahoo Finance UK",
+     "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE1EaUlLVUM3SjRHZTN3MHo5Q3JlWGVtaTdnTENMVnVpVURlUDVway16ZVJhLWE1bmdwREgtREZfSTVVdk5Ka2xwdURQenFCV2ds?oc=5",
+     "published": "Sun, 18 Oct 2026 00:12:33 GMT",
+     "sentiment": -0.226
+    },
+    {
+     "title": "ICICI Bank stock falls 1% after Q2 results, among top Nifty losers; brokerages bullish on growth,...",
+     "source": "Moneycontrol.com",
+     "link": "https://news.google.com/rss/articles/CBMiggJBVV95cUxQeUZNakZueDdQbFZ4X2xmNnkyaEotVWUwaDhtSWJGUGd0YWJZR3dCTWpWRlh0Y0tLcF9TVnhaM2tpTEVNRWNXZ2d2dGt6V1BzNFJ2amZyVkE2WTdZemtZcUZFQWVQc0JKaGw2cF82LWNHS2ZqS0swWHMtTHJBWFdGMWFMTWVvWmV2ZmRLMVpxMkxXOW5Td2FZblkwa1o5LVpSOUhaR29sTzRGZVlwZm8wSm9lUkdFQUlrRk9BUDExcDhDUmtadlphS2JaLUlOUno2SFhKUlhMQWNEa1dDN3JLRGpSMGZjRGMyOEk1WXY1ZldpS2xHZWhFN0hSMW9CTXc2dUHSAYcCQVVfeXFMUG9la0Jubk5VNHFROVFObTZVWmpKcGRQaTgwRlVZbXZzM25IaWJ5bDJxTWdvVnE1NnZxWWEtVkl2YVRkS2RKbWtJcXZXVnV0UlVKUHRFVjNVU3JjTVZZTUxIeWJTcUJhNFZkTWYtWGNzdWZnV1NqUUl5Mllua3RVajEzZEFyQnVScEFqa0JkVU5oejU2OW51RlZTZWR2THJVRHRqQkY2dmdJUW12Z1lUeGdkc1ZzSTlTMXpVUmlzN09RX01GQjJSRDh5dlA2LTc2aEhaVnBGeUdSQnBKVDJQU3R2YUQtUXpvcEVqTDk2ck9fMER5d254YzV3WUtuYWZfeXBqT2tkQTQ?oc=5",
+     "published": "Mon, 19 Oct 2026 06:07:53 GMT",
+     "sentiment": 0.511
+    },
+    {
      "title": "ICICI Bank shares remain 'consensus buy'; Majority analysts rate it top pick after Q2 results - CNBC TV18",
      "source": "LinkedIn",
      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQWVBKZFk2WXRLLVlrVmk5THQySkZRYXJ2Z2dub1dTeWJneW5fSVJJc2JoRXB0YlhZS2F6Vi1UZ1c1cXFjUmJlQWt3MlZxSU5fcTdEdDhEc012T0ZqNVFlR1o3b0JNM3gtUDZpQUh1WXJZTFRCN3AzT3FNUndBNWZpLVNSeE1KR0ZJSGY1bGlCY2NYSElIeDRmeGFGSTVIVXNOaWd3cndjdkdQeTBvMDhBY2FmMA?oc=5",
      "published": "Mon, 19 Oct 2026 05:36:51 GMT",
      "sentiment": 0.459
-    },
-    {
-     "title": "HDFC Bank vs ICICI Bank: One has the growth, the other has the valuation edge. Which stock to buy?",
-     "source": "The Economic Times",
-     "link": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxPQTFPNlpta3RJdW5HMkMteExPTUwzSVhCOXdfbXlma1cwSWtvOEdqWGhiYkR2Ukc1Q2tHUHYtRmlhQ1hJMzYwYmJCcjVHcE54QW5Oam5XUWJCcjNmU2xHNmpnWjBpMlRXTExIdWhvWnFPN3A2bDNCQlNGSGEyTnhERk0tS1NrX0UtMFlaOXZiTTZSWXZ2YXhmV0lUaTAwd29ZZ0lZMzdPZkRhYkNFQzQ0NnhpVVh3V0YtLUNuZDFwOGJsaExnZllLLWJiRmkxSm5tLXJPcWM2M1BwRHRzSVIwbVhEZldIYklnRE1FOHI2SzlGNURwSFhhUkdTUlDSAYICQVVfeXFMTnJ2SVpic3N1UXYzZkxYdWhmWUMyQVA2YVFKcThhSVowMFhKVFNmOENINWhJYmlHVDY0clFNeVpQNXlPWGdKQlEyYm1YTFdSVmhDOEJsQmpYbTlvTDZNN080TlV0ek05cVZDdzRZaVZOcGNVWlNxamk3ZjFrQTAzU2dFYWlrcERtbmFtUUlnZjNXTHRTY0hRRkdXd2ZRaUUta1l2eVZTOXhKdUFHTjkzMVhkU2RwZHRjM3E4eGRTSnpnUzYxWEJxVWRlTFZTZVFZYlFjUVdtUTQxazNpU0NBTC15VXpzZXdIZDRCNTFOdVFxcDItQkppUUNSck5nSjVnYWFn?oc=5",
-     "published": "Mon, 19 Oct 2026 06:56:19 GMT",
-     "sentiment": 0.382
-    },
-    {
-     "title": "ICICI Bank shares close lower after Q2 earnings; 3 brokerages remain bullish",
-     "source": "Business Today",
-     "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxOZlRlZGZ1U1NhZVpDRDgxRy1RckkzaHZMbjc1N1RIUktFSTVFUjV2UGRVdkIzeWREY1dYaFp4TkZVd2RtOGtkbElQZjhScUtHa3VQUWxEcUVBb0dTVVY5OTZTbDhsRVhwNW5KRDVlUnZQSEg3WXBHR0FFSkk1SkpxV3FpU1dKNjFRN05LNEp2cDYtRXdKdWhuMjNyWVFLcWQyU1dTeGVEb3dJT0p0Uk4yc2dPREtnTGpsX0JYYTA2ZjZhQmR1SkxrMDhWTVJTc2hMdGxuQUZtd2dfMjTSAeABQVVfeXFMTkt0V1B2dF9iLVBrTXBMX1hZTWwzeGsyY2FhVmJ0cVJFRFVIWDNib3VIaHM5U1FLQy00TmJubFJLV2dJbzZFT1RfWUZrb1FRWUpuR25fem9NeHF5VV9YWEg4RGNRalF2RTJsZGNVdmo2VWxPZkhsWDdZekRDRjFuT2N6TGFNZVh3R3RRVl9yQXVmTWFLYXRPZ3NuSk5zTjBLU20xLXN5UExnN0pZbElBR0VjNzVpLXlnQ1BKUXg2d2tDckVHQnNncUxTdC1hMjhDU0g2RFFLVHlVdWhHd3YyTXk?oc=5",
-     "published": "Mon, 19 Oct 2026 10:48:37 GMT",
-     "sentiment": 0.421
     }
    ],
    "news_sentiment": {
-    "score": 0.282,
+    "score": 0.206,
     "count": 8,
     "label": "POSITIVE"
    },
@@ -388,14 +388,21 @@
     "day_chg": -1.139920914861614,
     "ret5": -0.2480843749791406,
     "rs20": 9.183647186157085,
-    "bias_score": 13.0,
-    "news_sent": 0.163,
+    "bias_score": -1.0,
+    "news_sent": 0.004,
     "mkt_above50": 0.0,
     "mkt_ret20": -1.9594077211949723
    },
    "r1_a": 0.4857608818999225,
    "r2_a": 0.9715217637998389,
    "news": [
+    {
+     "title": "Kotak Mahindra Bank slips Monday, outperforms competitors",
+     "source": "MarketWatch",
+     "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOUkREY294NXA4Wnpqd2s2bHZrNjk2d1dDUmNmX2lMaFFwb3NMOER2dzJNbzdwejVUUVpveGRmSHlhTmxEb3ZjVmsyRzd1aGlHZ3RLTndJdnV4djlaYU1uNjNWT2FzLVRKeTI5RXczbGxsanZ3QnFWV0MyS05UTXZOclFEMkM3WkN1blRCSXhBUDgza0xGNmpud255YldUN1R5M1g3VTNvckNaNlpxQllLdTZFdWxRSHlaek9VWHh0dm9MZlotTk9keWZqX1VjVDg?oc=5",
+     "published": "Mon, 19 Oct 2026 10:30:00 GMT",
+     "sentiment": -0.25
+    },
     {
      "title": "Weekly Recap: Kotak Mahindra Bank Jio IPO lead and PMJDY accounts rise",
      "source": "TradingView",
@@ -406,9 +413,16 @@
     {
      "title": "Kotak Mahindra Bank sets October 24 results: HSBC targets Kotak Mahindra Bank stock at INR 520",
      "source": "ad-hoc-news.de",
-     "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxQdjlkS2V4SUpnTkhQZjZ3RThhak53dXJjVndzOGFwRkJ6cmpHUEZqazctSmkyYldrOUZzWnVrNkJLc28teGtrRHJaVGpIVmRELThONW9HTzhEV3hLb193QTdTZVc5bnA1SHVGSlMybEM3dm5CMklDQVZLbXZfckE1QWlZT0cxcXJRTkJTcHkyeDJnaDQ2dDlyaWFXVDhkamU3MXFSX2xyS2RhbWEzUU9rbk45eE5RdUVJV1lkMzN4SGlmV3NPd05NUlZXdXFsdFU?oc=5",
+     "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxPdjQ2dHNHMU9sMjN1TWxKV3ZqLTYzdmw0OFpUN25CbTZxYjRKa3ZMeTFtNV9LdDUyUE9wd3BFQTNxTGJNUkhucW9uRVdJYlJyZWFmVjFoaU1mNWxNdXhhZUgtMXh1Z19CcVFUZXgwS2hmbUw0TVFtYzRidEpHeC1UWk9IRG11OF9lUmlGZ2FNU3FBSWJqX3hYSHdhZ3k4amVBNWlyWS15UHBiV0FaLVVJVF9qZ1FUSzJhRUlDNk5SNjYyVTdjUGFTV2loZThQTzBRdXpDQUh1VXhwWmpDWE02V1hMSk50UWNZeHctTw?oc=5",
      "published": "Mon, 19 Oct 2026 07:21:38 GMT",
      "sentiment": 0.0
+    },
+    {
+     "title": "Nifty Sensex Today: Stock Market Crashes as Sensex Falls 876 Points, Nifty Drops 1.11%; Banking and IT Stocks Lead the Losses",
+     "source": "India Infoline",
+     "link": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxQa1ZydU56V2ZLWkw1MTV6bW0zNThMcTRUVU44WFN4SHpfMHlmTndYMm9YZXJMVmE3V0w5S05ZU19Mc2F6Z1drT05NOG5vQzg3X0diWkh0eFV2dzhkMzV5WXVlbEYxaUtiY0RmT3B3bGVMWXVCTHRNdUloNzctX3d2eEdPRnlZaGp2eUhkQmhydkNwOEl4cFdiNklIYnc2ZjZUQ3BhZlZlY05Hb2dFVm1lS3B3M3dlb1NqM3BEQ0xtaWtfY0pNSlIyRkQ0MzR0ZGJLQkt5U3R5S3FDU01saE1NdGxwRXQyc1d2ZDRldE5wbDNRTjl4aXBv?oc=5",
+     "published": "Mon, 19 Oct 2026 13:06:04 GMT",
+     "sentiment": 0.226
     },
     {
      "title": "PSU bank stocks soar up to 8%, but HDFC, Axis and other private lenders fall up to 5% after Q2 results. Wh",
@@ -416,26 +430,12 @@
      "link": "https://news.google.com/rss/articles/CBMingJBVV95cUxNeWdmRWswYVMxRHJocEhyTnBTY3pWNXhmOXJoWTJ3a00wSnN3R293RE45ZzdwdWVKcEd0SnlNS29NWDJiOTM4emtRa2lLS3FxUTREa2hhMjQtUklxOW11Q0FuUmFuZWVoaVNiZmhxcXF3d3Yydm41Wm1YUm9ISmRkbFlrRkY4QWxIem45RTVXeUtFVXpoVThPclZma2JHaHQ5eUprU2VFX1lueGpYdTVFZjRuTTAxRXQzc0RxTGE1d0RoaEYtSngtZF90VVNXOFh1SGRZVWJiMFVrXzQzaXNJd3p5Nk5JT2lVY1B0eHd2akxCOEk1QTBaSTV2WkpNbFZhTjlma05BU3o1MkVRNFdiTUttS0VpTXg2STVwX1Fn0gGjAkFVX3lxTE90UTZFOTRibzVETDZ3WmtlczBJR1N0c3ZkeGtOSGZMM3doV2w3MGIxZVFydy11MFJmUHlfZk1ZYlNTVkpocm9uU2wzV3g5TEFua2tlbmRnSkVfWnN5cWU3WmoxVG5pU1U2ZFZEblQzZWVtV19pSkU3c0sweGRvbGgxck5NS2dtRTZ4NmxUdGhCcE1STWJuSDNMd2dQWWpzbFZZdFRjMUQ5bDVlMUFUcDJpaXpnd2ZiSlV3ZnRzclUzQTRONnpmb013LVEzaGJZQUpFRC1sLUg5MWZPSEhmYlB1TU51eEo4YlhmbGtWdHU1Tm9VWjktWmNuWjNodWxjVGtwakpBbGhQV2dNY3IzalV2bElqNXZISElWa0lqWmxZOWJmaw?oc=5",
      "published": "Mon, 19 Oct 2026 06:24:40 GMT",
      "sentiment": 0.0
-    },
-    {
-     "title": "Stocks To Buy Today: Four Top Stock Picks By Motilal Oswal's Chandan Taparia",
-     "source": "NDTV Profit",
-     "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPQ2VkcF9pUWVCZWxEaEJoa0NydFFxSXkwaWt6QU5VWTlGdEtocmtoOXBRaE9PMHUzQTNvZDdzdHhBQnQxUGtnel9ickZ3UTc3cjd1U05yLVdmMmRpMnBiYWp3N0FlSkFFS2xseUR4WlQyNWtUYWt3ME1XOW85RnVuN0tsblpaSWhnREN1UnFuZ0VVN3dtNk9uRkxUdk5VOFlVbTlZWG8wYUFaekZxcUhrejEyRGlBT1FuTWfSAcIBQVVfeXFMT21MUXVHU1c2Z2wzSW50aFJpSl9WdjZBMWZFbTl0YWZhaklxRHl1WV9WUDRhbl9ybXp2aUFTVXZoLU5IRlg2S1p3TGV1a2J0dnFrOUZaOExBVzdNc2dyT25HazRmNWR6YUFxSU83Y0Y0dTdJSTIxSF9UZTJFRXJuVnJiT0NkTmQ3Ti1IaTRoNGRYLUw4cTlCaGFlMXVRZS12SzdlNnNFLXkxU2xWbmRqOTEyRC1CaFlYQzdNZl9hbDUta3c?oc=5",
-     "published": "Mon, 19 Oct 2026 02:07:26 GMT",
-     "sentiment": 0.202
-    },
-    {
-     "title": "Why are banking stocks falling? Nifty Bank down 1%; Axis, HDFC Bank shares crash up to 5% - What should investors do?",
-     "source": "Livemint",
-     "link": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxQdmlmV1VFbHZfQTdKbURoTVJiRDV5ell4c19RRWswSnBfWjhwUV9lR1hfT2xkR0RFVUwyc0RfZHIyUm12dDlEYldraUpIQ1dLRmlFQUpWQTViaTBpWmdsdUt6VTVpaGxmMnVzM3lZb2M3OU1tMDZJU096VVNMTjZsejJTbW9xMkp4SjFZM2txazcyOFEzbXB4UU5WYWtWRmRGbzhtRFJpMTdWem1oYWM3OFJ0c2dsOTUzU1FtWk9ockQzb0tMTFJOU0pzelA3OE1ON0o3eU16NmFjYzFZdjNLQ0hWRGd6VkIxYUpjcngydVlDay1tbTVObmVLQUhrS1llbHlsaTFzdlFxbmvSAZACQVVfeXFMTkVpcUhvWFhCdllwVVJvc3BlVzV1THRQcVhpcm5udnUtNmRYcFd2MzBKVmdwQVNmNUV5WVVERVVaZVlMdXZWbE1IRGU3SnhaQlQ1MHNGb3hQb3Bfb0dTc2xZZGExc1BuSHAwMzZiYm5WelFWYWVRNXptOHI4elFPb05VaXY2RGFJcWh3WDJVd3VXeDFpYUZ5eTdDYXBTNmJvcWtHbGhySjZsS1hDQ0dUTTZlTElKY3R3bVpYdVZXUldaQ001Zkl4cFhxQ3NFR3E4T09VV251LTFncklGUmlNVUFRYnZMV2ktcHhTbUdRSk9kcEVSb1VWVDVIRldwTURldThDZjN3VjVDczEtU1oweXg?oc=5",
-     "published": "Mon, 19 Oct 2026 05:38:21 GMT",
-     "sentiment": -0.143
     }
    ],
    "news_sentiment": {
-    "score": 0.163,
+    "score": 0.004,
     "count": 8,
-    "label": "POSITIVE"
+    "label": "NEUTRAL"
    },
    "win_prob": 47.2,
    "expected_r": 0.07,

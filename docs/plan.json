@@ -1,11 +1,11 @@
 {
- "generated_at": "2026-10-19T18:20:23.229262+05:30",
+ "generated_at": "2026-10-19T22:51:09.777308+05:30",
  "session": "2026-10-21",
  "stage": "preview",
  "expected_open": {
-  "gap_pct": -0.2,
+  "gap_pct": -0.23,
   "error_pct": 0.38,
-  "day_pct": -0.09,
+  "day_pct": -0.25,
   "snapshot": "Tue 20 Oct 15:30 IST",
   "stage": "preview",
   "tip": "Moderate gap down expected. Use limit orders only, and wait for 09:30.",
@@ -13,32 +13,32 @@
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": -0.15
+    "move_pct": -0.11
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": 0.0
+    "move_pct": 0.08
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": -0.22
+    "move_pct": -0.05
    },
    {
     "key": "dax",
     "name": "DAX (Germany)",
-    "move_pct": -0.19
+    "move_pct": -0.15
    },
    {
     "key": "ftse",
     "name": "FTSE 100 (UK)",
-    "move_pct": -0.27
+    "move_pct": -0.12
    },
    {
     "key": "stoxx",
     "name": "Euro Stoxx 50",
-    "move_pct": -0.14
+    "move_pct": -0.03
    },
    {
     "key": "n225",
@@ -48,17 +48,17 @@
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": -0.02
+    "move_pct": 1.38
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": -0.17
+    "move_pct": -0.78
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": 0.05
+    "move_pct": 0.12
    },
    {
     "key": "inr",
@@ -70,20 +70,20 @@
    {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": -0.15,
-    "contribution_pct": -0.147
+    "value": -0.11,
+    "contribution_pct": -0.112
    },
    {
-    "feature": "ftse",
-    "label": "FTSE 100 (UK)",
-    "value": -0.27,
-    "contribution_pct": -0.095
+    "feature": "cl",
+    "label": "Crude oil",
+    "value": 1.38,
+    "contribution_pct": -0.101
    },
    {
-    "feature": "ym",
-    "label": "Dow futures",
-    "value": -0.22,
-    "contribution_pct": 0.086
+    "feature": "dxy",
+    "label": "Dollar index",
+    "value": 0.12,
+    "contribution_pct": -0.078
    },
    {
     "feature": "nprev",
@@ -92,29 +92,29 @@
     "contribution_pct": 0.059
    },
    {
-    "feature": "dxy",
-    "label": "Dollar index",
-    "value": 0.05,
-    "contribution_pct": -0.037
+    "feature": "ftse",
+    "label": "FTSE 100 (UK)",
+    "value": -0.12,
+    "contribution_pct": -0.045
    },
    {
-    "feature": "dax",
-    "label": "DAX (Germany)",
-    "value": -0.19,
-    "contribution_pct": -0.027
+    "feature": "ym",
+    "label": "Dow futures",
+    "value": -0.05,
+    "contribution_pct": 0.029
    }
   ],
   "wf": {
    "oos_days": 300,
    "gap_corr": 0.24,
    "gap_sign_pct": 57.7,
-   "directional_calls": 82,
-   "directional_accuracy": 58.5
+   "directional_calls": 81,
+   "directional_accuracy": 58.0
   }
  },
  "headline": "Market bias SIDEWAYS \u2014 favour hedged premium selling",
  "bias": "RANGEBOUND",
- "score": 13,
+ "score": -1,
  "bias_track_record_pct": 65.7,
  "options": [
   {
@@ -173,20 +173,20 @@
    "max_loss": 11376,
    "max_reward": 3624,
    "reward_risk": 0.32,
-   "decision": "TRADE",
-   "decision_reason": "3-6 days before: this setup won 78.1% of 32 trades, avg \u20b9561 per lot after costs (worst \u20b9-10,989). If the first hour moves more than 0.25%, the win rate drops to 66.7% (from 88.2% on quiet mornings): consider skipping.",
+   "decision": "CAUTION",
+   "decision_reason": "3-6 days before: barely positive historically (74.3% wins, avg \u20b97 per lot over 35 trades). Too thin an edge after model error; half size or skip.",
    "enter_at": "10:15 IST, after the first hour",
    "exit_by": "target / stop, else expiry 2026-10-27",
    "setup_stats": {
-    "trades": 32,
-    "win_pct": 78.1,
-    "avg_pnl": 561,
-    "worst": -10989,
-    "best": 4799,
-    "total": 17965,
+    "trades": 35,
+    "win_pct": 74.3,
+    "avg_pnl": 7,
+    "worst": -14320,
+    "best": 5400,
+    "total": 263,
     "sample": "days the model called SIDEWAYS, current expiry schedule, all days",
-    "allowed": true,
-    "marginal": false,
+    "allowed": false,
+    "marginal": true,
     "quiet_first_hour": {
      "trades": 17,
      "win_pct": 88.2,
@@ -196,12 +196,12 @@
      "total": 27645
     },
     "trending_first_hour": {
-     "trades": 15,
-     "win_pct": 66.7,
-     "avg_pnl": -645,
-     "worst": -10989,
-     "best": 4799,
-     "total": -9680
+     "trades": 18,
+     "win_pct": 61.1,
+     "avg_pnl": -1521,
+     "worst": -14320,
+     "best": 5400,
+     "total": -27382
     }
    }
   }
