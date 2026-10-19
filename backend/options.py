@@ -134,6 +134,25 @@ def build(name, label, df_prior, spot, iv, target_date, now):
             f"Premium ≈ ₹{tgt_prem:.1f} ({name} near {tgt_spot:,.0f})",
             f"Premium ₹{sl_prem:.1f} (-30%), or {stop_txt}",
             [k1 + sign * p], "Max loss = full premium. Theta decay hurts if move is late."))
+
+        # credit spread on the side away from the bias (same geometry as one half of the condor)
+        if bull:
+            ks = min(atm - step, _round(spot - 0.9 * em, step))
+            legs = [leg("SELL", ks, "PE"), leg("BUY", ks - width, "PE")]
+            title, cond = "Bull Put Spread", f"only if {name} is above {ks:,}"
+            be = [ks - (legs[0]["est_premium"] - legs[1]["est_premium"])]
+        else:
+            ks = max(atm + step, _round(spot + 0.9 * em, step))
+            legs = [leg("SELL", ks, "CE"), leg("BUY", ks + width, "CE")]
+            title, cond = "Bear Call Spread", f"only if {name} is below {ks:,}"
+            be = [ks + (legs[0]["est_premium"] - legs[1]["est_premium"])]
+        credit = legs[0]["est_premium"] - legs[1]["est_premium"]
+        strategies.append(pack(
+            title, legs, credit, (width - credit) * lot, credit * lot,
+            f"Enter at 10:15 (after the first hour) {cond}",
+            f"Buy back at ₹{credit * 0.45:.1f} (keep ~55% of credit), else hold to expiry {expiry:%a %d %b}",
+            f"Exit if the loss reaches 1× credit (≈₹{credit * lot:,.0f} per lot)",
+            be, "Earns time decay; wins if the index does not fall (bull put) / rise (bear call) past the short strike."))
     else:
         wing = width
         sc, sp = max(atm + step, _round(spot + 0.9 * em, step)), min(atm - step, _round(spot - 0.9 * em, step))

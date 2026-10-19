@@ -79,7 +79,8 @@ def replay_option(name, o, session, bars, vix_bars, now_ist):
     iv0 = o["iv_used_pct"] / 100
     vix0 = None
     kind = s["name"]
-    condor = "Condor" in kind or "Fly" in kind
+    credit_spread = len(legs) == 2 and legs[0]["action"] == "SELL"
+    condor = "Condor" in kind or "Fly" in kind or credit_spread
     entry_hhmm = "10:15" if condor else "09:45"
     res = {"index": name, "strategy": kind, "legs": " + ".join(f"{l['action']} {l['strike']} {l['type']}" for l in legs),
            "lot_size": lot, "planned_max_reward": s["max_reward"], "planned_max_loss": s["max_loss"],
@@ -112,9 +113,12 @@ def replay_option(name, o, session, bars, vix_bars, now_ist):
             cond = f"open within ±{INDEX_SPECS[name]['step']} of {o['atm']}"
         shorts = sorted(l["strike"] for l in legs if l["action"] == "SELL")
         lo_stop, hi_stop = shorts[0], shorts[-1]
+        if credit_spread:  # one-sided: only the short strike matters
+            lo_stop, hi_stop = (shorts[0], float("inf")) if legs[0]["type"] == "PE" else (0.0, shorts[0])
         if "Fly" not in kind:
             ok = lo_stop < spot_e < hi_stop
-            cond = f"{name} between {lo_stop:,} and {hi_stop:,} at {entry_hhmm}"
+            cond = (f"{name} between {lo_stop:,} and {hi_stop:,} at {entry_hhmm}" if not credit_spread else
+                    f"{name} {'above' if legs[0]['type'] == 'PE' else 'below'} {shorts[0]:,} at {entry_hhmm}")
         if o.get("setup", {}).get("decision") == "SKIP":
             ok, cond = False, f"plan said SKIP: {o['setup']['reason']}"
     else:
@@ -137,9 +141,7 @@ def replay_option(name, o, session, bars, vix_bars, now_ist):
         sp = float(row["Close"])
         v = _value(legs, sp, T_at(ts), iv_at(ts))
         if condor:
-            if sp > hi_stop or sp < lo_stop:
-                exit_ts, exit_spot, reason = ts, sp, "STOP: short strike broken"
-            elif (v - v_e) * -1 <= -credit:  # loss reached 1x credit
+            if (v - v_e) <= -credit:  # loss reached 1x credit
                 exit_ts, exit_spot, reason = ts, sp, "STOP: loss reached 1x credit"
             elif -v <= 0.45 * credit:
                 exit_ts, exit_spot, reason = ts, sp, "TARGET: 55% of credit kept"
@@ -172,9 +174,10 @@ def replay_option(name, o, session, bars, vix_bars, now_ist):
     if condor:
         inside = res["day_low"] > lo_stop and res["day_high"] < hi_stop
         res["range_held"] = inside
-        res["verdict"] = (f"Range {lo_stop:,}–{hi_stop:,} held (day {res['day_low']:,.0f}–{res['day_high']:,.0f})."
+        shown = " / ".join(f"{x:,.0f}" for x in (lo_stop, hi_stop) if 0 < x < float("inf"))
+        res["verdict"] = (f"Short strike {shown} held (day {res['day_low']:,.0f}–{res['day_high']:,.0f}). {reason}."
                           if inside else
-                          f"Range broken: day {res['day_low']:,.0f}–{res['day_high']:,.0f} vs short strikes {lo_stop:,}/{hi_stop:,}.")
+                          f"Short strike {shown} was crossed: day {res['day_low']:,.0f}–{res['day_high']:,.0f}. {reason}.")
     else:
         res["verdict"] = f"{reason}. Est. ₹{pnl:,} per lot."
     return res

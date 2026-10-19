@@ -105,3 +105,17 @@ backtest. The engine keeps testing, and the app shows live results so you can ju
 - NSE holidays are not modelled; expiry shifts to the previous trading day on holidays.
 - GIFT Nifty is not on Yahoo Finance; overnight US data is used instead.
 - yfinance is unofficial and can break or lag. The app shows "Updated X min ago" on every tab.
+
+## Options lab (added 19 Oct 2026)
+Every evening `backend/options_lab.py` replays the plan's exact option structures on ~2 years of hourly
+data for **NIFTY (weekly expiry)** and **BANKNIFTY (monthly expiry)**: iron condor, bull/bear credit
+spreads and bull/bear debit spreads, with the plan's own entry (10:15), target (keep 55% of credit),
+stop (loss = 1× credit) and costs + slippage. Directional structures are tested only on days the
+bias model actually called that direction (out-of-sample). Each morning every option idea is marked:
+
+- **TRADE**: this setup averaged ≥ ₹100 per lot with enough history
+- **CAUTION**: barely positive (₹0–100), untested, or thin sample: half size or skip
+- **SKIP**: lost money historically, or ≤1 day to expiry right after heavyweight results
+
+First run's findings: condors pay on the right days (Nifty 3–5 days before expiry, BankNifty
+≥3 days before); expiry-day condors and all directional spreads lost money after costs.

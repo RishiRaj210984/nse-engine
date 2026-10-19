@@ -195,12 +195,18 @@ def global_bias(force=False):
         store.cache_set("events", events, 6 * 3600)
     except Exception:
         events = []
+    lab = options_lab.load()
+    rank = {"TRADE": 0, "CAUTION": 1, "SKIP": 2}
     for name, o in idx_opts.items():
-        if "Condor" in o["strategies"][0]["name"] or "Fly" in o["strategies"][0]["name"]:
-            o["setup"] = (options_lab.setup_verdict(target_date.isoformat(), events=events) if name == "NIFTY" else
-                          {"decision": "CAUTION", "reason": "Not yet tested by the options lab (monthly expiry).", "stats": None})
-        else:
-            o["setup"] = {"decision": "TRADE", "reason": "Directional spread follows the bias call.", "stats": None}
+        for s in o["strategies"]:
+            s["verdict"] = options_lab.setup_verdict(name, s["name"], target_date.isoformat(), lab, events)
+        # best evidence first: TRADE before CAUTION before SKIP, then by historical average P&L
+        o["strategies"].sort(key=lambda s: (rank[s["verdict"]["decision"]],
+                                            -((s["verdict"].get("stats") or {}).get("avg_pnl") or -10**9)))
+        o["setup"] = o["strategies"][0]["verdict"]
+        if o["setup"]["decision"] == "SKIP":
+            o["setup"] = {**o["setup"], "reason": "No tested structure has a positive record for today. "
+                          + o["setup"]["reason"]}
 
     score = int(round(100 * np.tanh(z)))
     result = {

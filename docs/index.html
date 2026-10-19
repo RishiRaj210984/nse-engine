@@ -387,13 +387,21 @@ function vLearning() {
   h += `<section class="card"><div class="row"><strong>Model v${p.model.version}</strong><span class="pill ${p.model.ranker_on ? 'gA' : 'gC'}">ML ranker ${p.model.ranker_on ? 'ON' : 'OFF'}</span></div>
     <div class="fine">The ML ranker switches on only after it beats a simple base rate on later, unseen data. Samples: ${p.model.samples}.</div></section>`;
   const lab = p.options_lab;
-  if (lab) {
-    const day = { 0: 'Expiry day', 1: '1 day before', 2: '2 days before', 3: '3 days before', 4: '4 days (Fri)', 5: '5 days (Thu)', 6: '6 days (Wed)' };
-    h += `<section class="card"><div class="eyebrow">Options lab · Nifty condor by days to expiry</div>
-      <div class="tbl"><table><thead><tr><th>Entry</th><th class="r">Trades</th><th class="r">Won</th><th class="r">Avg ₹/lot</th><th class="r">Worst</th><th>Rule</th></tr></thead><tbody>
-      ${Object.entries(lab.by_dte).map(([k, g]) => `<tr><td>${day[k] || k}</td><td class="r n">${g.trades}</td><td class="r n">${g.win_pct}%</td><td class="r n ${cls(g.avg_pnl)}">${inr(g.avg_pnl)}</td><td class="r n down">${inr(g.worst)}</td><td class="${g.allowed ? 'up' : 'down'}">${g.allowed ? 'Trade' : 'Skip'}</td></tr>`).join('')}
-      </tbody></table></div>
-      <div class="fine">Re-learned every evening from ~2 years of hourly data, held to expiry, after ₹${lab.costs_per_lot} costs and slippage per lot. Estimates, not broker fills. Updated ${ago(lab.generated_at)}.</div></section>`;
+  const SN = { condor: 'Iron condor (sideways days)', bull_put: 'Bull put spread (bullish days)', bear_call: 'Bear call spread (bearish days)', bull_spread: 'Bull call spread (bullish days)', bear_spread: 'Bear put spread (bearish days)' };
+  if (lab && lab.NIFTY) {
+    ['NIFTY', 'BANKNIFTY'].forEach((ix) => {
+      const L = lab[ix]; if (!L) return;
+      h += `<section class="card"><div class="eyebrow">Options lab · ${ix}</div>`;
+      Object.entries(L).forEach(([st, node]) => {
+        const ov = node.overall || {};
+        h += `<details${st === 'condor' ? ' open' : ''}><summary class="row" style="cursor:pointer"><strong>${esc(SN[st] || st)}</strong><span class="n ${cls(ov.avg_pnl)}">${ov.trades || 0} trades · ${inr(ov.avg_pnl)}</span></summary>
+          <div class="tbl"><table><thead><tr><th>Entry</th><th class="r">Trades</th><th class="r">Won</th><th class="r">Avg ₹/lot</th><th class="r">Worst</th><th>Rule</th></tr></thead><tbody>
+          ${Object.entries(node.by_bucket).map(([k, g]) => `<tr><td>${esc((lab.bucket_labels?.[ix] || {})[k] || k)}</td><td class="r n">${g.trades}</td><td class="r n">${g.win_pct}%</td><td class="r n ${cls(g.avg_pnl)}">${inr(g.avg_pnl)}</td><td class="r n down">${inr(g.worst)}</td><td class="${g.allowed ? 'up' : g.marginal ? 'warn' : 'down'}">${g.allowed ? 'Trade' : g.marginal ? 'Caution' : 'Skip'}</td></tr>`).join('')}
+          </tbody></table></div></details>`;
+      });
+      h += `</section>`;
+    });
+    h += `<div class="fine">Re-learned every evening from ~2 years of hourly data with the plan's own entry, target and stop rules, after costs and slippage per lot. Estimates, not broker fills. Updated ${ago(lab.generated_at)}.</div>`;
   }
   h += `<section class="card"><div class="eyebrow">What it changed</div>${(p.history || []).map((x) => `<div><div class="n" style="font-size:.8rem">v${x.version} · ${esc(x.created_at.slice(0, 16).replace('T', ' '))}</div><div class="dim" style="font-size:.88rem">${esc(x.note)}</div></div>`).join('')}</section>`;
   return h;
