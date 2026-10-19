@@ -189,6 +189,19 @@ def global_bias(force=False):
             iv = vix_iv * float(np.clip(prior["Close"].pct_change().tail(20).std() / nifty_rv, 0.8, 1.8))
         idx_opts[name] = options.build(name, label, prior, live, iv, target_date, now)
 
+    import options_lab
+    try:
+        events = store.cache_get("events") or options_lab.events_calendar()
+        store.cache_set("events", events, 6 * 3600)
+    except Exception:
+        events = []
+    for name, o in idx_opts.items():
+        if "Condor" in o["strategies"][0]["name"] or "Fly" in o["strategies"][0]["name"]:
+            o["setup"] = (options_lab.setup_verdict(target_date.isoformat(), events=events) if name == "NIFTY" else
+                          {"decision": "CAUTION", "reason": "Not yet tested by the options lab (monthly expiry).", "stats": None})
+        else:
+            o["setup"] = {"decision": "TRADE", "reason": "Directional spread follows the bias call.", "stats": None}
+
     score = int(round(100 * np.tanh(z)))
     result = {
         "generated_at": now.isoformat(),
@@ -208,6 +221,7 @@ def global_bias(force=False):
         "model": {**metrics, "trained_rows": int(min(len(frame), WINDOW)),
                   "version": state["version"], "bias_threshold": p["bias_threshold"]},
         "options": idx_opts,
+        "events": events,
         "notes": [
             "GIFT Nifty is not on Yahoo Finance; overnight US moves are used as the proxy.",
             "Option premiums are theoretical estimates. Confirm on a live option chain.",

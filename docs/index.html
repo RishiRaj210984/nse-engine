@@ -62,6 +62,12 @@ nav.tabs button[aria-selected="true"]{color:var(--accent);background:var(--panel
 .leg.SELL{color:var(--down)}.leg.BUY{color:var(--up)}
 .pill{display:inline-block;border-radius:999px;padding:2px 9px;font-size:.75rem;font-weight:700;border:1px solid currentColor}
 .gA{color:var(--up)}.gB{color:var(--warn)}.gC{color:var(--dim)}
+.dec{display:flex;gap:10px;align-items:flex-start;border-radius:10px;padding:10px;background:var(--panel2)}
+.dec .tag{font-family:var(--mono);font-weight:800;font-size:.85rem;padding:3px 10px;border-radius:7px;white-space:nowrap}
+.dec.TRADE .tag{background:color-mix(in srgb,var(--up) 22%,transparent);color:var(--up)}
+.dec.SKIP .tag{background:color-mix(in srgb,var(--down) 22%,transparent);color:var(--down)}
+.dec.CAUTION .tag{background:color-mix(in srgb,var(--warn) 22%,transparent);color:var(--warn)}
+.ev{display:flex;justify-content:space-between;gap:8px;font-size:.88rem}
 ol.steps{list-style:none;margin:0;padding:0;display:grid}
 ol.steps li{display:grid;grid-template-columns:28px 1fr;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
 ol.steps li:last-child{border-bottom:0}
@@ -175,6 +181,20 @@ async function load() {
   render();
 }
 
+function decision(d, reason, st) {
+  if (!d) return '';
+  const label = { TRADE: 'TRADE', SKIP: 'SKIP TODAY', CAUTION: 'CAUTION' }[d] || d;
+  let ev = '';
+  if (st) ev = `<div class="fine">History of this exact setup: ${st.trades} trades · ${st.win_pct}% won · avg ${inr(st.avg_pnl)} · worst ${inr(st.worst)} per lot (${esc(st.sample || '')})</div>`;
+  return `<div class="dec ${esc(d)}"><span class="tag">${label}</span><div><div style="font-size:.9rem">${esc(reason || '')}</div>${ev}</div></div>`;
+}
+function eventsBlock(evs, session) {
+  if (!evs || !evs.length) return '';
+  return `<section class="card"><div class="eyebrow">Results calendar (Nifty heavyweights)</div>${evs.map((e) =>
+    `<div class="ev"><span><strong>${esc(e.name)}</strong> <span class="dim">${esc(e.when)}</span></span><span class="${e.affects === session ? 'warn' : 'dim'}">${e.affects === session ? 'affects today' : 'moves market ' + esc(e.affects.slice(5))}</span></div>`).join('')}
+    <div class="fine">The session right after a heavyweight's results can be wider than normal. Combined with ≤1 day to expiry, condors broke 60% of the time.</div></section>`;
+}
+
 /* ---------------- TODAY ---------------- */
 function currentStep(tl) {
   const t = ist(), now = mins(t.hm);
@@ -214,7 +234,8 @@ function vToday() {
   h += `<section class="card"><div class="eyebrow">Decisions</div>`;
   (p.options || []).forEach((o) => {
     h += `<div><div class="row"><strong>${esc(o.index)} · ${esc(o.strategy)}</strong><span class="fine">exp ${esc(o.expiry)}</span></div>
-      <div class="n info" style="font-size:.85rem">${esc(o.legs)}</div>
+      ${decision(o.decision, o.decision_reason, o.setup_stats)}
+      <div class="n info" style="font-size:.85rem${o.decision === 'SKIP' ? ';text-decoration:line-through;opacity:.6' : ''}">${esc(o.legs)}</div>
       <div class="fine">Enter: ${esc(o.entry)}</div>
       <div class="row"><span>Max loss / reward per lot</span><span class="n"><span class="down">${inr(o.max_loss)}</span> / <span class="up">${o.max_reward == null ? 'open' : inr(o.max_reward)}</span></span></div></div>`;
   });
@@ -231,6 +252,7 @@ function vToday() {
       <label for="st${i}"><div class="when">${esc(s.when)}</div><strong>${esc(s.title)}</strong><div class="dim" style="font-size:.88rem">${esc(s.do)}</div></label></li>`;
   });
   h += `</ol></section>`;
+  h += eventsBlock(p.events, p.session);
   h += `<section class="card"><div class="eyebrow">Rules</div>${(p.golden_rules || []).map((r) => `<div>• ${esc(r)}</div>`).join('')}</section>`;
   return h;
 }
@@ -252,6 +274,7 @@ function vOptions() {
   Object.values(b.options).forEach((o) => {
     h += `<section class="card"><div class="row"><strong>${esc(o.index)}</strong><span class="n">${num(o.spot, 0)}</span></div>
       <div class="fine">Expiry ${esc(o.expiry)} · lot ${o.lot_size} · IV ${num(o.iv_used_pct, 1)}% · expected move ±${num(o.expected_move, 0)} · support ${num(o.levels.support, 0)} · resistance ${num(o.levels.resistance, 0)}</div></section>`;
+    if (o.setup) h += `<section class="card">${decision(o.setup.decision, o.setup.reason, o.setup.stats)}</section>`;
     o.strategies.forEach((s, si) => {
       const key = o.index + si, L = lots[key] || 1;
       h += `<section class="card"><div class="row"><strong>${esc(s.name)}</strong>${si === 0 ? '<span class="pill gA">Primary</span>' : '<span class="pill gC">Alternative</span>'}</div>
@@ -265,6 +288,7 @@ function vOptions() {
         ${s.notes ? `<div class="fine">${esc(s.notes)}</div>` : ''}</section>`;
     });
   });
+  h += eventsBlock(b.events, b.target_session);
   h += `<div class="fine">Premiums are Black-Scholes estimates from India VIX, not live quotes. Check the live option chain before ordering.</div>`;
   return h;
 }
@@ -362,6 +386,15 @@ function vLearning() {
     <div class="row"><span>Unseen-data test</span><span class="n">${bw.directional_accuracy ?? '—'}% on ${bw.directional_calls ?? '—'} calls</span></div></section>`;
   h += `<section class="card"><div class="row"><strong>Model v${p.model.version}</strong><span class="pill ${p.model.ranker_on ? 'gA' : 'gC'}">ML ranker ${p.model.ranker_on ? 'ON' : 'OFF'}</span></div>
     <div class="fine">The ML ranker switches on only after it beats a simple base rate on later, unseen data. Samples: ${p.model.samples}.</div></section>`;
+  const lab = p.options_lab;
+  if (lab) {
+    const day = { 0: 'Expiry day', 1: '1 day before', 2: '2 days before', 3: '3 days before', 4: '4 days (Fri)', 5: '5 days (Thu)', 6: '6 days (Wed)' };
+    h += `<section class="card"><div class="eyebrow">Options lab · Nifty condor by days to expiry</div>
+      <div class="tbl"><table><thead><tr><th>Entry</th><th class="r">Trades</th><th class="r">Won</th><th class="r">Avg ₹/lot</th><th class="r">Worst</th><th>Rule</th></tr></thead><tbody>
+      ${Object.entries(lab.by_dte).map(([k, g]) => `<tr><td>${day[k] || k}</td><td class="r n">${g.trades}</td><td class="r n">${g.win_pct}%</td><td class="r n ${cls(g.avg_pnl)}">${inr(g.avg_pnl)}</td><td class="r n down">${inr(g.worst)}</td><td class="${g.allowed ? 'up' : 'down'}">${g.allowed ? 'Trade' : 'Skip'}</td></tr>`).join('')}
+      </tbody></table></div>
+      <div class="fine">Re-learned every evening from ~2 years of hourly data, held to expiry, after ₹${lab.costs_per_lot} costs and slippage per lot. Estimates, not broker fills. Updated ${ago(lab.generated_at)}.</div></section>`;
+  }
   h += `<section class="card"><div class="eyebrow">What it changed</div>${(p.history || []).map((x) => `<div><div class="n" style="font-size:.8rem">v${x.version} · ${esc(x.created_at.slice(0, 16).replace('T', ' '))}</div><div class="dim" style="font-size:.88rem">${esc(x.note)}</div></div>`).join('')}</section>`;
   return h;
 }

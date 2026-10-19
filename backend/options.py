@@ -141,9 +141,9 @@ def build(name, label, df_prior, spot, iv, target_date, now):
         credit = legs[0]["est_premium"] - legs[1]["est_premium"] + legs[2]["est_premium"] - legs[3]["est_premium"]
         strategies.append(pack(
             "Iron Condor", legs, credit, (wing - credit) * lot, credit * lot,
-            f"Enter after the first 30 min if {name} stays between {sup:,.0f} and {res:,.0f}",
-            f"Buy back at ₹{credit * 0.45:.1f} (keep ~55% of credit)",
-            f"{name} breaks {sp:,} / {sc:,} on a 15-min close, or loss reaches 1× credit",
+            f"Enter at 10:15 (after the first hour) only if {name} is between {sp:,} and {sc:,}",
+            f"Buy back at ₹{credit * 0.45:.1f} (keep ~55% of credit), else hold to expiry {expiry:%a %d %b}",
+            f"Exit if the loss reaches 1× credit (≈₹{credit * lot:,.0f} per lot)",
             [sp - credit, sc + credit], "Hedged premium selling. Check SPAN margin with your broker."))
 
         fly_w = 2 * width

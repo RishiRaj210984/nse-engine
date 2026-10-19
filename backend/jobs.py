@@ -60,6 +60,8 @@ def build_plan(bias, scan):
             "index": name, "strategy": s["name"], "legs": legs, "expiry": o["expiry"],
             "lot_size": o["lot_size"], "entry": s["entry"], "target": s["target"], "stop_loss": s["stop_loss"],
             "max_loss": s["max_loss"], "max_reward": s["max_reward"], "reward_risk": s["reward_risk"],
+            "decision": o.get("setup", {}).get("decision", "TRADE"), "decision_reason": o.get("setup", {}).get("reason"),
+            "setup_stats": o.get("setup", {}).get("stats"),
         })
     picks = [c for c in scan["candidates"] if c["grade"] in ("A", "B")][:5]
     conf = bias["model"].get("directional_accuracy")
@@ -76,6 +78,7 @@ def build_plan(bias, scan):
                     "stop": c["stop"], "t1": c["t1"], "t2": c["t2"], "win_prob": c["win_prob"],
                     "vol_badge": c["vol_badge"]} for c in picks],
         "market_gate_open": scan.get("market_gate_open"),
+        "events": [e for e in bias.get("events", []) if not e.get("past") or e.get("affects") == bias["target_session"]],
         "stock_track_record": None,
         "no_trade_reason": None if picks else "No stock passed all 4 rules with a positive expected value. Sitting out is a valid decision.",
         "timeline": timeline(bias["target_session"], opts[0]["expiry"] if opts else "-"),
@@ -137,6 +140,12 @@ def postclose():
     learning.fill_bias_actuals()
     out["evaluated"] = learning.evaluate_open()
     out["retrain"] = learning.retrain()["note"]
+    try:
+        import options_lab
+        lab = options_lab.run()
+        out["options_lab"] = lab["overall"]
+    except Exception as exc:
+        out["options_lab"] = f"failed: {exc}"
     store._cache.clear()  # new params -> fresh scan & bias
     bias = macro.global_bias(force=True)
     publish_all(bias=bias, scan=screener.scan())

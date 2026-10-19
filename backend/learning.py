@@ -521,4 +521,5 @@ def performance():
         "model": model_info(state),
         "params": state["params"],
         "history": store.model_history(15),
+        "options_lab": store._read(store.state_path("options_lab.json"), None),
     }

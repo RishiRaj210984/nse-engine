@@ -80,7 +80,7 @@ def replay_option(name, o, session, bars, vix_bars, now_ist):
     vix0 = None
     kind = s["name"]
     condor = "Condor" in kind or "Fly" in kind
-    entry_hhmm = "10:00" if condor else "09:45"
+    entry_hhmm = "10:15" if condor else "09:45"
     res = {"index": name, "strategy": kind, "legs": " + ".join(f"{l['action']} {l['strike']} {l['type']}" for l in legs),
            "lot_size": lot, "planned_max_reward": s["max_reward"], "planned_max_loss": s["max_loss"],
            "day_open": round(float(bars["Open"].iloc[0]), 2), "day_high": round(float(bars["High"].max()), 2),
@@ -110,11 +110,13 @@ def replay_option(name, o, session, bars, vix_bars, now_ist):
         if "Fly" in kind:
             ok = abs(float(bars["Open"].iloc[0]) - o["atm"]) <= INDEX_SPECS[name]["step"]
             cond = f"open within ±{INDEX_SPECS[name]['step']} of {o['atm']}"
-        else:
-            ok = lv["support"] <= spot_e <= lv["resistance"]
-            cond = f"{name} between {lv['support']:,.0f} and {lv['resistance']:,.0f} at {entry_hhmm}"
         shorts = sorted(l["strike"] for l in legs if l["action"] == "SELL")
         lo_stop, hi_stop = shorts[0], shorts[-1]
+        if "Fly" not in kind:
+            ok = lo_stop < spot_e < hi_stop
+            cond = f"{name} between {lo_stop:,} and {hi_stop:,} at {entry_hhmm}"
+        if o.get("setup", {}).get("decision") == "SKIP":
+            ok, cond = False, f"plan said SKIP: {o['setup']['reason']}"
     else:
         bull = legs[0]["type"] == "CE"
         ok = spot_e >= lv["support"] if bull else spot_e <= lv["resistance"]
