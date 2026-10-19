@@ -1,36 +1,36 @@
 {
- "generated_at": "2026-10-19T09:39:37.003261+05:30",
+ "generated_at": "2026-10-19T13:36:41.289140+05:30",
  "session": "2026-10-19",
  "headline": "Market bias SIDEWAYS \u2014 favour hedged premium selling",
  "bias": "RANGEBOUND",
- "score": 1,
+ "score": -1,
  "bias_track_record_pct": 70.2,
  "options": [
   {
    "index": "NIFTY",
    "strategy": "Iron Condor",
-   "legs": "SELL 23350 CE + BUY 23450 CE + SELL 22950 PE + BUY 22850 PE",
+   "legs": "SELL 23100 CE + BUY 23200 CE + SELL 22700 PE + BUY 22600 PE",
    "expiry": "2026-10-20",
    "lot_size": 65,
    "entry": "Enter after the first 30 min if NIFTY stays between 22,990 and 23,226",
-   "target": "Buy back at \u20b912.2 (keep ~55% of credit)",
-   "stop_loss": "NIFTY breaks 22,950 / 23,350 on a 15-min close, or loss reaches 1\u00d7 credit",
-   "max_loss": 4745,
-   "max_reward": 1755,
-   "reward_risk": 0.37
+   "target": "Buy back at \u20b912.0 (keep ~55% of credit)",
+   "stop_loss": "NIFTY breaks 22,700 / 23,100 on a 15-min close, or loss reaches 1\u00d7 credit",
+   "max_loss": 4771,
+   "max_reward": 1729,
+   "reward_risk": 0.36
   },
   {
    "index": "BANKNIFTY",
    "strategy": "Iron Condor",
-   "legs": "SELL 56600 CE + BUY 57100 CE + SELL 54600 PE + BUY 54100 PE",
+   "legs": "SELL 56400 CE + BUY 56900 CE + SELL 54500 PE + BUY 54000 PE",
    "expiry": "2026-10-27",
    "lot_size": 30,
    "entry": "Enter after the first 30 min if BANKNIFTY stays between 55,584 and 56,047",
-   "target": "Buy back at \u20b956.7 (keep ~55% of credit)",
-   "stop_loss": "BANKNIFTY breaks 54,600 / 56,600 on a 15-min close, or loss reaches 1\u00d7 credit",
-   "max_loss": 11217,
-   "max_reward": 3783,
-   "reward_risk": 0.34
+   "target": "Buy back at \u20b960.8 (keep ~55% of credit)",
+   "stop_loss": "BANKNIFTY breaks 54,500 / 56,400 on a 15-min close, or loss reaches 1\u00d7 credit",
+   "max_loss": 10944,
+   "max_reward": 4056,
+   "reward_risk": 0.37
   }
  ],
  "stocks": [],
