@@ -3,8 +3,11 @@ or by the FastAPI scheduler if you host the API yourself."""
 import logging
 from datetime import date, timedelta
 
+import os
+
 import data
 import learning
+import review
 import macro
 import screener
 import store
@@ -28,18 +31,22 @@ def timeline(session, expiry):
     """Clock-based action plan (IST). NSE holidays are not modelled — skip holidays."""
     d1 = date.fromisoformat(session)
     d2 = _next_weekday(d1)
-    D1, D2 = f"{d1:%a %d %b}", f"{d2:%a %d %b}"
-    return [
-        {"when": f"{D1} · 08:00–09:00", "do": "Open the app. Read the bias and plan. Set price alerts at each entry and stop-loss."},
-        {"when": f"{D1} · 09:00–09:15", "do": "Pre-open. Place no market orders. Note where your stocks are indicated to open."},
-        {"when": f"{D1} · 09:15–09:30", "do": "WAIT. Opening 15 min is the most volatile. Cancel any stock that opens above its T1 or below its SL."},
-        {"when": f"{D1} · 09:30–10:30", "do": "STOCK BUY WINDOW. Buy only if price is holding above the entry and the 15-min opening high. Place the SL order immediately."},
-        {"when": f"{D1} · 09:45–11:00", "do": "OPTIONS WINDOW. Spreads / ATM buys only if the index respects the support/resistance shown. Iron condor / fly only after 10:00 with the index inside the range."},
-        {"when": f"{D1} · after 11:30", "do": "No new stock entries. If it did not trigger, skip it."},
-        {"when": f"{D1} · 14:30–15:00", "do": "Option BUYERS: exit by 15:00 if target not hit (time decay). Spreads/condors: hold only if still inside the plan."},
-        {"when": f"{D2} · 09:15–15:15", "do": "DAY 2. Book half at T1, trail SL to entry. EXIT everything still open by 15:15 (this is a 1–2 day setup)."},
-        {"when": f"Expiry {expiry}", "do": "Do not hold short options into the last hour of expiry day."},
+    steps = [
+        (d1, "08:00", "09:00", "prep", "Read the plan", "Open the app. Read the bias and plan. Set price alerts at each entry and stop-loss."),
+        (d1, "09:00", "09:15", "wait", "Pre-open", "Place no market orders. Note where your stocks are indicated to open."),
+        (d1, "09:15", "09:30", "wait", "Wait", "Opening 15 min is the most volatile. Cancel any stock that opens above its T1 or below its SL."),
+        (d1, "09:30", "10:30", "act", "Stock buy window", "Buy only if price is holding above the entry and the 15-min opening high. Place the SL order immediately."),
+        (d1, "09:45", "11:00", "act", "Options window", "Spreads / ATM buys only if the index respects the support/resistance shown. Iron condor / fly only after 10:00 with the index inside the range."),
+        (d1, "11:30", "14:30", "manage", "Manage only", "No new stock entries. If it did not trigger, skip it. Keep stop-loss orders in place."),
+        (d1, "14:30", "15:00", "exit", "Option buyers exit", "Exit option buys by 15:00 if target not hit (time decay). Spreads/condors: hold only if still inside the plan."),
+        (d1, "16:30", "17:00", "review", "Review", "The engine grades today's plan. Check the Results tab: what worked, what the gap was."),
+        (d2, "09:15", "15:15", "exit", "Day 2: exit by 15:15", "Book half at T1, trail SL to entry. Exit everything still open by 15:15 (this is a 1–2 day setup)."),
     ]
+    out = [{"date": d.isoformat(), "start": a, "end": b, "kind": k, "title": t, "do": txt,
+            "when": f"{d:%a %d %b} · {a}–{b}"} for d, a, b, k, t, txt in steps]
+    out.append({"date": expiry, "start": "14:30", "end": "15:30", "kind": "exit", "title": "Expiry day",
+                "do": "Do not hold short options into the last hour of expiry day.", "when": f"Expiry {expiry}"})
+    return out
 
 
 def build_plan(bias, scan):
@@ -92,9 +99,17 @@ def publish_all(bias=None, scan=None):
     store.publish("volume-breakouts.json", scan)
     store.publish("performance.json", learning.performance())
     store.publish("plan.json", build_plan(bias, scan))
-    store.publish("meta.json", {"updated": store.now_ist().isoformat()})
+    if store._read(os.path.join(store.PUBLIC_DIR, "review.json"), None) is None:
+        store.publish("review.json", {"latest": None, "history": [], "totals": {}})
+    plan = build_plan(bias, scan)
+    store.publish("meta.json", {"updated": store.now_ist().isoformat(), "session": plan["session"]})
+    # Freeze the plan as it stood before its session opened; the evening review grades exactly this.
+    now = store.now_ist()
+    sess = date.fromisoformat(plan["session"])
+    if sess > now.date() or (sess == now.date() and now.strftime("%H:%M") < "09:15"):
+        review.archive_plan(bias, plan, scan)
     import render_page
-    render_page.write()
+    render_page.write(os.path.join(render_page.PUBLIC_DIR, "static.html"))
 
 
 def premarket():
@@ -108,6 +123,11 @@ def premarket():
 def postclose():
     """Close of day: journal today's scan, grade older signals, retrain, publish tomorrow's view."""
     out = {}
+    try:
+        rv = review.run()
+        out["review"] = rv["summary"] if rv else "no archived plan for today"
+    except Exception as exc:  # a failed review must never block learning
+        out["review"] = f"failed: {exc}"
     if data.last_bar_date() == data.today_ist():
         state = store.latest_state()
         public, rows = screener.scan_full(with_news=True)

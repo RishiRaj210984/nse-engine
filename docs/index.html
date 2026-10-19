@@ -1,99 +1,417 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"></head><body><title>NSE Daily Plan</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0c1210">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>NSE Trade Desk</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
 <style>
-:root{--bg:#f6f7f5;--panel:#ffffff;--ink:#14201c;--dim:#5d6b66;--line:#dfe4e1;--accent:#0f6b5c;
---up:#13804b;--down:#c03a2b;--warn:#a86a00;--chip:#eef2f0;
---sans:'IBM Plex Sans',system-ui,-apple-system,Segoe UI,sans-serif;--mono:'IBM Plex Mono',ui-monospace,Consolas,monospace}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1412;--panel:#141d1a;--ink:#e3ebe7;--dim:#8fa19a;
---line:#24312d;--accent:#3fb59f;--up:#3ccf84;--down:#ff6b5b;--warn:#f0b23a;--chip:#1b2622;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#0d1412;--panel:#141d1a;--ink:#e3ebe7;--dim:#8fa19a;--line:#24312d;--accent:#3fb59f;
---up:#3ccf84;--down:#ff6b5b;--warn:#f0b23a;--chip:#1b2622;color-scheme:dark}
-body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5}
-.wrap{max-width:760px;margin:0 auto;padding-block:20px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));
-padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:22px}
-h1{font-size:1.15rem;margin:0;font-weight:600;letter-spacing:.01em}
-h2{font-size:.78rem;text-transform:uppercase;letter-spacing:.09em;color:var(--dim);margin:0 0 8px;font-weight:600}
-.meta{color:var(--dim);font-size:.85rem}
-.mono,td.n,.n{font-family:var(--mono);font-variant-numeric:tabular-nums}
-.verdict{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px;display:grid;gap:6px}
-.verdict .label{font-family:var(--mono);font-size:2rem;font-weight:600;letter-spacing:.04em;line-height:1.1}
+/* Layout: one-column phone desk; sticky header + bottom tab bar; cards only for things you act on */
+:root{
+  --bg:#0c1210;--panel:#131b18;--panel2:#18231f;--line:#24332e;--ink:#e4ece8;--dim:#8a9c95;
+  --accent:#4cc3a6;--up:#3fd18a;--down:#ff6b5e;--warn:#f2b441;--info:#6bb3ff;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--mono:ui-monospace,"SF Mono",Consolas,monospace;
+  color-scheme:dark
+}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){
+  --bg:#f3f6f4;--panel:#ffffff;--panel2:#eef3f0;--line:#d9e2dd;--ink:#13201b;--dim:#5b6c65;
+  --accent:#0d7a62;--up:#13804b;--down:#c33a2c;--warn:#9a6400;--info:#1d63b8;color-scheme:light}}
+:root[data-theme="light"]{--bg:#f3f6f4;--panel:#ffffff;--panel2:#eef3f0;--line:#d9e2dd;--ink:#13201b;--dim:#5b6c65;
+  --accent:#0d7a62;--up:#13804b;--down:#c33a2c;--warn:#9a6400;--info:#1d63b8;color-scheme:light}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.45;-webkit-tap-highlight-color:transparent}
+button{font:inherit;color:inherit}
+.n{font-family:var(--mono);font-variant-numeric:tabular-nums}
+header.top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);
+  padding:calc(env(safe-area-inset-top,0px) + 10px) max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px));
+  display:flex;align-items:center;gap:10px}
+header.top h1{font-size:1rem;margin:0;font-weight:650;flex:1;min-width:0}
+header.top .sub{display:block;font-size:.75rem;color:var(--dim);font-weight:400}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:3px 10px;font-size:.78rem;color:var(--dim);white-space:nowrap}
+.chip .dot{width:8px;height:8px;border-radius:50%;background:var(--dim)}
+.chip.live .dot{background:var(--up);box-shadow:0 0 0 3px color-mix(in srgb,var(--up) 25%,transparent)}
+.iconbtn{border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:7px 10px;cursor:pointer}
+.iconbtn:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+main{padding:14px max(16px,env(safe-area-inset-right,0px)) calc(86px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));
+  max-width:720px;margin:0 auto;display:grid;gap:14px}
+nav.tabs{position:fixed;bottom:0;left:0;right:0;z-index:5;background:var(--panel);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);
+  padding:6px max(6px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(6px,env(safe-area-inset-left,0px))}
+nav.tabs button{background:none;border:0;padding:6px 2px;border-radius:10px;font-size:.72rem;color:var(--dim);display:grid;justify-items:center;gap:2px;cursor:pointer}
+nav.tabs button svg{width:22px;height:22px}
+nav.tabs button[aria-selected="true"]{color:var(--accent);background:var(--panel2)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;display:grid;gap:8px;min-width:0}
+.card.now{border-color:var(--accent);background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 12%,var(--panel)),var(--panel))}
+.eyebrow{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);font-weight:600}
+.big{font-size:1.45rem;font-weight:750;line-height:1.15;text-wrap:balance}
+.verdict{font-family:var(--mono);font-size:1.9rem;font-weight:700;letter-spacing:.03em}
 .BULLISH{color:var(--up)}.BEARISH{color:var(--down)}.RANGEBOUND{color:var(--warn)}
-.trade{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;display:grid;gap:10px}
-.trade header{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:baseline}
-.chip{background:var(--chip);border-radius:999px;padding:2px 10px;font-size:.8rem;color:var(--dim);font-family:var(--mono)}
+.up{color:var(--up)}.down{color:var(--down)}.warn{color:var(--warn)}.dim{color:var(--dim)}.info{color:var(--info)}
+.row{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.row>span:first-child{color:var(--dim)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.stat{background:var(--panel2);border-radius:10px;padding:10px}
+.stat b{display:block;font-size:.7rem;color:var(--dim);font-weight:500;text-transform:uppercase;letter-spacing:.06em}
+.stat .n{font-size:1.1rem;font-weight:650}
 .legs{display:flex;flex-wrap:wrap;gap:6px}
-.leg{font-family:var(--mono);font-size:.85rem;padding:4px 8px;border-radius:6px;border:1px solid var(--line)}
+.leg{font-family:var(--mono);font-size:.82rem;padding:4px 8px;border-radius:7px;border:1px solid var(--line)}
 .leg.SELL{color:var(--down)}.leg.BUY{color:var(--up)}
-dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;margin:0}
-dt{color:var(--dim)}dd{margin:0;min-width:0}
-.risk{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--mono);font-size:.9rem}
-.risk b{display:block;font-size:.72rem;color:var(--dim);font-family:var(--sans);font-weight:500;text-transform:uppercase;letter-spacing:.06em}
-.gate{border-left:3px solid var(--warn);padding:10px 14px;background:var(--panel);border-radius:0 8px 8px 0}
-.tbl{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px}
-table{border-collapse:collapse;width:100%;font-size:.88rem}
-th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
-th{color:var(--dim);font-weight:500;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em}
-tr:last-child td{border-bottom:0}td.n{text-align:right}
-.up{color:var(--up)}.down{color:var(--down)}.warn{color:var(--warn)}
-ol.time{list-style:none;margin:0;padding:0;display:grid;gap:0;background:var(--panel);border:1px solid var(--line);border-radius:10px}
-ol.time li{display:grid;grid-template-columns:11.5rem 1fr;gap:12px;padding:10px 14px;border-bottom:1px solid var(--line)}
-ol.time li:last-child{border-bottom:0}
-ol.time .when{font-family:var(--mono);font-size:.82rem;color:var(--accent)}
-@media (max-width:520px){ol.time li{grid-template-columns:1fr;gap:2px}}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
-.stat{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
-.stat .v{font-family:var(--mono);font-size:1.3rem;font-weight:600}
-.stat p{margin:2px 0 0;color:var(--dim);font-size:.82rem}
-ul.rules{margin:0;padding-left:1.1rem;display:grid;gap:4px}
-.fine{font-size:.78rem;color:var(--dim);line-height:1.5}
+.pill{display:inline-block;border-radius:999px;padding:2px 9px;font-size:.75rem;font-weight:700;border:1px solid currentColor}
+.gA{color:var(--up)}.gB{color:var(--warn)}.gC{color:var(--dim)}
+ol.steps{list-style:none;margin:0;padding:0;display:grid}
+ol.steps li{display:grid;grid-template-columns:28px 1fr;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+ol.steps li:last-child{border-bottom:0}
+ol.steps li.past{opacity:.5}
+ol.steps li.active{background:color-mix(in srgb,var(--accent) 10%,transparent);border-radius:10px;padding:10px 8px;margin:0 -8px}
+ol.steps input{width:22px;height:22px;accent-color:var(--accent);margin:2px 0 0}
+.when{font-family:var(--mono);font-size:.8rem;color:var(--accent)}
+.kind-act .when{color:var(--up)}.kind-exit .when{color:var(--warn)}.kind-wait .when{color:var(--dim)}
+.filters{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px}
+.filters button{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:7px 14px;white-space:nowrap;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+details.stock{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+details.stock>summary{list-style:none;padding:12px 14px;cursor:pointer;display:grid;gap:6px}
+details.stock>summary::-webkit-details-marker{display:none}
+details.stock .body{padding:0 14px 14px;display:grid;gap:10px}
+label.f{display:grid;gap:4px;font-size:.78rem;color:var(--dim)}
+label.f input{background:var(--panel2);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:9px 10px;font:inherit;font-family:var(--mono);width:100%}
+.stepper{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.stepper button{background:var(--panel2);border:0;padding:6px 12px;cursor:pointer;font-weight:700}
+.stepper span{padding:0 12px}
+.banner{border-left:3px solid var(--warn);background:var(--panel);padding:10px 12px;border-radius:0 10px 10px 0}
+.banner.err{border-color:var(--down)}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.84rem}
+th,td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
+th{color:var(--dim);font-weight:500;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em}
+td.r,th.r{text-align:right}
+.bar{height:8px;border-radius:4px;background:var(--panel2);overflow:hidden}
+.bar i{display:block;height:100%}
+.fine{font-size:.75rem;color:var(--dim)}
+a{color:var(--info)}
+.gate{position:fixed;inset:0;z-index:20;background:var(--bg);overflow:auto;padding:calc(env(safe-area-inset-top,0px) + 24px) max(20px,env(safe-area-inset-right,0px)) 24px max(20px,env(safe-area-inset-left,0px))}
+.gate .inner{max-width:560px;margin:0 auto;display:grid;gap:12px}
+.primary{background:var(--accent);color:#04120d;border:0;border-radius:12px;padding:14px;font-weight:750;cursor:pointer}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
-<main class="wrap">
-<div><h1>Plan for Monday 19 October 2026</h1><div class="meta">Built 2026-10-19 13:36 IST from the US session of 2026-10-16 and NSE close of 2026-10-16</div></div>
-<section class="verdict"><div class="label RANGEBOUND">RANGEBOUND</div><div><strong>Market bias SIDEWAYS — favour hedged premium selling</strong></div><div class="meta">Model expects Nifty -0.01% (typical day ±0.79%) · India VIX 14.06 · out-of-sample hit rate 70.2% on 57 directional calls</div></section>
-<section><h2>Options</h2><div style='display:grid;gap:12px'>
-<article class="trade"><header><strong>NIFTY · Iron Condor</strong><span class="chip">expiry 2026-10-20 · lot 65</span></header><div class="legs"><span class="leg SELL">SELL 23100 CE · ≈₹21.4</span><span class="leg BUY">BUY 23200 CE · ≈₹8.8</span><span class="leg SELL">SELL 22700 PE · ≈₹23.6</span><span class="leg BUY">BUY 22600 PE · ≈₹9.6</span></div><dl><dt>Enter</dt><dd>Enter after the first 30 min if NIFTY stays between 22,990 and 23,226</dd><dt>Target</dt><dd class="up">Buy back at ₹12.0 (keep ~55% of credit)</dd><dt>Stop</dt><dd class="down">NIFTY breaks 22,700 / 23,100 on a 15-min close, or loss reaches 1× credit</dd><dt>Breakeven</dt><dd class="mono">22,673 / 23,127</dd></dl><div class="risk"><div><b>Max loss / lot</b><span class="down">₹4,771</span></div><div><b>Max reward / lot</b><span class="up">₹1,729</span></div><div><b>Reward : risk</b>0.36</div><div><b>Spot / expected move</b>22,886 ± 223</div></div><div class="fine">Hedged premium selling. Check SPAN margin with your broker. Premiums are Black-Scholes estimates from India VIX; check the live option chain.</div></article>
-<article class="trade"><header><strong>BANKNIFTY · Iron Condor</strong><span class="chip">expiry 2026-10-27 · lot 30</span></header><div class="legs"><span class="leg SELL">SELL 56400 CE · ≈₹133.7</span><span class="leg BUY">BUY 56900 CE · ≈₹56.2</span><span class="leg SELL">SELL 54500 PE · ≈₹92.0</span><span class="leg BUY">BUY 54000 PE · ≈₹34.3</span></div><dl><dt>Enter</dt><dd>Enter after the first 30 min if BANKNIFTY stays between 55,584 and 56,047</dd><dt>Target</dt><dd class="up">Buy back at ₹60.8 (keep ~55% of credit)</dd><dt>Stop</dt><dd class="down">BANKNIFTY breaks 54,500 / 56,400 on a 15-min close, or loss reaches 1× credit</dd><dt>Breakeven</dt><dd class="mono">54,365 / 56,535</dd></dl><div class="risk"><div><b>Max loss / lot</b><span class="down">₹10,944</span></div><div><b>Max reward / lot</b><span class="up">₹4,056</span></div><div><b>Reward : risk</b>0.37</div><div><b>Spot / expected move</b>55,461 ± 1,076</div></div><div class="fine">Hedged premium selling. Check SPAN margin with your broker. Premiums are Black-Scholes estimates from India VIX; check the live option chain.</div></article>
-</div></section>
-<section><h2>Stocks for 1–2 days</h2>
-<div class="gate">Market gate is <strong>closed</strong>: Nifty is below its 50-day average or down over 20 days. Momentum buys are paused, so the list below is a watchlist, not a buy list.</div>
-<div class="tbl" style="margin-top:10px"><table><thead><tr><th>Stock</th><th>Grade</th><th>Rules</th><th>Close</th><th>Day</th><th>Vol</th><th>RSI</th><th>SL</th><th>T1</th><th>T2</th><th>Note</th></tr></thead><tbody>
-<tr><td><strong>PNB</strong></td><td>C</td><td class="n">4/4</td><td class="n">121.91</td><td class="n up">+4.82%</td><td class="n">7.0x</td><td class="n">63</td><td class="n down">119.42</td><td class="n up">126.89</td><td class="n up">130.22</td><td class="warn" style="white-space:normal;min-width:12rem">Market gate closed: Nifty below 50-DMA or down over 20 days</td></tr>
-<tr><td><strong>FEDERALBNK</strong></td><td>C</td><td class="n">3/4</td><td class="n">350.20</td><td class="n up">+3.61%</td><td class="n">4.7x</td><td class="n">65</td><td class="n down">342.66</td><td class="n up">365.28</td><td class="n up">376.50</td><td class="warn" style="white-space:normal;min-width:12rem">Market gate closed: Nifty below 50-DMA or down over 20 days</td></tr>
-<tr><td><strong>ICICIBANK</strong></td><td>C</td><td class="n">3/4</td><td class="n">1,383.20</td><td class="n down">-0.99%</td><td class="n">2.5x</td><td class="n">56</td><td class="n down">1,364.29</td><td class="n up">1,421.03</td><td class="n up">1,446.24</td><td class="warn" style="white-space:normal;min-width:12rem">Market gate closed: Nifty below 50-DMA or down over 20 days</td></tr>
-<tr><td><strong>KOTAKBANK</strong></td><td>C</td><td class="n">3/4</td><td class="n">439.70</td><td class="n down">-1.72%</td><td class="n">0.5x</td><td class="n">60</td><td class="n down">432.80</td><td class="n up">453.49</td><td class="n up">462.69</td><td class="warn" style="white-space:normal;min-width:12rem">Market gate closed: Nifty below 50-DMA or down over 20 days</td></tr>
-</tbody></table></div>
-</section>
-<section><h2>Timeline (IST)</h2><ol class="time">
-<li><span class="when">Mon 19 Oct · 08:00–09:00</span><span>Open the app. Read the bias and plan. Set price alerts at each entry and stop-loss.</span></li>
-<li><span class="when">Mon 19 Oct · 09:00–09:15</span><span>Pre-open. Place no market orders. Note where your stocks are indicated to open.</span></li>
-<li><span class="when">Mon 19 Oct · 09:15–09:30</span><span>WAIT. Opening 15 min is the most volatile. Cancel any stock that opens above its T1 or below its SL.</span></li>
-<li><span class="when">Mon 19 Oct · 09:30–10:30</span><span>STOCK BUY WINDOW. Buy only if price is holding above the entry and the 15-min opening high. Place the SL order immediately.</span></li>
-<li><span class="when">Mon 19 Oct · 09:45–11:00</span><span>OPTIONS WINDOW. Spreads / ATM buys only if the index respects the support/resistance shown. Iron condor / fly only after 10:00 with the index inside the range.</span></li>
-<li><span class="when">Mon 19 Oct · after 11:30</span><span>No new stock entries. If it did not trigger, skip it.</span></li>
-<li><span class="when">Mon 19 Oct · 14:30–15:00</span><span>Option BUYERS: exit by 15:00 if target not hit (time decay). Spreads/condors: hold only if still inside the plan.</span></li>
-<li><span class="when">Tue 20 Oct · 09:15–15:15</span><span>DAY 2. Book half at T1, trail SL to entry. EXIT everything still open by 15:15 (this is a 1–2 day setup).</span></li>
-<li><span class="when">Expiry 2026-10-20</span><span>Do not hold short options into the last hour of expiry day.</span></li>
-</ol></section>
-<section><h2>Global close</h2><div class="tbl"><table><thead><tr><th>Market</th><th style="text-align:right">Last</th><th style="text-align:right">Change</th><th>As of</th></tr></thead><tbody>
-<tr><td>S&amp;P 500</td><td class="n">7,659.44</td><td class="n down">-1.09%</td><td class="mono">2026-10-16</td></tr>
-<tr><td>Nasdaq</td><td class="n">26,140.03</td><td class="n down">-2.15%</td><td class="mono">2026-10-16</td></tr>
-<tr><td>Dow Jones</td><td class="n">52,002.41</td><td class="n down">-0.34%</td><td class="mono">2026-10-16</td></tr>
-<tr><td>US 10Y Yield</td><td class="n">5.10</td><td class="n up">+0.01 pts</td><td class="mono">2026-10-16</td></tr>
-<tr><td>Crude Oil</td><td class="n">96.77</td><td class="n down">-4.58%</td><td class="mono">2026-10-19</td></tr>
-<tr><td>Dollar Index</td><td class="n">102.04</td><td class="n up">+0.20%</td><td class="mono">2026-10-19</td></tr>
-<tr><td>Nikkei 225</td><td class="n">64,916.70</td><td class="n down">-0.62%</td><td class="mono">2026-10-19</td></tr>
-<tr><td>Hang Seng</td><td class="n">24,186.83</td><td class="n up">+0.52%</td><td class="mono">2026-10-16</td></tr>
-<tr><td>India VIX</td><td class="n">14.87</td><td class="n up">+5.78%</td><td class="mono">2026-10-19</td></tr>
-<tr><td>Nifty 50</td><td class="n">22,885.55</td><td class="n down">-1.13%</td><td class="mono">2026-10-19</td></tr>
-<tr><td>Bank Nifty</td><td class="n">55,460.75</td><td class="n down">-0.69%</td><td class="mono">2026-10-19</td></tr>
-</tbody></table></div></section>
-<section><h2>Track record so far</h2><div class="stats">
-<div class="stat"><div class="v">62.1%</div><p>Bias calls correct, out-of-sample, 116 calls in 500 days</p></div>
-<div class="stat"><div class="v">49.1%</div><p>Stock win rate, 2-year backtest, 116 trades</p></div>
-<div class="stat"><div class="v">-0.02R</div><p>Average result per stock trade after costs (1R = planned risk)</p></div>
-<div class="stat"><div class="v">0</div><p>Live trades graded. Live results start 2 trading days after the first signal.</p></div>
-</div></section>
-<section><h2>Rules</h2><ul class="rules"><li>Only grade A/B stocks. C = watch, don&#x27;t trade.</li><li>Stop-loss order goes in the moment you buy. Never move it down.</li><li>Risk max 1% of capital per trade, max 3 open trades.</li><li>No trigger in the buy window = no trade. Missing a trade costs nothing.</li><li>If the app&#x27;s live hit-rate (Learning tab) drops below its backtest, cut size in half.</li></ul></section>
-<p class="fine">Algorithmic research output based on technical rules and statistics. Not investment advice. Not a SEBI-registered investment adviser or research analyst. No returns are guaranteed; options can lose 100% of premium and more for sellers. Verify every level with your broker and consult a SEBI-registered adviser before trading.</p>
-</main></body></html>
+</head>
+<body>
+<div id="gate" class="gate" hidden>
+  <div class="inner">
+    <h2 style="margin:0">Before you start</h2>
+    <p>This app shows algorithmic research based on technical rules and statistics. It is <strong>not investment advice</strong> and not a SEBI-registered adviser or research-analyst service.</p>
+    <p>No returns are guaranteed. SEBI found about 9 in 10 retail F&amp;O traders lose money. Option prices shown are estimates; confirm every price and margin with your broker.</p>
+    <p>Use a stop-loss on every trade and never risk money you cannot afford to lose.</p>
+    <button class="primary" id="accept">I understand</button>
+  </div>
+</div>
+
+<header class="top">
+  <h1 id="title">NSE Trade Desk<span class="sub" id="updated">Loading…</span></h1>
+  <span class="chip" id="mkt"><span class="dot"></span><span>—</span></span>
+  <button class="iconbtn" id="refresh" aria-label="Refresh">↻</button>
+</header>
+
+<main id="view" aria-live="polite"></main>
+
+<nav class="tabs" role="tablist">
+  <button role="tab" data-tab="today" aria-selected="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Today</button>
+  <button role="tab" data-tab="options"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l5-6 4 3 8-9"/><path d="M3 21h18"/></svg>Options</button>
+  <button role="tab" data-tab="stocks"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="3" height="10"/><rect x="10.5" y="5" width="3" height="15"/><rect x="17" y="13" width="3" height="7"/></svg>Stocks</button>
+  <button role="tab" data-tab="results"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg>Results</button>
+  <button role="tab" data-tab="learning"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0-4 10.5V17h8v-3.5A6 6 0 0 0 12 3z"/><path d="M9 21h6"/></svg>Learning</button>
+</nav>
+
+<script>
+const FILES = ['plan', 'global-bias', 'volume-breakouts', 'performance', 'review', 'meta'];
+const D = {};
+let tab = 'today', stockFilter = 'ab', lots = {}, loadErr = null, lastLoad = 0;
+
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const inr = (x, d = 0) => x == null || isNaN(x) ? '—' : (x < 0 ? '−' : '') + '₹' + Math.abs(x).toLocaleString('en-IN', { maximumFractionDigits: d, minimumFractionDigits: d });
+const num = (x, d = 2) => x == null ? '—' : Number(x).toLocaleString('en-IN', { maximumFractionDigits: d, minimumFractionDigits: d });
+const sgn = (x, d = 2, u = '%') => x == null ? '—' : (x > 0 ? '+' : x < 0 ? '−' : '') + Math.abs(x).toFixed(d) + u;
+const cls = (x) => x > 0 ? 'up' : x < 0 ? 'down' : 'dim';
+const store = {
+  get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
+};
+
+function ist() {
+  const p = Object.fromEntries(new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Kolkata', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', weekday: 'short', hour12: false })
+    .formatToParts(new Date()).map((x) => [x.type, x.value]));
+  const hm = `${p.hour === '24' ? '00' : p.hour}:${p.minute}`;
+  return { date: `${p.year}-${p.month}-${p.day}`, hm, dow: p.weekday };
+}
+const mins = (hm) => { const [h, m] = hm.split(':').map(Number); return h * 60 + m; };
+function ago(iso) {
+  if (!iso) return '';
+  const m = Math.round((Date.now() - new Date(iso).getTime()) / 60000);
+  return m < 1 ? 'just now' : m < 60 ? `${m} min ago` : m < 1440 ? `${Math.round(m / 60)} h ago` : `${Math.round(m / 1440)} d ago`;
+}
+function marketState() {
+  const t = ist(), m = mins(t.hm);
+  if (t.dow === 'Sat' || t.dow === 'Sun') return ['Weekend', false];
+  if (m < 540) return ['Pre-market', false];
+  if (m < 555) return ['Pre-open', false];
+  if (m <= 930) return ['Market open', true];
+  return ['Closed', false];
+}
+
+async function load() {
+  $('#refresh').textContent = '…';
+  try {
+    const res = await Promise.all(FILES.map((f) => fetch(`${f}.json?t=${Date.now()}`, { cache: 'no-store' }).then((r) => r.ok ? r.json() : null).catch(() => null)));
+    FILES.forEach((f, i) => { if (res[i]) D[f] = res[i]; });
+    loadErr = res[0] ? null : 'Could not reach the data. Showing the last saved copy if there is one.';
+    lastLoad = Date.now();
+  } catch (e) { loadErr = String(e); }
+  $('#refresh').textContent = '↻';
+  render();
+}
+
+/* ---------------- TODAY ---------------- */
+function currentStep(tl) {
+  const t = ist(), now = mins(t.hm);
+  let active = -1, next = -1;
+  tl.forEach((s, i) => {
+    if (s.date === t.date && now >= mins(s.start) && now < mins(s.end)) active = i;
+    const sk = s.date + s.start, nk = t.date + t.hm;
+    if (next < 0 && sk > nk) next = i;
+  });
+  return { active, next, t };
+}
+function countdown(s, t) {
+  const target = new Date(`${s.date}T${s.start}:00+05:30`).getTime();
+  const m = Math.max(0, Math.round((target - Date.now()) / 60000));
+  if (m < 60) return `in ${m} min`;
+  if (m < 1440) return `in ${Math.floor(m / 60)} h ${m % 60} min`;
+  return `on ${new Date(target).toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'Asia/Kolkata' })}`;
+}
+function vToday() {
+  const p = D.plan; if (!p) return '';
+  const tl = p.timeline || [];
+  const { active, next, t } = currentStep(tl);
+  const done = store.get('done:' + p.session, {});
+  const step = active >= 0 ? tl[active] : null, nxt = next >= 0 ? tl[next] : null;
+  const sessLabel = new Date(p.session + 'T12:00:00+05:30').toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'Asia/Kolkata' });
+  let h = '';
+  h += `<section class="card now"><div class="eyebrow">Right now · ${esc(t.hm)} IST</div>`;
+  if (step) h += `<div class="big">${esc(step.title)}</div><div>${esc(step.do)}</div><div class="fine">Until ${esc(step.end)}${nxt ? ` · next: ${esc(nxt.title)} ${countdown(nxt, t)}` : ''}</div>`;
+  else if (nxt) h += `<div class="big">Next: ${esc(nxt.title)}</div><div class="dim">${countdown(nxt, t)} (${esc(nxt.when)})</div><div>${esc(nxt.do)}</div>`;
+  else h += `<div class="big">Nothing scheduled</div><div class="dim">The next plan arrives after today's 16:30 run.</div>`;
+  h += `</section>`;
+
+  h += `<section class="card"><div class="eyebrow">Plan for ${esc(sessLabel)}</div>
+    <div class="verdict ${esc(p.bias)}">${esc(p.bias)}</div><div><strong>${esc(p.headline)}</strong></div>
+    <div class="fine">Bias model track record: ${p.bias_track_record_pct ?? '—'}% correct on its directional calls (tested on unseen data)</div></section>`;
+
+  h += `<section class="card"><div class="eyebrow">Decisions</div>`;
+  (p.options || []).forEach((o) => {
+    h += `<div><div class="row"><strong>${esc(o.index)} · ${esc(o.strategy)}</strong><span class="fine">exp ${esc(o.expiry)}</span></div>
+      <div class="n info" style="font-size:.85rem">${esc(o.legs)}</div>
+      <div class="fine">Enter: ${esc(o.entry)}</div>
+      <div class="row"><span>Max loss / reward per lot</span><span class="n"><span class="down">${inr(o.max_loss)}</span> / <span class="up">${o.max_reward == null ? 'open' : inr(o.max_reward)}</span></span></div></div>`;
+  });
+  if (p.market_gate_open === false) h += `<div class="banner">Market gate closed: Nifty is below its 50-day average or down over 20 days, so there are no stock buys today.</div>`;
+  if ((p.stocks || []).length) p.stocks.forEach((s) => { h += `<div><span class="pill g${s.grade}">${s.grade}</span> ${esc(s.action)}</div>`; });
+  else h += `<div class="dim">${esc(p.no_trade_reason || 'No stock trades today.')}</div>`;
+  h += `</section>`;
+
+  h += `<section class="card"><div class="row"><div class="eyebrow">Today's checklist</div><span class="fine">${Object.values(done).filter(Boolean).length}/${tl.length} done</span></div><ol class="steps">`;
+  tl.forEach((s, i) => {
+    const past = (s.date + s.end) < (t.date + t.hm);
+    h += `<li class="kind-${esc(s.kind)} ${i === active ? 'active' : past ? 'past' : ''}">
+      <input type="checkbox" id="st${i}" data-step="${i}" ${done[i] ? 'checked' : ''} aria-label="Mark ${esc(s.title)} done">
+      <label for="st${i}"><div class="when">${esc(s.when)}</div><strong>${esc(s.title)}</strong><div class="dim" style="font-size:.88rem">${esc(s.do)}</div></label></li>`;
+  });
+  h += `</ol></section>`;
+  h += `<section class="card"><div class="eyebrow">Rules</div>${(p.golden_rules || []).map((r) => `<div>• ${esc(r)}</div>`).join('')}</section>`;
+  return h;
+}
+
+/* ---------------- OPTIONS ---------------- */
+function vOptions() {
+  const b = D['global-bias']; if (!b) return '';
+  const bb = b.bias;
+  let h = `<section class="card"><div class="row"><div class="eyebrow">Daily bias · ${esc(b.target_session)}</div><span class="pill ${esc(bb.label)}">${esc(bb.label)} ${bb.score > 0 ? '+' : ''}${bb.score}</span></div>
+    <div class="grid2">
+      <div class="stat"><b>Model expects Nifty</b><span class="n ${cls(bb.predicted_nifty_move_pct)}">${sgn(bb.predicted_nifty_move_pct)}</span></div>
+      <div class="stat"><b>Typical day</b><span class="n">±${num(bb.typical_daily_move_pct)}%</span></div>
+      <div class="stat"><b>India VIX</b><span class="n">${num(bb.india_vix)}</span></div>
+      <div class="stat"><b>Hit rate (unseen data)</b><span class="n">${b.model.directional_accuracy ?? '—'}%</span></div>
+    </div>
+    <div class="eyebrow" style="margin-top:4px">What drove it</div>
+    ${bb.components.slice(0, 5).map((c) => `<div class="row"><span>${esc(c.label)}: <span class="n">${num(c.value, 2)}</span></span><span class="n ${cls(c.contribution_pct)}">${sgn(c.contribution_pct, 2)}</span></div>`).join('')}
+    <div class="fine">US session used: ${esc(b.us_session_used)}</div></section>`;
+  Object.values(b.options).forEach((o) => {
+    h += `<section class="card"><div class="row"><strong>${esc(o.index)}</strong><span class="n">${num(o.spot, 0)}</span></div>
+      <div class="fine">Expiry ${esc(o.expiry)} · lot ${o.lot_size} · IV ${num(o.iv_used_pct, 1)}% · expected move ±${num(o.expected_move, 0)} · support ${num(o.levels.support, 0)} · resistance ${num(o.levels.resistance, 0)}</div></section>`;
+    o.strategies.forEach((s, si) => {
+      const key = o.index + si, L = lots[key] || 1;
+      h += `<section class="card"><div class="row"><strong>${esc(s.name)}</strong>${si === 0 ? '<span class="pill gA">Primary</span>' : '<span class="pill gC">Alternative</span>'}</div>
+        <div class="legs">${s.legs.map((l) => `<span class="leg ${l.action}">${l.action} ${l.strike} ${l.type} · ≈₹${l.est_premium}</span>`).join('')}</div>
+        <div class="row"><span>Lots</span><span class="stepper"><button data-lot="${key}" data-d="-1" aria-label="Fewer lots">−</button><span class="n">${L}</span><button data-lot="${key}" data-d="1" aria-label="More lots">+</button></span></div>
+        <div class="grid2"><div class="stat"><b>Max loss</b><span class="n down">${inr(s.max_loss * L)}</span></div>
+        <div class="stat"><b>Max reward</b><span class="n up">${s.max_reward == null ? 'open' : inr(s.max_reward * L)}</span></div></div>
+        <div class="row"><span>Reward : risk</span><span class="n">${s.reward_risk ?? '—'}</span></div>
+        <div class="row"><span>Breakeven</span><span class="n">${s.breakeven.map((x) => num(x, 0)).join(' / ')}</span></div>
+        <div><span class="dim">Enter:</span> ${esc(s.entry)}</div><div><span class="dim">Target:</span> <span class="up">${esc(s.target)}</span></div><div><span class="dim">Stop:</span> <span class="down">${esc(s.stop_loss)}</span></div>
+        ${s.notes ? `<div class="fine">${esc(s.notes)}</div>` : ''}</section>`;
+    });
+  });
+  h += `<div class="fine">Premiums are Black-Scholes estimates from India VIX, not live quotes. Check the live option chain before ordering.</div>`;
+  return h;
+}
+
+/* ---------------- STOCKS ---------------- */
+function sizer(s) {
+  const cap = store.get('capital', 10000), risk = store.get('risk', 1);
+  const rps = s.entry - s.stop;
+  const q = rps > 0 ? Math.max(0, Math.min(Math.floor(cap * risk / 100 / rps), Math.floor(cap / s.entry))) : 0;
+  return { cap, risk, q, used: q * s.entry, loss: q * rps, p1: q * (s.t1 - s.entry), p2: q * (s.t2 - s.entry) };
+}
+function vStocks() {
+  const v = D['volume-breakouts']; if (!v) return '';
+  const lists = { ab: v.candidates.filter((c) => c.grade !== 'C'), all: v.candidates, watch: v.near_misses };
+  const list = lists[stockFilter] || [];
+  let h = `<div class="filters">${[['ab', 'Grade A/B'], ['all', 'All 4 rules'], ['watch', 'Watchlist']].map(([k, l]) => `<button data-filter="${k}" aria-pressed="${stockFilter === k}">${l} (${lists[k].length})</button>`).join('')}</div>`;
+  if (v.market_gate_open === false) h += `<div class="banner">Market gate closed: momentum buys are graded C (watch only) today.</div>`;
+  h += `<div class="fine">Rules now: volume ≥ ${v.rules.vol_mult}× · RSI ${v.rules.rsi_lo}–${v.rules.rsi_hi} · within ${v.rules.near_high_pct}% of 20-day high · above EMA20 & EMA50${v.volume_projected ? ' · volume projected (market open)' : ''}</div>`;
+  if (!list.length) h += `<section class="card"><div>Nothing here today.</div><div class="dim">No signal means no trade. Missing a trade costs nothing.</div></section>`;
+  list.forEach((s) => {
+    const z = sizer(s), ck = s.checks || {};
+    h += `<details class="stock"><summary>
+      <div class="row"><span style="color:var(--ink)"><strong>${esc(s.symbol)}</strong> <span class="pill g${s.grade}">${s.grade}</span></span><span class="n">${inr(s.cmp, 2)} <span class="${cls(s.day_chg)}">${sgn(s.day_chg)}</span></span></div>
+      <div class="fine">${esc(s.vol_badge)} · RSI ${num(s.rsi, 0)} · win prob ${s.win_prob}% · ${s.checks_passed}/4 rules</div>
+      <div class="row n" style="font-size:.85rem"><span>SL <span class="down">${num(s.stop)}</span></span><span>T1 <span class="up">${num(s.t1)}</span></span><span>T2 <span class="up">${num(s.t2)}</span></span></div>
+      ${s.skip_reason ? `<div class="warn" style="font-size:.85rem">⚠ ${esc(s.skip_reason)}</div>` : ''}</summary>
+      <div class="body">
+        <div class="card" style="background:var(--panel2)"><div class="eyebrow">What to do</div><div>${esc(s.action)}</div></div>
+        <div class="grid2"><label class="f">Capital ₹<input type="number" inputmode="decimal" id="cap-${esc(s.symbol)}" data-k="capital" value="${z.cap}"></label>
+          <label class="f">Risk %<input type="number" inputmode="decimal" id="risk-${esc(s.symbol)}" data-k="risk" value="${z.risk}"></label></div>
+        <div class="grid2"><div class="stat"><b>Buy</b><span class="n">${z.q} shares</span></div><div class="stat"><b>Capital used</b><span class="n">${inr(z.used)}</span></div>
+          <div class="stat"><b>Loss if SL hits</b><span class="n down">${inr(z.loss)}</span></div><div class="stat"><b>Profit at T1 / T2</b><span class="n up">${inr(z.p1)} / ${inr(z.p2)}</span></div></div>
+        <div>${[['volume', `Volume ${s.vol_ratio}× average`], ['momentum', `RSI ${num(s.rsi, 1)}`], ['trend', `Above EMA20 ${num(s.ema20)} & EMA50 ${num(s.ema50)}`], ['breakout', `${num(s.dist_high_pct)}% below 20-day high ${num(s.high20)}`]].map(([k, t]) => `<div>${ck[k] ? '✅' : '❌'} ${esc(t)}</div>`).join('')}</div>
+        <div class="fine">${esc(s.trail_rule)} Expected value ${s.expected_r} R per trade.</div>
+        ${(s.news || []).length ? `<div class="eyebrow">News (${esc(s.news_sentiment?.label || '')})</div>` + s.news.map((n) => `<div><a href="${esc(n.link)}" target="_blank" rel="noopener">${esc(n.title)}</a> <span class="fine">${esc(n.source)}</span></div>`).join('') : ''}
+      </div></details>`;
+  });
+  return h;
+}
+
+/* ---------------- RESULTS ---------------- */
+function vResults() {
+  const r = D.review;
+  if (!r || !r.latest) return `<section class="card"><div class="big">No review yet</div><div class="dim">Every day at about 16:30 IST the engine replays that morning's plan against what the market actually did, and shows the result here.</div></section>`;
+  const L = r.latest, s = L.summary, b = L.bias;
+  let h = `<section class="card now"><div class="eyebrow">Plan vs actual · ${esc(L.session)} ${L.final ? '' : '· LIVE (market still open)'}</div>
+    <div class="grid2">
+      <div class="stat"><b>Options P&amp;L (est., per lot)</b><span class="n ${cls(s.options_pnl_per_lot)}">${inr(s.options_pnl_per_lot)}</span></div>
+      <div class="stat"><b>Plan's best case</b><span class="n">${inr(s.planned_max_reward)}</span></div>
+      <div class="stat"><b>Gap</b><span class="n ${cls(s.gap)}">${inr(s.gap)}</span></div>
+      <div class="stat"><b>Bias call</b><span class="n ${b.correct ? 'up' : 'down'}">${b.correct ? 'Right' : 'Wrong'}</span></div>
+    </div>
+    <div class="fine">Bias ${esc(b.label)}: predicted ${sgn(b.predicted_pct)}, actual Nifty ${sgn(b.actual_pct)}${b.label === 'RANGEBOUND' ? ` (sideways band ±${b.band_pct}%)` : ''}</div></section>`;
+  h += `<section class="card"><div class="eyebrow">What we learned</div>${L.lessons.map((x) => `<div>• ${esc(x)}</div>`).join('')}</section>`;
+  (L.options || []).forEach((o) => {
+    h += `<section class="card"><div class="row"><strong>${esc(o.index)} · ${esc(o.strategy)}</strong><span class="n ${cls(o.pnl_per_lot)}">${inr(o.pnl_per_lot)}</span></div>
+      <div class="n info" style="font-size:.82rem">${esc(o.legs)}</div>
+      <div class="row"><span>Day range</span><span class="n">${num(o.day_low, 0)} – ${num(o.day_high, 0)} (last ${num(o.last, 0)})</span></div>
+      ${o.entry_time ? `<div class="row"><span>Entry check ${esc(o.entry_time)}</span><span class="n">${num(o.entry_spot, 0)}${o.opening_move_pct != null ? ` (${sgn(o.opening_move_pct)} from open)` : ''}</span></div>` : ''}
+      ${o.exit_time ? `<div class="row"><span>Exit ${esc(o.exit_time)}</span><span class="n">${num(o.exit_spot, 0)}</span></div>` : ''}
+      <div><span class="pill ${o.pnl_per_lot > 0 ? 'gA' : o.pnl_per_lot < 0 ? 'down' : 'gC'}">${esc(o.status)}</span> ${esc(o.verdict || o.exit_reason || '')}</div></section>`;
+  });
+  if ((L.stocks || []).length) {
+    h += `<section class="card"><div class="eyebrow">Stocks (₹10k, 1% risk example)</div><div class="tbl"><table><thead><tr><th>Stock</th><th>Grade</th><th>Status</th><th class="r">R</th><th class="r">₹</th></tr></thead><tbody>
+      ${L.stocks.map((x) => `<tr><td><strong>${esc(x.symbol)}</strong></td><td>${esc(x.grade)}</td><td>${esc(x.status)}</td><td class="r n ${cls(x.r)}">${sgn(x.r, 2, 'R')}</td><td class="r n ${cls(x.pnl_10k)}">${x.pnl_10k == null ? '—' : inr(x.pnl_10k)}</td></tr>`).join('')}
+      </tbody></table></div><div class="fine">Grade C rows were not to be traded; they show what skipping saved or missed.</div></section>`;
+  }
+  const T = r.totals || {};
+  if ((r.history || []).length) {
+    const mx = Math.max(1, ...r.history.map((x) => Math.abs(x.options_pnl)));
+    h += `<section class="card"><div class="eyebrow">History</div>
+      <div class="grid2"><div class="stat"><b>Days reviewed</b><span class="n">${T.days ?? 0}</span></div><div class="stat"><b>Bias hit rate</b><span class="n">${T.bias_hit_pct ?? '—'}%</span></div>
+      <div class="stat"><b>Options total (est.)</b><span class="n ${cls(T.options_pnl_sum)}">${inr(T.options_pnl_sum)}</span></div><div class="stat"><b>Winning option days</b><span class="n">${T.options_win_days ?? 0}/${T.options_trade_days ?? 0}</span></div></div>
+      ${r.history.map((x) => `<div class="row"><span class="n">${esc(x.session)} ${x.bias_correct ? '✅' : '❌'} ${esc(x.bias)}</span><span class="n ${cls(x.options_pnl)}">${inr(x.options_pnl)}</span></div>
+        <div class="bar"><i style="width:${Math.round(100 * Math.abs(x.options_pnl) / mx)}%;background:var(--${x.options_pnl >= 0 ? 'up' : 'down'})"></i></div>`).join('')}</section>`;
+  }
+  h += `<div class="fine">${esc(L.note)}</div>`;
+  return h;
+}
+
+/* ---------------- LEARNING ---------------- */
+function statBlock(t, s) {
+  if (!s || !s.trades) return `<section class="card"><strong>${esc(t)}</strong><div class="dim">No graded trades yet. Results appear 2 trading days after a signal.</div></section>`;
+  return `<section class="card"><strong>${esc(t)}</strong><div class="grid2">
+    <div class="stat"><b>Trades</b><span class="n">${s.trades}</span></div><div class="stat"><b>Win rate</b><span class="n">${s.win_rate}%</span></div>
+    <div class="stat"><b>Avg per trade</b><span class="n ${cls(s.avg_r)}">${sgn(s.avg_r, 2, 'R')}</span></div><div class="stat"><b>Total</b><span class="n ${cls(s.total_r)}">${sgn(s.total_r, 1, 'R')}</span></div></div>
+    ${s.note ? `<div class="fine">${esc(s.note)}</div>` : ''}</section>`;
+}
+function vLearning() {
+  const p = D.performance; if (!p) return '';
+  let h = `<section class="card"><div class="eyebrow">How it learns</div><div>Every evening it grades each signal from 2 trading days earlier, re-tests its rules on all results (recent and live results count more), and moves each rule at most one step per day.</div><div class="fine">1R = the amount you planned to risk. +0.5R means you made half of it.</div></section>`;
+  h += statBlock('Live stock signals', p.live_stocks) + statBlock('Backtest, about 2 years', p.backtest_stocks) + statBlock('Live index views', p.index_views);
+  const bw = p.bias_walk_forward || {};
+  h += `<section class="card"><strong>Bias model</strong><div class="row"><span>Live accuracy</span><span class="n">${p.bias_live.accuracy == null ? '—' : p.bias_live.accuracy + '% (' + p.bias_live.days + ' days)'}</span></div>
+    <div class="row"><span>Unseen-data test</span><span class="n">${bw.directional_accuracy ?? '—'}% on ${bw.directional_calls ?? '—'} calls</span></div></section>`;
+  h += `<section class="card"><div class="row"><strong>Model v${p.model.version}</strong><span class="pill ${p.model.ranker_on ? 'gA' : 'gC'}">ML ranker ${p.model.ranker_on ? 'ON' : 'OFF'}</span></div>
+    <div class="fine">The ML ranker switches on only after it beats a simple base rate on later, unseen data. Samples: ${p.model.samples}.</div></section>`;
+  h += `<section class="card"><div class="eyebrow">What it changed</div>${(p.history || []).map((x) => `<div><div class="n" style="font-size:.8rem">v${x.version} · ${esc(x.created_at.slice(0, 16).replace('T', ' '))}</div><div class="dim" style="font-size:.88rem">${esc(x.note)}</div></div>`).join('')}</section>`;
+  return h;
+}
+
+/* ---------------- SHELL ---------------- */
+function render() {
+  const [ms, live] = marketState();
+  $('#mkt').className = 'chip' + (live ? ' live' : '');
+  $('#mkt').lastElementChild.textContent = ms;
+  const upd = D.meta?.updated || D.plan?.generated_at;
+  $('#updated').textContent = upd ? `Engine updated ${ago(upd)}` : 'Loading…';
+  const views = { today: vToday, options: vOptions, stocks: vStocks, results: vResults, learning: vLearning };
+  let h = loadErr ? `<div class="banner err">${esc(loadErr)}</div>` : '';
+  h += D.plan ? views[tab]() : '<section class="card">Loading the latest plan…</section>';
+  h += `<p class="fine">${esc(D.plan?.disclaimer || '')}</p>`;
+  const y = window.scrollY;
+  $('#view').innerHTML = h;
+  window.scrollTo(0, y);
+}
+
+document.querySelectorAll('nav.tabs button').forEach((b) => b.addEventListener('click', () => {
+  tab = b.dataset.tab;
+  document.querySelectorAll('nav.tabs button').forEach((x) => x.setAttribute('aria-selected', x === b));
+  store.set('tab', tab); render(); window.scrollTo(0, 0);
+}));
+$('#view').addEventListener('click', (e) => {
+  const f = e.target.closest('[data-filter]'); if (f) { stockFilter = f.dataset.filter; render(); }
+  const l = e.target.closest('[data-lot]'); if (l) { const k = l.dataset.lot; lots[k] = Math.max(1, (lots[k] || 1) + Number(l.dataset.d)); render(); }
+});
+$('#view').addEventListener('change', (e) => {
+  if (e.target.dataset.step != null && D.plan) {
+    const k = 'done:' + D.plan.session, d = store.get(k, {}); d[e.target.dataset.step] = e.target.checked; store.set(k, d); render();
+  }
+  if (e.target.dataset.k) {
+    const open = e.target.closest('details')?.querySelector('summary strong')?.textContent;
+    store.set(e.target.dataset.k, parseFloat(e.target.value) || 0); render();
+    if (open) document.querySelectorAll('details.stock').forEach((d) => { if (d.querySelector('summary strong')?.textContent === open) d.open = true; });
+  }
+});
+$('#refresh').addEventListener('click', load);
+$('#accept').addEventListener('click', () => { store.set('accepted', true); $('#gate').hidden = true; });
+document.addEventListener('visibilitychange', () => { if (!document.hidden && Date.now() - lastLoad > 60000) load(); });
+
+const saved = store.get('tab', 'today');
+if (saved) document.querySelector(`nav.tabs button[data-tab="${saved}"]`)?.click();
+if (!store.get('accepted', false)) $('#gate').hidden = false;
+load();
+setInterval(() => { if (!document.hidden) load(); }, 5 * 60 * 1000);   // data refresh
+setInterval(() => { if (!document.hidden && tab === 'today') render(); }, 30 * 1000);  // clock / current step
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+</script>
+</body>
+</html>

@@ -39,40 +39,94 @@
  "no_trade_reason": "No stock passed all 4 rules with a positive expected value. Sitting out is a valid decision.",
  "timeline": [
   {
-   "when": "Mon 19 Oct \u00b7 08:00\u201309:00",
-   "do": "Open the app. Read the bias and plan. Set price alerts at each entry and stop-loss."
+   "date": "2026-10-19",
+   "start": "08:00",
+   "end": "09:00",
+   "kind": "prep",
+   "title": "Read the plan",
+   "do": "Open the app. Read the bias and plan. Set price alerts at each entry and stop-loss.",
+   "when": "Mon 19 Oct \u00b7 08:00\u201309:00"
   },
   {
-   "when": "Mon 19 Oct \u00b7 09:00\u201309:15",
-   "do": "Pre-open. Place no market orders. Note where your stocks are indicated to open."
+   "date": "2026-10-19",
+   "start": "09:00",
+   "end": "09:15",
+   "kind": "wait",
+   "title": "Pre-open",
+   "do": "Place no market orders. Note where your stocks are indicated to open.",
+   "when": "Mon 19 Oct \u00b7 09:00\u201309:15"
   },
   {
-   "when": "Mon 19 Oct \u00b7 09:15\u201309:30",
-   "do": "WAIT. Opening 15 min is the most volatile. Cancel any stock that opens above its T1 or below its SL."
+   "date": "2026-10-19",
+   "start": "09:15",
+   "end": "09:30",
+   "kind": "wait",
+   "title": "Wait",
+   "do": "Opening 15 min is the most volatile. Cancel any stock that opens above its T1 or below its SL.",
+   "when": "Mon 19 Oct \u00b7 09:15\u201309:30"
   },
   {
-   "when": "Mon 19 Oct \u00b7 09:30\u201310:30",
-   "do": "STOCK BUY WINDOW. Buy only if price is holding above the entry and the 15-min opening high. Place the SL order immediately."
+   "date": "2026-10-19",
+   "start": "09:30",
+   "end": "10:30",
+   "kind": "act",
+   "title": "Stock buy window",
+   "do": "Buy only if price is holding above the entry and the 15-min opening high. Place the SL order immediately.",
+   "when": "Mon 19 Oct \u00b7 09:30\u201310:30"
   },
   {
-   "when": "Mon 19 Oct \u00b7 09:45\u201311:00",
-   "do": "OPTIONS WINDOW. Spreads / ATM buys only if the index respects the support/resistance shown. Iron condor / fly only after 10:00 with the index inside the range."
+   "date": "2026-10-19",
+   "start": "09:45",
+   "end": "11:00",
+   "kind": "act",
+   "title": "Options window",
+   "do": "Spreads / ATM buys only if the index respects the support/resistance shown. Iron condor / fly only after 10:00 with the index inside the range.",
+   "when": "Mon 19 Oct \u00b7 09:45\u201311:00"
   },
   {
-   "when": "Mon 19 Oct \u00b7 after 11:30",
-   "do": "No new stock entries. If it did not trigger, skip it."
+   "date": "2026-10-19",
+   "start": "11:30",
+   "end": "14:30",
+   "kind": "manage",
+   "title": "Manage only",
+   "do": "No new stock entries. If it did not trigger, skip it. Keep stop-loss orders in place.",
+   "when": "Mon 19 Oct \u00b7 11:30\u201314:30"
   },
   {
-   "when": "Mon 19 Oct \u00b7 14:30\u201315:00",
-   "do": "Option BUYERS: exit by 15:00 if target not hit (time decay). Spreads/condors: hold only if still inside the plan."
+   "date": "2026-10-19",
+   "start": "14:30",
+   "end": "15:00",
+   "kind": "exit",
+   "title": "Option buyers exit",
+   "do": "Exit option buys by 15:00 if target not hit (time decay). Spreads/condors: hold only if still inside the plan.",
+   "when": "Mon 19 Oct \u00b7 14:30\u201315:00"
   },
   {
-   "when": "Tue 20 Oct \u00b7 09:15\u201315:15",
-   "do": "DAY 2. Book half at T1, trail SL to entry. EXIT everything still open by 15:15 (this is a 1\u20132 day setup)."
+   "date": "2026-10-19",
+   "start": "16:30",
+   "end": "17:00",
+   "kind": "review",
+   "title": "Review",
+   "do": "The engine grades today's plan. Check the Results tab: what worked, what the gap was.",
+   "when": "Mon 19 Oct \u00b7 16:30\u201317:00"
   },
   {
-   "when": "Expiry 2026-10-20",
-   "do": "Do not hold short options into the last hour of expiry day."
+   "date": "2026-10-20",
+   "start": "09:15",
+   "end": "15:15",
+   "kind": "exit",
+   "title": "Day 2: exit by 15:15",
+   "do": "Book half at T1, trail SL to entry. Exit everything still open by 15:15 (this is a 1\u20132 day setup).",
+   "when": "Tue 20 Oct \u00b7 09:15\u201315:15"
+  },
+  {
+   "date": "2026-10-20",
+   "start": "14:30",
+   "end": "15:30",
+   "kind": "exit",
+   "title": "Expiry day",
+   "do": "Do not hold short options into the last hour of expiry day.",
+   "when": "Expiry 2026-10-20"
   }
  ],
  "golden_rules": [
