@@ -55,25 +55,29 @@ def _last_weekday(y, m, wd):
 
 
 def expiry_for(index, d):
-    """Expiry of the contract the plan trades on session d (holiday shifts ignored).
+    """Expiry of the contract the plan trades on session d, shifted back over NSE holidays.
 
     NIFTY weekly: Thursday until Aug-2025, Tuesday from Sep-2025.
     BANKNIFTY monthly: last Thursday (to Feb-2024), last Wednesday (Mar-Dec 2024),
     last Thursday (Jan-Aug 2025), last Tuesday (from Sep-2025).
     """
+    from nse_calendar import shift_expiry
     if index == "NIFTY":
         wd = 1 if d >= date(2025, 9, 1) else 3
-        return d + timedelta(days=(wd - d.weekday()) % 7)
+        e = d + timedelta(days=(wd - d.weekday()) % 7)
+        while shift_expiry(e) < d:
+            e += timedelta(days=7)
+        return shift_expiry(e)
     def wd_for(x):
         if x >= date(2025, 9, 1):
             return 1
         if date(2024, 3, 1) <= x <= date(2024, 12, 31):
             return 2
         return 3
-    e = _last_weekday(d.year, d.month, wd_for(d))
+    e = shift_expiry(_last_weekday(d.year, d.month, wd_for(d)))
     if e < d:
         y, m = (d.year + 1, 1) if d.month == 12 else (d.year, d.month + 1)
-        e = _last_weekday(y, m, wd_for(date(y, m, 1)))
+        e = shift_expiry(_last_weekday(y, m, wd_for(date(y, m, 1))))
     return e
 
 

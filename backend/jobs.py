@@ -21,10 +21,8 @@ DISCLAIMER = ("Algorithmic research output based on technical rules and statisti
 
 
 def _next_weekday(d):
-    d += timedelta(days=1)
-    while d.weekday() >= 5:
-        d += timedelta(days=1)
-    return d
+    from nse_calendar import next_trading_day
+    return next_trading_day(d)
 
 
 def timeline(session, expiry):
@@ -121,8 +119,10 @@ RUNS = [("00:00", "midnight preview"), ("07:30", "final pre-market plan"), ("16:
 def next_run(now=None):
     now = now or store.now_ist()
     d = now.date()
+    from nse_calendar import is_trading_day, next_trading_day
     for _ in range(8):
-        if d.weekday() < 5:
+        # the midnight run belongs to the coming session; skip days with no session
+        if is_trading_day(d):
             for hm, name in RUNS:
                 t = datetime.combine(d, datetime.strptime(hm, "%H:%M").time(), store.now_ist().tzinfo)
                 if t > now:

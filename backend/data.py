@@ -97,15 +97,13 @@ def today_ist():
 
 
 def next_session_date(now=None):
-    """The session the pre-market bias is for: today before the close, else next weekday."""
+    """The session the plan is for: today if it is a trading day and before the close, else the next trading day."""
+    from nse_calendar import is_trading_day, next_trading_day
     now = now or datetime.now(IST)
     d = now.date()
-    if now.weekday() < 5 and now.time() < SESSION_CLOSE:
+    if is_trading_day(d) and now.time() < SESSION_CLOSE:
         return d
-    d += timedelta(days=1)
-    while d.weekday() >= 5:
-        d += timedelta(days=1)
-    return d
+    return next_trading_day(d)
 
 
 def as_date(x):

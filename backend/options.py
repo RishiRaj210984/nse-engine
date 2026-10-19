@@ -32,7 +32,8 @@ def bs_delta(S, K, T, iv, kind, r=RISK_FREE_RATE):
 
 
 def next_expiry(spec, now):
-    """Next expiry by rule. NSE moves expiry a day earlier on holidays — verify."""
+    """Next expiry by rule, moved to the previous trading day when it falls on an NSE holiday."""
+    from nse_calendar import shift_expiry
     d, wd = now.date(), spec["weekday"]
 
     def past(x):
@@ -40,7 +41,9 @@ def next_expiry(spec, now):
 
     if spec["expiry"] == "weekly":
         e = d + timedelta(days=(wd - d.weekday()) % 7)
-        return e + timedelta(days=7) if past(e) else e
+        while past(shift_expiry(e)):
+            e += timedelta(days=7)
+        return shift_expiry(e)
 
     def last_wd(y, m):
         x = date(y + (m == 12), m % 12 + 1, 1) - timedelta(days=1)
@@ -48,10 +51,10 @@ def next_expiry(spec, now):
             x -= timedelta(days=1)
         return x
 
-    e = last_wd(d.year, d.month)
+    e = shift_expiry(last_wd(d.year, d.month))
     if past(e):
         y, m = (d.year + 1, 1) if d.month == 12 else (d.year, d.month + 1)
-        e = last_wd(y, m)
+        e = shift_expiry(last_wd(y, m))
     return e
 
 
