@@ -39,9 +39,9 @@ header.top .sub{display:block;font-size:.75rem;color:var(--dim);font-weight:400}
 .iconbtn:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 main{padding:14px max(16px,env(safe-area-inset-right,0px)) calc(86px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));
   max-width:720px;margin:0 auto;display:grid;gap:14px}
-nav.tabs{position:fixed;bottom:0;left:0;right:0;z-index:5;background:var(--panel);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(6,1fr);
+nav.tabs{position:fixed;bottom:0;left:0;right:0;z-index:5;background:var(--panel);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(7,1fr);
   padding:6px max(6px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(6px,env(safe-area-inset-left,0px))}
-nav.tabs button{background:none;border:0;padding:6px 2px;border-radius:10px;font-size:.72rem;color:var(--dim);display:grid;justify-items:center;gap:2px;cursor:pointer}
+nav.tabs button{background:none;border:0;padding:6px 1px;border-radius:10px;font-size:.66rem;color:var(--dim);display:grid;justify-items:center;gap:2px;cursor:pointer}
 nav.tabs button svg{width:22px;height:22px}
 nav.tabs button[aria-selected="true"]{color:var(--accent);background:var(--panel2)}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;display:grid;gap:8px;min-width:0}
@@ -84,6 +84,7 @@ details.stock>summary{list-style:none;padding:12px 14px;cursor:pointer;display:g
 details.stock>summary::-webkit-details-marker{display:none}
 details.stock .body{padding:0 14px 14px;display:grid;gap:10px}
 label.f{display:grid;gap:4px;font-size:.78rem;color:var(--dim)}
+label.f select{background:var(--panel2);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:9px 10px;font:inherit;width:100%}
 label.f input{background:var(--panel2);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:9px 10px;font:inherit;font-family:var(--mono);width:100%}
 .stepper{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:10px;overflow:hidden}
 .stepper button{background:var(--panel2);border:0;padding:6px 12px;cursor:pointer;font-weight:700}
@@ -137,6 +138,7 @@ a{color:var(--info)}
 
 <nav class="tabs" role="tablist">
   <button role="tab" data-tab="dash" aria-selected="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>Home</button>
+  <button role="tab" data-tab="live" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>Live</button>
   <button role="tab" data-tab="today" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Today</button>
   <button role="tab" data-tab="options"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l5-6 4 3 8-9"/><path d="M3 21h18"/></svg>Options</button>
   <button role="tab" data-tab="stocks"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="3" height="10"/><rect x="10.5" y="5" width="3" height="15"/><rect x="17" y="13" width="3" height="7"/></svg>Stocks</button>
@@ -145,7 +147,7 @@ a{color:var(--info)}
 </nav>
 
 <script>
-const FILES = ['plan', 'global-bias', 'volume-breakouts', 'performance', 'review', 'meta'];
+const FILES = ['plan', 'global-bias', 'volume-breakouts', 'performance', 'review', 'meta', 'live'];
 const D = {};
 let tab = 'dash', stockFilter = 'ab', lots = {}, loadErr = null, lastLoad = 0;
 
@@ -259,6 +261,13 @@ function vDash() {
       <div class="act">${esc(step.title)}</div><div style="font-size:.9rem">${esc(step.do)}</div></section>`;
   }
 
+  const G = groups();
+  if (G.length) {
+    h += `<section class="box wide"><h3><span>My open trades</span><span class="fine">${RL.at ? 'live' : 'snapshot'}</span></h3>${G.map((legs) => {
+      const e = evalGroup(legs);
+      return `<div class="row"><strong>${esc(legs[0].label)}</strong><span><span class="n ${cls(e.pnl)}">${e.pnl != null ? inr(e.pnl) : '—'}</span> <span class="pill ${e.status === 'EXIT NOW' ? 'down' : e.status === 'BOOK PROFIT' ? 'gA' : 'gC'}">${esc(e.status)}</span></span></div>`;
+    }).join('')}<div class="fine">Open the Live tab for details and alerts.</div></section>`;
+  }
   const bb = (b && b.bias) || {};
   const movers = ((eo && eo.markets) || []).slice().sort((a, c) => Math.abs(c.move_pct) - Math.abs(a.move_pct)).slice(0, 4);
   h += `<section class="box"><h3><span>Market</span><span class="pill ${esc(p.bias)}">${esc(p.bias)}</span></h3>
@@ -320,6 +329,227 @@ function vDash() {
       <div class="fine">${c.trades} trades · ${c.win_pct}% won · about ${inr(c.per_month)}/month · deepest dip ${inr(c.max_drawdown)}. ${esc(c.note)}</div></div>`;
   });
   h += `</section>`;
+  return `<div class="dash">${h}</div>`;
+}
+
+/* ---------------- LIVE ---------------- */
+const RL = { quotes: null, chains: {}, at: 0, err: null };   // relay cache
+let lastAlert = store.get('lastAlert', {});
+const nseDate = (iso) => { const d = new Date(iso + 'T12:00:00+05:30'); return `${String(d.getDate()).padStart(2, '0')}-${d.toLocaleString('en-US', { month: 'short' })}-${d.getFullYear()}`; };
+const LOT = { NIFTY: 65, BANKNIFTY: 30 };
+const positions = () => store.get('positions', []);
+const savePositions = (p) => store.set('positions', p);
+
+async function pollRelay() {
+  const base = (store.get('relay', '') || '').replace(/\/+$/, '');
+  if (!base) return;
+  try {
+    const pos = positions();
+    const stockSyms = [...new Set(pos.filter((p) => p.kind === 'stock').map((p) => p.symbol + '.NS'))];
+    const q = await fetch(`${base}/quotes?s=${encodeURIComponent(['^NSEI', '^NSEBANK', '^INDIAVIX', ...stockSyms].join(','))}`).then((r) => r.json());
+    if (q.error) throw new Error(q.error);
+    RL.quotes = q.quotes;
+    const wanted = new Set(pos.filter((p) => p.kind === 'opt').map((p) => p.index + '|' + p.expiry));
+    (D.plan?.options || []).forEach((o) => wanted.add(o.index + '|' + o.expiry));
+    for (const k of wanted) {
+      const [sym, exp] = k.split('|');
+      const c = await fetch(`${base}/chain?symbol=${sym}&expiry=${nseDate(exp)}`).then((r) => r.json());
+      if (!c.error) RL.chains[k] = c; else RL.err = 'Option chain: ' + c.error;
+    }
+    RL.at = Date.now(); if (!RL.err?.startsWith('Option')) RL.err = null;
+  } catch (e) { RL.err = String(e.message || e); }
+  if (tab === 'live' || tab === 'dash') render();
+  checkAlerts();
+}
+
+function optPrice(sym, exp, strike, type) {
+  const c = RL.chains[sym + '|' + exp];
+  const pick = (rows) => { const r = rows?.find((x) => +x.strike === +strike); return r ? (type === 'CE' ? r.ce_ltp : r.pe_ltp) : null; };
+  let p = c ? pick(c.strikes) : null;
+  if (p) return { price: +p, src: 'live', at: RL.at };
+  const L = D.live?.chains?.[sym];
+  if (L && L.expiry === nseDate(exp)) { p = pick(L.strikes); if (p) return { price: +p, src: 'snapshot', at: new Date(D.live.updated).getTime() }; }
+  return null;
+}
+function stockPrice(sym) {
+  const q = RL.quotes?.[sym + '.NS'];
+  if (q) return { price: q.last, src: 'live', at: RL.at };
+  const s = D.live?.stocks?.find((x) => x.symbol === sym);
+  if (s) return { price: s.last, src: 'snapshot', at: new Date(D.live.updated).getTime() };
+  return null;
+}
+function idxQuote(key, tick) {
+  const q = RL.quotes?.[tick];
+  if (q) return { ...q, src: 'live' };
+  const s = D.live?.indices?.[key];
+  return s ? { ...s, src: 'snapshot' } : null;
+}
+
+// One trade = one group of legs. Exit rules depend on whether the group is a credit or a debit.
+function evalGroup(legs) {
+  let now = 0, entry = 0, units = 0, src = 'live', at = Infinity, missing = false;
+  legs.forEach((l) => {
+    const pr = l.kind === 'stock' ? stockPrice(l.symbol) : optPrice(l.index, l.expiry, l.strike, l.type);
+    if (!pr) { missing = true; return; }
+    const sign = l.side === 'BUY' ? 1 : -1;
+    now += sign * pr.price * l.qty; entry += sign * l.entry * l.qty; units = l.qty;
+    if (pr.src !== 'live') src = 'snapshot';
+    at = Math.min(at, pr.at);
+  });
+  if (missing) return { status: 'NO PRICE', note: 'No live price for this strike yet. Add a relay, or wait for the next snapshot.' };
+  const id = legs[0].group, peaks = store.get('peaks', {});
+  const pnl = now - entry;
+  const credit = entry < 0;
+  const basis = Math.abs(entry);
+  const pk = Math.max(peaks[id] ?? pnl, pnl); peaks[id] = pk; store.set('peaks', peaks);
+  const pct = basis ? (100 * pnl) / basis : 0, pkPct = basis ? (100 * pk) / basis : 0;
+  const trail = legs[0].trail ?? 25, hm = ist().hm;
+  let status = 'HOLD', note = '', lock = null;
+  if (credit) {                                   // sold premium: keep 55% of credit, stop at loss = 1x credit
+    if (pnl >= 0.55 * basis) { status = 'BOOK PROFIT'; note = '55% of the credit is in hand.'; }
+    else if (pnl <= -basis) { status = 'EXIT NOW'; note = 'Loss has reached 1× the credit.'; }
+    else note = `Target +${inr(0.55 * basis)} · stop −${inr(basis)}`;
+  } else if (legs[0].kind === 'stock') {
+    const l = legs[0], px = now / l.qty;
+    let stop = l.stop ?? l.entry * 0.98;
+    if (l.t1 && px >= l.t1) stop = Math.max(stop, l.entry);
+    lock = stop;
+    if (px <= stop) { status = 'EXIT NOW'; note = `Price ${num(px)} is at or below the stop ${num(stop)}.`; }
+    else if (l.t2 && px >= l.t2) { status = 'BOOK PROFIT'; note = 'Target 2 reached.'; }
+    else if (l.t1 && px >= l.t1) { status = 'TRAIL'; note = 'T1 reached: book half, stop moved to entry.'; }
+    else note = `Stop ${num(stop)}${l.t1 ? ' · T1 ' + num(l.t1) : ''}`;
+  } else {                                        // bought options: stop -30%, breakeven after +20%, trail after +40%
+    let stopPct = -30;
+    if (pkPct >= 20) stopPct = 0;
+    if (pkPct >= 40) stopPct = Math.max(0, pkPct - trail);
+    lock = stopPct;
+    if (pct <= stopPct) { status = 'EXIT NOW'; note = stopPct > 0 ? `Gave back from the peak (+${pkPct.toFixed(0)}%). Lock +${stopPct.toFixed(0)}% now.` : stopPct === 0 ? 'Back to cost after being up 20%: exit flat.' : 'Down 30%: stop-loss.'; }
+    else if (pct >= 60) { status = 'BOOK PROFIT'; note = 'Up 60%: book at least half, trail the rest.'; }
+    else if (hm >= '15:00') { status = 'EXIT BY 15:15'; note = 'Bought options lose value overnight (time decay).'; }
+    else note = `Stop at ${stopPct >= 0 ? '+' : ''}${stopPct.toFixed(0)}% · peak +${pkPct.toFixed(0)}%`;
+  }
+  return { status, note, pnl, pct, peak: pk, src, at, lock };
+}
+function groups() {
+  const g = {};
+  positions().forEach((p) => { (g[p.group] = g[p.group] || []).push(p); });
+  return Object.values(g);
+}
+function checkAlerts() {
+  groups().forEach((legs) => {
+    const e = evalGroup(legs), id = legs[0].group;
+    if (['EXIT NOW', 'BOOK PROFIT', 'EXIT BY 15:15'].includes(e.status) && lastAlert[id] !== e.status) {
+      lastAlert[id] = e.status; store.set('lastAlert', lastAlert);
+      try { navigator.vibrate && navigator.vibrate([300, 150, 300, 150, 600]); } catch {}
+      if (store.get('sound', false)) { try { const a = new (window.AudioContext || window.webkitAudioContext)(); const o = a.createOscillator(); o.frequency.value = e.status === 'EXIT NOW' ? 440 : 880; o.connect(a.destination); o.start(); setTimeout(() => { o.stop(); a.close(); }, 600); } catch {} }
+      flash = `${legs[0].label}: ${e.status}. ${e.note}`;
+    }
+    if (e.status === 'HOLD' || e.status === 'TRAIL') { if (lastAlert[id]) { delete lastAlert[id]; store.set('lastAlert', lastAlert); } }
+  });
+}
+let flash = null;
+
+function addPlanTrade(index) {
+  const o = (D['global-bias']?.options || {})[index]; if (!o) return;
+  const s = o.strategies[0], lot = o.lot_size, lots = 1;
+  const group = 'g' + Date.now();
+  const legs = s.legs.map((l) => {
+    const pr = optPrice(index, o.expiry, l.strike, l.type);
+    return { group, kind: 'opt', index, expiry: o.expiry, strike: l.strike, type: l.type, side: l.action,
+      entry: pr ? pr.price : l.est_premium, qty: lot * lots, label: `${index} ${s.name}`, trail: 25 };
+  });
+  savePositions([...positions(), ...legs]); render();
+}
+function addManual(f) {
+  const group = 'g' + Date.now(), kind = f.kind;
+  const lotSize = LOT[f.index] || 1;
+  const leg = kind === 'stock'
+    ? { group, kind, symbol: f.symbol.toUpperCase(), side: 'BUY', entry: +f.entry, qty: +f.qty, stop: f.stop ? +f.stop : null, t1: f.t1 ? +f.t1 : null, t2: f.t2 ? +f.t2 : null, label: f.symbol.toUpperCase(), trail: 25 }
+    : { group, kind, index: f.index, expiry: f.expiry, strike: +f.strike, type: f.type, side: f.side, entry: +f.entry, qty: +f.lots * lotSize,
+        label: `${f.index} ${f.strike} ${f.type} ${f.side === 'BUY' ? 'bought' : 'sold'}`, trail: +f.trail || 25 };
+  savePositions([...positions(), leg]); render();
+}
+
+function freshness() {
+  const relay = store.get('relay', '');
+  if (relay && RL.at) {
+    const s = Math.round((Date.now() - RL.at) / 1000);
+    return `<div class="dec TRADE"><span class="tag">LIVE</span><div>Real-time via your relay · updated ${s}s ago${RL.err ? ' · <span class="warn">' + esc(RL.err) + '</span>' : ''}</div></div>`;
+  }
+  const u = D.live?.updated;
+  return `<div class="dec CAUTION"><span class="tag">SNAPSHOT</span><div>From GitHub, ${u ? ago(u) : 'not yet today'}. Updates about every 10–20 min in market hours, so this is not real-time. ${relay ? (RL.err ? '<span class="warn">Relay error: ' + esc(RL.err) + '</span>' : 'Connecting to relay…') : 'Add a relay below for prices every 20 seconds.'}</div></div>`;
+}
+
+function vLive() {
+  const L = D.live || {}, p = D.plan || {};
+  let h = '';
+  if (flash) h += `<div class="banner err" role="alert"><strong>${esc(flash)}</strong> <button class="iconbtn" data-act="dismiss">OK</button></div>`;
+  h += `<section class="box wide">${freshness()}</section>`;
+  const n = idxQuote('NIFTY', '^NSEI'), b = idxQuote('BANKNIFTY', '^NSEBANK'), v = idxQuote('INDIAVIX', '^INDIAVIX');
+  h += `<section class="box wide"><div class="grid2" style="grid-template-columns:repeat(3,1fr)">
+    ${[['Nifty', n], ['Bank Nifty', b], ['India VIX', v]].map(([k, q]) => `<div class="stat"><b>${k}</b><span class="n">${q ? num(q.last) : '—'}</span> <span class="n ${cls(q?.chg_pct)}" style="font-size:.8rem">${q ? sgn(q.chg_pct) : ''}</span></div>`).join('')}</div></section>`;
+
+  // my trades
+  const G = groups();
+  h += `<section class="box wide"><h3><span>My trades</span><span>${G.length} open</span></h3>`;
+  if (!G.length) h += `<div class="dim">No trades added. When you take a trade, tap the button for it below (or add it by hand) and the app tracks it with stop-loss and profit-lock signals.</div>`;
+  G.forEach((legs) => {
+    const e = evalGroup(legs), cls2 = e.status === 'EXIT NOW' ? 'SKIP' : e.status === 'BOOK PROFIT' ? 'TRADE' : 'CAUTION';
+    h += `<div class="card" style="padding:10px"><div class="row"><strong>${esc(legs[0].label)}</strong><span class="dec ${cls2}" style="padding:0;background:none"><span class="tag">${esc(e.status)}</span></span></div>
+      ${e.pnl != null ? `<div class="row"><span>P&amp;L</span><span class="n ${cls(e.pnl)}" style="font-size:1.2rem;font-weight:700">${inr(e.pnl)} <span style="font-size:.85rem">(${sgn(e.pct, 1)})</span></span></div>` : ''}
+      <div style="font-size:.88rem">${esc(e.note)}</div>
+      <div class="fine">${legs.map((l) => l.kind === 'stock' ? `${l.qty} × ${esc(l.symbol)} @ ${num(l.entry)}` : `${l.side} ${l.strike} ${l.type} @ ${num(l.entry)} × ${l.qty}`).join(' · ')}${e.src ? ' · prices ' + e.src : ''}</div>
+      <div class="row" style="margin-top:4px"><span></span><button class="iconbtn" data-act="close" data-g="${esc(legs[0].group)}">Remove (closed)</button></div></div>`;
+  });
+  (p.options || []).filter((o) => o.decision !== 'SKIP').forEach((o) => {
+    h += `<button class="primary" data-act="addplan" data-ix="${esc(o.index)}" style="margin-top:4px">I took today's ${esc(o.index)} ${esc(o.strategy)} (1 lot, at live prices)</button>`;
+  });
+  h += `<details><summary class="fine" style="cursor:pointer;margin-top:6px">Add a trade by hand ▾</summary>
+    <form id="addform" class="grid2" style="margin-top:8px">
+      <label class="f">Type<select id="f-kind" name="kind"><option value="opt">Index option</option><option value="stock">Stock</option></select></label>
+      <label class="f">Index<select id="f-index" name="index"><option>NIFTY</option><option>BANKNIFTY</option></select></label>
+      <label class="f">Call / Put<select id="f-type" name="type"><option>CE</option><option>PE</option></select></label>
+      <label class="f">Bought / Sold<select id="f-side" name="side"><option value="BUY">Bought</option><option value="SELL">Sold</option></select></label>
+      <label class="f">Strike<input id="f-strike" name="strike" type="number" inputmode="numeric"></label>
+      <label class="f">Expiry<input id="f-expiry" name="expiry" type="date" value="${esc((p.options || [])[0]?.expiry || '')}"></label>
+      <label class="f">Entry price ₹<input id="f-entry" name="entry" type="number" step="0.05" inputmode="decimal" required></label>
+      <label class="f">Lots<input id="f-lots" name="lots" type="number" value="1" min="1"></label>
+      <label class="f">Stock symbol<input id="f-symbol" name="symbol" placeholder="e.g. RELIANCE"></label>
+      <label class="f">Shares<input id="f-qty" name="qty" type="number" value="1" min="1"></label>
+      <label class="f">Stock stop ₹<input id="f-stop" name="stop" type="number" step="0.05"></label>
+      <label class="f">Stock T1 / T2 ₹<input id="f-t1" name="t1" type="number" step="0.05" placeholder="T1"></label>
+      <label class="f">Trail from peak %<input id="f-trail" name="trail" type="number" value="25"></label>
+      <button class="primary" type="submit" style="grid-column:1/-1">Track this trade</button>
+    </form>
+    <div class="fine">Bought options: stop at −30%, moved to cost once up 20%, then trails ${'25%'} below the peak once up 40%; book at +60%; exit by 15:15. Sold options and condors: book at 55% of the credit, stop when the loss equals the credit. These are risk rules, not predictions.</div></details>`;
+  h += `</section>`;
+
+  // plan status from the snapshot
+  if ((L.plan || []).length) {
+    h += `<section class="box wide"><h3><span>Today's plan, live</span></h3>${L.plan.map((x) => `<div><div class="row"><strong>${esc(x.index)} ${esc(x.strategy)}</strong><span class="pill ${x.status === 'STOP' ? 'down' : x.status === 'TARGET' ? 'gA' : 'gC'}">${esc(x.status)}</span></div>
+      ${x.pnl_per_lot != null ? `<div class="row"><span>P&amp;L per lot</span><span class="n ${cls(x.pnl_per_lot)}">${inr(x.pnl_per_lot)}</span></div>` : ''}
+      <div class="fine">${esc(x.hint)} · ${x.legs.map((l) => `${l.action} ${l.strike}${l.type} ₹${l.live}`).join(' · ')} (${esc(x.price_source)})</div></div>`).join('')}</section>`;
+  }
+  // option chain context
+  Object.entries(L.chains || {}).forEach(([k, c]) => {
+    h += `<section class="box"><h3><span>${esc(k)} option chain · ${esc(c.expiry)}</span></h3>
+      <dl class="kv"><dt>Call writers</dt><dd class="n">${c.call_walls.map((w) => w.strike.toLocaleString('en-IN')).join(' · ')}</dd>
+        <dt>Put writers</dt><dd class="n">${c.put_walls.map((w) => w.strike.toLocaleString('en-IN')).join(' · ')}</dd>
+        <dt>PCR / max pain</dt><dd class="n">${c.pcr_oi ?? '—'} · ${c.max_pain.toLocaleString('en-IN')}</dd>
+        <dt>Implied move</dt><dd class="n">±${num(c.straddle, 0)} pts (${c.implied_move_pct}%) to expiry</dd></dl>
+      <div class="fine">${esc(c.note || '')}</div></section>`;
+  });
+  // stocks
+  if ((L.stocks || []).length) {
+    h += `<section class="box wide"><h3><span>Stock ideas, live</span></h3><div class="tbl"><table><thead><tr><th>Stock</th><th>Grade</th><th class="r">Last</th><th>Status</th></tr></thead><tbody>
+      ${L.stocks.map((s) => `<tr><td><strong>${esc(s.symbol)}</strong></td><td>${esc(s.grade)}</td><td class="r n ${cls(s.chg_pct)}">${num(s.last)}</td><td>${esc(s.status)}</td></tr>`).join('')}</tbody></table></div></section>`;
+  }
+  // settings
+  h += `<section class="box wide"><h3><span>Live prices relay (optional)</span></h3>
+    <div class="fine">Without a relay, prices refresh about every 10–20 minutes from GitHub. With your free relay (see README → "Real-time relay"), they refresh every 20 seconds while this screen is open.</div>
+    <label class="f">Relay address<input id="relay-url" data-relay="1" placeholder="https://nse-relay.YOUR-NAME.workers.dev" value="${esc(store.get('relay', ''))}"></label>
+    <label class="row" style="justify-content:flex-start;gap:8px"><input type="checkbox" id="sound-on" data-sound="1" ${store.get('sound', false) ? 'checked' : ''}> Sound with alerts (vibration is always on)</label>
+    <div class="fine">Alerts work while the app is open on screen. For alerts with the phone locked, also set price alerts in your broker app.</div></section>`;
   return `<div class="dash">${h}</div>`;
 }
 
@@ -552,13 +782,14 @@ function vLearning() {
 
 /* ---------------- SHELL ---------------- */
 function render() {
+  if (document.activeElement && document.activeElement.closest && document.activeElement.closest('#addform')) return;
   const [ms, live] = marketState();
   $('#mkt').className = 'chip' + (live ? ' live' : '');
   $('#mkt').lastElementChild.textContent = ms;
   const upd = D.meta?.updated || D.plan?.generated_at;
   const nx = D.meta?.next_run;
   $('#updated').textContent = upd ? `Updated ${ago(upd)}${D.meta?.task ? ' · ' + D.meta.task : ''}${nx ? ' · next ' + new Date(nx.at).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata' }) : ''}` : 'Loading…';
-  const views = { dash: vDash, today: vToday, options: vOptions, stocks: vStocks, results: vResults, learning: vLearning };
+  const views = { dash: vDash, live: vLive, today: vToday, options: vOptions, stocks: vStocks, results: vResults, learning: vLearning };
   let h = loadErr ? `<div class="banner err">${esc(loadErr)}</div>` : '';
   h += D.plan ? views[tab]() : '<section class="card">Loading the latest plan…</section>';
   h += `<p class="fine">${esc(D.plan?.disclaimer || '')}</p>`;
@@ -572,11 +803,24 @@ document.querySelectorAll('nav.tabs button').forEach((b) => b.addEventListener('
   document.querySelectorAll('nav.tabs button').forEach((x) => x.setAttribute('aria-selected', x === b));
   store.set('tab2', tab); render(); window.scrollTo(0, 0);
 }));
+$('#view').addEventListener('submit', (e) => {
+  if (e.target.id !== 'addform') return;
+  e.preventDefault();
+  addManual(Object.fromEntries(new FormData(e.target).entries()));
+});
 $('#view').addEventListener('click', (e) => {
+  const a = e.target.closest('[data-act]');
+  if (a) {
+    if (a.dataset.act === 'addplan') addPlanTrade(a.dataset.ix);
+    if (a.dataset.act === 'close') { savePositions(positions().filter((p) => p.group !== a.dataset.g)); render(); }
+    if (a.dataset.act === 'dismiss') { flash = null; render(); }
+  }
   const f = e.target.closest('[data-filter]'); if (f) { stockFilter = f.dataset.filter; render(); }
   const l = e.target.closest('[data-lot]'); if (l) { const k = l.dataset.lot; lots[k] = Math.max(1, (lots[k] || 1) + Number(l.dataset.d)); render(); }
 });
 $('#view').addEventListener('change', (e) => {
+  if (e.target.dataset.relay) { store.set('relay', e.target.value.trim()); RL.at = 0; pollRelay(); }
+  if (e.target.dataset.sound) store.set('sound', e.target.checked);
   if (e.target.dataset.step != null && D.plan) {
     const k = 'done:' + D.plan.session, d = store.get(k, {}); d[e.target.dataset.step] = e.target.checked; store.set(k, d); render();
   }
@@ -595,6 +839,12 @@ if (saved) document.querySelector(`nav.tabs button[data-tab="${saved}"]`)?.click
 if (!store.get('accepted', false)) $('#gate').hidden = false;
 load();
 setInterval(() => { if (!document.hidden) load(); }, 5 * 60 * 1000);   // data refresh
+setInterval(async () => {                                                  // live snapshot from GitHub
+  if (document.hidden) return;
+  try { const j = await fetch(`live.json?t=${Date.now()}`, { cache: 'no-store' }).then((r) => r.ok ? r.json() : null); if (j) { D.live = j; checkAlerts(); if (tab === 'live' || tab === 'dash') render(); } } catch {}
+}, 60 * 1000);
+setInterval(() => { if (!document.hidden && store.get('relay', '')) pollRelay(); }, 20 * 1000);   // real-time relay
+pollRelay();
 setInterval(() => { if (!document.hidden && (tab === 'today' || tab === 'dash')) render(); }, 30 * 1000);  // clock / current step
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
 </script>

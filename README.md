@@ -135,3 +135,28 @@ free feed; these inputs drive it.
 | 16:30 | Scan, grade, re-learn (rules, options lab, review), publish the next session. |
 
 GitHub can start scheduled jobs 5–30 minutes late.
+
+## Live tab and real-time relay (added 19 Oct 2026)
+**Without any setup**, a GitHub job publishes `docs/live.json` about every 10–20 minutes in market hours:
+Nifty / BankNifty / VIX, real NSE option premiums and open interest for the plan's expiry, today's
+plan P&L per lot, and whether stock ideas have triggered. The **Live** tab also tracks *your* trades
+(stored only on your phone) with stop-loss and profit-lock signals, vibration and an on-screen alert.
+
+**For prices every 20 seconds**, deploy the free relay once (about 10 minutes):
+1. Create a free account at **dash.cloudflare.com** (sign-up is yours to do).
+2. **Workers & Pages → Create → Create Worker**, name it `nse-relay`, **Deploy**.
+3. **Edit code**, replace everything with the contents of `relay/worker.js`, **Deploy**.
+4. Copy the address (like `https://nse-relay.YOUR-NAME.workers.dev`) into the app: **Live → Live prices relay**.
+
+If NSE blocks Cloudflare's servers, the relay still gives live index and stock prices, and option
+premiums fall back to the latest GitHub snapshot. The badge at the top of the Live tab always says
+whether prices are LIVE or a SNAPSHOT and how old they are.
+
+**Exit rules used by the tracker (risk rules, not predictions):**
+- Bought options: stop at −30%; once up 20% the stop moves to cost; once up 40% it trails 25% below
+  the peak; book at least half at +60%; exit by 15:15 (time decay).
+- Sold options / condors: book at 55% of the credit; exit when the loss equals the credit.
+- Stocks: your stop; after T1 the stop moves to entry; book at T2.
+
+**Option-chain study (200 NSE sessions, Dec 2025 – Oct 2026):** OI "walls", put-call ratio and max
+pain did **not** predict moves better than chance, so the app shows them as context only.

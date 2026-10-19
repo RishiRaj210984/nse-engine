@@ -7,10 +7,11 @@ on:
     - cron: "30 18 * * 0-4"   # 00:00 IST  overnight PREVIEW (Europe closed, US mid-session)
     - cron: "0 2 * * 1-5"     # 07:30 IST  FINAL pre-market plan (US close, futures, Asia open)
     - cron: "0 11 * * 1-5"    # 16:30 IST  scan, grade results, retrain, publish
+    - cron: "*/10 3-10 * * 1-5" # every 10 min 08:30-16:20 IST: live snapshot (skips outside 09:00-15:45)
   workflow_dispatch:
     inputs:
       task:
-        description: "bootstrap | premarket | postclose | learn | publish"
+        description: "bootstrap | premarket | postclose | learn | publish | live"
         default: "publish"
 
 permissions:
@@ -38,6 +39,8 @@ jobs:
             TASK="${{ inputs.task }}"
           elif [ "${{ github.event.schedule }}" = "0 11 * * 1-5" ]; then
             TASK=postclose
+          elif [ "${{ github.event.schedule }}" = "*/10 3-10 * * 1-5" ]; then
+            TASK=live
           else
             TASK=premarket
           fi

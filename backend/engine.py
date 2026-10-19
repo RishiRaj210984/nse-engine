@@ -28,6 +28,9 @@ def main(task):
         out = jobs.postclose()
     elif task == "learn":
         out = jobs.learn()
+    elif task == "live":
+        import live
+        out = live.run()
     elif task == "publish":
         jobs.publish_all()
         out = {"published": True}
