@@ -1,7 +1,7 @@
 """Daily jobs. Run by GitHub Actions on a cron (see .github/workflows/daily-engine.yml)
 or by the FastAPI scheduler if you host the API yourself."""
 import logging
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
 
 import os
 
@@ -115,7 +115,23 @@ def build_plan(bias, scan):
     }
 
 
-def publish_all(bias=None, scan=None):
+RUNS = [("00:00", "midnight preview"), ("07:30", "final pre-market plan"), ("16:30", "after-close learning")]
+
+
+def next_run(now=None):
+    now = now or store.now_ist()
+    d = now.date()
+    for _ in range(8):
+        if d.weekday() < 5:
+            for hm, name in RUNS:
+                t = datetime.combine(d, datetime.strptime(hm, "%H:%M").time(), store.now_ist().tzinfo)
+                if t > now:
+                    return {"at": t.isoformat(), "name": name}
+        d += timedelta(days=1)
+    return None
+
+
+def publish_all(bias=None, scan=None, task="manual"):
     bias = bias or macro.global_bias()
     scan = scan or screener.scan()
     bias = {**bias, "disclaimer": DISCLAIMER}
@@ -127,7 +143,8 @@ def publish_all(bias=None, scan=None):
     if store._read(os.path.join(store.PUBLIC_DIR, "review.json"), None) is None:
         store.publish("review.json", {"latest": None, "history": [], "totals": {}})
     plan = build_plan(bias, scan)
-    store.publish("meta.json", {"updated": store.now_ist().isoformat(), "session": plan["session"]})
+    store.publish("meta.json", {"updated": store.now_ist().isoformat(), "session": plan["session"], "task": task,
+                                "stage": plan.get("stage"), "next_run": next_run()})
     # Freeze the plan as it stood before its session opened; the evening review grades exactly this.
     now = store.now_ist()
     sess = date.fromisoformat(plan["session"])
@@ -143,7 +160,7 @@ def premarket():
     if stage == "final":  # only the 07:30 run is graded; the midnight run is a preview
         learning.log_bias(bias)
         learning.journal_index_views(bias)
-    publish_all(bias=bias)
+    publish_all(bias=bias, task="final pre-market plan" if stage == "final" else "midnight preview")
     return {"bias": bias["bias"]["label"], "session": bias["target_session"], "stage": stage,
             "source": bias["bias"].get("source")}
 
@@ -173,7 +190,7 @@ def postclose():
         out["options_lab"] = f"failed: {exc}"
     store._cache.clear()  # new params -> fresh scan & bias
     bias = macro.global_bias(force=True)
-    publish_all(bias=bias, scan=screener.scan())
+    publish_all(bias=bias, scan=screener.scan(), task="after-close learning")
     return out
 
 

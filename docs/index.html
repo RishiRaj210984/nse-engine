@@ -39,7 +39,7 @@ header.top .sub{display:block;font-size:.75rem;color:var(--dim);font-weight:400}
 .iconbtn:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 main{padding:14px max(16px,env(safe-area-inset-right,0px)) calc(86px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));
   max-width:720px;margin:0 auto;display:grid;gap:14px}
-nav.tabs{position:fixed;bottom:0;left:0;right:0;z-index:5;background:var(--panel);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);
+nav.tabs{position:fixed;bottom:0;left:0;right:0;z-index:5;background:var(--panel);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(6,1fr);
   padding:6px max(6px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(6px,env(safe-area-inset-left,0px))}
 nav.tabs button{background:none;border:0;padding:6px 2px;border-radius:10px;font-size:.72rem;color:var(--dim);display:grid;justify-items:center;gap:2px;cursor:pointer}
 nav.tabs button svg{width:22px;height:22px}
@@ -102,6 +102,17 @@ a{color:var(--info)}
 .gate{position:fixed;inset:0;z-index:20;background:var(--bg);overflow:auto;padding:calc(env(safe-area-inset-top,0px) + 24px) max(20px,env(safe-area-inset-right,0px)) 24px max(20px,env(safe-area-inset-left,0px))}
 .gate .inner{max-width:560px;margin:0 auto;display:grid;gap:12px}
 .primary{background:var(--accent);color:#04120d;border:0;border-radius:12px;padding:14px;font-weight:750;cursor:pointer}
+.dash{display:grid;gap:12px;grid-template-columns:1fr}
+@media (min-width:640px){.dash{grid-template-columns:1fr 1fr}.dash .wide{grid-column:1/-1}}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;display:grid;gap:8px;align-content:start;min-width:0}
+.box h3{margin:0;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);display:flex;justify-content:space-between;gap:8px;align-items:center}
+.box .act{font-size:1.15rem;font-weight:750;line-height:1.25}
+.box.TRADE{border-color:color-mix(in srgb,var(--up) 55%,var(--line))}
+.box.SKIP{border-color:color-mix(in srgb,var(--down) 40%,var(--line))}
+.kv{display:grid;grid-template-columns:max-content 1fr;gap:3px 12px;font-size:.88rem;margin:0}
+.kv dt{color:var(--dim)}.kv dd{margin:0;min-width:0}
+.spark{width:100%;height:64px;display:block}
+.pnlrow{display:grid;grid-template-columns:5.5rem 1fr 5.5rem;gap:8px;align-items:center;font-size:.85rem}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
@@ -125,7 +136,8 @@ a{color:var(--info)}
 <main id="view" aria-live="polite"></main>
 
 <nav class="tabs" role="tablist">
-  <button role="tab" data-tab="today" aria-selected="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Today</button>
+  <button role="tab" data-tab="dash" aria-selected="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>Home</button>
+  <button role="tab" data-tab="today" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Today</button>
   <button role="tab" data-tab="options"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l5-6 4 3 8-9"/><path d="M3 21h18"/></svg>Options</button>
   <button role="tab" data-tab="stocks"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="3" height="10"/><rect x="10.5" y="5" width="3" height="15"/><rect x="17" y="13" width="3" height="7"/></svg>Stocks</button>
   <button role="tab" data-tab="results"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg>Results</button>
@@ -135,7 +147,7 @@ a{color:var(--info)}
 <script>
 const FILES = ['plan', 'global-bias', 'volume-breakouts', 'performance', 'review', 'meta'];
 const D = {};
-let tab = 'today', stockFilter = 'ab', lots = {}, loadErr = null, lastLoad = 0;
+let tab = 'dash', stockFilter = 'ab', lots = {}, loadErr = null, lastLoad = 0;
 
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -193,6 +205,122 @@ function eventsBlock(evs, session) {
   return `<section class="card"><div class="eyebrow">Results calendar (Nifty heavyweights)</div>${evs.map((e) =>
     `<div class="ev"><span><strong>${esc(e.name)}</strong> <span class="dim">${esc(e.when)}</span></span><span class="${e.affects === session ? 'warn' : 'dim'}">${e.affects === session ? 'affects today' : 'moves market ' + esc(e.affects.slice(5))}</span></div>`).join('')}
     <div class="fine">The session right after a heavyweight's results can be wider than normal. Combined with ≤1 day to expiry, condors broke 60% of the time.</div></section>`;
+}
+
+/* ---------------- DASHBOARD ---------------- */
+function spark(points) {
+  if (!points || points.length < 2) return '';
+  const W = 300, H = 64, ys = points.map((p) => p.cum), lo = Math.min(0, ...ys), hi = Math.max(0, ...ys), r = hi - lo || 1;
+  const X = (i) => (i / (points.length - 1)) * W, Y = (v) => H - 4 - ((v - lo) / r) * (H - 8);
+  const d = points.map((p, i) => `${i ? 'L' : 'M'}${X(i).toFixed(1)},${Y(p.cum).toFixed(1)}`).join('');
+  const end = ys[ys.length - 1], col = end >= 0 ? 'up' : 'down';
+  return `<svg class="spark" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="Cumulative profit and loss">
+    <line x1="0" x2="${W}" y1="${Y(0)}" y2="${Y(0)}" stroke="var(--line)" stroke-dasharray="3 3"/>
+    <path d="${d}" fill="none" stroke="var(--${col})" stroke-width="2" vector-effect="non-scaling-stroke"/>
+    <circle cx="${X(points.length - 1)}" cy="${Y(end)}" r="3" fill="var(--${col})"/></svg>`;
+}
+function optBox(o, full) {
+  if (!o) return '';
+  const st = o.setup_stats;
+  const tagTxt = o.decision === 'SKIP' ? 'NO TRADE' : o.decision;
+  const head = `<h3><span>${esc(o.index)} options</span><span class="dec ${esc(o.decision)}" style="padding:0;background:none"><span class="tag">${esc(tagTxt)}</span></span></h3>`;
+  if (o.decision === 'SKIP') {
+    return `<section class="box SKIP">${head}<div class="act">Do nothing in ${esc(o.index)} options today.</div><div class="fine">${esc(o.decision_reason)}</div></section>`;
+  }
+  const s = (full && full.strategies || [])[0];
+  const legs = s ? s.legs.map((l) => `<span class="leg ${l.action}">${l.action} ${l.strike} ${l.type}</span>`).join('') : `<span class="n info">${esc(o.legs)}</span>`;
+  return `<section class="box ${esc(o.decision)}">${head}
+    <div class="act">${esc(o.strategy)} · expiry ${esc(o.expiry.slice(5))}</div>
+    <div class="legs">${legs}</div>
+    <dl class="kv"><dt>Enter</dt><dd><strong>${esc(o.enter_at)}</strong> · ${esc(o.entry)}</dd>
+      <dt>Target</dt><dd class="up">${esc(o.target)}</dd>
+      <dt>Stop</dt><dd class="down">${esc(o.stop_loss)}</dd>
+      <dt>Per lot</dt><dd class="n">risk <span class="down">${inr(o.max_loss)}</span> · reward <span class="up">${o.max_reward == null ? 'open' : inr(o.max_reward)}</span> · lot ${o.lot_size}</dd></dl>
+    ${st ? `<div class="fine">Past record of this setup: ${st.win_pct}% won over ${st.trades} trades · avg ${inr(st.avg_pnl)} · worst ${inr(st.worst)} per lot</div>` : ''}
+    ${o.decision === 'CAUTION' ? `<div class="warn" style="font-size:.85rem">${esc(o.decision_reason)}</div>` : ''}</section>`;
+}
+function fmtIst(iso) {
+  return new Date(iso).toLocaleString('en-IN', { weekday: 'short', hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata' });
+}
+function vDash() {
+  const p = D.plan, b = D['global-bias'], v = D['volume-breakouts'], r = D.review, perf = D.performance, m = D.meta || {};
+  if (!p) return '';
+  const eo = p.expected_open, t = ist();
+  const sess = new Date(p.session + 'T12:00:00+05:30').toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'short', timeZone: 'Asia/Kolkata' });
+  const nx = m.next_run;
+  let h = `<section class="box wide"><h3><span>Decisions for ${esc(sess)}</span><span class="pill ${p.stage === 'final' ? 'gA' : 'gB'}">${p.stage === 'final' ? 'FINAL' : 'PREVIEW'}</span></h3>
+    <div class="fine">Built ${esc(fmtIst(m.updated || p.generated_at))} IST${m.task ? ' by the ' + esc(m.task) + ' run' : ''}${nx ? ' · next: ' + esc(nx.name) + ' at ' + esc(fmtIst(nx.at)) : ''}</div></section>`;
+
+  const tl = p.timeline || [];
+  const cs = currentStep(tl);
+  const step = cs.active >= 0 ? tl[cs.active] : cs.next >= 0 ? tl[cs.next] : null;
+  if (step) {
+    h += `<section class="box wide" style="border-color:var(--accent)"><h3><span>${cs.active >= 0 ? 'Do now · ' + esc(t.hm) : 'Next · ' + countdown(step, t)}</span><span class="when">${esc(step.when)}</span></h3>
+      <div class="act">${esc(step.title)}</div><div style="font-size:.9rem">${esc(step.do)}</div></section>`;
+  }
+
+  const bb = (b && b.bias) || {};
+  const movers = ((eo && eo.markets) || []).slice().sort((a, c) => Math.abs(c.move_pct) - Math.abs(a.move_pct)).slice(0, 4);
+  h += `<section class="box"><h3><span>Market</span><span class="pill ${esc(p.bias)}">${esc(p.bias)}</span></h3>
+    <div class="act">${esc(p.headline)}</div>
+    <dl class="kv"><dt>Expected open</dt><dd class="n ${cls(eo && eo.gap_pct)}">${eo ? sgn(eo.gap_pct) + ' <span class="fine">±' + (eo.error_pct ?? '—') + '%</span>' : '—'}</dd>
+      <dt>Full day</dt><dd class="n ${cls(eo && eo.day_pct)}">${eo ? sgn(eo.day_pct) : '—'}</dd>
+      <dt>India VIX</dt><dd class="n">${num(bb.india_vix)}</dd>
+      <dt>Track record</dt><dd>${p.bias_track_record_pct ?? '—'}% of direction calls right</dd></dl>
+    ${movers.length ? `<div class="fine">Overnight: ${movers.map((x) => `${esc(x.name)} <span class="${cls(x.move_pct)}">${sgn(x.move_pct)}</span>`).join(' · ')}</div>` : ''}
+    ${eo ? `<div style="font-size:.88rem">${esc(eo.tip)}</div>` : ''}</section>`;
+
+  const picks = p.stocks || [];
+  const cap = store.get('capital', 10000), risk = store.get('risk', 1);
+  h += `<section class="box ${picks.length ? 'TRADE' : 'SKIP'}"><h3><span>Shares (1–2 days)</span><span class="dec ${picks.length ? 'TRADE' : 'SKIP'}" style="padding:0;background:none"><span class="tag">${picks.length ? picks.length + ' TO BUY' : 'NO BUYS'}</span></span></h3>`;
+  if (picks.length) {
+    picks.forEach((s) => {
+      const z = sizer(s);
+      h += `<div><div class="row"><strong>${esc(s.symbol)} <span class="pill g${s.grade}">${s.grade}</span></strong><span class="n">${z.q} sh · ${inr(z.used)}</span></div>
+        <div class="fine n">Buy above ${num(s.entry)} · SL <span class="down">${num(s.stop)}</span> · T1 <span class="up">${num(s.t1)}</span> · T2 <span class="up">${num(s.t2)}</span></div></div>`;
+    });
+    h += `<div class="fine">Enter 09:30–10:30 only above the 15-min opening high · exit by 15:15 on day 2 · sized for ${inr(cap)} at ${risk}% risk (change it in the Stocks tab)</div>`;
+  } else {
+    const why = p.market_gate_open === false
+      ? 'Market gate closed: Nifty is below its 50-day average or down over 20 days, and momentum buys lose more often then.'
+      : (p.no_trade_reason || '');
+    h += `<div class="act">No share buys today.</div><div class="fine">${esc(why)}</div>`;
+    if (v && v.near_misses && v.near_misses.length) h += `<div class="fine">Watching: ${v.near_misses.slice(0, 5).map((x) => esc(x.symbol)).join(', ')}</div>`;
+  }
+  h += `</section>`;
+
+  const fullOpt = (b && b.options) || {};
+  (p.options || []).forEach((o) => { h += optBox(o, fullOpt[o.index]); });
+
+  const ev = (p.events || []).slice(0, 4);
+  if (ev.length) {
+    h += `<section class="box"><h3><span>Results this week</span></h3>${ev.map((e) => `<div class="ev"><span><strong>${esc(e.name)}</strong> ${esc(e.when)}</span><span class="${e.affects === p.session ? 'warn' : 'dim'}">${e.affects === p.session ? 'affects today' : 'moves ' + esc(e.affects.slice(5))}</span></div>`).join('')}</section>`;
+  }
+
+  const hist = ((r && r.history) || []).slice(0, 10), T = (r && r.totals) || {};
+  const mx = Math.max(1, ...hist.map((x) => Math.abs(x.plan_pnl ?? x.options_pnl)));
+  h += `<section class="box wide"><h3><span>Profit &amp; loss from following the plan</span><span class="n ${cls(T.plan_pnl_sum)}">${T.days ? inr(T.plan_pnl_sum) : ''}</span></h3>`;
+  if (hist.length) {
+    h += `<div class="fine">${T.days || 0} day(s) graded · ${T.plan_win_days || 0} up, ${T.plan_loss_days || 0} down · options per 1 lot (estimate) + shares at ${inr(10000)} / 1% risk</div>`;
+    hist.forEach((x) => {
+      const val = x.plan_pnl ?? x.options_pnl;
+      h += `<div class="pnlrow"><span class="n">${esc(x.session.slice(5))}${x.final ? '' : ' <span class="warn">live</span>'}</span>
+        <div class="bar"><i style="width:${Math.round(100 * Math.abs(val) / mx)}%;background:var(--${val >= 0 ? 'up' : 'down'})"></i></div>
+        <span class="n ${cls(val)}" style="text-align:right">${inr(val)}</span></div>`;
+      if (x.detail && x.detail.length) h += `<div class="fine" style="margin:-4px 0 4px">${x.detail.map(esc).join(' · ')}</div>`;
+    });
+  } else {
+    h += `<div class="dim">The first day is graded after today's close.</div>`;
+  }
+  const rc = (perf && perf.options_lab && perf.options_lab.rule_curves) || {};
+  Object.entries(rc).forEach(([ix, c]) => {
+    if (!c) return;
+    h += `<div style="margin-top:8px"><div class="row"><strong>${esc(ix)} condor rules, last 2 years</strong><span class="n ${cls(c.total)}">${inr(c.total)}</span></div>
+      ${spark(c.points)}
+      <div class="fine">${c.trades} trades · ${c.win_pct}% won · about ${inr(c.per_month)}/month · deepest dip ${inr(c.max_drawdown)}. ${esc(c.note)}</div></div>`;
+  });
+  h += `</section>`;
+  return `<div class="dash">${h}</div>`;
 }
 
 /* ---------------- TODAY ---------------- */
@@ -428,8 +556,9 @@ function render() {
   $('#mkt').className = 'chip' + (live ? ' live' : '');
   $('#mkt').lastElementChild.textContent = ms;
   const upd = D.meta?.updated || D.plan?.generated_at;
-  $('#updated').textContent = upd ? `Engine updated ${ago(upd)}` : 'Loading…';
-  const views = { today: vToday, options: vOptions, stocks: vStocks, results: vResults, learning: vLearning };
+  const nx = D.meta?.next_run;
+  $('#updated').textContent = upd ? `Updated ${ago(upd)}${D.meta?.task ? ' · ' + D.meta.task : ''}${nx ? ' · next ' + new Date(nx.at).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata' }) : ''}` : 'Loading…';
+  const views = { dash: vDash, today: vToday, options: vOptions, stocks: vStocks, results: vResults, learning: vLearning };
   let h = loadErr ? `<div class="banner err">${esc(loadErr)}</div>` : '';
   h += D.plan ? views[tab]() : '<section class="card">Loading the latest plan…</section>';
   h += `<p class="fine">${esc(D.plan?.disclaimer || '')}</p>`;
@@ -441,7 +570,7 @@ function render() {
 document.querySelectorAll('nav.tabs button').forEach((b) => b.addEventListener('click', () => {
   tab = b.dataset.tab;
   document.querySelectorAll('nav.tabs button').forEach((x) => x.setAttribute('aria-selected', x === b));
-  store.set('tab', tab); render(); window.scrollTo(0, 0);
+  store.set('tab2', tab); render(); window.scrollTo(0, 0);
 }));
 $('#view').addEventListener('click', (e) => {
   const f = e.target.closest('[data-filter]'); if (f) { stockFilter = f.dataset.filter; render(); }
@@ -461,12 +590,12 @@ $('#refresh').addEventListener('click', load);
 $('#accept').addEventListener('click', () => { store.set('accepted', true); $('#gate').hidden = true; });
 document.addEventListener('visibilitychange', () => { if (!document.hidden && Date.now() - lastLoad > 60000) load(); });
 
-const saved = store.get('tab', 'today');
+const saved = store.get('tab2', 'dash');
 if (saved) document.querySelector(`nav.tabs button[data-tab="${saved}"]`)?.click();
 if (!store.get('accepted', false)) $('#gate').hidden = false;
 load();
 setInterval(() => { if (!document.hidden) load(); }, 5 * 60 * 1000);   // data refresh
-setInterval(() => { if (!document.hidden && tab === 'today') render(); }, 30 * 1000);  // clock / current step
+setInterval(() => { if (!document.hidden && (tab === 'today' || tab === 'dash')) render(); }, 30 * 1000);  // clock / current step
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
 </script>
 </body>

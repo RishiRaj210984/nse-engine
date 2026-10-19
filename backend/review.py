@@ -115,7 +115,13 @@ def replay_option(name, o, session, bars, vix_bars, now_ist):
         lo_stop, hi_stop = shorts[0], shorts[-1]
         if credit_spread:  # one-sided: only the short strike matters
             lo_stop, hi_stop = (shorts[0], float("inf")) if legs[0]["type"] == "PE" else (0.0, shorts[0])
-        if "Fly" not in kind:
+        if "Fly" not in kind and "setup" not in o:
+            # plan published before the 10:15 / short-strike rule: grade by its own support-resistance rule
+            ts_old, spot_old = _at(bars, "10:00")
+            ok = lv["support"] <= spot_old <= lv["resistance"]
+            cond = f"{name} between {lv['support']:,.0f} and {lv['resistance']:,.0f} at 10:00 (rule of that plan)"
+            ts_e, spot_e = ts_old, spot_old
+        elif "Fly" not in kind:
             ok = lo_stop < spot_e < hi_stop
             cond = (f"{name} between {lo_stop:,} and {hi_stop:,} at {entry_hhmm}" if not credit_spread else
                     f"{name} {'above' if legs[0]['type'] == 'PE' else 'below'} {shorts[0]:,} at {entry_hhmm}")
@@ -141,7 +147,9 @@ def replay_option(name, o, session, bars, vix_bars, now_ist):
         sp = float(row["Close"])
         v = _value(legs, sp, T_at(ts), iv_at(ts))
         if condor:
-            if (v - v_e) <= -credit:  # loss reached 1x credit
+            if "setup" not in o and (sp > hi_stop or sp < lo_stop):  # older plans also stopped on a strike break
+                exit_ts, exit_spot, reason = ts, sp, "STOP: short strike broken"
+            elif (v - v_e) <= -credit:  # loss reached 1x credit
                 exit_ts, exit_spot, reason = ts, sp, "STOP: loss reached 1x credit"
             elif -v <= 0.45 * credit:
                 exit_ts, exit_spot, reason = ts, sp, "TARGET: 55% of credit kept"
@@ -244,6 +252,7 @@ def review_session(session, archived=None):
 
     traded = [x for x in opts if x.get("status") not in ("NO ENTRY", "NO DATA YET")]
     total = sum(x["pnl_per_lot"] for x in traded)
+    stock_pnl = sum(s.get("pnl_10k") or 0 for s in stocks if s["tradeable"])
     planned = sum(x["planned_max_reward"] or 0 for x in traded)
     lessons = []
     lessons.append(f"Bias {label}: Nifty {actual:+.2f}% vs prev close. "
@@ -261,7 +270,9 @@ def review_session(session, archived=None):
                  "band_pct": round(0.5 * typical, 2), "correct": bool(correct)},
         "options": opts, "stocks": stocks,
         "summary": {"options_pnl_per_lot": total, "planned_max_reward": planned,
-                    "gap": total - planned, "trades": len(traded)},
+                    "gap": total - planned, "trades": len(traded),
+                    "stocks_pnl_10k": stock_pnl, "stock_trades": sum(1 for s in stocks if s["tradeable"] and s.get("entry_fill")),
+                    "plan_pnl": total + stock_pnl},
         "lessons": lessons,
         "note": "Option P&L is a Black-Scholes estimate repriced with India VIX, per 1 lot, before costs. "
                 "Stock results use a ₹10,000 / 1% risk example.",
@@ -277,13 +288,20 @@ def save_review(rv):
     store._write(path, hist[-250:], indent=1)
     slim = [{"session": h["session"], "final": h["final"], "bias": h["bias"]["label"],
              "bias_correct": h["bias"]["correct"], "actual_pct": h["bias"]["actual_pct"],
-             "options_pnl": h["summary"]["options_pnl_per_lot"], "trades": h["summary"]["trades"]} for h in hist]
+             "options_pnl": h["summary"]["options_pnl_per_lot"], "trades": h["summary"]["trades"],
+             "stocks_pnl": h["summary"].get("stocks_pnl_10k", 0),
+             "plan_pnl": h["summary"].get("plan_pnl", h["summary"]["options_pnl_per_lot"]),
+             "detail": [f"{o['index']} {o['strategy']}: {o.get('status')} {o['pnl_per_lot']:+,}" for o in h.get("options", [])]}
+            for h in hist]
     wins = [h for h in slim if h["final"] and h["trades"]]
     store.publish("review.json", {
         "latest": rv, "history": slim[::-1][:60],
         "totals": {"days": len([h for h in slim if h["final"]]),
                    "bias_hit_pct": round(100 * sum(h["bias_correct"] for h in slim if h["final"]) / max(1, len([h for h in slim if h["final"]])), 1),
                    "options_pnl_sum": sum(h["options_pnl"] for h in wins),
+                   "plan_pnl_sum": sum(h["plan_pnl"] for h in slim if h["final"]),
+                   "plan_win_days": sum(h["plan_pnl"] > 0 for h in slim if h["final"]),
+                   "plan_loss_days": sum(h["plan_pnl"] < 0 for h in slim if h["final"]),
                    "options_win_days": sum(h["options_pnl"] > 0 for h in wins), "options_trade_days": len(wins)},
     })
 

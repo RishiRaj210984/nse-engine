@@ -265,6 +265,50 @@ def _summarise(index, R):
     return out
 
 
+def rule_curve(index, R, summary):
+    """P&L path if today's rules had been followed: condors on SIDEWAYS days, TRADE buckets only.
+    In-sample (the rules were picked from this same history), so live results will be lower."""
+    node = summary.get("condor")
+    if not node or not len(R):
+        return None
+    ok = {b for b, g in node["by_bucket"].items() if g["allowed"]}
+    T = R[(R.strategy == "condor") & (R.label == "RANGEBOUND") & (R.bucket.isin(ok))].sort_values("date")
+    if not len(T):
+        return None
+    # one position at a time: skip new entries until the previous condor's expiry has passed
+    keep, free_from = [], pd.Timestamp.min
+    for i, (d, dte) in enumerate(zip(T.date, T.dte)):
+        if pd.Timestamp(d) > free_from:
+            keep.append(i)
+            free_from = pd.Timestamp(d) + pd.Timedelta(days=int(dte))
+    T = T.iloc[keep]
+    cum = T.pnl.cumsum()
+    dd = float((cum - cum.cummax()).min())
+    step = max(1, len(T) // 60)
+    pts = [{"date": d, "cum": int(c)} for d, c in zip(T.date.iloc[::step], cum.iloc[::step])]
+    pts.append({"date": T.date.iloc[-1], "cum": int(cum.iloc[-1])})
+    months = max(1.0, (pd.Timestamp(T.date.iloc[-1]) - pd.Timestamp(T.date.iloc[0])).days / 30.4)
+    return {"trades": int(len(T)), "win_pct": round(100 * float((T.pnl > 0).mean()), 1), "total": int(cum.iloc[-1]),
+            "per_month": int(cum.iloc[-1] / months), "max_drawdown": int(dd), "worst_trade": int(T.pnl.min()),
+            "from": T.date.iloc[0], "to": T.date.iloc[-1], "points": pts,
+            "max_open": int(_max_open(T)),
+            "note": "One lot, one position at a time (a new condor only after the previous one expired). "
+                    "In-sample: the rules were chosen using this same history, so expect live results to be lower."}
+
+
+def _max_open(T):
+    """Most trades open at the same time (entry date to that week's/month's expiry)."""
+    ev = []
+    for d, dte in zip(T.date, T.dte):
+        start = pd.Timestamp(d)
+        ev += [(start, 1), (start + pd.Timedelta(days=int(dte)), -1)]
+    cur = best = 0
+    for _, k in sorted(ev, key=lambda e: (e[0], e[1])):
+        cur += k
+        best = max(best, cur)
+    return best
+
+
 def run():
     state = store.latest_state()
     hist = data.history(list(GLOBAL_TICKERS.values()), period="5y", ttl=3600)
@@ -281,6 +325,7 @@ def run():
             continue
         R = simulate(index, ih, vh, vd, scale, labels)
         lab[index] = _summarise(index, R)
+        lab.setdefault("rule_curves", {})[index] = rule_curve(index, R, lab[index])
     store._write(store.state_path("options_lab.json"), lab, indent=1)
     return lab
 
