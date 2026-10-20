@@ -246,7 +246,9 @@ function notices() {
 const ICICI_LOGIN = 'https://secure.icicidirect.com/IDirectTrading/Customer/login.aspx';
 function iciciAppLink() {
   const ua = navigator.userAgent || '';
-  if (/android/i.test(ua)) return 'intent://#Intent;package=com.icicidirect.markets;S.browser_fallback_url=' + encodeURIComponent(ICICI_LOGIN) + ';end';
+  // ICICI Direct trading app: com.icicidirect.idirectsuper (Play Store). Launch its home screen; fall back to its store page.
+  if (/android/i.test(ua)) return 'intent://#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=com.icicidirect.idirectsuper;S.browser_fallback_url='
+    + encodeURIComponent('https://play.google.com/store/apps/details?id=com.icicidirect.idirectsuper') + ';end';
   if (/iphone|ipad/i.test(ua)) return 'https://apps.apple.com/in/app/icici-direct-stocks-f-o-mf-ipo/id1642076943';
   return ICICI_LOGIN;
 }
@@ -280,7 +282,7 @@ function iciciTicket(o, full) {
         ? '<b>Exit without watching:</b> right after entry, place one GTT OCO on each SOLD leg with the target and stop above (2 orders in total). ICICI buys the leg back automatically: the target keeps about 55% of that leg’s premium; the stop caps the loss at about the full credit. The BUY legs are only insurance: once both sold legs are closed, sell them when convenient or let them expire if they are worth almost nothing. If one stop fires, close the rest of the trade too. GTT sends a limit order when triggered and can miss in a very fast market.'
         : 'GTT OCO on the bought option: stop at −30%, target at +60%. The app also trails the stop once you are up.'}</div>
       <div class="fine"><b>In the ICICIdirect app (general steps; exact labels may differ):</b> search ${esc(o.index)} → open the option chain → pick expiry ${esc(exp)} → tap the strike → Buy or Sell → product Options → quantity and limit price → place. Basket: add all legs to a basket from the option chain and check the margin it shows before placing. Positions: open your F&amp;O positions to watch P&amp;L or exit.</div>
-      <a class="primary" style="display:block;text-align:center;text-decoration:none;margin-top:4px" href="${iciciAppLink()}" target="_blank" rel="noopener">Open ICICI Direct</a>
+      <a class="primary" style="display:block;text-align:center;text-decoration:none;margin-top:4px" href="${iciciAppLink()}"${/android|iphone|ipad/i.test(navigator.userAgent) ? '' : ' target="_blank" rel="noopener"'}>Open ICICI Direct app</a>
       <div class="fine">Log in yourself; this app never sees your ICICI password. After placing, tap "I took this trade" in the Live tab and edit the prices to your actual fills.</div>
     </div></details>`;
 }
