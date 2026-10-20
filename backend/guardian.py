@@ -207,24 +207,184 @@ def market_window(now):
     return nse_calendar.is_trading_day(now.date()) and "09:20" <= now.strftime("%H:%M") <= "15:25"
 
 
+# ------------------------------------------------------------------ phone commands (ntfy)
+# Send from the Trade Desk app (Live tab) or the ntfy app to your private command topic:
+#   "<PIN> SESSION <code>"   today's ICICI login code
+#   "<PIN> ENTER NIFTY [lots]" / "<PIN> ENTER BANKNIFTY [lots]"   place today's plan trade
+#   "<PIN> EXIT ALL"   close everything now      "<PIN> STATUS"   P&L of every trade
+#   "<PIN> STOP" / "<PIN> RESUME"   pause / resume all automatic actions
+PLAN_URL = "https://rishiraj210984.github.io/nse-engine"
+BREEZE_CODE = {"NIFTY": "NIFTY", "BANKNIFTY": "CNXBAN"}
+
+
+def poll_commands(env, state):
+    topic, pin = env.get("NTFY_CMD_TOPIC"), env.get("GUARDIAN_PIN")
+    if not topic or not pin or len(pin) < 6:
+        return []
+    import hmac
+    try:
+        since = state.get("cmd_since", "10m")
+        r = requests.get(f"https://ntfy.sh/{topic}/json", params={"poll": "1", "since": since}, timeout=10)
+        msgs = [json.loads(x) for x in r.text.splitlines() if x.strip()]
+    except Exception as exc:
+        log.info("command poll failed: %s", exc)
+        return []
+    out = []
+    for m in msgs:
+        if m.get("event") != "message":
+            continue
+        state["cmd_since"] = m["id"]
+        parts = (m.get("message") or "").strip().split()
+        if len(parts) >= 2 and hmac.compare_digest(parts[0], pin):
+            out.append([p.upper() if i == 0 else p for i, p in enumerate(parts[1:])])
+        else:
+            log.warning("ignored a command with a wrong or missing PIN")
+    return out
+
+
+def fetch_plan():
+    b = requests.get(f"{PLAN_URL}/global-bias.json", params={"t": int(time.time())}, timeout=15).json()
+    p = requests.get(f"{PLAN_URL}/plan.json", params={"t": int(time.time())}, timeout=15).json()
+    return b, p
+
+
+def _q(breeze, index, l, expiry_iso):
+    r = breeze.get_quotes(stock_code=BREEZE_CODE[index], exchange_code="NFO", expiry_date=expiry_iso, product_type="options",
+                          right="call" if l["type"] == "CE" else "put", strike_price=str(int(l["strike"])))
+    rows = (r or {}).get("Success") or []
+    return rows[0] if rows else {}
+
+
+def enter_trade(breeze, env, state, index, lots, live, now, plan=None):
+    """Place today's plan trade for `index`: BUY legs first, then SELL legs, limit orders at the touch.
+    Refuses unless the plan is for today, marks the index TRADE, and the entry window/condition holds."""
+    lots = max(1, min(int(lots), int(env.get("MAX_LOTS", "1"))))
+    bias, p = plan or fetch_plan()
+    opt = next((o for o in p.get("options", []) if o["index"] == index), None)
+    full = (bias.get("options") or {}).get(index)
+    if p.get("session") != now.date().isoformat():
+        return False, f"plan is for {p.get('session')}, not today"
+    if not opt or not full or opt.get("decision") != "TRADE":
+        return False, f"{index} is not marked TRADE today ({(opt or {}).get('decision')})"
+    hm = now.strftime("%H:%M")
+    if not ("10:10" <= hm <= "11:30"):
+        return False, f"entry window is 10:10-11:30 IST (now {hm})"
+    s = full["strategies"][0]
+    expiry_iso = datetime.strptime(full["expiry"], "%Y-%m-%d").strftime("%Y-%m-%dT06:00:00.000Z")
+    shorts = sorted(l["strike"] for l in s["legs"] if l["action"] == "SELL")
+    try:
+        spot = float(((breeze.get_quotes(stock_code=BREEZE_CODE[index], exchange_code="NSE", product_type="cash") or {})
+                      .get("Success") or [{}])[0].get("ltp") or 0)
+    except Exception:
+        spot = 0
+    if spot and len(shorts) >= 2 and not (shorts[0] < spot < shorts[-1]):
+        return False, f"{index} {spot:,.0f} is outside the short strikes {shorts[0]:,}-{shorts[-1]:,}: entry condition not met"
+    qty = full["lot_size"] * lots
+    legs = sorted(s["legs"], key=lambda l: 0 if l["action"] == "BUY" else 1)
+    plan_lines, placed = [], []
+    for l in legs:
+        q = _q(breeze, index, l, expiry_iso)
+        ltp = float(q.get("ltp") or l["est_premium"])
+        px = float(q.get("best_offer_price") or ltp * 1.02) if l["action"] == "BUY" else float(q.get("best_bid_price") or ltp * 0.98)
+        px = max(0.05, round(px * 20) / 20)
+        plan_lines.append(f"{l['action']} {l['strike']} {l['type']} x{qty} @ {px:.2f}")
+        if not live:
+            continue
+        r = breeze.place_order(stock_code=BREEZE_CODE[index], exchange_code="NFO", product="options", action=l["action"].lower(),
+                               order_type="limit", stoploss="", quantity=str(qty), price=f"{px:.2f}", validity="day",
+                               validity_date=now.strftime("%Y-%m-%dT06:00:00.000Z"), disclosed_quantity="0",
+                               expiry_date=expiry_iso, right="call" if l["type"] == "CE" else "put", strike_price=str(int(l["strike"])),
+                               user_remark="tradedesk")
+        oid = ((r or {}).get("Success") or {}).get("order_id")
+        if not oid:
+            return False, f"order rejected at {plan_lines[-1]}: {str((r or {}).get('Error'))[:150]}. Placed so far: {placed or 'none'}. CHECK ICICI NOW."
+        filled = False
+        for _ in range(12):          # wait up to ~60 s for the fill
+            d = ((breeze.get_order_detail(exchange_code="NFO", order_id=oid) or {}).get("Success") or [{}])[0]
+            st = str(d.get("status", "")).lower()
+            if st in ("executed", "complete", "completed", "traded"):
+                filled = True
+                break
+            if st in ("rejected", "cancelled", "canceled"):
+                break
+            time.sleep(5)
+        if not filled:
+            return False, f"not filled: {plan_lines[-1]} (order {oid}). Placed so far: {placed or 'none'}. CHECK ICICI NOW: cancel or adjust."
+        placed.append(plan_lines[-1])
+    if not live:
+        return True, "PAPER: would place " + "; ".join(plan_lines)
+    return True, "Entered: " + "; ".join(placed)
+
+
+def handle_command(cmd, breeze_box, env, state, live, now):
+    name = cmd[0]
+    if name == "SESSION" and len(cmd) >= 2:
+        env["BREEZE_SESSION_TOKEN"] = cmd[1]
+        state["session_day"] = now.date().isoformat()
+        try:
+            breeze_box[0] = connect(env)
+            notify(env, "Guardian: logged in", "Session accepted for today.")
+        except BaseException as exc:
+            notify(env, "Guardian: login failed", f"{str(exc)[:150]}. Get a fresh code and send SESSION again.", urgent=True)
+    elif name == "STOP":
+        open(STOP_FILE, "w").write(now.isoformat())
+        notify(env, "Guardian paused", "No automatic entries or exits until RESUME.", urgent=True)
+    elif name == "RESUME":
+        if os.path.exists(STOP_FILE):
+            os.remove(STOP_FILE)
+        notify(env, "Guardian resumed", f"Mode: {'LIVE' if live else 'PAPER'}.")
+    elif breeze_box[0] is None:
+        notify(env, "Guardian: not logged in", "Send today's SESSION code first.", urgent=True)
+    elif os.path.exists(STOP_FILE):
+        notify(env, "Guardian is paused", "Send RESUME first.", urgent=True)
+    elif name == "ENTER" and len(cmd) >= 2 and cmd[1].upper() in BREEZE_CODE:
+        ok, msg = enter_trade(breeze_box[0], env, state, cmd[1].upper(), cmd[2] if len(cmd) > 2 else 1, live, now)
+        notify(env, f"Guardian ENTER {cmd[1].upper()}: {'OK' if ok else 'NOT DONE'}", msg, urgent=not ok)
+    elif name in ("EXIT", "STATUS"):
+        trades = group_trades(legs_from_positions(breeze_box[0].get_portfolio_positions()))
+        lines = []
+        for t in trades:
+            st, note, pnl, pct = evaluate(t, state, now.strftime("%H:%M"), int(env["TRAIL_PCT"]))
+            lines.append(f"{label(t)}: {pnl:+,.0f} ({pct:+.1f}%) {st}")
+            if name == "EXIT":
+                if live:
+                    exit_trade(breeze_box[0], t, env, state)
+                    lines[-1] += " -> exit sent"
+                else:
+                    lines[-1] += " -> PAPER: would exit"
+        notify(env, f"Guardian {name}", "\n".join(lines) or "No open option positions.", urgent=name == "EXIT")
+
+
 def run(live_flag=False, breeze=None, once=False, clock=None):
     env = load_env()
     live = live_flag and env["MODE"].lower() == "live"
-    breeze = breeze or connect(env)
+    box = [breeze]
+    if box[0] is None and env.get("BREEZE_SESSION_TOKEN"):
+        try:
+            box[0] = connect(env)
+        except BaseException as exc:
+            log.warning("startup login failed (%s); waiting for a SESSION command", exc)
     state = load_state()
-    notify(env, "Guardian started", f"Mode: {'LIVE (will exit positions)' if live else 'PAPER (alerts only, no orders)'}")
+    notify(env, "Guardian started", f"Mode: {'LIVE (may place and exit orders)' if live else 'PAPER (alerts only, no orders)'}"
+                                    f"{'' if box[0] else '. Waiting for today’s SESSION code.'}")
     while True:
         now = clock() if clock else datetime.now(IST)
-        if os.path.exists(STOP_FILE):
-            notify(env, "Guardian stopped", "STOP file found. No more checks or orders.", urgent=True)
-            return state
-        if not market_window(now) and not once:
-            time.sleep(60)
+        for cmd in poll_commands(env, state):
+            try:
+                handle_command(cmd, box, env, state, live, now)
+            except Exception as exc:
+                notify(env, "Guardian command failed", f"{' '.join(cmd[:2])}: {str(exc)[:200]}", urgent=True)
+        save_state(state)
+        if os.path.exists(STOP_FILE) or box[0] is None or (not market_window(now) and not once):
+            if once:
+                return state
+            time.sleep(15)
             continue
+        breeze = box[0]
         try:
             trades = group_trades(legs_from_positions(breeze.get_portfolio_positions()))
         except Exception as exc:
-            notify(env, "Guardian: cannot read positions", f"{exc}. Session may have expired: log in again.", urgent=True)
+            notify(env, "Guardian: cannot read positions", f"{exc}. Session may have expired: send a new SESSION code.", urgent=True)
             if once:
                 return state
             time.sleep(60)

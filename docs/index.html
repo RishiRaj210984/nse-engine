@@ -604,6 +604,41 @@ function freshness() {
   return `<div class="dec CAUTION"><span class="tag">SNAPSHOT</span><div>From GitHub, ${u ? ago(u) : 'not yet today'}. Updates about every 10–20 min in market hours, so this is not real-time. ${relay ? (RL.err ? '<span class="warn">Relay error: ' + esc(RL.err) + '</span>' : 'Connecting to relay…') : 'Add a relay below for prices every 20 seconds.'}</div></div>`;
 }
 
+/* guardian: commands go to your private ntfy topic with your PIN; the server acts on them */
+async function gSend(cmd, confirmText) {
+  const topic = store.get('g_topic', ''), pin = store.get('g_pin', '');
+  if (!topic || !pin) { flash = 'Set the guardian command topic and PIN first (Live tab, Guardian section).'; render(); return; }
+  if (confirmText && !confirm(confirmText)) return;
+  try {
+    const r = await fetch('https://ntfy.sh/' + encodeURIComponent(topic), { method: 'POST', body: pin + ' ' + cmd });
+    flash = r.ok ? `Sent to guardian: ${cmd.split(' ')[0]}. Watch your ntfy alerts for the result.` : `Could not send (HTTP ${r.status}).`;
+  } catch (e) { flash = 'Could not send: ' + e.message; }
+  render();
+}
+function guardianBox() {
+  const p = D.plan || {}, key = store.get('g_key', '');
+  const trade = (p.options || []).filter((o) => o.decision === 'TRADE');
+  return `<section class="box wide"><h3><span>Guardian (automatic entry and exit)</span><span class="fine">${store.get('g_topic', '') ? 'connected' : 'not set up'}</span></h3>
+    <div class="fine">Runs on your own server (see ORACLE_SETUP.md). Paper mode only alerts; live mode places and exits orders. Results arrive as ntfy alerts.</div>
+    <div class="grid2">
+      <a class="primary" style="text-align:center;text-decoration:none" href="${key ? 'https://api.icicidirect.com/apiuser/login?api_key=' + encodeURIComponent(key) : '#'}" target="_blank" rel="noopener">1. Log in to ICICI</a>
+      <label class="f">2. Paste the apisession code<input id="g-session" placeholder="from the address bar after login" autocomplete="off"></label>
+    </div>
+    <button class="primary" data-act="g-session">3. Send login code</button>
+    ${trade.map((o) => `<button class="primary" data-act="g-enter" data-ix="${esc(o.index)}" style="margin-top:6px">Enter ${esc(o.index)} ${esc(o.strategy)} via guardian (1 lot, after 10:15)</button>`).join('') || '<div class="fine">No TRADE in today\u2019s plan, so there is nothing to enter.</div>'}
+    <div class="grid2" style="grid-template-columns:repeat(4,1fr)">
+      <button class="iconbtn" data-act="g-cmd" data-cmd="STATUS">Status</button>
+      <button class="iconbtn" data-act="g-cmd" data-cmd="EXIT ALL" data-confirm="Close ALL option positions now?">Exit all</button>
+      <button class="iconbtn" data-act="g-cmd" data-cmd="STOP" data-confirm="Pause all automatic entries and exits?">Pause</button>
+      <button class="iconbtn" data-act="g-cmd" data-cmd="RESUME">Resume</button>
+    </div>
+    <details><summary class="fine" style="cursor:pointer">Guardian settings (stored only on this phone) ▾</summary>
+      <label class="f">Command topic (NTFY_CMD_TOPIC)<input id="g-topic" data-g="g_topic" value="${esc(store.get('g_topic', ''))}" autocomplete="off"></label>
+      <label class="f">PIN (GUARDIAN_PIN)<input id="g-pin" data-g="g_pin" type="password" value="${esc(store.get('g_pin', ''))}" autocomplete="off"></label>
+      <label class="f">Breeze API key (only to build the login link)<input id="g-key" data-g="g_key" value="${esc(key)}" autocomplete="off"></label>
+    </details></section>`;
+}
+
 function vLive() {
   const L = D.live || {}, p = D.plan || {};
   let h = '';
@@ -669,6 +704,7 @@ function vLive() {
     h += `<section class="box wide"><h3><span>Stock ideas, live</span></h3><div class="tbl"><table><thead><tr><th>Stock</th><th>Grade</th><th class="r">Last</th><th>Status</th></tr></thead><tbody>
       ${L.stocks.map((s) => `<tr><td><strong>${esc(s.symbol)}</strong></td><td>${esc(s.grade)}</td><td class="r n ${cls(s.chg_pct)}">${num(s.last)}</td><td>${esc(s.status)}</td></tr>`).join('')}</tbody></table></div></section>`;
   }
+  h += guardianBox();
   // settings
   h += `<section class="box wide"><h3><span>Live prices relay (optional)</span></h3>
     <div class="fine">Without a relay, prices refresh about every 10–20 minutes from GitHub. With your free relay (see README → "Real-time relay"), they refresh every 20 seconds while this screen is open.</div>
@@ -939,6 +975,9 @@ $('#view').addEventListener('click', (e) => {
     if (a.dataset.act === 'addplan') addPlanTrade(a.dataset.ix);
     if (a.dataset.act === 'close') { savePositions(positions().filter((p) => p.group !== a.dataset.g)); render(); }
     if (a.dataset.act === 'dismiss') { flash = null; render(); }
+    if (a.dataset.act === 'g-session') { const v = (document.querySelector('#g-session')?.value || '').trim(); if (v) gSend('SESSION ' + v); }
+    if (a.dataset.act === 'g-enter') gSend('ENTER ' + a.dataset.ix + ' 1', `Ask the guardian to place today's ${a.dataset.ix} plan trade (1 lot)? It checks the plan, the time window and the entry condition first.`);
+    if (a.dataset.act === 'g-cmd') gSend(a.dataset.cmd, a.dataset.confirm);
   }
   const f = e.target.closest('[data-filter]'); if (f) { stockFilter = f.dataset.filter; render(); }
   const l = e.target.closest('[data-lot]'); if (l) { const k = l.dataset.lot; lots[k] = Math.max(1, (lots[k] || 1) + Number(l.dataset.d)); render(); }
@@ -946,6 +985,7 @@ $('#view').addEventListener('click', (e) => {
 $('#view').addEventListener('change', (e) => {
   if (e.target.dataset.relay) { store.set('relay', e.target.value.trim()); RL.at = 0; pollRelay(); }
   if (e.target.dataset.sound) store.set('sound', e.target.checked);
+  if (e.target.dataset.g) { store.set(e.target.dataset.g, e.target.value.trim()); render(); }
   if (e.target.dataset.step != null && D.plan) {
     const k = 'done:' + D.plan.session, d = store.get(k, {}); d[e.target.dataset.step] = e.target.checked; store.set(k, d); render();
   }

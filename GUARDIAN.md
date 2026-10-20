@@ -12,7 +12,11 @@ happen even when you are not looking. Start in **PAPER** mode: it only alerts wh
 
 **Safety locks:** exits only (never opens or adds), never more than you hold, 09:20–15:25 IST on trading
 days only, max 12 orders/day, sold legs closed before bought legs, and a file named `STOP` in the
-project folder halts it immediately. LIVE needs `MODE=live` in guardian.env **and** `--live` when starting.
+project folder (or the app's Pause button) pauses every automatic action until Resume.
+
+**Run it on a server with a static IP:** see **ORACLE_SETUP.md** (free Oracle Cloud). From the phone you
+send today's login code, *Enter via guardian* (places today's plan trade, BUY legs first, checks the plan,
+the 10:10–11:30 window and the entry condition), *Status*, *Exit all*, *Pause*, *Resume*. LIVE needs `MODE=live` in guardian.env **and** `--live` when starting.
 
 ## One-time setup (about 20 minutes)
 1. **Breeze API key.** Log in to ICICI's Breeze API portal (https://api.icicidirect.com/apiuser/home),
