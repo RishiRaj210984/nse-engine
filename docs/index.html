@@ -261,7 +261,7 @@ function iciciTicket(o, full) {
     const px = optPrice(o.index, o.expiry, l.strike, l.type);
     const price = px ? px.price : l.est_premium;
     let gtt = '';
-    if (credit > 0 && l.action === 'SELL') gtt = `GTT <b>BUY</b> trigger ₹${r05(price + credit).toFixed(2)}`;
+    if (credit > 0 && l.action === 'SELL') gtt = `GTT <b>OCO BUY</b> (set once, works when you are away): target ₹${r05(price * 0.45).toFixed(2)} · stop ₹${r05(price + credit).toFixed(2)}`;
     if (credit <= 0 && l.action === 'BUY') gtt = `GTT OCO <b>SELL</b>: stop ₹${r05(price * 0.7).toFixed(2)} · target ₹${r05(price * 1.6).toFixed(2)}`;
     return `<tr><td>${i + 1}</td><td><b class="${l.action === 'BUY' ? 'up' : 'down'}">${l.action}</b></td><td class="n">${l.strike} ${l.type}</td><td class="n">₹${num(price)}${px ? '' : '*'}</td></tr>`
       + (gtt ? `<tr><td></td><td colspan="3" class="fine" style="padding-top:0">↳ ${gtt}</td></tr>` : '');
@@ -277,7 +277,7 @@ function iciciTicket(o, full) {
       <div class="tbl"><table><thead><tr><th>#</th><th>Side</th><th>Strike</th><th>Price</th></tr></thead><tbody>${rows}</tbody></table></div>
       <div class="fine">Place in this order: BUY legs first, then SELL legs (protection first, lower margin). ICICI's basket order can hold all legs, but they do not fill as one unit, so check every leg filled. * = estimate; use the live price in ICICI.</div>
       <div class="fine">${credit > 0
-        ? 'GTT on each sold leg: if that leg alone loses about the full credit, ICICI sends a buy order. When one triggers, also exit the other legs. GTT sends a limit order when triggered and can miss in a fast market.'
+        ? '<b>Exit without watching:</b> right after entry, place one GTT OCO on each SOLD leg with the target and stop above (2 orders in total). ICICI buys the leg back automatically: the target keeps about 55% of that leg’s premium; the stop caps the loss at about the full credit. The BUY legs are only insurance: once both sold legs are closed, sell them when convenient or let them expire if they are worth almost nothing. If one stop fires, close the rest of the trade too. GTT sends a limit order when triggered and can miss in a very fast market.'
         : 'GTT OCO on the bought option: stop at −30%, target at +60%. The app also trails the stop once you are up.'}</div>
       <div class="fine"><b>In the ICICIdirect app (general steps; exact labels may differ):</b> search ${esc(o.index)} → open the option chain → pick expiry ${esc(exp)} → tap the strike → Buy or Sell → product Options → quantity and limit price → place. Basket: add all legs to a basket from the option chain and check the margin it shows before placing. Positions: open your F&amp;O positions to watch P&amp;L or exit.</div>
       <a class="primary" style="display:block;text-align:center;text-decoration:none;margin-top:4px" href="${iciciAppLink()}" target="_blank" rel="noopener">Open ICICI Direct</a>
