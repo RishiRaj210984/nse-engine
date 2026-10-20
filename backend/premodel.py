@@ -153,7 +153,8 @@ def predict(session, params, now=None):
     thr = params["bias_threshold"]
     calls = wf_r[wf_r.z.abs() >= thr]
     contrib = ((x[0] - m_ret["mu"]) / m_ret["sd"]) * m_ret["w"]
-    snap_ist = (datetime(session.year, session.month, session.day, tzinfo=timezone.utc) + timedelta(hours=off)).astimezone(IST)
+    snap_ist = min((datetime(session.year, session.month, session.day, tzinfo=timezone.utc) + timedelta(hours=off)),
+                   now or datetime.now(timezone.utc)).astimezone(IST)   # never label a time in the future
     return {
         "snapshot_ist": snap_ist.strftime("%a %d %b %H:%M IST"),
         "stage": "final" if off >= 1.0 else "preview",     # after ~06:30 IST US close + Asia open are in
