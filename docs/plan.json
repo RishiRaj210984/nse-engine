@@ -1,11 +1,11 @@
 {
- "generated_at": "2026-10-20T04:03:43.201461+05:30",
+ "generated_at": "2026-10-20T10:11:21.462331+05:30",
  "session": "2026-10-21",
  "stage": "preview",
  "expected_open": {
-  "gap_pct": NaN,
+  "gap_pct": 0.12,
   "error_pct": 0.38,
-  "day_pct": NaN,
+  "day_pct": -0.03,
   "snapshot": "Tue 20 Oct 15:30 IST",
   "stage": "preview",
   "tip": "Flat open expected. Normal entry windows apply.",
@@ -13,17 +13,17 @@
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": -0.06
+    "move_pct": -0.15
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": 0.09
+    "move_pct": -0.35
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": 0.08
+    "move_pct": 0.15
    },
    {
     "key": "dax",
@@ -43,134 +43,134 @@
    {
     "key": "n225",
     "name": "Nikkei 225",
-    "move_pct": 0.0
+    "move_pct": -1.19
    },
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": 0.2
+    "move_pct": 0.74
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": -0.72
+    "move_pct": -0.63
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": 0.1
+    "move_pct": -0.09
    },
    {
     "key": "inr",
     "name": "USD/INR",
-    "move_pct": 0.0
+    "move_pct": 0.01
    }
   ],
   "drivers": [
    {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": -0.06,
-    "contribution_pct": -0.077
-   },
-   {
-    "feature": "dxy",
-    "label": "Dollar index",
-    "value": 0.1,
-    "contribution_pct": -0.063
-   },
-   {
-    "feature": "ftse",
-    "label": "FTSE 100 (UK)",
-    "value": -0.12,
-    "contribution_pct": -0.046
-   },
-   {
-    "feature": "dax",
-    "label": "DAX (Germany)",
     "value": -0.15,
-    "contribution_pct": -0.023
+    "contribution_pct": -0.147
    },
    {
     "feature": "nq",
     "label": "Nasdaq futures",
-    "value": 0.09,
-    "contribution_pct": -0.017
+    "value": -0.35,
+    "contribution_pct": 0.075
    },
    {
-    "feature": "ym",
-    "label": "Dow futures",
-    "value": 0.08,
-    "contribution_pct": -0.012
+    "feature": "nprev",
+    "label": "Nifty previous day",
+    "value": -1.11,
+    "contribution_pct": 0.059
+   },
+   {
+    "feature": "cl",
+    "label": "Crude oil",
+    "value": 0.74,
+    "contribution_pct": -0.052
+   },
+   {
+    "feature": "dxy",
+    "label": "Dollar index",
+    "value": -0.09,
+    "contribution_pct": 0.052
+   },
+   {
+    "feature": "n225",
+    "label": "Nikkei 225",
+    "value": -1.19,
+    "contribution_pct": 0.051
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.22,
-   "gap_sign_pct": 57.7,
-   "directional_calls": 75,
-   "directional_accuracy": 56.0
+   "gap_corr": 0.24,
+   "gap_sign_pct": 57.3,
+   "directional_calls": 82,
+   "directional_accuracy": 58.5
   }
  },
- "headline": "Market bias DOWN \u2014 favour selling rallies / puts",
- "bias": "BEARISH",
- "score": -21,
- "bias_track_record_pct": 67.6,
+ "headline": "Market bias UP \u2014 favour buying dips",
+ "bias": "BULLISH",
+ "score": 22,
+ "bias_track_record_pct": 65.7,
  "options": [
   {
    "index": "NIFTY",
-   "strategy": "Bear Call Spread",
-   "legs": "SELL 23550 CE + BUY 23750 CE",
+   "strategy": "Bull Call Spread",
+   "legs": "BUY 22900 CE + SELL 23150 CE",
    "expiry": "2026-10-27",
    "lot_size": 65,
-   "entry": "Enter at 10:15 (after the first hour) only if NIFTY is below 23,550",
-   "target": "Buy back at \u20b912.9 (keep ~55% of credit), else hold to expiry Tue 27 Oct",
-   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,865 per lot)",
-   "max_loss": 11134,
-   "max_reward": 1865,
-   "reward_risk": 0.17,
-   "decision": "TRADE",
-   "decision_reason": "6 days before: this setup won 84.4% of 32 trades, avg \u20b9335 per lot after costs (worst \u20b9-2,749).",
-   "enter_at": "10:15 IST, after the first hour",
-   "exit_by": "target / stop, else expiry 2026-10-27",
+   "entry": "Enter on dips that hold above 22,764 (EMA20 / S1 support zone)",
+   "target": "Exit spread near \u20b9190.4 or NIFTY at 23,150",
+   "stop_loss": "Spread falls to \u20b950.5, or NIFTY closes below 22,639",
+   "max_loss": 6565,
+   "max_reward": 9685,
+   "reward_risk": 1.48,
+   "decision": "SKIP",
+   "decision_reason": "No tested structure has a positive record for today. 6 days before: this setup lost money historically (48.7% wins, avg \u20b9-183 per lot over 39 trades).",
+   "enter_at": "09:45\u201311:00 IST",
+   "exit_by": "15:00 IST same day if no target",
    "setup_stats": {
-    "trades": 32,
-    "win_pct": 84.4,
-    "avg_pnl": 335,
-    "worst": -2749,
-    "best": 1911,
-    "total": 10723,
-    "sample": "days the model called BEARISH, full 2 years",
-    "allowed": true,
+    "trades": 39,
+    "win_pct": 48.7,
+    "avg_pnl": -183,
+    "worst": -7615,
+    "best": 9656,
+    "total": -7175,
+    "sample": "days the model called BULLISH, full 2 years",
+    "allowed": false,
     "marginal": false
    }
   },
   {
    "index": "BANKNIFTY",
-   "strategy": "Bear Call Spread",
-   "legs": "SELL 56700 CE + BUY 57200 CE",
+   "strategy": "Bull Call Spread",
+   "legs": "BUY 55500 CE + SELL 56000 CE",
    "expiry": "2026-10-27",
    "lot_size": 30,
-   "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is below 56,700",
-   "target": "Buy back at \u20b931.6 (keep ~55% of credit), else hold to expiry Tue 27 Oct",
-   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b92,109 per lot)",
-   "max_loss": 12891,
-   "max_reward": 2109,
-   "reward_risk": 0.16,
-   "decision": "CAUTION",
-   "decision_reason": "3-6 days before: barely positive historically (68.2% wins, avg \u20b972 per lot over 22 trades). Too thin an edge after model error; half size or skip.",
-   "enter_at": "10:15 IST, after the first hour",
-   "exit_by": "target / stop, else expiry 2026-10-27",
+   "entry": "Enter on dips that hold above 55,252 (EMA20 / S1 support zone)",
+   "target": "Exit spread near \u20b9383.5 or BANKNIFTY at 56,000",
+   "stop_loss": "Spread falls to \u20b9104.4, or BANKNIFTY closes below 55,015",
+   "max_loss": 6264,
+   "max_reward": 8736,
+   "reward_risk": 1.39,
+   "decision": "TRADE",
+   "decision_reason": "3-6 days before: this setup won 54.2% of 24 trades, avg \u20b9193 per lot after costs (worst \u20b9-7,245).",
+   "enter_at": "09:45\u201311:00 IST",
+   "exit_by": "15:00 IST same day if no target",
    "setup_stats": {
-    "trades": 22,
-    "win_pct": 68.2,
-    "avg_pnl": 72,
-    "worst": -2860,
-    "best": 2310,
-    "total": 1599,
-    "sample": "days the model called BEARISH, full 2 years",
-    "allowed": false,
-    "marginal": true
+    "trades": 24,
+    "win_pct": 54.2,
+    "avg_pnl": 193,
+    "worst": -7245,
+    "best": 11669,
+    "total": 4641,
+    "sample": "days the model called BULLISH, full 2 years",
+    "allowed": true,
+    "marginal": false
    }
   }
  ],
@@ -180,9 +180,9 @@
   {
    "symbol": "RELIANCE",
    "name": "Reliance",
-   "when": "Wed 21 Oct",
-   "date": "2026-10-21",
-   "affects": "2026-10-22",
+   "when": "Fri 23 Oct",
+   "date": "2026-10-23",
+   "affects": "2026-10-26",
    "past": false,
    "bank": false
   },
@@ -223,7 +223,7 @@
    "end": "09:00",
    "kind": "prep",
    "title": "Read the final plan",
-   "do": "The 07:30 run is final (US close, Dow and US futures, Europe, Asia open). Read the expected open, bias and trades. Set price alerts at each entry and stop-loss.",
+   "do": "The ~07:15 run is final (US close, Dow and US futures, Europe, Asia open). Read the expected open, bias and trades. Set price alerts at each entry and stop-loss.",
    "when": "Wed 21 Oct \u00b7 07:45\u201309:00"
   },
   {

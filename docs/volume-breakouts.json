@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-20T04:03:38.629721+05:30",
- "market_open": false,
- "volume_projected": false,
+ "generated_at": "2026-10-20T10:11:14.756759+05:30",
+ "market_open": true,
+ "volume_projected": true,
  "bias": {
-  "label": "BEARISH",
-  "score": -21
+  "label": "BULLISH",
+  "score": 22
  },
  "rules": {
   "vol_mult": 2.0,
@@ -31,20 +31,20 @@
  },
  "candidates": [
   {
-   "symbol": "BHARTIARTL",
-   "name": "Bharti Airtel",
-   "bar_date": "2026-10-16",
-   "cmp": 1905.0,
-   "day_chg": 2.75,
-   "vol_ratio": 3.71,
-   "vol_badge": "3.7x Vol Surge",
+   "symbol": "PNB",
+   "name": "Punjab National Bank",
+   "bar_date": "2026-10-19",
+   "cmp": 121.9,
+   "day_chg": 4.82,
+   "vol_ratio": 5.6,
+   "vol_badge": "5.6x Vol Surge",
    "volume_projected": false,
-   "rsi": 61.9,
-   "ema20": 1820.96,
-   "ema50": 1842.32,
-   "high20": 1909.7,
-   "dist_high_pct": 0.25,
-   "atr": 39.87,
+   "rsi": 63.1,
+   "ema20": 116.04,
+   "ema50": 114.88,
+   "high20": 125.22,
+   "dist_high_pct": 2.65,
+   "atr": 3.32,
    "checks": {
     "volume": true,
     "momentum": true,
@@ -53,181 +53,76 @@
    },
    "checks_passed": 4,
    "passed": true,
-   "entry": 1905.0,
-   "stop": 1875.1,
-   "t1": 1964.81,
-   "t2": 2024.62,
+   "entry": 121.9,
+   "stop": 119.41,
+   "t1": 126.88,
+   "t2": 131.87,
    "pivots": {
-    "P": 1890.8,
-    "R1": 1923.9,
-    "S1": 1871.9,
-    "R2": 1942.8,
-    "S2": 1838.8
+    "P": 122.37,
+    "R1": 124.75,
+    "S1": 119.53,
+    "R2": 127.59,
+    "S2": 117.15
    },
-   "risk_per_share": 29.9,
+   "risk_per_share": 2.49,
    "rr_t1": 2.0,
    "rr_t2": 4.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 1.3122022948042982,
-    "rsi": 61.8717869589081,
-    "dist_high_pct": 0.2461094042020007,
-    "ext_ema20": 4.615156320049807,
-    "atr_pct": 2.0930119360096264,
-    "day_chg": 2.7508090614886793,
-    "ret5": 5.534320855643182,
-    "rs20": 4.29296156373058,
-    "bias_score": -21.0,
-    "news_sent": 0.328,
+    "log_vol_ratio": 1.7231204185906042,
+    "rsi": 63.05957846946463,
+    "dist_high_pct": 2.6513333832129926,
+    "ext_ema20": 5.050825347426158,
+    "atr_pct": 2.726068135060361,
+    "day_chg": 4.8151318376396635,
+    "ret5": 5.086208211964571,
+    "rs20": 5.9075658309839625,
+    "bias_score": 22.0,
+    "news_sent": 0.465,
     "mkt_above50": 0.0,
-    "mkt_ret20": -0.5347916290900478
+    "mkt_ret20": -1.9594077211949723
    },
-   "r1_a": 0.47401790348032885,
-   "r2_a": 0.9480358069606519,
+   "r1_a": 0.8566358491514787,
+   "r2_a": 1.7132716983029617,
    "news": [
     {
-     "title": "Bharti Airtel Share Price Prediction for Wednesday: 21 Oct 2026",
-     "source": "Univest",
-     "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxORVFlU3hTSlpxZGY2aGxIVE1fRUw2aU9IRkdCeUh2dGhtSWRrbWF6VGgtU2FhZ0FGXzFyY1dqSDZQY3N2SkNCT1Y3dVJGTF9VXzJ2VXFMNDlxbXM4Yk10NE15Mm9BaTlnMTNYY3IwQnFGYkFTbzRYZ25jREpmbHNYczZlZTZZcmZ6SnVTV1N3WkF3YWdfaWc?oc=5",
-     "published": "Mon, 19 Oct 2026 20:17:14 GMT",
-     "sentiment": 0.296
-    },
-    {
-     "title": "Bharti Airtel stock: J.P. Morgan keeps INR 2,240.00 target for Bharti Airtel stock",
-     "source": "ad-hoc-news.de",
-     "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxORFY0YWRUUmQ5dFprT3o0T0ZrMDdLQTJ1QS0wcjY4MGZQbzlib0VfNERVNHFMX0MwTFRMYWt0bEZLU0hnUUgxRUFKdk4tTTNnZXczRTVycmFRcXRZdzV6NlpoV1dhcXkyT1pMV2hGSFBSekRLZnpKRHJVRVYxZi0wUjJZS2NjbElWSW5ETkRiUkctbmt3dkdQTUh0SmpPSGZoRlZ3RkRJanBVTzRUTUNDTlBrVjlRMEtKSmhFMlJ0QlpxT1hNb3kta1JXWm5iLUctNFJCdFUtX0Rna3M?oc=5",
-     "published": "Mon, 19 Oct 2026 13:17:17 GMT",
-     "sentiment": 0.0
-    },
-    {
-     "title": "Bharti Airtel Share Price - Live NSE: BHARTIARTL Stock Price & Chart",
+     "title": "Punjab National Bank shares gain 8% as Q2 profit beats estimates; here\u2019s what analysts said",
      "source": "Upstox",
-     "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5yVGN2YlBzbU5xc0FJSkctUlVUMzAzSHdiOENtSzV1TlJyZHhSVGZIVVVyUEw0MVpwMm1HVDRxOGM3akMyaGhNaUZUZ09TQ0N4b2Vjd3lLaW1DaEg4QXRJbU5BQjZJcjN3MGlBSQ?oc=5",
-     "published": "Sat, 17 Oct 2026 18:09:09 GMT",
+     "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxPUVpYN2hiOXhTcWs1UUEwd3J0ZkZVSHFtcVc2NS1mVlM0N095MHhINGp2S200Y1p6UF93MTJpaHJFczZaY0xQSThmcmVLaVYxVTYxRE9CbTF3SXZOU3ZuaG5WVzM3N2NtLWdIa2NDYUdkamlUZ0xOX3pZc2ZONUlXY0hQWWxfM01wRXlzNU44SWttbFNHWUFvcm5QZUFfSzJCSkJFQllrTFhRdm92QlBlb2lPNGluWGxMTDBTODJZM2gxM1lWb19UQzBtU0pwLVJGVlZRVDBSQVVJaHFTeVZwdGF3?oc=5",
+     "published": "Mon, 19 Oct 2026 09:36:40 GMT",
+     "sentiment": 0.848
+    },
+    {
+     "title": "Elara Securities: Banking & Financials - Punjab National Bank - Resilient performance; upbeat outlook - Q2FY27 Update - Buy - TP: INR 140 - Upside: 21%",
+     "source": "EquityBulls",
+     "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPd283dmxULUNaeXZTT2k3M0dUekRMTEFYaENEVF85dUVsZzQwbzVWMzctZ3FzTEpBTUJSYjZsNkQ0STVkaVM4U1BrV0VxREIta3Y3XzJJRVVGTnNTeDlwU1ZUYjJWSU9Kbmx3Ri1uOUs5NHRidkZHUkpNcGVsalRabE1NUkduSEI3Y2pnR242R1lPTDZfNTlNd2hMb19HelBNc3dfcFpaNUZ0eFhOQkFiRGtqYUkwdXo2NmJXUg?oc=5",
+     "published": "Tue, 20 Oct 2026 03:44:57 GMT",
      "sentiment": 0.296
     },
     {
-     "title": "Stocks to buy: What's the outlook for Nifty for October 19-October 23 week? Top stock recommendations",
-     "source": "The Times of India",
-     "link": "https://news.google.com/rss/articles/CBMi2gJBVV95cUxNVFcxRFdTaFhhLUg3Q3BrNmZrbXhrbExVd2IweDBxZEtPT25SZ2Z1a19OMWttSWxuWkFHUU02aWhrVnljdXFQQlpjdmQ5ckZQOEpVbnFsXzByN1lXN2ZOR1ZCaTZjeG1QMEQ3QlNmUWZJc2lUMlo0WDEyMTJFUUlsMVNOOWw2TDMwMlB6MkJKYjFVSzY3TUdjMXcwSk9MUks0TTBIX201YmdTZk9nMkZfMFo3eFRnazJYQnhtR2wyakFoRlJYMG1Fc1VpbDN2Umd4NW1jTWplcDR4aE41TTZ1UE9PZkNNaFBua2lVbElNamdRMHlydEl3VkVvamlRQUZpbEw3WlhIbGZSLW1PMnBrQUFRZUotZ2JYdElwUXFmREVQdmxuSmNYVHJDSlRJbzZ1SUF6SDFmVjBqSWJDdUNhcU5Jd2FQM1BkRmVoTzQxWUt2eHAwV3FWcjN30gHaAkFVX3lxTE1UVzFEV1NoWGEtSDdDcGs2ZmtteGtsTFV3YjB4MHFkS09PblJnZnVrX04xa21JbG5aQUdRTTZpaGtWeWN1cVBCWmN2ZDlyRlA4SlVucWxfMHI3WVc3Zk5HVkJpNmN4bVAwRDdCU2ZRZklzaVQyWjRYMTIxMkVRSWwxU045bDZMMzAyUHoyQkpiMVVLNjdNR2MxdzBKT0xSSzRNMEhfbTViZ1NmT2cyRl8wWjd4VGdrMlhCeG1HbDJqQWhGUlgwbUVzVWlsM3ZSZ3g1bWNNamVwNHhoTjVNNnVQT09mQ01oUG5raVVsSU1qZ1EweXJ0SXdWRW9qaVFBRmlsTDdaWEhsZlItbU8ycGtBQVFlSi1nYlh0SXBRcWZERVB2bG5KY1hUckNKVElvNnVJQXpIMWZWMGpJYkN1Q2FxTkl3YVAzUGRGZWhPNDFZS3Z4cDBXcVZyM3c?oc=5",
-     "published": "Mon, 19 Oct 2026 07:21:00 GMT",
-     "sentiment": 0.542
-    },
-    {
-     "title": "Bharti Airtel Ltd Upgraded to Hold by MarketsMOJO on Technical and Financial Improvements",
-     "source": "MarketsMojo",
-     "link": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxORlBvMVIwT2JiX2Jvam5mVkFKeUZOWTZrYnRiTlBWelIydW5SS2I1ejVOeXk4ZHRWMmJoWmVmM3Z0Ynl4VnpaMERqVmZkTkV4eWp5ZExRV3AyY1BMdTdDTF83dElqazVsUHhOX3F2b3lmOHN5QnoyZU92dkk4YzBxN1VBN2JYTjR4bnFfNWoxQWdQeWVCR1N3TWFabFNHeFVCOFNqOF9ac2FjbTFpQ2NLNE9hX0dZZ0hGMUR3QU5PTWxlWVBiNk0ydmppX0tCN20zNU1lV05xWTNIOC1DcW94ZXk0WEtqQQ?oc=5",
-     "published": "Mon, 19 Oct 2026 06:14:53 GMT",
-     "sentiment": 0.649
-    }
-   ],
-   "news_sentiment": {
-    "score": 0.328,
-    "count": 8,
-    "label": "POSITIVE"
-   },
-   "win_prob": 47.2,
-   "expected_r": 0.07,
-   "model_used": false,
-   "grade": "C",
-   "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
-   "action": "BUY BHARTIARTL near \u20b91,905.00 (skip if it opens above \u20b91,964.81) \u00b7 SL \u20b91,875.10 \u00b7 T1 \u20b91,964.81 \u00b7 T2 \u20b92,024.62 \u00b7 Qty 3 for \u20b910k @1% risk"
-  }
- ],
- "near_misses": [
-  {
-   "symbol": "TECHM",
-   "name": "Tech Mahindra",
-   "bar_date": "2026-10-16",
-   "cmp": 1790.0,
-   "day_chg": 8.48,
-   "vol_ratio": 8.05,
-   "vol_badge": "8.1x Vol Surge",
-   "volume_projected": false,
-   "rsi": 75.6,
-   "ema20": 1568.37,
-   "ema50": 1558.35,
-   "high20": 1797.0,
-   "dist_high_pct": 0.39,
-   "atr": 53.06,
-   "checks": {
-    "volume": true,
-    "momentum": false,
-    "trend": true,
-    "breakout": true
-   },
-   "checks_passed": 3,
-   "passed": false,
-   "entry": 1790.0,
-   "stop": 1750.2,
-   "t1": 1869.59,
-   "t2": 1949.19,
-   "pivots": {
-    "P": 1759.03,
-    "R1": 1827.97,
-    "S1": 1721.07,
-    "R2": 1865.93,
-    "S2": 1652.13
-   },
-   "risk_per_share": 39.8,
-   "rr_t1": 2.0,
-   "rr_t2": 4.0,
-   "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
-   "features": {
-    "log_vol_ratio": 2.0859675751642395,
-    "rsi": 75.58494811229272,
-    "dist_high_pct": 0.38953811908736785,
-    "ext_ema20": 14.13131560199512,
-    "atr_pct": 2.9644065829465984,
-    "day_chg": 8.484848484848495,
-    "ret5": 18.22204800626146,
-    "rs20": 15.20487490903879,
-    "bias_score": -21.0,
-    "news_sent": 0.333,
-    "mkt_above50": 0.0,
-    "mkt_ret20": -0.5347916290900478
-   },
-   "r1_a": 0.7155034998842065,
-   "r2_a": 1.431006999768413,
-   "news": [
-    {
-     "title": "How to trade Tech Mahindra shares after 22% rally in 4 days? Technical expert weighs in",
+     "title": "PNB shares jump 8% after Q2 results beat estimates; Jefferies, Motilal Oswal, others raise target prices",
      "source": "The Economic Times",
-     "link": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxORVpXdlp4SW1vQUtrUmdxSzBGVVAyYVhZYWgzUDJoZ3ViVW5EbmVBU1J6OGNWVEFHWTBoLWNfRGFzVTZnQURzZTY4cXEtb0tDcGRsUzlRVHFVRjd1SUNidlhKcWd1OHktMng4YjY4M0p2T19JZFJfNElmVjlka1ZhTmRZbU5panJwUzROcFVJZV9sR0FlYVpIZlFrUDlhN1B4UFM4Vmppb05qQVpaM2pYbnB2dGpyaFQ0M3U0MWlUT05SVWdOeTlCcmx2eU04OFRoVWVnVE1haHBGMTBZVDZNSnM4bHB6TFNxZ216T1I2OTXSAfYBQVVfeXFMTnFjSEkzdGdzSFAtWkZHaGdGNkpHa0hha2N0Y1ZPUWMzc0xPUWdSOHZ2bE5qZ3FjalBBZkwtU0ZtZHVLemd6OF9UdXVOamZvSHIteW1FMEtKMURnY1NGTlJ1THNUWU5ZY2NNQzQxWjNMd2haUloxOU5Lb1owdVJrWXNKRVhFV0pqbXgwOEFiNzg0NWI1MExsbTNMN0tHZXlYenhRWjN0ZkYwekoxWDM1dDFfdDBleWNlYXAtRjgwalN0Rm9LdWZ0cXNlakRqZEY0aGVOR0xFMW5zRmdCSG03RWVQb0NwRmdHb0JzNUFUeWJsdDE4Ymp3?oc=5",
-     "published": "Mon, 19 Oct 2026 06:36:37 GMT",
-     "sentiment": 0.586
+     "link": "https://news.google.com/rss/articles/CBMihAJBVV95cUxQbTd1bWFZZzVYazVsR1p5bU5LcGVpVkNxQVZLVDVpQUhxUEJySGRFdWJWOHNJSVdMc01TVEZtbEw3U3Bod3E2eVU0MV9fZnhlNGI3N012cktreWdCeVFsSF81ZkFDVXFMekRxVnF0ejh5OHZQMGkxVDRnNGZEdE1PY3k3OWhGLV9NeHV5TVN0ZEJZVEIxeXMwZ0RMQ0tud1hLUHZvZjNGT08zc1hlUmNCaDZSS21ncVFGZlFyM1lhODdHUGZ2bHc2YzJxdW14YWttRlZxTWhFc3pGUHNkc3pXT05GVmNGcDRCaWpjSDJIV1JJc0syeW9haUUySE90amlmdmFhedIBigJBVV95cUxQTnVWSDJzdlU0bmNDdzdvSkRqMTNJbi13OHZGZUlvZ0Z5clpjOUJtOFlTTi0wTDgyX0hvODdOOURNamh0RFR0S2dNQVdFbnN3amtZdFhJY2p0MGhuSWNWS01mZmNGN3pINzlwRmtadWxLa3UwUW96elFtVXRoeHZ4MXhmbFAzbmVrU25ld0RSMHNTUXBpVWhDU2twNW5pRkNQR2h5VUhLc1hZSTkxYjNqeTJuN1lzYlE5RGY1Q0s0SHJoUTE2N0dNclFfLWdyLUVfMkRTRVJCWVUwNHA5X2JaNXNEZ0FzN0JJcXFXMndHNTNlb3Fvd2NJd1NISS1XOVVoNndSZGVUM0ZKQQ?oc=5",
+     "published": "Mon, 19 Oct 2026 05:35:53 GMT",
+     "sentiment": 0.527
     },
     {
-     "title": "Tech Mahindra stock: Prabhudas Lilladher raises Tech Mahindra stock target to INR 1,910",
-     "source": "ad-hoc-news.de",
-     "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxOZG5hdnoxOHBac29lRTdqSVJnMml2blBhMzFybGRDY0xlZmFYRllOTFd3UktsM2dCZEU2dUgtODNOUmtnVXR2cUpScjZHb1hneEpLLXpnVFR6VU1XQUlzNkNUVFJCYkZKYkF6NVotLXpVUEZEejRBTzFpNVd4RjlLb0ZWQXdEQ1Q0QWRuckFnbXBsaVFtbEQ3b09jbWhLOVB0QkhaQTgyOXlUYVpoQms5bEIyUEhrUmxNSFZUYlIwWWJUUWx3VnBDNkZlaE8wUlphTlV1SkQ2RVh4UlM4dmFSaGtrOA?oc=5",
-     "published": "Mon, 19 Oct 2026 15:19:16 GMT",
-     "sentiment": 0.0
+     "title": "Buy Punjab National Bank; target of Rs 140: ICICI Securities",
+     "source": "Moneycontrol.com",
+     "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPN0xvOExUaUdFS3p4WjNYUWxKYUw0R1AydTNhYnczb2RPOTV1d1JpUThHbjhRVFhwdVgwTWF0SVQzVzNZSW5PbDh1bTF2RnBYRVNQMldteWFPTktIVUNFdkRoOTV0TnBDQUdDMHNsTlZqV3RKenNYMFBDRWxtWVRDZUdkak1Ic3NOeU5qQzZUMHRQanNmRTJSM0QtNEJFU2NBWkp6bkpYbU01Rnp4cTRfbDh1LVlDQndmM3RiRnQ4anhWZW5Fa1JZ0gHHAUFVX3lxTE83TG84TFRpR0VLenhaM1hRbEphTDRHUDJ1M2FidzNvZE85NXV3UmlROEduOFFUWHB1WDBNYXRJVDNXM1lJbk9sOHVtMXZGcFhFU1AyV215YU9OS0hVQ0V2RGg5NXROcENBR0Mwc2xOVmpXdEp6c1gwUENFbG1ZVENlR2RqTUhzc055TmpDNlQwdFBqc2ZFMlIzRC00QkVTY0FaSnpuSlhtTTVGenhxNF9sOHUtWUNCd2YzdGJGdDhqeFZlbkVrUlk?oc=5",
+     "published": "Mon, 19 Oct 2026 10:07:54 GMT",
+     "sentiment": 0.296
     },
     {
-     "title": "Tech Mahindra shares surge over 7 per cent on strong Q2FY27 result",
-     "source": "Mid-Day",
-     "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQLW9TUjNPMW5DOEdzRFNobks1ZnRnSmJ2VEQ1aXo2M2Fjc3Nwc05VUDREbjlLWFNCMHlZMGZhLUJXRXJvdmV2clNhSVVRZ1ByUmUzYnFjalFFNE1zUGxTVTRnbmtwbHRYUnJGTmxwVEROdnpjNVRWWTBFMFA2SVBpYmdGNEloV0lsM2JaTTZNZWtFaDZzVGp1d2wtSG1NREozT0xRVWlySU5PbTd2OTNn?oc=5",
-     "published": "Mon, 19 Oct 2026 15:23:26 GMT",
-     "sentiment": 0.735
-    },
-    {
-     "title": "What to do with IT stocks? TCS, HCL Tech, Wipro, Infosys, Tech Mahindra \u2014 Why experts are bullish after Accenture news",
-     "source": "Livemint",
-     "link": "https://news.google.com/rss/articles/CBMikgJBVV95cUxNTTVwNkJlVnpNSUU5ZF90MllJRTRVOExpQUJ4aHc1SFh2Vnp4YUc3VHp2MkJ2eF9hcXFxX042UFFKREROak5DRUdRSFYtRnFqSkoyQ0hRaFJWRFkta09RbURZRnItdnppX2wyemVXNzNNY2ZRWkhnRWRJWmZHWTV3OXBKUl9OcXBOZGRhbXF3OWVUM0s3dUhuN0pBbl9STmR0VHl5b3FpbTJkcDFJUzJfUWtsRlh6UzRWRi1kUDhmOENKbHV0WGZtckpBMU1KOTN3bGdBQlRiY2M4ZVlYbndLS1JFaG9GLUZfejJ2RnMzQ3VjSHluVXhjWkUxeHNzRTlCcHNZRVM1WU1JVHFhVHhVZHhR0gGXAkFVX3lxTE9Xbk5hazBtbXFUU3BvVl9jQjRMRXBYYUxrNFRJZkVVQmQ5Nm8wT0EwNXlJVnVZLVFBUEEwX0t4YUNsVllWbWJnRm5uVU9KWWQxMzZKVUZZS1hCZW9nUzFuRWozczNBdjE0aFFmOE5sVmJ5Y3dPOVppZEhCa3ZXLXhhZ25Sc1VIUGFCYUUtcktVVGVWcGg1dHNySGtOTWJQVlkyRjBUZ1VwYk1WXzJOSk5iY1RlSlBtN1NJTEZhdlNxLXV3VkpEcTFCd1JEbWpXYkQtVWM2V0N1NEVNNE1GV09GX2NaRENnNWQ4Q2szb3RXNnZ5d0RCRW1pbzVnS3lMWkFXS293VElkVXJjTEZXRmZndWtidndlNA?oc=5",
-     "published": "Mon, 19 Oct 2026 08:29:37 GMT",
-     "sentiment": 0.421
-    },
-    {
-     "title": "Tech Mahindra, ICICI Lombard, HDB Financial: Top stocks to turn ex-dividend this week",
-     "source": "Business Today",
-     "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxQTHlsRm9iVHM2eVFHeFFFbW5feUZlaVhTMG9ERWhjZXdWazZ3TTRfOFZRdnl3NTFkQkoxRU9DeW53LV9zWUo1ZnVsUHBvejNKV0wydm9SQWhJemN3MHBqa2JRWHNuUFV0NzNuOFotU0h2MzVNWHdiS3g1MFQ3QmM1TzhfZ2c4akNOYm41Z05HUl9ndnpZRVoxRmpoX3hLTzlQWmJFcEF4VkFZNlc5Z0xZbU9Yc3ZXZE53T29zZEJRd2NHTGl4OTFxMUxhdEV2dUZWYlVEZEpKcVNUY1lOWTBCRkMzc1nSAeoBQVVfeXFMT1V1REhneXRyMUJlSk1SOTFvRnJob2xoVDR3eVE1U3pnNkhTWDhPTlhGQ0NxdHY4a0NnNG9Ra0lCVVRrSHVlbFFZWGYwbFZuY3A3aWdid0t3Q3lWX3RfNEVCN052YnhMOEE0WEFRdUxab2U0aDVxeEUwekNCSWl2VF9fOUV1SGV1Zm4yZnZ5RkhhTUdqMlYtUEVlTkxaSUlsUU01R3RzZjhJRUdsYVNCNEFJV1dUYnBmaENsUmJDRkI2YzFaRlp6V2J6dFY0NENFbU5IUUNZcWMzMWtmSUlwOGZHM0xBTjRLbDZ3?oc=5",
-     "published": "Mon, 19 Oct 2026 07:52:31 GMT",
-     "sentiment": 0.202
+     "title": "PNB shares gain up to 8% after Q2 results - Should you buy or sell?",
+     "source": "CNBC TV18",
+     "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQSzk4b190YnR1My1ZNnhsUGZvZlRIT04xNDRQSjRqYVBBenhyXzNsdm85N3hkV0NDSXJrTml6eTE5bFY4N1Y2elVhb0lEZWhDRlBjQ3FxV1ZRMVFfaWh2b2thNTBUeS1NanU1NVotM3hxcmctRjhhUTh1ZlFfNkRvNUdla19NTXFERHNDa2hnZ0JVT1BIQlBobkltQl9QNVM2by1iYWJKTlI2RlhUMzVUVnpINjZwalFqcmhKUF95dGZQcFM4SmtUM1EwRXhkUnBXcDF3S25sNNIB3AFBVV95cUxORHFmTDQ1YUk0QXdZbHN6T1RrUzZNdnJGbFBnS2FWVHhtTEZaNWhxNVBZc0RjREg3WmZ6UVI4QXk3WWRFMWRlaHdTVXZsWTN6ME1TdFUwbC0wX1U1S21Lbklybzh3WThNeU94aFQ1UXdPRjBIVHh1NVhmZDkwSklZUHRvR1c0VGIyMUJJRzZKMTRQc0hIbW1YX3RSRm9INktPTnc2cGZBMndhcGVIc3FNQzVjcndzUTNBcVZBYXYyZ1FZZmlZSlU3MFlvMjFGanhrX01rTjllMWdHcm5r?oc=5",
+     "published": "Mon, 19 Oct 2026 05:14:15 GMT",
+     "sentiment": 0.681
     }
    ],
    "news_sentiment": {
-    "score": 0.333,
+    "score": 0.465,
     "count": 8,
     "label": "POSITIVE"
    },
@@ -236,62 +131,62 @@
    "model_used": false,
    "grade": "C",
    "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
-   "action": "BUY TECHM near \u20b91,790.00 (skip if it opens above \u20b91,869.59) \u00b7 SL \u20b91,750.20 \u00b7 T1 \u20b91,869.59 \u00b7 T2 \u20b91,949.19 \u00b7 Qty 2 for \u20b910k @1% risk"
+   "action": "BUY PNB near \u20b9121.90 (skip if it opens above \u20b9126.88) \u00b7 SL \u20b9119.41 \u00b7 T1 \u20b9126.88 \u00b7 T2 \u20b9131.87 \u00b7 Qty 40 for \u20b910k @1% risk"
   },
   {
    "symbol": "FEDERALBNK",
    "name": "Federal Bank",
-   "bar_date": "2026-10-16",
-   "cmp": 338.0,
-   "day_chg": 0.9,
-   "vol_ratio": 4.21,
-   "vol_badge": "4.2x Vol Surge",
+   "bar_date": "2026-10-19",
+   "cmp": 348.85,
+   "day_chg": 3.21,
+   "vol_ratio": 3.91,
+   "vol_badge": "3.9x Vol Surge",
    "volume_projected": false,
-   "rsi": 56.4,
-   "ema20": 330.46,
-   "ema50": 334.19,
-   "high20": 344.8,
-   "dist_high_pct": 1.97,
-   "atr": 8.2,
+   "rsi": 64.5,
+   "ema20": 332.21,
+   "ema50": 334.76,
+   "high20": 355.5,
+   "dist_high_pct": 1.87,
+   "atr": 10.05,
    "checks": {
     "volume": true,
-    "momentum": false,
+    "momentum": true,
     "trend": true,
     "breakout": true
    },
-   "checks_passed": 3,
-   "passed": false,
-   "entry": 338.0,
-   "stop": 331.85,
-   "t1": 350.3,
-   "t2": 362.59,
+   "checks_passed": 4,
+   "passed": true,
+   "entry": 348.85,
+   "stop": 341.31,
+   "t1": 363.93,
+   "t2": 379.0,
    "pivots": {
-    "P": 336.93,
-    "R1": 345.87,
-    "S1": 329.07,
-    "R2": 353.73,
-    "S2": 320.13
+    "P": 341.9,
+    "R1": 362.45,
+    "S1": 328.3,
+    "R2": 376.05,
+    "S2": 307.75
    },
-   "risk_per_share": 6.15,
+   "risk_per_share": 7.54,
    "rr_t1": 2.0,
    "rr_t2": 4.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 1.4368953027589233,
-    "rsi": 56.410710744026744,
-    "dist_high_pct": 1.97215430212014,
-    "ext_ema20": 2.280763742465397,
-    "atr_pct": 2.425381944177498,
-    "day_chg": 0.8955223880596996,
-    "ret5": 2.4242424242424176,
-    "rs20": 2.112552710983362,
-    "bias_score": -21.0,
+    "log_vol_ratio": 1.3643074564234114,
+    "rsi": 64.48226230459804,
+    "dist_high_pct": 1.8706030651151548,
+    "ext_ema20": 5.007594520045067,
+    "atr_pct": 2.8813299629715945,
+    "day_chg": 3.210060977371487,
+    "ret5": 6.291893092148393,
+    "rs20": 6.797876873265773,
+    "bias_score": 22.0,
     "news_sent": 0.069,
     "mkt_above50": 0.0,
-    "mkt_ret20": -0.5347916290900478
+    "mkt_ret20": -1.9594077211949723
    },
-   "r1_a": 0.9596071132049424,
-   "r2_a": 1.919214226409878,
+   "r1_a": 1.353028822204183,
+   "r2_a": 2.7060576444083604,
    "news": [
     {
      "title": "Jana SFB shares fall 13% to hit 6-month low as Federal Bank says no plan to buy stake",
@@ -322,11 +217,11 @@
      "sentiment": 0.296
     },
     {
-     "title": "Federal Bank shares rise 5% as NPAs hit decadal low, brokerages on price targets",
-     "source": "Business Today",
-     "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxQZEtVZ2plaGJBUUI0LWZ5WXIwNU10T0d5ZkhHTzJXbzQzZGVVWlZzQlFpMElhdU5xRHJxNGR2RVFJSXBoRzY0dGk5d3pnX3YtX2x5RXMyODU1T2JKUG9BZWUxUEtPaG5oU01HWk5mZ1NTU3FDY2N2blM4VUNvR3A4UnNibW9fWURmZWFfb0dQUExyLVF5N0ozRW5PZmNpNnJnblpnZ1oyMkhFaE5DRkVEX2doNnpqaTJudUNqcDgwSnhIX0NzSGszT0czdjBIcFlaanpOcHVDbHpRTHBT0gHiAUFVX3lxTE1obmc2R1dySVV4S0lULTBZdVdyZ0RUVmFJMFIwSUprZDBPb01NSGszVUsxZjFTY216ZUd3OFZrSHdXdFhXRjJ4UGo0TFFMUThLYjhaSXpyRVV3dy1sVW1fTVZBMDBuZWJiQVhLNGtKSkRKelhBbmpnNDQ0N200a3RVRXhvRXMyczhHdkpZWGdkd1B6WVI4OTY2RDhocDFnRS0xTVVocVdSQUlva1VNckJ2RVpUQi1fcjNJM1dhaHpMQWRmVHFJbVpKUGNydDFCRDBGcXZRQXljdW02VjNpbm5fTGc?oc=5",
-     "published": "Mon, 19 Oct 2026 06:46:54 GMT",
-     "sentiment": 0.026
+     "title": "Federal Bank holds virtual investor meet with HSBC Securities",
+     "source": "scanx.trade",
+     "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNc0ZGR1lPYlduNGt1S2NFM3ZtZXdKampuYzNRaE5aaWhDNGViQ3h3aC14dGt4emloT2pmR1Q0ZVhrZjlLV2Y3THAwQ2JZREhFS1hyV2k5dTNGNGV4WUZic1AzQnhoRnlRTFhybmpTdHdodVVscVlwdUtxQUZDWURhNXozNzhVQklLbGRXOGJ3RUNNbnFsVXJKZ1RRVm9KRzZ5eUdBUFBTdmZ0SWJaTTFDTlZRSQ?oc=5",
+     "published": "Mon, 19 Oct 2026 15:03:36 GMT",
+     "sentiment": 0.296
     }
    ],
    "news_sentiment": {
@@ -339,126 +234,25 @@
    "model_used": false,
    "grade": "C",
    "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
-   "action": "BUY FEDERALBNK near \u20b9338.00 (skip if it opens above \u20b9350.30) \u00b7 SL \u20b9331.85 \u00b7 T1 \u20b9350.30 \u00b7 T2 \u20b9362.59 \u00b7 Qty 16 for \u20b910k @1% risk"
-  },
+   "action": "BUY FEDERALBNK near \u20b9348.85 (skip if it opens above \u20b9363.93) \u00b7 SL \u20b9341.31 \u00b7 T1 \u20b9363.93 \u00b7 T2 \u20b9379.00 \u00b7 Qty 13 for \u20b910k @1% risk"
+  }
+ ],
+ "near_misses": [
   {
-   "symbol": "WIPRO",
-   "name": "Wipro",
-   "bar_date": "2026-10-16",
-   "cmp": 184.4,
-   "day_chg": 5.95,
-   "vol_ratio": 3.32,
-   "vol_badge": "3.3x Vol Surge",
-   "volume_projected": false,
-   "rsi": 71.8,
-   "ema20": 167.57,
-   "ema50": 170.82,
-   "high20": 185.69,
-   "dist_high_pct": 0.69,
-   "atr": 4.8,
-   "checks": {
-    "volume": true,
-    "momentum": false,
-    "trend": true,
-    "breakout": true
-   },
-   "checks_passed": 3,
-   "passed": false,
-   "entry": 184.4,
-   "stop": 180.8,
-   "t1": 191.6,
-   "t2": 198.81,
-   "pivots": {
-    "P": 180.03,
-    "R1": 190.06,
-    "S1": 174.37,
-    "R2": 195.72,
-    "S2": 164.34
-   },
-   "risk_per_share": 3.6,
-   "rr_t1": 2.0,
-   "rr_t2": 4.0,
-   "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
-   "features": {
-    "log_vol_ratio": 1.1998544954185275,
-    "rsi": 71.79755760650495,
-    "dist_high_pct": 0.694710823394454,
-    "ext_ema20": 10.040651949522772,
-    "atr_pct": 2.6042353349025626,
-    "day_chg": 5.94656171402006,
-    "ret5": 13.42805289337865,
-    "rs20": 11.352099718174236,
-    "bias_score": -21.0,
-    "news_sent": 0.179,
-    "mkt_above50": 0.0,
-    "mkt_ret20": -0.5347916290900478
-   },
-   "r1_a": 1.1786248205455692,
-   "r2_a": 2.3572496410911383,
-   "news": [
-    {
-     "title": "What to do with IT stocks? TCS, HCL Tech, Wipro, Infosys, Tech Mahindra \u2014 Why experts are bullish after Accenture news",
-     "source": "Livemint",
-     "link": "https://news.google.com/rss/articles/CBMikgJBVV95cUxNTTVwNkJlVnpNSUU5ZF90MllJRTRVOExpQUJ4aHc1SFh2Vnp4YUc3VHp2MkJ2eF9hcXFxX042UFFKREROak5DRUdRSFYtRnFqSkoyQ0hRaFJWRFkta09RbURZRnItdnppX2wyemVXNzNNY2ZRWkhnRWRJWmZHWTV3OXBKUl9OcXBOZGRhbXF3OWVUM0s3dUhuN0pBbl9STmR0VHl5b3FpbTJkcDFJUzJfUWtsRlh6UzRWRi1kUDhmOENKbHV0WGZtckpBMU1KOTN3bGdBQlRiY2M4ZVlYbndLS1JFaG9GLUZfejJ2RnMzQ3VjSHluVXhjWkUxeHNzRTlCcHNZRVM1WU1JVHFhVHhVZHhR0gGXAkFVX3lxTE9Xbk5hazBtbXFUU3BvVl9jQjRMRXBYYUxrNFRJZkVVQmQ5Nm8wT0EwNXlJVnVZLVFBUEEwX0t4YUNsVllWbWJnRm5uVU9KWWQxMzZKVUZZS1hCZW9nUzFuRWozczNBdjE0aFFmOE5sVmJ5Y3dPOVppZEhCa3ZXLXhhZ25Sc1VIUGFCYUUtcktVVGVWcGg1dHNySGtOTWJQVlkyRjBUZ1VwYk1WXzJOSk5iY1RlSlBtN1NJTEZhdlNxLXV3VkpEcTFCd1JEbWpXYkQtVWM2V0N1NEVNNE1GV09GX2NaRENnNWQ4Q2szb3RXNnZ5d0RCRW1pbzVnS3lMWkFXS293VElkVXJjTEZXRmZndWtidndlNA?oc=5",
-     "published": "Mon, 19 Oct 2026 08:29:37 GMT",
-     "sentiment": 0.421
-    },
-    {
-     "title": "Earnings Update: Wipro Limited (NSE:WIPRO) Just Reported Its Second-Quarter Results And Analysts Are Updating Their Forecasts",
-     "source": "Simply Wall Street",
-     "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNeXJOcTg1bm5jVGJTLUE2YXBzcGplX1RPcXFPWGFrRXZFb1gwU3RJZEw0NHJaQzJsMzE0UUFEWHZMYXZCZ2pFNThiN1BCQmxhSm85VWlvUnRvVFFjMFUyUWN4NjdFZ1VuT1V0Y1lJZjU1SzN4aVRoSWEtNnVvVWF3T3dxdWRQWG1xMzA0X2JIc2QyX2lGTGQyd0paME5DMHA5QnRzTWo3WW1jVEQ3V2oyd2FYeGIwd1dzSFFJMTBEZ2lwaDI1N1ItQ9IBzgFBVV95cUxPNjNjMzJMaTIxY3JBUEJmZ0xoNVpxa0V5dUc0NkthRzlOcWo4R0haQ1ZBV0RXcWtkbEVrbk5kR3B6cTIwamdqcWl2cEUycEloS1hGa096eklsamExeFZRQVJ3eVd3b3ZOOS1OS3VmYzhrZ01MVmlZYkVwM3pPWHFxSXpDWmIzdE1YejNMNnZEOHdTdXpOYnJxYllVejN3Sll4b0Q0SG04bVU1R3BiTXdZNUFGS21yelAxeUtvSC1HOWhmemxXdG92YzZDZmlKdw?oc=5",
-     "published": "Mon, 19 Oct 2026 01:52:25 GMT",
-     "sentiment": -0.226
-    },
-    {
-     "title": "Wipro releases Q1 FY27 earnings call transcript",
-     "source": "scanx.trade",
-     "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOV2QwbTZPc1hzMmE4QTJ0Z2Y2bWRucWdfYlBhT2tUekJxdG1QT08zZE5JZUpYZjJNYWZPbTBhYVBNRlRueXl6cWJFenRoLXFMTmJTUjVWSWY4bl9veXFKU1A3bm5hbEhWaFRFOE55X2haa1g1aXN2eFJjNzE3R3FJY3MxdHdQd3pJVFY1bzVNNl9xbXZZendIRHozMUhpMExTMFNDc3RVQTN6c2pjWmc?oc=5",
-     "published": "Sun, 18 Oct 2026 13:11:46 GMT",
-     "sentiment": 0.0
-    },
-    {
-     "title": "Wipro Shares Jump Over 3% on $1 Billion Mega Deal With Olam Group; PL Capital Maintains \u2018Buy\u2019 Rating",
-     "source": "Goodreturns",
-     "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxPbzF2WnB1cnYwVXhVbjg0VlRuUGR0VFNucVZPanpQVnhNcTRiU2U5a3E3ckhQNXhXQTZOVmo4b1Ixd083eUExMEs5bVNLb3BESmFZdkpGMzNWYjBaejR5dFBFaE93Q1RJczltSWgwTW9yM0pRNEdpNC14ZmNmMFR0eEpIRlNOajJrYzJTZjktVnVVakQwSnFVYUhjaVNneDFqcmRac0tUMzlCVEN4c0pkNF9BbmFQdEJwOHVzb2pIaDloT1QtQTY2VWRUZVdKRkpScEJ4MmZJNA?oc=5",
-     "published": "Sat, 17 Oct 2026 08:20:36 GMT",
-     "sentiment": 0.296
-    },
-    {
-     "title": "Wipro reports USD 2.58 billion Q2 revenue. Wipro stock stands at USD 19.3 billion",
-     "source": "ad-hoc-news.de",
-     "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxNRXFtX1h6eXBNWi1ncTNEOHJSR3ZYUkdET2RXUzRyODVqNXd5VnRJNTRwd2pWRTQzRFU1TUtReEpJOFcyTnJSYzNoNzg2U3hUOVZ1czdHY0lWZWpJaWZDLWU3dndvRXk5elNYU3ViT0c1eF8yYXJab09abjRhWUQ1cmN5X0dvazM3aVg3SEwwSHFlMmczTTRMdzJXVE8wNWE3UHFfY2FnMEVvbllKZ0k0U09VRnFZWGE2R19LR3hIVnl4S2V3OVdoUk1wSkZaeEVJNUh3THFFYmVnM3M?oc=5",
-     "published": "Mon, 19 Oct 2026 08:40:53 GMT",
-     "sentiment": 0.0
-    }
-   ],
-   "news_sentiment": {
-    "score": 0.179,
-    "count": 8,
-    "label": "POSITIVE"
-   },
-   "win_prob": 47.2,
-   "expected_r": 0.07,
-   "model_used": false,
-   "grade": "C",
-   "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
-   "action": "BUY WIPRO near \u20b9184.40 (skip if it opens above \u20b9191.60) \u00b7 SL \u20b9180.80 \u00b7 T1 \u20b9191.60 \u00b7 T2 \u20b9198.81 \u00b7 Qty 27 for \u20b910k @1% risk"
-  },
-  {
-   "symbol": "TCS",
-   "name": "Tata Consultancy Services",
-   "bar_date": "2026-10-16",
-   "cmp": 2465.0,
-   "day_chg": 4.89,
-   "vol_ratio": 2.47,
+   "symbol": "ICICIBANK",
+   "name": "ICICI Bank",
+   "bar_date": "2026-10-19",
+   "cmp": 1381.0,
+   "day_chg": -1.15,
+   "vol_ratio": 2.46,
    "vol_badge": "2.5x Vol Surge",
    "volume_projected": false,
-   "rsi": 74.0,
-   "ema20": 2195.95,
-   "ema50": 2205.21,
-   "high20": 2484.7,
-   "dist_high_pct": 0.79,
-   "atr": 75.18,
+   "rsi": 54.9,
+   "ema20": 1358.78,
+   "ema50": 1368.89,
+   "high20": 1411.8,
+   "dist_high_pct": 2.18,
+   "atr": 25.31,
    "checks": {
     "volume": true,
     "momentum": false,
@@ -467,76 +261,76 @@
    },
    "checks_passed": 3,
    "passed": false,
-   "entry": 2465.0,
-   "stop": 2408.61,
-   "t1": 2577.77,
-   "t2": 2690.54,
+   "entry": 1381.0,
+   "stop": 1362.02,
+   "t1": 1418.97,
+   "t2": 1456.93,
    "pivots": {
-    "P": 2441.8,
-    "R1": 2507.9,
-    "S1": 2398.9,
-    "R2": 2550.8,
-    "S2": 2332.8
+    "P": 1390.23,
+    "R1": 1402.57,
+    "S1": 1368.67,
+    "R2": 1424.13,
+    "S2": 1356.33
    },
-   "risk_per_share": 56.39,
+   "risk_per_share": 18.98,
    "rr_t1": 2.0,
    "rr_t2": 4.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 0.9061697219242549,
-    "rsi": 74.02218752107935,
-    "dist_high_pct": 0.7928503062345127,
-    "ext_ema20": 12.251911272967453,
-    "atr_pct": 3.0499450756010202,
-    "day_chg": 4.893617021276597,
-    "ret5": 14.939896027880728,
-    "rs20": 13.69022726223057,
-    "bias_score": -21.0,
-    "news_sent": 0.154,
+    "log_vol_ratio": 0.9005566864387327,
+    "rsi": 54.904655162867655,
+    "dist_high_pct": 2.1816155094831458,
+    "ext_ema20": 1.6356126466396281,
+    "atr_pct": 1.8327379568844269,
+    "day_chg": -1.145311381531855,
+    "ret5": 3.0597014925373145,
+    "rs20": 5.103778086290866,
+    "bias_score": 22.0,
+    "news_sent": 0.199,
     "mkt_above50": 0.0,
-    "mkt_ret20": -0.5347916290900478
+    "mkt_ret20": -1.9594077211949723
    },
-   "r1_a": 0.5706215712534537,
-   "r2_a": 1.1412431425069134,
+   "r1_a": 0.852097840402753,
+   "r2_a": 1.7041956808055152,
    "news": [
     {
-     "title": "Tata Consultancy Services (TCS) Share Price Today & Chart",
-     "source": "TechGraph",
-     "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBFeGQ5c2VqX1BwUHJXcVRhS2ZmQm1aRHBwQU1QUU1hSjYwcmdneTA1UEh6dXRLZ21QWC1qSTF1SVpzSDdWYlNIakM4MzRXY3hNaVdhTkRYMTZVUkU?oc=5",
-     "published": "Mon, 19 Oct 2026 07:42:30 GMT",
-     "sentiment": 0.296
+     "title": "ICICI Bank stock falls 1% after Q2 results, among top Nifty losers; brokerages bullish on growth,...",
+     "source": "Moneycontrol.com",
+     "link": "https://news.google.com/rss/articles/CBMiggJBVV95cUxQeUZNakZueDdQbFZ4X2xmNnkyaEotVWUwaDhtSWJGUGd0YWJZR3dCTWpWRlh0Y0tLcF9TVnhaM2tpTEVNRWNXZ2d2dGt6V1BzNFJ2amZyVkE2WTdZemtZcUZFQWVQc0JKaGw2cF82LWNHS2ZqS0swWHMtTHJBWFdGMWFMTWVvWmV2ZmRLMVpxMkxXOW5Td2FZblkwa1o5LVpSOUhaR29sTzRGZVlwZm8wSm9lUkdFQUlrRk9BUDExcDhDUmtadlphS2JaLUlOUno2SFhKUlhMQWNEa1dDN3JLRGpSMGZjRGMyOEk1WXY1ZldpS2xHZWhFN0hSMW9CTXc2dUHSAYcCQVVfeXFMUG9la0Jubk5VNHFROVFObTZVWmpKcGRQaTgwRlVZbXZzM25IaWJ5bDJxTWdvVnE1NnZxWWEtVkl2YVRkS2RKbWtJcXZXVnV0UlVKUHRFVjNVU3JjTVZZTUxIeWJTcUJhNFZkTWYtWGNzdWZnV1NqUUl5Mllua3RVajEzZEFyQnVScEFqa0JkVU5oejU2OW51RlZTZWR2THJVRHRqQkY2dmdJUW12Z1lUeGdkc1ZzSTlTMXpVUmlzN09RX01GQjJSRDh5dlA2LTc2aEhaVnBGeUdSQnBKVDJQU3R2YUQtUXpvcEVqTDk2ck9fMER5d254YzV3WUtuYWZfeXBqT2tkQTQ?oc=5",
+     "published": "Mon, 19 Oct 2026 06:07:53 GMT",
+     "sentiment": 0.511
     },
     {
-     "title": "Tata Consultancy Services Limited (TCS.NS) stock price, news, quote and history",
-     "source": "Yahoo Finance Australia",
-     "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBWdmdOZjZMMXdyaFpFaVUwSzlid08zSng2ZzZZNnA3eG1LS2xpQnF6anhfbDhiaUFjZ2VMZ3dldnRGSUlONGN2SUtENk9nQ2E5TDhseA?oc=5",
-     "published": "Sat, 17 Oct 2026 10:08:31 GMT",
+     "title": "ICICI Bank Limited Stock 12\u2011Month Price Target Raised to INR 1778.52, Implies 27% Upside",
+     "source": "TradingView",
+     "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxQbmhGTmFfc3dQenQtci1nU1J5ZVZtR08yR05taGdOemFHUVhaclFKQm96cllrcERyX3ZIWTJsdnRZX0VZcjRSY3dpRTcxdGpFQjNDTlRlNm8tbC1OcVVMa1NLcGs2U0JSRHI2d0o0TE9qWDZOdFdtSUgtZUp3YTgzekx0Y2FfWHZxRDBLMk9IQm5BRnhCQ09rcWk2QUp2S3dpR045c3FRX09Ic2xKSTVwZHh2WHJPMXMtRUJCTmNOaHJ1blp2d0U0eGlEdF9jLXItUGRSU08xTDhfTERXVXZTd3Zn?oc=5",
+     "published": "Mon, 19 Oct 2026 22:20:00 GMT",
      "sentiment": -0.226
     },
     {
-     "title": "Agentic AI-led Retail Warehouse Execution System",
-     "source": "Tata Consultancy Services",
-     "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPTkQzMUxJRkk1U1dsR3hKNGZVaTlmTW5zc0hSeW51MlJ1VjVsZWJpTnhOR3U0dU5zRzBXWXlWNldCVkdUWnJBNkZnWmdSMmE3VGpERkRjaFB5TjF4Yl9OMjZCZmlGN0JIVzlaQm5aQmhvU3RsQW5zR1M3eDU0RVR2YmNucElIVU9aU2pjaW44VU1pUC1qZ19YLU80TXN1VjZKcnF4ZURCR0poVnpDbFE?oc=5",
-     "published": "Mon, 19 Oct 2026 14:58:38 GMT",
-     "sentiment": 0.0
+     "title": "ICICI Bank Limited (IBN) stock price, news, quote and history",
+     "source": "Yahoo Finance UK",
+     "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE1EaUlLVUM3SjRHZTN3MHo5Q3JlWGVtaTdnTENMVnVpVURlUDVway16ZVJhLWE1bmdwREgtREZfSTVVdk5Ka2xwdURQenFCV2ds?oc=5",
+     "published": "Sun, 18 Oct 2026 00:12:33 GMT",
+     "sentiment": -0.226
     },
     {
-     "title": "Tata Consultancy Services Ltd. is Rated Hold by MarketsMOJO",
-     "source": "MarketsMojo",
-     "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQblVONThWcDBmYXI3Y0NSN19fbGxsdU5maEJKSGxjYS1tc25zN1l3dDNjVTB0U3k1SzBkUTJfT29NTHlvRGxVTWl6a0M4clJkNEZYNTB0YkxOM1Myb0I4WEQ2SEtUWkdOaWlWNGF5ZVlUa2VPWHBYaG92RmxXM1h5d1N6OWVTNXdtekUtazQ2YW95cG04TndXd2sxM0wtcjNkbTY0cFNFdGE5ZFItQ0gwWW01TElWWWZlSHJvcg?oc=5",
-     "published": "Mon, 19 Oct 2026 07:49:54 GMT",
-     "sentiment": 0.0
+     "title": "Brokerages back ICICI Bank on strong Q2 earnings, see HDFC Bank recovery ahead",
+     "source": "The Economic Times",
+     "link": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxNNUdsMnVnZzAxS2huQWctNi14VHR1dmVWQlR6RXRHRl9vSEZqTGpKUjFHclhncEExbGRFWk85OWQ1MzBoV1hvZlZkeGh3SnViNl9MRjVGQTdiajZVa3g5ZGhNWUk0VXRYRFdLV1hMbERFS2pURkt4SXNwOXFJU3hSUmtvNF8ya1BxRkkzUXpzbGpkbHFOTGFMSjRhZUcxeFlCZG9lRjR6UmZNdkRsT0l0RE4zbUt0WTN5QldSMnk3YmRhaVZOaXNPMnRLc3hFSEhHaU9JSnJqRF9RSUx3QUgwdHB2cHJVQdIB6wFBVV95cUxPVERYYkxlbzVZbGlyUWw5U3phak92eC1Xd2FMTi1JWUtHalB6RUlpTEJfcktfMURJT2Frc0tNM29TWC1aRGx6TGw0bkxWeFRmWjF3QXlSVU9NR1ZiTDA0eVZPb1hEeGtmR00wYWVRaXNXUnNackRXakdqZTExdWpRYkk3WDUzcmJiSHRvVk1jOWZZUWZ0WS1mRFdobFEzX0hCU0xrd1JxS21LeFJZWWQ4T2pXSmJiVVBXNThsd1padloxSDdUVm0wM2NHRUg1ZTJ4ZGlxaHMxTlREWk42YmFBT1o0bG1hX0pfdHNJ?oc=5",
+     "published": "Tue, 20 Oct 2026 00:34:57 GMT",
+     "sentiment": 0.296
     },
     {
-     "title": "TCS reports 14.9 percent Q2 profit growth: what it means for Tata Consultancy Services stock",
-     "source": "ad-hoc-news.de",
-     "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxPTWUwZE1SNkRhUG1MY2VfTHB4Z3BBeW1NV3Q2S0FiUjdIbXFRNVRIWXBjQkgwSlhIdTRPT2duZkk4SUJFTmFOdWdCaE9WN21LS1VrbzRSRkZITS1fNmNEVnZ2amJwUmZPTkJmMmlQY2hwc2ZlUERHTWtMeVkxTExjaW90ZHNKR0VYTWxDR3J3M0FrTVBtVlkycjEtajgzM1NLbHpOejRJcFdtbVVBcnlqVEhCVDVOME1QWU1lZXp3ZTMzcjRURUFZeXBDNmRxOFZ0MFBUMlZyamdLSnF2MmZiTk5ISkZGbjA5SEE?oc=5",
-     "published": "Mon, 19 Oct 2026 08:37:45 GMT",
-     "sentiment": 0.557
+     "title": "ICICI Bank Share Price Prediction for Wednesday: 21 Oct 2026",
+     "source": "Univest",
+     "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQQVpGV2p0ZjlvM0syeVc5cWpGdzlQZFRtM1pFVmJaSExTZGVwX3hnVGhQTklZYWE5V3pWQUtaVHBDR280eDNWckJweGdKQ3d2cVFrd0JhWVNyd1M1bnF6R3ZIQkxlQ25vU09xSHI3ajhPNTBKNk03dzQ1VTdtdF91NldkYWc5djJxRjJzdTQzdkI3dw?oc=5",
+     "published": "Mon, 19 Oct 2026 12:37:33 GMT",
+     "sentiment": 0.296
     }
    ],
    "news_sentiment": {
-    "score": 0.154,
+    "score": 0.199,
     "count": 8,
     "label": "POSITIVE"
    },
@@ -545,110 +339,7 @@
    "model_used": false,
    "grade": "C",
    "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
-   "action": "BUY TCS near \u20b92,465.00 (skip if it opens above \u20b92,577.77) \u00b7 SL \u20b92,408.61 \u00b7 T1 \u20b92,577.77 \u00b7 T2 \u20b92,690.54 \u00b7 Qty 1 for \u20b910k @1% risk"
-  },
-  {
-   "symbol": "INFY",
-   "name": "Infosys",
-   "bar_date": "2026-10-16",
-   "cmp": 1161.2,
-   "day_chg": 4.61,
-   "vol_ratio": 2.12,
-   "vol_badge": "2.1x Vol Surge",
-   "volume_projected": false,
-   "rsi": 69.8,
-   "ema20": 1056.23,
-   "ema50": 1072.14,
-   "high20": 1167.85,
-   "dist_high_pct": 0.57,
-   "atr": 31.79,
-   "checks": {
-    "volume": true,
-    "momentum": false,
-    "trend": true,
-    "breakout": true
-   },
-   "checks_passed": 3,
-   "passed": false,
-   "entry": 1161.2,
-   "stop": 1137.36,
-   "t1": 1208.88,
-   "t2": 1256.56,
-   "pivots": {
-    "P": 1150.35,
-    "R1": 1178.7,
-    "S1": 1132.85,
-    "R2": 1196.2,
-    "S2": 1104.5
-   },
-   "risk_per_share": 23.84,
-   "rr_t1": 2.0,
-   "rr_t2": 4.0,
-   "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
-   "features": {
-    "log_vol_ratio": 0.7537090493808871,
-    "rsi": 69.83106001179956,
-    "dist_high_pct": 0.5694245453681692,
-    "ext_ema20": 9.938051504422862,
-    "atr_pct": 2.7372599220925973,
-    "day_chg": 4.612608213682434,
-    "ret5": 13.464913374094213,
-    "rs20": 10.226835644975107,
-    "bias_score": -21.0,
-    "news_sent": 0.294,
-    "mkt_above50": 0.0,
-    "mkt_ret20": -0.5347916290900478
-   },
-   "r1_a": 0.5505731156764768,
-   "r2_a": 1.1011462313529536,
-   "news": [
-    {
-     "title": "Infosys Share Price Prediction for Wednesday: 21 Oct 2026",
-     "source": "Univest",
-     "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPWjJ1MnhkcHhudGN3QVMyTm5aNjZqQWkwWTBfZjUyckUxbnkweXJZX01HVGs1OW5CeGxtVHYtSzVMOHpnZi0wR2FrTWRSQVByajVBTk8zWjZ2NGtpZHU5U0Uycktna1B5VXNrVUpBVF9tQXQ2SVlmU25OR2NHOW5TaFk3R0lrUUtsZG1Rbk5n?oc=5",
-     "published": "Mon, 19 Oct 2026 20:17:12 GMT",
-     "sentiment": 0.296
-    },
-    {
-     "title": "What to do with IT stocks? TCS, HCL Tech, Wipro, Infosys, Tech Mahindra \u2014 Why experts are bullish after Accenture news",
-     "source": "Livemint",
-     "link": "https://news.google.com/rss/articles/CBMikgJBVV95cUxNTTVwNkJlVnpNSUU5ZF90MllJRTRVOExpQUJ4aHc1SFh2Vnp4YUc3VHp2MkJ2eF9hcXFxX042UFFKREROak5DRUdRSFYtRnFqSkoyQ0hRaFJWRFkta09RbURZRnItdnppX2wyemVXNzNNY2ZRWkhnRWRJWmZHWTV3OXBKUl9OcXBOZGRhbXF3OWVUM0s3dUhuN0pBbl9STmR0VHl5b3FpbTJkcDFJUzJfUWtsRlh6UzRWRi1kUDhmOENKbHV0WGZtckpBMU1KOTN3bGdBQlRiY2M4ZVlYbndLS1JFaG9GLUZfejJ2RnMzQ3VjSHluVXhjWkUxeHNzRTlCcHNZRVM1WU1JVHFhVHhVZHhR0gGXAkFVX3lxTE9Xbk5hazBtbXFUU3BvVl9jQjRMRXBYYUxrNFRJZkVVQmQ5Nm8wT0EwNXlJVnVZLVFBUEEwX0t4YUNsVllWbWJnRm5uVU9KWWQxMzZKVUZZS1hCZW9nUzFuRWozczNBdjE0aFFmOE5sVmJ5Y3dPOVppZEhCa3ZXLXhhZ25Sc1VIUGFCYUUtcktVVGVWcGg1dHNySGtOTWJQVlkyRjBUZ1VwYk1WXzJOSk5iY1RlSlBtN1NJTEZhdlNxLXV3VkpEcTFCd1JEbWpXYkQtVWM2V0N1NEVNNE1GV09GX2NaRENnNWQ4Q2szb3RXNnZ5d0RCRW1pbzVnS3lMWkFXS293VElkVXJjTEZXRmZndWtidndlNA?oc=5",
-     "published": "Mon, 19 Oct 2026 08:29:37 GMT",
-     "sentiment": 0.421
-    },
-    {
-     "title": "Infosys Share Price News: Price Action and Valuation Check",
-     "source": "Univest",
-     "link": "https://news.google.com/rss/articles/CBMickFVX3lxTFBQeGNqQmJ4VVBMcnMtUzVxdXNScVpWYVZRX243X0xnUkdRTGlQQVdWREtQejJDSHFuOWowZ1R5a3VXbUZ0ZzJXM1ZXNExJTm9qZXI2NTVvWndQRHpPcEVOMVpsOWt1cnBCNG9hcHJ2Q2RTZw?oc=5",
-     "published": "Mon, 19 Oct 2026 14:31:56 GMT",
-     "sentiment": 0.296
-    },
-    {
-     "title": "Infosys expands Truist GCC in India, onboards 1,000 colleagues",
-     "source": "scanx.trade",
-     "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNRHhZazVGNVhtY01CVDBneHBFemJ1cUpWUERQRnEzZnRaSHpsY2F3dlBMT0d4WmJyLTRZeEU4MEhDVUd4TC13REpocUs5THJFVkxCanVYSXJKSi04QnZCZGdyTVMzZEt1VjFYUnYwaGt1VHl5bUR4X2FqbHM1NV9BUWtrNHFSRFpnT2FpdnVLczgzZGhsc1Y2a1F3elZIeGdjZkpvWUF5bXh5M0tRSUJNTVNyNTR0Zw?oc=5",
-     "published": "Mon, 19 Oct 2026 10:29:38 GMT",
-     "sentiment": 0.103
-    },
-    {
-     "title": "Infosys stock: Goldman Sachs sets USD 10.40 target for Infosys stock",
-     "source": "ad-hoc-news.de",
-     "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxONG1HWFlEQmxsanBGMk5vNUNra2RYRWxSckVscG9Mckk4T3NfeXhOTHlsTi1wN1lsQkhQb1BBalpfcFNrNXhOUUJ3dlNOVlFUdG1QaUxFTzl6Ukk4NnE5QzF3emVLUzR5YXp3eFQ0N0FnNEQ5Y20xZExmWnE2cl9fTHVYRHdZOGhxLTZTaExjMGxISkxTc0NDVG01OHFzT1dNaWlxUktJR2dsUTYtT242UXJ4Z2J1Wkhfd0l0S0hSemRrRm9WTzkxUjhn?oc=5",
-     "published": "Mon, 19 Oct 2026 14:54:56 GMT",
-     "sentiment": 0.0
-    }
-   ],
-   "news_sentiment": {
-    "score": 0.294,
-    "count": 8,
-    "label": "POSITIVE"
-   },
-   "win_prob": 47.2,
-   "expected_r": 0.07,
-   "model_used": false,
-   "grade": "C",
-   "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
-   "action": "BUY INFY near \u20b91,161.20 (skip if it opens above \u20b91,208.88) \u00b7 SL \u20b91,137.36 \u00b7 T1 \u20b91,208.88 \u00b7 T2 \u20b91,256.56 \u00b7 Qty 4 for \u20b910k @1% risk"
+   "action": "BUY ICICIBANK near \u20b91,381.00 (skip if it opens above \u20b91,418.97) \u00b7 SL \u20b91,362.02 \u00b7 T1 \u20b91,418.97 \u00b7 T2 \u20b91,456.93 \u00b7 Qty 5 for \u20b910k @1% risk"
   },
   {
    "symbol": "HAL",
@@ -690,20 +381,20 @@
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
     "log_vol_ratio": 0.334410017086072,
-    "rsi": 60.50147793675361,
+    "rsi": 60.50147793663179,
     "dist_high_pct": 0.0,
-    "ext_ema20": 3.8506481804291948,
-    "atr_pct": 2.221724145265143,
+    "ext_ema20": 3.850648180429128,
+    "atr_pct": 2.221724145272732,
     "day_chg": 1.6089613034623307,
     "ret5": 7.161265902361169,
     "rs20": 4.732786616558715,
-    "bias_score": -21.0,
-    "news_sent": 0.227,
+    "bias_score": 22.0,
+    "news_sent": 0.31,
     "mkt_above50": 0.0,
     "mkt_ret20": -0.5347916290900478
    },
-   "r1_a": 0.24780028609690039,
-   "r2_a": 0.49560057219379255,
+   "r1_a": 0.24780028609605392,
+   "r2_a": 0.4956005721920997,
    "news": [
     {
      "title": "President of India confirms HAL shares are free from encumbrance",
@@ -734,15 +425,15 @@
      "sentiment": 0.0
     },
     {
-     "title": "Inspection delays hitting deliveries, says military parts company Data Patterns",
-     "source": "The Economic Times",
-     "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxNYzV2QloxQXkxZ3FhRWNmeWZicVBjeWxyb3VRVXB0NmVLdmRVVUdZLU9uNzNpRnJZTVRZbmxIMlVJM0otRlhQb2pKSnR6N05QVGNXZWM2X0RxZU92NzdqWXR1S2ZoSEJxMTl4QmROWC1TX0dPWXJvc2tZVlh2aTZHcUhlanVTaVNXUVdvdjQ1UjNsZWNneU93c1ZhVkZDRjJtQjJaeFZUalFYeDlDRXJtN3RGbGxwQlVXV1RfWjQ0YWlqaGMyVVhvQUo4cUo1aDdCeEEtcXlGQkR5RTRCaFYzM2I5TdIB4wFBVV95cUxNYzV2QloxQXkxZ3FhRWNmeWZicVBjeWxyb3VRVXB0NmVLdmRVVUdZLU9uNzNpRnJZTVRZbmxIMlVJM0otRlhQb2pKSnR6N05QVGNXZWM2X0RxZU92NzdqWXR1S2ZoSEJxMTl4QmROWC1TX0dPWXJvc2tZVlh2aTZHcUhlanVTaVNXUVdvdjQ1UjNsZWNneU93c1ZhVkZDRjJtQjJaeFZUalFYeDlDRXJtN3RGbGxwQlVXV1RfWjQ0YWlqaGMyVVhvQUo4cUo1aDdCeEEtcXlGQkR5RTRCaFYzM2I5TQ?oc=5",
-     "published": "Mon, 19 Oct 2026 19:05:00 GMT",
-     "sentiment": 0.0
+     "title": "8 Best Drone Stocks To Buy In India For October 2026",
+     "source": "Samco",
+     "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1GWkNrYml5YmhUSVJ2Y2pDNkFZYmg5dTJwOGxoYjczRGptT2dFeTFzQmczeFNXeXBLNm5OeWkxYjBaaHp6SERLVlg3cXhXS0dkYnJNTkV2M0cyNkxybVBrc283WlBMMlFUSmJlVWhvX2F0UVFu?oc=5",
+     "published": "Sun, 18 Oct 2026 06:51:07 GMT",
+     "sentiment": 0.637
     }
    ],
    "news_sentiment": {
-    "score": 0.227,
+    "score": 0.31,
     "count": 8,
     "label": "POSITIVE"
    },
@@ -754,20 +445,20 @@
    "action": "BUY HAL near \u20b94,989.00 (skip if it opens above \u20b95,155.26) \u00b7 SL \u20b94,905.87 \u00b7 T1 \u20b95,155.26 \u00b7 T2 \u20b95,321.53 \u00b7 Qty 1 for \u20b910k @1% risk"
   },
   {
-   "symbol": "AXISBANK",
-   "name": "Axis Bank",
-   "bar_date": "2026-10-16",
-   "cmp": 1290.0,
-   "day_chg": 0.16,
-   "vol_ratio": 1.34,
-   "vol_badge": "1.3x Vol Surge",
+   "symbol": "KOTAKBANK",
+   "name": "Kotak Mahindra Bank",
+   "bar_date": "2026-10-19",
+   "cmp": 442.3,
+   "day_chg": -1.14,
+   "vol_ratio": 0.6,
+   "vol_badge": "0.6x Vol Surge",
    "volume_projected": false,
-   "rsi": 62.8,
-   "ema20": 1252.04,
-   "ema50": 1252.11,
-   "high20": 1293.8,
-   "dist_high_pct": 0.29,
-   "atr": 25.89,
+   "rsi": 62.9,
+   "ema20": 430.69,
+   "ema50": 417.96,
+   "high20": 453.1,
+   "dist_high_pct": 2.38,
+   "atr": 9.2,
    "checks": {
     "volume": false,
     "momentum": true,
@@ -776,188 +467,85 @@
    },
    "checks_passed": 3,
    "passed": false,
-   "entry": 1290.0,
-   "stop": 1270.58,
-   "t1": 1328.83,
-   "t2": 1367.66,
+   "entry": 442.3,
+   "stop": 435.4,
+   "t1": 456.09,
+   "t2": 469.89,
    "pivots": {
-    "P": 1284.67,
-    "R1": 1298.73,
-    "S1": 1275.93,
-    "R2": 1307.47,
-    "S2": 1261.87
+    "P": 442.68,
+    "R1": 446.77,
+    "S1": 438.22,
+    "R2": 451.23,
+    "S2": 434.13
    },
-   "risk_per_share": 19.42,
+   "risk_per_share": 6.9,
    "rr_t1": 2.0,
    "rr_t2": 4.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 0.2951712398689384,
-    "rsi": 62.797225064738114,
-    "dist_high_pct": 0.2937122186358657,
-    "ext_ema20": 3.0314601350887704,
-    "atr_pct": 2.006744412780035,
-    "day_chg": 0.15527950310558758,
-    "ret5": 2.4541358917652856,
-    "rs20": 4.567049693606173,
-    "bias_score": -21.0,
-    "news_sent": 0.145,
+    "log_vol_ratio": -0.5092718442062364,
+    "rsi": 62.86411484429868,
+    "dist_high_pct": 2.3835837927752075,
+    "ext_ema20": 2.6952277572415806,
+    "atr_pct": 2.078949213457963,
+    "day_chg": -1.139920914861614,
+    "ret5": -0.2480843749791406,
+    "rs20": 9.183647186157085,
+    "bias_score": 22.0,
+    "news_sent": 0.022,
     "mkt_above50": 0.0,
-    "mkt_ret20": -0.5347916290900478
+    "mkt_ret20": -1.9594077211949723
    },
-   "r1_a": 0.33736457529458824,
-   "r2_a": 0.6747291505891677,
+   "r1_a": 0.4857608818999225,
+   "r2_a": 0.9715217637998389,
    "news": [
     {
-     "title": "Axis Bank shares fall over 4% despite 38% YoY jump in Q2 net profit. Why brokerages are revising target pr",
-     "source": "The Economic Times",
-     "link": "https://news.google.com/rss/articles/CBMinAJBVV95cUxPel9qUFVQbnAySG9ETWFEbjlNWVZ4ZWljY0k1M2ZtelVFaFpkTjB0cUJEQjEwdklJYnN6QmJiYS14T3NlZ2F1V3FfZWEtRlZlTXhpLXJ5OXVycUFMaXJkYThacmpjMXl2NTRTSWZKZFFnTVZTaTliWXFraFNaTzNoRTItUGs3LWI2b0N6RTZ0T19fOHRmVnVraTdoU3BKMlFCQ29fU09DTy1vemhVZ1JHUXBmYmpYd2N2UTVtTWkyNnhJS0g5NXhmNGZYM1F4RFhWX1BXejRMNzkxdHMyNU53aWdYWEladWRxb01xdkVkVjNZdkhmMWE2Zkg0NHBWYW9XelBZdWxpb3FvTGQtV2t4dUQ2QlIxQUJtM3FHc9IBogJBVV95cUxQUUktaXhyeXVQdDFqSXZXVl9KWjZwWmhUZTFPbm1TbVZFbE9DZkhTalpOeEJTWGFhUzN4UDBLM2hEcVdhNVYxOHNLd1ZGaDJab29icEpoeDY5VTV1MnJDVmd4QVlZWVRUeldyYTFrZnNUOW9XeFVUQ3UxcUFLSi0tSGRKWndONENQcGhoWUtoVVM0ZzBITl90b2Fic3FfVnk0eFdIVVdfaEJkSktEUjRKaGlrVlI0bXFZNFhpLXVtQTAxamVMWlRrTklGaUZpeUJsY0VzdXJtVFVmWTVLSm92d0ZaM0hwTGVZQ2JYem5GRG5yM05NZ3RPUzVMa01HemxKZExGN1BhYW5DdVRuYUlxQUVMcVpZaFFZUndlR1lRWjdvUQ?oc=5",
-     "published": "Mon, 19 Oct 2026 03:51:26 GMT",
-     "sentiment": 0.494
-    },
-    {
-     "title": "Axis Bank Shares Fall 5% As Q2 Profit Misses Estimates",
-     "source": "TradingView",
-     "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOaFA5aU9ibUpBdDljTDVMVk1WdFRpbFF1eHFoMzVZODRPWk9DclpJQlJjekpDWVZzN2Q1TTVSZExKUm9pRGp5MWJoaEg3TjJGV2szb29GWW1iRkJ0TW1ZbTNBckVfTGNxNmNFbjNpM3h3T1BDYXFLZGE0VmN2ZGN4T3M0cTZobVg2M0ZMVjZjUHVOMFdBYlNERE1IWTRDTXB2TF9ILWdiQWpOWkdaRUJr?oc=5",
-     "published": "Mon, 19 Oct 2026 16:31:12 GMT",
-     "sentiment": 0.153
-    },
-    {
-     "title": "Why is Axis Bank stock falling today?",
-     "source": "Investing.com",
-     "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOeFhDUTIwQXZPdUgyQVJmVWNLX0xrZTNVWkJEdjhzU25RVjVCSnhYaXZ1QmptYlJkdkw1elotT2NhYVVNQTZleXI2cVV4Q2V0MWR0VGlENFFYMmh1RWF1RjhNakVzOXJiNVZHOERkSzhRZkt3VGFuZi0yQm1WV1BhdmFzdGEtU1FoSGdvX1lKU1N4RnNuSnB3dmZoMEU3MTQ?oc=5",
-     "published": "Mon, 19 Oct 2026 05:53:55 GMT",
-     "sentiment": -0.153
-    },
-    {
-     "title": "Axis Bank Share Price Drops 5% Despite Jump in Profits by 38%; Analysts Raise Concerns Over Margin and Fee Income Growth",
-     "source": "India Infoline",
-     "link": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxOYnp1SnBSNGV2MTFGMFZzbGk1UkxuSmtoNHNEYkZyZzlXUkJuUFI3RVRvT2pvNUZFdDhXbVlTX09fQUVZMXVCUi1maG0wdGYyOGpEMFpZZDJmcENyUjNpRE9XOWREemFiMVdtN1VUeGp0VTJ3VTJJTlpyRy1NQU5vWHltRUZ4SmR4ZEs0aDFlUGhTQXJBTHhsZ0V6aTJGMTlNOTU0VWtiU2Rnd3ZEbnlBRnpIeXQwRUJSV2tmd0Z1cVdYbEl3OTdKc21Xbk9GWTNwRDM4UlBuV211WFB0T2ZqczViNk1sSGdZUmxJNVVDSUlyVjVY?oc=5",
-     "published": "Mon, 19 Oct 2026 07:56:08 GMT",
-     "sentiment": 0.339
-    },
-    {
-     "title": "India's Axis Bank slides after quarterly profit falls short of expectations",
-     "source": "Reuters",
-     "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOaEJxaHB5V2h4YkZOanhtZy15VGRUQ2s0VFN4UXBHdy1OV3ZFeUtpSjlTdnIyaWhtaHI5OVRRWXdiSTZvaV94Y0paeFRSLVh5WkRnVDdsR1ExUEdvZnlVb2tabGxrbWFfdmVhbEh1ZVlrLXFWemJkWmdJczFfa3lhMTZjWkR1SWowOVNZQUpsUENlVDdJUUtTRGZ1QTBnQ3hFVU1uNTZ5aGFZODJ6Ym8wSDJzOFRzblFObm1r?oc=5",
-     "published": "Mon, 19 Oct 2026 05:30:00 GMT",
-     "sentiment": -0.052
-    }
-   ],
-   "news_sentiment": {
-    "score": 0.145,
-    "count": 8,
-    "label": "POSITIVE"
-   },
-   "win_prob": 47.2,
-   "expected_r": 0.07,
-   "model_used": false,
-   "grade": "C",
-   "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
-   "action": "BUY AXISBANK near \u20b91,290.00 (skip if it opens above \u20b91,328.83) \u00b7 SL \u20b91,270.58 \u00b7 T1 \u20b91,328.83 \u00b7 T2 \u20b91,367.66 \u00b7 Qty 5 for \u20b910k @1% risk"
-  },
-  {
-   "symbol": "COFORGE",
-   "name": "Coforge",
-   "bar_date": "2026-10-16",
-   "cmp": 1951.9,
-   "day_chg": 0.91,
-   "vol_ratio": 1.01,
-   "vol_badge": "1.0x Vol Surge",
-   "volume_projected": false,
-   "rsi": 64.3,
-   "ema20": 1861.46,
-   "ema50": 1808.32,
-   "high20": 1970.0,
-   "dist_high_pct": 0.92,
-   "atr": 59.83,
-   "checks": {
-    "volume": false,
-    "momentum": true,
-    "trend": true,
-    "breakout": true
-   },
-   "checks_passed": 3,
-   "passed": false,
-   "entry": 1951.9,
-   "stop": 1907.03,
-   "t1": 2041.65,
-   "t2": 2131.39,
-   "pivots": {
-    "P": 1934.8,
-    "R1": 1969.0,
-    "S1": 1917.7,
-    "R2": 1986.1,
-    "S2": 1883.5
-   },
-   "risk_per_share": 44.87,
-   "rr_t1": 2.0,
-   "rr_t2": 4.0,
-   "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
-   "features": {
-    "log_vol_ratio": 0.007063660105788133,
-    "rsi": 64.31412114195584,
-    "dist_high_pct": 0.9187804865958122,
-    "ext_ema20": 4.858274710450905,
-    "atr_pct": 3.0652735771313613,
-    "day_chg": 0.9098885975110438,
-    "ret5": 4.497028690084726,
-    "rs20": 9.397035043148193,
-    "bias_score": -21.0,
-    "news_sent": 0.286,
-    "mkt_above50": 0.0,
-    "mkt_ret20": -0.5347916290900478
-   },
-   "r1_a": 0.2858049278885274,
-   "r2_a": 0.5716098557770586,
-   "news": [
-    {
-     "title": "COFORGE Share Price Today - Coforge on NSE/BSE",
-     "source": "scanx.trade",
-     "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBZa0lSZHA2N3hySDFSYldJbkJFZkRsOHRzbXJuaWgwOUQyeTBsckQyM3FBYkQ1c3F6a1N1M0RJZjkyYWU2c3VNVHpDNHA1Z0Q3?oc=5",
-     "published": "Sat, 17 Oct 2026 16:52:21 GMT",
-     "sentiment": 0.296
-    },
-    {
-     "title": "Vaishali Parekh recommends 3 stocks to buy today: Coforge, Lalithaa Jewellery, Titan; target, stop-loss, market outlook",
-     "source": "Livemint",
-     "link": "https://news.google.com/rss/articles/CBMikAJBVV95cUxQMEhhQk5kSElXbnpxU2pUN1FMMWpWUk43enBKZ0hNUTFkQjV6YUNBU2ZoOXBmTW1Zd3hHZVNFbEt0UHcxLURTRTZkZ0g2c1pNX0pjSHBaclFUZ1JLQ1F5cUJQZWpvNElpaTNna1BCVU5jeGw5T0lTUURTeFpOVDhwOXF4S0Qzb0tCdEt3a3FSM3h2clhORkNIZWt6VG5NeDBiQ0hLVERGWXZUWEdTNm1BeUVKZmpQWG94aDB2N25CbEVHRkp0dXZxeU90cmk2eUlPVEd0WklLTVo2cXJpcnpwZDdHaWpFcjI3eW5aM3dqZXEzc3hZNEFITHFDTlA0TkxqTmVtSlBQOV9ZYm1iVFBoWNIBlgJBVV95cUxQaTN0Z0JLMDBmcWI1YWtRa1RabktoZmFZbHJHZUN2WUt2bGx6cUh2RVNEQmk5RjlKOVRDdHZvOU9hUU0xak5FOXNXa0djaDhDdzVEZFdpbU0ydTJlS3dWRFpKOVd6Y2pJcWtsTkVMOG5ka1BUa0dlY3BabnhOcjJzZWo0WDVhd2tBS3RaQ1BPOWpQdlZxSzBqM29oV0FEcFB1V2diTlBSS1dpbFk0YzhVQjhKeUlySU5uMnczR3MtbkhZbTIwUi1OWFlKLUtBdWVPMk1QanAwQlVtWF84eUJtU3hUdnN6ekxDWVpvWkR3ejVwOVNxaXBDWk1ySWlablRRWGlsMVJsRU1WQ25CR2VkREhCS0ZMQQ?oc=5",
-     "published": "Sun, 18 Oct 2026 18:32:53 GMT",
-     "sentiment": 0.226
-    },
-    {
-     "title": "Stock to buy today: Coforge (\u20b91,932.70)",
-     "source": "BusinessLine",
-     "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNYi1xbW9RV3JidXlJdWktZlpkemk4X2hHQjBnVUp1Vlp0V19Bd25uUHM5aVdJXzYxX0tyNW5rYm5SbVZCcUEwb0VSSEhBdHZxeUdkb3FpcG1tTE5hNzRGTnJrcUJyV1RLeDZvVkVSY1JpajZaOE1yMmEtbE5QVW5zb0hpR3pNWndheXdHU2N3Z3hiRnl2TzEzQ0lWdU14QmtCM3ZqU2xxbWxCNW1fU1ROSFZvNDVkTjJDN1HSAcABQVVfeXFMUEpyLVJLZVh3a2R4ZFNYd3MwY2c4YkJjczJsVV9jOS1SOUgyVGhWVkNRQV92Tk9rUkYweXNVLTI1YmVQT29UWjJzLXhqZTRmS2w1QWpHNjhXaVZvNFRkbVFnYTQ1N1BfcEk2TVU4b3ZJa19nYWZ0T1R4RVVsMnpQSkRlTkpneHFySU5ZalRZeFpMNy1QZGQ0dkY3N2VsclNkNk90UGN0dlZaam9USzdtTjZFaWZFV2k0czc5M3FqTU1w?oc=5",
-     "published": "Sat, 17 Oct 2026 07:00:00 GMT",
+     "title": "5 Undervalued Stocks Near 52-Week Highs",
+     "source": "Equitymaster",
+     "link": "https://news.google.com/rss/articles/CBMingJBVV95cUxPRU9vU3hiemlyMW1XQ2FSeVVXRGNqY3NId2U4bllJX0JWcE9VR1Nkb2IybV81LWtTZ3dWSV91bkRfaXZ3clliUG9ONzl5bDhHLTRNcWJVRG1fd0VFUXc3MkhSZEtnRXlodDNidnd6akNDYXRxbnhpRDBjT0RLNFdocVNmUnA5UVMxYWJRSHNuVnZRcUhNekRSOFEyekk0aUhJVjFCS0owTUFDaS1LVk5ibzVwWXp6U29TcS04S1RIZjg1eHhnMmhFaUVPSlRuQjc1V0RDLWhNLXNHX08tLU94Sl9rUTF4TFVHSGdKMUY5NTZlOU9XNjhYd0ptTFBkXzVyeGk4RmR1d0l4YXhha2NHMjB6SkpUVDh3MGlJbnV3?oc=5",
+     "published": "Tue, 20 Oct 2026 00:30:00 GMT",
      "sentiment": 0.0
     },
     {
-     "title": "Buy, Sell Or Hold: TCS Asian Paints, Tata Motors PV, Coforge, Welspun Corp | Ask Profit",
-     "source": "NDTV Profit",
-     "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPSnV4WWJGc0Vlak95YWVrdGRzYnVXelJ3NlNVQ2lVVVNOOHBLY0h2RmtzaWw3a0lFdC1wc29pUjBmcXItMnJyb2JsSWQyQzJ5NC1RNVkzd3lvbGRHRzdlVS1xSDY5VUZWNm9COTdIYTJQaHdxUGVsWE9TU0YyUjUyRXdCUUdvRXdES0lXMlF6V2lQVWdrZnNjOW0zZkw4ZGVVM3NYTEVpNDFQcEhtYTRoQVBadTZtSE5fRklKMjVLZkUyQdIBygFBVV95cUxNQUpQalJ6SDVlWTJ0NDc2dXY1ZF9WM0Uta0Y1dEpQZzV0UXNwRWk4TE5IdkVscExtRFhxUjdpNWxCVFpKQ1Vtd09hVUs2RnI4MFFyTkdheEVqUGJJOV9YUWZzdWVpZU90UGpsbVhVRXJ1QktNd0MxRlFMQUNrb2ZlOC1HY1hrRTUydnJNX2JmY1FwT25qYmJwWXF0UkY0SEJEa093dVVUVXlEV2puaFhkYlBkNnBVZk4wQ2lqalcxbEdlVDd6bUVuRF9n?oc=5",
-     "published": "Mon, 19 Oct 2026 00:34:25 GMT",
-     "sentiment": 0.25
+     "title": "Weekly Recap: Kotak Mahindra Bank Jio IPO lead and PMJDY accounts rise",
+     "source": "TradingView",
+     "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNenJnLUpNQlFsUHZ3VC1sM1RpMzZDTTZOUURlejY3VmdDMHBRd0EteDN2MXh0VGN3bUJMUTFpajlPWHN2ZHRFZTFQcnNzT0xMblRsdGJXRjRCb1duZUFRcHh4TEdFeEUzckQtdHZNMzI0VlZ3dWh2RlhyYWNodjhsZFU4aDY5YTQwVFRHWFh4TUV3YXN4ZGlIc0JwZkQwUmtRSWpGY3VrUGdJZTB6WmE3R0NWWDZCbmNnZW5iUzMzTTh1TWlETkdQRnZCTQ?oc=5",
+     "published": "Mon, 19 Oct 2026 01:00:00 GMT",
+     "sentiment": 0.0
     },
     {
-     "title": "Nifty rally faces crucial test at key resistance levels: Analysts",
-     "source": "The Economic Times",
-     "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxPQ3o4QWZNTm1NN1ZJSlNxQ2N2d3lhem5GV1NJQ0RRczlnUEtmaTB2ektvOG5QZzdndGdvV2RXbWRvb2NaYUptc3FwSkNwcE00TWpIZEJZa2s1ZkctQWk2VVROWnloSzlUdmJyLTNOTUJNR2RYTUptOVZNYVZUNVltSTF1Y3pZX193RzRJLWoxQW1wX1lmbDd1aFY5VElTMGxPS2M0Z2QyVlBwN3JlYVNRb3dId2tEd2s4eGdQRm9BTURORVpZOHdNX3VIaFByaUY4Ym14TDc1Sk1wYmJE0gHiAUFVX3lxTE1TNmhFc2JBTEhiTjZtVkJaQXZSTFItQVJFamRJWmkycmhZQmFnR1VqS09BRE4zWjlqeHptaHdRTUoyTU1UcHRtSExBOHc2VjRleHg3aXU3Vm1TVFM2Ny13SE5kQlI1MFdLbkhMTmhVUjRoQWxUMTVYNXpKRFJGZGhSUHExWFdiVkhBelZjQkxRMy1JWUtBQ1dzckVVbThYYVNLSkVFdW4zMVFfdEhhZDAySklFZTRVU0JzeGpjX1NLdEhoak9ob1ZIZHdjRkw4a2ZLYURZSGs0Y1Z1YjJEMVFiNlE?oc=5",
-     "published": "Mon, 19 Oct 2026 00:14:32 GMT",
-     "sentiment": 0.649
+     "title": "Kotak Mahindra Bank sets October 24 results: HSBC targets Kotak Mahindra Bank stock at INR 520",
+     "source": "ad-hoc-news.de",
+     "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxPdjQ2dHNHMU9sMjN1TWxKV3ZqLTYzdmw0OFpUN25CbTZxYjRKa3ZMeTFtNV9LdDUyUE9wd3BFQTNxTGJNUkhucW9uRVdJYlJyZWFmVjFoaU1mNWxNdXhhZUgtMXh1Z19CcVFUZXgwS2hmbUw0TVFtYzRidEpHeC1UWk9IRG11OF9lUmlGZ2FNU3FBSWJqX3hYSHdhZ3k4amVBNWlyWS15UHBiV0FaLVVJVF9qZ1FUSzJhRUlDNk5SNjYyVTdjUGFTV2loZThQTzBRdXpDQUh1VXhwWmpDWE02V1hMSk50UWNZeHctTw?oc=5",
+     "published": "Mon, 19 Oct 2026 07:21:38 GMT",
+     "sentiment": 0.0
+    },
+    {
+     "title": "Ronak Jain pledges 2 crore shares in Asgard Alcobev to Kotak Bank",
+     "source": "scanx.trade",
+     "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOZHpxeURTWl9QRlM2dlVtQXpRbU5jQnJ1WmExNWg4cGpJNkU5NE43OWUxLXBycnR5eGluY1JsM1hzTXpyNGJZZGdqWlk4OU1oYnNkQ0FUT3h2YnVlNzJueHJBaHJNcjRJYTF1LU1NUTBiM0JWTEhrN29qeG5DaU1BbjIwX0dXblpwYlNCY1ItVlZTZG5aUlIwaU1lMVMzam9IcGFrV21wdlpGeTJnMFlMUEdtSUFxSmRRVU0xbURqOA?oc=5",
+     "published": "Sun, 18 Oct 2026 12:41:17 GMT",
+     "sentiment": 0.296
+    },
+    {
+     "title": "Kotak Mahindra Bank Downgraded to Buy on Valuation Concerns Despite Strong Fundamentals",
+     "source": "MarketsMojo",
+     "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxPZFQydDBvN2NOTHYzdVRqaWFoclRvUlVYeTRfeW9uMFNpVnJHTmRSVmtuS1pTaFRWa183MW9fTkJjS1RoVGstVTc1TVkzWkZjVDMzaW1vNlI0a3B5NnNjd2JZelZ4R0R4ZlF5eXhOYmVmeTJrSXBCMl84ZlF5ak51TlJrdTF2UEdXUEZsZ3lzY1N4RWJPdjZuMk1OUWxad3hrZ2Q5eUlER2RZVGdvMzZnaWxWYTlIWE9lTjkxV3BseTVBUmZfazZLbTFUSEkzUWY3U2E2M0N6OXVHRDM1bU1uVGZ2Yw?oc=5",
+     "published": "Mon, 19 Oct 2026 06:18:04 GMT",
+     "sentiment": -0.598
     }
    ],
    "news_sentiment": {
-    "score": 0.286,
-    "count": 6,
-    "label": "POSITIVE"
+    "score": 0.022,
+    "count": 8,
+    "label": "NEUTRAL"
    },
    "win_prob": 47.2,
    "expected_r": 0.07,
    "model_used": false,
    "grade": "C",
    "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
-   "action": "BUY COFORGE near \u20b91,951.90 (skip if it opens above \u20b92,041.65) \u00b7 SL \u20b91,907.03 \u00b7 T1 \u20b92,041.65 \u00b7 T2 \u20b92,131.39 \u00b7 Qty 2 for \u20b910k @1% risk"
+   "action": "BUY KOTAKBANK near \u20b9442.30 (skip if it opens above \u20b9456.09) \u00b7 SL \u20b9435.40 \u00b7 T1 \u20b9456.09 \u00b7 T2 \u20b9469.89 \u00b7 Qty 14 for \u20b910k @1% risk"
   },
   {
    "symbol": "TRENT",
@@ -1006,7 +594,7 @@
     "day_chg": 0.3051157795363135,
     "ret5": 1.387841843521942,
     "rs20": 6.619408021054007,
-    "bias_score": -21.0,
+    "bias_score": 22.0,
     "news_sent": -0.03,
     "mkt_above50": 0.0,
     "mkt_ret20": -0.5347916290900478

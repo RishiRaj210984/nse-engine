@@ -147,6 +147,8 @@ a{color:var(--info)}
 </nav>
 
 <script>
+const NSE_HOLIDAYS = ['2026-10-20', '2026-11-08', '2026-11-10', '2026-11-24', '2026-12-25'];   // fallback; meta.json has the live list
+const holidayList = () => (D.meta?.holidays?.length ? D.meta.holidays : NSE_HOLIDAYS);
 const FILES = ['plan', 'global-bias', 'volume-breakouts', 'performance', 'review', 'meta', 'live'];
 const D = {};
 let tab = 'dash', stockFilter = 'ab', lots = {}, loadErr = null, lastLoad = 0;
@@ -177,7 +179,7 @@ function ago(iso) {
 function marketState() {
   const t = ist(), m = mins(t.hm);
   if (t.dow === 'Sat' || t.dow === 'Sun') return ['Weekend', false];
-  if ((D.meta?.holidays || []).includes(t.date)) return ['Holiday', false];
+  if (holidayList().includes(t.date)) return ['Holiday', false];
   if (m < 540) return ['Pre-market', false];
   if (m < 555) return ['Pre-open', false];
   if (m <= 930) return ['Market open', true];
@@ -187,9 +189,13 @@ function marketState() {
 async function load() {
   $('#refresh').textContent = '…';
   try {
-    const res = await Promise.all(FILES.map((f) => fetch(`${f}.json?t=${Date.now()}`, { cache: 'no-store' }).then((r) => r.ok ? r.json() : null).catch(() => null)));
+    const get = (f) => fetch(`${f}.json?t=${Date.now()}`, { cache: 'no-store' }).then((r) => r.ok ? r.json() : null).catch(() => null);
+    let res = await Promise.all(FILES.map(get));
+    if (!res[0]) { await new Promise((r) => setTimeout(r, 1500)); res = await Promise.all(FILES.map(get)); }   // one retry
     FILES.forEach((f, i) => { if (res[i]) D[f] = res[i]; });
-    loadErr = res[0] ? null : 'Could not reach the data. Showing the last saved copy if there is one.';
+    loadErr = res[0] ? null : (navigator.onLine === false
+      ? 'Your phone is offline. Showing the last saved copy.'
+      : `Couldn't download the latest plan from GitHub. Check your internet; office Wi-Fi often blocks github.io, so try mobile data. ${D.meta?.updated ? 'Showing the copy saved ' + ago(D.meta.updated) + '.' : ''}`);
     lastLoad = Date.now();
   } catch (e) { loadErr = String(e); }
   $('#refresh').textContent = '↻';
@@ -213,10 +219,10 @@ function eventsBlock(evs, session) {
 /* ---------------- NOTICES ---------------- */
 function notices() {
   const m = D.meta || {}, t = ist(), out = [];
-  const closed = t.dow === 'Sat' || t.dow === 'Sun' || (m.holidays || []).includes(t.date);
+  const closed = t.dow === 'Sat' || t.dow === 'Sun' || holidayList().includes(t.date);
   if (closed) {
     const nxt = D.plan?.session ? new Date(D.plan.session + 'T12:00:00+05:30').toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'short', timeZone: 'Asia/Kolkata' }) : '';
-    out.push(`<div class="banner">Market closed today${(m.holidays || []).includes(t.date) ? ' (NSE holiday)' : ''}. No live prices or trades today.${nxt ? ' Next session: <strong>' + esc(nxt) + '</strong>.' : ''}</div>`);
+    out.push(`<div class="banner">Market closed today${holidayList().includes(t.date) ? ' (NSE holiday)' : ''}. No live prices or trades today.${nxt ? ' Next session: <strong>' + esc(nxt) + '</strong>.' : ''}</div>`);
   }
   const due = m.next_run && new Date(m.next_run.at).getTime();
   if (due && Date.now() - due > 20 * 60 * 1000) {
@@ -864,7 +870,11 @@ setInterval(async () => {                                                  // li
 setInterval(() => { if (!document.hidden && store.get('relay', '')) pollRelay(); }, 20 * 1000);   // real-time relay
 pollRelay();
 setInterval(() => { if (!document.hidden && (tab === 'today' || tab === 'dash')) render(); }, 30 * 1000);  // clock / current step
-if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js').then((reg) => reg.update()).catch(() => {});
+  let reloaded = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => { if (!reloaded) { reloaded = true; location.reload(); } });
+}
 </script>
 </body>
 </html>
