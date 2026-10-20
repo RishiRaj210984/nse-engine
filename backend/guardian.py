@@ -13,6 +13,7 @@ with ICICI (SEBI rule for API orders); if ICICI rejects an order you get an aler
 Credentials live only in guardian.env on your computer (never committed, never shared).
 
     python guardian.py login     # prints today's ICICI login link
+    python guardian.py check     # read-only test of keys, session, positions, quotes, alerts
     python guardian.py run       # paper mode
     python guardian.py run --live
 """
@@ -253,6 +254,63 @@ def run(live_flag=False, breeze=None, once=False, clock=None):
         time.sleep(int(env["POLL_SECONDS"]))
 
 
+def _mask(v):
+    return f"{v[:3]}…({len(v)} chars)" if v else "MISSING"
+
+
+def check():
+    """Read-only test of every piece. Never prints keys or personal details; places no orders."""
+    env = load_env()
+    ok = True
+    print("1) guardian.env:", "found" if os.path.exists(ENV_FILE) else "NOT FOUND (copy guardian.env.example to guardian.env)")
+    for k in ("BREEZE_API_KEY", "BREEZE_API_SECRET", "BREEZE_SESSION_TOKEN"):
+        print(f"   {k}: {_mask(env.get(k, ''))}")
+        ok &= bool(env.get(k))
+    print(f"   MODE: {env['MODE']}   NTFY_TOPIC: {'set' if env.get('NTFY_TOPIC') else 'not set (no phone alerts)'}")
+    try:
+        ip = requests.get("https://api.ipify.org", timeout=8).text.strip()
+        print(f"2) This computer's public IP: {ip}  (for LIVE orders this must be the static IP registered in Breeze)")
+    except Exception as exc:
+        print("2) Public IP: could not check:", exc)
+    if not ok:
+        print("\nStop here: fill the missing values, then run this check again.")
+        return
+    try:
+        b = connect(env)
+        print("3) Breeze session: OK")
+    except BaseException as exc:
+        print("3) Breeze session: FAILED:", str(exc)[:200],
+              "\n   Most common cause: session token is from an earlier day. Run: python backend/guardian.py login")
+        return
+    def step(n, name, fn):
+        try:
+            r = fn()
+            good = isinstance(r, dict) and r.get("Status") == 200
+            print(f"{n}) {name}: {'OK' if good else 'FAILED'}" + ("" if good else f"  ({str((r or {}).get('Error'))[:160]})"))
+            return r if good else None
+        except Exception as exc:
+            print(f"{n}) {name}: FAILED  ({str(exc)[:160]})")
+    step(4, "Read funds", b.get_funds)
+    r = step(5, "Read positions", b.get_portfolio_positions)
+    if r is not None:
+        legs = legs_from_positions(r)
+        trades = group_trades(legs)
+        print(f"   open option legs: {len(legs)}, grouped into {len(trades)} trade(s)")
+        for t in trades:
+            st, note, pnl, pct = evaluate(t, {}, datetime.now(IST).strftime("%H:%M"), int(env["TRAIL_PCT"]))
+            print(f"   - {label(t)} | P&L {pnl:+,.0f} ({pct:+.1f}%) | guardian says: {st} ({note})")
+    q = step(6, "Read a live quote (Nifty)", lambda: b.get_quotes(stock_code="NIFTY", exchange_code="NSE", product_type="cash"))
+    if q:
+        try:
+            print("   Nifty last price:", (q.get("Success") or [{}])[0].get("ltp"))
+        except Exception:
+            pass
+    if env.get("NTFY_TOPIC"):
+        notify(env, "Guardian check", "Test alert: if you see this on your phone, alerts work.")
+        print("7) Test alert sent to your ntfy topic: check your phone.")
+    print("\nNo orders were placed. If 3-6 are OK, you are ready for the paper trial: python backend/guardian.py run")
+
+
 def login_link():
     env = load_env()
     key = env.get("BREEZE_API_KEY")
@@ -270,6 +328,8 @@ if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else ""
     if cmd == "login":
         login_link()
+    elif cmd == "check":
+        check()
     elif cmd == "run":
         run(live_flag="--live" in sys.argv)
     else:
