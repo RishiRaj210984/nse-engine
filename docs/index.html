@@ -114,6 +114,17 @@ a{color:var(--info)}
 .kv dt{color:var(--dim)}.kv dd{margin:0;min-width:0}
 .spark{width:100%;height:64px;display:block}
 .pnlrow{display:grid;grid-template-columns:5.5rem 1fr 5.5rem;gap:8px;align-items:center;font-size:.85rem}
+.qv{width:100%;border-collapse:collapse;font-size:.9rem}
+.qv td{padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top;white-space:normal}
+.qv tr:last-child td{border-bottom:0}
+.qv td:first-child{color:var(--dim);width:30%;font-size:.82rem}
+.qv td:last-child{text-align:right;white-space:nowrap}
+.call{display:inline-block;font-family:var(--mono);font-weight:800;font-size:.75rem;padding:3px 8px;border-radius:7px}
+.call.go{background:color-mix(in srgb,var(--up) 22%,transparent);color:var(--up)}
+.call.no{background:color-mix(in srgb,var(--down) 22%,transparent);color:var(--down)}
+.call.mid{background:color-mix(in srgb,var(--warn) 22%,transparent);color:var(--warn)}
+.call.info{background:var(--panel2);color:var(--dim)}
+.gt td{white-space:normal}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
@@ -231,6 +242,92 @@ function notices() {
   return out.join('');
 }
 
+/* ---------------- ICICI DIRECT ORDER TICKET ---------------- */
+const ICICI_LOGIN = 'https://secure.icicidirect.com/IDirectTrading/Customer/login.aspx';
+function iciciAppLink() {
+  const ua = navigator.userAgent || '';
+  if (/android/i.test(ua)) return 'intent://#Intent;package=com.icicidirect.markets;S.browser_fallback_url=' + encodeURIComponent(ICICI_LOGIN) + ';end';
+  if (/iphone|ipad/i.test(ua)) return 'https://apps.apple.com/in/app/icici-direct-stocks-f-o-mf-ipo/id1642076943';
+  return ICICI_LOGIN;
+}
+const r05 = (x) => Math.round(x * 20) / 20;
+function iciciTicket(o, full) {
+  if (!o || o.decision === 'SKIP') return '';
+  const s = (full?.strategies || [])[0]; if (!s) return '';
+  const lot = o.lot_size, exp = new Date(o.expiry + 'T12:00:00+05:30').toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric', timeZone: 'Asia/Kolkata' });
+  const legs = s.legs.slice().sort((a, b) => (a.action === 'BUY' ? 0 : 1) - (b.action === 'BUY' ? 0 : 1));   // BUY legs first
+  const credit = s.legs.reduce((a, l) => a + (l.action === 'SELL' ? 1 : -1) * l.est_premium, 0);
+  const rows = legs.map((l, i) => {
+    const px = optPrice(o.index, o.expiry, l.strike, l.type);
+    const price = px ? px.price : l.est_premium;
+    let gtt = '';
+    if (credit > 0 && l.action === 'SELL') gtt = `GTT <b>BUY</b> trigger ₹${r05(price + credit).toFixed(2)}`;
+    if (credit <= 0 && l.action === 'BUY') gtt = `GTT OCO <b>SELL</b>: stop ₹${r05(price * 0.7).toFixed(2)} · target ₹${r05(price * 1.6).toFixed(2)}`;
+    return `<tr><td>${i + 1}</td><td><b class="${l.action === 'BUY' ? 'up' : 'down'}">${l.action}</b></td><td class="n">${l.strike} ${l.type}</td><td class="n">₹${num(price)}${px ? '' : '*'}</td></tr>`
+      + (gtt ? `<tr><td></td><td colspan="3" class="fine" style="padding-top:0">↳ ${gtt}</td></tr>` : '');
+  }).join('');
+  return `<details class="ticket"><summary class="fine" style="cursor:pointer;margin-top:6px"><b>ICICI Direct order ticket</b> ▾</summary>
+    <div class="card" style="background:var(--panel2);gap:6px">
+      <dl class="kv"><dt>Segment</dt><dd>F&amp;O (NFO) → Index options → ${esc(o.index)}</dd>
+        <dt>Expiry</dt><dd>${esc(exp)}</dd>
+        <dt>Product</dt><dd><b>Options</b> (carry-forward). <span class="warn">Not "Options Plus"</span>: that one is intraday and is auto-closed around 3:15 PM.</dd>
+        <dt>Quantity</dt><dd>${lot} per leg = 1 lot (lots × ${lot})</dd>
+        <dt>Order type</dt><dd>Limit, near the price shown (no market orders on options)</dd>
+        <dt>When</dt><dd>${esc(o.enter_at)}</dd></dl>
+      <div class="tbl"><table><thead><tr><th>#</th><th>Side</th><th>Strike</th><th>Price</th></tr></thead><tbody>${rows}</tbody></table></div>
+      <div class="fine">Place in this order: BUY legs first, then SELL legs (protection first, lower margin). ICICI's basket order can hold all legs, but they do not fill as one unit, so check every leg filled. * = estimate; use the live price in ICICI.</div>
+      <div class="fine">${credit > 0
+        ? 'GTT on each sold leg: if that leg alone loses about the full credit, ICICI sends a buy order. When one triggers, also exit the other legs. GTT sends a limit order when triggered and can miss in a fast market.'
+        : 'GTT OCO on the bought option: stop at −30%, target at +60%. The app also trails the stop once you are up.'}</div>
+      <div class="fine"><b>In the ICICIdirect app (general steps; exact labels may differ):</b> search ${esc(o.index)} → open the option chain → pick expiry ${esc(exp)} → tap the strike → Buy or Sell → product Options → quantity and limit price → place. Basket: add all legs to a basket from the option chain and check the margin it shows before placing. Positions: open your F&amp;O positions to watch P&amp;L or exit.</div>
+      <a class="primary" style="display:block;text-align:center;text-decoration:none;margin-top:4px" href="${iciciAppLink()}" target="_blank" rel="noopener">Open ICICI Direct</a>
+      <div class="fine">Log in yourself; this app never sees your ICICI password. After placing, tap "I took this trade" in the Live tab and edit the prices to your actual fills.</div>
+    </div></details>`;
+}
+
+/* ---------------- QUICK VIEW ---------------- */
+const DOT = { green: '🟢', flat: '⚪', red: '🔴' };
+const call = (txt, kind) => `<span class="call ${kind}">${esc(txt)}</span>`;
+function quickView() {
+  const p = D.plan; if (!p) return '';
+  const gt = (D.live?.global_table?.rows?.length ? D.live.global_table : D['global-bias']?.global_table) || {};
+  const eo = p.expected_open || {};
+  const rows = [];
+  const biasKind = p.bias === 'BULLISH' ? 'go' : p.bias === 'BEARISH' ? 'no' : 'mid';
+  rows.push(['Market bias', `${esc(p.headline)}${eo.gap_pct != null ? `<div class="fine">Expected open ${sgn(eo.gap_pct)} (±${eo.error_pct ?? '—'}%)</div>` : ''}`, call(p.bias, biasKind)]);
+  if (gt.rows?.length) {
+    const reds = gt.rows.filter((r) => r.effect === 'red' && !r.model).length, greens = gt.rows.filter((r) => r.effect === 'green' && !r.model).length;
+    rows.push(['Global markets', `${greens} positive · ${reds} negative`, call(gt.tilt === 'positive' ? 'POSITIVE' : gt.tilt === 'negative' ? 'NEGATIVE' : 'MIXED', gt.tilt === 'positive' ? 'go' : gt.tilt === 'negative' ? 'no' : 'mid')]);
+  }
+  (p.options || []).forEach((o) => {
+    const k = o.decision === 'TRADE' ? 'go' : o.decision === 'SKIP' ? 'no' : 'mid';
+    rows.push([`${esc(o.index)} options`, o.decision === 'SKIP' ? 'No trade today' : `${esc(o.strategy)} · exp ${esc(o.expiry.slice(5))}<div class="fine">Enter ${esc(o.enter_at)}</div>`, call(o.decision === 'SKIP' ? 'NO TRADE' : o.decision, k)]);
+  });
+  const st = p.stocks || [];
+  rows.push(['Shares', st.length ? st.map((x) => esc(x.symbol)).join(', ') : (p.market_gate_open === false ? 'Market gate closed' : 'No setups'), call(st.length ? st.length + ' BUY' : 'NO BUYS', st.length ? 'go' : 'no')]);
+  const G = groups();
+  if (G.length) {
+    const ev = G.map((g) => evalGroup(g));
+    const tot = ev.reduce((a, e) => a + (e.pnl || 0), 0);
+    const worst = ev.find((e) => e.status === 'EXIT NOW') ? 'EXIT NOW' : ev.find((e) => e.status === 'BOOK PROFIT') ? 'BOOK PROFIT' : 'HOLD';
+    rows.push(['My trades', `${G.length} open · <span class="n ${cls(tot)}">${inr(tot)}</span>`, call(worst, worst === 'EXIT NOW' ? 'no' : worst === 'BOOK PROFIT' ? 'go' : 'info')]);
+  }
+  const tl = p.timeline || [], cs = currentStep(tl), t = ist();
+  const step = cs.active >= 0 ? tl[cs.active] : cs.next >= 0 ? tl[cs.next] : null;
+  if (step) rows.push([cs.active >= 0 ? 'Do now' : 'Next', `${esc(step.title)}<div class="fine">${esc(step.when)}</div>`, call(cs.active >= 0 ? 'NOW' : countdown(step, t).replace('in ', ''), cs.active >= 0 ? 'go' : 'info')]);
+  return `<section class="box wide"><h3><span>Quick view</span><span class="fine">${D.live?.updated ? 'live ' + ago(D.live.updated) : ''}</span></h3>
+    <table class="qv"><tbody>${rows.map((r) => `<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('')}</tbody></table></section>`;
+}
+function globalTable() {
+  const gt = (D.live?.global_table?.rows?.length ? D.live.global_table : D['global-bias']?.global_table) || {};
+  if (!gt.rows?.length) return '';
+  return `<section class="box wide"><h3><span>Global markets → Nifty</span><span class="fine">${gt.updated ? ago(gt.updated) : ''}</span></h3>
+    <div class="tbl"><table class="qv gt"><thead><tr><th>Market</th><th>Move</th><th class="r">Effect</th></tr></thead><tbody>
+    ${gt.rows.map((r) => `<tr${r.model ? ' style="font-weight:700"' : ''}><td>${esc(r.group)}</td><td>${esc(r.move)}<div class="fine">${esc(r.note)}</div></td><td>${DOT[r.effect] || ''}</td></tr>`).join('')}
+    </tbody></table></div>
+    <div class="fine">Colours are simple thresholds for a quick read. The bold model row is the tested forecast the plan uses; when the two disagree, trust the model and keep size small.</div></section>`;
+}
+
 /* ---------------- DASHBOARD ---------------- */
 function spark(points) {
   if (!points || points.length < 2) return '';
@@ -261,7 +358,8 @@ function optBox(o, full) {
       <dt>Stop</dt><dd class="down">${esc(o.stop_loss)}</dd>
       <dt>Per lot</dt><dd class="n">risk <span class="down">${inr(o.max_loss)}</span> · reward <span class="up">${o.max_reward == null ? 'open' : inr(o.max_reward)}</span> · lot ${o.lot_size}</dd></dl>
     ${st ? `<div class="fine">Past record of this setup: ${st.win_pct}% won over ${st.trades} trades · avg ${inr(st.avg_pnl)} · worst ${inr(st.worst)} per lot</div>` : ''}
-    ${o.decision === 'CAUTION' ? `<div class="warn" style="font-size:.85rem">${esc(o.decision_reason)}</div>` : ''}</section>`;
+    ${o.decision === 'CAUTION' ? `<div class="warn" style="font-size:.85rem">${esc(o.decision_reason)}</div>` : ''}
+    ${iciciTicket(o, full)}</section>`;
 }
 function fmtIst(iso) {
   return new Date(iso).toLocaleString('en-IN', { weekday: 'short', hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata' });
@@ -276,6 +374,7 @@ function vDash() {
   h += `<section class="box wide"><h3><span>Decisions for ${esc(sess)}</span><span class="pill ${p.stage === 'final' ? 'gA' : 'gB'}">${p.stage === 'final' ? 'FINAL' : 'PREVIEW'}</span></h3>
     <div class="fine">Built ${esc(fmtIst(m.updated || p.generated_at))} IST${m.task ? ' by the ' + esc(m.task) + ' run' : ''}${nx ? ' · next: ' + esc(nx.name) + ' at ' + esc(fmtIst(nx.at)) : ''}</div></section>`;
 
+  h += quickView() + globalTable();
   const tl = p.timeline || [];
   const cs = currentStep(tl);
   const step = cs.active >= 0 ? tl[cs.active] : cs.next >= 0 ? tl[cs.next] : null;

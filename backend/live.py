@@ -241,8 +241,13 @@ def run(force=False):
     except Exception as exc:
         chain_src, err = "unavailable", str(exc)[:160]
         log.warning("NSE option chain unavailable: %s", exc)
+    try:
+        import global_table
+        gt = global_table.fetch_and_build(bias.get("preopen") if (bias.get("preopen") or {}).get("markets") else None)
+    except Exception as exc:
+        gt = {"error": str(exc)[:200], "rows": []}
     out = {
-        "updated": now.isoformat(), "session": bias.get("target_session"),
+        "updated": now.isoformat(), "session": bias.get("target_session"), "global_table": gt,
         "sources": {"quotes": "Yahoo (1-min, may lag 1–15 min)", "option_chain": chain_src, "error": err},
         "indices": {k: quotes.get(t) for k, t in (("NIFTY", "^NSEI"), ("BANKNIFTY", "^NSEBANK"), ("INDIAVIX", "^INDIAVIX"))},
         "chains": chains,

@@ -370,6 +370,11 @@ def setup_verdict(index, strategy_name, session, lab=None, events=None):
                     "reason": f"On {node['basis']}, this spread lost on average: {ov['win_pct']}% wins, "
                               f"avg ₹{ov['avg_pnl']:,} per lot over {ov['trades']} trades."}
         return {"decision": "CAUTION", "dte": dte, "reason": "Too little history.", "stats": None}
+    if kind == "spread" and not node.get("overall_allowed"):
+        ov = node.get("overall") or {}
+        return {"decision": "SKIP", "dte": dte, "stats": {**ov, "sample": node["basis"]} if ov else None,
+                "reason": f"On {node['basis']}, this spread lost overall ({ov.get('win_pct')}% wins, avg ₹{ov.get('avg_pnl', 0):,} "
+                          f"per lot over {ov.get('trades')} trades). A good-looking slice is not trusted on its own."}
     g = {**g, "sample": f"{node['basis']}, {g['sample']}"}
     heavy = BANK_HEAVY if index == "BANKNIFTY" else set(HEAVYWEIGHTS)
     recent = [e for e in (events or []) if e.get("affects") == session and e["symbol"] in heavy]

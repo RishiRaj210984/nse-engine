@@ -250,6 +250,7 @@ def global_bias(force=False):
         "options": idx_opts,
         "events": events,
         "preopen": pre,
+        "global_table": _global_table(pre),
         "notes": [
             "GIFT Nifty has no free data feed; the pre-open model reads what drives it (US/Dow futures, Europe, Asia, crude, rupee).",
             "Option premiums are theoretical estimates. Confirm on a live option chain.",
@@ -257,6 +258,14 @@ def global_bias(force=False):
     }
     store.cache_set("bias:snapshot", result, 600)
     return result
+
+
+def _global_table(pre):
+    try:
+        import global_table
+        return global_table.fetch_and_build(pre if pre and "markets" in pre else None)
+    except Exception as exc:
+        return {"error": str(exc)[:200], "rows": []}
 
 
 def historical_bias_scores(hist=None, test=600):
