@@ -177,6 +177,7 @@ function ago(iso) {
 function marketState() {
   const t = ist(), m = mins(t.hm);
   if (t.dow === 'Sat' || t.dow === 'Sun') return ['Weekend', false];
+  if ((D.meta?.holidays || []).includes(t.date)) return ['Holiday', false];
   if (m < 540) return ['Pre-market', false];
   if (m < 555) return ['Pre-open', false];
   if (m <= 930) return ['Market open', true];
@@ -207,6 +208,21 @@ function eventsBlock(evs, session) {
   return `<section class="card"><div class="eyebrow">Results calendar (Nifty heavyweights)</div>${evs.map((e) =>
     `<div class="ev"><span><strong>${esc(e.name)}</strong> <span class="dim">${esc(e.when)}</span></span><span class="${e.affects === session ? 'warn' : 'dim'}">${e.affects === session ? 'affects today' : 'moves market ' + esc(e.affects.slice(5))}</span></div>`).join('')}
     <div class="fine">The session right after a heavyweight's results can be wider than normal. Combined with ≤1 day to expiry, condors broke 60% of the time.</div></section>`;
+}
+
+/* ---------------- NOTICES ---------------- */
+function notices() {
+  const m = D.meta || {}, t = ist(), out = [];
+  const closed = t.dow === 'Sat' || t.dow === 'Sun' || (m.holidays || []).includes(t.date);
+  if (closed) {
+    const nxt = D.plan?.session ? new Date(D.plan.session + 'T12:00:00+05:30').toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'short', timeZone: 'Asia/Kolkata' }) : '';
+    out.push(`<div class="banner">Market closed today${(m.holidays || []).includes(t.date) ? ' (NSE holiday)' : ''}. No live prices or trades today.${nxt ? ' Next session: <strong>' + esc(nxt) + '</strong>.' : ''}</div>`);
+  }
+  const due = m.next_run && new Date(m.next_run.at).getTime();
+  if (due && Date.now() - due > 20 * 60 * 1000) {
+    out.push(`<div class="banner err">The ${esc(m.next_run.name)} run due at ${esc(fmtIst(m.next_run.at))} IST has not arrived yet (GitHub delays its scheduled jobs). You are seeing data from ${esc(fmtIst(m.updated))}. Tap ↻ in a few minutes.</div>`);
+  }
+  return out.join('');
 }
 
 /* ---------------- DASHBOARD ---------------- */
@@ -250,7 +266,8 @@ function vDash() {
   const eo = p.expected_open, t = ist();
   const sess = new Date(p.session + 'T12:00:00+05:30').toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'short', timeZone: 'Asia/Kolkata' });
   const nx = m.next_run;
-  let h = `<section class="box wide"><h3><span>Decisions for ${esc(sess)}</span><span class="pill ${p.stage === 'final' ? 'gA' : 'gB'}">${p.stage === 'final' ? 'FINAL' : 'PREVIEW'}</span></h3>
+  let h = notices() ? `<section class="box wide">${notices()}</section>` : '';
+  h += `<section class="box wide"><h3><span>Decisions for ${esc(sess)}</span><span class="pill ${p.stage === 'final' ? 'gA' : 'gB'}">${p.stage === 'final' ? 'FINAL' : 'PREVIEW'}</span></h3>
     <div class="fine">Built ${esc(fmtIst(m.updated || p.generated_at))} IST${m.task ? ' by the ' + esc(m.task) + ' run' : ''}${nx ? ' · next: ' + esc(nx.name) + ' at ' + esc(fmtIst(nx.at)) : ''}</div></section>`;
 
   const tl = p.timeline || [];
@@ -484,6 +501,7 @@ function vLive() {
   const L = D.live || {}, p = D.plan || {};
   let h = '';
   if (flash) h += `<div class="banner err" role="alert"><strong>${esc(flash)}</strong> <button class="iconbtn" data-act="dismiss">OK</button></div>`;
+  if (notices()) h += `<section class="box wide">${notices()}</section>`;
   h += `<section class="box wide">${freshness()}</section>`;
   const n = idxQuote('NIFTY', '^NSEI'), b = idxQuote('BANKNIFTY', '^NSEBANK'), v = idxQuote('INDIAVIX', '^INDIAVIX');
   h += `<section class="box wide"><div class="grid2" style="grid-template-columns:repeat(3,1fr)">
@@ -587,7 +605,7 @@ function vToday() {
 
   const eo = p.expected_open;
   if (eo) {
-    const stageTxt = eo.stage === 'final' ? 'FINAL · 07:30 run' : 'PREVIEW · updates at 07:30';
+    const stageTxt = eo.stage === 'final' ? 'FINAL · morning run' : 'PREVIEW · final at ~07:15';
     h += `<section class="card"><div class="row"><div class="eyebrow">Expected open · ${esc(eo.snapshot || '')}</div><span class="pill ${eo.stage === 'final' ? 'gA' : 'gB'}">${stageTxt}</span></div>
       <div class="grid2"><div class="stat"><b>Nifty opening gap</b><span class="n ${cls(eo.gap_pct)}">${sgn(eo.gap_pct)}</span> <span class="fine">±${eo.error_pct ?? '—'}%</span></div>
       <div class="stat"><b>Full day (model)</b><span class="n ${cls(eo.day_pct)}">${sgn(eo.day_pct)}</span></div></div>

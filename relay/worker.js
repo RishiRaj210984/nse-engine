@@ -6,6 +6,14 @@
 //   GET /chain?symbol=NIFTY&expiry=27-Oct-2026             -> option chain near the money (LTP, OI)
 //
 // Only the app's own site may call it (ALLOWED_ORIGINS). Responses are cached ~15 s.
+//
+// ON-TIME RUNS (optional): GitHub's own schedule can start hours late. Add Cron Triggers to this
+// worker (times are UTC) and a secret GITHUB_TOKEN (fine-grained token, this repo only,
+// "Actions: Read and write"); the worker then starts the engine on the minute:
+//   37 18 * * SUN-THU   -> premarket (00:07 IST preview)
+//   43 1 * * MON-FRI    -> premarket (07:13 IST final)
+//   47 10 * * MON-FRI   -> postclose (16:17 IST)
+//   */10 3-9 * * MON-FRI -> live      (every 10 min in market hours)
 
 const ALLOWED_ORIGINS = ['https://rishiraj210984.github.io', 'http://localhost:8765', 'http://localhost:8766'];
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126 Safari/537.36';
@@ -54,7 +62,26 @@ async function nseChain(symbol, expiry) {
   return { symbol, expiry, spot, timestamp: rec.timestamp, strikes };
 }
 
+const REPO = 'RishiRaj210984/nse-engine';
+const TASK_FOR_CRON = { '37 18 * * SUN-THU': 'premarket', '43 1 * * MON-FRI': 'premarket',
+  '47 10 * * MON-FRI': 'postclose', '*/10 3-9 * * MON-FRI': 'live' };
+
+async function dispatch(task, env) {
+  const r = await fetch(`https://api.github.com/repos/${REPO}/actions/workflows/daily-engine.yml/dispatches`, {
+    method: 'POST',
+    headers: { 'Authorization': `Bearer ${env.GITHUB_TOKEN}`, 'Accept': 'application/vnd.github+json',
+      'User-Agent': 'nse-relay', 'X-GitHub-Api-Version': '2022-11-28' },
+    body: JSON.stringify({ ref: 'main', inputs: { task } }),
+  });
+  if (r.status !== 204) throw new Error(`GitHub dispatch ${task}: HTTP ${r.status} ${await r.text()}`);
+}
+
 export default {
+  async scheduled(event, env, ctx) {
+    const task = TASK_FOR_CRON[event.cron];
+    if (task && env.GITHUB_TOKEN) ctx.waitUntil(dispatch(task, env));
+  },
+
   async fetch(request, env, ctx) {
     const origin = request.headers.get('Origin') || '';
     if (request.method === 'OPTIONS') return new Response(null, { headers: cors(origin) });

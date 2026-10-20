@@ -4,10 +4,12 @@ name: daily-engine
 
 on:
   schedule:
-    - cron: "30 18 * * 0-4"   # 00:00 IST  overnight PREVIEW (Europe closed, US mid-session)
-    - cron: "0 2 * * 1-5"     # 07:30 IST  FINAL pre-market plan (US close, futures, Asia open)
-    - cron: "0 11 * * 1-5"    # 16:30 IST  scan, grade results, retrain, publish
-    - cron: "*/10 3-10 * * 1-5" # every 10 min 08:30-16:20 IST: live snapshot (skips outside 09:00-15:45)
+    # Off-the-hour minutes: GitHub delays jobs most at :00. For on-time runs, the Cloudflare
+    # relay (relay/worker.js) can also start these through workflow_dispatch.
+    - cron: "37 18 * * 0-4"   # 00:07 IST  overnight PREVIEW (Europe closed, US mid-session)
+    - cron: "43 1 * * 1-5"    # 07:13 IST  FINAL pre-market plan (US close, futures, Asia open)
+    - cron: "47 10 * * 1-5"   # 16:17 IST  scan, grade results, retrain, publish
+    - cron: "7-57/10 3-9 * * 1-5" # :07,:17.. 08:37-15:27 IST: live snapshot (skips outside 09:00-15:45)
   workflow_dispatch:
     inputs:
       task:
@@ -37,9 +39,9 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             TASK="${{ inputs.task }}"
-          elif [ "${{ github.event.schedule }}" = "0 11 * * 1-5" ]; then
+          elif [ "${{ github.event.schedule }}" = "47 10 * * 1-5" ]; then
             TASK=postclose
-          elif [ "${{ github.event.schedule }}" = "*/10 3-10 * * 1-5" ]; then
+          elif [ "${{ github.event.schedule }}" = "7-57/10 3-9 * * 1-5" ]; then
             TASK=live
           else
             TASK=premarket

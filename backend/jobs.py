@@ -30,7 +30,7 @@ def timeline(session, expiry):
     d1 = date.fromisoformat(session)
     d2 = _next_weekday(d1)
     steps = [
-        (d1, "07:45", "09:00", "prep", "Read the final plan", "The 07:30 run is final (US close, Dow and US futures, Europe, Asia open). Read the expected open, bias and trades. Set price alerts at each entry and stop-loss."),
+        (d1, "07:45", "09:00", "prep", "Read the final plan", "The ~07:15 run is final (US close, Dow and US futures, Europe, Asia open). Read the expected open, bias and trades. Set price alerts at each entry and stop-loss."),
         (d1, "09:00", "09:15", "wait", "Pre-open", "Place no market orders. Note where your stocks are indicated to open."),
         (d1, "09:15", "09:30", "wait", "Wait", "Opening 15 min is the most volatile. Cancel any stock that opens above its T1 or below its SL."),
         (d1, "09:30", "10:30", "act", "Stock buy window", "Buy only if price is holding above the entry and the 15-min opening high. Place the SL order immediately."),
@@ -113,7 +113,7 @@ def build_plan(bias, scan):
     }
 
 
-RUNS = [("00:00", "midnight preview"), ("07:30", "final pre-market plan"), ("16:30", "after-close learning")]
+RUNS = [("00:07", "midnight preview"), ("07:13", "final pre-market plan"), ("16:17", "after-close learning")]
 
 
 def next_run(now=None):
@@ -143,8 +143,10 @@ def publish_all(bias=None, scan=None, task="manual"):
     if store._read(os.path.join(store.PUBLIC_DIR, "review.json"), None) is None:
         store.publish("review.json", {"latest": None, "history": [], "totals": {}})
     plan = build_plan(bias, scan)
+    import nse_calendar
     store.publish("meta.json", {"updated": store.now_ist().isoformat(), "session": plan["session"], "task": task,
-                                "stage": plan.get("stage"), "next_run": next_run()})
+                                "stage": plan.get("stage"), "next_run": next_run(),
+                                "holidays": sorted(h for h in nse_calendar.holidays() if h >= store.now_ist().date().isoformat())[:30]})
     # Freeze the plan as it stood before its session opened; the evening review grades exactly this.
     now = store.now_ist()
     sess = date.fromisoformat(plan["session"])

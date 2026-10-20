@@ -160,3 +160,20 @@ whether prices are LIVE or a SNAPSHOT and how old they are.
 
 **Option-chain study (200 NSE sessions, Dec 2025 – Oct 2026):** OI "walls", put-call ratio and max
 pain did **not** predict moves better than chance, so the app shows them as context only.
+
+## On-time runs (added 20 Oct 2026)
+GitHub's own schedule can start jobs hours late (on 20 Oct the 00:00 run started at 04:03 IST).
+Schedules now use off-the-hour minutes (00:07, 07:13, 16:17 IST, live at :07/:17/...), which helps.
+For runs **on the minute**, let the Cloudflare relay start them:
+
+1. **GitHub token** (yours to create; never paste it into a chat):
+   GitHub → your photo → **Settings → Developer settings → Personal access tokens → Fine-grained
+   tokens → Generate new token**. Name `nse-relay`, expiry 1 year, **Only select repositories →
+   nse-engine**, **Repository permissions → Actions: Read and write**. Generate and copy it.
+2. **Cloudflare** → your `nse-relay` worker → **Settings → Variables and Secrets → Add**:
+   type **Secret**, name `GITHUB_TOKEN`, paste the token, **Deploy**.
+3. Same worker → **Settings → Triggers → Cron Triggers → Add** these four (UTC):
+   `37 18 * * SUN-THU`, `43 1 * * MON-FRI`, `47 10 * * MON-FRI`, `*/10 3-9 * * MON-FRI`.
+
+The GitHub schedule stays on as a backup; a duplicate run is harmless. The app shows a red notice
+when a run is more than 20 minutes late, and a "Market closed" notice on NSE holidays.

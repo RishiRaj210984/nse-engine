@@ -156,7 +156,7 @@ def predict(session, params, now=None):
     snap_ist = (datetime(session.year, session.month, session.day, tzinfo=timezone.utc) + timedelta(hours=off)).astimezone(IST)
     return {
         "snapshot_ist": snap_ist.strftime("%a %d %b %H:%M IST"),
-        "stage": "final" if off >= 1.5 else "preview",     # after ~07:00 IST US close + Asia open are in
+        "stage": "final" if off >= 1.0 else "preview",     # after ~06:30 IST US close + Asia open are in
         "expected_gap_pct": round(gap, 2),
         "gap_typical_error_pct": round(float((wf_g.pred - wf_g.actual).abs().mean()), 2) if len(wf_g) else None,
         "expected_day_pct": round(ret, 2),
