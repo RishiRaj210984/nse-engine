@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-20T10:11:14.756759+05:30",
- "market_open": true,
- "volume_projected": true,
+ "generated_at": "2026-10-20T20:53:45.386495+05:30",
+ "market_open": false,
+ "volume_projected": false,
  "bias": {
-  "label": "BULLISH",
-  "score": 22
+  "label": "RANGEBOUND",
+  "score": 1
  },
  "rules": {
   "vol_mult": 2.0,
@@ -19,15 +19,15 @@
  },
  "market_gate_open": false,
  "model": {
-  "version": 5,
-  "updated": "2026-10-19T22:50:47.570287+05:30",
+  "version": 6,
+  "updated": "2026-10-20T20:53:01.709700+05:30",
   "ranker_on": false,
   "samples": 2121,
   "live_samples": 0,
   "base_win_rate": 0.4716,
   "expectancy_r": 0.075,
   "holdout_auc": 0.525,
-  "note": "t2_atr 2.5\u21923.0; bias_threshold 0.3\u21920.2; max_day_chg 5.0\u21924.0; ranker OFF: no out-of-sample edge, using rule stats only"
+  "note": "ranker OFF: no out-of-sample edge, using rule stats only"
  },
  "candidates": [
   {
@@ -77,7 +77,7 @@
     "day_chg": 4.8151318376396635,
     "ret5": 5.086208211964571,
     "rs20": 5.9075658309839625,
-    "bias_score": 22.0,
+    "bias_score": 1.0,
     "news_sent": 0.465,
     "mkt_above50": 0.0,
     "mkt_ret20": -1.9594077211949723
@@ -93,11 +93,11 @@
      "sentiment": 0.848
     },
     {
-     "title": "Elara Securities: Banking & Financials - Punjab National Bank - Resilient performance; upbeat outlook - Q2FY27 Update - Buy - TP: INR 140 - Upside: 21%",
-     "source": "EquityBulls",
-     "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPd283dmxULUNaeXZTT2k3M0dUekRMTEFYaENEVF85dUVsZzQwbzVWMzctZ3FzTEpBTUJSYjZsNkQ0STVkaVM4U1BrV0VxREIta3Y3XzJJRVVGTnNTeDlwU1ZUYjJWSU9Kbmx3Ri1uOUs5NHRidkZHUkpNcGVsalRabE1NUkduSEI3Y2pnR242R1lPTDZfNTlNd2hMb19HelBNc3dfcFpaNUZ0eFhOQkFiRGtqYUkwdXo2NmJXUg?oc=5",
-     "published": "Tue, 20 Oct 2026 03:44:57 GMT",
-     "sentiment": 0.296
+     "title": "Is Now The Time To Put Punjab National Bank (NSE:PNB) On Your Watchlist?",
+     "source": "Simply Wall Street",
+     "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNTkhRYUtjRUpVcUZGd0FmN05hOHRmYkV1bTI5bko1ZEtHbHkxaW40TGJ5TVUxQTFTUWlqeHM5X01mOUlZRU9Wc1Q3X0huc3FGQWNfdGc1dFowYUtOWVd0SW55REItcmJvZnp5SVc5aDBDQktxQjFsdXp6LWdoeHFpSEdodThoSzJ5S3VKWkM4cXFoT1RMcDhvOEh5OHY2eUdlV2oxV0tWb1FES29GR05Rd1F0S241dDdBUXdEREJrLW9LU3E3eU1mdm4xUFlDT2oxTWg3Ty1n0gHbAUFVX3lxTE9KWmdJb1RWX3VxRHJQd0dodkZWSlRRSjBRU3dmMUR1dUNjTkpNTjRlbVdOLXZmM1lyZmtrY1FDQzROSW5YWFV2cjhVWk0zX2N3VXVmX1BDWkdJWlpSNFVlUUZZNEhsd05oSVlHRi1aLWk1TWdIa1FrNGUyTjNWWjRvT042Zm9pWEtYR3JvbkFmd2dtQTdVRVZiaV9hejdWeGwyWjIzeXdTMVh5Q0ZYcGJmS2Z0ZEVvR2Z4OU1FeHJiM3BfS2VaN18zR2VBSVhrcTNjUnNSMl9xamhiMA?oc=5",
+     "published": "Sun, 18 Oct 2026 02:28:25 GMT",
+     "sentiment": 0.0
     },
     {
      "title": "PNB shares jump 8% after Q2 results beat estimates; Jefferies, Motilal Oswal, others raise target prices",
@@ -107,18 +107,18 @@
      "sentiment": 0.527
     },
     {
-     "title": "Buy Punjab National Bank; target of Rs 140: ICICI Securities",
-     "source": "Moneycontrol.com",
-     "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPN0xvOExUaUdFS3p4WjNYUWxKYUw0R1AydTNhYnczb2RPOTV1d1JpUThHbjhRVFhwdVgwTWF0SVQzVzNZSW5PbDh1bTF2RnBYRVNQMldteWFPTktIVUNFdkRoOTV0TnBDQUdDMHNsTlZqV3RKenNYMFBDRWxtWVRDZUdkak1Ic3NOeU5qQzZUMHRQanNmRTJSM0QtNEJFU2NBWkp6bkpYbU01Rnp4cTRfbDh1LVlDQndmM3RiRnQ4anhWZW5Fa1JZ0gHHAUFVX3lxTE83TG84TFRpR0VLenhaM1hRbEphTDRHUDJ1M2FidzNvZE85NXV3UmlROEduOFFUWHB1WDBNYXRJVDNXM1lJbk9sOHVtMXZGcFhFU1AyV215YU9OS0hVQ0V2RGg5NXROcENBR0Mwc2xOVmpXdEp6c1gwUENFbG1ZVENlR2RqTUhzc055TmpDNlQwdFBqc2ZFMlIzRC00QkVTY0FaSnpuSlhtTTVGenhxNF9sOHUtWUNCd2YzdGJGdDhqeFZlbkVrUlk?oc=5",
-     "published": "Mon, 19 Oct 2026 10:07:54 GMT",
-     "sentiment": 0.296
-    },
-    {
      "title": "PNB shares gain up to 8% after Q2 results - Should you buy or sell?",
      "source": "CNBC TV18",
      "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQSzk4b190YnR1My1ZNnhsUGZvZlRIT04xNDRQSjRqYVBBenhyXzNsdm85N3hkV0NDSXJrTml6eTE5bFY4N1Y2elVhb0lEZWhDRlBjQ3FxV1ZRMVFfaWh2b2thNTBUeS1NanU1NVotM3hxcmctRjhhUTh1ZlFfNkRvNUdla19NTXFERHNDa2hnZ0JVT1BIQlBobkltQl9QNVM2by1iYWJKTlI2RlhUMzVUVnpINjZwalFqcmhKUF95dGZQcFM4SmtUM1EwRXhkUnBXcDF3S25sNNIB3AFBVV95cUxORHFmTDQ1YUk0QXdZbHN6T1RrUzZNdnJGbFBnS2FWVHhtTEZaNWhxNVBZc0RjREg3WmZ6UVI4QXk3WWRFMWRlaHdTVXZsWTN6ME1TdFUwbC0wX1U1S21Lbklybzh3WThNeU94aFQ1UXdPRjBIVHh1NVhmZDkwSklZUHRvR1c0VGIyMUJJRzZKMTRQc0hIbW1YX3RSRm9INktPTnc2cGZBMndhcGVIc3FNQzVjcndzUTNBcVZBYXYyZ1FZZmlZSlU3MFlvMjFGanhrX01rTjllMWdHcm5r?oc=5",
      "published": "Mon, 19 Oct 2026 05:14:15 GMT",
      "sentiment": 0.681
+    },
+    {
+     "title": "Elara Securities: Banking & Financials - Punjab National Bank - Resilient performance; upbeat outlook - Q2FY27 Update - Buy - TP: INR 140 - Upside: 21%",
+     "source": "EquityBulls",
+     "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPd283dmxULUNaeXZTT2k3M0dUekRMTEFYaENEVF85dUVsZzQwbzVWMzctZ3FzTEpBTUJSYjZsNkQ0STVkaVM4U1BrV0VxREIta3Y3XzJJRVVGTnNTeDlwU1ZUYjJWSU9Kbmx3Ri1uOUs5NHRidkZHUkpNcGVsalRabE1NUkduSEI3Y2pnR242R1lPTDZfNTlNd2hMb19HelBNc3dfcFpaNUZ0eFhOQkFiRGtqYUkwdXo2NmJXUg?oc=5",
+     "published": "Tue, 20 Oct 2026 03:44:57 GMT",
+     "sentiment": 0.296
     }
    ],
    "news_sentiment": {
@@ -180,8 +180,8 @@
     "day_chg": 3.210060977371487,
     "ret5": 6.291893092148393,
     "rs20": 6.797876873265773,
-    "bias_score": 22.0,
-    "news_sent": 0.069,
+    "bias_score": 1.0,
+    "news_sent": -0.103,
     "mkt_above50": 0.0,
     "mkt_ret20": -1.9594077211949723
    },
@@ -189,10 +189,24 @@
    "r2_a": 2.7060576444083604,
    "news": [
     {
+     "title": "Market Trading Guide: Federal Bank among 4 stock recommendations for Wednesday",
+     "source": "The Economic Times",
+     "link": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxNOXVtdmtVX1BPVW5wTnFyZjZHMVFZUTFRODUwaFB5dVRQRFJ5OE9GSFdRWVFTM2JkRkFjRXFpcXJuZWtGTzYyQ0xGZE5KNm5vd3ZxX0V6NWNCUEVyb2NTckwxZXFkU3lLUF9UejNkWWpFUGVsVVVndjhHZmdkdlJzU09ISWFIcktILWg2V2lfSFRqQ2xXdC1iUlVNbzY4N2I0QnFaTzRMQ0t3R2NaQXA0UDdmdlFzNFI0c0d5a1JHWHlLM0htdDNtSlJsUmxZeGczTUM0UGQ1ODRQWlhWVDhnc2pEQ2NuVkJVUFBVcE41WQ?oc=5",
+     "published": "Tue, 20 Oct 2026 10:21:45 GMT",
+     "sentiment": 0.0
+    },
+    {
      "title": "Jana SFB shares fall 13% to hit 6-month low as Federal Bank says no plan to buy stake",
      "source": "Moneycontrol.com",
      "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxOdkRZdG15QllmVWNPTHhLWjdJUDV4XzB3SV9FdXAzYWlXN3ZOQ0t2SUhLQi1HN0FlWXdjeWh0d1ZxRWx2elBXb2JvYnpwcGUtb0tzbmVYQnpWQzJyNWpTbV9xWlllVE91bW1nS3dSYW1IZ0RDdGd3WGNxei1jOHc3bU50SnBBTDhXTy1IX3NPbE5YcnVfN1JkOFhqekxkRkEydlRlV29nSnFjc2Q5RTNOdXFucmZHc1l5SmZCMDN2enktUUd6bTdpSkVqc1ZKbVMzR19SMjNzek9JRFBOYloyWmxoMNIB6AFBVV95cUxPQThrVjJsSHR1d18tNGc5SzE5MEx1REhVWmo0cGxPb19jTnFFUXo0TlpiSkFQdlF2c2RKY19STXU0VHdmN0lGYUt6TkdkeHo2NjdSejMwQy1UOXFEbnhUMUdrYmRDNGxBeWRkTHR0U1hCVTdpeXpCUXlncElRNXd4Q1ZOa2hDWGRkYm1TRGxnWlZ3cU9uYWE5ZERHSnZ0M2NoWWRoZDZGMzdxVWNwVGdfS1BzVlh3Vm1IMEN1cE1fZkJxekNLS1ZYOVFIZXBhVklzXzNEZkx1bjV4LWxlOTRZVXcwZGFRcFJ5?oc=5",
      "published": "Mon, 19 Oct 2026 11:07:47 GMT",
+     "sentiment": -0.273
+    },
+    {
+     "title": "Volume shockers: Jana Small Finance tumbles 14%; Federal Bank soars 5%",
+     "source": "Business Standard",
+     "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPTkdvODlrX01FUzRsRWlFdlJ2bmRaazhsenpRMlpwSm42VVAzRS1GUEdxVG1HTjNQN2l2OTB1MS1OQXRLUEREVVEwd1BDeFdUVlBRc3F1RjhrdllWN1JzWXdvakJ0dEsxeUhxM0Z0LXYtbFhFT0RSSGd4cHkyNGhSU1JlNlMtcEFrT2N4SG01MU1kSzBwMWVZbkdIbTA2TlJJRXRjdjhXNFRyMjd4VkVybXFPX3hOek1pbGxfV0VqLTd0SHVVRnBjM2poUnhGZ9IB0wFBVV95cUxOcnhXaGc0dmhnbDRvZjRXakUwc25hY2EwM2J5QVUwSDlQZkw2WlktOUpNdjBWaEZkTlZpWWRINGlpcWNrVkNwdGQ2UWxDRTNGeW1Udkozak9Ld2Y2bUtrNWx2YzBSY1V1VGdiS0pyYUlFdWZ2MTZYSmU1WkhsT1dHMkx2cklCdXl3d3FjQVk5aFZBM2VsY1Rza1h3U0tKaDZ4VzJWeHFfZTVwRXNsQThRWTJYZFJvbGtfSS1MQ1Q3U3Y4Zm15TmM1eFNrQ1lNUHNXUWZ3?oc=5",
+     "published": "Mon, 19 Oct 2026 09:25:36 GMT",
      "sentiment": -0.273
     },
     {
@@ -203,31 +217,17 @@
      "sentiment": 0.0
     },
     {
-     "title": "Volume shockers: Jana Small Finance tumbles 14%; Federal Bank soars 5%",
-     "source": "Business Standard",
-     "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPTkdvODlrX01FUzRsRWlFdlJ2bmRaazhsenpRMlpwSm42VVAzRS1GUEdxVG1HTjNQN2l2OTB1MS1OQXRLUEREVVEwd1BDeFdUVlBRc3F1RjhrdllWN1JzWXdvakJ0dEsxeUhxM0Z0LXYtbFhFT0RSSGd4cHkyNGhSU1JlNlMtcEFrT2N4SG01MU1kSzBwMWVZbkdIbTA2TlJJRXRjdjhXNFRyMjd4VkVybXFPX3hOek1pbGxfV0VqLTd0SHVVRnBjM2poUnhGZ9IB0wFBVV95cUxOcnhXaGc0dmhnbDRvZjRXakUwc25hY2EwM2J5QVUwSDlQZkw2WlktOUpNdjBWaEZkTlZpWWRINGlpcWNrVkNwdGQ2UWxDRTNGeW1Udkozak9Ld2Y2bUtrNWx2YzBSY1V1VGdiS0pyYUlFdWZ2MTZYSmU1WkhsT1dHMkx2cklCdXl3d3FjQVk5aFZBM2VsY1Rza1h3U0tKaDZ4VzJWeHFfZTVwRXNsQThRWTJYZFJvbGtfSS1MQ1Q3U3Y4Zm15TmM1eFNrQ1lNUHNXUWZ3?oc=5",
-     "published": "Mon, 19 Oct 2026 09:25:36 GMT",
-     "sentiment": -0.273
-    },
-    {
-     "title": "Federal Bank Share Price - Live NSE: FEDERALBNK Stock Price & Chart",
-     "source": "Upstox",
-     "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5BcE9nQTIzUUlNWXVVNTB4OTZVZkV3cXJLRVB1N1VyMzUzc1RGaFgyZnhtemZiUjhWMHBaRzJSWkdZQXhqM2NFRDNDbXdNaG9fYnhEdnloczl3UzFvUXdJeTJsNE5GZw?oc=5",
-     "published": "Sat, 17 Oct 2026 08:21:01 GMT",
-     "sentiment": 0.296
-    },
-    {
-     "title": "Federal Bank holds virtual investor meet with HSBC Securities",
-     "source": "scanx.trade",
-     "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNc0ZGR1lPYlduNGt1S2NFM3ZtZXdKampuYzNRaE5aaWhDNGViQ3h3aC14dGt4emloT2pmR1Q0ZVhrZjlLV2Y3THAwQ2JZREhFS1hyV2k5dTNGNGV4WUZic1AzQnhoRnlRTFhybmpTdHdodVVscVlwdUtxQUZDWURhNXozNzhVQklLbGRXOGJ3RUNNbnFsVXJKZ1RRVm9KRzZ5eUdBUFBTdmZ0SWJaTTFDTlZRSQ?oc=5",
-     "published": "Mon, 19 Oct 2026 15:03:36 GMT",
-     "sentiment": 0.296
+     "title": "Emkay raises Federal Bank target from INR 400 to INR 420 for Federal Bank stock",
+     "source": "ad-hoc-news.de",
+     "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxQb2dSYmJ6RW9FQXdzSm1oanEwZjNGTkNjV3FESDZDTG9mSkFIZHJtbnRYSEZPWVhFVTRPNGluR0QwYlhvSHA0NlhTUHpTX1lSWlptZHp2VUlOdVJTYUFiY2hrODJLQld5aF9BMk5rQW84UGpqZ285ZFltUEtqRW5ZN0tERTNIeDAxMjdTX3RVWHZ0eE9MZU1CYlpiWlRaU21LTlZKbWswbnpUTGsxOEZPNnRuVTZJVUZBQ0M1MnZvR3ZERWVnUG9seGdtSzJvdVhoeFBYdg?oc=5",
+     "published": "Tue, 20 Oct 2026 01:21:36 GMT",
+     "sentiment": 0.0
     }
    ],
    "news_sentiment": {
-    "score": 0.069,
+    "score": -0.103,
     "count": 8,
-    "label": "NEUTRAL"
+    "label": "NEGATIVE"
    },
    "win_prob": 47.2,
    "expected_r": 0.07,
@@ -285,14 +285,21 @@
     "day_chg": -1.145311381531855,
     "ret5": 3.0597014925373145,
     "rs20": 5.103778086290866,
-    "bias_score": 22.0,
-    "news_sent": 0.199,
+    "bias_score": 1.0,
+    "news_sent": 0.118,
     "mkt_above50": 0.0,
     "mkt_ret20": -1.9594077211949723
    },
    "r1_a": 0.852097840402753,
    "r2_a": 1.7041956808055152,
    "news": [
+    {
+     "title": "ICICI Bank Limited (ICICIBANK.NS) Stock Price, News, Quote & History",
+     "source": "Yahoo! Finance Canada",
+     "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBXZUxfbnNTLTF6ZUFMRGdWeVM2WUZxdFFUaW96MmRSbkVsdVZ1dTlBUVdxazNoQmJPcjFxSHROMktfUmRLR2ZVUGhrbV9yT2hUM1BCeFVMZHF3d0pk?oc=5",
+     "published": "Mon, 19 Oct 2026 07:00:38 GMT",
+     "sentiment": -0.226
+    },
     {
      "title": "ICICI Bank stock falls 1% after Q2 results, among top Nifty losers; brokerages bullish on growth,...",
      "source": "Moneycontrol.com",
@@ -301,36 +308,29 @@
      "sentiment": 0.511
     },
     {
-     "title": "ICICI Bank Limited Stock 12\u2011Month Price Target Raised to INR 1778.52, Implies 27% Upside",
-     "source": "TradingView",
-     "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxQbmhGTmFfc3dQenQtci1nU1J5ZVZtR08yR05taGdOemFHUVhaclFKQm96cllrcERyX3ZIWTJsdnRZX0VZcjRSY3dpRTcxdGpFQjNDTlRlNm8tbC1OcVVMa1NLcGs2U0JSRHI2d0o0TE9qWDZOdFdtSUgtZUp3YTgzekx0Y2FfWHZxRDBLMk9IQm5BRnhCQ09rcWk2QUp2S3dpR045c3FRX09Ic2xKSTVwZHh2WHJPMXMtRUJCTmNOaHJ1blp2d0U0eGlEdF9jLXItUGRSU08xTDhfTERXVXZTd3Zn?oc=5",
-     "published": "Mon, 19 Oct 2026 22:20:00 GMT",
-     "sentiment": -0.226
-    },
-    {
-     "title": "ICICI Bank Limited (IBN) stock price, news, quote and history",
-     "source": "Yahoo Finance UK",
-     "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE1EaUlLVUM3SjRHZTN3MHo5Q3JlWGVtaTdnTENMVnVpVURlUDVway16ZVJhLWE1bmdwREgtREZfSTVVdk5Ka2xwdURQenFCV2ds?oc=5",
-     "published": "Sun, 18 Oct 2026 00:12:33 GMT",
-     "sentiment": -0.226
-    },
-    {
-     "title": "Brokerages back ICICI Bank on strong Q2 earnings, see HDFC Bank recovery ahead",
-     "source": "The Economic Times",
-     "link": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxNNUdsMnVnZzAxS2huQWctNi14VHR1dmVWQlR6RXRHRl9vSEZqTGpKUjFHclhncEExbGRFWk85OWQ1MzBoV1hvZlZkeGh3SnViNl9MRjVGQTdiajZVa3g5ZGhNWUk0VXRYRFdLV1hMbERFS2pURkt4SXNwOXFJU3hSUmtvNF8ya1BxRkkzUXpzbGpkbHFOTGFMSjRhZUcxeFlCZG9lRjR6UmZNdkRsT0l0RE4zbUt0WTN5QldSMnk3YmRhaVZOaXNPMnRLc3hFSEhHaU9JSnJqRF9RSUx3QUgwdHB2cHJVQdIB6wFBVV95cUxPVERYYkxlbzVZbGlyUWw5U3phak92eC1Xd2FMTi1JWUtHalB6RUlpTEJfcktfMURJT2Frc0tNM29TWC1aRGx6TGw0bkxWeFRmWjF3QXlSVU9NR1ZiTDA0eVZPb1hEeGtmR00wYWVRaXNXUnNackRXakdqZTExdWpRYkk3WDUzcmJiSHRvVk1jOWZZUWZ0WS1mRFdobFEzX0hCU0xrd1JxS21LeFJZWWQ4T2pXSmJiVVBXNThsd1padloxSDdUVm0wM2NHRUg1ZTJ4ZGlxaHMxTlREWk42YmFBT1o0bG1hX0pfdHNJ?oc=5",
-     "published": "Tue, 20 Oct 2026 00:34:57 GMT",
+     "title": "HDFC Bank vs ICICI Bank share price targets: Check upside potential, returns, valuations \u2014 which stock should you buy?",
+     "source": "Livemint",
+     "link": "https://news.google.com/rss/articles/CBMijwJBVV95cUxNdVdXR1JJSGViZm9tNU1HckVRRXBicTc3MnNqcWw5YjNKNVZOeWd6RmtIaks3SGNoUlJGU19aYXFPanZZRzBKN0NTQjlHMm13SlVra2lhdm5yMURXZEJOMDkxRl9wNG9NTHU4UnE0ZEhCTjF4NzFMUFQzdW1QTk5xN19pN1d3VWREZGpBekdDRGJmcGxzdVdzZDU1YUJlV0Vya2l4d1FzVEZRTlFSYVFDSVFNaFM5dXBuVHpzdkxNT2Z4dHhSLUNLM19SWHVOMklVM1ViS0psMEVKVTBuWU5lZFVfTm9ySmNWanhuSXppOERYbUwxcmNhaHRSUG9RRHg2OHdTY3ZCQk1PV2VLRGEw0gGUAkFVX3lxTE9nMjVEYUp4bEVjQnQySXQ1QlJHN3I1aEJqd0ZsbDdxNnp1LW5EWUZDa1YyVEZYRzFmVV9nSW9FbkhSQjY2REprMkMtNHRzZ3hPeTYxeXZXdVlxYzBLbU5fdWZyNkJMMnRvc3AzU0FqeWs2QlhTc3ZGeG1zcy0zdXJyWFRQeWJDYlZNRHFrNUtzU0k2R25qei11R1FDY3RfZG42Mm95dzBNX0tjUVlVYkE0bzVzZnpQWDhUbnY1MGpUMTdnM3JRTGxKbGlyZ21uZFI2cVpNRnhmc1JNZDNoZ2xKcnZyVTZoOWZHclg4YWNnNWpkLUJTSUtpRUF5T1JJRzAzalhISlZhN1FsNl9vZTBkQUYyaw?oc=5",
+     "published": "Tue, 20 Oct 2026 04:59:51 GMT",
      "sentiment": 0.296
     },
     {
      "title": "ICICI Bank Share Price Prediction for Wednesday: 21 Oct 2026",
      "source": "Univest",
      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQQVpGV2p0ZjlvM0syeVc5cWpGdzlQZFRtM1pFVmJaSExTZGVwX3hnVGhQTklZYWE5V3pWQUtaVHBDR280eDNWckJweGdKQ3d2cVFrd0JhWVNyd1M1bnF6R3ZIQkxlQ25vU09xSHI3ajhPNTBKNk03dzQ1VTdtdF91NldkYWc5djJxRjJzdTQzdkI3dw?oc=5",
-     "published": "Mon, 19 Oct 2026 12:37:33 GMT",
+     "published": "Mon, 19 Oct 2026 20:17:12 GMT",
      "sentiment": 0.296
+    },
+    {
+     "title": "ICICI Bank Limited Stock 12\u2011Month Price Target Raised to INR 1778.52, Implies 27% Upside",
+     "source": "TradingView",
+     "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxQbmhGTmFfc3dQenQtci1nU1J5ZVZtR08yR05taGdOemFHUVhaclFKQm96cllrcERyX3ZIWTJsdnRZX0VZcjRSY3dpRTcxdGpFQjNDTlRlNm8tbC1OcVVMa1NLcGs2U0JSRHI2d0o0TE9qWDZOdFdtSUgtZUp3YTgzekx0Y2FfWHZxRDBLMk9IQm5BRnhCQ09rcWk2QUp2S3dpR045c3FRX09Ic2xKSTVwZHh2WHJPMXMtRUJCTmNOaHJ1blp2d0U0eGlEdF9jLXItUGRSU08xTDhfTERXVXZTd3Zn?oc=5",
+     "published": "Mon, 19 Oct 2026 22:20:00 GMT",
+     "sentiment": -0.226
     }
    ],
    "news_sentiment": {
-    "score": 0.199,
+    "score": 0.118,
     "count": 8,
     "label": "POSITIVE"
    },
@@ -340,109 +340,6 @@
    "grade": "C",
    "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
    "action": "BUY ICICIBANK near \u20b91,381.00 (skip if it opens above \u20b91,418.97) \u00b7 SL \u20b91,362.02 \u00b7 T1 \u20b91,418.97 \u00b7 T2 \u20b91,456.93 \u00b7 Qty 5 for \u20b910k @1% risk"
-  },
-  {
-   "symbol": "HAL",
-   "name": "Hindustan Aeronautics",
-   "bar_date": "2026-10-16",
-   "cmp": 4989.0,
-   "day_chg": 1.61,
-   "vol_ratio": 1.4,
-   "vol_badge": "1.4x Vol Surge",
-   "volume_projected": false,
-   "rsi": 60.5,
-   "ema20": 4804.01,
-   "ema50": 4768.72,
-   "high20": 4989.0,
-   "dist_high_pct": 0.0,
-   "atr": 110.84,
-   "checks": {
-    "volume": false,
-    "momentum": true,
-    "trend": true,
-    "breakout": true
-   },
-   "checks_passed": 3,
-   "passed": false,
-   "entry": 4989.0,
-   "stop": 4905.87,
-   "t1": 5155.26,
-   "t2": 5321.53,
-   "pivots": {
-    "P": 4961.53,
-    "R1": 5016.47,
-    "S1": 4934.07,
-    "R2": 5043.93,
-    "S2": 4879.13
-   },
-   "risk_per_share": 83.13,
-   "rr_t1": 2.0,
-   "rr_t2": 4.0,
-   "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
-   "features": {
-    "log_vol_ratio": 0.334410017086072,
-    "rsi": 60.50147793663179,
-    "dist_high_pct": 0.0,
-    "ext_ema20": 3.850648180429128,
-    "atr_pct": 2.221724145272732,
-    "day_chg": 1.6089613034623307,
-    "ret5": 7.161265902361169,
-    "rs20": 4.732786616558715,
-    "bias_score": 22.0,
-    "news_sent": 0.31,
-    "mkt_above50": 0.0,
-    "mkt_ret20": -0.5347916290900478
-   },
-   "r1_a": 0.24780028609605392,
-   "r2_a": 0.4956005721920997,
-   "news": [
-    {
-     "title": "President of India confirms HAL shares are free from encumbrance",
-     "source": "scanx.trade",
-     "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPWlZTS280ZW03TVBmT3VxZVdmM041VER6R1NPOEw5QW1xT2JWeXotdlpiblJhXzRxdEdQc3NEZjIzSGVOeTNrOXRyMUtVU2lpUWUzUS1nVWl1bW92WUJWTnJkTzNxWlpCUjdraHNrZDE4RUF2dkZTekZ3aDNhdW5LWEJRZ0hJckZCbEViNEJfN0p3UERTQTNYeDliWkM3UVZ1VEl3X0NqQjNSWkpEUzNvTlV1MHRjTVhDOGtwUFpB?oc=5",
-     "published": "Sun, 18 Oct 2026 10:28:51 GMT",
-     "sentiment": 0.67
-    },
-    {
-     "title": "Stocks To Buy Today: Four Top Stock Picks By Motilal Oswal's Chandan Taparia",
-     "source": "NDTV Profit",
-     "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPQ2VkcF9pUWVCZWxEaEJoa0NydFFxSXkwaWt6QU5VWTlGdEtocmtoOXBRaE9PMHUzQTNvZDdzdHhBQnQxUGtnel9ickZ3UTc3cjd1U05yLVdmMmRpMnBiYWp3N0FlSkFFS2xseUR4WlQyNWtUYWt3ME1XOW85RnVuN0tsblpaSWhnREN1UnFuZ0VVN3dtNk9uRkxUdk5VOFlVbTlZWG8wYUFaekZxcUhrejEyRGlBT1FuTWfSAcIBQVVfeXFMT21MUXVHU1c2Z2wzSW50aFJpSl9WdjZBMWZFbTl0YWZhaklxRHl1WV9WUDRhbl9ybXp2aUFTVXZoLU5IRlg2S1p3TGV1a2J0dnFrOUZaOExBVzdNc2dyT25HazRmNWR6YUFxSU83Y0Y0dTdJSTIxSF9UZTJFRXJuVnJiT0NkTmQ3Ti1IaTRoNGRYLUw4cTlCaGFlMXVRZS12SzdlNnNFLXkxU2xWbmRqOTEyRC1CaFlYQzdNZl9hbDUta3c?oc=5",
-     "published": "Mon, 19 Oct 2026 02:07:26 GMT",
-     "sentiment": 0.202
-    },
-    {
-     "title": "Top 3 stocks to buy tomorrow: Mphasis, HAL, Indian Hotel by market expert; check stop-loss, target price for Mon, 19 Oct",
-     "source": "Livemint",
-     "link": "https://news.google.com/rss/articles/CBMikAJBVV95cUxQbnk1SVBXTHliUFlTOUJyOUw0VlBQOXpiVGdEZVJ6SmJkZ0t0Rmk0Z0U3NW5PRnZXQmQxSER2cHlVeFY0NzVnaUVSUmVrR1lQbTdvdGhlZC0zSng4NXAxZHRBVzhYOGVRcmlyVzBFUGFIa1JZcFE2bzFnYUFnWmYzYjdjU2huWVlPX0Ffb1kxVG9YUWVycm83MFdHQ2dUbnBMdVN1UVhPdk01QllvblZsejRweEgwZWxobW9NeHRsVWpVejFQQWx3b0NPZUFZQ2RrTFVnek9LcXVpeWp2OWc2ZVVUeHJjUFpwTDlIV2JNYUdBeFNNeFBtUVFqZUp6MDZXQkFLajhrNnpYdGtxdGRuQ9IBlgJBVV95cUxOQVo4eVdKVkVPSTRpaS1ZU3JjUm5oeUhDbE9xdlBtYktqRnhhWlhIMHd1dTJ6X1dtbUwwaHpFTTNJY2tKMFQwMDEwclA3a3IwTlhLX1lpUGdoazhCOXhsRThfSzlwY1ZWWmxIUWZlSFZKdUhQT1JpbHlOckJBcnBOZnh4LVVKSVVicl9DbDN5aDNoaFJrV0ZsVW5hYTZLRnZMRzdFZmpLMTA2enVIbUVxT1VnVDdxZWtXdFF2UHhGd0dmWThvZHltNDZsYmRPcHBWMzBxeGF0QnEtdEQyZUZNcU9zRHdhN1FsdVVQS05fMFd6WkRNYm9mVjJxR2NEc3pjT2JRWHJQSFE3Q3NpWEdoaTZscjV6UQ?oc=5",
-     "published": "Sun, 18 Oct 2026 05:52:30 GMT",
-     "sentiment": 0.202
-    },
-    {
-     "title": "Bharat Electronics stock: Earnings due October 23, 2026 for Bharat Electronics stock",
-     "source": "ad-hoc-news.de",
-     "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQcGN4VEFhTk1kbHVXeVR6UmhFMkRlTlk4bUw5ZHFnYXFiNG03X19ISzNIenFmUTNGN1h5VFMxN3Y0YTY5UExIUHpCU3IwV0x3T0wtTk9UTUttbE1kcS0ybGhyMjl2UXRyS3JTblBZUlV1Zk9zT2UyNnA5c2p4WlFkVkRjT1hDMXJDdExLMm4tb1lYamNEV0VpRHZBZEdhR2FJRFRRc0NjdVRwYmJHcXd3Zzl6aWE0bm9mMXBIOUZ5OF93SFNwQ3pWbUFpWEhFYlhJZnduNHA5a0FlS3FaYWc?oc=5",
-     "published": "Mon, 19 Oct 2026 13:24:13 GMT",
-     "sentiment": 0.0
-    },
-    {
-     "title": "8 Best Drone Stocks To Buy In India For October 2026",
-     "source": "Samco",
-     "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1GWkNrYml5YmhUSVJ2Y2pDNkFZYmg5dTJwOGxoYjczRGptT2dFeTFzQmczeFNXeXBLNm5OeWkxYjBaaHp6SERLVlg3cXhXS0dkYnJNTkV2M0cyNkxybVBrc283WlBMMlFUSmJlVWhvX2F0UVFu?oc=5",
-     "published": "Sun, 18 Oct 2026 06:51:07 GMT",
-     "sentiment": 0.637
-    }
-   ],
-   "news_sentiment": {
-    "score": 0.31,
-    "count": 8,
-    "label": "POSITIVE"
-   },
-   "win_prob": 47.2,
-   "expected_r": 0.07,
-   "model_used": false,
-   "grade": "C",
-   "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
-   "action": "BUY HAL near \u20b94,989.00 (skip if it opens above \u20b95,155.26) \u00b7 SL \u20b94,905.87 \u00b7 T1 \u20b95,155.26 \u00b7 T2 \u20b95,321.53 \u00b7 Qty 1 for \u20b910k @1% risk"
   },
   {
    "symbol": "KOTAKBANK",
@@ -491,8 +388,8 @@
     "day_chg": -1.139920914861614,
     "ret5": -0.2480843749791406,
     "rs20": 9.183647186157085,
-    "bias_score": 22.0,
-    "news_sent": 0.022,
+    "bias_score": 1.0,
+    "news_sent": -0.004,
     "mkt_above50": 0.0,
     "mkt_ret20": -1.9594077211949723
    },
@@ -502,7 +399,7 @@
     {
      "title": "5 Undervalued Stocks Near 52-Week Highs",
      "source": "Equitymaster",
-     "link": "https://news.google.com/rss/articles/CBMingJBVV95cUxPRU9vU3hiemlyMW1XQ2FSeVVXRGNqY3NId2U4bllJX0JWcE9VR1Nkb2IybV81LWtTZ3dWSV91bkRfaXZ3clliUG9ONzl5bDhHLTRNcWJVRG1fd0VFUXc3MkhSZEtnRXlodDNidnd6akNDYXRxbnhpRDBjT0RLNFdocVNmUnA5UVMxYWJRSHNuVnZRcUhNekRSOFEyekk0aUhJVjFCS0owTUFDaS1LVk5ibzVwWXp6U29TcS04S1RIZjg1eHhnMmhFaUVPSlRuQjc1V0RDLWhNLXNHX08tLU94Sl9rUTF4TFVHSGdKMUY5NTZlOU9XNjhYd0ptTFBkXzVyeGk4RmR1d0l4YXhha2NHMjB6SkpUVDh3MGlJbnV3?oc=5",
+     "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNaDZrSTE0N3VYOEdnQVF0b3JXMGVuU2h1RVVBeFAtTzVzSzVVNDJCQkdJSFNoN0VKNmxUMU5ZdXZCNmk3dFRlWXpVSHR6VGJyRFV4R0pzNDVSZjZIOFFSdmdHRmFCWjU3Q1dBUEpoMmY4a1dDN3hFWHBjQ0pPdWwtSktXand5YUI0VGFtOVp3bWVHcU1FcHhoZk4zSmJ5aEhvY1NLMHQ1Z0F5MURhajZxeQ?oc=5",
      "published": "Tue, 20 Oct 2026 00:30:00 GMT",
      "sentiment": 0.0
     },
@@ -514,18 +411,18 @@
      "sentiment": 0.0
     },
     {
-     "title": "Kotak Mahindra Bank sets October 24 results: HSBC targets Kotak Mahindra Bank stock at INR 520",
-     "source": "ad-hoc-news.de",
-     "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxPdjQ2dHNHMU9sMjN1TWxKV3ZqLTYzdmw0OFpUN25CbTZxYjRKa3ZMeTFtNV9LdDUyUE9wd3BFQTNxTGJNUkhucW9uRVdJYlJyZWFmVjFoaU1mNWxNdXhhZUgtMXh1Z19CcVFUZXgwS2hmbUw0TVFtYzRidEpHeC1UWk9IRG11OF9lUmlGZ2FNU3FBSWJqX3hYSHdhZ3k4amVBNWlyWS15UHBiV0FaLVVJVF9qZ1FUSzJhRUlDNk5SNjYyVTdjUGFTV2loZThQTzBRdXpDQUh1VXhwWmpDWE02V1hMSk50UWNZeHctTw?oc=5",
-     "published": "Mon, 19 Oct 2026 07:21:38 GMT",
-     "sentiment": 0.0
-    },
-    {
      "title": "Ronak Jain pledges 2 crore shares in Asgard Alcobev to Kotak Bank",
      "source": "scanx.trade",
      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOZHpxeURTWl9QRlM2dlVtQXpRbU5jQnJ1WmExNWg4cGpJNkU5NE43OWUxLXBycnR5eGluY1JsM1hzTXpyNGJZZGdqWlk4OU1oYnNkQ0FUT3h2YnVlNzJueHJBaHJNcjRJYTF1LU1NUTBiM0JWTEhrN29qeG5DaU1BbjIwX0dXblpwYlNCY1ItVlZTZG5aUlIwaU1lMVMzam9IcGFrV21wdlpGeTJnMFlMUEdtSUFxSmRRVU0xbURqOA?oc=5",
      "published": "Sun, 18 Oct 2026 12:41:17 GMT",
      "sentiment": 0.296
+    },
+    {
+     "title": "Kotak Mahindra Bank sets October 24 results: HSBC targets Kotak Mahindra Bank stock at INR 520",
+     "source": "ad-hoc-news.de",
+     "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxPdjQ2dHNHMU9sMjN1TWxKV3ZqLTYzdmw0OFpUN25CbTZxYjRKa3ZMeTFtNV9LdDUyUE9wd3BFQTNxTGJNUkhucW9uRVdJYlJyZWFmVjFoaU1mNWxNdXhhZUgtMXh1Z19CcVFUZXgwS2hmbUw0TVFtYzRidEpHeC1UWk9IRG11OF9lUmlGZ2FNU3FBSWJqX3hYSHdhZ3k4amVBNWlyWS15UHBiV0FaLVVJVF9qZ1FUSzJhRUlDNk5SNjYyVTdjUGFTV2loZThQTzBRdXpDQUh1VXhwWmpDWE02V1hMSk50UWNZeHctTw?oc=5",
+     "published": "Mon, 19 Oct 2026 07:21:38 GMT",
+     "sentiment": 0.0
     },
     {
      "title": "Kotak Mahindra Bank Downgraded to Buy on Valuation Concerns Despite Strong Fundamentals",
@@ -536,7 +433,7 @@
     }
    ],
    "news_sentiment": {
-    "score": 0.022,
+    "score": -0.004,
     "count": 8,
     "label": "NEUTRAL"
    },
@@ -546,109 +443,6 @@
    "grade": "C",
    "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
    "action": "BUY KOTAKBANK near \u20b9442.30 (skip if it opens above \u20b9456.09) \u00b7 SL \u20b9435.40 \u00b7 T1 \u20b9456.09 \u00b7 T2 \u20b9469.89 \u00b7 Qty 14 for \u20b910k @1% risk"
-  },
-  {
-   "symbol": "TRENT",
-   "name": "Trent",
-   "bar_date": "2026-10-16",
-   "cmp": 2958.7,
-   "day_chg": 0.31,
-   "vol_ratio": 0.45,
-   "vol_badge": "0.5x Vol Surge",
-   "volume_projected": false,
-   "rsi": 61.7,
-   "ema20": 2850.74,
-   "ema50": 2853.57,
-   "high20": 3004.7,
-   "dist_high_pct": 1.53,
-   "atr": 71.24,
-   "checks": {
-    "volume": false,
-    "momentum": true,
-    "trend": true,
-    "breakout": true
-   },
-   "checks_passed": 3,
-   "passed": false,
-   "entry": 2958.7,
-   "stop": 2905.27,
-   "t1": 3065.57,
-   "t2": 3172.43,
-   "pivots": {
-    "P": 2948.27,
-    "R1": 2980.33,
-    "S1": 2926.63,
-    "R2": 3001.97,
-    "S2": 2894.57
-   },
-   "risk_per_share": 53.43,
-   "rr_t1": 2.0,
-   "rr_t2": 4.0,
-   "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
-   "features": {
-    "log_vol_ratio": -0.7913461631620194,
-    "rsi": 61.73110279473648,
-    "dist_high_pct": 1.5309348935842781,
-    "ext_ema20": 3.786975078293331,
-    "atr_pct": 2.407960233682687,
-    "day_chg": 0.3051157795363135,
-    "ret5": 1.387841843521942,
-    "rs20": 6.619408021054007,
-    "bias_score": 22.0,
-    "news_sent": -0.03,
-    "mkt_above50": 0.0,
-    "mkt_ret20": -0.5347916290900478
-   },
-   "r1_a": 0.3036494882700025,
-   "r2_a": 0.607298976540005,
-   "news": [
-    {
-     "title": "Harish Bhat resigns as investors await Trent Q2 results; shares fall",
-     "source": "Zee Business",
-     "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQdG03bEo3WWdZUktid08yV0pDek03NjkwSEtWUXZweWM0ekpDdHZZNjctMzJIU1J0dFU1NDgxdUZGaUxLR21McXo0YThoLUJpb2JpRGFndHB2YzFEOWJSYkdwNDdPRlRsN1RpMG13Ql82RTY0cHF4RlczSTc2eHVBQ09XTVpYUXY2NTdPUXRIWUVIaEFRcFJBQUJMM2JTam1QUFFLVUp5UE02WTFncGxhTXlGbVJDRWlHZFk3SV9nUQ?oc=5",
-     "published": "Mon, 19 Oct 2026 08:24:22 GMT",
-     "sentiment": 0.103
-    },
-    {
-     "title": "Trent shares slip as Harish Bhat exits board ahead of Q2 results",
-     "source": "ET BrandEquity",
-     "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxQb2pIWnlfUUFJeDBxb1NmZ0twQTl3ZEs0Zkc3bjNXeG1xUWI3ci16dEpJTDFPWkxLbW4ydjlvLTQ2S3lnNnV5U1dwNjJhY1EwWEVGTGo5Z2xqelctbkc0OFJWeGMyalNMMHA5cnJjVjZDRXhRaWVCUUNqLTlnMXVnMmRhX3BQblF5RWZVSHpHcnZjOEZPQWRlYWd0UnVYZnFMNUR0NkF0VThGelA5aGEya3dvaUd5TV9Ebm5QaEN2YjJkQk1QaC1LQTJWR1Izem45V0phT1JPcVhUMWhMbEY0UlRYZVnSAeQBQVVfeXFMUG9qSFp5X1FBSXgwcW9TZmdLcEE5d2RLNGZHN24zV3htcVFiN3ItenRKSUwxT1pMS21uMnY5by00Nkt5ZzZ1eVNXcDYyYWNRMFhFRkxqOWdsanpXLW5HNDhSVnhjMmpTTDBwOXJyY1Y2Q0V4UWllQlFDai05ZzF1ZzJkYV9wUG5ReUVmVUh6R3J2YzhGT0FkZWFndFJ1WGZxTDVEdDZBdFU4RnpQOWhhMmt3b2lHeU1fRG5uUGhDdmIyZEJNUGgtS0EyVkdSM3puOVdKYU9ST3FYVDFoTGxGNFJUWGVZ?oc=5",
-     "published": "Mon, 19 Oct 2026 12:35:51 GMT",
-     "sentiment": 0.296
-    },
-    {
-     "title": "News by CNBC TV18 on TradingView, 2026-10-19 \u2014 cnbctv:7136af68c094b:0",
-     "source": "TradingView",
-     "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1HYWFid3NTc1FSejd5RFRtLXg1aXV6clNsT1JnV1FxbGRxaGFseUhIM3dWMVlWYUY2ZElLVTRQMktlbkt0RE5RYXZIS2NPTHdpTzVhV04xeFJhVUxEVTI0ZUN2Y3kwUEE?oc=5",
-     "published": "Mon, 19 Oct 2026 13:24:27 GMT",
-     "sentiment": 0.0
-    },
-    {
-     "title": "P G Foils Yearly Results, Financial summary, P G Foils Yearly Earnings",
-     "source": "The Economic Times",
-     "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNYnRBVHhYZjlsM1ZpcHdPUXVlUkwyN3BZRC1xMGNGYnF0TWotRlNDbEo0Qko1c012eGdQNHJ4cnRfUzFnY09ja1BXc2NEcnRienI3LTRXM1dtaldWSkt4YmY2dXU5cVJSS2tTaUdlckNPTXYxWG1nWGtVb2xLSkh1WGtJa3U?oc=5",
-     "published": "Mon, 19 Oct 2026 16:25:23 GMT",
-     "sentiment": 0.0
-    },
-    {
-     "title": "Trent NSE:TRENT Physical Share Transfer Window 2026",
-     "source": "Kalkine India",
-     "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNUXJiS1NBNEZ5MS1pVUt6RWpCMkNyZzR6ZmoybkpPQ3RaRERRLS01VDduUEw4MmVsTXNxMEF5MjlCS090RWpxMGRxbDFCekNGRzFGbnZ0dEpReExjZTFZZWVlMUJvVGNCaGs3Wi1DNGk4NVNfZ3YwMnI0OHl2MjlTRWNZZ04zeUkybkdzYzB0U0dHNEg0dExXblNyU0czbTEtcFhzRkxVWS1CODk5YWdsMUtZNA?oc=5",
-     "published": "Mon, 19 Oct 2026 05:30:00 GMT",
-     "sentiment": 0.296
-    }
-   ],
-   "news_sentiment": {
-    "score": -0.03,
-    "count": 8,
-    "label": "NEUTRAL"
-   },
-   "win_prob": 47.2,
-   "expected_r": 0.07,
-   "model_used": false,
-   "grade": "C",
-   "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
-   "action": "BUY TRENT near \u20b92,958.70 (skip if it opens above \u20b93,065.57) \u00b7 SL \u20b92,905.27 \u00b7 T1 \u20b93,065.57 \u00b7 T2 \u20b93,172.43 \u00b7 Qty 1 for \u20b910k @1% risk"
   }
  ],
  "scanned": 82,
