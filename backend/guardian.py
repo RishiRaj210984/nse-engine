@@ -205,6 +205,12 @@ def _breeze_class():
         sys.path[:] = saved_path
         if ours is not None:
             sys.modules["config"] = ours   # Breeze keeps its own reference to its config
+    # Breeze logs every API reply (bank account, balances) at DEBUG to logs/apiLogs.log and the console.
+    # Keep only its warnings and errors.
+    for name in ("APILogger", "WebsocketLogger"):
+        lg = logging.getLogger(name)
+        lg.setLevel(logging.WARNING)
+        lg.propagate = False
     return BreezeConnect
 
 
@@ -499,8 +505,14 @@ def login_link():
 
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s",
+    # Root stays at WARNING so the Breeze library's own logs (full API replies with bank details) are not
+    # printed or saved; only the guardian's lines are logged at INFO.
+    logging.basicConfig(level=logging.WARNING, format="%(asctime)s %(message)s",
                         handlers=[logging.FileHandler(LOG_FILE, encoding="utf-8"), logging.StreamHandler()])
+    log.setLevel(logging.INFO)
+    for name in list(logging.root.manager.loggerDict):
+        if name != "guardian":
+            logging.getLogger(name).setLevel(logging.WARNING)
     cmd = sys.argv[1] if len(sys.argv) > 1 else ""
     if cmd == "login":
         login_link()
