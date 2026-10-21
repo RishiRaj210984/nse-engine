@@ -1,208 +1,172 @@
 {
- "generated_at": "2026-10-21T12:04:17.568310+05:30",
- "session": "2026-10-21",
- "stage": "final",
+ "generated_at": "2026-10-21T18:50:20.550850+05:30",
+ "session": "2026-10-22",
+ "stage": "preview",
  "expected_open": {
-  "gap_pct": 0.22,
-  "error_pct": 0.27,
+  "gap_pct": 0.05,
+  "error_pct": 0.36,
   "day_pct": 0.1,
-  "snapshot": "Wed 21 Oct 09:00 IST",
-  "stage": "final",
-  "tip": "Moderate gap up expected. Use limit orders only, and wait for 09:30.",
+  "snapshot": "Wed 21 Oct 18:49 IST",
+  "stage": "preview",
+  "tip": "Flat open expected. Normal entry windows apply.",
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": 0.43
+    "move_pct": 0.14
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": 0.66
+    "move_pct": 0.17
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": 1.03
+    "move_pct": 0.46
    },
    {
     "key": "dax",
     "name": "DAX (Germany)",
-    "move_pct": -0.14
+    "move_pct": 0.62
    },
    {
     "key": "ftse",
     "name": "FTSE 100 (UK)",
-    "move_pct": -0.44
+    "move_pct": 0.22
    },
    {
     "key": "stoxx",
     "name": "Euro Stoxx 50",
-    "move_pct": -0.28
+    "move_pct": 0.52
    },
    {
     "key": "n225",
     "name": "Nikkei 225",
-    "move_pct": -0.38
+    "move_pct": 0.0
    },
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": 1.2
+    "move_pct": -2.42
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": -1.29
+    "move_pct": 0.23
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": -0.11
+    "move_pct": 0.03
    },
    {
     "key": "inr",
     "name": "USD/INR",
-    "move_pct": -0.28
+    "move_pct": 0.0
    }
   ],
   "drivers": [
    {
-    "feature": "es",
-    "label": "S&P 500 futures",
-    "value": 0.43,
-    "contribution_pct": 0.158
-   },
-   {
-    "feature": "inr",
-    "label": "USD/INR",
-    "value": -0.28,
-    "contribution_pct": 0.102
-   },
-   {
-    "feature": "nq",
-    "label": "Nasdaq futures",
-    "value": 0.66,
-    "contribution_pct": -0.088
+    "feature": "dax",
+    "label": "DAX (Germany)",
+    "value": 0.62,
+    "contribution_pct": -0.103
    },
    {
     "feature": "cl",
     "label": "Crude oil",
-    "value": 1.2,
-    "contribution_pct": -0.039
+    "value": -2.42,
+    "contribution_pct": 0.086
    },
    {
-    "feature": "dxy",
-    "label": "Dollar index",
-    "value": -0.11,
-    "contribution_pct": 0.038
+    "feature": "stoxx",
+    "label": "Euro Stoxx 50",
+    "value": 0.52,
+    "contribution_pct": 0.074
+   },
+   {
+    "feature": "ym",
+    "label": "Dow futures",
+    "value": 0.46,
+    "contribution_pct": -0.058
+   },
+   {
+    "feature": "es",
+    "label": "S&P 500 futures",
+    "value": 0.14,
+    "contribution_pct": 0.048
    },
    {
     "feature": "ftse",
     "label": "FTSE 100 (UK)",
-    "value": -0.44,
-    "contribution_pct": -0.034
+    "value": 0.22,
+    "contribution_pct": 0.045
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.71,
-   "gap_sign_pct": 74.3,
-   "directional_calls": 197,
-   "directional_accuracy": 73.1
+   "gap_corr": 0.35,
+   "gap_sign_pct": 59.0,
+   "directional_calls": 104,
+   "directional_accuracy": 62.5
   }
  },
- "headline": "Market bias SIDEWAYS \u2014 favour hedged premium selling",
- "bias": "RANGEBOUND",
- "score": 14,
- "bias_track_record_pct": 73.2,
+ "headline": "Market bias UP \u2014 favour buying dips",
+ "bias": "BULLISH",
+ "score": 20,
+ "bias_track_record_pct": 66.3,
  "options": [
   {
    "index": "NIFTY",
-   "strategy": "Iron Condor",
-   "legs": "SELL 23200 CE + BUY 23450 CE + SELL 22400 PE + BUY 22150 PE",
+   "strategy": "Bull Put Spread",
+   "legs": "SELL 22400 PE + BUY 22200 PE",
    "expiry": "2026-10-27",
    "lot_size": 65,
-   "entry": "Enter at 10:15 (after the first hour) only if NIFTY is between 22,400 and 23,200",
-   "target": "Buy back at \u20b929.1 (keep ~55% of credit), else hold to expiry Tue 27 Oct",
-   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b94,199 per lot)",
-   "max_loss": 12051,
-   "max_reward": 4199,
-   "reward_risk": 0.35,
-   "decision": "TRADE",
-   "decision_reason": "6 days before: this setup won 70.0% of 40 trades, avg \u20b9242 per lot after costs (worst \u20b9-7,083). If the first hour moves more than 0.25%, the win rate drops to 63.6% (from 77.8% on quiet mornings): consider skipping.",
+   "entry": "Enter at 10:15 (after the first hour) only if NIFTY is above 22,400",
+   "target": "Buy back at \u20b910.6 (keep ~55% of credit), else hold to expiry Tue 27 Oct",
+   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,534 per lot)",
+   "max_loss": 11466,
+   "max_reward": 1534,
+   "reward_risk": 0.13,
+   "decision": "SKIP",
+   "decision_reason": "No tested structure has a positive record for today. On days the model called BULLISH, this spread lost on average: 46.5% wins, avg \u20b9-337 per lot over 187 trades.",
    "enter_at": "10:15 IST, after the first hour",
    "exit_by": "target / stop, else expiry 2026-10-27",
    "setup_stats": {
-    "trades": 40,
-    "win_pct": 70.0,
-    "avg_pnl": 242,
-    "worst": -7083,
-    "best": 4230,
-    "total": 9698,
-    "sample": "days the model called SIDEWAYS, full 2 years",
-    "allowed": true,
-    "marginal": false,
-    "quiet_first_hour": {
-     "trades": 18,
-     "win_pct": 77.8,
-     "avg_pnl": 760,
-     "worst": -6216,
-     "best": 4230,
-     "total": 13686
-    },
-    "trending_first_hour": {
-     "trades": 22,
-     "win_pct": 63.6,
-     "avg_pnl": -181,
-     "worst": -7083,
-     "best": 3964,
-     "total": -3988
-    }
+    "trades": 187,
+    "win_pct": 46.5,
+    "avg_pnl": -337,
+    "worst": -5730,
+    "best": 2710,
+    "total": -63138,
+    "sample": "days the model called BULLISH"
    }
   },
   {
    "index": "BANKNIFTY",
-   "strategy": "Iron Condor",
-   "legs": "SELL 55800 CE + BUY 56300 CE + SELL 54100 PE + BUY 53600 PE",
+   "strategy": "Bull Call Spread",
+   "legs": "BUY 55000 CE + SELL 55500 CE",
    "expiry": "2026-10-27",
    "lot_size": 30,
-   "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is between 54,100 and 55,800",
-   "target": "Buy back at \u20b958.2 (keep ~55% of credit), else hold to expiry Tue 27 Oct",
-   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b93,879 per lot)",
-   "max_loss": 11121,
-   "max_reward": 3879,
-   "reward_risk": 0.35,
-   "decision": "CAUTION",
-   "decision_reason": "3-6 days before: barely positive historically (74.3% wins, avg \u20b97 per lot over 35 trades). Too thin an edge after model error; half size or skip.",
-   "enter_at": "10:15 IST, after the first hour",
-   "exit_by": "target / stop, else expiry 2026-10-27",
+   "entry": "Enter on dips that hold above 54,493 (EMA20 / S1 support zone)",
+   "target": "Exit spread near \u20b9381.6 or BANKNIFTY at 55,500",
+   "stop_loss": "Spread falls to \u20b9102.1, or BANKNIFTY closes below 54,009",
+   "max_loss": 6123,
+   "max_reward": 8877,
+   "reward_risk": 1.45,
+   "decision": "SKIP",
+   "decision_reason": "No tested structure has a positive record for today. On days the model called BULLISH, this spread lost overall (42.8% wins, avg \u20b9-306 per lot over 194 trades). A good-looking slice is not trusted on its own.",
+   "enter_at": "09:45\u201311:00 IST",
+   "exit_by": "15:00 IST same day if no target",
    "setup_stats": {
-    "trades": 35,
-    "win_pct": 74.3,
-    "avg_pnl": 7,
-    "worst": -14320,
-    "best": 5400,
-    "total": 263,
-    "sample": "days the model called SIDEWAYS, current expiry schedule, all days",
-    "allowed": false,
-    "marginal": true,
-    "quiet_first_hour": {
-     "trades": 17,
-     "win_pct": 88.2,
-     "avg_pnl": 1626,
-     "worst": -7655,
-     "best": 4260,
-     "total": 27645
-    },
-    "trending_first_hour": {
-     "trades": 18,
-     "win_pct": 61.1,
-     "avg_pnl": -1521,
-     "worst": -14320,
-     "best": 5400,
-     "total": -27382
-    }
+    "trades": 194,
+    "win_pct": 42.8,
+    "avg_pnl": -306,
+    "worst": -10869,
+    "best": 11669,
+    "total": -59366,
+    "sample": "days the model called BULLISH"
    }
   }
  ],
@@ -250,85 +214,85 @@
  "no_trade_reason": "No stock passed all 4 rules with a positive expected value. Sitting out is a valid decision.",
  "timeline": [
   {
-   "date": "2026-10-21",
+   "date": "2026-10-22",
    "start": "07:45",
    "end": "09:00",
    "kind": "prep",
    "title": "Read the final plan",
    "do": "The ~07:15 run is final (US close, Dow and US futures, Europe, Asia open). Read the expected open, bias and trades. Set price alerts at each entry and stop-loss.",
-   "when": "Wed 21 Oct \u00b7 07:45\u201309:00"
+   "when": "Thu 22 Oct \u00b7 07:45\u201309:00"
   },
   {
-   "date": "2026-10-21",
+   "date": "2026-10-22",
    "start": "09:00",
    "end": "09:15",
    "kind": "wait",
    "title": "Pre-open",
    "do": "Place no market orders. Note where your stocks are indicated to open.",
-   "when": "Wed 21 Oct \u00b7 09:00\u201309:15"
+   "when": "Thu 22 Oct \u00b7 09:00\u201309:15"
   },
   {
-   "date": "2026-10-21",
+   "date": "2026-10-22",
    "start": "09:15",
    "end": "09:30",
    "kind": "wait",
    "title": "Wait",
    "do": "Opening 15 min is the most volatile. Cancel any stock that opens above its T1 or below its SL.",
-   "when": "Wed 21 Oct \u00b7 09:15\u201309:30"
+   "when": "Thu 22 Oct \u00b7 09:15\u201309:30"
   },
   {
-   "date": "2026-10-21",
+   "date": "2026-10-22",
    "start": "09:30",
    "end": "10:30",
    "kind": "act",
    "title": "Stock buy window",
    "do": "Buy only if price is holding above the entry and the 15-min opening high. Place the SL order immediately.",
-   "when": "Wed 21 Oct \u00b7 09:30\u201310:30"
+   "when": "Thu 22 Oct \u00b7 09:30\u201310:30"
   },
   {
-   "date": "2026-10-21",
+   "date": "2026-10-22",
    "start": "09:45",
    "end": "11:00",
    "kind": "act",
    "title": "Options window",
    "do": "Spreads / ATM buys only if the index respects the support/resistance shown. Iron condor / fly only after 10:00 with the index inside the range.",
-   "when": "Wed 21 Oct \u00b7 09:45\u201311:00"
+   "when": "Thu 22 Oct \u00b7 09:45\u201311:00"
   },
   {
-   "date": "2026-10-21",
+   "date": "2026-10-22",
    "start": "11:30",
    "end": "14:30",
    "kind": "manage",
    "title": "Manage only",
    "do": "No new stock entries. If it did not trigger, skip it. Keep stop-loss orders in place.",
-   "when": "Wed 21 Oct \u00b7 11:30\u201314:30"
+   "when": "Thu 22 Oct \u00b7 11:30\u201314:30"
   },
   {
-   "date": "2026-10-21",
+   "date": "2026-10-22",
    "start": "14:30",
    "end": "15:00",
    "kind": "exit",
    "title": "Option buyers exit",
    "do": "Exit option buys by 15:00 if target not hit (time decay). Spreads/condors: hold only if still inside the plan.",
-   "when": "Wed 21 Oct \u00b7 14:30\u201315:00"
+   "when": "Thu 22 Oct \u00b7 14:30\u201315:00"
   },
   {
-   "date": "2026-10-21",
+   "date": "2026-10-22",
    "start": "16:30",
    "end": "17:00",
    "kind": "review",
    "title": "Review",
    "do": "The engine grades today's plan. Check the Results tab: what worked, what the gap was.",
-   "when": "Wed 21 Oct \u00b7 16:30\u201317:00"
+   "when": "Thu 22 Oct \u00b7 16:30\u201317:00"
   },
   {
-   "date": "2026-10-22",
+   "date": "2026-10-23",
    "start": "09:15",
    "end": "15:15",
    "kind": "exit",
    "title": "Day 2: exit by 15:15",
    "do": "Book half at T1, trail SL to entry. Exit everything still open by 15:15 (this is a 1\u20132 day setup).",
-   "when": "Thu 22 Oct \u00b7 09:15\u201315:15"
+   "when": "Fri 23 Oct \u00b7 09:15\u201315:15"
   },
   {
    "date": "2026-10-27",

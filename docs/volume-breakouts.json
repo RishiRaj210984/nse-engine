@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-21T12:04:14.889085+05:30",
- "market_open": true,
- "volume_projected": true,
+ "generated_at": "2026-10-21T18:50:18.139200+05:30",
+ "market_open": false,
+ "volume_projected": false,
  "bias": {
-  "label": "RANGEBOUND",
-  "score": 14
+  "label": "BULLISH",
+  "score": 20
  },
  "rules": {
   "vol_mult": 2.0,
@@ -29,61 +29,62 @@
   "holdout_auc": 0.525,
   "note": "ranker OFF: no out-of-sample edge, using rule stats only"
  },
- "candidates": [
+ "candidates": [],
+ "near_misses": [
   {
    "symbol": "PNB",
    "name": "Punjab National Bank",
    "bar_date": "2026-10-21",
-   "cmp": 121.98,
-   "day_chg": 0.07,
-   "vol_ratio": 2.49,
-   "vol_badge": "2.5x Vol Surge",
-   "volume_projected": true,
-   "rsi": 63.2,
-   "ema20": 116.6,
-   "ema50": 115.16,
+   "cmp": 122.5,
+   "day_chg": 0.49,
+   "vol_ratio": 1.83,
+   "vol_badge": "1.8x Vol Surge",
+   "volume_projected": false,
+   "rsi": 64.0,
+   "ema20": 116.65,
+   "ema50": 115.18,
    "high20": 125.22,
-   "dist_high_pct": 2.59,
-   "atr": 3.26,
+   "dist_high_pct": 2.17,
+   "atr": 3.29,
    "checks": {
-    "volume": true,
+    "volume": false,
     "momentum": true,
     "trend": true,
     "breakout": true
    },
-   "checks_passed": 4,
-   "passed": true,
-   "entry": 121.98,
-   "stop": 119.53,
-   "t1": 126.88,
-   "t2": 131.78,
+   "checks_passed": 3,
+   "passed": false,
+   "entry": 122.5,
+   "stop": 120.03,
+   "t1": 127.43,
+   "t2": 132.36,
    "pivots": {
-    "P": 122.62,
-    "R1": 123.56,
-    "S1": 121.05,
-    "R2": 125.13,
-    "S2": 120.11
+    "P": 122.69,
+    "R1": 124.01,
+    "S1": 121.19,
+    "R2": 125.51,
+    "S2": 119.87
    },
-   "risk_per_share": 2.45,
+   "risk_per_share": 2.47,
    "rr_t1": 2.0,
    "rr_t2": 4.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 0.9125795155663422,
-    "rsi": 63.18555158321042,
-    "dist_high_pct": 2.587444363667559,
-    "ext_ema20": 4.609695413278736,
-    "atr_pct": 2.6766680146767676,
-    "day_chg": 0.06562906485092501,
-    "ret5": 4.658944798795428,
-    "rs20": 5.977495665372546,
-    "bias_score": 14.0,
-    "news_sent": 0.543,
+    "log_vol_ratio": 0.6017898851151396,
+    "rsi": 63.983863490443895,
+    "dist_high_pct": 2.1721779222067408,
+    "ext_ema20": 5.011043568122964,
+    "atr_pct": 2.6833820096899075,
+    "day_chg": 0.49220546891766137,
+    "ret5": 5.105102353021729,
+    "rs20": 6.38869994873088,
+    "bias_score": 20.0,
+    "news_sent": 0.45,
     "mkt_above50": 0.0,
-    "mkt_ret20": -2.6046114645813634
+    "mkt_ret20": -2.5751406266969923
    },
-   "r1_a": 0.48289826271264136,
-   "r2_a": 0.9657965254252872,
+   "r1_a": 0.4583510863889024,
+   "r2_a": 0.9167021727778004,
    "news": [
     {
      "title": "Punjab National Bank shares gain 8% as Q2 profit beats estimates; here\u2019s what analysts said",
@@ -122,7 +123,7 @@
     }
    ],
    "news_sentiment": {
-    "score": 0.543,
+    "score": 0.45,
     "count": 8,
     "label": "POSITIVE"
    },
@@ -131,230 +132,22 @@
    "model_used": false,
    "grade": "C",
    "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
-   "action": "BUY PNB near \u20b9121.98 (skip if it opens above \u20b9126.88) \u00b7 SL \u20b9119.53 \u00b7 T1 \u20b9126.88 \u00b7 T2 \u20b9131.78 \u00b7 Qty 40 for \u20b910k @1% risk"
-  }
- ],
- "near_misses": [
-  {
-   "symbol": "WIPRO",
-   "name": "Wipro",
-   "bar_date": "2026-10-21",
-   "cmp": 188.73,
-   "day_chg": 3.62,
-   "vol_ratio": 2.17,
-   "vol_badge": "2.2x Vol Surge",
-   "volume_projected": true,
-   "rsi": 72.6,
-   "ema20": 170.84,
-   "ema50": 171.95,
-   "high20": 189.75,
-   "dist_high_pct": 0.54,
-   "atr": 4.97,
-   "checks": {
-    "volume": true,
-    "momentum": false,
-    "trend": true,
-    "breakout": true
-   },
-   "checks_passed": 3,
-   "passed": false,
-   "entry": 188.73,
-   "stop": 185.0,
-   "t1": 196.19,
-   "t2": 203.65,
-   "pivots": {
-    "P": 187.4,
-    "R1": 191.08,
-    "S1": 185.05,
-    "R2": 193.43,
-    "S2": 181.37
-   },
-   "risk_per_share": 3.73,
-   "rr_t1": 2.0,
-   "rr_t2": 4.0,
-   "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
-   "features": {
-    "log_vol_ratio": 0.7754465497468372,
-    "rsi": 72.60441226810393,
-    "dist_high_pct": 0.537551658740942,
-    "ext_ema20": 10.468985489637749,
-    "atr_pct": 2.635564086320767,
-    "day_chg": 3.6180939716557114,
-    "ret5": 11.674553684934352,
-    "rs20": 17.299228436527347,
-    "bias_score": 14.0,
-    "news_sent": 0.315,
-    "mkt_above50": 0.0,
-    "mkt_ret20": -2.6046114645813634
-   },
-   "r1_a": 0.4724474825905422,
-   "r2_a": 0.9448949651810787,
-   "news": [
-    {
-     "title": "IT Stocks Rally: Wipro, Infosys, Birlasoft Shares Jump Over 3%; Jefferies Sees IT Re-Rating Potential",
-     "source": "NDTV Profit",
-     "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPcU83WG1GQ21ZaFJJMUxZMXpqRzRJYWR4WkZmdnh0WVhKUXNFQU4zYk1PVVRoeERacU9NOUxfX2d5TTh6enN3ZzEtRmkwOVI0SFZSbDJUYjF0UmtfWlM5NnhkYWhmSmZmRDRtWXRJQk8wV3k4YklYS2ZlWVRmblBBRDBWc3Z5WVFXMVN6T2lUcXF5MDFBbWQxRzVTZlE4WXNzZ25tZNIBrAFBVV95cUxOMkpuaEhhd1hhYy1JaGYxQzAwRi1aX25kaHZvLWpsNDJzbW9kU0tiSVozNnNwemp0U3NaazJXdndGX2pMU3F2bGxlU3hSLW92NGhZVEY1ZXVOdDVIZlJqSzVpaktfYUdNUV9yOEJ3M3JMbjUwZS12Z3VYRTJUUnVNV1RRQ2llN3ZWbmtiTDJGQmZGN2Z2X203YkZmVngwSU1hejctelZBeWZzR2hj?oc=5",
-     "published": "Wed, 21 Oct 2026 04:10:12 GMT",
-     "sentiment": 0.586
-    },
-    {
-     "title": "Wipro (WIPRO) Share Price Today, Live Chart & News",
-     "source": "TechGraph",
-     "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE15Rm9GUlpjRGZycGxpMmY0WncyOGl3aUxFeUV3bTNpbTdwc0NsRUVoekxpd2lPeklNWnZNVGlzYmt0bzU4eXpZX0VzOXFJc0FMQzVNdnRGcU1VUy12aUE?oc=5",
-     "published": "Mon, 19 Oct 2026 09:59:00 GMT",
-     "sentiment": 0.296
-    },
-    {
-     "title": "Wipro releases Q1 FY27 earnings call transcript",
-     "source": "scanx.trade",
-     "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOV2QwbTZPc1hzMmE4QTJ0Z2Y2bWRucWdfYlBhT2tUekJxdG1QT08zZE5JZUpYZjJNYWZPbTBhYVBNRlRueXl6cWJFenRoLXFMTmJTUjVWSWY4bl9veXFKU1A3bm5hbEhWaFRFOE55X2haa1g1aXN2eFJjNzE3R3FJY3MxdHdQd3pJVFY1bzVNNl9xbXZZendIRHozMUhpMExTMFNDc3RVQTN6c2pjWmc?oc=5",
-     "published": "Sun, 18 Oct 2026 13:11:46 GMT",
-     "sentiment": 0.0
-    },
-    {
-     "title": "Wipro stock: MarketWatch cites 41 ratings and a USD 1.84 target",
-     "source": "ad-hoc-news.de",
-     "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPNkZGenBfM0stUnl6Skx3a01mNjVKajgtNFBLb3RLdkxiT0pfMlg5RDlTRWpRYzJJRHdJdndXb1BuQ3l2YUV0YTZ5VjRsUnJKWDdrazR4TGZsOVU0ODUxbF96OGpXdHBHZUFjOGY5M1VOcmJnbmZsclNtQlprYXYyQWhuM0hZa2VzZDRyRzNlWkRnQWdmVmtKRTZEMlZFalFUbHFrV3lKRmQ1VkxQby1wU3pqZ1lkc3JocWxGTTFwNkJmMmM?oc=5",
-     "published": "Tue, 20 Oct 2026 13:18:00 GMT",
-     "sentiment": 0.0
-    },
-    {
-     "title": "Earnings Update: Wipro Limited (NSE:WIPRO) Just Reported Its Second-Quarter Results And Analysts Are Updating Their Forecasts",
-     "source": "Simply Wall Street",
-     "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNeXJOcTg1bm5jVGJTLUE2YXBzcGplX1RPcXFPWGFrRXZFb1gwU3RJZEw0NHJaQzJsMzE0UUFEWHZMYXZCZ2pFNThiN1BCQmxhSm85VWlvUnRvVFFjMFUyUWN4NjdFZ1VuT1V0Y1lJZjU1SzN4aVRoSWEtNnVvVWF3T3dxdWRQWG1xMzA0X2JIc2QyX2lGTGQyd0paME5DMHA5QnRzTWo3WW1jVEQ3V2oyd2FYeGIwd1dzSFFJMTBEZ2lwaDI1N1ItQ9IBzgFBVV95cUxPNjNjMzJMaTIxY3JBUEJmZ0xoNVpxa0V5dUc0NkthRzlOcWo4R0haQ1ZBV0RXcWtkbEVrbk5kR3B6cTIwamdqcWl2cEUycEloS1hGa096eklsamExeFZRQVJ3eVd3b3ZOOS1OS3VmYzhrZ01MVmlZYkVwM3pPWHFxSXpDWmIzdE1YejNMNnZEOHdTdXpOYnJxYllVejN3Sll4b0Q0SG04bVU1R3BiTXdZNUFGS21yelAxeUtvSC1HOWhmemxXdG92YzZDZmlKdw?oc=5",
-     "published": "Mon, 19 Oct 2026 01:52:25 GMT",
-     "sentiment": -0.226
-    }
-   ],
-   "news_sentiment": {
-    "score": 0.315,
-    "count": 8,
-    "label": "POSITIVE"
-   },
-   "win_prob": 47.2,
-   "expected_r": 0.07,
-   "model_used": false,
-   "grade": "C",
-   "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
-   "action": "BUY WIPRO near \u20b9188.73 (skip if it opens above \u20b9196.19) \u00b7 SL \u20b9185.00 \u00b7 T1 \u20b9196.19 \u00b7 T2 \u20b9203.65 \u00b7 Qty 26 for \u20b910k @1% risk"
-  },
-  {
-   "symbol": "ICICIBANK",
-   "name": "ICICI Bank",
-   "bar_date": "2026-10-21",
-   "cmp": 1390.4,
-   "day_chg": 0.68,
-   "vol_ratio": 2.05,
-   "vol_badge": "2.0x Vol Surge",
-   "volume_projected": true,
-   "rsi": 56.9,
-   "ema20": 1361.79,
-   "ema50": 1369.74,
-   "high20": 1411.8,
-   "dist_high_pct": 1.52,
-   "atr": 25.55,
-   "checks": {
-    "volume": true,
-    "momentum": false,
-    "trend": true,
-    "breakout": true
-   },
-   "checks_passed": 3,
-   "passed": false,
-   "entry": 1390.4,
-   "stop": 1371.24,
-   "t1": 1428.73,
-   "t2": 1467.06,
-   "pivots": {
-    "P": 1396.43,
-    "R1": 1403.67,
-    "S1": 1383.17,
-    "R2": 1416.93,
-    "S2": 1375.93
-   },
-   "risk_per_share": 19.16,
-   "rr_t1": 2.0,
-   "rr_t2": 4.0,
-   "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
-   "features": {
-    "log_vol_ratio": 0.717454022634654,
-    "rsi": 56.92068339108047,
-    "dist_high_pct": 1.5157971153086265,
-    "ext_ema20": 2.101097981761302,
-    "atr_pct": 1.8377619152866214,
-    "day_chg": 0.680667951778613,
-    "ret5": 2.2202671905824367,
-    "rs20": 5.980077963768171,
-    "bias_score": 14.0,
-    "news_sent": 0.287,
-    "mkt_above50": 0.0,
-    "mkt_ret20": -2.6046114645813634
-   },
-   "r1_a": 0.5191967965438937,
-   "r2_a": 1.0383935930877963,
-   "news": [
-    {
-     "title": "ICICI Bank Limited (IBN) stock price, news, quote and history",
-     "source": "Yahoo Finance Singapore",
-     "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE1YNk1PczRZNVVwTC1Db0R2ckYtMllKMVNKMGhRNEI4Uk9EVlB1Z2hfeHVmVmQzamlSWFNTcVJEMV9Cb1A2dnFwSHh1ZnJMYUND?oc=5",
-     "published": "Mon, 19 Oct 2026 23:01:18 GMT",
-     "sentiment": -0.226
-    },
-    {
-     "title": "ICICI Bank stock falls 1% after Q2 results, among top Nifty losers; brokerages bullish on growth,...",
-     "source": "Moneycontrol.com",
-     "link": "https://news.google.com/rss/articles/CBMiggJBVV95cUxQeUZNakZueDdQbFZ4X2xmNnkyaEotVWUwaDhtSWJGUGd0YWJZR3dCTWpWRlh0Y0tLcF9TVnhaM2tpTEVNRWNXZ2d2dGt6V1BzNFJ2amZyVkE2WTdZemtZcUZFQWVQc0JKaGw2cF82LWNHS2ZqS0swWHMtTHJBWFdGMWFMTWVvWmV2ZmRLMVpxMkxXOW5Td2FZblkwa1o5LVpSOUhaR29sTzRGZVlwZm8wSm9lUkdFQUlrRk9BUDExcDhDUmtadlphS2JaLUlOUno2SFhKUlhMQWNEa1dDN3JLRGpSMGZjRGMyOEk1WXY1ZldpS2xHZWhFN0hSMW9CTXc2dUHSAYcCQVVfeXFMUG9la0Jubk5VNHFROVFObTZVWmpKcGRQaTgwRlVZbXZzM25IaWJ5bDJxTWdvVnE1NnZxWWEtVkl2YVRkS2RKbWtJcXZXVnV0UlVKUHRFVjNVU3JjTVZZTUxIeWJTcUJhNFZkTWYtWGNzdWZnV1NqUUl5Mllua3RVajEzZEFyQnVScEFqa0JkVU5oejU2OW51RlZTZWR2THJVRHRqQkY2dmdJUW12Z1lUeGdkc1ZzSTlTMXpVUmlzN09RX01GQjJSRDh5dlA2LTc2aEhaVnBGeUdSQnBKVDJQU3R2YUQtUXpvcEVqTDk2ck9fMER5d254YzV3WUtuYWZfeXBqT2tkQTQ?oc=5",
-     "published": "Mon, 19 Oct 2026 06:07:53 GMT",
-     "sentiment": 0.511
-    },
-    {
-     "title": "7 Stocks To Buy For Long Term: Analysts recommend 6 largecap, 1 midcap scrips; ICICI Bank on the list",
-     "source": "Zee Business",
-     "link": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxPQTB6REc5MHN3QXgyOVhPWE1uZEpQd3BFdXFjX2p2U3dudTRuVnQ3WWJHa09SanlSMlJCcGZaS3lFMUVNMXprVjNUX2N5MF9wcVJob1Y0UENBQmliODg3VFhNZnE0ZV91LWJjV2FCSGluTlViZHpQdzV2WXJNazNuZFdCUDE0YVZlVjdvV2xpaC1vLUd6VzN4Y3RLNEQtdzdvdEtLS3JQVDlzVjVnSlltemdZWE1fQTF1aFdwVGhUZkp0eFRvNVQ3dzAzY2xXaXVvd2tFdVJTSm9TX3RxMVRNWmluOGdZRTZIYmJHWVpXb05oMkFpSXc?oc=5",
-     "published": "Tue, 20 Oct 2026 16:36:00 GMT",
-     "sentiment": 0.361
-    },
-    {
-     "title": "ICICI Bank Share Price Prediction for Wednesday: 21 Oct 2026",
-     "source": "Univest",
-     "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQQVpGV2p0ZjlvM0syeVc5cWpGdzlQZFRtM1pFVmJaSExTZGVwX3hnVGhQTklZYWE5V3pWQUtaVHBDR280eDNWckJweGdKQ3d2cVFrd0JhWVNyd1M1bnF6R3ZIQkxlQ25vU09xSHI3ajhPNTBKNk03dzQ1VTdtdF91NldkYWc5djJxRjJzdTQzdkI3dw?oc=5",
-     "published": "Mon, 19 Oct 2026 20:17:12 GMT",
-     "sentiment": 0.296
-    },
-    {
-     "title": "Heavyweight India Bank Stocks in Focus After Earnings-Packed Weekend",
-     "source": "Bloomberg.com",
-     "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOOF9uazJwR0UyNjRuUWlfNkxCYXRXdEhQYnpRMVc0eGdrNEdoVkMzOFZRNkhieFlNZDQtMFprNGc2TUFpVkYydDVGU0tteWhXMlhDOFBaMW1sUkFOMGt3c2hUR3BUMV8zbDNlYkxfQV9BelUtNXZfeHd0ZUFDcnVvQ0Y5THRDS2huVUdwYjRXSHBYMUpucndnT1IwUy1qX3JJUmRUTVdJSGFzOHlJcTBhTHROVG9pTnIwdEdUMA?oc=5",
-     "published": "Mon, 19 Oct 2026 02:37:00 GMT",
-     "sentiment": 0.0
-    }
-   ],
-   "news_sentiment": {
-    "score": 0.287,
-    "count": 8,
-    "label": "POSITIVE"
-   },
-   "win_prob": 47.2,
-   "expected_r": 0.07,
-   "model_used": false,
-   "grade": "C",
-   "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
-   "action": "BUY ICICIBANK near \u20b91,390.40 (skip if it opens above \u20b91,428.73) \u00b7 SL \u20b91,371.24 \u00b7 T1 \u20b91,428.73 \u00b7 T2 \u20b91,467.06 \u00b7 Qty 5 for \u20b910k @1% risk"
+   "action": "BUY PNB near \u20b9122.50 (skip if it opens above \u20b9127.43) \u00b7 SL \u20b9120.03 \u00b7 T1 \u20b9127.43 \u00b7 T2 \u20b9132.36 \u00b7 Qty 40 for \u20b910k @1% risk"
   },
   {
    "symbol": "COFORGE",
    "name": "Coforge",
    "bar_date": "2026-10-21",
-   "cmp": 1958.0,
-   "day_chg": 1.71,
-   "vol_ratio": 1.34,
-   "vol_badge": "1.3x Vol Surge",
-   "volume_projected": true,
-   "rsi": 63.2,
-   "ema20": 1876.13,
-   "ema50": 1818.59,
+   "cmp": 1951.0,
+   "day_chg": 1.35,
+   "vol_ratio": 1.0,
+   "vol_badge": "1.0x Vol Surge",
+   "volume_projected": false,
+   "rsi": 62.5,
+   "ema20": 1875.47,
+   "ema50": 1818.31,
    "high20": 1970.0,
-   "dist_high_pct": 0.61,
+   "dist_high_pct": 0.96,
    "atr": 57.94,
    "checks": {
     "volume": false,
@@ -364,37 +157,37 @@
    },
    "checks_passed": 3,
    "passed": false,
-   "entry": 1958.0,
-   "stop": 1914.55,
-   "t1": 2044.9,
-   "t2": 2131.81,
+   "entry": 1951.0,
+   "stop": 1907.55,
+   "t1": 2037.9,
+   "t2": 2124.81,
    "pivots": {
-    "P": 1952.7,
-    "R1": 1974.3,
-    "S1": 1936.4,
-    "R2": 1990.6,
-    "S2": 1914.8
+    "P": 1950.37,
+    "R1": 1969.63,
+    "S1": 1931.73,
+    "R2": 1988.27,
+    "S2": 1912.47
    },
    "risk_per_share": 43.45,
    "rr_t1": 2.0,
    "rr_t2": 4.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 0.2961157376371299,
-    "rsi": 63.19823818268664,
-    "dist_high_pct": 0.6091370558375634,
-    "ext_ema20": 4.3635790376056915,
-    "atr_pct": 2.958910298982803,
-    "day_chg": 1.7142857142857126,
-    "ret5": 1.5033696215655867,
-    "rs20": 10.542869457966153,
-    "bias_score": 14.0,
-    "news_sent": 0.284,
+    "log_vol_ratio": 0.0028389633721762806,
+    "rsi": 62.515473228062454,
+    "dist_high_pct": 0.9644670050761422,
+    "ext_ema20": 4.027436434932796,
+    "atr_pct": 2.969526584010031,
+    "day_chg": 1.3506493506493467,
+    "ret5": 1.1404872991187087,
+    "rs20": 10.127511078736685,
+    "bias_score": 20.0,
+    "news_sent": 0.313,
     "mkt_above50": 0.0,
-    "mkt_ret20": -2.6046114645813634
+    "mkt_ret20": -2.5751406266969923
    },
-   "r1_a": 0.2813476773974547,
-   "r2_a": 0.5626953547949055,
+   "r1_a": 0.32162237593581494,
+   "r2_a": 0.6432447518716338,
    "news": [
     {
      "title": "Infosys, TCS, Coforge, HCL Tech, TechM, Sagility: Selective rerating ahead, Jefferes shares target prices",
@@ -402,6 +195,13 @@
      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxQWmMtWjU5X01vaHVTY3VfdVRua25vM21kdEVUSXN4SHd1b3JleS11YjVHTHVraFpjRndudi1aRTlIVGlCMzVHY1hEbTIwMzB2cmhZS29pTDlqV0p3TFJMb0o0dVR3WWlIbkl0RUxrZV85NGpRZkdSMmhuVTNZV0syM1dPaGkzaW5URzdlMVlaQ3IxN0ozU3R0dDBtc1N2cUdXaGxucl9oTVJocEhmZEdobE42NkxzdTVIZXVNaFpBNVNzSEZKQlpDZGxiNHZoY1k?oc=5",
      "published": "Wed, 21 Oct 2026 06:31:52 GMT",
      "sentiment": 0.296
+    },
+    {
+     "title": "Bull vs Bear on IT Stocks: 35% rally or 34% crash! Jefferies\u2019 outlook on 11 shares - TCS, Coforge, Infosys on list",
+     "source": "Zee Business",
+     "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxQc09NNUFWd1B1WERQY2dnRExoNGR6XzQyZ3dOTVRxNHpMVk4zdW1ZOFN0Wk5wNE1FNW9kU3pIaWdtdXBBUDBUdHF4bGpQck05VkFfQ3ZNekhfTXQ1RzRETEY0SDYwVm03U1hLTFEwQzIwSm0zNm5CMjFlMDJUQmtiNWdoX0VVaXg1TEJBbk1XOHBZazNlaGFzSnktbWhyNnZHanVxWERtV2ZMLVc2QTlNeXNxTmpnVEd5Y2N5ZjRxOWFlQ0ktbEE2SjM1T0JOcVhtcm9PZnZwbjE4UWxHOHgwekFmSTA4Q28?oc=5",
+     "published": "Wed, 21 Oct 2026 11:39:20 GMT",
+     "sentiment": 0.151
     },
     {
      "title": "Buy, Sell Or Hold: TCS Asian Paints, Tata Motors PV, Coforge, Welspun Corp | Ask Profit",
@@ -423,18 +223,11 @@
      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPdXhReDNraFU5aHE0cUlKQVBoWXhFVm5OM0FPQ21JallZWlFRdFVBWlFXWE1PSVFuUGUyYUJ4YnptZ192ZlBjZUV2NnV1dS1EdVcycTBudDNfazFqeExtSm9SOFNuNWVzSVJnRGFhZnJ4eC0taDRqM1prS0YyT3BBRUdIR0taMndaZ0E2N21lUXVQUTRFRmJjc2k5QS1yNWRxczdhTDdiOFpJbVJKREV2dXhKN3FOUHFQd0E?oc=5",
      "published": "Mon, 19 Oct 2026 23:02:47 GMT",
      "sentiment": 0.0
-    },
-    {
-     "title": "Nifty rally faces crucial test at key resistance levels: Analysts",
-     "source": "The Economic Times",
-     "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxPQ3o4QWZNTm1NN1ZJSlNxQ2N2d3lhem5GV1NJQ0RRczlnUEtmaTB2ektvOG5QZzdndGdvV2RXbWRvb2NaYUptc3FwSkNwcE00TWpIZEJZa2s1ZkctQWk2VVROWnloSzlUdmJyLTNOTUJNR2RYTUptOVZNYVZUNVltSTF1Y3pZX193RzRJLWoxQW1wX1lmbDd1aFY5VElTMGxPS2M0Z2QyVlBwN3JlYVNRb3dId2tEd2s4eGdQRm9BTURORVpZOHdNX3VIaFByaUY4Ym14TDc1Sk1wYmJE0gHiAUFVX3lxTE1TNmhFc2JBTEhiTjZtVkJaQXZSTFItQVJFamRJWmkycmhZQmFnR1VqS09BRE4zWjlqeHptaHdRTUoyTU1UcHRtSExBOHc2VjRleHg3aXU3Vm1TVFM2Ny13SE5kQlI1MFdLbkhMTmhVUjRoQWxUMTVYNXpKRFJGZGhSUHExWFdiVkhBelZjQkxRMy1JWUtBQ1dzckVVbThYYVNLSkVFdW4zMVFfdEhhZDAySklFZTRVU0JzeGpjX1NLdEhoak9ob1ZIZHdjRkw4a2ZLYURZSGs0Y1Z1YjJEMVFiNlE?oc=5",
-     "published": "Mon, 19 Oct 2026 00:14:32 GMT",
-     "sentiment": 0.649
     }
    ],
    "news_sentiment": {
-    "score": 0.284,
-    "count": 5,
+    "score": 0.313,
+    "count": 7,
     "label": "POSITIVE"
    },
    "win_prob": 47.2,
@@ -442,7 +235,110 @@
    "model_used": false,
    "grade": "C",
    "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
-   "action": "BUY COFORGE near \u20b91,958.00 (skip if it opens above \u20b92,044.90) \u00b7 SL \u20b91,914.55 \u00b7 T1 \u20b92,044.90 \u00b7 T2 \u20b92,131.81 \u00b7 Qty 2 for \u20b910k @1% risk"
+   "action": "BUY COFORGE near \u20b91,951.00 (skip if it opens above \u20b92,037.90) \u00b7 SL \u20b91,907.55 \u00b7 T1 \u20b92,037.90 \u00b7 T2 \u20b92,124.81 \u00b7 Qty 2 for \u20b910k @1% risk"
+  },
+  {
+   "symbol": "DRREDDY",
+   "name": "Dr Reddy's",
+   "bar_date": "2026-10-21",
+   "cmp": 1244.5,
+   "day_chg": 0.16,
+   "vol_ratio": 0.56,
+   "vol_badge": "0.6x Vol Surge",
+   "volume_projected": false,
+   "rsi": 60.4,
+   "ema20": 1214.87,
+   "ema50": 1205.02,
+   "high20": 1252.8,
+   "dist_high_pct": 0.66,
+   "atr": 25.49,
+   "checks": {
+    "volume": false,
+    "momentum": true,
+    "trend": true,
+    "breakout": true
+   },
+   "checks_passed": 3,
+   "passed": false,
+   "entry": 1244.5,
+   "stop": 1225.38,
+   "t1": 1282.73,
+   "t2": 1320.96,
+   "pivots": {
+    "P": 1243.0,
+    "R1": 1253.5,
+    "S1": 1234.0,
+    "R2": 1262.5,
+    "S2": 1223.5
+   },
+   "risk_per_share": 19.12,
+   "rr_t1": 2.0,
+   "rr_t2": 4.0,
+   "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
+   "features": {
+    "log_vol_ratio": -0.5829016862465287,
+    "rsi": 60.380053250526664,
+    "dist_high_pct": 0.6625198359378183,
+    "ext_ema20": 2.4388792320295005,
+    "atr_pct": 2.048076248314413,
+    "day_chg": 0.16096579476860828,
+    "ret5": 0.3629032258064546,
+    "rs20": 6.430598299176937,
+    "bias_score": 20.0,
+    "news_sent": 0.162,
+    "mkt_above50": 0.0,
+    "mkt_ret20": -2.5751406266969923
+   },
+   "r1_a": 0.3531030650830122,
+   "r2_a": 0.7062061301660244,
+   "news": [
+    {
+     "title": "Dr Reddy\u2019s Gets DCGI Approval for Zytorvi in Esophageal Cancer; Shares Rise 0.31%",
+     "source": "HDFC Sky",
+     "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQeUZ0TVZFaEhPYUlhRmY1UWY5MzFnaHhiUVd1c0xkNUEzc3VEMWFLU19HYmZqd3RqNkVkMFRfZ3lVZGNNdVZldTZnd2tnbGEtcFh3dGhvT05xeVJ5WnpTU1Y3aVF5WUhkS0RHOEt4ajBidFBTd0k2YTdRX19uYktBeUsyNzNZVlY5NWkxTEQwempXcUVSd01xUGVGNHRSWEV6SmtXaE9YM3ZWUEx6dGZn?oc=5",
+     "published": "Wed, 21 Oct 2026 04:44:59 GMT",
+     "sentiment": -0.026
+    },
+    {
+     "title": "Dr. Reddy's Laboratories Limited expected to post earnings of \u20b98.64 a share - Earnings Preview",
+     "source": "TradingView",
+     "link": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxPcU12MW12OGNFbjN0QW1ZX0p4UkZWcWtvMy1HVmV6Q0FCMDRzYUhnZUQ0aDNlVU1tUTRoa0xfTnFwQ09ub2g4c0Q1c29rVGdaQWlsOFpEOVlXQU5HemZ1RU5RLTgxcTJibUthUzBDLXVVZVZuY09razVtbHJMVXRiZTJsa3ZJZHN6ZHFueGJmaXJSNk1pRFRiMGV2NGZDT05DVVhUY3k5alJ4SnM0RDJ6SlptZ0U5Z2pDUDE4Y2ttdWtLbTd1WkJObjl2c0V4NmJxdmhOcGJzSTFIUXpzWUZMdXNnb3lwSUVPUjJ3c3cyaEgxQQ?oc=5",
+     "published": "Wed, 21 Oct 2026 11:01:38 GMT",
+     "sentiment": 0.077
+    },
+    {
+     "title": "Dr. Reddy's Laboratories Share Price - Live NSE: DRREDDY Stock Price & Chart",
+     "source": "Upstox",
+     "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE0zSVhMclV3N2dOMVJfcHNVbWN1LUhfYWFxQ3gzMjMxamNNaGhDOEt2bEQ0NGhXU2paSVEwVWpseW1ZZzNRUm5XSkRiSm9TMEhBVkRmNzdGYTVkeC04QVZMY0NUYlhGX2Z3cm1iR2ZzSQ?oc=5",
+     "published": "Tue, 20 Oct 2026 04:10:06 GMT",
+     "sentiment": 0.296
+    },
+    {
+     "title": "Dr Reddy's gets DGCI clearance for Zytorvi; Here's how company shares reacted",
+     "source": "CNBC TV18",
+     "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNbnVlMzRjUUk5M1k3TUlyRGUtVERETVhjSXNrdmRRNGhnUThfN0YxaW1MZXRTNDRkeXhvZDlNZ1JzY3VSN1FwZjFKeVdlRWhlSGRHeGVpOE9jWUNFODh4TElqUjNldjd6c0JGcUdTN2FEa0J0ZWNkSjBMOEtUSE5fR21oaUFwWUVJc25DbHJYekJQeHNXWU1iR1RleG5FeXFiSHFpWFdoazEweTJUbjR4LVc0ZUJjckg1Wk9n0gHAAUFVX3lxTE53dEhFRVlzVVlqa0p1T3h6MkNhNlJGY1lJcHVBQmNkOHE1azFIY09VOENYaS00ak5YZmx4Z0JFM2xYN3ItZkEySFRWUWxOUHVJZVNrU05CQ0NjS2RjQnRBVmpNRDZKd0plR0ZPTUZ4cy0yMm92Z0FTcHJjRFJEMUZLQ0xIdzFjaWw1YUhJb3ZRWXJiVFBVREo4VllOaTRxby1YTDN3MzZ4UXNPMDhtdHhTd0pGU08weWNqV1pnRjJEVQ?oc=5",
+     "published": "Wed, 21 Oct 2026 08:09:24 GMT",
+     "sentiment": 0.296
+    },
+    {
+     "title": "Dr Reddy's Laboratories in 21 October Trade Spotlight as Markets Reopen",
+     "source": "Kalkine India",
+     "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOalgyOG1hbThIT3paSHVUYzBmU2gtNVBzZ2dsWjZvcWdRLXBWSjRlNVI4THpxenFiby1LNTV5SnJJeG8yNDF3TVpmNm1BZnV0TnYwcnpEZG1jc3d5ck5HSThBdWstbHJkRUpacTFpUHdlbGhxRS1NVTRHNkttRE56bkpjVXZYTlNOMWVGVGlUNlN1VV9zYlBFSjJETk5IYzZTSXVHeWZyeUFlNkpmdWZfaXY3Y29wVnBX?oc=5",
+     "published": "Wed, 21 Oct 2026 10:15:00 GMT",
+     "sentiment": 0.0
+    }
+   ],
+   "news_sentiment": {
+    "score": 0.162,
+    "count": 8,
+    "label": "POSITIVE"
+   },
+   "win_prob": 47.2,
+   "expected_r": 0.07,
+   "model_used": false,
+   "grade": "C",
+   "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
+   "action": "BUY DRREDDY near \u20b91,244.50 (skip if it opens above \u20b91,282.73) \u00b7 SL \u20b91,225.38 \u00b7 T1 \u20b91,282.73 \u00b7 T2 \u20b91,320.96 \u00b7 Qty 5 for \u20b910k @1% risk"
   }
  ],
  "scanned": 82,
