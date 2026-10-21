@@ -410,7 +410,7 @@ async function pollReplies() {
     if (JSON.stringify(latest.map((m) => m.id)) !== JSON.stringify(gReplies.map((m) => m.id))) { gReplies = latest; if (store.get('ui', 'simple') === 'simple') render(); }
   } catch (e) {}
 }
-setInterval(() => { if (wizGet().wait) pollReplies(); }, 4000);
+setInterval(() => { if (wizGet().wait && !document.hidden) { pollReplies(); if (store.get('ui', 'simple') === 'simple') render(); } }, 4000);
 setInterval(pollReplies, 15000);
 
 const wizKey = () => 'wiz:' + (D.plan?.session || ist().date);
@@ -474,7 +474,11 @@ function vSimple() {
       h += `<h2>Step 2 · Sending your login…</h2><div class="wwait">⏳</div>
         <p>The guardian on your server is logging in to ICICI with your code. This takes <b>15–30 seconds</b>. Keep this screen open.</p>
         <p class="fine">Waiting ${s} s…</p>`;
-      if (s > 90) h += `<div class="banner err">No answer after 90 seconds. The server may be off. Try again, or open the alerts app.</div>` + BIG('Try again', 'data-act="wz-go" data-s="1"');
+      const last = gReplies[0];
+      h += last ? `<div class="fine">Last alert this app saw: <b>${esc(last.title || '')}</b> (${new Date(last.time * 1000).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata' })})</div>`
+                : `<div class="fine">This app has not seen any alerts yet. If your phone gets them, the alerts topic in setup may be wrong.</div>`;
+      if (s > 20) h += BIG('My phone alert says “logged in” ›', 'data-act="wz-go" data-s="3"', 'go');
+      if (s > 60) h += `<div class="banner err">No answer yet. Check the alert on your phone. If it says “login failed”, start again with a fresh code.</div>` + BIG('Start again from step 1', 'data-act="wz-go" data-s="1"');
     } else if (ans && /failed/i.test(ans.title)) {
       h += `<h2>Step 2 · Login did not work</h2><div class="wwait">❌</div><p>${esc(ans.message || '')}</p>
         <p>The code works only once and only for a few minutes. Get a fresh one.</p>` + BIG('Start again from step 1', 'data-act="wz-go" data-s="1"', 'go');

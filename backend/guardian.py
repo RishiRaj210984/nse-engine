@@ -357,6 +357,7 @@ def enter_trade(breeze, env, state, index, lots, live, now, plan=None, demo=Fals
 
 
 def handle_command(cmd, breeze_box, env, state, live, now):
+    _sent.clear()   # a command you sent always gets its answer, even a repeated one
     name = cmd[0]
     if name == "SESSION" and len(cmd) >= 2:
         env["BREEZE_SESSION_TOKEN"] = cmd[1]
