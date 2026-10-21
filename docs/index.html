@@ -125,6 +125,23 @@ a{color:var(--info)}
 .call.mid{background:color-mix(in srgb,var(--warn) 22%,transparent);color:var(--warn)}
 .call.info{background:var(--panel2);color:var(--dim)}
 .gt td{white-space:normal}
+.simple{display:grid;gap:10px;max-width:520px;margin:0 auto}
+.sstatus{font-size:1rem;padding:4px 2px}
+.sbtn{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;cursor:pointer;color:var(--ink);text-decoration:none;font:inherit}
+.sbtn:active{transform:scale(.99)}
+.sbtn.go{border-color:var(--up);background:color-mix(in srgb,var(--up) 12%,var(--panel))}
+.sbtn.stop{border-color:var(--down);color:var(--down)}
+.snum{flex:0 0 38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:#04120d;font-weight:800;font-size:1.1rem}
+.sbtn.stop .snum{background:var(--down);color:#fff}
+.slab{flex:1;font-size:1.12rem;font-weight:700;display:grid;gap:2px}
+.slab small{font-size:.8rem;font-weight:400;color:var(--dim)}
+.stick{color:var(--up);font-size:1.4rem;font-weight:800}
+.scode{background:var(--panel2);border:1px solid var(--line);color:var(--ink);border-radius:12px;padding:12px;font:inherit;font-family:var(--mono);margin:-4px 0 2px 52px;width:calc(100% - 52px)}
+.sreply{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px;display:grid;gap:8px;font-size:.92rem}
+.srow{border-top:1px solid var(--line);padding-top:6px}.srow.down{color:var(--down)}
+.smore{background:none;border:0;color:var(--accent);font:inherit;font-weight:700;padding:10px;cursor:pointer}
+body.is-simple nav.tabs{display:none}
+body.is-simple main{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
@@ -369,6 +386,61 @@ function stepsCard() {
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px">${LINKS.map(([n, u]) => link(u, esc(n))).join('')}${link(ntfyLink(), 'ntfy alerts app')}${link(iciciAppLink(), 'ICICI Direct app')}</div></details>
     <label class="fine" style="display:flex;gap:6px;align-items:center;margin-top:6px"><input type="checkbox" data-glive="1" ${live ? 'checked' : ''}> My guardian is LIVE (tick only after switching the server to live)</label>
   </section>`;
+  return h;
+}
+
+/* ---------------- SIMPLE SCREEN (default) ---------------- */
+let gReplies = [];
+async function pollReplies() {
+  const topic = store.get('g_alerts', '');
+  if (!topic || document.hidden) return;
+  try {
+    const txt = await fetch(`https://ntfy.sh/${encodeURIComponent(topic)}/json?poll=1&since=12h`, { cache: 'no-store' }).then((r) => r.text());
+    const msgs = txt.split(/\r?\n/).filter(Boolean).map((l) => JSON.parse(l)).filter((m) => m.event === 'message');
+    const latest = msgs.slice(-5).reverse();
+    if (JSON.stringify(latest.map((m) => m.id)) !== JSON.stringify(gReplies.map((m) => m.id))) { gReplies = latest; if (store.get('ui', 'simple') === 'simple') render(); }
+  } catch (e) {}
+}
+setInterval(pollReplies, 8000);
+function repliesBox() {
+  if (!store.get('g_alerts', '')) {
+    return `<div class="sreply"><b>See the guardian's answers here:</b> type your <i>alerts</i> topic (NTFY_TOPIC) once:
+      <input id="g-alerts" data-g="g_alerts" class="scode" style="margin:6px 0 0;width:100%" placeholder="your alerts topic" autocomplete="off"></div>`;
+  }
+  if (!gReplies.length) return `<div class="sreply dim">Guardian answers will appear here (last 12 hours).</div>`;
+  return `<div class="sreply"><b>Guardian says</b>${gReplies.map((m) => {
+    const bad = /fail|not done|refused|error|not logged|cannot|check icici/i.test((m.title || '') + ' ' + (m.message || ''));
+    const t = new Date(m.time * 1000).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata' });
+    return `<div class="srow ${bad ? 'down' : ''}"><span class="n dim">${t}</span> ${bad ? '⚠️' : '✅'} <b>${esc(m.title || '')}</b><div>${esc(m.message || '')}</div></div>`;
+  }).join('')}</div>`;
+}
+function vSimple() {
+  const p = D.plan || {}, key = store.get('g_key', ''), ready = store.get('g_topic', '') && store.get('g_pin', '');
+  const live = store.get('g_live', false), done = doneGet();
+  const trades = (p.options || []).filter((o) => o.decision === 'TRADE');
+  const sess = p.session ? new Date(p.session + 'T12:00:00+05:30').toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'Asia/Kolkata' }) : '';
+  const big = (n, label, attrs, tone = '', note = '') => `<button class="sbtn ${tone}" ${attrs}><span class="snum">${n}</span><span class="slab">${label}${note ? `<small>${note}</small>` : ''}</span>${done[attrs.match(/data-k="([^"]+)"/)?.[1]] ? '<span class="stick">✓</span>' : ''}</button>`;
+  const biglink = (n, label, href, tone = '', note = '') => `<a class="sbtn ${tone}" href="${href}" target="_blank" rel="noopener"><span class="snum">${n}</span><span class="slab">${label}${note ? `<small>${note}</small>` : ''}</span></a>`;
+  let h = `<div class="simple">`;
+  h += `<div class="sstatus"><b>${esc(sess)}</b> · ${trades.length ? trades.map((o) => `<span class="up">${esc(o.index)}: TRADE</span>`).join(' · ') : '<span class="dim">No trade</span>'} · <span class="${live ? 'up' : 'warn'}">${live ? 'LIVE' : 'PAPER'}</span></div>`;
+  if (!ready) h += `<div class="banner">First, connect the guardian once: tap <b>More details</b> → Live → Guardian settings.</div>`;
+  h += key ? biglink(1, 'Log in to ICICI', 'https://api.icicidirect.com/apiuser/login?api_key=' + encodeURIComponent(key), '', 'then copy the address at the top')
+           : big(1, 'Log in to ICICI', 'data-act="sm-settings"', '', 'add the API key first');
+  h += big(2, 'Send login code', 'data-act="sm-paste" data-k="login"', '', 'uses what you copied');
+  h += `<input id="sm-code" class="scode" placeholder="or type the code here" autocomplete="off">`;
+  h += big(3, 'Check guardian', 'data-act="g-cmd" data-cmd="STATUS"', '', 'answer comes in ntfy');
+  if (trades.length) {
+    trades.forEach((o, i) => { h += big(4 + i, `Enter ${esc(o.index)} trade`, `data-act="g-enter" data-ix="${esc(o.index)}" data-k="enter"`, 'go', live ? 'guardian places and exits it' : 'paper: shows what it would place'); });
+  } else {
+    h += big(4, 'Demo trade (paper)', 'data-act="g-cmd" data-cmd="ENTER NIFTY 1 DEMO"', '', 'no trade today; shows what it would place');
+  }
+  const n = 4 + Math.max(1, trades.length);
+  h += biglink(n, 'Open ICICI app', iciciAppLink());
+  h += biglink(n + 1, 'Open alerts (ntfy)', ntfyLink());
+  h += big(n + 2, 'Pause guardian', 'data-act="g-cmd" data-cmd="STOP" data-confirm="Pause all automatic entries and exits?"', 'stop');
+  h += repliesBox();
+  h += `<button class="smore" data-act="advanced">More details ›</button>`;
+  h += `<p class="fine">Research tool, not investment advice. Answers from the guardian arrive as ntfy alerts within 30 seconds.</p></div>`;
   return h;
 }
 
@@ -696,7 +768,8 @@ async function gSend(cmd, confirmText) {
   if (confirmText && !confirm(confirmText)) return;
   try {
     const r = await fetch('https://ntfy.sh/' + encodeURIComponent(topic), { method: 'POST', body: pin + ' ' + cmd });
-    flash = r.ok ? `Sent to guardian: ${cmd.split(' ')[0]}. Watch your ntfy alerts for the result.` : `Could not send (HTTP ${r.status}).`;
+    flash = r.ok ? `Sent to guardian: ${cmd.split(' ')[0]}. The answer appears below in about 15–30 seconds.` : `Could not send (HTTP ${r.status}).`;
+    if (r.ok) [10, 20, 30, 45].forEach((sec) => setTimeout(pollReplies, sec * 1000));
   } catch (e) { flash = 'Could not send: ' + e.message; }
   render();
 }
@@ -1038,7 +1111,10 @@ function render() {
   $('#updated').textContent = upd ? `Updated ${ago(upd)}${D.meta?.task ? ' · ' + D.meta.task : ''}${nx ? ' · next ' + new Date(nx.at).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata' }) : ''}` : 'Loading…';
   const views = { dash: vDash, live: vLive, today: vToday, options: vOptions, stocks: vStocks, results: vResults, learning: vLearning };
   let h = loadErr ? `<div class="banner err">${esc(loadErr)}</div>` : '';
-  h += D.plan ? views[tab]() : '<section class="card">Loading the latest plan…</section>';
+  const simple = store.get('ui', 'simple') === 'simple';
+  document.body.classList.toggle('is-simple', simple);
+  h += D.plan ? (simple ? vSimple() : views[tab]()) : '<section class="card">Loading the latest plan…</section>';
+  if (!simple) h = `<button class="smore" data-act="simple" style="padding:4px 0">‹ Simple screen</button>` + h;
   h += `<p class="fine">${esc(D.plan?.disclaimer || '')}</p>`;
   const y = window.scrollY;
   $('#view').innerHTML = h;
@@ -1063,11 +1139,13 @@ $('#view').addEventListener('click', (e) => {
     if (a.dataset.act === 'addplan') addPlanTrade(a.dataset.ix);
     if (a.dataset.act === 'close') { savePositions(positions().filter((p) => p.group !== a.dataset.g)); render(); }
     if (a.dataset.act === 'dismiss') { flash = null; render(); }
+    if (a.dataset.act === 'advanced') { store.set('ui', 'advanced'); render(); window.scrollTo(0, 0); }
+    if (a.dataset.act === 'simple') { store.set('ui', 'simple'); render(); window.scrollTo(0, 0); }
     if (a.dataset.act === 'sm-paste') pasteAndSend();
     if (a.dataset.act === 'sm-done') { doneSet(a.dataset.k); render(); }
     if (a.dataset.act === 'sm-plan') { doneSet('plan'); render(); [...document.querySelectorAll('.box h3 span')].find((x) => x.textContent.startsWith('Quick view'))?.scrollIntoView({ behavior: 'smooth' }); }
     if (a.dataset.act === 'sm-results') { doneSet('review'); render(); [...document.querySelectorAll('.box h3 span')].find((x) => x.textContent.startsWith('Profit'))?.scrollIntoView({ behavior: 'smooth' }); }
-    if (a.dataset.act === 'sm-settings') { document.querySelector('nav.tabs button[data-tab="live"]')?.click(); setTimeout(() => { const d = [...document.querySelectorAll('details')].find((x) => x.textContent.includes('Guardian settings')); if (d) { d.open = true; d.scrollIntoView({ behavior: 'smooth' }); } }, 50); }
+    if (a.dataset.act === 'sm-settings') { store.set('ui', 'advanced'); render(); document.querySelector('nav.tabs button[data-tab="live"]')?.click(); setTimeout(() => { const d = [...document.querySelectorAll('details')].find((x) => x.textContent.includes('Guardian settings')); if (d) { d.open = true; d.scrollIntoView({ behavior: 'smooth' }); } }, 50); }
     if (a.dataset.act === 'sm-ticket') { const box = [...document.querySelectorAll('.box')].find((x) => x.querySelector('h3')?.textContent.startsWith(a.dataset.ix + ' options')); const t = box?.querySelector('details.ticket'); if (t) { t.open = true; t.scrollIntoView({ behavior: 'smooth' }); } }
     if (a.dataset.act === 'g-session') { const v = (document.querySelector('#g-session')?.value || '').trim(); if (v) gSend('SESSION ' + v); }
     if (a.dataset.act === 'g-enter') doneSet('enter');
@@ -1100,6 +1178,7 @@ const saved = store.get('tab2', 'dash');
 if (saved) document.querySelector(`nav.tabs button[data-tab="${saved}"]`)?.click();
 if (!store.get('accepted', false)) $('#gate').hidden = false;
 load();
+pollReplies();
 setInterval(() => { if (!document.hidden) load(); }, 5 * 60 * 1000);   // data refresh
 setInterval(async () => {                                                  // live snapshot from GitHub
   if (document.hidden) return;
@@ -1107,7 +1186,7 @@ setInterval(async () => {                                                  // li
 }, 60 * 1000);
 setInterval(() => { if (!document.hidden && store.get('relay', '')) pollRelay(); }, 20 * 1000);   // real-time relay
 pollRelay();
-setInterval(() => { if (!document.hidden && (tab === 'today' || tab === 'dash')) render(); }, 30 * 1000);  // clock / current step
+setInterval(() => { if (!document.hidden && (tab === 'today' || tab === 'dash' || store.get('ui', 'simple') === 'simple')) render(); }, 30 * 1000);  // clock / current step
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).then((reg) => {
     reg.update();

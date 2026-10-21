@@ -75,8 +75,21 @@ def save_state(st):
     json.dump(st, open(STATE_FILE, "w", encoding="utf-8"), indent=1)
 
 
+_sent = {}   # (title, msg) -> last send time, so a loop cannot flood the phone
+_sent_times = []
+
+
 def notify(env, title, msg, urgent=False):
     log.warning("%s | %s", title, msg)
+    now = time.time()
+    if now - _sent.get((title, msg), 0) < 15 * 60:
+        return
+    _sent_times[:] = [t for t in _sent_times if now - t < 3600]
+    if len(_sent_times) >= 20:
+        log.warning("alert limit reached (20 per hour); not sent")
+        return
+    _sent[(title, msg)] = now
+    _sent_times.append(now)
     topic = env.get("NTFY_TOPIC")
     if topic:
         try:
@@ -397,14 +410,22 @@ def run(live_flag=False, breeze=None, once=False, clock=None):
         except BaseException as exc:
             log.warning("startup login failed (%s); waiting for a SESSION command", exc)
     state = load_state()
-    notify(env, "Guardian started", f"Mode: {'LIVE (may place and exit orders)' if live else 'PAPER (alerts only, no orders)'}"
-                                    f"{'' if box[0] else '. Waiting for today’s SESSION code.'}")
+    # a restart within 30 minutes (crash, update) stays quiet
+    if time.time() - state.get("started_at", 0) > 30 * 60:
+        notify(env, "Guardian started", f"Mode: {'LIVE (may place and exit orders)' if live else 'PAPER (alerts only, no orders)'}"
+                                        f"{'' if box[0] else '. Waiting for today’s SESSION code.'}")
+    state["started_at"] = time.time()
+    save_state(state)
     while True:
         now = clock() if clock else datetime.now(IST)
-        for cmd in poll_commands(env, state):
+        cmds = poll_commands(env, state)
+        save_state(state)   # mark commands as read first, so a crash never replays them
+        for cmd in cmds:
             try:
                 handle_command(cmd, box, env, state, live, now)
-            except Exception as exc:
+            except (KeyboardInterrupt, SystemExit):
+                raise
+            except BaseException as exc:
                 notify(env, "Guardian command failed", f"{' '.join(cmd[:2])}: {str(exc)[:200]}", urgent=True)
         save_state(state)
         if os.path.exists(STOP_FILE) or box[0] is None or (not market_window(now) and not once):
