@@ -34,7 +34,8 @@ RestartSec=20
 WantedBy=multi-user.target
 UNIT
 echo "== daily code update at 06:45 IST (gets fixes; restarts the guardian)"
-( crontab -l 2>/dev/null | grep -v nse-engine-update ; echo "45 6 * * 1-5 cd $HOME/nse-engine && git pull -q && sudo systemctl restart guardian # nse-engine-update" ) | crontab -
+# (crontab -l fails when there is no crontab yet; that must not stop the script)
+{ crontab -l 2>/dev/null | grep -v nse-engine-update || true; echo "45 6 * * 1-5 cd $HOME/nse-engine && git pull -q && sudo systemctl restart guardian # nse-engine-update"; } | crontab -
 sudo systemctl daemon-reload
 sudo systemctl enable guardian >/dev/null
 echo
