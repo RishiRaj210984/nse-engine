@@ -192,8 +192,24 @@ def exit_trade(breeze, t, env, state):
 
 
 # ------------------------------------------------------------------ main loop
+def _breeze_class():
+    """Import BreezeConnect without our backend/config.py shadowing Breeze's own `import config`."""
+    if "breeze_connect.breeze_connect" in sys.modules:
+        return sys.modules["breeze_connect.breeze_connect"].BreezeConnect
+    ours = sys.modules.pop("config", None)
+    saved_path = list(sys.path)
+    sys.path[:] = [p for p in sys.path if os.path.abspath(p or ".") not in (HERE, ROOT)]
+    try:
+        from breeze_connect import BreezeConnect
+    finally:
+        sys.path[:] = saved_path
+        if ours is not None:
+            sys.modules["config"] = ours   # Breeze keeps its own reference to its config
+    return BreezeConnect
+
+
 def connect(env):
-    from breeze_connect import BreezeConnect
+    BreezeConnect = _breeze_class()
     for k in ("BREEZE_API_KEY", "BREEZE_API_SECRET", "BREEZE_SESSION_TOKEN"):
         if not env.get(k):
             raise SystemExit(f"{k} is missing in guardian.env. Run: python guardian.py login")
