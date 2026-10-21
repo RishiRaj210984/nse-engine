@@ -31,6 +31,8 @@ S = {
                            borderPadding=(6, 7, 6, 7), spaceBefore=5, spaceAfter=9, leftIndent=7, rightIndent=7),
 }
 story = []
+def L(url, text=None):
+    return f"<a href='{url}' color='#0d7a62'><u>{text or url}</u></a>"
 P = lambda t, st="p": story.append(Paragraph(t, S[st]))
 def code(*lines):
     story.append(Paragraph("<br/>".join(l.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;") for l in lines), S["code"]))
@@ -48,27 +50,49 @@ def table(rows, widths, head=True):
 # ---------------- cover / overview
 P("NSE Trade Desk: your guide", "title")
 P("Daily routine, placing trades in ICICI Direct, the exit guardian, going live, and where every setting lives. "
-  "Version of 21 Oct 2026. Keep this with you; the local project folder is no longer needed.", "sub")
+  "Version of 21 Oct 2026 (links added). Keep this with you; the local project folder is no longer needed.", "sub")
 P("Research tool only. Not investment advice and not a SEBI-registered adviser. No returns are guaranteed. "
   "Options can lose money quickly. Start with 1 lot and only trade what you can afford to lose.", "warn")
 
 P("1. What you have and where it lives", "h1")
 table([
     ["Piece", "Where", "What it does"],
-    ["Trade Desk app", "rishiraj210984.github.io/nse-engine (home-screen icon on your phone)", "Plan, decisions (TRADE / SKIP), live prices, ICICI order tickets, your trades, results"],
-    ["Engine + learning", "GitHub repo RishiRaj210984/nse-engine", "Runs 00:07, 07:13, 16:17 IST and every 10 min in market hours; re-learns each evening"],
+    ["Trade Desk app", L("https://rishiraj210984.github.io/nse-engine/") + " (home-screen icon on your phone)", "Plan, decisions (TRADE / SKIP), live prices, ICICI order tickets, your trades, results"],
+    ["Engine + learning", L("https://github.com/RishiRaj210984/nse-engine"), "Runs 00:07, 07:13, 16:17 IST and every 10 min in market hours; re-learns each evening"],
     ["Exit guardian", "Oracle Cloud server, Mumbai, IP 144.24.100.32, user ubuntu", "Reads your ICICI positions, alerts or exits by the rules; enters the plan trade on command"],
-    ["ICICI Breeze API", "api.icicidirect.com/apiuser/home (app 'guardian')", "ICICI's official API. Registered with the server's static IP"],
+    ["ICICI Breeze API", L("https://api.icicidirect.com/apiuser/home") + " (app 'guardian')", "ICICI's official API. Registered with the server's static IP"],
     ["Alerts and commands", "ntfy app on your phone + Trade Desk Live tab", "Alerts topic: guardian to you. Command topic + PIN: you to guardian"],
     ["Server key file", "Your safe place (not Drive, email or GitHub). A copy is in Oracle Cloud Shell", "Lets you log in to the server"],
 ], [32, 62, 76])
+
+P("All links (tap to open)", "h1")
+P("Every address you need, written out. Open them in <b>Chrome</b> (or Safari on iPhone). No searching needed.")
+table([
+    ["What", "Link"],
+    ["<b>Trade Desk app</b> (add to home screen)", L("https://rishiraj210984.github.io/nse-engine/")],
+    ["This guide (online copy)", L("https://rishiraj210984.github.io/nse-engine/USER_GUIDE.pdf")],
+    ["ICICI Breeze portal (your API app, keys, static IP)", L("https://api.icicidirect.com/apiuser/home")],
+    ["ICICI daily login for the guardian", "Use the app: Live tab > Guardian > <b>1. Log in to ICICI</b> (it builds "
+        "https://api.icicidirect.com/apiuser/login?api_key=... for you)"],
+    ["ICICI Direct website login", L("https://secure.icicidirect.com/IDirectTrading/Customer/login.aspx")],
+    ["ICICI Direct app (Android)", L("https://play.google.com/store/apps/details?id=com.icicidirect.idirectsuper")],
+    ["ICICI Direct app (iPhone)", L("https://apps.apple.com/in/app/icici-direct-stocks-f-o-mf-ipo/id1642076943")],
+    ["ntfy alerts app (Android)", L("https://play.google.com/store/apps/details?id=io.heckel.ntfy")],
+    ["ntfy alerts app (iPhone)", L("https://apps.apple.com/us/app/ntfy/id1625396347")],
+    ["Oracle Cloud console (server, Cloud Shell)", L("https://cloud.oracle.com/")],
+    ["Your server list (Mumbai)", L("https://cloud.oracle.com/compute/instances?region=ap-mumbai-1")],
+    ["GitHub project (code and history)", L("https://github.com/RishiRaj210984/nse-engine")],
+    ["Engine runs (see or start a run)", L("https://github.com/RishiRaj210984/nse-engine/actions/workflows/daily-engine.yml")],
+    ["GitHub tokens (for on-time runs)", L("https://github.com/settings/personal-access-tokens")],
+    ["NSE trading holidays", L("https://www.nseindia.com/resources/exchange-communication-holidays")],
+], [62, 108])
 
 # ---------------- daily routine
 P("2. Daily routine (trading days)", "h1")
 table([
     ["Time (IST)", "Where", "Do this"],
     ["After 00:07 (optional)", "Trade Desk > Home", "Preview of tomorrow. Don't act on it."],
-    ["Before 09:20", "Trade Desk > Live > Guardian", "1. Log in to ICICI (open in Chrome). Copy the number after apisession= from the address bar "
+    ["Before 09:20", "Trade Desk > Live > Guardian", "1. Log in to ICICI (opens api.icicidirect.com in Chrome). Copy the number after apisession= from the address bar "
                                                       "(the page shows '405', that is normal). 2. Paste it. 3. Send login code. Wait for the alert 'Guardian: logged in'."],
     ["07:20 to 09:00", "Trade Desk > Home", "Read the FINAL plan: Quick view, global markets, Nifty and BankNifty boxes. Only boxes marked TRADE are trades."],
     ["09:15 to 10:15", "-", "Wait. The first hour is the noisiest."],
@@ -159,7 +183,7 @@ P("<b>Lot sizes and expiry days</b> follow NSE circulars (Nifty 65, BankNifty 30
 story.append(PageBreak())
 # ---------------- server commands
 P("7. Server: connect and common commands", "h1")
-P("Oracle console (cloud.oracle.com) > the <b>&gt;_</b> Cloud Shell icon. Prompt <font name='Mono'>rishirajme@cloudshell</font> = Cloud Shell; "
+P("Open " + L("https://cloud.oracle.com/") + " > sign in > the <b>&gt;_</b> Cloud Shell icon in the top bar. Prompt <font name='Mono'>rishirajme@cloudshell</font> = Cloud Shell; "
   "connect to the server with:")
 code("ssh -i ~/ssh-key-*.key ubuntu@144.24.100.32")
 P("You are on the server when the prompt shows <font name='Mono'>ubuntu@guardian</font>. Then:")
@@ -181,7 +205,7 @@ P("8. One-time: make the morning runs on time", "h1")
 P("GitHub's own schedule ran the 07:13 plan at 12:03 on 21 Oct. The server now starts each run on the minute. Needs one GitHub token (5 minutes):")
 table([
     ["Step", "Do"],
-    ["1", "github.com > your photo > Settings > Developer settings > Personal access tokens > Fine-grained tokens > Generate new token"],
+    ["1", "Open " + L("https://github.com/settings/personal-access-tokens/new") + " (or github.com > your photo > Settings > Developer settings > Personal access tokens > Fine-grained tokens > Generate new token)"],
     ["2", "Name: engine-trigger. Expiration: 1 year. Repository access: Only select repositories > nse-engine. "
           "Permissions > Repository permissions > Actions: Read and write. Generate, copy it (shown once)."],
     ["3", "On the server: <font name='Mono'>nano ~/nse-engine/guardian.env</font>, add a line <font name='Mono'>GITHUB_TOKEN=</font> followed by the token. Save (F3, Enter), exit (Ctrl+X)."],
@@ -193,12 +217,12 @@ P("Renew the token before it expires (GitHub emails a reminder). Never paste it 
 P("9. Troubleshooting", "h1")
 table([
     ["You see", "Do this"],
-    ["App shows an old time / red 'run is late'", "Wait a few minutes and refresh. If it keeps happening, check section 8 is done."],
+    ["App shows an old time / red 'run is late'", "Wait a few minutes and refresh. Still late: open " + L("https://github.com/RishiRaj210984/nse-engine/actions/workflows/daily-engine.yml", "Engine runs") + " > Run workflow > task premarket (morning) or postclose (evening). Check section 8 is done."],
     ["'Couldn't download the latest plan'", "Phone offline, or office Wi-Fi blocking github.io. Use mobile data."],
-    ["App looks old after an update", "Close it fully and reopen; if still old, remove the home-screen icon and add it again from Chrome."],
+    ["App looks old after an update", "Close it fully and reopen; if still old, remove the home-screen icon and add it again from " + L("https://rishiraj210984.github.io/nse-engine/") + " in Chrome."],
     ["'Guardian: not logged in' / 'cannot read positions'", "Send today's login code again (section 2)."],
     ["'405 Not Allowed' after ICICI login", "Normal. Copy the number after apisession= from the address bar."],
-    ["No alerts at all", "ntfy app: subscribed to the exact alerts topic? On the server: guardian running? (section 7)"],
+    ["No alerts at all", "ntfy app: subscribed to the exact alerts topic (server ntfy.sh)? On the server: guardian running? (section 7)"],
     ["'EXIT FAILED' / 'CHECK ICICI NOW'", "Open ICICI, see what filled, close or adjust by hand. Then Pause the guardian if unsure."],
     ["Box says NO TRADE", "Nothing to place today. Not trading is a valid decision."],
 ], [60, 110])
