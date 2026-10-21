@@ -1,0 +1,69 @@
+{
+ "generated_at": "2026-10-21T23:45:03.186034+05:30",
+ "capital": 10000,
+ "edge_found": false,
+ "best": null,
+ "setups": [
+  {
+   "name": "NIFTY condor, 50-point wings, 1 lot",
+   "fits": true,
+   "max_loss": 2616,
+   "trades": 536,
+   "win_pct": 73.3,
+   "avg_pnl": -214,
+   "worst": -2632,
+   "best": 987,
+   "total": -114745,
+   "recent_avg": -54,
+   "edge": false
+  },
+  {
+   "name": "NIFTY condor, 100-point wings, 1 lot",
+   "fits": false,
+   "max_loss": 5061,
+   "trades": 536,
+   "win_pct": 75.2,
+   "avg_pnl": -24,
+   "worst": -4964,
+   "best": 2080,
+   "total": -13000,
+   "recent_avg": 206,
+   "edge": false
+  },
+  {
+   "name": "BANKNIFTY condor, 100-point wings, 1 lot",
+   "fits": true,
+   "max_loss": 2445,
+   "trades": 650,
+   "win_pct": 74.0,
+   "avg_pnl": -305,
+   "worst": -2571,
+   "best": 725,
+   "total": -198803,
+   "recent_avg": -53,
+   "edge": false
+  },
+  {
+   "name": "BANKNIFTY condor, 200-point wings, 1 lot",
+   "fits": true,
+   "max_loss": 4490,
+   "trades": 650,
+   "win_pct": 74.6,
+   "avg_pnl": -128,
+   "worst": -4684,
+   "best": 1898,
+   "total": -83237,
+   "recent_avg": 338,
+   "edge": false
+  },
+  {
+   "name": "Stock picks (volume breakout), about 1% of money at risk",
+   "fits": true,
+   "trades": 99,
+   "win_pct": 47.5,
+   "avg_r": -0.015,
+   "edge": false
+  }
+ ],
+ "rule": "edge = 40+ past trades, 70%+ wins, avg above Rs 100 per trade after costs, positive in the last 120 days, worst loss within Rs 5,000"
+}

@@ -186,8 +186,8 @@ def postclose():
     out["retrain"] = learning.retrain()["note"]
     try:
         import options_lab
-        lab = options_lab.run()
-        out["options_lab"] = lab["overall"]
+        options_lab.run()
+        out["options_lab"] = "updated"
     except Exception as exc:
         out["options_lab"] = f"failed: {exc}"
     store._cache.clear()  # new params -> fresh scan & bias

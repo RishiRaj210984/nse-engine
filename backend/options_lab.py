@@ -30,7 +30,7 @@ import yfinance as yf
 import data
 import macro
 import store
-from config import GLOBAL_TICKERS, INDEX_SPECS, IST
+from config import CAPITAL, GLOBAL_TICKERS, INDEX_SPECS, IST
 from options import bs_price
 
 log = logging.getLogger(__name__)
@@ -128,7 +128,8 @@ def _bias_labels(hist, params):
 
 
 # ------------------------------------------------------------------ simulation
-def simulate(index, ih, vix_h, vix_d, iv_scale, labels):
+def simulate(index, ih, vix_h, vix_d, iv_scale, labels, fixed_width=None):
+    """fixed_width: condor only, with wings that many points wide (small-capital check)."""
     spec = INDEX_SPECS[index]
     step, lot = spec["step"], spec["lot"]
     trades = []
@@ -145,7 +146,7 @@ def simulate(index, ih, vix_h, vix_d, iv_scale, labels):
         dte = (exp - d).days
         exp_close = datetime.combine(exp, datetime.min.time()) + timedelta(hours=15, minutes=30)
         em = pc * iv0 * np.sqrt((dte + 0.75) / 365)
-        width = max(2 * step, round(0.5 * em / step) * step)
+        width = fixed_width or max(2 * step, round(0.5 * em / step) * step)
         T = lambda ts: max((exp_close - ts).total_seconds() / 86400, 0.002) / 365
         k_scale = iv0 / (float(vv.iloc[-1]) / 100)
 
@@ -175,7 +176,10 @@ def simulate(index, ih, vix_h, vix_d, iv_scale, labels):
                     break
             if pnl is None:
                 pnl = _value(legs, float(path_all["Close"].iloc[-1]), 0, iv0) - v0
-            trades.append({**base, "strategy": "condor", "pnl": round(pnl * lot - COSTS[(index, "condor")])})
+            trades.append({**base, "strategy": "condor", "pnl": round(pnl * lot - COSTS[(index, "condor")]),
+                           "max_loss": round((width - credit) * lot + COSTS[(index, "condor")])})
+        if fixed_width:
+            continue
 
         # --- credit spread on the side away from the bias (half a condor), held like the condor
         if label in ("BULLISH", "BEARISH"):
@@ -323,6 +327,7 @@ def run():
     ratio = (b_d.pct_change().rolling(20).std() / n_d.pct_change().rolling(20).std()).clip(0.8, 1.8).dropna()
     lab = {"generated_at": store.now_ist().isoformat(), "costs_per_lot": {f"{k[0]} {k[1]}": v for k, v in COSTS.items()},
            "bucket_labels": BUCKET_LABELS}
+    small = {}
     for index, scale in (("NIFTY", pd.Series(dtype=float)), ("BANKNIFTY", ratio)):
         ih = _hourly(INDEX_SPECS[index]["ticker"])
         if ih is None:
@@ -330,8 +335,52 @@ def run():
         R = simulate(index, ih, vh, vd, scale, labels)
         lab[index] = _summarise(index, R)
         lab.setdefault("rule_curves", {})[index] = rule_curve(index, R, lab[index])
+        small[index] = (ih, vh, vd, scale)
     store._write(store.state_path("options_lab.json"), lab, indent=1)
+    try:
+        import learning
+        store.publish("small-capital.json", capital_check(small, labels, learning.performance().get("backtest_stocks")))
+    except Exception as exc:   # never block the main lab
+        log.warning("small-capital check failed: %s", exc)
     return lab
+
+
+# ------------------------------------------------------------------ does anything fit my money?
+SMALL_WIDTHS = {"NIFTY": (50, 100), "BANKNIFTY": (100, 200)}
+
+
+def _edge(stats, recent, worst_cap):
+    """A real edge: enough trades, wins most of the time, beats costs clearly, still works lately,
+    and the worst loss stays within half the money."""
+    return bool(stats["trades"] >= 40 and stats["win_pct"] >= 70 and stats["avg_pnl"] >= MIN_EDGE
+                and recent and recent["trades"] >= 10 and recent["avg_pnl"] > 0 and stats["worst"] >= -worst_cap)
+
+
+def capital_check(data_by_index, labels, stock_stats=None, capital=CAPITAL):
+    """Re-test, every night, the setups whose worst loss fits `capital`. Published as small-capital.json."""
+    cap = 0.5 * capital
+    rows = []
+    for index, (ih, vh, vd, scale) in data_by_index.items():
+        for w in SMALL_WIDTHS[index]:
+            R = simulate(index, ih, vh, vd, scale, labels, fixed_width=w)
+            if R is None or not len(R):
+                continue
+            R = R[R.dte >= 1]   # never on expiry day
+            st, recent = _group(R), _group(R[pd.to_datetime(R.date) >= pd.Timestamp.now() - pd.Timedelta(days=120)])
+            fits = float(R.max_loss.mean()) <= cap
+            rows.append({"name": f"{index} condor, {w}-point wings, 1 lot", "fits": fits, "max_loss": int(R.max_loss.mean()),
+                         **st, "recent_avg": recent["avg_pnl"] if recent else None,
+                         "edge": fits and _edge(st, recent, cap)})
+    if stock_stats and stock_stats.get("trades"):
+        e = stock_stats["trades"] >= 50 and stock_stats.get("avg_r", 0) >= 0.1
+        rows.append({"name": "Stock picks (volume breakout), about 1% of money at risk", "fits": True,
+                     "trades": stock_stats["trades"], "win_pct": stock_stats.get("win_rate"),
+                     "avg_r": stock_stats.get("avg_r"), "edge": bool(e)})
+    best = next((r for r in sorted(rows, key=lambda r: -(r.get("avg_pnl") or 0)) if r["edge"]), None)
+    return {"generated_at": store.now_ist().isoformat(), "capital": capital, "edge_found": best is not None,
+            "best": best["name"] if best else None, "setups": rows,
+            "rule": f"edge = 40+ past trades, 70%+ wins, avg above Rs {MIN_EDGE} per trade after costs, "
+                    f"positive in the last 120 days, worst loss within Rs {int(cap):,}"}
 
 
 def load():

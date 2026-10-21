@@ -368,6 +368,26 @@ def enter_trade(breeze, env, state, index, lots, live, now, plan=None, demo=Fals
     return True, "Entered: " + "; ".join(placed)
 
 
+def check_capital_edge(env, state, now):
+    """Once each evening: tell the phone the first time a setup that fits your money shows a real edge."""
+    day = now.date().isoformat()
+    if now.strftime("%H:%M") < "18:00" or state.get("capital_checked") == day:
+        return
+    state["capital_checked"] = day
+    try:
+        r = requests.get(f"{PLAN_URL}/small-capital.json", params={"t": int(time.time())}, timeout=15).json()
+    except Exception as exc:
+        log.info("small-capital check failed: %s", exc)
+        return
+    if r.get("edge_found") and state.get("edge_alerted") != r.get("best"):
+        state["edge_alerted"] = r["best"]
+        notify(env, "A setup that fits your money shows an edge",
+               f"{r['best']} (money: Rs {r.get('capital', 0):,}). Check it in the app, then decide on live. Still paper until you switch.",
+               urgent=True)
+    elif not r.get("edge_found"):
+        state.pop("edge_alerted", None)
+
+
 def handle_command(cmd, breeze_box, env, state, live, now):
     _sent.clear()   # a command you sent always gets its answer, even a repeated one
     name = cmd[0]
@@ -435,6 +455,7 @@ def run(live_flag=False, breeze=None, once=False, clock=None):
     save_state(state)
     while True:
         now = clock() if clock else datetime.now(IST)
+        check_capital_edge(env, state, now)
         cmds = poll_commands(env, state)
         save_state(state)   # mark commands as read first, so a crash never replays them
         for cmd in cmds:

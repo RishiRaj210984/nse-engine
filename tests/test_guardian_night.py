@@ -35,3 +35,18 @@ guardian.handle_command(["SESSION", "CODE123"], [None], {}, st, False, NIGHT)
 guardian.save_state(st)
 t("SESSION saves the code for today", st.get("session_token") == "CODE123" and st.get("session_day") == "2026-10-21")
 print("ALL PASS" if all(res) else "SOME FAILED")
+
+# evening check: alert once when a setup that fits the money first shows an edge
+res2 = []
+answers = [{"edge_found": False}, {"edge_found": True, "best": "NIFTY condor, 50-point wings, 1 lot", "capital": 10000}]
+guardian.requests.get = lambda url, params=None, timeout=0: type("R", (), {"json": lambda self: answers[0]})()
+sent.clear(); st = {}
+guardian.check_capital_edge({}, st, datetime(2026, 10, 22, 19, 0, tzinfo=IST))
+t("no edge -> no alert", not sent)
+answers.pop(0)
+guardian.check_capital_edge({}, st, datetime(2026, 10, 22, 20, 0, tzinfo=IST))
+t("checks only once a day", not sent)
+guardian.check_capital_edge({}, st, datetime(2026, 10, 23, 19, 0, tzinfo=IST))
+guardian.check_capital_edge({}, st, datetime(2026, 10, 24, 19, 0, tzinfo=IST))
+t("edge found -> one alert, not repeated", sent.count("A setup that fits your money shows an edge") == 1)
+print("ALL PASS" if all(res) else "SOME FAILED")

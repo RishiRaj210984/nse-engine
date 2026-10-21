@@ -27,6 +27,9 @@ GLOBAL_TICKERS = {
     "Bank Nifty": "^NSEBANK",
 }
 
+# Money you trade with: the nightly check only looks at setups whose worst loss fits it.
+CAPITAL = int(os.getenv("CAPITAL", 10000))
+
 # Lot sizes and expiry rules change by NSE circular. VERIFY on nseindia.com
 # before trading and update here (or via env vars).
 INDEX_SPECS = {

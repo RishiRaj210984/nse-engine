@@ -186,7 +186,7 @@ body.is-simple main{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 <script>
 const NSE_HOLIDAYS = ['2026-10-20', '2026-11-08', '2026-11-10', '2026-11-24', '2026-12-25'];   // fallback; meta.json has the live list
 const holidayList = () => (D.meta?.holidays?.length ? D.meta.holidays : NSE_HOLIDAYS);
-const FILES = ['plan', 'global-bias', 'volume-breakouts', 'performance', 'review', 'meta', 'live'];
+const FILES = ['plan', 'global-bias', 'volume-breakouts', 'performance', 'review', 'meta', 'live', 'small-capital'];
 const D = {};
 let tab = 'dash', stockFilter = 'ab', lots = {}, loadErr = null, lastLoad = 0;
 
@@ -440,6 +440,16 @@ async function wizPaste() {
   wizSend('SESSION ' + code, w);
 }
 
+function capitalLine() {
+  const c = D['small-capital'];
+  if (!c) return '';
+  const money = '₹' + Number(c.capital || 0).toLocaleString('en-IN');
+  return `<details class="sreply"><summary><b>${c.edge_found ? '✅' : '🔎'} Fits ${money}?</b> ${c.edge_found ? esc(c.best) + ' shows an edge.' : 'No setup with a real edge yet. Stay in paper.'}
+      <span class="fine">Checked ${ago(c.generated_at)}</span></summary>
+    ${(c.setups || []).map((s) => `<div class="srow"><b>${s.edge ? '✅' : '❌'} ${esc(s.name)}</b><div class="fine">${s.trades} past trades · ${s.win_pct}% won · `
+      + (s.avg_pnl != null ? `avg ₹${s.avg_pnl} · worst ₹${s.worst} · last 120 days avg ₹${s.recent_avg ?? '–'}` : `avg ${s.avg_r}R`) + `</div></div>`).join('')}
+    <p class="fine">${esc(c.rule || '')}</p></details>`;
+}
 function vSimple() {
   const p = D.plan || {}, t = ist(), live = store.get('g_live', false);
   const w = wizGet(), ans = wizAnswer(w);
@@ -528,7 +538,7 @@ function vSimple() {
       ${BIG('Pause guardian', 'data-act="g-cmd" data-cmd="STOP" data-confirm="Pause all automatic entries and exits?"', 'stop')}
       <button class="smore" data-act="wz-go" data-s="1">Start again from step 1</button>`;
   }
-  h += `</section><button class="smore" data-act="advanced">More details ›</button>
+  h += `</section>${capitalLine()}<button class="smore" data-act="advanced">More details ›</button>
     <p class="fine">Research tool, not investment advice.</p></div>`;
   return h;
 }
