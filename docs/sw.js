@@ -1,5 +1,5 @@
 // App shell is cached for offline start; data (*.json) is always fetched fresh, falling back to the last copy.
-const CACHE = 'trade-desk-v9';   // bump on every app change so phones refresh the app itself
+const CACHE = 'trade-desk-v10';   // bump on every app change so phones refresh the app itself
 const SHELL = ['./', 'index.html', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png'];
 self.addEventListener('install', (e) => { e.waitUntil(caches.open(CACHE).then((c) => c.addAll(SHELL))); self.skipWaiting(); });
 self.addEventListener('activate', (e) => {
@@ -11,7 +11,8 @@ self.addEventListener('fetch', (e) => {
   if (e.request.method !== 'GET' || url.origin !== location.origin) return;
   const key = url.pathname.endsWith('.json') ? url.origin + url.pathname : e.request;
   e.respondWith(
-    fetch(e.request).then((res) => {
+    // 'no-cache' = always ask GitHub if there is a newer copy (cheap, uses ETags); never serve a stale app
+    fetch(e.request, { cache: 'no-cache' }).then((res) => {
       if (res.ok) { const copy = res.clone(); caches.open(CACHE).then((c) => c.put(key, copy)); }
       return res;
     }).catch(() => caches.match(key))

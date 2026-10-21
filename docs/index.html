@@ -1107,7 +1107,10 @@ setInterval(() => { if (!document.hidden && store.get('relay', '')) pollRelay();
 pollRelay();
 setInterval(() => { if (!document.hidden && (tab === 'today' || tab === 'dash')) render(); }, 30 * 1000);  // clock / current step
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js').then((reg) => reg.update()).catch(() => {});
+  navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).then((reg) => {
+    reg.update();
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) reg.update(); });   // check for a new app version on every open
+  }).catch(() => {});
   let reloaded = false;
   navigator.serviceWorker.addEventListener('controllerchange', () => { if (!reloaded) { reloaded = true; location.reload(); } });
 }
