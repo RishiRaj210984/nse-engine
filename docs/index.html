@@ -413,7 +413,7 @@ async function pollReplies() {
 setInterval(() => { if (wizGet().wait && !document.hidden) { pollReplies(); if (store.get('ui', 'simple') === 'simple') render(); } }, 4000);
 setInterval(pollReplies, 15000);
 
-const wizKey = () => 'wiz:' + (D.plan?.session || ist().date);
+const wizKey = () => 'wiz:' + ist().date;   // ICICI logins last one day: start at step 1 each morning
 const wizGet = () => store.get(wizKey(), { step: 1 });
 const wizSet = (w) => { store.set(wizKey(), w); render(); window.scrollTo(0, 0); };
 // the guardian's answer to what we sent, if it has arrived
