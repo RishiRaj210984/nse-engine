@@ -313,7 +313,7 @@ function extractSession(text) {
   return /^[A-Za-z0-9]{5,40}$/.test(t) ? t : null;
 }
 async function pasteAndSend() {
-  let text = (document.querySelector('#sm-code')?.value || '').trim();
+  let text = (document.querySelector('#sm-code')?.value || document.querySelector('#sm-code-x')?.value || '').trim();
   if (!text) { try { text = await navigator.clipboard.readText(); } catch (e) { text = ''; } }
   const code = extractSession(text);
   if (!code) { flash = 'No login code found. Copy the whole address bar after the ICICI login (it contains apisession=...), then tap again, or type the number in the box.'; render(); return; }
@@ -336,12 +336,13 @@ function stepsCard() {
       acts: btn('sm-plan', 'Show decisions') },
     { id: 'login', when: 'Before 09:20', title: 'Log in the guardian', show: ready,
       body: 'Open the ICICI login, sign in, copy the address bar, come back and tap <b>Paste &amp; send</b>.',
-      acts: (loginUrl ? link(loginUrl, '1 · Open ICICI login') : btn('sm-settings', 'Set API key first')) + ' ' + btn('sm-paste', '2 · Paste &amp; send code')
+      acts: (loginUrl ? link(loginUrl, '1 · Open ICICI login') : btn('sm-settings', 'Set API key first')) + ' ' + btn('sm-paste', '2 · Paste &amp; send code') + ' ' + btn('g-cmd', '3 · Check (Status)', 'data-cmd="STATUS"')
         + `<input id="sm-code" placeholder="or type the code" autocomplete="off" style="margin-top:6px;width:100%;background:var(--panel2);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:8px;font-family:var(--mono)">` },
     { id: 'enter', when: '10:15–11:30', title: trades.length ? 'Place the trade' : 'Place the trade (none today)', show: true,
       body: trades.length ? (live ? 'Tap Enter: the guardian places it and exits it automatically.' : 'Paper mode: tap Enter to see what it would place, then place it yourself in ICICI with the ticket.') : 'Skip: no TRADE today.',
       acts: trades.map((o) => btn('g-enter', 'Enter ' + esc(o.index) + ' via guardian', `data-ix="${esc(o.index)}"`) + ' ' + (!live ? btn('sm-ticket', 'Show ' + esc(o.index) + ' ticket', `data-ix="${esc(o.index)}"`) : '')).join(' ')
-        + (trades.length && !live ? ' ' + link(iciciAppLink(), 'Open ICICI app') : '') },
+        + (trades.length && !live ? ' ' + link(iciciAppLink(), 'Open ICICI app') : '')
+        + (!live ? ' ' + btn('g-cmd', 'Demo: what it would place (paper)', 'data-cmd="ENTER NIFTY 1 DEMO"') : '') },
     { id: 'protect', when: 'Right after entry', title: live ? 'Nothing to do' : 'Protect with 2 GTT orders', show: trades.length > 0,
       body: live ? 'The guardian watches and exits by itself (target or stop). Pause stops it.' : 'In ICICI, place one GTT OCO on each SOLD leg with the target and stop from the ticket. Then tap Done.',
       acts: (!live ? link(iciciAppLink(), 'Open ICICI app') + ' ' + btn('sm-done', 'Done', 'data-k="protect"') + ' ' : '') + btn('g-cmd', 'Guardian status', 'data-cmd="STATUS"') + ' ' + link(ntfyLink(), 'Open alerts') },
@@ -362,7 +363,8 @@ function stepsCard() {
   }
   h += `<table class="qv" style="margin-top:8px"><tbody>${steps.map((s) => `<tr${s === next ? ' style="background:var(--panel2)"' : ''}>
       <td style="width:1.6rem">${isDone(s) ? '✅' : s === next ? '👉' : '○'}</td><td><b>${esc(s.title)}</b><div class="fine">${esc(s.when)}</div></td>
-      <td>${s !== next && s.acts ? `<details><summary class="fine" style="cursor:pointer">actions</summary><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">${s.acts.replace(/id="sm-code"/, 'id="sm-code-x"')}</div></details>` : ''}</td></tr>`).join('')}</tbody></table>
+      <td></td></tr>
+      ${s !== next && s.acts ? `<tr><td></td><td colspan="2" style="padding-top:0"><div style="display:flex;flex-wrap:wrap;gap:6px">${s.acts.replace(/id="sm-code"/, 'id="sm-code-x"')}</div></td></tr>` : ''}`).join('')}</tbody></table>
     <details style="margin-top:6px"><summary class="fine" style="cursor:pointer">All links ▾</summary>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px">${LINKS.map(([n, u]) => link(u, esc(n))).join('')}${link(ntfyLink(), 'ntfy alerts app')}${link(iciciAppLink(), 'ICICI Direct app')}</div></details>
     <label class="fine" style="display:flex;gap:6px;align-items:center;margin-top:6px"><input type="checkbox" data-glive="1" ${live ? 'checked' : ''}> My guardian is LIVE (tick only after switching the server to live)</label>
@@ -1027,7 +1029,7 @@ function vLearning() {
 
 /* ---------------- SHELL ---------------- */
 function render() {
-  if (document.activeElement && document.activeElement.closest && (document.activeElement.closest('#addform') || document.activeElement.id === 'sm-code')) return;
+  if (document.activeElement && document.activeElement.closest && (document.activeElement.closest('#addform') || ['sm-code', 'sm-code-x'].includes(document.activeElement.id))) return;
   const [ms, live] = marketState();
   $('#mkt').className = 'chip' + (live ? ' live' : '');
   $('#mkt').lastElementChild.textContent = ms;
