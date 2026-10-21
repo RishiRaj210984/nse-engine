@@ -287,6 +287,25 @@ function iciciTicket(o, full) {
     </div></details>`;
 }
 
+/* ---------------- TODAY IN 5 STEPS ---------------- */
+function stepsCard() {
+  const t = ist().hm, live = store.get('g_live', false);
+  const go = (tabName, label) => `<button class="iconbtn" data-goto="${tabName}" style="padding:4px 10px">${label} ›</button>`;
+  const row = (when, what, btn, active) => `<tr${active ? ' style="background:var(--panel2)"' : ''}><td class="n" style="white-space:nowrap">${when}</td><td>${what}</td><td style="text-align:right">${btn || ''}</td></tr>`;
+  return `<details class="box wide" ${store.get('steps_closed', false) ? '' : 'open'} id="steps-card"><summary style="cursor:pointer;list-style:none"><h3 style="margin:0"><span>Today in 5 steps</span><span class="fine">tap to ${store.get('steps_closed', false) ? 'show' : 'hide'}</span></h3></summary>
+    <table class="qv"><tbody>
+      ${row('07:20–09:00', '<b>Home:</b> read <b>Quick view</b>. Only boxes marked <b>TRADE</b> are trades. NO TRADE = do nothing today.', '', t >= '07:00' && t < '10:10')}
+      ${row('Before 09:20', '<b>Live tab → Guardian:</b> tap <b>1. Log in to ICICI</b> (open in Chrome) → copy the number after <i>apisession=</i> → paste in box 2 → <b>3. Send login code</b>. Wait for "logged in".', go('live', 'Live'), t < '09:20')}
+      ${row('After 10:15', '<b>Live tab → Guardian:</b> tap <b>Enter … via guardian</b>. Or by hand: <b>Home</b> → the TRADE box → <b>ICICI Direct order ticket</b>.', go('live', 'Live'), t >= '10:10' && t <= '11:30')}
+      ${row('Then', live ? '<b>Nothing.</b> The guardian (LIVE) exits the whole trade through Breeze at target or stop and alerts you. <b>Pause</b> stops it any time.'
+                             : '<b>Guardian is in PAPER mode:</b> it only alerts. Your exits happen through the 2 <b>GTT</b> orders in ICICI (or by hand). Live auto-exit: guide section 5.', '', t > '11:30' && t < '16:17')}
+      ${row('After 16:17', '<b>Home:</b> check the <b>profit &amp; loss</b> bar for today.', '', t >= '16:17')}
+    </tbody></table>
+    <div class="row" style="margin-top:6px"><a class="fine" href="USER_GUIDE.pdf" target="_blank" rel="noopener">Full guide (PDF)</a>
+      <label class="fine" style="display:flex;gap:6px;align-items:center"><input type="checkbox" data-glive="1" ${live ? 'checked' : ''}> My guardian is LIVE</label></div>
+  </details>`;
+}
+
 /* ---------------- QUICK VIEW ---------------- */
 const DOT = { green: '🟢', flat: '⚪', red: '🔴' };
 const call = (txt, kind) => `<span class="call ${kind}">${esc(txt)}</span>`;
@@ -376,7 +395,7 @@ function vDash() {
   h += `<section class="box wide"><h3><span>Decisions for ${esc(sess)}</span><span class="pill ${p.stage === 'final' ? 'gA' : 'gB'}">${p.stage === 'final' ? 'FINAL' : 'PREVIEW'}</span></h3>
     <div class="fine">Built ${esc(fmtIst(m.updated || p.generated_at))} IST${m.task ? ' by the ' + esc(m.task) + ' run' : ''}${nx ? ' · next: ' + esc(nx.name) + ' at ' + esc(fmtIst(nx.at)) : ''}</div></section>`;
 
-  h += quickView() + globalTable();
+  h += stepsCard() + quickView() + globalTable();
   const tl = p.timeline || [];
   const cs = currentStep(tl);
   const step = cs.active >= 0 ? tl[cs.active] : cs.next >= 0 ? tl[cs.next] : null;
@@ -970,6 +989,8 @@ $('#view').addEventListener('submit', (e) => {
   addManual(Object.fromEntries(new FormData(e.target).entries()));
 });
 $('#view').addEventListener('click', (e) => {
+  const g = e.target.closest('[data-goto]');
+  if (g) { e.preventDefault(); document.querySelector(`nav.tabs button[data-tab="${g.dataset.goto}"]`)?.click(); return; }
   const a = e.target.closest('[data-act]');
   if (a) {
     if (a.dataset.act === 'addplan') addPlanTrade(a.dataset.ix);
@@ -985,6 +1006,7 @@ $('#view').addEventListener('click', (e) => {
 $('#view').addEventListener('change', (e) => {
   if (e.target.dataset.relay) { store.set('relay', e.target.value.trim()); RL.at = 0; pollRelay(); }
   if (e.target.dataset.sound) store.set('sound', e.target.checked);
+  if (e.target.dataset.glive) { store.set('g_live', e.target.checked); render(); }
   if (e.target.dataset.g) { store.set(e.target.dataset.g, e.target.value.trim()); render(); }
   if (e.target.dataset.step != null && D.plan) {
     const k = 'done:' + D.plan.session, d = store.get(k, {}); d[e.target.dataset.step] = e.target.checked; store.set(k, d); render();
@@ -997,6 +1019,7 @@ $('#view').addEventListener('change', (e) => {
 });
 $('#refresh').addEventListener('click', load);
 $('#accept').addEventListener('click', () => { store.set('accepted', true); $('#gate').hidden = true; });
+document.addEventListener('toggle', (e) => { if (e.target.id === 'steps-card') store.set('steps_closed', !e.target.open); }, true);
 document.addEventListener('visibilitychange', () => { if (!document.hidden && Date.now() - lastLoad > 60000) load(); });
 
 const saved = store.get('tab2', 'dash');
