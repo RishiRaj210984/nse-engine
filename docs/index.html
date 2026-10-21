@@ -154,7 +154,7 @@ a{color:var(--info)}
   <button role="tab" data-tab="options"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l5-6 4 3 8-9"/><path d="M3 21h18"/></svg>Options</button>
   <button role="tab" data-tab="stocks"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="3" height="10"/><rect x="10.5" y="5" width="3" height="15"/><rect x="17" y="13" width="3" height="7"/></svg>Stocks</button>
   <button role="tab" data-tab="results"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg>Results</button>
-  <button role="tab" data-tab="learning"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0-4 10.5V17h8v-3.5A6 6 0 0 0 12 3z"/><path d="M9 21h6"/></svg>Learning</button>
+  <button role="tab" data-tab="learning"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0-4 10.5V17h8v-3.5A6 6 0 0 0 12 3z"/><path d="M9 21h6"/></svg>Learn</button>
 </nav>
 
 <script>
@@ -287,23 +287,87 @@ function iciciTicket(o, full) {
     </div></details>`;
 }
 
-/* ---------------- TODAY IN 5 STEPS ---------------- */
+/* ---------------- SMART TODAY CARD ---------------- */
+const LINKS = [
+  ['ICICI Breeze portal', 'https://api.icicidirect.com/apiuser/home'],
+  ['ICICI Direct website', 'https://secure.icicidirect.com/IDirectTrading/Customer/login.aspx'],
+  ['Oracle Cloud (server)', 'https://cloud.oracle.com/'],
+  ['Engine runs (start a run)', 'https://github.com/RishiRaj210984/nse-engine/actions/workflows/daily-engine.yml'],
+  ['GitHub project', 'https://github.com/RishiRaj210984/nse-engine'],
+  ['NSE holidays', 'https://www.nseindia.com/resources/exchange-communication-holidays'],
+  ['Full guide (PDF)', 'USER_GUIDE.pdf'],
+];
+function ntfyLink() {
+  const ua = navigator.userAgent || '';
+  if (/android/i.test(ua)) return 'intent://#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=io.heckel.ntfy;S.browser_fallback_url='
+    + encodeURIComponent('https://play.google.com/store/apps/details?id=io.heckel.ntfy') + ';end';
+  return 'https://apps.apple.com/us/app/ntfy/id1625396347';
+}
+const dayKey = () => 'smart:' + (D.plan?.session || ist().date);
+const doneGet = () => store.get(dayKey(), {});
+const doneSet = (k, v = true) => { const d = doneGet(); d[k] = v; store.set(dayKey(), d); };
+function extractSession(text) {
+  const t = (text || '').trim();
+  const m = t.match(/apisession=([A-Za-z0-9]+)/i);
+  if (m) return m[1];
+  return /^[A-Za-z0-9]{5,40}$/.test(t) ? t : null;
+}
+async function pasteAndSend() {
+  let text = (document.querySelector('#sm-code')?.value || '').trim();
+  if (!text) { try { text = await navigator.clipboard.readText(); } catch (e) { text = ''; } }
+  const code = extractSession(text);
+  if (!code) { flash = 'No login code found. Copy the whole address bar after the ICICI login (it contains apisession=...), then tap again, or type the number in the box.'; render(); return; }
+  await gSend('SESSION ' + code);
+  doneSet('login');
+  render();
+}
 function stepsCard() {
-  const t = ist().hm, live = store.get('g_live', false);
-  const go = (tabName, label) => `<button class="iconbtn" data-goto="${tabName}" style="padding:4px 10px">${label} ›</button>`;
-  const row = (when, what, btn, active) => `<tr${active ? ' style="background:var(--panel2)"' : ''}><td class="n" style="white-space:nowrap">${when}</td><td>${what}</td><td style="text-align:right">${btn || ''}</td></tr>`;
-  return `<details class="box wide" ${store.get('steps_closed', false) ? '' : 'open'} id="steps-card"><summary style="cursor:pointer;list-style:none"><h3 style="margin:0"><span>Today in 5 steps</span><span class="fine">tap to ${store.get('steps_closed', false) ? 'show' : 'hide'}</span></h3></summary>
-    <table class="qv"><tbody>
-      ${row('07:20–09:00', '<b>Home:</b> read <b>Quick view</b>. Only boxes marked <b>TRADE</b> are trades. NO TRADE = do nothing today.', '', t >= '07:00' && t < '10:10')}
-      ${row('Before 09:20', '<b>Live tab → Guardian:</b> tap <b>1. Log in to ICICI</b> (open in Chrome) → copy the number after <i>apisession=</i> → paste in box 2 → <b>3. Send login code</b>. Wait for "logged in".', go('live', 'Live'), t < '09:20')}
-      ${row('After 10:15', '<b>Live tab → Guardian:</b> tap <b>Enter … via guardian</b>. Or by hand: <b>Home</b> → the TRADE box → <b>ICICI Direct order ticket</b>.', go('live', 'Live'), t >= '10:10' && t <= '11:30')}
-      ${row('Then', live ? '<b>Nothing.</b> The guardian (LIVE) exits the whole trade through Breeze at target or stop and alerts you. <b>Pause</b> stops it any time.'
-                             : '<b>Guardian is in PAPER mode:</b> it only alerts. Your exits happen through the 2 <b>GTT</b> orders in ICICI (or by hand). Live auto-exit: guide section 5.', '', t > '11:30' && t < '16:17')}
-      ${row('After 16:17', '<b>Home:</b> check the <b>profit &amp; loss</b> bar for today.', '', t >= '16:17')}
-    </tbody></table>
-    <div class="row" style="margin-top:6px"><a class="fine" href="USER_GUIDE.pdf" target="_blank" rel="noopener">Full guide (PDF)</a>
-      <label class="fine" style="display:flex;gap:6px;align-items:center"><input type="checkbox" data-glive="1" ${live ? 'checked' : ''}> My guardian is LIVE</label></div>
-  </details>`;
+  const p = D.plan || {}, t = ist(), hm = t.hm, live = store.get('g_live', false), done = doneGet();
+  const key = store.get('g_key', ''), ready = store.get('g_topic', '') && store.get('g_pin', '');
+  const trades = (p.options || []).filter((o) => o.decision === 'TRADE');
+  const market = !['Sat', 'Sun'].includes(t.dow) && !holidayList().includes(t.date);
+  const btn = (act, label, extra = '', primary = false) => `<button class="${primary ? 'primary' : 'iconbtn'}" data-act="${act}" ${extra} style="${primary ? 'padding:10px' : 'padding:6px 10px'}">${label}</button>`;
+  const link = (href, label, primary = false) => `<a class="${primary ? 'primary' : 'iconbtn'}" href="${href}" target="_blank" rel="noopener" style="text-decoration:none;text-align:center;${primary ? 'padding:10px' : 'padding:6px 10px'}">${label}</a>`;
+  const loginUrl = key ? 'https://api.icicidirect.com/apiuser/login?api_key=' + encodeURIComponent(key) : null;
+
+  const steps = [
+    { id: 'plan', when: '07:20', title: 'Read the plan', show: true,
+      body: trades.length ? `Plan: <b>${trades.map((o) => esc(o.index) + ' ' + esc(o.strategy)).join(', ')}</b> marked TRADE.` : 'No option trade today. Nothing to place.',
+      acts: btn('sm-plan', 'Show decisions') },
+    { id: 'login', when: 'Before 09:20', title: 'Log in the guardian', show: ready,
+      body: 'Open the ICICI login, sign in, copy the address bar, come back and tap <b>Paste &amp; send</b>.',
+      acts: (loginUrl ? link(loginUrl, '1 · Open ICICI login') : btn('sm-settings', 'Set API key first')) + ' ' + btn('sm-paste', '2 · Paste &amp; send code')
+        + `<input id="sm-code" placeholder="or type the code" autocomplete="off" style="margin-top:6px;width:100%;background:var(--panel2);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:8px;font-family:var(--mono)">` },
+    { id: 'enter', when: '10:15–11:30', title: trades.length ? 'Place the trade' : 'Place the trade (none today)', show: true,
+      body: trades.length ? (live ? 'Tap Enter: the guardian places it and exits it automatically.' : 'Paper mode: tap Enter to see what it would place, then place it yourself in ICICI with the ticket.') : 'Skip: no TRADE today.',
+      acts: trades.map((o) => btn('g-enter', 'Enter ' + esc(o.index) + ' via guardian', `data-ix="${esc(o.index)}"`) + ' ' + (!live ? btn('sm-ticket', 'Show ' + esc(o.index) + ' ticket', `data-ix="${esc(o.index)}"`) : '')).join(' ')
+        + (trades.length && !live ? ' ' + link(iciciAppLink(), 'Open ICICI app') : '') },
+    { id: 'protect', when: 'Right after entry', title: live ? 'Nothing to do' : 'Protect with 2 GTT orders', show: trades.length > 0,
+      body: live ? 'The guardian watches and exits by itself (target or stop). Pause stops it.' : 'In ICICI, place one GTT OCO on each SOLD leg with the target and stop from the ticket. Then tap Done.',
+      acts: (!live ? link(iciciAppLink(), 'Open ICICI app') + ' ' + btn('sm-done', 'Done', 'data-k="protect"') + ' ' : '') + btn('g-cmd', 'Guardian status', 'data-cmd="STATUS"') + ' ' + link(ntfyLink(), 'Open alerts') },
+    { id: 'review', when: 'After 16:17', title: 'Check today’s result', show: true,
+      body: 'Profit and loss for the day appears in Home.', acts: btn('sm-results', 'Show result') },
+  ].filter((s) => s.show);
+
+  const isToday = p.session === t.date;   // after the close the plan is for the next session: nothing is auto-ticked
+  const auto = isToday ? { plan: hm >= '09:15', enter: hm > '11:30' } : {};
+  const isDone = (s) => !!(done[s.id] || (auto[s.id] && s.id !== 'login'));
+  const next = steps.find((s) => !isDone(s)) || steps[steps.length - 1];
+  let h = `<section class="box wide" id="smart-card" style="border-color:var(--accent)">
+    <h3><span>${isToday ? 'Today' : 'Next session ' + esc((p.session || '').slice(5))} · ${esc(hm)} IST</span><span class="pill ${live ? 'gA' : 'gB'}">${live ? 'GUARDIAN LIVE' : 'PAPER MODE'}</span></h3>`;
+  if (!ready) h += `<div class="banner">Guardian not connected on this phone. ${btn('sm-settings', 'Open Guardian settings')}</div>`;
+  if (market || !isToday) {
+    h += `<div style="font-size:1.05rem"><span class="fine">NEXT · ${esc(next.when)}</span><div class="act">${esc(next.title)}</div><div style="font-size:.9rem">${next.body}</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px">${next.acts}</div></div>`;
+  }
+  h += `<table class="qv" style="margin-top:8px"><tbody>${steps.map((s) => `<tr${s === next ? ' style="background:var(--panel2)"' : ''}>
+      <td style="width:1.6rem">${isDone(s) ? '✅' : s === next ? '👉' : '○'}</td><td><b>${esc(s.title)}</b><div class="fine">${esc(s.when)}</div></td>
+      <td>${s !== next && s.acts ? `<details><summary class="fine" style="cursor:pointer">actions</summary><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">${s.acts.replace(/id="sm-code"/, 'id="sm-code-x"')}</div></details>` : ''}</td></tr>`).join('')}</tbody></table>
+    <details style="margin-top:6px"><summary class="fine" style="cursor:pointer">All links ▾</summary>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px">${LINKS.map(([n, u]) => link(u, esc(n))).join('')}${link(ntfyLink(), 'ntfy alerts app')}${link(iciciAppLink(), 'ICICI Direct app')}</div></details>
+    <label class="fine" style="display:flex;gap:6px;align-items:center;margin-top:6px"><input type="checkbox" data-glive="1" ${live ? 'checked' : ''}> My guardian is LIVE (tick only after switching the server to live)</label>
+  </section>`;
+  return h;
 }
 
 /* ---------------- QUICK VIEW ---------------- */
@@ -962,7 +1026,7 @@ function vLearning() {
 
 /* ---------------- SHELL ---------------- */
 function render() {
-  if (document.activeElement && document.activeElement.closest && document.activeElement.closest('#addform')) return;
+  if (document.activeElement && document.activeElement.closest && (document.activeElement.closest('#addform') || document.activeElement.id === 'sm-code')) return;
   const [ms, live] = marketState();
   $('#mkt').className = 'chip' + (live ? ' live' : '');
   $('#mkt').lastElementChild.textContent = ms;
@@ -996,7 +1060,14 @@ $('#view').addEventListener('click', (e) => {
     if (a.dataset.act === 'addplan') addPlanTrade(a.dataset.ix);
     if (a.dataset.act === 'close') { savePositions(positions().filter((p) => p.group !== a.dataset.g)); render(); }
     if (a.dataset.act === 'dismiss') { flash = null; render(); }
+    if (a.dataset.act === 'sm-paste') pasteAndSend();
+    if (a.dataset.act === 'sm-done') { doneSet(a.dataset.k); render(); }
+    if (a.dataset.act === 'sm-plan') { doneSet('plan'); render(); [...document.querySelectorAll('.box h3 span')].find((x) => x.textContent.startsWith('Quick view'))?.scrollIntoView({ behavior: 'smooth' }); }
+    if (a.dataset.act === 'sm-results') { doneSet('review'); render(); [...document.querySelectorAll('.box h3 span')].find((x) => x.textContent.startsWith('Profit'))?.scrollIntoView({ behavior: 'smooth' }); }
+    if (a.dataset.act === 'sm-settings') { document.querySelector('nav.tabs button[data-tab="live"]')?.click(); setTimeout(() => { const d = [...document.querySelectorAll('details')].find((x) => x.textContent.includes('Guardian settings')); if (d) { d.open = true; d.scrollIntoView({ behavior: 'smooth' }); } }, 50); }
+    if (a.dataset.act === 'sm-ticket') { const box = [...document.querySelectorAll('.box')].find((x) => x.querySelector('h3')?.textContent.startsWith(a.dataset.ix + ' options')); const t = box?.querySelector('details.ticket'); if (t) { t.open = true; t.scrollIntoView({ behavior: 'smooth' }); } }
     if (a.dataset.act === 'g-session') { const v = (document.querySelector('#g-session')?.value || '').trim(); if (v) gSend('SESSION ' + v); }
+    if (a.dataset.act === 'g-enter') doneSet('enter');
     if (a.dataset.act === 'g-enter') gSend('ENTER ' + a.dataset.ix + ' 1', `Ask the guardian to place today's ${a.dataset.ix} plan trade (1 lot)? It checks the plan, the time window and the entry condition first.`);
     if (a.dataset.act === 'g-cmd') gSend(a.dataset.cmd, a.dataset.confirm);
   }
