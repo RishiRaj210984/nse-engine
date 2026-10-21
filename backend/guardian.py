@@ -277,19 +277,23 @@ def _q(breeze, index, l, expiry_iso):
     return rows[0] if rows else {}
 
 
-def enter_trade(breeze, env, state, index, lots, live, now, plan=None):
+def enter_trade(breeze, env, state, index, lots, live, now, plan=None, demo=False):
     """Place today's plan trade for `index`: BUY legs first, then SELL legs, limit orders at the touch.
     Refuses unless the plan is for today, marks the index TRADE, and the entry window/condition holds."""
     lots = max(1, min(int(lots), int(env.get("MAX_LOTS", "1"))))
     bias, p = plan or fetch_plan()
     opt = next((o for o in p.get("options", []) if o["index"] == index), None)
     full = (bias.get("options") or {}).get(index)
-    if p.get("session") != now.date().isoformat():
+    if demo:
+        live = False   # a demo never places orders
+        if not full:
+            return False, f"no {index} structure in the plan"
+    elif p.get("session") != now.date().isoformat():
         return False, f"plan is for {p.get('session')}, not today"
-    if not opt or not full or opt.get("decision") != "TRADE":
+    elif not opt or not full or opt.get("decision") != "TRADE":
         return False, f"{index} is not marked TRADE today ({(opt or {}).get('decision')})"
     hm = now.strftime("%H:%M")
-    if not ("10:10" <= hm <= "11:30"):
+    if not demo and not ("10:10" <= hm <= "11:30"):
         return False, f"entry window is 10:10-11:30 IST (now {hm})"
     s = full["strategies"][0]
     expiry_iso = datetime.strptime(full["expiry"], "%Y-%m-%d").strftime("%Y-%m-%dT06:00:00.000Z")
@@ -299,7 +303,7 @@ def enter_trade(breeze, env, state, index, lots, live, now, plan=None):
                       .get("Success") or [{}])[0].get("ltp") or 0)
     except Exception:
         spot = 0
-    if spot and len(shorts) >= 2 and not (shorts[0] < spot < shorts[-1]):
+    if not demo and spot and len(shorts) >= 2 and not (shorts[0] < spot < shorts[-1]):
         return False, f"{index} {spot:,.0f} is outside the short strikes {shorts[0]:,}-{shorts[-1]:,}: entry condition not met"
     qty = full["lot_size"] * lots
     legs = sorted(s["legs"], key=lambda l: 0 if l["action"] == "BUY" else 1)
@@ -334,7 +338,8 @@ def enter_trade(breeze, env, state, index, lots, live, now, plan=None):
             return False, f"not filled: {plan_lines[-1]} (order {oid}). Placed so far: {placed or 'none'}. CHECK ICICI NOW: cancel or adjust."
         placed.append(plan_lines[-1])
     if not live:
-        return True, "PAPER: would place " + "; ".join(plan_lines)
+        tag = "DEMO (paper, checks skipped)" if demo else "PAPER"
+        return True, f"{tag}: {s['name']} exp {full['expiry']}: would place " + "; ".join(plan_lines) + (f". {index} now {spot:,.0f}." if spot else "")
     return True, "Entered: " + "; ".join(placed)
 
 
@@ -360,7 +365,12 @@ def handle_command(cmd, breeze_box, env, state, live, now):
     elif os.path.exists(STOP_FILE):
         notify(env, "Guardian is paused", "Send RESUME first.", urgent=True)
     elif name == "ENTER" and len(cmd) >= 2 and cmd[1].upper() in BREEZE_CODE:
-        ok, msg = enter_trade(breeze_box[0], env, state, cmd[1].upper(), cmd[2] if len(cmd) > 2 else 1, live, now)
+        demo = any(c.upper() == "DEMO" for c in cmd[2:])
+        if demo and live:
+            notify(env, "Guardian: demo refused", "Demo works only in PAPER mode.", urgent=True)
+            return
+        lots = next((c for c in cmd[2:] if c.isdigit()), 1)
+        ok, msg = enter_trade(breeze_box[0], env, state, cmd[1].upper(), lots, live, now, demo=demo)
         notify(env, f"Guardian ENTER {cmd[1].upper()}: {'OK' if ok else 'NOT DONE'}", msg, urgent=not ok)
     elif name in ("EXIT", "STATUS"):
         trades = group_trades(legs_from_positions(breeze_box[0].get_portfolio_positions()))

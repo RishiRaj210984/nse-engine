@@ -709,6 +709,7 @@ function guardianBox() {
     </div>
     <button class="primary" data-act="g-session">3. Send login code</button>
     ${trade.map((o) => `<button class="primary" data-act="g-enter" data-ix="${esc(o.index)}" style="margin-top:6px">Enter ${esc(o.index)} ${esc(o.strategy)} via guardian (1 lot, after 10:15)</button>`).join('') || '<div class="fine">No TRADE in today\u2019s plan, so there is nothing to enter.</div>'}
+    <button class="iconbtn" data-act="g-cmd" data-cmd="ENTER NIFTY 1 DEMO" style="margin-top:6px">Run a demo (paper only, any time): what it would place for NIFTY</button>
     <div class="grid2" style="grid-template-columns:repeat(4,1fr)">
       <button class="iconbtn" data-act="g-cmd" data-cmd="STATUS">Status</button>
       <button class="iconbtn" data-act="g-cmd" data-cmd="EXIT ALL" data-confirm="Close ALL option positions now?">Exit all</button>
