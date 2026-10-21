@@ -4,8 +4,8 @@ name: daily-engine
 
 on:
   schedule:
-    # Off-the-hour minutes: GitHub delays jobs most at :00. For on-time runs, the Cloudflare
-    # relay (relay/worker.js) can also start these through workflow_dispatch.
+    # Backup only. GitHub can run these hours late; the Oracle server (server/install-cron.sh)
+    # starts the same jobs on the minute through workflow_dispatch. A duplicate run is harmless.
     - cron: "37 18 * * 0-4"   # 00:07 IST  overnight PREVIEW (Europe closed, US mid-session)
     - cron: "43 1 * * 1-5"    # 07:13 IST  FINAL pre-market plan (US close, futures, Asia open)
     - cron: "47 10 * * 1-5"   # 16:17 IST  scan, grade results, retrain, publish
