@@ -424,6 +424,7 @@ function vSimple() {
   let h = `<div class="simple">`;
   h += `<div class="sstatus"><b>${esc(sess)}</b> · ${trades.length ? trades.map((o) => `<span class="up">${esc(o.index)}: TRADE</span>`).join(' · ') : '<span class="dim">No trade</span>'} · <span class="${live ? 'up' : 'warn'}">${live ? 'LIVE' : 'PAPER'}</span></div>`;
   if (!ready) h += `<div class="banner">First, connect the guardian once: tap <b>More details</b> → Live → Guardian settings.</div>`;
+  if (flash) h += `<div class="banner err" role="alert"><strong>${esc(flash)}</strong> <button class="iconbtn" data-act="dismiss">OK</button></div>`;
   h += key ? biglink(1, 'Log in to ICICI', 'https://api.icicidirect.com/apiuser/login?api_key=' + encodeURIComponent(key), '', 'then copy the address at the top')
            : big(1, 'Log in to ICICI', 'data-act="sm-settings"', '', 'add the API key first');
   h += big(2, 'Send login code', 'data-act="sm-paste" data-k="login"', '', 'uses what you copied');
@@ -766,6 +767,7 @@ async function gSend(cmd, confirmText) {
   const topic = store.get('g_topic', ''), pin = store.get('g_pin', '');
   if (!topic || !pin) { flash = 'Set the guardian command topic and PIN first (Live tab, Guardian section).'; render(); return; }
   if (confirmText && !confirm(confirmText)) return;
+  flash = `Sending ${cmd.split(' ')[0]}…`; render();
   try {
     const r = await fetch('https://ntfy.sh/' + encodeURIComponent(topic), { method: 'POST', body: pin + ' ' + cmd });
     flash = r.ok ? `Sent to guardian: ${cmd.split(' ')[0]}. The answer appears below in about 15–30 seconds.` : `Could not send (HTTP ${r.status}).`;
@@ -1136,6 +1138,7 @@ $('#view').addEventListener('click', (e) => {
   if (g) { e.preventDefault(); document.querySelector(`nav.tabs button[data-tab="${g.dataset.goto}"]`)?.click(); return; }
   const a = e.target.closest('[data-act]');
   if (a) {
+    if (document.activeElement?.id === 'sm-code') document.activeElement.blur();   // else render() stays paused
     if (a.dataset.act === 'addplan') addPlanTrade(a.dataset.ix);
     if (a.dataset.act === 'close') { savePositions(positions().filter((p) => p.group !== a.dataset.g)); render(); }
     if (a.dataset.act === 'dismiss') { flash = null; render(); }
