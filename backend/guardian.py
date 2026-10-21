@@ -73,6 +73,10 @@ def load_state():
 
 def save_state(st):
     json.dump(st, open(STATE_FILE, "w", encoding="utf-8"), indent=1)
+    try:
+        os.chmod(STATE_FILE, 0o600)   # holds today's login code
+    except OSError:
+        pass
 
 
 _sent = {}   # (title, msg) -> last send time, so a loop cannot flood the phone
@@ -284,8 +288,12 @@ def fetch_plan():
 
 
 def _q(breeze, index, l, expiry_iso):
-    r = breeze.get_quotes(stock_code=BREEZE_CODE[index], exchange_code="NFO", expiry_date=expiry_iso, product_type="options",
-                          right="call" if l["type"] == "CE" else "put", strike_price=str(int(l["strike"])))
+    try:
+        r = breeze.get_quotes(stock_code=BREEZE_CODE[index], exchange_code="NFO", expiry_date=expiry_iso, product_type="options",
+                              right="call" if l["type"] == "CE" else "put", strike_price=str(int(l["strike"])))
+    except Exception as exc:     # no prices outside market hours
+        log.info("quote failed for %s %s: %s", l["strike"], l["type"], exc)
+        return {}
     rows = (r or {}).get("Success") or []
     return rows[0] if rows else {}
 
@@ -323,6 +331,8 @@ def enter_trade(breeze, env, state, index, lots, live, now, plan=None, demo=Fals
     plan_lines, placed = [], []
     for l in legs:
         q = _q(breeze, index, l, expiry_iso)
+        if live and not q.get("ltp"):
+            return False, f"ICICI gave no live price for {l['strike']} {l['type']}. Placed so far: {placed or 'none'}. Nothing more placed."
         ltp = float(q.get("ltp") or l["est_premium"])
         px = float(q.get("best_offer_price") or ltp * 1.02) if l["action"] == "BUY" else float(q.get("best_bid_price") or ltp * 0.98)
         px = max(0.05, round(px * 20) / 20)
@@ -352,6 +362,8 @@ def enter_trade(breeze, env, state, index, lots, live, now, plan=None, demo=Fals
         placed.append(plan_lines[-1])
     if not live:
         tag = "DEMO (paper, checks skipped)" if demo else "PAPER"
+        if not spot:
+            tag += ", plan prices (market closed)"
         return True, f"{tag}: {s['name']} exp {full['expiry']}: would place " + "; ".join(plan_lines) + (f". {index} now {spot:,.0f}." if spot else "")
     return True, "Entered: " + "; ".join(placed)
 
@@ -364,6 +376,7 @@ def handle_command(cmd, breeze_box, env, state, live, now):
         state["session_day"] = now.date().isoformat()
         try:
             breeze_box[0] = connect(env)
+            state["session_token"] = cmd[1]
             notify(env, "Guardian: logged in", "Session accepted for today.")
         except BaseException as exc:
             notify(env, "Guardian: login failed", f"{str(exc)[:150]}. Get a fresh code and send SESSION again.", urgent=True)
@@ -405,12 +418,15 @@ def run(live_flag=False, breeze=None, once=False, clock=None):
     env = load_env()
     live = live_flag and env["MODE"].lower() == "live"
     box = [breeze]
+    state = load_state()
+    if state.get("session_day") == datetime.now(IST).date().isoformat() and state.get("session_token"):
+        env["BREEZE_SESSION_TOKEN"] = state["session_token"]   # today's login from the phone survives a restart
     if box[0] is None and env.get("BREEZE_SESSION_TOKEN"):
         try:
             box[0] = connect(env)
+            log.warning("logged in with today's saved session")
         except BaseException as exc:
             log.warning("startup login failed (%s); waiting for a SESSION command", exc)
-    state = load_state()
     # a restart within 30 minutes (crash, update) stays quiet
     if time.time() - state.get("started_at", 0) > 30 * 60:
         notify(env, "Guardian started", f"Mode: {'LIVE (may place and exit orders)' if live else 'PAPER (alerts only, no orders)'}"
