@@ -420,7 +420,7 @@ const wizSet = (w) => { store.set(wizKey(), w); render(); window.scrollTo(0, 0);
 function wizAnswer(w) {
   if (!w.wait) return null;
   const pat = w.wait.cmd === 'SESSION' ? /logged in|login failed/i : /ENTER|not logged in|paused|refused/i;
-  return gReplies.find((m) => m.time >= w.wait.at - 3 && pat.test(m.title || '')) || null;
+  return gReplies.find((m) => m.time >= w.wait.at - 20 && pat.test(m.title || '')) || null;   // 20 s slack for a fast phone clock
 }
 async function wizSend(cmd, w) {
   const topic = store.get('g_topic', ''), pin = store.get('g_pin', '');
@@ -452,7 +452,13 @@ function capitalLine() {
 }
 function vSimple() {
   const p = D.plan || {}, t = ist(), live = store.get('g_live', false);
-  const w = wizGet(), ans = wizAnswer(w);
+  let w = wizGet(), ans = wizAnswer(w);
+  // move on by itself: not logged in -> step 1; no answer in a minute -> back to the trade
+  if (w.step === 3 && ans && /not logged in/i.test(ans.title)) {
+    w = { step: 1, err: 'The guardian is not logged in to ICICI today. Do steps 1 and 2 first, then the trade.' }; store.set(wizKey(), w); ans = null;
+  } else if (w.step === 3 && w.wait && !ans && Date.now() / 1000 - w.wait.at > 60) {
+    w = { step: 3, err: 'No answer from the guardian in a minute. Check your phone alerts, then try again.' }; store.set(wizKey(), w);
+  }
   const trade = (p.options || []).find((o) => o.decision === 'TRADE');
   const today = p.session === t.date, inWindow = today && t.hm >= '10:10' && t.hm <= '11:30';
   const sess = p.session ? new Date(p.session + 'T12:00:00+05:30').toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'short', timeZone: 'Asia/Kolkata' }) : '';
@@ -507,7 +513,9 @@ function vSimple() {
       h += `<h2>Step 3 · No trade today</h2><div class="wwait">😴</div><p>Today's plan says <b>do not trade</b>. Nothing to buy or sell. You are done.</p>`
         + BIG('OK, finish', 'data-act="wz-go" data-s="4"', 'go');
     } else if (w.wait && !ans) {
-      h += `<h2>Step 3 · Asking the guardian…</h2><div class="wwait">⏳</div><p>It checks the plan, the time and the NIFTY price, then answers in 15–30 seconds.</p>`;
+      const s = Math.round(Date.now() / 1000 - w.wait.at), last = gReplies[0];
+      h += `<h2>Step 3 · Asking the guardian…</h2><div class="wwait">⏳</div><p>It checks the plan, the time and the NIFTY price, then answers in 15–30 seconds.</p>
+        <p class="fine">Waiting ${s} s…${last ? ` Last alert: <b>${esc(last.title || '')}</b>` : ''}</p>`;
     } else if (ans) {
       const ok = /: OK/i.test(ans.title);
       h += `<h2>Step 3 · ${ok ? 'Done' : 'Not placed'}</h2><div class="wwait">${ok ? '✅' : '⚠️'}</div><p>${esc(ans.message || ans.title)}</p>`
