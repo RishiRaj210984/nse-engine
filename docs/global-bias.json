@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-22T07:13:19.608006+05:30",
+ "generated_at": "2026-10-22T12:04:15.986548+05:30",
  "target_session": "2026-10-22",
  "reference_date": "2026-10-21",
  "us_session_used": "2026-10-21",
@@ -39,209 +39,209 @@
   {
    "name": "Crude Oil",
    "symbol": "CL=F",
-   "last": 98.27,
-   "change": -3.458,
+   "last": 99.39,
+   "change": 2.306,
    "change_unit": "%",
-   "as_of": "2026-10-21"
+   "as_of": "2026-10-22"
   },
   {
    "name": "Dollar Index",
    "symbol": "DX-Y.NYB",
-   "last": 101.7,
-   "change": -0.028,
+   "last": 101.49,
+   "change": -0.286,
    "change_unit": "%",
-   "as_of": "2026-10-21"
+   "as_of": "2026-10-22"
   },
   {
    "name": "Nikkei 225",
    "symbol": "^N225",
-   "last": 64252.28,
-   "change": -0.571,
+   "last": 63227.11,
+   "change": -2.157,
    "change_unit": "%",
    "as_of": "2026-10-22"
   },
   {
    "name": "Hang Seng",
    "symbol": "^HSI",
-   "last": 23651.87,
-   "change": -0.904,
+   "last": 22966.31,
+   "change": -2.899,
    "change_unit": "%",
-   "as_of": "2026-10-21"
+   "as_of": "2026-10-22"
   },
   {
    "name": "India VIX",
    "symbol": "^INDIAVIX",
-   "last": 15.68,
-   "change": 6.161,
+   "last": 16.18,
+   "change": 3.221,
    "change_unit": "%",
-   "as_of": "2026-10-21"
+   "as_of": "2026-10-22"
   },
   {
    "name": "Nifty 50",
    "symbol": "^NSEI",
-   "last": 22811.35,
-   "change": -0.339,
+   "last": 22630.95,
+   "change": -0.791,
    "change_unit": "%",
-   "as_of": "2026-10-21"
+   "as_of": "2026-10-22"
   },
   {
    "name": "Bank Nifty",
    "symbol": "^NSEBANK",
-   "last": 54976.9,
-   "change": -0.921,
+   "last": 54729.65,
+   "change": -0.45,
    "change_unit": "%",
-   "as_of": "2026-10-21"
+   "as_of": "2026-10-22"
   }
  ],
  "bias": {
   "label": "RANGEBOUND",
-  "score": 3,
-  "z": 0.034,
-  "model_z": 0.034,
-  "predicted_nifty_move_pct": 0.02,
-  "typical_daily_move_pct": 0.688,
+  "score": 4,
+  "z": 0.044,
+  "model_z": 0.044,
+  "predicted_nifty_move_pct": 0.03,
+  "typical_daily_move_pct": 0.683,
   "source": "pre-open global snapshot",
   "india_vix": 15.68,
   "components": [
    {
-    "feature": "cl",
-    "label": "Crude oil",
-    "value": -1.39,
-    "contribution_pct": 0.057
+    "feature": "n225",
+    "label": "Nikkei 225",
+    "value": -1.88,
+    "contribution_pct": -0.093
    },
    {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": -0.07,
-    "contribution_pct": -0.055
-   },
-   {
-    "feature": "n225",
-    "label": "Nikkei 225",
-    "value": -0.65,
-    "contribution_pct": -0.046
-   },
-   {
-    "feature": "dax",
-    "label": "DAX (Germany)",
-    "value": 0.7,
-    "contribution_pct": -0.042
+    "value": -0.12,
+    "contribution_pct": -0.076
    },
    {
     "feature": "nq",
     "label": "Nasdaq futures",
-    "value": -0.18,
-    "contribution_pct": 0.039
+    "value": -0.44,
+    "contribution_pct": 0.071
    },
    {
     "feature": "stoxx",
     "label": "Euro Stoxx 50",
     "value": 0.56,
-    "contribution_pct": 0.036
+    "contribution_pct": 0.066
+   },
+   {
+    "feature": "dax",
+    "label": "DAX (Germany)",
+    "value": 0.7,
+    "contribution_pct": -0.065
+   },
+   {
+    "feature": "cl",
+    "label": "Crude oil",
+    "value": -1.42,
+    "contribution_pct": 0.061
    }
   ]
  },
  "news": {
   "summary": {
-   "score": 0.186,
-   "count": 40,
-   "label": "POSITIVE"
+   "score": 0.083,
+   "count": 39,
+   "label": "NEUTRAL"
   },
   "weight": 0.0,
   "headlines": [
    {
-    "title": "Aditya Birla AMC Q2 net profit dips 8.4% to Rs 221 crore",
+    "title": "Global Market: Bank of Korea holds interest rates at 3% after back-to-back hikes",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/aditya-birla-amc-q2-net-profit-dips-8-4-to-rs-221-crore/articleshow/135103619.cms",
-    "published": "Thu, 22 Oct 2026 06:47:30 +0530",
-    "sentiment": 0.25
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/global-market-bank-of-korea-holds-interest-rates-at-3-after-back-to-back-hikes/articleshow/135109341.cms",
+    "published": "Thu, 22 Oct 2026 11:38:01 +0530",
+    "sentiment": 0.459
    },
    {
-    "title": "Why RBI is draining excess liquidity but also injecting funds",
+    "title": "Global Market: Nokia Q3 profit beats estimates on AI demand, maintains 2026 outlook",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/why-rbi-is-draining-excess-liquidity-but-also-injecting-funds/articleshow/135103570.cms",
-    "published": "Thu, 22 Oct 2026 06:36:29 +0530",
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/global-market-nokia-q3-profit-beats-estimates-on-ai-demand-maintains-2026-outlook/articleshow/135109366.cms",
+    "published": "Thu, 22 Oct 2026 11:36:56 +0530",
+    "sentiment": 0.477
+   },
+   {
+    "title": "Gold price falls Rs 2,000/10 gram; silver plunges Rs 6,000/kg as traders eye US Fed meet next week. Buy, sell or hold?",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/commodities/news/gold-price-falls-rs-2000/10-gram-silver-plunges-rs-6000/kg-as-traders-eye-us-fed-meet-next-week-buy-sell-or-hold/articleshow/135109189.cms",
+    "published": "Thu, 22 Oct 2026 11:32:13 +0530",
+    "sentiment": -0.66
+   },
+   {
+    "title": "Deepinder Goyal\u2019s Dark.ai could be Eternal\u2019s dark horse, but is it too early to bet?",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/deepinder-goyals-dark-ai-could-be-eternals-dark-horse-but-is-it-too-early-to-bet/articleshow/135109095.cms",
+    "published": "Thu, 22 Oct 2026 11:29:00 +0530",
     "sentiment": 0.0
    },
    {
-    "title": "Global Market Today: Asian stocks mixed as oil rally, AI concerns weigh on sentiment",
+    "title": "Global Market: Hong Kong stocks slump to four-month low as China stimulus hopes fade",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/global-market-today-asian-stocks-mixed-as-oil-rally-ai-concerns-weigh-on-sentiment/articleshow/135103506.cms",
-    "published": "Thu, 22 Oct 2026 06:27:04 +0530",
-    "sentiment": 0.382
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/global-market-hong-kong-stocks-slump-to-four-month-low-as-china-stimulus-hopes-fade/articleshow/135109075.cms",
+    "published": "Thu, 22 Oct 2026 11:28:45 +0530",
+    "sentiment": 0.178
    },
    {
-    "title": "Jio IPO attracts Rs 70,000 crore in bids on day 1, outpaces LIC, NSE issues",
+    "title": "Global Market: Japanese bond yields fall to multiweek lows ahead of BOJ meeting",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/jio-ipo-bids-hit-70000-crore-on-day-1-outpaces-nse-lic-gic-issues/articleshow/135103495.cms",
-    "published": "Thu, 22 Oct 2026 06:26:00 +0530",
-    "sentiment": 0.402
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/global-market-japanese-bond-yields-fall-to-multiweek-lows-ahead-of-boj-meeting/articleshow/135108616.cms",
+    "published": "Thu, 22 Oct 2026 11:05:13 +0530",
+    "sentiment": -0.202
    },
    {
-    "title": "Market sell-off deepens as midcaps enter correction zone",
+    "title": "Global Market: Indonesia imposes record $117 million in fines for stock market violations",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/midcaps-enter-correction-as-sell-off-deepens/articleshow/135103421.cms",
-    "published": "Thu, 22 Oct 2026 06:03:42 +0530",
-    "sentiment": -0.459
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/global-market-indonesia-imposes-record-117-million-in-fines-for-stock-market-violations/articleshow/135105734.cms",
+    "published": "Thu, 22 Oct 2026 10:59:39 +0530",
+    "sentiment": -0.421
    },
    {
-    "title": "Stocks in news: Reliance Industries, Eternal, Alkem Labs, BEL, HPCL, Swiggy and GMDC",
+    "title": "Chinese stock market enters bear territory! CSI 300 index crashes 20% from June peak",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/stocks-in-news-reliance-industries-eternal-alkem-labs-bel-hpcl-swiggy-and-gmdc/articleshow/135102947.cms",
-    "published": "Thu, 22 Oct 2026 06:00:00 +0530",
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/chinese-stock-market-enters-bear-territory-csi-300-index-crashes-20-from-june-peak/articleshow/135108401.cms",
+    "published": "Thu, 22 Oct 2026 10:55:09 +0530",
     "sentiment": 0.0
    },
    {
-    "title": "Pre-market action: Here's the trade setup for today's session",
+    "title": "Swiggy shares slide over 5% ahead of Q2 results. What are analysts saying?",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/pre-market-action-heres-the-trade-setup-for-todays-session/articleshow/135102916.cms",
-    "published": "Thu, 22 Oct 2026 06:00:00 +0530",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/swiggy-shares-slide-over-5-ahead-of-q2-results-what-are-analysts-saying/articleshow/135108350.cms",
+    "published": "Thu, 22 Oct 2026 10:50:13 +0530",
+    "sentiment": 0.296
+   },
+   {
+    "title": "Paras Healthcare IPO Day 2: GMP at 4%; check subscription status and key details",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/ipos/fpos/paras-healthcare-ipo-day-2-gmp-at-4-check-subscription-status-and-key-details/articleshow/135108249.cms",
+    "published": "Thu, 22 Oct 2026 10:46:11 +0530",
     "sentiment": 0.0
    },
    {
-    "title": "Bond yield rises to 7.44% on higher oil prices, global cues",
+    "title": "KEI Industries shares tumble 8% despite Q2 profit rising 29%, revenue up 39%",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/bonds/bond-yield-rises-to-7-44-on-higher-oil-prices-global-cues/articleshow/135103005.cms",
-    "published": "Thu, 22 Oct 2026 05:45:37 +0530",
-    "sentiment": 0.0
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/kei-industries-shares-tumble-8-despite-q2-profit-rising-29-revenue-up-39/articleshow/135108071.cms",
+    "published": "Thu, 22 Oct 2026 10:41:51 +0530",
+    "sentiment": 0.118
    },
    {
-    "title": "Jefferies sees valuation upside in select IT stocks despite muted growth forecast",
+    "title": "M&amp;M Financial Services shares crash 10% after Q2 results. What are Nomura and other analysts saying?",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/jefferies-sees-valuation-upside-in-select-it-stocks-despite-muted-growth-forecast/articleshow/135103176.cms",
-    "published": "Thu, 22 Oct 2026 05:44:24 +0530",
-    "sentiment": -0.292
-   },
-   {
-    "title": "Rupee soars to 6-week high on Jio IPO flows, weaker dollar",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/forex/rupee-soars-to-6-week-high-on-jio-ipo-flows-weaker-dollar/articleshow/135103368.cms",
-    "published": "Thu, 22 Oct 2026 05:42:27 +0530",
-    "sentiment": 0.026
-   },
-   {
-    "title": "Indian banks open cheque books for \u20b910,000 crore-plus in M&amp;A funding after RBI rule change",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/indian-banks-open-cheque-books-for-10000-crore-plus-in-ma-funding-after-rbi-rule-change/articleshow/135103483.cms",
-    "published": "Thu, 22 Oct 2026 05:30:00 +0530",
-    "sentiment": 0.0
-   },
-   {
-    "title": "US stocks today: Nasdaq leads Wall Street higher as SpaceX, Super Micro lift AI sentiment",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/us-stocks-today-nasdaq-leads-wall-street-higher-as-spacex-super-micro-lift-ai-sentiment/articleshow/135100483.cms",
-    "published": "Thu, 22 Oct 2026 01:45:59 +0530",
-    "sentiment": 0.599
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/mm-financial-services-shares-crash-10-after-q2-results-what-are-nomura-and-other-analysts-saying/articleshow/135107851.cms",
+    "published": "Thu, 22 Oct 2026 10:34:01 +0530",
+    "sentiment": -0.318
    }
   ]
  },
  "model": {
   "oos_days": 300,
-  "directional_calls": 191,
-  "directional_accuracy": 71.2,
-  "sign_accuracy_all_days": 66.3,
+  "directional_calls": 185,
+  "directional_accuracy": 71.9,
+  "sign_accuracy_all_days": 67.0,
   "gap_corr": 0.7,
-  "gap_sign_pct": 70.3,
+  "gap_sign_pct": 73.3,
   "trained_rows": 750,
   "version": 8,
   "bias_threshold": 0.2
@@ -249,13 +249,13 @@
  "options": {
   "NIFTY": {
    "index": "NIFTY",
-   "spot": 22811.35,
-   "atm": 22800,
+   "spot": 22630.95,
+   "atm": 22650,
    "lot_size": 65,
    "expiry": "2026-10-27",
    "days_to_expiry": 5.75,
    "iv_used_pct": 15.68,
-   "expected_move": 449,
+   "expected_move": 445,
    "levels": {
     "prev_close": 22811.35,
     "ema20": 22884.14,
@@ -276,39 +276,39 @@
      "legs": [
       {
        "action": "SELL",
-       "strike": 23200,
+       "strike": 23050,
        "type": "CE",
-       "est_premium": 53.8
+       "est_premium": 46.8
       },
       {
        "action": "BUY",
-       "strike": 23400,
+       "strike": 23250,
        "type": "CE",
-       "est_premium": 23.3
+       "est_premium": 19.7
       },
       {
        "action": "SELL",
-       "strike": 22400,
+       "strike": 22250,
        "type": "PE",
-       "est_premium": 38.7
+       "est_premium": 43.2
       },
       {
        "action": "BUY",
-       "strike": 22200,
+       "strike": 22050,
        "type": "PE",
-       "est_premium": 15.1
+       "est_premium": 17.1
       }
      ],
-     "net_premium": 54.1,
-     "max_loss": 9484,
-     "max_reward": 3516,
-     "reward_risk": 0.37,
-     "entry": "Enter at 10:15 (after the first hour) only if NIFTY is between 22,400 and 23,200",
-     "target": "Buy back at \u20b924.3 (keep ~55% of credit), else hold to expiry Tue 27 Oct",
-     "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b93,516 per lot)",
+     "net_premium": 53.2,
+     "max_loss": 9542,
+     "max_reward": 3458,
+     "reward_risk": 0.36,
+     "entry": "Enter at 10:15 (after the first hour) only if NIFTY is between 22,250 and 23,050",
+     "target": "Buy back at \u20b923.9 (keep ~55% of credit), else hold to expiry Tue 27 Oct",
+     "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b93,458 per lot)",
      "breakeven": [
-      22346,
-      23254
+      22197,
+      23103
      ],
      "notes": "Hedged premium selling. Check SPAN margin with your broker.",
      "verdict": {
@@ -349,39 +349,39 @@
      "legs": [
       {
        "action": "SELL",
-       "strike": 22800,
+       "strike": 22650,
        "type": "CE",
-       "est_premium": 196.8
+       "est_premium": 179.7
       },
       {
        "action": "SELL",
-       "strike": 22800,
+       "strike": 22650,
        "type": "PE",
-       "est_premium": 162.2
+       "est_premium": 175.6
       },
       {
        "action": "BUY",
-       "strike": 23200,
+       "strike": 23050,
        "type": "CE",
-       "est_premium": 53.8
+       "est_premium": 46.8
       },
       {
        "action": "BUY",
-       "strike": 22400,
+       "strike": 22250,
        "type": "PE",
-       "est_premium": 38.7
+       "est_premium": 43.2
       }
      ],
-     "net_premium": 266.5,
-     "max_loss": 8678,
-     "max_reward": 17322,
-     "reward_risk": 2.0,
-     "entry": "Enter only if NIFTY opens within \u00b150 of 22,800",
-     "target": "Buy back at \u20b9186.5 (keep ~30% of credit)",
-     "stop_loss": "NIFTY moves beyond 22,600 / 23,000",
+     "net_premium": 265.3,
+     "max_loss": 8756,
+     "max_reward": 17244,
+     "reward_risk": 1.97,
+     "entry": "Enter only if NIFTY opens within \u00b150 of 22,650",
+     "target": "Buy back at \u20b9185.7 (keep ~30% of credit)",
+     "stop_loss": "NIFTY moves beyond 22,450 / 22,850",
      "breakeven": [
-      22534,
-      23066
+      22385,
+      22915
      ],
      "notes": "Higher reward, tighter range. Never run an unhedged straddle.",
      "verdict": {
@@ -428,13 +428,13 @@
   },
   "BANKNIFTY": {
    "index": "BANKNIFTY",
-   "spot": 54976.9,
-   "atm": 55000,
+   "spot": 54729.65,
+   "atm": 54700,
    "lot_size": 30,
    "expiry": "2026-10-27",
    "days_to_expiry": 5.75,
    "iv_used_pct": 13.93,
-   "expected_move": 961,
+   "expected_move": 957,
    "levels": {
     "prev_close": 54976.9,
     "ema20": 55443.87,
@@ -455,39 +455,39 @@
      "legs": [
       {
        "action": "SELL",
-       "strike": 55800,
+       "strike": 55600,
        "type": "CE",
-       "est_premium": 118.2
+       "est_premium": 107.3
       },
       {
        "action": "BUY",
-       "strike": 56300,
+       "strike": 56100,
        "type": "CE",
-       "est_premium": 44.2
+       "est_premium": 39.1
       },
       {
        "action": "SELL",
-       "strike": 54100,
+       "strike": 53900,
        "type": "PE",
-       "est_premium": 82.8
+       "est_premium": 89.9
       },
       {
        "action": "BUY",
-       "strike": 53600,
+       "strike": 53400,
        "type": "PE",
-       "est_premium": 27.2
+       "est_premium": 30.0
       }
      ],
-     "net_premium": 129.6,
-     "max_loss": 11112,
-     "max_reward": 3888,
-     "reward_risk": 0.35,
-     "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is between 54,100 and 55,800",
-     "target": "Buy back at \u20b958.3 (keep ~55% of credit), else hold to expiry Tue 27 Oct",
-     "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b93,888 per lot)",
+     "net_premium": 128.1,
+     "max_loss": 11157,
+     "max_reward": 3843,
+     "reward_risk": 0.34,
+     "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is between 53,900 and 55,600",
+     "target": "Buy back at \u20b957.6 (keep ~55% of credit), else hold to expiry Tue 27 Oct",
+     "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b93,843 per lot)",
      "breakeven": [
-      53970,
-      55930
+      53772,
+      55728
      ],
      "notes": "Hedged premium selling. Check SPAN margin with your broker.",
      "verdict": {
@@ -528,39 +528,39 @@
      "legs": [
       {
        "action": "SELL",
-       "strike": 55000,
+       "strike": 54700,
        "type": "CE",
-       "est_premium": 400.3
+       "est_premium": 425.9
       },
       {
        "action": "SELL",
-       "strike": 55000,
+       "strike": 54700,
        "type": "PE",
-       "est_premium": 367.1
+       "est_premium": 340.3
       },
       {
        "action": "BUY",
-       "strike": 56000,
+       "strike": 55700,
        "type": "CE",
-       "est_premium": 81.5
+       "est_premium": 89.0
       },
       {
        "action": "BUY",
-       "strike": 54000,
+       "strike": 53700,
        "type": "PE",
-       "est_premium": 67.5
+       "est_premium": 59.5
       }
      ],
-     "net_premium": 618.4,
-     "max_loss": 11448,
-     "max_reward": 18552,
+     "net_premium": 617.7,
+     "max_loss": 11469,
+     "max_reward": 18531,
      "reward_risk": 1.62,
-     "entry": "Enter only if BANKNIFTY opens within \u00b1100 of 55,000",
-     "target": "Buy back at \u20b9432.9 (keep ~30% of credit)",
-     "stop_loss": "BANKNIFTY moves beyond 54,500 / 55,500",
+     "entry": "Enter only if BANKNIFTY opens within \u00b1100 of 54,700",
+     "target": "Buy back at \u20b9432.4 (keep ~30% of credit)",
+     "stop_loss": "BANKNIFTY moves beyond 54,200 / 55,200",
      "breakeven": [
-      54382,
-      55618
+      54082,
+      55318
      ],
      "notes": "Higher reward, tighter range. Never run an unhedged straddle.",
      "verdict": {
@@ -645,28 +645,28 @@
   }
  ],
  "preopen": {
-  "snapshot_ist": "Thu 22 Oct 07:13 IST",
+  "snapshot_ist": "Thu 22 Oct 09:00 IST",
   "stage": "final",
-  "expected_gap_pct": -0.11,
-  "gap_typical_error_pct": 0.29,
-  "expected_day_pct": 0.02,
-  "z": 0.034,
-  "typical_daily_move_pct": 0.688,
+  "expected_gap_pct": -0.09,
+  "gap_typical_error_pct": 0.28,
+  "expected_day_pct": 0.03,
+  "z": 0.044,
+  "typical_daily_move_pct": 0.683,
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": -0.07
+    "move_pct": -0.12
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": -0.18
+    "move_pct": -0.44
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": 0.35
+    "move_pct": 0.47
    },
    {
     "key": "dax",
@@ -686,78 +686,78 @@
    {
     "key": "n225",
     "name": "Nikkei 225",
-    "move_pct": -0.65
+    "move_pct": -1.88
    },
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": -1.39
+    "move_pct": -1.42
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": -0.31
+    "move_pct": -0.36
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": 0.02
+    "move_pct": -0.03
    },
    {
     "key": "inr",
     "name": "USD/INR",
-    "move_pct": 0.0
+    "move_pct": -0.05
    }
   ],
   "drivers": [
    {
-    "feature": "cl",
-    "label": "Crude oil",
-    "value": -1.39,
-    "contribution_pct": 0.057
+    "feature": "n225",
+    "label": "Nikkei 225",
+    "value": -1.88,
+    "contribution_pct": -0.093
    },
    {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": -0.07,
-    "contribution_pct": -0.055
-   },
-   {
-    "feature": "n225",
-    "label": "Nikkei 225",
-    "value": -0.65,
-    "contribution_pct": -0.046
-   },
-   {
-    "feature": "dax",
-    "label": "DAX (Germany)",
-    "value": 0.7,
-    "contribution_pct": -0.042
+    "value": -0.12,
+    "contribution_pct": -0.076
    },
    {
     "feature": "nq",
     "label": "Nasdaq futures",
-    "value": -0.18,
-    "contribution_pct": 0.039
+    "value": -0.44,
+    "contribution_pct": 0.071
    },
    {
     "feature": "stoxx",
     "label": "Euro Stoxx 50",
     "value": 0.56,
-    "contribution_pct": 0.036
+    "contribution_pct": 0.066
+   },
+   {
+    "feature": "dax",
+    "label": "DAX (Germany)",
+    "value": 0.7,
+    "contribution_pct": -0.065
+   },
+   {
+    "feature": "cl",
+    "label": "Crude oil",
+    "value": -1.42,
+    "contribution_pct": 0.061
    }
   ],
   "wf": {
    "oos_days": 300,
    "gap_corr": 0.7,
-   "gap_sign_pct": 70.3,
-   "directional_calls": 198,
-   "directional_accuracy": 70.7
+   "gap_sign_pct": 73.3,
+   "directional_calls": 193,
+   "directional_accuracy": 71.5
   },
   "vix": 15.68
  },
  "global_table": {
-  "updated": "2026-10-22T07:13:40.120577+05:30",
+  "updated": "2026-10-22T12:04:30.463434+05:30",
   "rows": [
    {
     "group": "US, last close",
@@ -767,9 +767,9 @@
    },
    {
     "group": "US futures now",
-    "move": "S&P -0.07%, Nasdaq -0.18%, Dow +0.35% (since Nifty's close)",
-    "effect": "flat",
-    "note": "Flat"
+    "move": "S&P -0.12%, Nasdaq -0.44%, Dow +0.47% (since Nifty's close)",
+    "effect": "red",
+    "note": "Futures point to a softer open"
    },
    {
     "group": "Europe, last close",
@@ -779,13 +779,13 @@
    },
    {
     "group": "Asia today",
-    "move": "Nikkei -0.6%, Hang Seng -0.6%, Kospi -1.1%",
+    "move": "Nikkei -2.1%, Hang Seng -3.8%, Kospi -3.6%",
     "effect": "red",
-    "note": "Weak"
+    "note": "Clearly weak (one market down over 3%)"
    },
    {
     "group": "Crude oil",
-    "move": "WTI ~$98, Brent ~$110 (+1.2%)",
+    "move": "WTI ~$99, Brent ~$112 (+2.5%)",
     "effect": "red",
     "note": "Rising oil hurts India \u00b7 Price is high for India"
    },
@@ -797,32 +797,32 @@
    },
    {
     "group": "Dollar index",
-    "move": "101.70 (-0.08%)",
+    "move": "101.49 (-0.28%)",
     "effect": "flat",
     "note": "Steady"
    },
    {
     "group": "Rupee",
-    "move": "94.45 per $ (+0.00%)",
-    "effect": "flat",
-    "note": "Steady"
+    "move": "94.70 per $ (+0.26%)",
+    "effect": "red",
+    "note": "Rupee weakening"
    },
    {
     "group": "India VIX (fear)",
-    "move": "15.68 (+6.1%)",
-    "effect": "red",
-    "note": "Fear rising: wider swings"
+    "move": "16.20 (+3.3%)",
+    "effect": "flat",
+    "note": "Normal"
    },
    {
     "group": "Model: Nifty open",
-    "move": "-0.11% (\u00b10.29%)",
+    "move": "-0.09% (\u00b10.28%)",
     "effect": "flat",
     "note": "Combined forecast from all markets (final)",
     "model": true
    }
   ],
   "tilt": "negative",
-  "score": -2
+  "score": -3
  },
  "notes": [
   "GIFT Nifty has no free data feed; the pre-open model reads what drives it (US/Dow futures, Europe, Asia, crude, rupee).",
