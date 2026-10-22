@@ -186,7 +186,7 @@ body.is-simple main{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 <script>
 const NSE_HOLIDAYS = ['2026-10-20', '2026-11-08', '2026-11-10', '2026-11-24', '2026-12-25'];   // fallback; meta.json has the live list
 const holidayList = () => (D.meta?.holidays?.length ? D.meta.holidays : NSE_HOLIDAYS);
-const APP_VERSION = 'v19';   // keep equal to CACHE in sw.js
+const APP_VERSION = 'v20';   // keep equal to CACHE in sw.js
 const FILES = ['plan', 'global-bias', 'volume-breakouts', 'performance', 'review', 'meta', 'live', 'small-capital'];
 const D = {};
 let tab = 'dash', stockFilter = 'ab', lots = {}, loadErr = null, lastLoad = 0;
@@ -400,16 +400,24 @@ function stepsCard() {
 }
 
 /* ---------------- SIMPLE SCREEN: one step at a time ---------------- */
-let gReplies = [];
+let gReplies = [], gSeen = { n: null, err: null };   // n = alerts this app can read (last 12 h)
 async function pollReplies() {
   const topic = store.get('g_alerts', '');
   if (!topic || document.hidden) return;
   try {
     const txt = await fetch(`https://ntfy.sh/${encodeURIComponent(topic)}/json?poll=1&since=12h`, { cache: 'no-store' }).then((r) => r.text());
     const msgs = txt.split(/\r?\n/).filter(Boolean).map((l) => JSON.parse(l)).filter((m) => m.event === 'message');
-    const latest = msgs.slice(-10).reverse();
-    if (JSON.stringify(latest.map((m) => m.id)) !== JSON.stringify(gReplies.map((m) => m.id))) { gReplies = latest; if (store.get('ui', 'simple') === 'simple') render(); }
-  } catch (e) {}
+    const latest = msgs.slice(-10).reverse(), changed = gSeen.n !== msgs.length || gSeen.err;
+    gSeen = { n: msgs.length, err: null };
+    if (changed || JSON.stringify(latest.map((m) => m.id)) !== JSON.stringify(gReplies.map((m) => m.id))) { gReplies = latest; if (store.get('ui', 'simple') === 'simple') render(); }
+  } catch (e) { gSeen = { n: gSeen.n, err: e.message }; }
+}
+function answersCheck() {
+  const topic = store.get('g_alerts', ''), bad = gSeen.n === 0 || gSeen.err;
+  return `<details class="sreply" ${bad ? 'open' : ''}><summary><b>📡 Guardian answers:</b> ${gSeen.err ? '<span class="down">cannot read alerts (' + esc(gSeen.err) + ')</span>'
+      : gSeen.n == null ? 'checking…' : gSeen.n ? `this app sees ${gSeen.n} alert${gSeen.n > 1 ? 's' : ''} from the last 12 hours ✅` : '<span class="down">this app sees no alerts ⚠️</span>'}</summary>
+    <p class="fine">${bad ? 'If your phone gets guardian alerts but this app sees none, the topic below is wrong. ' : ''}It must be exactly the <b>NTFY_TOPIC</b> line in guardian.env (also the subscription name in the ntfy app).</p>
+    <label class="f">Alerts topic<input data-g="g_alerts" value="${esc(topic)}" autocomplete="off" autocapitalize="off" spellcheck="false"></label></details>`;
 }
 setInterval(() => { if (wizGet().wait && !document.hidden) { pollReplies(); if (store.get('ui', 'simple') === 'simple') render(); } }, 4000);
 setInterval(pollReplies, 15000);
@@ -483,10 +491,10 @@ function vSimple() {
 
   if (step === 0) {
     h += `<h2>One-time setup</h2><p>Type these 4 once. They stay only on this phone. (They are in <b>guardian.env</b> on your server.)</p>
-      <label class="f">ICICI API key<input data-g="g_key" value="${esc(store.get('g_key', ''))}" autocomplete="off"></label>
-      <label class="f">Command topic (NTFY_CMD_TOPIC)<input data-g="g_topic" value="${esc(store.get('g_topic', ''))}" autocomplete="off"></label>
-      <label class="f">PIN (GUARDIAN_PIN)<input data-g="g_pin" type="password" value="${esc(store.get('g_pin', ''))}" autocomplete="off"></label>
-      <label class="f">Alerts topic (NTFY_TOPIC)<input data-g="g_alerts" value="${esc(store.get('g_alerts', ''))}" autocomplete="off"></label>
+      <label class="f">ICICI API key<input data-g="g_key" value="${esc(store.get('g_key', ''))}" autocomplete="off" autocapitalize="off" spellcheck="false"></label>
+      <label class="f">Command topic (NTFY_CMD_TOPIC)<input data-g="g_topic" value="${esc(store.get('g_topic', ''))}" autocomplete="off" autocapitalize="off" spellcheck="false"></label>
+      <label class="f">PIN (GUARDIAN_PIN)<input data-g="g_pin" type="password" value="${esc(store.get('g_pin', ''))}" autocomplete="off" autocapitalize="off" spellcheck="false"></label>
+      <label class="f">Alerts topic (NTFY_TOPIC)<input data-g="g_alerts" value="${esc(store.get('g_alerts', ''))}" autocomplete="off" autocapitalize="off" spellcheck="false"></label>
       <p class="fine">Each box saves when you leave it. When all 4 are filled, step 1 appears.</p>`;
   } else if (step === 1) {
     h += `<h2>Step 1 · Log in to ICICI</h2>
@@ -556,7 +564,7 @@ function vSimple() {
       ${BIG('Pause guardian', 'data-act="g-cmd" data-cmd="STOP" data-confirm="Pause all automatic entries and exits?"', 'stop')}
       <button class="smore" data-act="wz-go" data-s="1">Start again from step 1</button>`;
   }
-  h += `</section>${capitalLine()}<button class="smore" data-act="advanced">More details ›</button>
+  h += `</section>${step ? answersCheck() : ''}${capitalLine()}<button class="smore" data-act="advanced">More details ›</button>
     <p class="fine">Research tool, not investment advice.</p></div>`;
   return h;
 }
@@ -910,9 +918,9 @@ function guardianBox() {
       <button class="iconbtn" data-act="g-cmd" data-cmd="RESUME">Resume</button>
     </div>
     <details><summary class="fine" style="cursor:pointer">Guardian settings (stored only on this phone) ▾</summary>
-      <label class="f">Command topic (NTFY_CMD_TOPIC)<input id="g-topic" data-g="g_topic" value="${esc(store.get('g_topic', ''))}" autocomplete="off"></label>
-      <label class="f">PIN (GUARDIAN_PIN)<input id="g-pin" data-g="g_pin" type="password" value="${esc(store.get('g_pin', ''))}" autocomplete="off"></label>
-      <label class="f">Breeze API key (only to build the login link)<input id="g-key" data-g="g_key" value="${esc(key)}" autocomplete="off"></label>
+      <label class="f">Command topic (NTFY_CMD_TOPIC)<input id="g-topic" data-g="g_topic" value="${esc(store.get('g_topic', ''))}" autocomplete="off" autocapitalize="off" spellcheck="false"></label>
+      <label class="f">PIN (GUARDIAN_PIN)<input id="g-pin" data-g="g_pin" type="password" value="${esc(store.get('g_pin', ''))}" autocomplete="off" autocapitalize="off" spellcheck="false"></label>
+      <label class="f">Breeze API key (only to build the login link)<input id="g-key" data-g="g_key" value="${esc(key)}" autocomplete="off" autocapitalize="off" spellcheck="false"></label>
     </details></section>`;
 }
 
@@ -1283,7 +1291,10 @@ $('#view').addEventListener('change', (e) => {
   if (e.target.dataset.relay) { store.set('relay', e.target.value.trim()); RL.at = 0; pollRelay(); }
   if (e.target.dataset.sound) store.set('sound', e.target.checked);
   if (e.target.dataset.glive) { store.set('g_live', e.target.checked); render(); }
-  if (e.target.dataset.g) { store.set(e.target.dataset.g, e.target.value.trim()); render(); }
+  if (e.target.dataset.g) {
+    store.set(e.target.dataset.g, e.target.value.trim()); render();
+    if (e.target.dataset.g === 'g_alerts') { gSeen = { n: null, err: null }; gReplies = []; pollReplies(); }
+  }
   if (e.target.dataset.step != null && D.plan) {
     const k = 'done:' + D.plan.session, d = store.get(k, {}); d[e.target.dataset.step] = e.target.checked; store.set(k, d); render();
   }
