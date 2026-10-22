@@ -1,0 +1,831 @@
+{
+ "bias": {
+  "generated_at": "2026-10-22T16:18:11.257569+05:30",
+  "target_session": "2026-10-23",
+  "reference_date": "2026-10-22",
+  "bias": {
+   "label": "RANGEBOUND",
+   "score": 14,
+   "z": 0.14,
+   "model_z": 0.14,
+   "predicted_nifty_move_pct": 0.111,
+   "typical_daily_move_pct": 0.795,
+   "source": "daily close model",
+   "india_vix": 15.76,
+   "components": [
+    {
+     "feature": "vix",
+     "label": "India VIX level",
+     "value": 15.762,
+     "contribution_pct": 0.039
+    },
+    {
+     "feature": "dxy",
+     "label": "Dollar index %",
+     "value": -0.14,
+     "contribution_pct": 0.033
+    },
+    {
+     "feature": "spx",
+     "label": "S&P 500 overnight %",
+     "value": 0.0,
+     "contribution_pct": -0.022
+    },
+    {
+     "feature": "nifty_prev",
+     "label": "Nifty previous day %",
+     "value": -0.542,
+     "contribution_pct": 0.02
+    },
+    {
+     "feature": "vix_chg",
+     "label": "India VIX change",
+     "value": 0.082,
+     "contribution_pct": 0.006
+    },
+    {
+     "feature": "ndx",
+     "label": "Nasdaq minus S&P (tech tilt) %",
+     "value": 0.0,
+     "contribution_pct": 0.005
+    },
+    {
+     "feature": "nifty_ext",
+     "label": "Nifty vs EMA20 %",
+     "value": -0.777,
+     "contribution_pct": 0.004
+    },
+    {
+     "feature": "crude",
+     "label": "Crude oil %",
+     "value": 2.131,
+     "contribution_pct": 0.002
+    },
+    {
+     "feature": "tnx",
+     "label": "US 10Y yield chg (pts)",
+     "value": 0.0,
+     "contribution_pct": 0.001
+    }
+   ]
+  },
+  "options": {
+   "NIFTY": {
+    "index": "NIFTY",
+    "spot": 22687.65,
+    "atm": 22700,
+    "lot_size": 65,
+    "expiry": "2026-10-27",
+    "days_to_expiry": 4.75,
+    "iv_used_pct": 15.76,
+    "expected_move": 408,
+    "levels": {
+     "prev_close": 22687.65,
+     "ema20": 22865.42,
+     "support": 22566.77,
+     "resistance": 22796.62,
+     "atr": 286.56,
+     "pivots": {
+      "P": 22675.73,
+      "R1": 22796.62,
+      "S1": 22566.77,
+      "R2": 22905.58,
+      "S2": 22445.88
+     }
+    },
+    "strategies": [
+     {
+      "name": "Iron Condor",
+      "legs": [
+       {
+        "action": "SELL",
+        "strike": 23050,
+        "type": "CE",
+        "est_premium": 46.5
+       },
+       {
+        "action": "BUY",
+        "strike": 23250,
+        "type": "CE",
+        "est_premium": 18.2
+       },
+       {
+        "action": "SELL",
+        "strike": 22300,
+        "type": "PE",
+        "est_premium": 33.3
+       },
+       {
+        "action": "BUY",
+        "strike": 22100,
+        "type": "PE",
+        "est_premium": 11.6
+       }
+      ],
+      "net_premium": 50.0,
+      "max_loss": 9750,
+      "max_reward": 3250,
+      "reward_risk": 0.33,
+      "entry": "Enter at 10:15 (after the first hour) only if NIFTY is between 22,300 and 23,050",
+      "target": "Buy back at \u20b922.5 (keep ~55% of credit), else hold to expiry Tue 27 Oct",
+      "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b93,250 per lot)",
+      "breakeven": [
+       22250,
+       23100
+      ],
+      "notes": "Hedged premium selling. Check SPAN margin with your broker.",
+      "verdict": {
+       "decision": "TRADE",
+       "dte": 4,
+       "stats": {
+        "trades": 53,
+        "win_pct": 84.9,
+        "avg_pnl": 666,
+        "worst": -10189,
+        "best": 4362,
+        "total": 35338,
+        "sample": "days the model called SIDEWAYS, current expiry schedule, all days",
+        "allowed": true,
+        "marginal": false,
+        "quiet_first_hour": {
+         "trades": 29,
+         "win_pct": 79.3,
+         "avg_pnl": -78,
+         "worst": -10189,
+         "best": 2759,
+         "total": -2290
+        },
+        "trending_first_hour": {
+         "trades": 24,
+         "win_pct": 91.7,
+         "avg_pnl": 1567,
+         "worst": -9052,
+         "best": 4362,
+         "total": 37628
+        }
+       },
+       "reason": "4 days before: this setup won 84.9% of 53 trades, avg \u20b9666 per lot after costs (worst \u20b9-10,189)."
+      }
+     },
+     {
+      "name": "Iron Fly (hedged short straddle)",
+      "legs": [
+       {
+        "action": "SELL",
+        "strike": 22700,
+        "type": "CE",
+        "est_premium": 166.2
+       },
+       {
+        "action": "SELL",
+        "strike": 22700,
+        "type": "PE",
+        "est_premium": 159.3
+       },
+       {
+        "action": "BUY",
+        "strike": 23100,
+        "type": "CE",
+        "est_premium": 37.3
+       },
+       {
+        "action": "BUY",
+        "strike": 22300,
+        "type": "PE",
+        "est_premium": 33.3
+       }
+      ],
+      "net_premium": 254.9,
+      "max_loss": 9432,
+      "max_reward": 16568,
+      "reward_risk": 1.76,
+      "entry": "Enter only if NIFTY opens within \u00b150 of 22,700",
+      "target": "Buy back at \u20b9178.4 (keep ~30% of credit)",
+      "stop_loss": "NIFTY moves beyond 22,500 / 22,900",
+      "breakeven": [
+       22445,
+       22955
+      ],
+      "notes": "Higher reward, tighter range. Never run an unhedged straddle.",
+      "verdict": {
+       "decision": "CAUTION",
+       "dte": 4,
+       "reason": "Iron Fly (hedged short straddle) is not tested by the options lab.",
+       "stats": null
+      }
+     }
+    ],
+    "premium_note": "Premiums are Black-Scholes estimates from India VIX, not live quotes.",
+    "setup": {
+     "decision": "TRADE",
+     "dte": 4,
+     "stats": {
+      "trades": 53,
+      "win_pct": 84.9,
+      "avg_pnl": 666,
+      "worst": -10189,
+      "best": 4362,
+      "total": 35338,
+      "sample": "days the model called SIDEWAYS, current expiry schedule, all days",
+      "allowed": true,
+      "marginal": false,
+      "quiet_first_hour": {
+       "trades": 29,
+       "win_pct": 79.3,
+       "avg_pnl": -78,
+       "worst": -10189,
+       "best": 2759,
+       "total": -2290
+      },
+      "trending_first_hour": {
+       "trades": 24,
+       "win_pct": 91.7,
+       "avg_pnl": 1567,
+       "worst": -9052,
+       "best": 4362,
+       "total": 37628
+      }
+     },
+     "reason": "4 days before: this setup won 84.9% of 53 trades, avg \u20b9666 per lot after costs (worst \u20b9-10,189)."
+    }
+   },
+   "BANKNIFTY": {
+    "index": "BANKNIFTY",
+    "spot": 54925.7,
+    "atm": 54900,
+    "lot_size": 30,
+    "expiry": "2026-10-27",
+    "days_to_expiry": 4.75,
+    "iv_used_pct": 13.92,
+    "expected_move": 872,
+    "levels": {
+     "prev_close": 54925.7,
+     "ema20": 55394.52,
+     "support": 54545.22,
+     "resistance": 55220.32,
+     "atr": 701.76,
+     "pivots": {
+      "P": 54839.83,
+      "R1": 55220.32,
+      "S1": 54545.22,
+      "R2": 55514.93,
+      "S2": 54164.74
+     }
+    },
+    "strategies": [
+     {
+      "name": "Iron Condor",
+      "legs": [
+       {
+        "action": "SELL",
+        "strike": 55700,
+        "type": "CE",
+        "est_premium": 100.4
+       },
+       {
+        "action": "BUY",
+        "strike": 56100,
+        "type": "CE",
+        "est_premium": 41.9
+       },
+       {
+        "action": "SELL",
+        "strike": 54100,
+        "type": "PE",
+        "est_premium": 71.1
+       },
+       {
+        "action": "BUY",
+        "strike": 53700,
+        "type": "PE",
+        "est_premium": 26.8
+       }
+      ],
+      "net_premium": 102.8,
+      "max_loss": 8916,
+      "max_reward": 3084,
+      "reward_risk": 0.35,
+      "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is between 54,100 and 55,700",
+      "target": "Buy back at \u20b946.3 (keep ~55% of credit), else hold to expiry Tue 27 Oct",
+      "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b93,084 per lot)",
+      "breakeven": [
+       53997,
+       55803
+      ],
+      "notes": "Hedged premium selling. Check SPAN margin with your broker.",
+      "verdict": {
+       "decision": "CAUTION",
+       "dte": 4,
+       "stats": {
+        "trades": 35,
+        "win_pct": 74.3,
+        "avg_pnl": 7,
+        "worst": -14320,
+        "best": 5400,
+        "total": 263,
+        "sample": "days the model called SIDEWAYS, current expiry schedule, all days",
+        "allowed": false,
+        "marginal": true,
+        "quiet_first_hour": {
+         "trades": 17,
+         "win_pct": 88.2,
+         "avg_pnl": 1626,
+         "worst": -7655,
+         "best": 4260,
+         "total": 27645
+        },
+        "trending_first_hour": {
+         "trades": 18,
+         "win_pct": 61.1,
+         "avg_pnl": -1521,
+         "worst": -14320,
+         "best": 5400,
+         "total": -27382
+        }
+       },
+       "reason": "3-6 days before: barely positive historically (74.3% wins, avg \u20b97 per lot over 35 trades). Too thin an edge after model error; half size or skip."
+      }
+     },
+     {
+      "name": "Iron Fly (hedged short straddle)",
+      "legs": [
+       {
+        "action": "SELL",
+        "strike": 54900,
+        "type": "CE",
+        "est_premium": 385.0
+       },
+       {
+        "action": "SELL",
+        "strike": 54900,
+        "type": "PE",
+        "est_premium": 312.9
+       },
+       {
+        "action": "BUY",
+        "strike": 55700,
+        "type": "CE",
+        "est_premium": 100.4
+       },
+       {
+        "action": "BUY",
+        "strike": 54100,
+        "type": "PE",
+        "est_premium": 71.1
+       }
+      ],
+      "net_premium": 526.4,
+      "max_loss": 8208,
+      "max_reward": 15792,
+      "reward_risk": 1.92,
+      "entry": "Enter only if BANKNIFTY opens within \u00b1100 of 54,900",
+      "target": "Buy back at \u20b9368.5 (keep ~30% of credit)",
+      "stop_loss": "BANKNIFTY moves beyond 54,500 / 55,300",
+      "breakeven": [
+       54374,
+       55426
+      ],
+      "notes": "Higher reward, tighter range. Never run an unhedged straddle.",
+      "verdict": {
+       "decision": "CAUTION",
+       "dte": 4,
+       "reason": "Iron Fly (hedged short straddle) is not tested by the options lab.",
+       "stats": null
+      }
+     }
+    ],
+    "premium_note": "Premiums are Black-Scholes estimates from India VIX, not live quotes.",
+    "setup": {
+     "decision": "CAUTION",
+     "dte": 4,
+     "stats": {
+      "trades": 35,
+      "win_pct": 74.3,
+      "avg_pnl": 7,
+      "worst": -14320,
+      "best": 5400,
+      "total": 263,
+      "sample": "days the model called SIDEWAYS, current expiry schedule, all days",
+      "allowed": false,
+      "marginal": true,
+      "quiet_first_hour": {
+       "trades": 17,
+       "win_pct": 88.2,
+       "avg_pnl": 1626,
+       "worst": -7655,
+       "best": 4260,
+       "total": 27645
+      },
+      "trending_first_hour": {
+       "trades": 18,
+       "win_pct": 61.1,
+       "avg_pnl": -1521,
+       "worst": -14320,
+       "best": 5400,
+       "total": -27382
+      }
+     },
+     "reason": "3-6 days before: barely positive historically (74.3% wins, avg \u20b97 per lot over 35 trades). Too thin an edge after model error; half size or skip."
+    }
+   }
+  },
+  "model": {
+   "oos_days": 250,
+   "directional_calls": 106,
+   "directional_accuracy": 64.2,
+   "sign_accuracy_all_days": 59.2,
+   "trained_rows": 750,
+   "version": 9,
+   "bias_threshold": 0.2
+  }
+ },
+ "plan": {
+  "generated_at": "2026-10-22T16:18:26.019274+05:30",
+  "session": "2026-10-23",
+  "stage": "preview",
+  "expected_open": {
+   "gap_pct": 0.01,
+   "error_pct": 0.38,
+   "day_pct": 0.08,
+   "snapshot": "Thu 22 Oct 16:18 IST",
+   "stage": "preview",
+   "tip": "Flat open expected. Normal entry windows apply.",
+   "markets": [
+    {
+     "key": "es",
+     "name": "S&P 500 futures",
+     "move_pct": 0.0
+    },
+    {
+     "key": "nq",
+     "name": "Nasdaq futures",
+     "move_pct": 0.0
+    },
+    {
+     "key": "ym",
+     "name": "Dow futures",
+     "move_pct": 0.0
+    },
+    {
+     "key": "dax",
+     "name": "DAX (Germany)",
+     "move_pct": 0.0
+    },
+    {
+     "key": "ftse",
+     "name": "FTSE 100 (UK)",
+     "move_pct": 0.0
+    },
+    {
+     "key": "stoxx",
+     "name": "Euro Stoxx 50",
+     "move_pct": 0.0
+    },
+    {
+     "key": "n225",
+     "name": "Nikkei 225",
+     "move_pct": 0.0
+    },
+    {
+     "key": "cl",
+     "name": "Crude oil",
+     "move_pct": 0.0
+    },
+    {
+     "key": "gold",
+     "name": "Gold",
+     "move_pct": 0.0
+    },
+    {
+     "key": "dxy",
+     "name": "Dollar index",
+     "move_pct": 0.0
+    },
+    {
+     "key": "inr",
+     "name": "USD/INR",
+     "move_pct": 0.0
+    }
+   ],
+   "drivers": [
+    {
+     "feature": "vix",
+     "label": "India VIX level",
+     "value": 15.76,
+     "contribution_pct": 0.05
+    },
+    {
+     "feature": "nprev",
+     "label": "Nifty previous day",
+     "value": -0.54,
+     "contribution_pct": 0.031
+    },
+    {
+     "feature": "es",
+     "label": "S&P 500 futures",
+     "value": 0.0,
+     "contribution_pct": -0.021
+    },
+    {
+     "feature": "ym",
+     "label": "Dow futures",
+     "value": 0.0,
+     "contribution_pct": 0.013
+    },
+    {
+     "feature": "cl",
+     "label": "Crude oil",
+     "value": 0.0,
+     "contribution_pct": 0.007
+    },
+    {
+     "feature": "ftse",
+     "label": "FTSE 100 (UK)",
+     "value": 0.0,
+     "contribution_pct": -0.004
+    }
+   ],
+   "wf": {
+    "oos_days": 300,
+    "gap_corr": 0.23,
+    "gap_sign_pct": 57.0,
+    "directional_calls": 84,
+    "directional_accuracy": 61.9
+   }
+  },
+  "headline": "Market bias SIDEWAYS \u2014 favour hedged premium selling",
+  "bias": "RANGEBOUND",
+  "score": 14,
+  "bias_track_record_pct": 64.2,
+  "options": [
+   {
+    "index": "NIFTY",
+    "strategy": "Iron Condor",
+    "legs": "SELL 23050 CE + BUY 23250 CE + SELL 22300 PE + BUY 22100 PE",
+    "expiry": "2026-10-27",
+    "lot_size": 65,
+    "entry": "Enter at 10:15 (after the first hour) only if NIFTY is between 22,300 and 23,050",
+    "target": "Buy back at \u20b922.5 (keep ~55% of credit), else hold to expiry Tue 27 Oct",
+    "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b93,250 per lot)",
+    "max_loss": 9750,
+    "max_reward": 3250,
+    "reward_risk": 0.33,
+    "decision": "TRADE",
+    "decision_reason": "4 days before: this setup won 84.9% of 53 trades, avg \u20b9666 per lot after costs (worst \u20b9-10,189).",
+    "enter_at": "10:15 IST, after the first hour",
+    "exit_by": "target / stop, else expiry 2026-10-27",
+    "setup_stats": {
+     "trades": 53,
+     "win_pct": 84.9,
+     "avg_pnl": 666,
+     "worst": -10189,
+     "best": 4362,
+     "total": 35338,
+     "sample": "days the model called SIDEWAYS, current expiry schedule, all days",
+     "allowed": true,
+     "marginal": false,
+     "quiet_first_hour": {
+      "trades": 29,
+      "win_pct": 79.3,
+      "avg_pnl": -78,
+      "worst": -10189,
+      "best": 2759,
+      "total": -2290
+     },
+     "trending_first_hour": {
+      "trades": 24,
+      "win_pct": 91.7,
+      "avg_pnl": 1567,
+      "worst": -9052,
+      "best": 4362,
+      "total": 37628
+     }
+    }
+   },
+   {
+    "index": "BANKNIFTY",
+    "strategy": "Iron Condor",
+    "legs": "SELL 55700 CE + BUY 56100 CE + SELL 54100 PE + BUY 53700 PE",
+    "expiry": "2026-10-27",
+    "lot_size": 30,
+    "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is between 54,100 and 55,700",
+    "target": "Buy back at \u20b946.3 (keep ~55% of credit), else hold to expiry Tue 27 Oct",
+    "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b93,084 per lot)",
+    "max_loss": 8916,
+    "max_reward": 3084,
+    "reward_risk": 0.35,
+    "decision": "CAUTION",
+    "decision_reason": "3-6 days before: barely positive historically (74.3% wins, avg \u20b97 per lot over 35 trades). Too thin an edge after model error; half size or skip.",
+    "enter_at": "10:15 IST, after the first hour",
+    "exit_by": "target / stop, else expiry 2026-10-27",
+    "setup_stats": {
+     "trades": 35,
+     "win_pct": 74.3,
+     "avg_pnl": 7,
+     "worst": -14320,
+     "best": 5400,
+     "total": 263,
+     "sample": "days the model called SIDEWAYS, current expiry schedule, all days",
+     "allowed": false,
+     "marginal": true,
+     "quiet_first_hour": {
+      "trades": 17,
+      "win_pct": 88.2,
+      "avg_pnl": 1626,
+      "worst": -7655,
+      "best": 4260,
+      "total": 27645
+     },
+     "trending_first_hour": {
+      "trades": 18,
+      "win_pct": 61.1,
+      "avg_pnl": -1521,
+      "worst": -14320,
+      "best": 5400,
+      "total": -27382
+     }
+    }
+   }
+  ],
+  "stocks": [],
+  "market_gate_open": false,
+  "events": [
+   {
+    "symbol": "RELIANCE",
+    "name": "Reliance",
+    "when": "Fri 23 Oct",
+    "date": "2026-10-23",
+    "affects": "2026-10-26",
+    "past": false,
+    "bank": false
+   },
+   {
+    "symbol": "INFY",
+    "name": "Infosys",
+    "when": "Fri 23 Oct",
+    "date": "2026-10-23",
+    "affects": "2026-10-26",
+    "past": false,
+    "bank": false
+   },
+   {
+    "symbol": "KOTAKBANK",
+    "name": "Kotak Bank",
+    "when": "Sat 24 Oct",
+    "date": "2026-10-24",
+    "affects": "2026-10-26",
+    "past": false,
+    "bank": true
+   },
+   {
+    "symbol": "LT",
+    "name": "L&T",
+    "when": "Tue 27 Oct",
+    "date": "2026-10-27",
+    "affects": "2026-10-28",
+    "past": false,
+    "bank": false
+   }
+  ],
+  "stock_track_record": null,
+  "no_trade_reason": "No stock passed all 4 rules with a positive expected value. Sitting out is a valid decision.",
+  "timeline": [
+   {
+    "date": "2026-10-23",
+    "start": "07:45",
+    "end": "09:00",
+    "kind": "prep",
+    "title": "Read the final plan",
+    "do": "The ~07:15 run is final (US close, Dow and US futures, Europe, Asia open). Read the expected open, bias and trades. Set price alerts at each entry and stop-loss.",
+    "when": "Fri 23 Oct \u00b7 07:45\u201309:00"
+   },
+   {
+    "date": "2026-10-23",
+    "start": "09:00",
+    "end": "09:15",
+    "kind": "wait",
+    "title": "Pre-open",
+    "do": "Place no market orders. Note where your stocks are indicated to open.",
+    "when": "Fri 23 Oct \u00b7 09:00\u201309:15"
+   },
+   {
+    "date": "2026-10-23",
+    "start": "09:15",
+    "end": "09:30",
+    "kind": "wait",
+    "title": "Wait",
+    "do": "Opening 15 min is the most volatile. Cancel any stock that opens above its T1 or below its SL.",
+    "when": "Fri 23 Oct \u00b7 09:15\u201309:30"
+   },
+   {
+    "date": "2026-10-23",
+    "start": "09:30",
+    "end": "10:30",
+    "kind": "act",
+    "title": "Stock buy window",
+    "do": "Buy only if price is holding above the entry and the 15-min opening high. Place the SL order immediately.",
+    "when": "Fri 23 Oct \u00b7 09:30\u201310:30"
+   },
+   {
+    "date": "2026-10-23",
+    "start": "09:45",
+    "end": "11:00",
+    "kind": "act",
+    "title": "Options window",
+    "do": "Spreads / ATM buys only if the index respects the support/resistance shown. Iron condor / fly only after 10:00 with the index inside the range.",
+    "when": "Fri 23 Oct \u00b7 09:45\u201311:00"
+   },
+   {
+    "date": "2026-10-23",
+    "start": "11:30",
+    "end": "14:30",
+    "kind": "manage",
+    "title": "Manage only",
+    "do": "No new stock entries. If it did not trigger, skip it. Keep stop-loss orders in place.",
+    "when": "Fri 23 Oct \u00b7 11:30\u201314:30"
+   },
+   {
+    "date": "2026-10-23",
+    "start": "14:30",
+    "end": "15:00",
+    "kind": "exit",
+    "title": "Option buyers exit",
+    "do": "Exit option buys by 15:00 if target not hit (time decay). Spreads/condors: hold only if still inside the plan.",
+    "when": "Fri 23 Oct \u00b7 14:30\u201315:00"
+   },
+   {
+    "date": "2026-10-23",
+    "start": "16:30",
+    "end": "17:00",
+    "kind": "review",
+    "title": "Review",
+    "do": "The engine grades today's plan. Check the Results tab: what worked, what the gap was.",
+    "when": "Fri 23 Oct \u00b7 16:30\u201317:00"
+   },
+   {
+    "date": "2026-10-26",
+    "start": "09:15",
+    "end": "15:15",
+    "kind": "exit",
+    "title": "Day 2: exit by 15:15",
+    "do": "Book half at T1, trail SL to entry. Exit everything still open by 15:15 (this is a 1\u20132 day setup).",
+    "when": "Mon 26 Oct \u00b7 09:15\u201315:15"
+   },
+   {
+    "date": "2026-10-27",
+    "start": "14:30",
+    "end": "15:30",
+    "kind": "exit",
+    "title": "Expiry day",
+    "do": "Do not hold short options into the last hour of expiry day.",
+    "when": "Expiry 2026-10-27"
+   }
+  ],
+  "golden_rules": [
+   "Only grade A/B stocks. C = watch, don't trade.",
+   "Stop-loss order goes in the moment you buy. Never move it down.",
+   "Risk max 1% of capital per trade, max 3 open trades.",
+   "No trigger in the buy window = no trade. Missing a trade costs nothing.",
+   "If the app's live hit-rate (Learning tab) drops below its backtest, cut size in half."
+  ],
+  "disclaimer": "Algorithmic research output based on technical rules and statistics. Not investment advice. Not a SEBI-registered investment adviser or research analyst. No returns are guaranteed; options can lose 100% of premium and more for sellers. Verify every level with your broker and consult a SEBI-registered adviser before trading."
+ },
+ "stocks": [
+  {
+   "symbol": "PNB",
+   "name": "Punjab National Bank",
+   "grade": "C",
+   "passed": false,
+   "entry": 122.5,
+   "stop": 120.11,
+   "t1": 127.29,
+   "t2": 132.07,
+   "atr": 3.19,
+   "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days"
+  },
+  {
+   "symbol": "FEDERALBNK",
+   "name": "Federal Bank",
+   "grade": "C",
+   "passed": false,
+   "entry": 347.8,
+   "stop": 340.35,
+   "t1": 362.71,
+   "t2": 377.62,
+   "atr": 9.94,
+   "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days"
+  },
+  {
+   "symbol": "INFY",
+   "name": "Infosys",
+   "grade": "C",
+   "passed": false,
+   "entry": 1153.35,
+   "stop": 1128.96,
+   "t1": 1202.12,
+   "t2": 1250.89,
+   "atr": 32.51,
+   "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days"
+  }
+ ]
+}
