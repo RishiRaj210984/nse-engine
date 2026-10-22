@@ -1,71 +1,53 @@
 {
  "bias": {
-  "generated_at": "2026-10-22T16:18:11.257569+05:30",
+  "generated_at": "2026-10-22T21:11:19.791370+05:30",
   "target_session": "2026-10-23",
   "reference_date": "2026-10-22",
   "bias": {
    "label": "RANGEBOUND",
-   "score": 14,
-   "z": 0.14,
-   "model_z": 0.14,
-   "predicted_nifty_move_pct": 0.111,
-   "typical_daily_move_pct": 0.795,
-   "source": "daily close model",
+   "score": 5,
+   "z": 0.048,
+   "model_z": 0.048,
+   "predicted_nifty_move_pct": 0.04,
+   "typical_daily_move_pct": 0.762,
+   "source": "pre-open global snapshot",
    "india_vix": 15.76,
    "components": [
     {
-     "feature": "vix",
-     "label": "India VIX level",
-     "value": 15.762,
-     "contribution_pct": 0.039
+     "feature": "es",
+     "label": "S&P 500 futures",
+     "value": -0.36,
+     "contribution_pct": -0.149
+    },
+    {
+     "feature": "nq",
+     "label": "Nasdaq futures",
+     "value": -0.83,
+     "contribution_pct": 0.108
     },
     {
      "feature": "dxy",
-     "label": "Dollar index %",
-     "value": -0.14,
-     "contribution_pct": 0.033
+     "label": "Dollar index",
+     "value": 0.12,
+     "contribution_pct": -0.049
     },
     {
-     "feature": "spx",
-     "label": "S&P 500 overnight %",
-     "value": 0.0,
-     "contribution_pct": -0.022
+     "feature": "cl",
+     "label": "Crude oil",
+     "value": -0.99,
+     "contribution_pct": 0.047
     },
     {
-     "feature": "nifty_prev",
-     "label": "Nifty previous day %",
-     "value": -0.542,
-     "contribution_pct": 0.02
+     "feature": "ftse",
+     "label": "FTSE 100 (UK)",
+     "value": 0.22,
+     "contribution_pct": 0.039
     },
     {
-     "feature": "vix_chg",
-     "label": "India VIX change",
-     "value": 0.082,
-     "contribution_pct": 0.006
-    },
-    {
-     "feature": "ndx",
-     "label": "Nasdaq minus S&P (tech tilt) %",
-     "value": 0.0,
-     "contribution_pct": 0.005
-    },
-    {
-     "feature": "nifty_ext",
-     "label": "Nifty vs EMA20 %",
-     "value": -0.777,
-     "contribution_pct": 0.004
-    },
-    {
-     "feature": "crude",
-     "label": "Crude oil %",
-     "value": 2.131,
-     "contribution_pct": 0.002
-    },
-    {
-     "feature": "tnx",
-     "label": "US 10Y yield chg (pts)",
-     "value": 0.0,
-     "contribution_pct": 0.001
+     "feature": "vix",
+     "label": "India VIX level",
+     "value": 15.76,
+     "contribution_pct": 0.039
     }
    ]
   },
@@ -82,15 +64,15 @@
     "levels": {
      "prev_close": 22687.65,
      "ema20": 22865.42,
-     "support": 22566.77,
-     "resistance": 22796.62,
+     "support": 22566.82,
+     "resistance": 22796.52,
      "atr": 286.56,
      "pivots": {
-      "P": 22675.73,
-      "R1": 22796.62,
-      "S1": 22566.77,
-      "R2": 22905.58,
-      "S2": 22445.88
+      "P": 22675.68,
+      "R1": 22796.52,
+      "S1": 22566.82,
+      "R2": 22905.38,
+      "S2": 22445.98
      }
     },
     "strategies": [
@@ -140,10 +122,10 @@
        "stats": {
         "trades": 53,
         "win_pct": 84.9,
-        "avg_pnl": 666,
+        "avg_pnl": 656,
         "worst": -10189,
         "best": 4362,
-        "total": 35338,
+        "total": 34813,
         "sample": "days the model called SIDEWAYS, current expiry schedule, all days",
         "allowed": true,
         "marginal": false,
@@ -158,13 +140,13 @@
         "trending_first_hour": {
          "trades": 24,
          "win_pct": 91.7,
-         "avg_pnl": 1567,
+         "avg_pnl": 1545,
          "worst": -9052,
          "best": 4362,
-         "total": 37628
+         "total": 37103
         }
        },
-       "reason": "4 days before: this setup won 84.9% of 53 trades, avg \u20b9666 per lot after costs (worst \u20b9-10,189)."
+       "reason": "4 days before: this setup won 84.9% of 53 trades, avg \u20b9656 per lot after costs (worst \u20b9-10,189)."
       }
      },
      {
@@ -222,10 +204,10 @@
      "stats": {
       "trades": 53,
       "win_pct": 84.9,
-      "avg_pnl": 666,
+      "avg_pnl": 656,
       "worst": -10189,
       "best": 4362,
-      "total": 35338,
+      "total": 34813,
       "sample": "days the model called SIDEWAYS, current expiry schedule, all days",
       "allowed": true,
       "marginal": false,
@@ -240,13 +222,13 @@
       "trending_first_hour": {
        "trades": 24,
        "win_pct": 91.7,
-       "avg_pnl": 1567,
+       "avg_pnl": 1545,
        "worst": -9052,
        "best": 4362,
-       "total": 37628
+       "total": 37103
       }
      },
-     "reason": "4 days before: this setup won 84.9% of 53 trades, avg \u20b9666 per lot after costs (worst \u20b9-10,189)."
+     "reason": "4 days before: this setup won 84.9% of 53 trades, avg \u20b9656 per lot after costs (worst \u20b9-10,189)."
     }
    },
    "BANKNIFTY": {
@@ -430,56 +412,58 @@
    }
   },
   "model": {
-   "oos_days": 250,
-   "directional_calls": 106,
-   "directional_accuracy": 64.2,
-   "sign_accuracy_all_days": 59.2,
+   "oos_days": 300,
+   "directional_calls": 141,
+   "directional_accuracy": 68.1,
+   "sign_accuracy_all_days": 61.0,
+   "gap_corr": 0.42,
+   "gap_sign_pct": 67.3,
    "trained_rows": 750,
-   "version": 9,
+   "version": 10,
    "bias_threshold": 0.2
   }
  },
  "plan": {
-  "generated_at": "2026-10-22T16:18:26.019274+05:30",
+  "generated_at": "2026-10-22T21:11:34.264406+05:30",
   "session": "2026-10-23",
   "stage": "preview",
   "expected_open": {
-   "gap_pct": 0.01,
-   "error_pct": 0.38,
-   "day_pct": 0.08,
-   "snapshot": "Thu 22 Oct 16:18 IST",
+   "gap_pct": 0.05,
+   "error_pct": 0.33,
+   "day_pct": 0.04,
+   "snapshot": "Thu 22 Oct 21:11 IST",
    "stage": "preview",
    "tip": "Flat open expected. Normal entry windows apply.",
    "markets": [
     {
      "key": "es",
      "name": "S&P 500 futures",
-     "move_pct": 0.0
+     "move_pct": -0.36
     },
     {
      "key": "nq",
      "name": "Nasdaq futures",
-     "move_pct": 0.0
+     "move_pct": -0.83
     },
     {
      "key": "ym",
      "name": "Dow futures",
-     "move_pct": 0.0
+     "move_pct": 0.39
     },
     {
      "key": "dax",
      "name": "DAX (Germany)",
-     "move_pct": 0.0
+     "move_pct": -0.05
     },
     {
      "key": "ftse",
      "name": "FTSE 100 (UK)",
-     "move_pct": 0.0
+     "move_pct": 0.22
     },
     {
      "key": "stoxx",
      "name": "Euro Stoxx 50",
-     "move_pct": 0.0
+     "move_pct": -0.28
     },
     {
      "key": "n225",
@@ -489,74 +473,74 @@
     {
      "key": "cl",
      "name": "Crude oil",
-     "move_pct": 0.0
+     "move_pct": -0.99
     },
     {
      "key": "gold",
      "name": "Gold",
-     "move_pct": 0.0
+     "move_pct": -0.71
     },
     {
      "key": "dxy",
      "name": "Dollar index",
-     "move_pct": 0.0
+     "move_pct": 0.12
     },
     {
      "key": "inr",
      "name": "USD/INR",
-     "move_pct": 0.0
+     "move_pct": -0.01
     }
    ],
    "drivers": [
     {
-     "feature": "vix",
-     "label": "India VIX level",
-     "value": 15.76,
-     "contribution_pct": 0.05
-    },
-    {
-     "feature": "nprev",
-     "label": "Nifty previous day",
-     "value": -0.54,
-     "contribution_pct": 0.031
-    },
-    {
      "feature": "es",
      "label": "S&P 500 futures",
-     "value": 0.0,
-     "contribution_pct": -0.021
+     "value": -0.36,
+     "contribution_pct": -0.149
     },
     {
-     "feature": "ym",
-     "label": "Dow futures",
-     "value": 0.0,
-     "contribution_pct": 0.013
+     "feature": "nq",
+     "label": "Nasdaq futures",
+     "value": -0.83,
+     "contribution_pct": 0.108
+    },
+    {
+     "feature": "dxy",
+     "label": "Dollar index",
+     "value": 0.12,
+     "contribution_pct": -0.049
     },
     {
      "feature": "cl",
      "label": "Crude oil",
-     "value": 0.0,
-     "contribution_pct": 0.007
+     "value": -0.99,
+     "contribution_pct": 0.047
     },
     {
      "feature": "ftse",
      "label": "FTSE 100 (UK)",
-     "value": 0.0,
-     "contribution_pct": -0.004
+     "value": 0.22,
+     "contribution_pct": 0.039
+    },
+    {
+     "feature": "vix",
+     "label": "India VIX level",
+     "value": 15.76,
+     "contribution_pct": 0.039
     }
    ],
    "wf": {
     "oos_days": 300,
-    "gap_corr": 0.23,
-    "gap_sign_pct": 57.0,
-    "directional_calls": 84,
-    "directional_accuracy": 61.9
+    "gap_corr": 0.42,
+    "gap_sign_pct": 67.3,
+    "directional_calls": 158,
+    "directional_accuracy": 67.7
    }
   },
   "headline": "Market bias SIDEWAYS \u2014 favour hedged premium selling",
   "bias": "RANGEBOUND",
-  "score": 14,
-  "bias_track_record_pct": 64.2,
+  "score": 5,
+  "bias_track_record_pct": 68.1,
   "options": [
    {
     "index": "NIFTY",
@@ -571,16 +555,16 @@
     "max_reward": 3250,
     "reward_risk": 0.33,
     "decision": "TRADE",
-    "decision_reason": "4 days before: this setup won 84.9% of 53 trades, avg \u20b9666 per lot after costs (worst \u20b9-10,189).",
+    "decision_reason": "4 days before: this setup won 84.9% of 53 trades, avg \u20b9656 per lot after costs (worst \u20b9-10,189).",
     "enter_at": "10:15 IST, after the first hour",
     "exit_by": "target / stop, else expiry 2026-10-27",
     "setup_stats": {
      "trades": 53,
      "win_pct": 84.9,
-     "avg_pnl": 666,
+     "avg_pnl": 656,
      "worst": -10189,
      "best": 4362,
-     "total": 35338,
+     "total": 34813,
      "sample": "days the model called SIDEWAYS, current expiry schedule, all days",
      "allowed": true,
      "marginal": false,
@@ -595,10 +579,10 @@
      "trending_first_hour": {
       "trades": 24,
       "win_pct": 91.7,
-      "avg_pnl": 1567,
+      "avg_pnl": 1545,
       "worst": -9052,
       "best": 4362,
-      "total": 37628
+      "total": 37103
      }
     }
    },
