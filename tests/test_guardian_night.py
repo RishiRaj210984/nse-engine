@@ -15,6 +15,7 @@ class Dead:   # Breeze at night: every quote call raises
     orders = []
     def get_quotes(self, **k): raise Exception("Error in get_quotes(): Expecting value: line 1 column 1 (char 0)")
     def place_order(self, **k): self.orders.append(k); return {"Success": {"order_id": "1"}}
+    def get_portfolio_positions(self): return {"Success": []}
 
 
 res = []

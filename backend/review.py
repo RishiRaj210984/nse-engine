@@ -280,7 +280,115 @@ def review_session(session, archived=None):
     return out
 
 
-def save_review(rv):
+# ------------------------------------------------------------------ paper book
+# What you would really hold if you followed the app: only indices the plan marked TRADE, one open
+# position per index, entered at 10:15 if the entry condition holds, then carried day to day with the
+# guardian's exits (target 55% of credit kept, stop at 1x credit, expiry day 10:15). Costs are charged
+# when a trade closes. Each day's P&L is the change in value of what was held, so open trades count too.
+BOOK_COSTS = {"NIFTY": 400, "BANKNIFTY": 500}   # Rs per round trip, same as the options lab
+EXPIRY_EXIT = time(10, 15)
+
+
+def _decision(archived, name):
+    for o in (archived.get("plan") or {}).get("options") or []:
+        if o.get("index") == name:
+            return o.get("decision")
+    return ((archived["bias"]["options"].get(name) or {}).get("setup") or {}).get("decision")
+
+
+def _vix_at(vix, ts):
+    if vix is None:
+        return None
+    sub = vix[vix.index <= ts]
+    return float(sub["Close"].iloc[-1]) if len(sub) else float(vix["Close"].iloc[0])
+
+
+def paper_book(session, archived, bars_by_index, vix):
+    """Advance the paper book through `session`. Safe to re-run for the same day."""
+    path = store.state_path("paper_book.json")
+    book = store._read(path, {"open": {}, "closed": [], "days": [], "before": None})
+    s_iso = session.isoformat()
+    if book.get("before") and book["before"]["session"] == s_iso:      # re-run: undo this day first
+        book["open"] = book["before"]["open"]
+        book["closed"] = book["closed"][:book["before"]["n_closed"]]
+    book["days"] = [d for d in book["days"] if d["session"] != s_iso]
+    book["before"] = {"session": s_iso, "open": json.loads(json.dumps(book["open"])), "n_closed": len(book["closed"])}
+    day_pnl, detail = 0, []
+    for name in ("NIFTY", "BANKNIFTY"):
+        bars = bars_by_index.get(name)
+        if bars is None:
+            continue
+        pos = book["open"].get(name)
+        start = bars.index[0]
+        if pos is None:
+            o = archived["bias"]["options"].get(name)
+            if not o or _decision(archived, name) != "TRADE":
+                continue
+            legs = o["strategies"][0]["legs"]
+            if not any(l["action"] == "SELL" for l in legs):
+                detail.append(f"{name}: not a sold structure, not tracked")
+                continue
+            ts_e, spot_e = _at(bars, "10:15")
+            shorts = sorted(l["strike"] for l in legs if l["action"] == "SELL")
+            if ts_e is None or not (len(shorts) < 2 or shorts[0] < spot_e < shorts[-1]):
+                detail.append(f"{name}: entry condition not met at 10:15, no trade")
+                continue
+            exp = date.fromisoformat(o["expiry"])
+            iv0, vix0 = o["iv_used_pct"] / 100, _vix_at(vix, ts_e)
+            v_e = _value(legs, spot_e, _T(exp, ts_e), iv0)
+            pos = {"index": name, "strategy": o["strategies"][0]["name"], "legs": legs, "lot": o["lot_size"],
+                   "expiry": o["expiry"], "entry_session": s_iso, "entry_spot": round(spot_e, 2), "v_e": v_e,
+                   "credit_rs": round(-v_e * o["lot_size"]), "iv0": iv0, "vix0": vix0, "mark": 0}
+            start = ts_e
+            detail.append(f"{name}: entered {pos['strategy']} at 10:15, credit Rs {pos['credit_rs']:,}")
+        exp = date.fromisoformat(pos["expiry"])
+        iv = lambda ts: pos["iv0"] * (_vix_at(vix, ts) / pos["vix0"]) if pos["vix0"] and vix is not None else pos["iv0"]
+        credit, v_e, lot = -pos["v_e"], pos["v_e"], pos["lot"]
+        after = bars[bars.index > start].resample("15min", label="right", closed="right").last().dropna()
+        reason, v = None, v_e
+        for ts, row in after.iterrows():
+            v = _value(pos["legs"], float(row["Close"]), _T(exp, ts), iv(ts))
+            if (v - v_e) <= -credit:
+                reason = "STOP: loss reached 1x credit"
+            elif -v <= 0.45 * credit:
+                reason = "TARGET: 55% of credit kept"
+            elif session >= exp and ts.time() >= EXPIRY_EXIT:
+                reason = f"EXPIRY DAY: closed at {ts.strftime('%H:%M')}"
+            if reason:
+                break
+        value_rs = round((v - v_e) * lot)
+        if reason or session > exp:
+            reason = reason or "EXPIRED: settled at last price"
+            realized = value_rs - BOOK_COSTS[name]
+            day_pnl += realized - pos["mark"]
+            book["closed"].append({**{k: pos[k] for k in ("index", "strategy", "expiry", "entry_session", "credit_rs")},
+                                   "exit_session": s_iso, "reason": reason, "pnl": realized})
+            detail.append(f"{name}: {reason}, trade result Rs {realized:+,} after costs")
+            book["open"].pop(name, None)
+        else:
+            day_pnl += value_rs - pos["mark"]
+            detail.append(f"{name}: still open (expiry {exp.strftime('%d %b')}), worth Rs {value_rs:+,} now")
+            pos["mark"] = value_rs
+            book["open"][name] = pos
+    realized = sum(c["pnl"] for c in book["closed"])
+    unreal = sum(p["mark"] for p in book["open"].values())
+    book["days"].append({"session": s_iso, "pnl": round(day_pnl), "detail": detail, "total": realized + unreal})
+    book["days"] = sorted(book["days"], key=lambda d: d["session"])[-250:]
+    store._write(path, book, indent=1)
+    return {"days": book["days"][::-1][:60], "realized": realized, "open_value": unreal, "total": realized + unreal,
+            "open": [{k: p[k] for k in ("index", "strategy", "expiry", "entry_session", "credit_rs", "mark")} for p in book["open"].values()],
+            "closed": book["closed"][::-1][:30], "trades": len(book["closed"]),
+            "wins": sum(c["pnl"] > 0 for c in book["closed"]),
+            "note": "Paper book: TRADE days only, 1 lot, held like the guardian holds it (target, stop, expiry-day 10:15), "
+                    "costs charged when a trade closes. Premiums are Black-Scholes estimates with India VIX."}
+
+
+def _T(expiry, ts):
+    mins_left = max((datetime.combine(expiry, time(15, 30), IST) - ts).total_seconds() / 60, 5)
+    return mins_left / (60 * 24 * 365)
+
+
+def save_review(rv, paper=None):
     path = store.state_path("reviews.json")
     hist = store._read(path, [])
     hist = [h for h in hist if h["session"] != rv["session"]] + [rv]
@@ -294,8 +402,10 @@ def save_review(rv):
              "detail": [f"{o['index']} {o['strategy']}: {o.get('status')} {o['pnl_per_lot']:+,}" for o in h.get("options", [])]}
             for h in hist]
     wins = [h for h in slim if h["final"] and h["trades"]]
+    if paper is None:   # keep the last published paper book
+        paper = (store._read(os.path.join(store.PUBLIC_DIR, "review.json"), {}) or {}).get("paper")
     store.publish("review.json", {
-        "latest": rv, "history": slim[::-1][:60],
+        "latest": rv, "history": slim[::-1][:60], "paper": paper,
         "totals": {"days": len([h for h in slim if h["final"]]),
                    "bias_hit_pct": round(100 * sum(h["bias_correct"] for h in slim if h["final"]) / max(1, len([h for h in slim if h["final"]])), 1),
                    "options_pnl_sum": sum(h["options_pnl"] for h in wins),
@@ -310,5 +420,10 @@ def run(session=None, archived=None):
     session = session or datetime.now(IST).date()
     rv = review_session(session, archived)
     if rv:
-        save_review(rv)
+        paper = None
+        arch = archived or load_archived(session.isoformat())
+        if rv["final"] and arch:
+            bars = {n: intraday(INDEX_SPECS[n]["ticker"], session) for n in ("NIFTY", "BANKNIFTY")}
+            paper = paper_book(session, arch, bars, intraday("^INDIAVIX", session))
+        save_review(rv, paper)
     return rv

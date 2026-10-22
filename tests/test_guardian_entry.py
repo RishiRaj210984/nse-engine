@@ -26,6 +26,7 @@ class FB:
         if self.reject_at is not None and len(self.orders) - 1 == self.reject_at: return {"Success": None, "Error": "static IP not registered"}
         return {"Success": {"order_id": "O%d" % len(self.orders)}, "Status": 200}
     def get_order_detail(self, exchange_code="", order_id=""): return {"Success": [{"status": self.fill}], "Status": 200}
+    def get_portfolio_positions(self): return {"Success": getattr(self, "held", [])}
 
 guardian.time.sleep = lambda s: None
 res = []
@@ -50,6 +51,9 @@ fb = FB(reject_at=2); ok, msg = guardian.enter_trade(fb, env, {}, "NIFTY", 1, Tr
 t("rejected SELL after BUYs: stops, reports what was placed", not ok and "CHECK ICICI NOW" in msg and "BUY 23550" in msg and len(fb.orders) == 3)
 fb = FB(fill="Ordered"); ok, msg = guardian.enter_trade(fb, env, {}, "NIFTY", 1, True, NOW, PLAN)
 t("unfilled first leg: stops before any SELL", not ok and "not filled" in msg and len(fb.orders) == 1)
+fb = FB(); fb.held = [{"product_type": "Options", "stock_code": "NIFTY", "quantity": "65", "action": "Sell", "expiry_date": "27-Oct-2026", "strike_price": "23300", "right": "Call", "average_price": "50", "ltp": "40"}]
+ok, msg = guardian.enter_trade(fb, env, {}, "NIFTY", 1, True, NOW, PLAN)
+t("already holding NIFTY: refuses a second trade", not ok and "already hold" in msg and not fb.orders)
 
 # commands: PIN check and paused state
 guardian.requests.get = lambda url, params=None, timeout=0: type("R", (), {"text": "\n".join([

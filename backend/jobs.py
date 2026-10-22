@@ -162,6 +162,13 @@ def publish_all(bias=None, scan=None, task="manual"):
 
 
 def premarket():
+    # GitHub sometimes starts the morning run hours late. Once the market has opened, today's plan is
+    # frozen: a late run must not change the trade people are already following.
+    now = store.now_ist()
+    import nse_calendar
+    if nse_calendar.is_trading_day(now.date()) and "09:15" <= now.strftime("%H:%M") <= "15:30":
+        log.warning("pre-market run started at %s, after the open: skipped, today's plan stays as published", now.strftime("%H:%M"))
+        return {"skipped": f"late pre-market run at {now.strftime('%H:%M')}: today's plan is frozen after 09:15"}
     bias = macro.global_bias(force=True)
     stage = (bias.get("preopen") or {}).get("stage", "final")
     if stage == "final":  # only the 07:30 run is graded; the midnight run is a preview

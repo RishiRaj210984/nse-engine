@@ -1,0 +1,114 @@
+{
+ "open": {
+  "NIFTY": {
+   "index": "NIFTY",
+   "strategy": "Iron Condor",
+   "legs": [
+    {
+     "action": "SELL",
+     "strike": 23300,
+     "type": "CE",
+     "est_premium": 53.2
+    },
+    {
+     "action": "BUY",
+     "strike": 23550,
+     "type": "CE",
+     "est_premium": 18.7
+    },
+    {
+     "action": "SELL",
+     "strike": 22500,
+     "type": "PE",
+     "est_premium": 44.7
+    },
+    {
+     "action": "BUY",
+     "strike": 22250,
+     "type": "PE",
+     "est_premium": 14.2
+    }
+   ],
+   "lot": 65,
+   "expiry": "2026-10-27",
+   "entry_session": "2026-10-21",
+   "entry_spot": 22936.05,
+   "v_e": -61.22922883223737,
+   "credit_rs": 3980,
+   "iv0": 0.1477,
+   "vix0": 15.1274995803833,
+   "mark": -161
+  }
+ },
+ "closed": [],
+ "days": [
+  {
+   "session": "2026-10-19",
+   "pnl": 0,
+   "detail": [],
+   "total": 0
+  },
+  {
+   "session": "2026-10-21",
+   "pnl": -146,
+   "detail": [
+    "NIFTY: entered Iron Condor at 10:15, credit Rs 3,980",
+    "NIFTY: still open (expiry 27 Oct), worth Rs -146 now"
+   ],
+   "total": -146
+  },
+  {
+   "session": "2026-10-22",
+   "pnl": -15,
+   "detail": [
+    "NIFTY: still open (expiry 27 Oct), worth Rs -161 now"
+   ],
+   "total": -161
+  }
+ ],
+ "before": {
+  "session": "2026-10-22",
+  "open": {
+   "NIFTY": {
+    "index": "NIFTY",
+    "strategy": "Iron Condor",
+    "legs": [
+     {
+      "action": "SELL",
+      "strike": 23300,
+      "type": "CE",
+      "est_premium": 53.2
+     },
+     {
+      "action": "BUY",
+      "strike": 23550,
+      "type": "CE",
+      "est_premium": 18.7
+     },
+     {
+      "action": "SELL",
+      "strike": 22500,
+      "type": "PE",
+      "est_premium": 44.7
+     },
+     {
+      "action": "BUY",
+      "strike": 22250,
+      "type": "PE",
+      "est_premium": 14.2
+     }
+    ],
+    "lot": 65,
+    "expiry": "2026-10-27",
+    "entry_session": "2026-10-21",
+    "entry_spot": 22936.05,
+    "v_e": -61.22922883223737,
+    "credit_rs": 3980,
+    "iv0": 0.1477,
+    "vix0": 15.1274995803833,
+    "mark": -146
+   }
+  },
+  "n_closed": 0
+ }
+}

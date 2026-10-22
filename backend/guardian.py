@@ -330,6 +330,13 @@ def enter_trade(breeze, env, state, index, lots, live, now, plan=None, demo=Fals
     hm = now.strftime("%H:%M")
     if not demo and not ("10:10" <= hm <= "11:30"):
         return False, f"entry window is 10:10-11:30 IST (now {hm})"
+    if live:   # one trade per index at a time: never stack a second structure on an open one
+        try:
+            held = [l for l in legs_from_positions(breeze.get_portfolio_positions()) if l["stock_code"] == BREEZE_CODE[index]]
+        except Exception as exc:
+            return False, f"could not read your positions to check for an open {index} trade ({str(exc)[:80]}). Not placed."
+        if held:
+            return False, f"you already hold an open {index} position ({len(held)} legs). One trade per index at a time: not placed."
     s = full["strategies"][0]
     expiry_iso = datetime.strptime(full["expiry"], "%Y-%m-%d").strftime("%Y-%m-%dT06:00:00.000Z")
     shorts = sorted(l["strike"] for l in s["legs"] if l["action"] == "SELL")
@@ -417,11 +424,19 @@ def evening_report(env, state, now):
     if latest.get("session") != day or not latest.get("final"):
         return   # the evening review has not run yet; try again on the next loop
     state["report_sent"] = day
+    pb = r.get("paper") or {}
+    d0 = next((x for x in pb.get("days") or [] if x.get("session") == day), None)
+    if d0 is not None:   # the paper book: what you would really hold
+        pnl = d0.get("pnl", 0)
+        notify(env, f"Paper result today: {'+' if pnl >= 0 else '-'}Rs {abs(pnl):,}",
+               "\n".join(d0.get("detail") or ["No trade today."]) + f"\nTotal: Rs {pb.get('total', 0):+,} "
+               f"({pb.get('trades', 0)} closed trades, {pb.get('wins', 0)} won; open now Rs {pb.get('open_value', 0):+,}). Paper only, 1 lot.")
+        return
     h0 = next((x for x in r.get("history") or [] if x.get("session") == day), {})
     pnl = h0.get("plan_pnl", 0)
     notify(env, f"Paper result today: {'+' if pnl >= 0 else '-'}Rs {abs(pnl):,}",
            "\n".join(h0.get("detail") or []) + f"\nTotal: Rs {tot.get('plan_pnl_sum', 0):+,} over {tot.get('days', 0)} days "
-           f"({tot.get('plan_win_days', 0)} profit, {tot.get('plan_loss_days', 0)} loss). Paper only, 1 lot, after costs.")
+           f"({tot.get('plan_win_days', 0)} profit, {tot.get('plan_loss_days', 0)} loss). Paper only, 1 lot.")
 
 
 def handle_command(cmd, breeze_box, env, state, live, now):

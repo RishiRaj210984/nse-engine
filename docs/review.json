@@ -1,7 +1,7 @@
 {
  "latest": {
   "session": "2026-10-22",
-  "as_of": "2026-10-22T16:17:21.421106+05:30",
+  "as_of": "2026-10-22T16:55:25.926450+05:30",
   "final": true,
   "plan_built": "2026-10-22T07:13:19.608006+05:30",
   "bias": {
@@ -177,6 +177,50 @@
    ]
   }
  ],
+ "paper": {
+  "days": [
+   {
+    "session": "2026-10-22",
+    "pnl": -15,
+    "detail": [
+     "NIFTY: still open (expiry 27 Oct), worth Rs -161 now"
+    ],
+    "total": -161
+   },
+   {
+    "session": "2026-10-21",
+    "pnl": -146,
+    "detail": [
+     "NIFTY: entered Iron Condor at 10:15, credit Rs 3,980",
+     "NIFTY: still open (expiry 27 Oct), worth Rs -146 now"
+    ],
+    "total": -146
+   },
+   {
+    "session": "2026-10-19",
+    "pnl": 0,
+    "detail": [],
+    "total": 0
+   }
+  ],
+  "realized": 0,
+  "open_value": -161,
+  "total": -161,
+  "open": [
+   {
+    "index": "NIFTY",
+    "strategy": "Iron Condor",
+    "expiry": "2026-10-27",
+    "entry_session": "2026-10-21",
+    "credit_rs": 3980,
+    "mark": -161
+   }
+  ],
+  "closed": [],
+  "trades": 0,
+  "wins": 0,
+  "note": "Paper book: TRADE days only, 1 lot, held like the guardian holds it (target, stop, expiry-day 10:15), costs charged when a trade closes. Premiums are Black-Scholes estimates with India VIX."
+ },
  "totals": {
   "days": 3,
   "bias_hit_pct": 33.3,

@@ -187,7 +187,7 @@ body.is-simple main{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 <script>
 const NSE_HOLIDAYS = ['2026-10-20', '2026-11-08', '2026-11-10', '2026-11-24', '2026-12-25'];   // fallback; meta.json has the live list
 const holidayList = () => (D.meta?.holidays?.length ? D.meta.holidays : NSE_HOLIDAYS);
-const APP_VERSION = 'v22';   // keep equal to CACHE in sw.js
+const APP_VERSION = 'v23';   // keep equal to CACHE in sw.js
 const FILES = ['plan', 'global-bias', 'volume-breakouts', 'performance', 'review', 'meta', 'live', 'small-capital', 'markets'];
 const D = {};
 let tab = 'dash', stockFilter = 'ab', lots = {}, loadErr = null, lastLoad = 0;
@@ -479,17 +479,16 @@ function vMarkets() {
   return h;
 }
 function paperResults(open = false) {
-  const r = D.review, l = r?.latest, tot = r?.totals || {};
-  if (!r || !l) return '';
+  const pb = D.review?.paper;
+  if (!pb || !(pb.days || []).length) return '';
   const rs = (v) => `<span class="${v > 0 ? 'up' : v < 0 ? 'down' : ''}">${v > 0 ? '+' : v < 0 ? '−' : ''}₹${Math.abs(Math.round(v || 0)).toLocaleString('en-IN')}</span>`;
   const day = (s) => new Date(s + 'T12:00:00+05:30').toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'Asia/Kolkata' });
-  const h0 = (r.history || []).find((x) => x.session === l.session) || {};
-  const todayPnl = h0.plan_pnl ?? (l.options || []).reduce((a, o) => a + (o.pnl_per_lot || 0), 0);
-  return `<details class="sreply" ${open ? 'open' : ''}><summary><b>📒 Paper results</b> · ${esc(day(l.session))}: ${rs(todayPnl)}${l.final ? '' : ' <span class="fine">(not final yet)</span>'}
-      · <span class="fine">total ${rs(tot.plan_pnl_sum)} over ${tot.days || 0} day${tot.days === 1 ? '' : 's'}</span></summary>
-    ${(l.options || []).map((o) => `<div class="srow"><b>${esc(o.index)} ${esc(o.strategy)}</b>: ${rs(o.pnl_per_lot)} per lot<div class="fine">${esc(o.verdict || o.exit_reason || '')}</div></div>`).join('')}
-    <div class="srow"><b>Last days</b>${(r.history || []).slice(0, 7).map((x) => `<div class="fine">${esc(day(x.session))}: ${rs(x.plan_pnl)} · ${esc((x.detail || []).join(' · '))}</div>`).join('')}</div>
-    <p class="fine">${tot.plan_win_days || 0} profit day(s), ${tot.plan_loss_days || 0} loss day(s). Paper only: what the plan would have made with 1 lot, after costs. Updated each evening after 4:30 pm.</p></details>`;
+  const d0 = pb.days[0];
+  return `<details class="sreply" ${open ? 'open' : ''}><summary><b>📒 Paper results</b> · ${esc(day(d0.session))}: ${rs(d0.pnl)} · <span class="fine">total ${rs(pb.total)}</span></summary>
+    ${(pb.open || []).map((o) => `<div class="srow">🟡 <b>Holding ${esc(o.index)} ${esc(o.strategy)}</b> since ${esc(day(o.entry_session))}, expiry ${esc(day(o.expiry))}<div class="fine">Premium collected ₹${Number(o.credit_rs).toLocaleString('en-IN')} · worth ${rs(o.mark)} now (before costs)</div></div>`).join('')}
+    ${(pb.closed || []).slice(0, 5).map((c) => `<div class="srow">${c.pnl > 0 ? '✅' : '❌'} <b>${esc(c.index)} ${esc(c.strategy)}</b> ${esc(day(c.entry_session))} → ${esc(day(c.exit_session))}: ${rs(c.pnl)}<div class="fine">${esc(c.reason)}</div></div>`).join('')}
+    <div class="srow"><b>Day by day</b>${pb.days.slice(0, 7).map((x) => `<div class="fine">${esc(day(x.session))}: ${rs(x.pnl)} · ${esc((x.detail || []).join(' · ') || 'no trade')}</div>`).join('')}</div>
+    <p class="fine">Closed trades: ${pb.trades} (${pb.wins} won) = ${rs(pb.realized)} after costs. Open: ${rs(pb.open_value)}. ${esc(pb.note || '')} Updated each evening after 4:30 pm.</p></details>`;
 }
 function capitalLine() {
   const c = D['small-capital'];
@@ -522,7 +521,8 @@ function vSimple() {
   if (step) h += `<div class="wdots">${names.map((n, i) => `<span data-act="wz-go" data-s="${i + 1}" class="${i + 1 < step ? 'ok' : i + 1 === step ? 'on' : ''}">${i + 1 < step ? '✓' : i + 1} ${n}</span>`).join('')}</div>`;
   h += `<section class="wcard">`;
   if (w.err) h += `<div class="banner err">${esc(w.err)}</div>`;
-  if (step === 3) {
+  const heldIx = trade && !live && (D.review?.paper?.open || []).some((o) => o.index === trade.index);
+  if (step === 3 && !heldIx) {
     // is the guardian logged in today? (from its alerts since midnight)
     const midnight = new Date(t.date + 'T00:00:00+05:30').getTime() / 1000;
     const login = gReplies.find((m) => m.time >= midnight && /^Guardian: (logged in|login failed|not logged in)/i.test(m.title || ''));
@@ -569,7 +569,13 @@ function vSimple() {
         <button class="smore" data-act="wz-go" data-s="1">‹ Back to step 1</button>`;
     }
   } else if (step === 3) {
-    if (!trade) {
+    const held = trade && !live && (D.review?.paper?.open || []).find((o) => o.index === trade.index);
+    if (held) {
+      h += `<h2>Step 3 · Already holding ${esc(held.index)}</h2><div class="wwait">🟡</div>
+        <p>The paper book still holds the <b>${esc(held.index)} ${esc(held.strategy)}</b> from ${esc(new Date(held.entry_session + 'T12:00:00+05:30').toDateString().slice(0, 10))} (expiry ${esc(new Date(held.expiry + 'T12:00:00+05:30').toDateString().slice(0, 10))}). One trade per index at a time, so <b>no new ${esc(held.index)} trade today</b>.</p>
+        <p class="fine">It closes by itself at the target, the stop, or at 10:15 on expiry day. See 📒 Paper results below.</p>`
+        + BIG('OK, finish', 'data-act="wz-go" data-s="4"', 'go');
+    } else if (!trade) {
       h += `<h2>Step 3 · No trade today</h2><div class="wwait">😴</div><p>Today's plan says <b>do not trade</b>. Nothing to buy or sell. You are done.</p>`
         + BIG('OK, finish', 'data-act="wz-go" data-s="4"', 'go');
     } else if (w.wait && !ans) {
