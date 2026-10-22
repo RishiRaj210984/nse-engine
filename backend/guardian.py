@@ -46,6 +46,18 @@ LONG_BREAKEVEN_AT = 20    # once up 20%, stop moves to cost
 LONG_TRAIL_AT = 40        # once up 40%, trail below the peak
 LONG_BOOK = 60            # book at +60%
 LONG_TIME_EXIT = "15:15"
+# Sold structures still open on expiry day are closed at 10:15: of exits up to 12:00 it was the best
+# in a 2-year replay (Nifty about equal to holding to the close, BankNifty clearly better)
+EXPIRY_EXIT = "10:15"
+
+
+def _expiry_date(exp):
+    for fmt in ("%d-%b-%Y", "%Y-%m-%d"):
+        try:
+            return datetime.strptime(str(exp)[:11].strip(), fmt).date()
+        except ValueError:
+            pass
+    return None
 
 
 # ------------------------------------------------------------------ config
@@ -146,8 +158,8 @@ def label(t):
     return f"{l0['stock_code']} {l0['expiry']} {len(t['legs'])}-leg ({', '.join(('S' if l['side'] == 'sell' else 'B') + str(int(l['strike'])) + l['right'][0] for l in t['legs'])})"
 
 
-def evaluate(t, state, now_hm, trail_pct=25):
-    """Same rules as the app. Returns (status, note, pnl, pct)."""
+def evaluate(t, state, now_hm, trail_pct=25, today=None):
+    """Same rules as the app. Returns (status, note, pnl, pct). `today` (a date) enables the expiry-day exit."""
     sign = lambda l: 1 if l["side"] == "buy" else -1
     entry = sum(sign(l) * l["avg"] * l["qty"] for l in t["legs"])
     now = sum(sign(l) * l["ltp"] * l["qty"] for l in t["legs"])
@@ -163,6 +175,8 @@ def evaluate(t, state, now_hm, trail_pct=25):
             return "BOOK PROFIT", f"{int(CREDIT_TARGET * 100)}% of the credit is in hand", pnl, pct
         if pnl <= -CREDIT_STOP * basis:
             return "EXIT NOW", "loss has reached 1x the credit", pnl, pct
+        if today and _expiry_date(t["legs"][0].get("expiry")) == today and now_hm >= EXPIRY_EXIT:
+            return "EXIT NOW", f"expiry day: closing at {EXPIRY_EXIT} to keep the premium left", pnl, pct
         return "HOLD", f"target +{CREDIT_TARGET * basis:,.0f}, stop -{CREDIT_STOP * basis:,.0f}", pnl, pct
     stop = LONG_STOP
     if peak_pct >= LONG_BREAKEVEN_AT:
@@ -445,7 +459,7 @@ def handle_command(cmd, breeze_box, env, state, live, now):
         trades = group_trades(legs_from_positions(breeze_box[0].get_portfolio_positions()))
         lines = []
         for t in trades:
-            st, note, pnl, pct = evaluate(t, state, now.strftime("%H:%M"), int(env["TRAIL_PCT"]))
+            st, note, pnl, pct = evaluate(t, state, now.strftime("%H:%M"), int(env["TRAIL_PCT"]), now.date())
             lines.append(f"{label(t)}: {pnl:+,.0f} ({pct:+.1f}%) {st}")
             if name == "EXIT":
                 if live:
@@ -505,7 +519,7 @@ def run(live_flag=False, breeze=None, once=False, clock=None):
             continue
         alerted = state.setdefault("alerted", {})
         for t in trades:
-            status, note, pnl, pct = evaluate(t, state, now.strftime("%H:%M"), int(env["TRAIL_PCT"]))
+            status, note, pnl, pct = evaluate(t, state, now.strftime("%H:%M"), int(env["TRAIL_PCT"]), now.date())
             log.info("%s | %s | P&L %+.0f (%+.1f%%) | %s", label(t), status, pnl, pct, note)
             if status == "HOLD":
                 alerted.pop(t["id"], None)
@@ -571,7 +585,7 @@ def check():
         trades = group_trades(legs)
         print(f"   open option legs: {len(legs)}, grouped into {len(trades)} trade(s)")
         for t in trades:
-            st, note, pnl, pct = evaluate(t, {}, datetime.now(IST).strftime("%H:%M"), int(env["TRAIL_PCT"]))
+            st, note, pnl, pct = evaluate(t, {}, datetime.now(IST).strftime("%H:%M"), int(env["TRAIL_PCT"]), datetime.now(IST).date())
             print(f"   - {label(t)} | P&L {pnl:+,.0f} ({pct:+.1f}%) | guardian says: {st} ({note})")
     q = step(6, "Read a live quote (Nifty)", lambda: b.get_quotes(stock_code="NIFTY", exchange_code="NSE", product_type="cash"))
     if q:
