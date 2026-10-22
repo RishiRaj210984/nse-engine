@@ -388,6 +388,28 @@ def check_capital_edge(env, state, now):
         state.pop("edge_alerted", None)
 
 
+def evening_report(env, state, now):
+    """Once each evening: today's paper result and the running total, as one phone alert."""
+    day = now.date().isoformat()
+    if now.strftime("%H:%M") < "18:00" or state.get("report_sent") == day or time.time() - state.get("report_tried", 0) < 600:
+        return
+    state["report_tried"] = time.time()   # look again every 10 minutes until the evening review is out
+    try:
+        r = requests.get(f"{PLAN_URL}/review.json", params={"t": int(time.time())}, timeout=15).json()
+    except Exception as exc:
+        log.info("evening report failed: %s", exc)
+        return
+    latest, tot = r.get("latest") or {}, r.get("totals") or {}
+    if latest.get("session") != day or not latest.get("final"):
+        return   # the evening review has not run yet; try again on the next loop
+    state["report_sent"] = day
+    h0 = next((x for x in r.get("history") or [] if x.get("session") == day), {})
+    pnl = h0.get("plan_pnl", 0)
+    notify(env, f"Paper result today: {'+' if pnl >= 0 else '-'}Rs {abs(pnl):,}",
+           "\n".join(h0.get("detail") or []) + f"\nTotal: Rs {tot.get('plan_pnl_sum', 0):+,} over {tot.get('days', 0)} days "
+           f"({tot.get('plan_win_days', 0)} profit, {tot.get('plan_loss_days', 0)} loss). Paper only, 1 lot, after costs.")
+
+
 def handle_command(cmd, breeze_box, env, state, live, now):
     _sent.clear()   # a command you sent always gets its answer, even a repeated one
     name = cmd[0]
@@ -456,6 +478,7 @@ def run(live_flag=False, breeze=None, once=False, clock=None):
     while True:
         now = clock() if clock else datetime.now(IST)
         check_capital_edge(env, state, now)
+        evening_report(env, state, now)
         cmds = poll_commands(env, state)
         save_state(state)   # mark commands as read first, so a crash never replays them
         for cmd in cmds:

@@ -50,3 +50,16 @@ guardian.check_capital_edge({}, st, datetime(2026, 10, 23, 19, 0, tzinfo=IST))
 guardian.check_capital_edge({}, st, datetime(2026, 10, 24, 19, 0, tzinfo=IST))
 t("edge found -> one alert, not repeated", sent.count("A setup that fits your money shows an edge") == 1)
 print("ALL PASS" if all(res) else "SOME FAILED")
+
+# evening report: one alert with today's paper result, only once the review is final
+rev = {"latest": {"session": "2026-10-22", "final": True}, "totals": {"plan_pnl_sum": -2380, "days": 3, "plan_win_days": 1, "plan_loss_days": 2},
+       "history": [{"session": "2026-10-22", "plan_pnl": 411, "detail": ["NIFTY Iron Condor: TARGET +411"]}]}
+guardian.requests.get = lambda url, params=None, timeout=0: type("R", (), {"json": lambda self: rev})()
+sent.clear(); st = {}
+guardian.evening_report({}, st, datetime(2026, 10, 22, 17, 0, tzinfo=IST))
+t("no report before 18:00", not sent)
+guardian.evening_report({}, st, datetime(2026, 10, 22, 18, 5, tzinfo=IST))
+st["report_tried"] = 0
+guardian.evening_report({}, st, datetime(2026, 10, 22, 18, 30, tzinfo=IST))
+t("one evening report with today's result", sent == ["Paper result today: +Rs 411"])
+print("ALL PASS" if all(res) else "SOME FAILED")

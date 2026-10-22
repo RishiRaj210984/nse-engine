@@ -186,7 +186,7 @@ body.is-simple main{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 <script>
 const NSE_HOLIDAYS = ['2026-10-20', '2026-11-08', '2026-11-10', '2026-11-24', '2026-12-25'];   // fallback; meta.json has the live list
 const holidayList = () => (D.meta?.holidays?.length ? D.meta.holidays : NSE_HOLIDAYS);
-const APP_VERSION = 'v20';   // keep equal to CACHE in sw.js
+const APP_VERSION = 'v21';   // keep equal to CACHE in sw.js
 const FILES = ['plan', 'global-bias', 'volume-breakouts', 'performance', 'review', 'meta', 'live', 'small-capital'];
 const D = {};
 let tab = 'dash', stockFilter = 'ab', lots = {}, loadErr = null, lastLoad = 0;
@@ -449,6 +449,19 @@ async function wizPaste() {
   wizSend('SESSION ' + code, w);
 }
 
+function paperResults(open = false) {
+  const r = D.review, l = r?.latest, tot = r?.totals || {};
+  if (!r || !l) return '';
+  const rs = (v) => `<span class="${v > 0 ? 'up' : v < 0 ? 'down' : ''}">${v > 0 ? '+' : v < 0 ? '−' : ''}₹${Math.abs(Math.round(v || 0)).toLocaleString('en-IN')}</span>`;
+  const day = (s) => new Date(s + 'T12:00:00+05:30').toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'Asia/Kolkata' });
+  const h0 = (r.history || []).find((x) => x.session === l.session) || {};
+  const todayPnl = h0.plan_pnl ?? (l.options || []).reduce((a, o) => a + (o.pnl_per_lot || 0), 0);
+  return `<details class="sreply" ${open ? 'open' : ''}><summary><b>📒 Paper results</b> · ${esc(day(l.session))}: ${rs(todayPnl)}${l.final ? '' : ' <span class="fine">(not final yet)</span>'}
+      · <span class="fine">total ${rs(tot.plan_pnl_sum)} over ${tot.days || 0} day${tot.days === 1 ? '' : 's'}</span></summary>
+    ${(l.options || []).map((o) => `<div class="srow"><b>${esc(o.index)} ${esc(o.strategy)}</b>: ${rs(o.pnl_per_lot)} per lot<div class="fine">${esc(o.verdict || o.exit_reason || '')}</div></div>`).join('')}
+    <div class="srow"><b>Last days</b>${(r.history || []).slice(0, 7).map((x) => `<div class="fine">${esc(day(x.session))}: ${rs(x.plan_pnl)} · ${esc((x.detail || []).join(' · '))}</div>`).join('')}</div>
+    <p class="fine">${tot.plan_win_days || 0} profit day(s), ${tot.plan_loss_days || 0} loss day(s). Paper only: what the plan would have made with 1 lot, after costs. Updated each evening after 4:30 pm.</p></details>`;
+}
 function capitalLine() {
   const c = D['small-capital'];
   if (!c) return '';
@@ -564,7 +577,7 @@ function vSimple() {
       ${BIG('Pause guardian', 'data-act="g-cmd" data-cmd="STOP" data-confirm="Pause all automatic entries and exits?"', 'stop')}
       <button class="smore" data-act="wz-go" data-s="1">Start again from step 1</button>`;
   }
-  h += `</section>${step ? answersCheck() : ''}${capitalLine()}<button class="smore" data-act="advanced">More details ›</button>
+  h += `</section>${paperResults(step === 4)}${step ? answersCheck() : ''}${capitalLine()}<button class="smore" data-act="advanced">More details ›</button>
     <p class="fine">Research tool, not investment advice.</p></div>`;
   return h;
 }
