@@ -8,6 +8,7 @@ from config import IST  # noqa: E402
 LEGS = [{"action": "SELL", "strike": 23200, "type": "CE", "est_premium": 49.0}, {"action": "BUY", "strike": 23400, "type": "CE", "est_premium": 17.0}]
 PLAN = ({"options": {"NIFTY": {"expiry": "2026-10-27", "lot_size": 65, "strategies": [{"name": "Iron Condor", "legs": LEGS}]}}},
         {"session": "2026-10-22", "options": [{"index": "NIFTY", "decision": "TRADE"}]})
+guardian.time.sleep = lambda s: None
 NIGHT = datetime(2026, 10, 21, 22, 46, tzinfo=IST)
 
 

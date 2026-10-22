@@ -6,7 +6,7 @@ applies the app's exit rules, so exits happen even when you are not watching.
                    Squares off the whole trade (sold legs first, then bought legs).
 
 Safety: exits only (never opens or adds), never more than the quantity you hold, works only
-09:20-15:25 IST on trading days, at most MAX_DAILY_ORDERS orders a day, and stops at once if
+09:20-15:25 IST on trading days, only limit orders (Breeze allows no market orders), exits never blocked by an order cap, and stops at once if
 a file named STOP exists next to this script. LIVE orders need the static IP you registered
 with ICICI (SEBI rule for API orders); if ICICI rejects an order you get an alert to exit by hand.
 
@@ -200,25 +200,102 @@ def iso_expiry(exp):
     return datetime.strptime(exp, "%d-%b-%Y").strftime("%Y-%m-%dT06:00:00.000Z")
 
 
-def exit_trade(breeze, t, env, state):
-    """Close every leg: sold legs first (removes risk), then bought legs. Returns list of results."""
-    results = []
-    ordered = sorted(t["legs"], key=lambda l: 0 if l["side"] == "sell" else 1)
-    for l in ordered:
-        day = state.setdefault("orders", {}).setdefault(datetime.now(IST).date().isoformat(), 0)
-        if day >= int(env["MAX_DAILY_ORDERS"]):
-            results.append({"leg": l, "error": "daily order cap reached"})
+# ------------------------------------------------------------------ robust orders
+# Breeze does not allow market orders. Every order is a limit order that starts at the touch and,
+# if it does not fill, is cancelled and re-placed further through the spread, for up to FILL_TIMEOUT.
+# After that the guardian decides on its own (finish, undo or keep retrying) and alerts you.
+FILL_TIMEOUT = 300                                    # seconds per leg: 5 minutes
+FILL_STEPS = (0.0, 0.01, 0.02, 0.04, 0.06, 0.08, 0.10, 0.15)   # how far past the touch each try goes
+FILL_POLL = 40                                        # seconds to wait for one try to fill
+PERMANENT = ("static ip", "margin", "insufficient", "not allowed", "not permitted", "invalid", "blocked")
+TICK = 0.05
+
+
+def _tick(px):
+    return max(TICK, round(round(px / TICK) * TICK, 2))
+
+
+def _opt_quote(breeze, code, right, strike, expiry_iso):
+    try:
+        r = breeze.get_quotes(stock_code=code, exchange_code="NFO", expiry_date=expiry_iso, product_type="options",
+                              right=right.lower(), strike_price=str(int(strike)))
+        rows = (r or {}).get("Success") or []
+        return rows[0] if rows else {}
+    except Exception as exc:
+        log.info("quote failed for %s %s: %s", strike, right, exc)
+        return {}
+
+
+def fill_leg(breeze, code, right, strike, expiry_iso, qty, action, now, ref_px=0.0, closing=False):
+    """Fill one leg with limit orders, improving the price on every try for up to FILL_TIMEOUT.
+    action 'buy' / 'sell'; closing=True squares off an open position. Returns (filled, price, error)."""
+    start, err, tries = time.time(), None, 0
+    for step in FILL_STEPS:
+        if time.time() - start > FILL_TIMEOUT:
             break
-        r = breeze.square_off(exchange_code="NFO", product="options", stock_code=l["stock_code"],
-                              expiry_date=iso_expiry(l["expiry"]), right=l["right"], strike_price=str(int(l["strike"])),
-                              action="buy" if l["side"] == "sell" else "sell", order_type="market", validity="day",
-                              stoploss="0", quantity=str(l["qty"]), price="0",
-                              validity_date=datetime.now(IST).strftime("%Y-%m-%dT06:00:00.000Z"),
-                              trade_password="", disclosed_quantity="0")
-        state["orders"][datetime.now(IST).date().isoformat()] = day + 1
-        results.append({"leg": l, "response": r})
-        if not (r or {}).get("Success"):
-            break  # stop at the first rejection; you will be alerted to exit by hand
+        q = _opt_quote(breeze, code, right, strike, expiry_iso)
+        ltp = float(q.get("ltp") or ref_px or 0)
+        if not ltp:
+            err = "no live price"
+            time.sleep(10)
+            continue
+        if action == "buy":
+            px = _tick(float(q.get("best_offer_price") or ltp * 1.01) * (1 + step))
+        else:
+            px = _tick(float(q.get("best_bid_price") or ltp * 0.99) * (1 - step))
+        common = dict(exchange_code="NFO", product="options", stock_code=code, expiry_date=expiry_iso, right=right.lower(),
+                      strike_price=str(int(strike)), action=action, order_type="limit", quantity=str(qty), price=f"{px:.2f}",
+                      validity="day", validity_date=now.strftime("%Y-%m-%dT06:00:00.000Z"), disclosed_quantity="0")
+        try:
+            r = (breeze.square_off(stoploss="0", trade_password="", **common) if closing
+                 else breeze.place_order(stoploss="", user_remark="tradedesk", **common))
+        except Exception as exc:
+            r = {"Error": str(exc)}
+        tries += 1
+        oid = ((r or {}).get("Success") or {}).get("order_id")
+        if not oid:
+            err = str((r or {}).get("Error") or r)[:150]
+            if tries >= 2 and any(p in err.lower() for p in PERMANENT):
+                break          # retrying will not help (IP, margin, ...)
+            time.sleep(5)
+            continue
+        status = ""
+        for _ in range(max(1, FILL_POLL // 5)):
+            try:
+                d = ((breeze.get_order_detail(exchange_code="NFO", order_id=oid) or {}).get("Success") or [{}])[0]
+            except Exception:
+                d = {}
+            status = str(d.get("status", "")).lower()
+            if status in ("executed", "complete", "completed", "traded"):
+                return True, px, None
+            if status in ("rejected", "cancelled", "canceled"):
+                err = f"order {status}: {str(d.get('cancellation_reason') or d.get('remarks') or '')[:100]}"
+                break
+            time.sleep(5)
+        if status not in ("rejected", "cancelled", "canceled"):
+            try:
+                breeze.cancel_order(exchange_code="NFO", order_id=oid)   # not filled at this price: try a better one
+            except Exception as exc:
+                log.info("cancel failed for %s: %s", oid, exc)
+            err = f"not filled up to {px:.2f}"
+    return False, None, err or "not filled in 5 minutes"
+
+
+def exit_trade(breeze, t, env, state):
+    """Close every leg: sold legs first (removes risk), then bought legs, each with improving limit
+    orders for up to 5 minutes. If a sold leg cannot be bought back, its bought (protective) legs are
+    kept so the position never becomes unlimited-risk; the main loop retries on its next pass."""
+    results, stuck = [], False
+    now = datetime.now(IST)
+    for l in sorted(t["legs"], key=lambda l: 0 if l["side"] == "sell" else 1):
+        if stuck and l["side"] == "buy":
+            results.append({"leg": l, "error": "kept: protects a sold leg that is still open"})
+            continue
+        ok, px, err = fill_leg(breeze, l["stock_code"], l["right"], l["strike"], iso_expiry(l["expiry"]), int(l["qty"]),
+                               "buy" if l["side"] == "sell" else "sell", now, ref_px=l.get("ltp") or 0, closing=True)
+        results.append({"leg": l, "response": {"Success": {"price": px}} if ok else None, "error": err})
+        if not ok and l["side"] == "sell":
+            stuck = True
     return results
 
 
@@ -312,6 +389,42 @@ def _q(breeze, index, l, expiry_iso):
     return rows[0] if rows else {}
 
 
+def _place_legs(breeze, index, legs, expiry_iso, qty, now, live):
+    """Paper: price each leg at the touch. Live: fill each leg in order with improving limit orders
+    (up to 5 minutes each). If a leg cannot be filled, the legs already filled are closed again
+    automatically, so you are never left with half a structure. Returns (ok, plan_lines, placed, error)."""
+    plan_lines, placed, filled = [], [], []
+    for l in legs:
+        right = "call" if l["type"] == "CE" else "put"
+        if not live:
+            q = _q(breeze, index, l, expiry_iso)
+            ltp = float(q.get("ltp") or l["est_premium"])
+            px = float(q.get("best_offer_price") or ltp * 1.02) if l["action"] == "BUY" else float(q.get("best_bid_price") or ltp * 0.98)
+            plan_lines.append(f"{l['action']} {l['strike']} {l['type']} x{qty} @ {_tick(px):.2f}")
+            continue
+        ok, px, err = fill_leg(breeze, BREEZE_CODE[index], right, l["strike"], expiry_iso, qty, l["action"].lower(), now)
+        if ok:
+            line = f"{l['action']} {l['strike']} {l['type']} x{qty} @ {px:.2f}"
+            plan_lines.append(line); placed.append(line); filled.append(l)
+            continue
+        # could not complete the structure: undo what was filled, automatically
+        undone, left = [], []
+        for f in reversed(filled):
+            r2 = "call" if f["type"] == "CE" else "put"
+            ok2, px2, err2 = fill_leg(breeze, BREEZE_CODE[index], r2, f["strike"], expiry_iso, qty,
+                                      "sell" if f["action"] == "BUY" else "buy", now, closing=True)
+            (undone if ok2 else left).append(f"{f['action']} {f['strike']} {f['type']}" + ("" if ok2 else f" ({err2})"))
+        msg = f"could not fill {l['action']} {l['strike']} {l['type']} after 5 minutes of better prices ({err}). "
+        if not filled:
+            msg += "Nothing was placed."
+        elif not left:
+            msg += f"Undone automatically: closed {', '.join(undone)}. You hold nothing from this trade."
+        else:
+            msg += f"Undo FAILED for {', '.join(left)}. CHECK ICICI NOW and close these by hand."
+        return False, plan_lines, placed, msg
+    return True, plan_lines, placed, None
+
+
 def enter_trade(breeze, env, state, index, lots, live, now, plan=None, demo=False):
     """Place today's plan trade for `index`: BUY legs first, then SELL legs, limit orders at the touch.
     Refuses unless the plan is for today, marks the index TRADE, and the entry window/condition holds."""
@@ -349,38 +462,9 @@ def enter_trade(breeze, env, state, index, lots, live, now, plan=None, demo=Fals
         return False, f"{index} {spot:,.0f} is outside the short strikes {shorts[0]:,}-{shorts[-1]:,}: entry condition not met"
     qty = full["lot_size"] * lots
     legs = sorted(s["legs"], key=lambda l: 0 if l["action"] == "BUY" else 1)
-    plan_lines, placed = [], []
-    for l in legs:
-        q = _q(breeze, index, l, expiry_iso)
-        if live and not q.get("ltp"):
-            return False, f"ICICI gave no live price for {l['strike']} {l['type']}. Placed so far: {placed or 'none'}. Nothing more placed."
-        ltp = float(q.get("ltp") or l["est_premium"])
-        px = float(q.get("best_offer_price") or ltp * 1.02) if l["action"] == "BUY" else float(q.get("best_bid_price") or ltp * 0.98)
-        px = max(0.05, round(px * 20) / 20)
-        plan_lines.append(f"{l['action']} {l['strike']} {l['type']} x{qty} @ {px:.2f}")
-        if not live:
-            continue
-        r = breeze.place_order(stock_code=BREEZE_CODE[index], exchange_code="NFO", product="options", action=l["action"].lower(),
-                               order_type="limit", stoploss="", quantity=str(qty), price=f"{px:.2f}", validity="day",
-                               validity_date=now.strftime("%Y-%m-%dT06:00:00.000Z"), disclosed_quantity="0",
-                               expiry_date=expiry_iso, right="call" if l["type"] == "CE" else "put", strike_price=str(int(l["strike"])),
-                               user_remark="tradedesk")
-        oid = ((r or {}).get("Success") or {}).get("order_id")
-        if not oid:
-            return False, f"order rejected at {plan_lines[-1]}: {str((r or {}).get('Error'))[:150]}. Placed so far: {placed or 'none'}. CHECK ICICI NOW."
-        filled = False
-        for _ in range(12):          # wait up to ~60 s for the fill
-            d = ((breeze.get_order_detail(exchange_code="NFO", order_id=oid) or {}).get("Success") or [{}])[0]
-            st = str(d.get("status", "")).lower()
-            if st in ("executed", "complete", "completed", "traded"):
-                filled = True
-                break
-            if st in ("rejected", "cancelled", "canceled"):
-                break
-            time.sleep(5)
-        if not filled:
-            return False, f"not filled: {plan_lines[-1]} (order {oid}). Placed so far: {placed or 'none'}. CHECK ICICI NOW: cancel or adjust."
-        placed.append(plan_lines[-1])
+    ok, plan_lines, placed, err = _place_legs(breeze, index, legs, expiry_iso, qty, now, live)
+    if not ok:
+        return False, err
     if not live:
         tag = "DEMO (paper, checks skipped)" if demo else "PAPER"
         if not spot:
@@ -547,9 +631,13 @@ def run(live_flag=False, breeze=None, once=False, clock=None):
                 continue
             res = exit_trade(breeze, t, env, state)
             ok = all((r.get("response") or {}).get("Success") for r in res) and len(res) == len(t["legs"])
+            if not ok:
+                alerted.pop(t["id"], None)   # keep trying on the next pass, with fresh prices
             notify(env, f"LIVE: {'EXITED' if ok else 'EXIT FAILED'} {status}",
-                   f"{label(t)}: P&L {pnl:+,.0f}. {note}. " + ("All legs sent." if ok else
-                   f"ICICI response: {json.dumps([r.get('response') or r.get('error') for r in res])[:300]}. EXIT BY HAND NOW."),
+                   f"{label(t)}: P&L {pnl:+,.0f}. {note}. " + ("All legs filled." if ok else
+                   "Not closed after 5 minutes of better prices: " + "; ".join(
+                       f"{int(r['leg']['strike'])}{r['leg']['right'][0]} {r.get('error')}" for r in res if r.get("error"))[:300]
+                   + ". The guardian keeps retrying every pass. EXIT BY HAND NOW if you can."),
                    urgent=True)
         save_state(state)
         if once:

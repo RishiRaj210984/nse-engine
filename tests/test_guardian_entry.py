@@ -16,7 +16,9 @@ PLAN = ({"options": {"NIFTY": {"expiry": "2026-10-27", "lot_size": 65, "strategi
         {"session": "2026-10-21", "options": [{"index": "NIFTY", "decision": "TRADE"}, {"index": "BANKNIFTY", "decision": "CAUTION"}]})
 
 class FB:
-    def __init__(self, spot=22900, fill="Executed", reject_at=None): self.spot, self.fill, self.reject_at, self.orders = spot, fill, reject_at, []
+    def __init__(self, spot=22900, fill="Executed", reject_at=None, reject_sell=False, fill_from=1):
+        self.spot, self.fill, self.reject_at, self.orders = spot, fill, reject_at, []
+        self.reject_sell, self.fill_from, self.cancels, self.squares = reject_sell, fill_from, [], []
     def get_quotes(self, stock_code="", exchange_code="", product_type="", strike_price="", **k):
         if exchange_code == "NSE": return {"Success": [{"ltp": self.spot}], "Status": 200}
         base = {"23300": 50, "23550": 17, "22500": 43, "22250": 13}[strike_price]
@@ -24,8 +26,15 @@ class FB:
     def place_order(self, **kw):
         self.orders.append((kw["action"], kw["strike_price"], kw["right"], kw["quantity"], kw["price"]))
         if self.reject_at is not None and len(self.orders) - 1 == self.reject_at: return {"Success": None, "Error": "static IP not registered"}
+        if self.reject_sell and kw["action"] == "sell": return {"Success": None, "Error": "Insufficient margin"}
         return {"Success": {"order_id": "O%d" % len(self.orders)}, "Status": 200}
-    def get_order_detail(self, exchange_code="", order_id=""): return {"Success": [{"status": self.fill}], "Status": 200}
+    def get_order_detail(self, exchange_code="", order_id=""):
+        n = int(order_id[1:]) if order_id[1:].isdigit() else 1
+        return {"Success": [{"status": self.fill if n >= self.fill_from else "Ordered"}], "Status": 200}
+    def cancel_order(self, exchange_code="", order_id=""): self.cancels.append(order_id); return {"Success": {}}
+    def square_off(self, **kw):
+        self.squares.append((kw["action"], kw["strike_price"], kw["right"], kw["price"], kw["order_type"]))
+        return {"Success": {"order_id": "S%d" % (len(self.orders) + 100)}}
     def get_portfolio_positions(self): return {"Success": getattr(self, "held", [])}
 
 guardian.time.sleep = lambda s: None
@@ -48,9 +57,17 @@ t("refuses when spot is outside the short strikes", not ok and "outside" in msg 
 fb = FB(); ok, msg = guardian.enter_trade(fb, env, {}, "NIFTY", 1, True, datetime(2026, 10, 22, 10, 20, tzinfo=IST), PLAN)
 t("refuses a plan for another day", not ok and "not today" in msg)
 fb = FB(reject_at=2); ok, msg = guardian.enter_trade(fb, env, {}, "NIFTY", 1, True, NOW, PLAN)
-t("rejected SELL after BUYs: stops, reports what was placed", not ok and "CHECK ICICI NOW" in msg and "BUY 23550" in msg and len(fb.orders) == 3)
+t("one-off rejection: retried and the trade completes", ok and len(fb.orders) == 5)
+fb = FB(fill_from=3); ok, msg = guardian.enter_trade(fb, env, {}, "NIFTY", 1, True, NOW, PLAN)
+t("slow fill: unfilled tries cancelled, re-placed at a better price, then filled",
+  ok and fb.cancels == ["O1", "O2"] and float(fb.orders[2][4]) > float(fb.orders[1][4]) > float(fb.orders[0][4]))
+fb = FB(reject_sell=True); ok, msg = guardian.enter_trade(fb, env, {}, "NIFTY", 1, True, NOW, PLAN)
+t("SELL refused (margin): bought legs undone automatically with limit orders",
+  not ok and "Undone automatically" in msg and [x[:3] for x in fb.squares] == [("sell", "22250", "put"), ("sell", "23550", "call")]
+  and all(x[4] == "limit" for x in fb.squares))
 fb = FB(fill="Ordered"); ok, msg = guardian.enter_trade(fb, env, {}, "NIFTY", 1, True, NOW, PLAN)
-t("unfilled first leg: stops before any SELL", not ok and "not filled" in msg and len(fb.orders) == 1)
+t("first leg never fills: price improves each try, then gives up with nothing placed",
+  not ok and "Nothing was placed" in msg and len(fb.orders) == len(guardian.FILL_STEPS) and all(o[0] == "buy" and o[1] == "23550" for o in fb.orders))
 fb = FB(); fb.held = [{"product_type": "Options", "stock_code": "NIFTY", "quantity": "65", "action": "Sell", "expiry_date": "27-Oct-2026", "strike_price": "23300", "right": "Call", "average_price": "50", "ltp": "40"}]
 ok, msg = guardian.enter_trade(fb, env, {}, "NIFTY", 1, True, NOW, PLAN)
 t("already holding NIFTY: refuses a second trade", not ok and "already hold" in msg and not fb.orders)

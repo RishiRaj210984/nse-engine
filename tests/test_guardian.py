@@ -21,7 +21,11 @@ class FakeBreeze:
         return {"Success": f, "Status": 200}
     def square_off(self, **kw):
         self.orders.append(kw); return {"Success": {"order_id": "T%d" % len(self.orders)}, "Status": 200}
+    def get_quotes(self, **kw): return {"Success": [{"ltp": 10, "best_bid_price": 9.95, "best_offer_price": 10.05}]}
+    def get_order_detail(self, **kw): return {"Success": [{"status": "Executed"}]}
+    def cancel_order(self, **kw): return {"Success": {}}
 
+guardian.time.sleep = lambda s: None
 clock = lambda: datetime(2026, 10, 21, 11, 0, tzinfo=IST)
 condor = lambda sc, bc, sp, bp: [pos(23300, "Call", "Sell", 65, 53.2, sc), pos(23550, "Call", "Buy", 65, 18.8, bc),
                                 pos(22500, "Put", "Sell", 65, 44.7, sp), pos(22250, "Put", "Buy", 65, 14.2, bp)]
@@ -49,9 +53,8 @@ fb = FakeBreeze([condor(170, 30, 6, 2)]); open(guardian.STOP_FILE, "w").write("x
 guardian.run(live_flag=True, breeze=fb, once=True, clock=clock); os.remove(guardian.STOP_FILE)
 results.append(len(fb.orders) == 0); print("PASS" if not fb.orders else "FAIL", "STOP file blocks everything")
 fb = FakeBreeze([condor(18, 6, 15, 4)]); guardian.run(live_flag=True, breeze=fb, once=True, clock=clock)
-print("Exit order sequence:", [(o["action"], o["strike_price"], o["right"], o["quantity"]) for o in fb.orders])
-print("ALL PASS" if all(results) else "SOME FAILED")
-
+print("Exit order sequence:", [(o["action"], o["strike_price"], o["right"], o["quantity"], o["order_type"], o["price"]) for o in fb.orders])
+results.append(all(o["order_type"] == "limit" for o in fb.orders)); print("PASS" if results[-1] else "FAIL", "exits use limit orders (no market orders)")
 class RejectingBreeze(FakeBreeze):
     def square_off(self, **kw):
         self.orders.append(kw); return {"Success": None, "Status": 403, "Error": "Request not from registered static IP"}
@@ -59,5 +62,12 @@ if os.path.exists(guardian.STATE_FILE): os.remove(guardian.STATE_FILE)
 msgs = []; real = guardian.notify; guardian.notify = lambda env, t, m, urgent=False: msgs.append((t, m, urgent))
 rb = RejectingBreeze([condor(170, 30, 6, 2)]); guardian.run(live_flag=True, breeze=rb, once=True, clock=clock); guardian.notify = real
 fail = [m for m in msgs if "EXIT FAILED" in m[0]]
-ok = len(rb.orders) == 1 and fail and "EXIT BY HAND NOW" in fail[0][1] and fail[0][2]
-print("PASS" if ok else "FAIL", "rejected order -> stops after first leg + urgent 'EXIT BY HAND' alert |", fail[0][1][:150] if fail else msgs)
+sold = [(o["action"], o["strike_price"]) for o in rb.orders]
+ok = (fail and "EXIT BY HAND NOW" in fail[0][1] and fail[0][2] and all(a == "buy" for a, _ in sold)
+      and all(o["order_type"] == "limit" for o in rb.orders) and len(rb.orders) == 4)
+print("PASS" if ok else "FAIL", "IP rejected: each sold leg tried twice with limit orders, protective legs kept, urgent alert |",
+      sold, fail[0][1][:160] if fail else msgs)
+results.append(bool(ok))
+st = guardian.load_state()
+print("PASS" if "alerted" in st and not st["alerted"] else "FAIL", "failed exit is retried on the next pass (not marked done)")
+print("ALL PASS" if all(results) else "SOME FAILED")
