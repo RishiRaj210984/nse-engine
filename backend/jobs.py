@@ -152,6 +152,11 @@ def publish_all(bias=None, scan=None, task="manual"):
     sess = date.fromisoformat(plan["session"])
     if sess > now.date() or (sess == now.date() and now.strftime("%H:%M") < "09:15"):
         review.archive_plan(bias, plan, scan)
+    try:
+        import markets
+        markets.build()
+    except Exception as exc:   # the markets table must never block the plan
+        log.warning("markets table failed: %s", exc)
     import render_page
     render_page.write(os.path.join(render_page.PUBLIC_DIR, "static.html"))
 

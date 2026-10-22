@@ -255,5 +255,10 @@ def run(force=False):
         "stocks": stock_status(scan, quotes, now, bias.get("target_session")),
     }
     store.publish("live.json", out)
+    try:
+        import markets
+        markets.build()
+    except Exception as exc:
+        log.warning("markets table failed: %s", exc)
     return {"chain": chain_src, "plan": [(p["index"], p["status"], p["pnl_per_lot"]) for p in out["plan"]],
             "nifty": (out["indices"]["NIFTY"] or {}).get("last")}
