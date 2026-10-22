@@ -37,7 +37,48 @@
    "credit_rs": 3980,
    "iv0": 0.1477,
    "vix0": 15.1274995803833,
-   "mark": -161
+   "mark": -161,
+   "groups": [
+    {
+     "legs": [
+      {
+       "action": "SELL",
+       "strike": 23300,
+       "type": "CE",
+       "est_premium": 53.2
+      },
+      {
+       "action": "BUY",
+       "strike": 23550,
+       "type": "CE",
+       "est_premium": 18.7
+      }
+     ],
+     "v0": -37.66367414641218
+    },
+    {
+     "legs": [
+      {
+       "action": "SELL",
+       "strike": 22500,
+       "type": "PE",
+       "est_premium": 44.7
+      },
+      {
+       "action": "BUY",
+       "strike": 22250,
+       "type": "PE",
+       "est_premium": 14.2
+      }
+     ],
+     "v0": -23.56555468582519
+    }
+   ],
+   "realized": 0.0,
+   "credit0": 61.22922883223737,
+   "credit_all": 61.22922883223737,
+   "adjusted": null,
+   "extra_cost": 0
   }
  },
  "closed": [],
@@ -106,7 +147,48 @@
     "credit_rs": 3980,
     "iv0": 0.1477,
     "vix0": 15.1274995803833,
-    "mark": -146
+    "mark": -146,
+    "groups": [
+     {
+      "legs": [
+       {
+        "action": "SELL",
+        "strike": 23300,
+        "type": "CE",
+        "est_premium": 53.2
+       },
+       {
+        "action": "BUY",
+        "strike": 23550,
+        "type": "CE",
+        "est_premium": 18.7
+       }
+      ],
+      "v0": -37.66367414641218
+     },
+     {
+      "legs": [
+       {
+        "action": "SELL",
+        "strike": 22500,
+        "type": "PE",
+        "est_premium": 44.7
+       },
+       {
+        "action": "BUY",
+        "strike": 22250,
+        "type": "PE",
+        "est_premium": 14.2
+       }
+      ],
+      "v0": -23.56555468582519
+     }
+    ],
+    "realized": 0.0,
+    "credit0": 61.22922883223737,
+    "credit_all": 61.22922883223737,
+    "adjusted": null,
+    "extra_cost": 0
    }
   },
   "n_closed": 0

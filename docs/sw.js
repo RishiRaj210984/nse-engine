@@ -1,5 +1,5 @@
 // App shell is cached for offline start; data (*.json) is always fetched fresh, falling back to the last copy.
-const CACHE = 'trade-desk-v23';   // bump on every app change so phones refresh the app itself
+const CACHE = 'trade-desk-v24';   // bump on every app change so phones refresh the app itself
 const SHELL = ['./', 'index.html', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png'];
 self.addEventListener('install', (e) => { e.waitUntil(caches.open(CACHE).then((c) => c.addAll(SHELL))); self.skipWaiting(); });
 self.addEventListener('activate', (e) => {

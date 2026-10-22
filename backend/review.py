@@ -303,9 +303,53 @@ def _vix_at(vix, ts):
     return float(sub["Close"].iloc[-1]) if len(sub) else float(vix["Close"].iloc[0])
 
 
-def paper_book(session, archived, bars_by_index, vix):
-    """Advance the paper book through `session`. Safe to re-run for the same day."""
-    path = store.state_path("paper_book.json")
+# Comparison only (not used by the guardian or the main paper book): one adjustment per condor when
+# the index has moved 80% of the way from entry to a short strike. NIFTY closes the tested spread;
+# BANKNIFTY rolls the untested one. Tracked in a separate "shadow" book so both can be compared.
+ADJUST_AT = 0.80
+ADJUST_RULE = {"NIFTY": "close", "BANKNIFTY": "roll"}
+
+
+def _sides(legs):
+    return [g for g in ([l for l in legs if l["type"] == "CE"], [l for l in legs if l["type"] == "PE"]) if g]
+
+
+def _adjust(pos, name, S, vals, T, iv):
+    """Apply the adjustment to the paper position if a side is tested. Returns a note or None."""
+    shorts = {g["legs"][0]["type"]: next(l["strike"] for l in g["legs"] if l["action"] == "SELL") for g in pos["groups"]}
+    ref, sc, sp = pos["entry_spot"], shorts.get("CE"), shorts.get("PE")
+    if sc is None or sp is None:
+        return None
+    tested = "PE" if S <= ref - ADJUST_AT * (ref - sp) else "CE" if S >= ref + ADJUST_AT * (sc - ref) else None
+    if not tested:
+        return None
+    ti = next(i for i, g in enumerate(pos["groups"]) if g["legs"][0]["type"] == tested)
+    ui = 1 - ti
+    if ADJUST_RULE[name] == "close":
+        pos["realized"] += vals[ti] - pos["groups"][ti]["v0"]
+        pos["groups"].pop(ti)
+        pos["adjusted"] = f"closed the tested {'put' if tested == 'PE' else 'call'} spread"
+    else:
+        step = INDEX_SPECS[name]["step"]
+        g = pos["groups"][ui]["legs"]
+        width = abs(g[0]["strike"] - g[1]["strike"])
+        dist = abs(S - (sp if tested == "PE" else sc))
+        typ = "CE" if tested == "PE" else "PE"
+        k = round((S + dist) / step) * step if typ == "CE" else round((S - dist) / step) * step
+        new = [{"action": "SELL", "strike": k, "type": typ}, {"action": "BUY", "strike": k + width if typ == "CE" else k - width, "type": typ}]
+        pos["realized"] += vals[ui] - pos["groups"][ui]["v0"]
+        v_new = _value(new, S, T, iv)
+        pos["groups"][ui] = {"legs": new, "v0": v_new}
+        pos["credit_all"] += -v_new
+        pos["extra_cost"] = pos.get("extra_cost", 0) + BOOK_COSTS[name] // 2
+        pos["adjusted"] = f"rolled the {'call' if typ == 'CE' else 'put'} spread to {k:,}"
+    return f"ADJUSTED ({pos['adjusted']}) with {name} at {S:,.0f}"
+
+
+def paper_book(session, archived, bars_by_index, vix, adjust=False):
+    """Advance the paper book through `session`. Safe to re-run for the same day.
+    adjust=True runs the separate comparison book with the automatic adjustment."""
+    path = store.state_path("paper_book_adjusted.json" if adjust else "paper_book.json")
     book = store._read(path, {"open": {}, "closed": [], "days": [], "before": None})
     s_iso = session.isoformat()
     if book.get("before") and book["before"]["session"] == s_iso:      # re-run: undo this day first
@@ -338,31 +382,44 @@ def paper_book(session, archived, bars_by_index, vix):
             v_e = _value(legs, spot_e, _T(exp, ts_e), iv0)
             pos = {"index": name, "strategy": o["strategies"][0]["name"], "legs": legs, "lot": o["lot_size"],
                    "expiry": o["expiry"], "entry_session": s_iso, "entry_spot": round(spot_e, 2), "v_e": v_e,
-                   "credit_rs": round(-v_e * o["lot_size"]), "iv0": iv0, "vix0": vix0, "mark": 0}
+                   "credit_rs": round(-v_e * o["lot_size"]), "iv0": iv0, "vix0": vix0, "mark": 0,
+                   "groups": [{"legs": g, "v0": _value(g, spot_e, _T(exp, ts_e), iv0)} for g in _sides(legs)],
+                   "realized": 0.0, "credit0": -v_e, "credit_all": -v_e, "adjusted": None, "extra_cost": 0}
             start = ts_e
             detail.append(f"{name}: entered {pos['strategy']} at 10:15, credit Rs {pos['credit_rs']:,}")
         exp = date.fromisoformat(pos["expiry"])
         iv = lambda ts: pos["iv0"] * (_vix_at(vix, ts) / pos["vix0"]) if pos["vix0"] and vix is not None else pos["iv0"]
-        credit, v_e, lot = -pos["v_e"], pos["v_e"], pos["lot"]
+        lot = pos["lot"]
+        if "groups" not in pos:   # older book entries: split into call and put spreads, valued at entry
+            t_e = datetime.combine(date.fromisoformat(pos["entry_session"]), time(10, 15), IST)
+            pos["groups"] = [{"legs": g, "v0": _value(g, pos["entry_spot"], _T(exp, t_e), pos["iv0"])} for g in _sides(pos["legs"])]
+            pos.update(realized=0.0, credit0=-pos["v_e"], credit_all=-pos["v_e"], adjusted=None, extra_cost=0)
         after = bars[bars.index > start].resample("15min", label="right", closed="right").last().dropna()
-        reason, v = None, v_e
+        reason, total = None, pos["mark"] / lot   # unchanged if there are no bars after the start
         for ts, row in after.iterrows():
-            v = _value(pos["legs"], float(row["Close"]), _T(exp, ts), iv(ts))
-            if (v - v_e) <= -credit:
+            S = float(row["Close"])
+            vals = [_value(g["legs"], S, _T(exp, ts), iv(ts)) for g in pos["groups"]]
+            total = pos["realized"] + sum(v - g["v0"] for v, g in zip(vals, pos["groups"]))
+            if total <= -pos["credit0"]:
                 reason = "STOP: loss reached 1x credit"
-            elif -v <= 0.45 * credit:
+            elif total >= 0.55 * pos["credit_all"]:
                 reason = "TARGET: 55% of credit kept"
             elif session >= exp and ts.time() >= EXPIRY_EXIT:
                 reason = f"EXPIRY DAY: closed at {ts.strftime('%H:%M')}"
             if reason:
                 break
-        value_rs = round((v - v_e) * lot)
+            if adjust and not pos["adjusted"] and len(pos["groups"]) == 2:
+                note = _adjust(pos, name, S, vals, _T(exp, ts), iv(ts))
+                if note:
+                    detail.append(f"{name}: {ts.strftime('%H:%M')} {note}")
+        value_rs = round(total * lot)
         if reason or session > exp:
             reason = reason or "EXPIRED: settled at last price"
-            realized = value_rs - BOOK_COSTS[name]
+            realized = value_rs - BOOK_COSTS[name] - pos.get("extra_cost", 0)
             day_pnl += realized - pos["mark"]
             book["closed"].append({**{k: pos[k] for k in ("index", "strategy", "expiry", "entry_session", "credit_rs")},
-                                   "exit_session": s_iso, "reason": reason, "pnl": realized})
+                                   "exit_session": s_iso, "reason": reason + (f" (after adjustment: {pos['adjusted']})" if pos.get("adjusted") else ""),
+                                   "pnl": realized})
             detail.append(f"{name}: {reason}, trade result Rs {realized:+,} after costs")
             book["open"].pop(name, None)
         else:
@@ -424,6 +481,11 @@ def run(session=None, archived=None):
         arch = archived or load_archived(session.isoformat())
         if rv["final"] and arch:
             bars = {n: intraday(INDEX_SPECS[n]["ticker"], session) for n in ("NIFTY", "BANKNIFTY")}
-            paper = paper_book(session, arch, bars, intraday("^INDIAVIX", session))
+            vix = intraday("^INDIAVIX", session)
+            paper = paper_book(session, arch, bars, vix)
+            try:
+                paper["with_adjustment"] = paper_book(session, arch, bars, vix, adjust=True)   # comparison only
+            except Exception as exc:
+                paper["with_adjustment"] = {"error": str(exc)[:200]}
         save_review(rv, paper)
     return rv

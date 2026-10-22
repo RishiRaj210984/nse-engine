@@ -187,7 +187,7 @@ body.is-simple main{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 <script>
 const NSE_HOLIDAYS = ['2026-10-20', '2026-11-08', '2026-11-10', '2026-11-24', '2026-12-25'];   // fallback; meta.json has the live list
 const holidayList = () => (D.meta?.holidays?.length ? D.meta.holidays : NSE_HOLIDAYS);
-const APP_VERSION = 'v23';   // keep equal to CACHE in sw.js
+const APP_VERSION = 'v24';   // keep equal to CACHE in sw.js
 const FILES = ['plan', 'global-bias', 'volume-breakouts', 'performance', 'review', 'meta', 'live', 'small-capital', 'markets'];
 const D = {};
 let tab = 'dash', stockFilter = 'ab', lots = {}, loadErr = null, lastLoad = 0;
@@ -488,6 +488,9 @@ function paperResults(open = false) {
     ${(pb.open || []).map((o) => `<div class="srow">🟡 <b>Holding ${esc(o.index)} ${esc(o.strategy)}</b> since ${esc(day(o.entry_session))}, expiry ${esc(day(o.expiry))}<div class="fine">Premium collected ₹${Number(o.credit_rs).toLocaleString('en-IN')} · worth ${rs(o.mark)} now (before costs)</div></div>`).join('')}
     ${(pb.closed || []).slice(0, 5).map((c) => `<div class="srow">${c.pnl > 0 ? '✅' : '❌'} <b>${esc(c.index)} ${esc(c.strategy)}</b> ${esc(day(c.entry_session))} → ${esc(day(c.exit_session))}: ${rs(c.pnl)}<div class="fine">${esc(c.reason)}</div></div>`).join('')}
     <div class="srow"><b>Day by day</b>${pb.days.slice(0, 7).map((x) => `<div class="fine">${esc(day(x.session))}: ${rs(x.pnl)} · ${esc((x.detail || []).join(' · ') || 'no trade')}</div>`).join('')}</div>
+    ${pb.with_adjustment && pb.with_adjustment.total != null ? `<div class="srow">🔧 <b>Same trades with automatic adjustment</b> (comparison only, not used): total ${rs(pb.with_adjustment.total)}
+      <div class="fine">Closed ${pb.with_adjustment.trades} (${pb.with_adjustment.wins} won). Difference vs your rules: ${rs(pb.with_adjustment.total - pb.total)}.
+      ${esc(((pb.with_adjustment.days || [])[0]?.detail || []).filter((x) => x.includes('ADJUSTED')).join(' · '))}</div></div>` : ''}
     <p class="fine">Closed trades: ${pb.trades} (${pb.wins} won) = ${rs(pb.realized)} after costs. Open: ${rs(pb.open_value)}. ${esc(pb.note || '')} Updated each evening after 4:30 pm.</p></details>`;
 }
 function capitalLine() {
