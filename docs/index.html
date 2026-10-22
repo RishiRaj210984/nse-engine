@@ -140,7 +140,7 @@ a{color:var(--info)}
 .sreply{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px;display:grid;gap:8px;font-size:.92rem}
 .srow{border-top:1px solid var(--line);padding-top:6px}.srow.down{color:var(--down)}
 .wdots{display:flex;gap:4px;justify-content:space-between}
-.wdots span{flex:1;text-align:center;font-size:.75rem;padding:6px 2px;border-radius:999px;background:var(--panel2);color:var(--dim)}
+.wdots span{cursor:pointer;flex:1;text-align:center;font-size:.75rem;padding:6px 2px;border-radius:999px;background:var(--panel2);color:var(--dim)}
 .wdots span.on{background:var(--accent);color:#04120d;font-weight:800}.wdots span.ok{color:var(--up)}
 .wcard{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px;display:grid;gap:12px;font-size:1.02rem}
 .wcard h2{margin:0;font-size:1.25rem}.wcard p{margin:0}
@@ -186,6 +186,7 @@ body.is-simple main{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 <script>
 const NSE_HOLIDAYS = ['2026-10-20', '2026-11-08', '2026-11-10', '2026-11-24', '2026-12-25'];   // fallback; meta.json has the live list
 const holidayList = () => (D.meta?.holidays?.length ? D.meta.holidays : NSE_HOLIDAYS);
+const APP_VERSION = 'v19';   // keep equal to CACHE in sw.js
 const FILES = ['plan', 'global-bias', 'volume-breakouts', 'performance', 'review', 'meta', 'live', 'small-capital'];
 const D = {};
 let tab = 'dash', stockFilter = 'ab', lots = {}, loadErr = null, lastLoad = 0;
@@ -466,10 +467,19 @@ function vSimple() {
   const BIG = (label, attrs, tone = '') => `<button class="sbtn ${tone}" ${attrs}><span class="slab" style="text-align:center">${label}</span></button>`;
   const step = setup ? 0 : w.step;
   const names = ['Log in', 'Send code', 'Trade', 'Done'];
-  let h = `<div class="simple"><div class="sstatus"><b>${esc(sess)}</b> · <span class="${live ? 'up' : 'warn'}">${live ? 'LIVE money' : 'PAPER (practice)'}</span></div>`;
-  if (step) h += `<div class="wdots">${names.map((n, i) => `<span class="${i + 1 < step ? 'ok' : i + 1 === step ? 'on' : ''}">${i + 1 < step ? '✓' : i + 1} ${n}</span>`).join('')}</div>`;
+  let h = `<div class="simple"><div class="sstatus"><b>${esc(sess)}</b> · <span class="${live ? 'up' : 'warn'}">${live ? 'LIVE money' : 'PAPER (practice)'}</span> <span class="fine">· app ${APP_VERSION}</span></div>`;
+  // tap a step to go to it
+  if (step) h += `<div class="wdots">${names.map((n, i) => `<span data-act="wz-go" data-s="${i + 1}" class="${i + 1 < step ? 'ok' : i + 1 === step ? 'on' : ''}">${i + 1 < step ? '✓' : i + 1} ${n}</span>`).join('')}</div>`;
   h += `<section class="wcard">`;
   if (w.err) h += `<div class="banner err">${esc(w.err)}</div>`;
+  if (step === 3) {
+    // is the guardian logged in today? (from its alerts since midnight)
+    const midnight = new Date(t.date + 'T00:00:00+05:30').getTime() / 1000;
+    const login = gReplies.find((m) => m.time >= midnight && /^Guardian: (logged in|login failed|not logged in)/i.test(m.title || ''));
+    h += login && /^Guardian: logged in/i.test(login.title)
+      ? `<div class="sreply">✅ Guardian logged in to ICICI today.</div>`
+      : `<div class="banner">🔑 Guardian not logged in today. ${BIG('Log in now (step 1)', 'data-act="wz-go" data-s="1"', 'go')}</div>`;
+  }
 
   if (step === 0) {
     h += `<h2>One-time setup</h2><p>Type these 4 once. They stay only on this phone. (They are in <b>guardian.env</b> on your server.)</p>
