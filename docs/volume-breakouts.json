@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-23T07:13:47.261100+05:30",
+ "generated_at": "2026-10-23T16:18:20.719613+05:30",
  "market_open": false,
  "volume_projected": false,
  "bias": {
   "label": "RANGEBOUND",
-  "score": -4
+  "score": 17
  },
  "rules": {
   "vol_mult": 2.0,
@@ -19,326 +19,120 @@
  },
  "market_gate_open": false,
  "model": {
-  "version": 10,
-  "updated": "2026-10-22T21:10:39.528657+05:30",
+  "version": 11,
+  "updated": "2026-10-23T16:17:48.051313+05:30",
   "ranker_on": true,
-  "samples": 2127,
-  "live_samples": 6,
+  "samples": 2132,
+  "live_samples": 11,
   "base_win_rate": 0.4716,
   "expectancy_r": 0.075,
-  "holdout_auc": 0.536,
+  "holdout_auc": 0.537,
   "note": "ranker ON (holdout AUC 0.54)"
  },
  "candidates": [],
  "near_misses": [
   {
-   "symbol": "PNB",
-   "name": "Punjab National Bank",
-   "bar_date": "2026-10-22",
-   "cmp": 122.5,
-   "day_chg": 0.0,
-   "vol_ratio": 1.64,
-   "vol_badge": "1.6x Vol Surge",
-   "volume_projected": false,
-   "rsi": 64.0,
-   "ema20": 117.21,
-   "ema50": 115.46,
-   "high20": 125.22,
-   "dist_high_pct": 2.17,
-   "atr": 3.19,
-   "checks": {
-    "volume": false,
-    "momentum": true,
-    "trend": true,
-    "breakout": true
-   },
-   "checks_passed": 3,
-   "passed": false,
-   "entry": 122.5,
-   "stop": 120.11,
-   "t1": 127.29,
-   "t2": 132.07,
-   "pivots": {
-    "P": 121.85,
-    "R1": 123.15,
-    "S1": 121.2,
-    "R2": 123.8,
-    "S2": 119.9
-   },
-   "risk_per_share": 2.39,
-   "rr_t1": 2.0,
-   "rr_t2": 4.0,
-   "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
-   "features": {
-    "log_vol_ratio": 0.49183021884611744,
-    "rsi": 63.98386273891858,
-    "dist_high_pct": 2.1721779222067408,
-    "ext_ema20": 4.512266879792337,
-    "atr_pct": 2.6054143200033146,
-    "day_chg": 0.0,
-    "ret5": 3.3755274261603407,
-    "rs20": 7.450006440642099,
-    "bias_score": -4.0,
-    "news_sent": -0.344,
-    "mkt_above50": 0.0,
-    "mkt_ret20": -2.749151739787392
-   },
-   "r1_a": 0.20365721122120906,
-   "r2_a": 0.4073144224424136,
-   "news": [
-    {
-     "title": "PNB Q2FY27 Results: Net profit up 13% to \u20b95,532 crore, NIM at 2.58%",
-     "source": "scanx.trade",
-     "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOblUzUkJSWk9QUWNuMTMzOUhERTJSVXVDYmpWMUZiay1rblMxTHRSaTdJVGJoeHF2RmRxYUlDTTJOT2R6Vk1oeV9zTjh2cVRpTDBfQURLbGd4VHBvV2h5R0hWcms3RnZBOXdpX1JKakktSGhOR2R1VFYwZ1dlcHhXMUVVUHlDTlhrOVVmYlR1VGhhYU9ob25aRkRobkw1Y0pweUJna2dpU2dITXJabGc0?oc=5",
-     "published": "Thu, 22 Oct 2026 21:18:23 GMT",
-     "sentiment": 0.25
-    },
-    {
-     "title": "Top 12 Bank Stocks To Buy In India October 2026",
-     "source": "Samco",
-     "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQVTJGTjNBTndCWnlCMVF4am9OclFTVEN0clJWVXBKc3BWX0E4bDhwTUxlVWFKd0xReUJWSVl6T0M3UnExVHowUHZHdkExQ016S1MtX1lJdjNKYUNoRzBpM19fbTZYeTNOVGpNY0NPMTQydUdvWDZWMGFveE12Umh4eVRkVC02b1FMYVJhZQ?oc=5",
-     "published": "Thu, 22 Oct 2026 06:50:56 GMT",
-     "sentiment": 0.202
-    },
-    {
-     "title": "Disclosure of frauds hit public sector bank stocks harder: Study",
-     "source": "The Times of India",
-     "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPUi01RGNZV3pxLXFDTDBwZ2ZNb0pRR0Vpd2x6ZWdFN2gwNUs5TDBrZnBnMkYxaGZXWDJNd1hQdkpvWmNSS0h3eHpQekhucEdGc25KaWw0R3gzQlF0N2tQbThEaUVkRnpYd1REN04wQlkzTzFqVGx5cG5IMHRLeUZ5UWVaRkpLRXNLdWxKcE5qUFc4MHNWNWlnWGZqbHhDRnNzcjNIU25hMDN2TTNGb0RfWlNJM01Pb21qQkgxUGlzWjBRcmd5SG5KMXhyMGRMNjNSaHhXdThn0gHbAUFVX3lxTE5HZFFkWExDNERDb1JLV1NvWlVPYXJJQzZDM2JfeXNSU2NHZXNiTWY5OHlOMGw5Q3JQRFFrMjhTc1dHRGgtdHZqckM5d0NmbDBWeUlhV09lMjh6RlRJU2lrZzBYVmN6VUEzT3NzMGFCa1dENFhTQ2l1Y0Y1ZXlfRlUxNEFwcTAzeFhUdVNteDFWM196VGJ4clItZDJpN1p5NkstdEZ3dmdYS3IyTFgtd1hJdzFhY1JTMGsyLVd2WU9DT25WTm5kZWVmSHBQZ2Z0dTF3aDZXRnBIQ1dwVQ?oc=5",
-     "published": "Thu, 22 Oct 2026 17:34:00 GMT",
-     "sentiment": -0.511
-    },
-    {
-     "title": "Banking fraud disclosures trigger sharper stock market losses for public sector banks: Study",
-     "source": "Nagaland Tribune",
-     "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPdkhuMmE1YjhvbW14X192dmw3cHlBcjZZRU5DSFJXU0RKRVpOSUlTdkoxcU9BSkdtSHpHLTh4SktzYURWclVJMnZrU3BtZzRXMEc1Qkk0X0Etc3BGOXJtUk1uSGtSUi0zdFRyUUZxMGxmM2dZamtZa01wUnBRMzdYazE2b0RROVhrd2drdlVmV3JDUjJQV29IQ1gwbXBFR3NzclBXdjNlSUoyN3AxWkFsaEpTS1BTVVRxUEs4?oc=5",
-     "published": "Thu, 22 Oct 2026 12:01:26 GMT",
-     "sentiment": -0.743
-    },
-    {
-     "title": "Banking fraud disclosures trigger negative stock market reactions: NU Study",
-     "source": "MorungExpress",
-     "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNMW5sRHRsaUxxaHlIZk94V1ZZaENYb2c1c2FlaGNOZ2tYMlNOVHZORnEtR09HeExOME9LdWhZX2l6ekljWkhrdFZmaFEzTWZoXzF3c3RFUUFSTHYtNGtMYlZRSXZSYnBrbDhMQW1ZZE9EWWc3V0d4M04yTGJESE9KaEN3a2JteTV3UUg5S1JTM3NrZlZfTnZLQ3BfY2h4QU1odlE?oc=5",
-     "published": "Thu, 22 Oct 2026 12:48:56 GMT",
-     "sentiment": -0.827
-    }
-   ],
-   "news_sentiment": {
-    "score": -0.344,
-    "count": 8,
-    "label": "NEGATIVE"
-   },
-   "win_prob": 89.3,
-   "expected_r": 0.9,
-   "model_used": true,
-   "grade": "C",
-   "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
-   "action": "BUY PNB near \u20b9122.50 (skip if it opens above \u20b9127.29) \u00b7 SL \u20b9120.11 \u00b7 T1 \u20b9127.29 \u00b7 T2 \u20b9132.07 \u00b7 Qty 41 for \u20b910k @1% risk"
-  },
-  {
    "symbol": "INFY",
    "name": "Infosys",
-   "bar_date": "2026-10-22",
-   "cmp": 1153.35,
-   "day_chg": -1.25,
-   "vol_ratio": 1.29,
-   "vol_badge": "1.3x Vol Surge",
+   "bar_date": "2026-10-23",
+   "cmp": 1153.8,
+   "day_chg": 0.04,
+   "vol_ratio": 2.43,
+   "vol_badge": "2.4x Vol Surge",
    "volume_projected": false,
    "rsi": 63.8,
-   "ema20": 1080.92,
-   "ema50": 1081.06,
-   "high20": 1174.5,
-   "dist_high_pct": 1.8,
-   "atr": 32.51,
+   "ema20": 1087.86,
+   "ema50": 1083.92,
+   "high20": 1197.8,
+   "dist_high_pct": 3.67,
+   "atr": 41.6,
    "checks": {
-    "volume": false,
+    "volume": true,
     "momentum": true,
     "trend": true,
-    "breakout": true
+    "breakout": false
    },
    "checks_passed": 3,
    "passed": false,
-   "entry": 1153.35,
-   "stop": 1128.96,
-   "t1": 1202.12,
-   "t2": 1250.89,
+   "entry": 1153.8,
+   "stop": 1122.6,
+   "t1": 1221.72,
+   "t2": 1289.63,
    "pivots": {
-    "P": 1157.3,
-    "R1": 1170.55,
-    "S1": 1140.1,
-    "R2": 1187.75,
-    "S2": 1126.85
+    "P": 1129.88,
+    "R1": 1221.72,
+    "S1": 1061.97,
+    "R2": 1289.63,
+    "S2": 970.13
    },
-   "risk_per_share": 24.39,
-   "rr_t1": 2.0,
-   "rr_t2": 4.0,
+   "risk_per_share": 31.2,
+   "rr_t1": 2.18,
+   "rr_t2": 4.35,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 0.2519315265967159,
-    "rsi": 63.777845155140696,
-    "dist_high_pct": 1.8007683622020008,
-    "ext_ema20": 6.701054523898531,
-    "atr_pct": 2.8190563419686008,
-    "day_chg": -1.2542829121628851,
-    "ret5": 6.006431579589844,
-    "rs20": 14.790141465081764,
-    "bias_score": -4.0,
-    "news_sent": 0.101,
+    "log_vol_ratio": 0.8874937794503127,
+    "rsi": 63.83631837675298,
+    "dist_high_pct": 3.673401085852991,
+    "ext_ema20": 6.0616061294211265,
+    "atr_pct": 3.6056421549048387,
+    "day_chg": 0.03902312842716249,
+    "ret5": 3.9459503448761257,
+    "rs20": 16.673812654489307,
+    "bias_score": 17.0,
+    "news_sent": 0.242,
     "mkt_above50": 0.0,
-    "mkt_ret20": -2.749151739787392
+    "mkt_ret20": -3.611583469959667
    },
-   "r1_a": 0.5290093826234522,
-   "r2_a": 1.0580187652469115,
+   "r1_a": 1.6325375794321997,
+   "r2_a": 3.2650751588644047,
    "news": [
     {
      "title": "Infosys Limited (INFY) stock price, news, quote and history",
-     "source": "Yahoo Finance Singapore",
-     "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE81Vk82d2I1M1JmYWJ2QktDV01ncWo2TVgwbzlfU0FyQ1VodnJnZmw1THBTdkNLcjNRalFtM0QxMGtuNFNSaEV0ZUZiUUlPUjNYemc?oc=5",
-     "published": "Thu, 22 Oct 2026 13:12:35 GMT",
+     "source": "Yahoo Finance Australia",
+     "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9GaHBMWV9lMjZlRloxbDZHbW5uRHI3NXMyUHE1UDFXVFRzYnBBeHFmenFIck9teHR2Zlg5YlRDQkpfZWVUT1A1V25RbUVDT0YzMlE?oc=5",
+     "published": "Thu, 22 Oct 2026 19:35:10 GMT",
      "sentiment": -0.226
     },
     {
-     "title": "Infosys Q2 results, dividend: Earnings expectations, timing, FY27 guidance & targets",
-     "source": "Business Today",
-     "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxNWE5uVTFVQ2tpRlFqaC1XV0psekIzVlpOdXdLdjlkU0tIMW9TNEc3d0lOUlA1UFFJRXRtZVprLTdORDRiZTVtbmV3a1RnR21XVlhNNXE4cXJ3OG85MTk0Y2ZWSmJoZWwxbTFNS2pzRk9Ieko1VXhmUEt2Z2ZDRGtoMXdPQnBhd2kxQ0tadlZZUVFkU0Voa0RVTU1XNUx4bHNvbnRSNmk1QXV0ejhyTGhkY3lwWVdGSjl6ei1MM2ttLWNRSmhQWHh5d2E2d1ZjdERNYzc0M2RXXzZGR3dTT2c40gHkAUFVX3lxTE1CdWdTS0VEVldJbWlidWpQNURndHpLSnRXeXRRRzBjREhYa1NFeDA4OGcyOVc2QURuZWY1b182ZVYxQ2NiWFpIQmNJcFRTc0Q0WUVoYWdFX0NGdTNYMUFueGZPQnFLdHRUV0I2MGljallJVm5JLVZkb1ZZWmhVYWtsUDRJVGU0bE1ZYmVQNjRnYU5mb1FlXzlBWC1WeEJTRmJ3cG1OTDlZVlNzVUVtclQ5TkNGaHZ0ZmVRRG1aVHR5MWZSWnlBRVNVQlR5QkI0R3FQSEVVNWpPa2xLM1JPZUhhZ2stWg?oc=5",
-     "published": "Thu, 22 Oct 2026 09:39:15 GMT",
-     "sentiment": 0.202
-    },
-    {
-     "title": "Stocks in news: Swiggy, Infosys, HPCL, eMudhra, Adani Power, Shriram Finance, Tata Motors and NLC India",
-     "source": "The Economic Times",
-     "link": "https://news.google.com/rss/articles/CBMi_wFBVV95cUxNdFJPb0cyclNCb2JtWlhvaHdmc2tUVWxsempPMlJrc1dPX3lVTjh4eXlKZ3BxeHBBS1lJQTJQSk9WSWgwdHRzTlhMTmQ0QVN3ZTgyUE9RQkczQ0txajhxbV9vZUs4X0VSMWNsV1JfYmNJSUJtV3lZS3Z2LWdpX2VyLV9ycG1ianVPMzZhTDN4NTdLSlp2RTJfbFNLRUhSQ0dGNmhnTGdrV1NRMUowMzNVZWJaV0ZmZTBJX1VVV3JIejhtcWN3eDhSTlpxOTIzMEl3S3ZVWlExMWUwclNTaXNrUG5lR0UzV1h0MkVvU0VMVEFIWkNfa3YtVE92UWVaY0k?oc=5",
-     "published": "Fri, 23 Oct 2026 00:30:00 GMT",
-     "sentiment": 0.0
-    },
-    {
-     "title": "Infosys Limited (INFY) Stock Price, News, Quote & History",
-     "source": "Yahoo! Finance Canada",
-     "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5zVTBfd1BXNDZZLWNrVTQySDYwME0wN2dYRENjeU9TZDBWZGg1SGpRZnUyWHJqcHFiRlpLd21tMXk0RFN0eG95dEFGeU9WMDA1V0E?oc=5",
-     "published": "Thu, 22 Oct 2026 13:39:33 GMT",
-     "sentiment": -0.226
-    },
-    {
-     "title": "Ahead of Infosys Earnings, Here's What Barchart Data Says Comes Next for INFY Stock",
-     "source": "Barchart.com",
-     "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPN052c1Q2R3BERVR1UXVOOVVxLUlsNG5OcElLSzc3UURlUVdMaXJVUUtERWZrQnB5eWExRGVyaXpSUGFkWWs2cWJCY25uMW91VTYxOWFvS0NkcjFvV2gtQVFxc0UtQ2ZqZWd1SGh1Y0tlQjR4QTI2NC1iQkRFR1Y1Vldhenl3aW9rZklzR05WX2prX09DSDhDdFY0alVrRkU2NFcxQmNiX3Q1eU5YNEdTeURuNDU1aDVoeEtueEpJMWNEUnFq?oc=5",
-     "published": "Thu, 22 Oct 2026 16:09:07 GMT",
-     "sentiment": 0.0
-    }
-   ],
-   "news_sentiment": {
-    "score": 0.101,
-    "count": 8,
-    "label": "POSITIVE"
-   },
-   "win_prob": 27.8,
-   "expected_r": -0.3,
-   "model_used": true,
-   "grade": "C",
-   "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
-   "action": "BUY INFY near \u20b91,153.35 (skip if it opens above \u20b91,202.12) \u00b7 SL \u20b91,128.96 \u00b7 T1 \u20b91,202.12 \u00b7 T2 \u20b91,250.89 \u00b7 Qty 4 for \u20b910k @1% risk"
-  },
-  {
-   "symbol": "FEDERALBNK",
-   "name": "Federal Bank",
-   "bar_date": "2026-10-22",
-   "cmp": 347.8,
-   "day_chg": 1.1,
-   "vol_ratio": 0.9,
-   "vol_badge": "0.9x Vol Surge",
-   "volume_projected": false,
-   "rsi": 61.8,
-   "ema20": 334.71,
-   "ema50": 335.62,
-   "high20": 355.5,
-   "dist_high_pct": 2.17,
-   "atr": 9.94,
-   "checks": {
-    "volume": false,
-    "momentum": true,
-    "trend": true,
-    "breakout": true
-   },
-   "checks_passed": 3,
-   "passed": false,
-   "entry": 347.8,
-   "stop": 340.35,
-   "t1": 362.71,
-   "t2": 377.62,
-   "pivots": {
-    "P": 346.5,
-    "R1": 351.3,
-    "S1": 343.0,
-    "R2": 354.8,
-    "S2": 338.2
-   },
-   "risk_per_share": 7.45,
-   "rr_t1": 2.0,
-   "rr_t2": 4.0,
-   "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
-   "features": {
-    "log_vol_ratio": -0.10535718980259484,
-    "rsi": 61.83999268376957,
-    "dist_high_pct": 2.1659668655502813,
-    "ext_ema20": 3.9095987997761927,
-    "atr_pct": 2.857842176039372,
-    "day_chg": 1.1046476142350992,
-    "ret5": 5.393935694839014,
-    "rs20": 9.11000427586347,
-    "bias_score": -4.0,
-    "news_sent": 0.158,
-    "mkt_above50": 0.0,
-    "mkt_ret20": -2.749151739787392
-   },
-   "r1_a": 0.35212774105149736,
-   "r2_a": 0.7042554821029947,
-   "news": [
-    {
-     "title": "Top 12 Bank Stocks To Buy In India October 2026",
-     "source": "Samco",
-     "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQVTJGTjNBTndCWnlCMVF4am9OclFTVEN0clJWVXBKc3BWX0E4bDhwTUxlVWFKd0xReUJWSVl6T0M3UnExVHowUHZHdkExQ016S1MtX1lJdjNKYUNoRzBpM19fbTZYeTNOVGpNY0NPMTQydUdvWDZWMGFveE12Umh4eVRkVC02b1FMYVJhZQ?oc=5",
-     "published": "Thu, 22 Oct 2026 06:50:56 GMT",
-     "sentiment": 0.202
-    },
-    {
-     "title": "Top 2 stocks to buy tomorrow: Federal Bank, Indian Hotel by market expert; check stop-loss, target price for Fri, 23 Oct",
+     "title": "Infosys share price: IT major jumps 4% ahead of its Q2 results, dividend 2026 announcement today: What to expect?",
      "source": "Livemint",
-     "link": "https://news.google.com/rss/articles/CBMikwJBVV95cUxOeHM1Y1U3ai1ka3dkUU1fQVREWlpCZGpYQ0RDV283MnZaME1ONGNfc05qbVB6QWxmMDZLbUJjcXM1c0FEbmZYVVJBbUlvQ0s3ZFM2ZVNDODNsa2dPM0xGNENJN1JvaWtjaXRnY0JtWFJFYXpOSldUcFhyNEtoVWI3RlMwX2tBVFRYcGUzcjMxdVpOVDdhbHdLaGY5bXMzQ1JScngyWVItSTl5ajNmbk80azFpRVdUUzBmMEFEaDJmdnducjRsOGJGb0Q1bFpiakkzOHppUDFGZUpLU3lfQUpXRDJPLWlFTnNtOUd5dDFPSFBFRG83aG1fR2JldzQzQ1YxRmtlb2YtVXM4cVk3M0J6YUpfa9IBmAJBVV95cUxQUW5QbFNVNTNjSUVwN0VGandINV9SVHFpcmE1d1ZYRzM2UjM3SzEzekRyd0ozVTBkNVduRkhuTVNwRkhDZFN4OFhIM1hzQ1ZDQWpvQnZ0VWtySDR2OXgybVJiOGw5WmtCVjZqcVh4M29IbGkwMU5OaTRUYmFJbVBHbTNqS1lfR3JubXRIWGt6blhhNEV5ZDNBdGNrS3N4bkFxNkhOMXVUQWkxb3VNZVVqWWsyMG5vOUdsQVZ4SU0xM2JjOEVmWk80ZmlVTXA5eE1XM2tvTXRfZ0tBVGJZRUFCcVlMS1RJclZmLWpCdG9QRVJpNDVRQkcyQkpwWnp6VXMtcEFvSF9feXhGVDE4am1NMEFSWDkya2Zx?oc=5",
-     "published": "Thu, 22 Oct 2026 12:03:50 GMT",
-     "sentiment": 0.202
+     "link": "https://news.google.com/rss/articles/CBMiigJBVV95cUxPbHFVUTZ6X2VBbTYydVk5dk84X3I2S2ZQOVdJdnZUODF3Ui1VaHBWWmZHNHRlZmtqZ1NMVzNXUFlpRHR6Qkt1Z3hsbm5VTWIxdlBFb3k2WFRaU21Id3FwYy1MN01CVXB1blQtdC1TQ2xsRVFqbEd2b0xFMkRxV0NzU1hUd3hTWnNUY29IZ0FQakJhMXZqbGc2QnhFd0ZWd2NFM0I5ajRxd0UyeE9EN1l1M0pHeC1Jd2EzRDFJZmxCajUwQ0l2RkF0R1d1V2pmWUE0QjBHdW16NW5QMXlud1dOTlVqRFR6aEV4WHpPS1NmM3E0dkotY0t1aTk3SWxrY1I3bnU2clM0c2RtQdIBjwJBVV95cUxOd1d4UG9CUFdaM3l4UkdWVUVKXzhITWNpUEMwZTBUbGoxNGhtLTM3X21GOXROSXpTVkZ1S3Qwdm14YmdoMmJaY0ZTeXNlUWFiWUN5elktM1otZ2t4ZWVCSGd2VHNFNUhRUDJwQ0VzQzN6VkxSQmNVSXJYX05DSVNuWU1KeldGTWtDVzEzWjV0Q2diNHdGdThtcmxlSEZvMS1uelk2ejR0ZG4yRS1RY0lJbElQXzRsXzNLV1ZjNWFJRC03Y3lid2pMdmlReS1SZUZDemVHTG1Xd2JNTXZaU3M0bFlKTlZyUVlSTDRrcWtOaFZXTkhxZ0Y0b2ZJWnQ4WmhkSzRnSDBrY0RYLWx6T0dz?oc=5",
+     "published": "Fri, 23 Oct 2026 04:21:02 GMT",
+     "sentiment": 0.7
     },
     {
-     "title": "Today\u2019s Stock Recommendation: October 23, 2026",
-     "source": "BusinessLine",
-     "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNNE9EY0ZSRlhyckR1Yl9jakt2RXVBM1BfdU44QlJhSVJlNDUyZnRNN0JiSFZQZTZQNDNNQjlNY2EwcmFuU2drRUEzZzlZSklCbVBWYUU3a1VaeVhUdFY3ZUdTT3R4SVB3MDlrdzZnbzRFTngwaDhjckhpY3kxYklSZjQyV3JsYkp1NlJ2QjBvVllZam1HREk3WjFjQ1g4NTVYSTc3S0gzZjFSX3VFd1V1Y3JFNFg0eDdU?oc=5",
-     "published": "Fri, 23 Oct 2026 01:06:00 GMT",
-     "sentiment": 0.0
+     "title": "Infosys Q2 Results Preview: Better Earnings Than TCS, HCL, Tech Mahindra, Wipro? Interim Dividend Ahead",
+     "source": "Goodreturns",
+     "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxOZmMzbTZqSUJZeHpNN3l3MFdVaTJBaFhqaVVwbkxQZnk2TlpBeWdUaUExcGNpNmRJVURVd3A3QmhWM0k2ZzM2RlJsOGhZQlFnc1ZaYng3RV9IVUxYcVkyOC1nNW00Y2M2dmdXb0dIMm9EaHRHRTVPOE9Cbml3d19QN3VPWGpMM19kclFaVzdCZE5HeS1mNDdjT04ySHd3Z3hWN3dhajRCdy1SemFNUmJ1NDh6Q091MDZ4NUhCQ3I1WVhFa3JTZlhCcDdMSUlZNzk0QlBod2VpRUg2SGc?oc=5",
+     "published": "Fri, 23 Oct 2026 05:44:16 GMT",
+     "sentiment": 0.572
     },
     {
-     "title": "Federal Bank holds virtual investor meets with HSBC, RARE, Franklin, WCM",
-     "source": "scanx.trade",
-     "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNc0ZGR1lPYlduNGt1S2NFM3ZtZXdKampuYzNRaE5aaWhDNGViQ3h3aC14dGt4emloT2pmR1Q0ZVhrZjlLV2Y3THAwQ2JZREhFS1hyV2k5dTNGNGV4WUZic1AzQnhoRnlRTFhybmpTdHdodVVscVlwdUtxQUZDWURhNXozNzhVQklLbGRXOGJ3RUNNbnFsVXJKZ1RRVm9KRzZ5eUdBUFBTdmZ0SWJaTTFDTlZRSQ?oc=5",
-     "published": "Thu, 22 Oct 2026 08:47:38 GMT",
-     "sentiment": 0.0
-    },
-    {
-     "title": "Market Trading Guide: Federal Bank among 4 stock recommendations for Wednesday",
+     "title": "Infosys shares jump 3% ahead of Q2 earnings announcement. What to expect?",
      "source": "The Economic Times",
-     "link": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxNOXVtdmtVX1BPVW5wTnFyZjZHMVFZUTFRODUwaFB5dVRQRFJ5OE9GSFdRWVFTM2JkRkFjRXFpcXJuZWtGTzYyQ0xGZE5KNm5vd3ZxX0V6NWNCUEVyb2NTckwxZXFkU3lLUF9UejNkWWpFUGVsVVVndjhHZmdkdlJzU09ISWFIcktILWg2V2lfSFRqQ2xXdC1iUlVNbzY4N2I0QnFaTzRMQ0t3R2NaQXA0UDdmdlFzNFI0c0d5a1JHWHlLM0htdDNtSlJsUmxZeGczTUM0UGQ1ODRQWlhWVDhnc2pEQ2NuVkJVUFBVcE41WQ?oc=5",
-     "published": "Tue, 20 Oct 2026 10:21:45 GMT",
-     "sentiment": 0.0
+     "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxOZVlYOTF3YXBZb2FVelZpMlFuMXI4azZlaXNNSVo2Z2d6dW9fUVhVb2dYVFoyOGxXZE9uR2RTZlkxcHE0TXJPbjdSMm9faG1SaFFMcWNGRGFnQjJVTU1GVHhBb1AwQWd0YXFWeTZ5SkQyc1dMT2tlNFRZMGdJN1VucENlMnotRlM1QnlOZWx2WjJTaUtaN0d4SWVuc2VxWHpOTzg5ckljb1VUT0k2S1ROUE1tdzFJTkR0V0MyV194SUNPdHFKRG5MbWg1eUZjNnpGZ2JjMTk2TEtjYXB20gHiAUFVX3lxTFBaZHgwanFNLXZMRHBzTjdicVFtTzFORTd2bjc2eGY2MWJPV3hHVlMxSzBkNEhHSGlPeTBZMnVISFNYclpPZXh1OUJXQjVOc19NUUs2eFBiV0Y5WGpJLS1SZXBTMnR5TmExTEc0TGFleFdyTHlob2lFRlVFcEFKaVdhakFXZ0g1TThfcTlxNGtsSkNqT1lIRUg2SGREQTV5RlFRNm15RmhwcnNNejQ5V1lObm9GVmlaRjNUVi04dTlPeEgwUlpjNWltODEtQVI1VS03b1BwZ1h2LVBqb1JKajRMYXc?oc=5",
+     "published": "Fri, 23 Oct 2026 04:07:46 GMT",
+     "sentiment": 0.296
+    },
+    {
+     "title": "Infosys Q2 results: Revenue and net profit likely to remain flat; key focus on FY27 guidance and deal wins",
+     "source": "Upstox",
+     "link": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxPU2pkUkEzdDlZOEVJOEVxR2V0UFFiMzlrZHJWX0ctMEh3eTdRYmNIc3dtWklOM2RxYjlsNVY3a1RDakI3b3lFU3pfYXBMeGp0Rk9yTVp4NzFWa05JdTVwbm5pRXVYUEdsSWlBYzdrblg4RWlfMGtQUW81Yi1qczY4ejJlb1JBVncyYll5dlZWV1RGU29ELTRNVnBhc2E0SmRwU1h1VklUd19ORUZaR0RXeEhvcXJETkprSVpET3JGRHNjT3gzd1QzUElqWWN3OUtNRU1mcmIteURlMXBRUUsxLXhxNVI4RTR3aldiOXpzLW9JMGVtMm02ZFdn?oc=5",
+     "published": "Fri, 23 Oct 2026 03:11:31 GMT",
+     "sentiment": 0.527
     }
    ],
    "news_sentiment": {
-    "score": 0.158,
+    "score": 0.242,
     "count": 8,
     "label": "POSITIVE"
    },
-   "win_prob": 19.0,
+   "win_prob": 18.7,
    "expected_r": -0.48,
    "model_used": true,
    "grade": "C",
    "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
-   "action": "BUY FEDERALBNK near \u20b9347.80 (skip if it opens above \u20b9362.71) \u00b7 SL \u20b9340.35 \u00b7 T1 \u20b9362.71 \u00b7 T2 \u20b9377.62 \u00b7 Qty 13 for \u20b910k @1% risk"
+   "action": "BUY INFY near \u20b91,153.80 (skip if it opens above \u20b91,221.72) \u00b7 SL \u20b91,122.60 \u00b7 T1 \u20b91,221.72 \u00b7 T2 \u20b91,289.63 \u00b7 Qty 3 for \u20b910k @1% risk"
   }
  ],
  "scanned": 82,

@@ -37,7 +37,7 @@
    "credit_rs": 3980,
    "iv0": 0.1477,
    "vix0": 15.1274995803833,
-   "mark": -1964,
+   "mark": -1613,
    "groups": [
     {
      "legs": [
@@ -89,10 +89,18 @@
     "NIFTY: still open (expiry 27 Oct), worth Rs -1,964 now"
    ],
    "total": -1964
+  },
+  {
+   "session": "2026-10-23",
+   "pnl": 351,
+   "detail": [
+    "NIFTY: still open (expiry 27 Oct), worth Rs -1,613 now"
+   ],
+   "total": -1613
   }
  ],
  "before": {
-  "session": "2026-10-22",
+  "session": "2026-10-23",
   "open": {
    "NIFTY": {
     "index": "NIFTY",
@@ -131,7 +139,7 @@
     "credit_rs": 3980,
     "iv0": 0.1477,
     "vix0": 15.1274995803833,
-    "mark": -146,
+    "mark": -1964,
     "groups": [
      {
       "legs": [
@@ -149,29 +157,12 @@
        }
       ],
       "v0": -37.66367414641218
-     },
-     {
-      "legs": [
-       {
-        "action": "SELL",
-        "strike": 22500,
-        "type": "PE",
-        "est_premium": 44.7
-       },
-       {
-        "action": "BUY",
-        "strike": 22250,
-        "type": "PE",
-        "est_premium": 14.2
-       }
-      ],
-      "v0": -23.56555468582519
      }
     ],
-    "realized": 0.0,
+    "realized": -57.071874996931,
     "credit0": 61.22922883223737,
     "credit_all": 61.22922883223737,
-    "adjusted": null,
+    "adjusted": "closed the tested put spread",
     "extra_cost": 0
    }
   },

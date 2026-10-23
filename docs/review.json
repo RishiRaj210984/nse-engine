@@ -1,13 +1,13 @@
 {
  "latest": {
-  "session": "2026-10-22",
-  "as_of": "2026-10-22T21:10:15.894181+05:30",
+  "session": "2026-10-23",
+  "as_of": "2026-10-23T16:17:20.148592+05:30",
   "final": true,
-  "plan_built": "2026-10-22T07:13:19.608006+05:30",
+  "plan_built": "2026-10-23T07:13:28.136140+05:30",
   "bias": {
    "label": "RANGEBOUND",
-   "predicted_pct": 0.02,
-   "actual_pct": -0.54,
+   "predicted_pct": -0.02,
+   "actual_pct": -0.39,
    "band_pct": 0.34,
    "correct": false
   },
@@ -15,122 +15,137 @@
    {
     "index": "NIFTY",
     "strategy": "Iron Condor",
-    "legs": "SELL 23200 CE + BUY 23400 CE + SELL 22400 PE + BUY 22200 PE",
+    "legs": "SELL 23050 CE + BUY 23250 CE + SELL 22300 PE + BUY 22100 PE",
     "lot_size": 65,
-    "planned_max_reward": 3516,
-    "planned_max_loss": 9484,
-    "day_open": 22687.75,
-    "day_high": 22784.75,
-    "day_low": 22555.1,
-    "last": 22687.65,
-    "entry_condition": "NIFTY between 22,400 and 23,200 at 10:15",
-    "entry_spot": 22661.0,
+    "planned_max_reward": 3250,
+    "planned_max_loss": 9750,
+    "day_open": 22742.2,
+    "day_high": 22786.95,
+    "day_low": 22372.15,
+    "last": 22600.0,
+    "entry_condition": "NIFTY between 22,300 and 23,050 at 10:15",
+    "entry_spot": 22492.35,
     "entry_time": "10:15",
-    "opening_move_pct": -0.12,
+    "opening_move_pct": -1.1,
     "status": "TIME",
     "exit_reason": "TIME: marked at 15:15",
     "exit_time": "15:15",
-    "exit_spot": 22666.55,
-    "entry_value": -50.1,
-    "exit_value": -46.4,
-    "pnl_per_lot": 242,
-    "capture_pct": 6.9,
+    "exit_spot": 22516.4,
+    "entry_value": -55.6,
+    "exit_value": -51.7,
+    "pnl_per_lot": 254,
+    "capture_pct": 7.8,
     "range_held": true,
-    "verdict": "Short strike 22,400 / 23,200 held (day 22,555\u201322,785). TIME: marked at 15:15."
+    "verdict": "Short strike 22,300 / 23,050 held (day 22,372\u201322,787). TIME: marked at 15:15."
    },
    {
     "index": "BANKNIFTY",
     "strategy": "Iron Condor",
-    "legs": "SELL 55800 CE + BUY 56300 CE + SELL 54100 PE + BUY 53600 PE",
+    "legs": "SELL 55700 CE + BUY 56100 CE + SELL 54100 PE + BUY 53700 PE",
     "lot_size": 30,
-    "planned_max_reward": 3888,
-    "planned_max_loss": 11112,
-    "day_open": 54725.45,
-    "day_high": 55133.2,
-    "day_low": 54462.35,
-    "last": 54925.7,
-    "entry_condition": "BANKNIFTY between 54,100 and 55,800 at 10:15",
-    "entry_spot": 54828.85,
+    "planned_max_reward": 3081,
+    "planned_max_loss": 8919,
+    "day_open": 54980.4,
+    "day_high": 54980.5,
+    "day_low": 53944.6,
+    "last": 54287.35,
+    "entry_condition": "BANKNIFTY between 54,100 and 55,700 at 10:15",
+    "entry_spot": 54227.65,
     "entry_time": "10:15",
-    "opening_move_pct": 0.19,
+    "opening_move_pct": -1.37,
     "status": "TIME",
     "exit_reason": "TIME: marked at 15:15",
     "exit_time": "15:15",
-    "exit_spot": 54832.35,
-    "entry_value": -111.5,
-    "exit_value": -102.6,
-    "pnl_per_lot": 266,
-    "capture_pct": 6.8,
-    "range_held": true,
-    "verdict": "Short strike 54,100 / 55,800 held (day 54,462\u201355,133). TIME: marked at 15:15."
+    "exit_spot": 54111.55,
+    "entry_value": -145.7,
+    "exit_value": -161.2,
+    "pnl_per_lot": -466,
+    "capture_pct": -15.1,
+    "range_held": false,
+    "verdict": "Short strike 54,100 / 55,700 was crossed: day 53,945\u201354,980. TIME: marked at 15:15."
    }
   ],
   "stocks": [
    {
-    "symbol": "FEDERALBNK",
-    "grade": "C",
-    "entry": 348.85,
-    "stop": 341.31,
-    "t1": 363.93,
-    "open": 342.8,
-    "high": 350.0,
-    "low": 341.7,
-    "last": 347.8,
-    "tradeable": false,
-    "status": "NOT TRIGGERED",
-    "r": 0.0
-   },
-   {
     "symbol": "PNB",
     "grade": "C",
     "entry": 122.5,
-    "stop": 120.03,
-    "t1": 127.43,
-    "open": 122.17,
-    "high": 122.5,
-    "low": 120.56,
-    "last": 122.5,
+    "stop": 120.11,
+    "t1": 127.29,
+    "open": 122.0,
+    "high": 122.19,
+    "low": 119.1,
+    "last": 120.37,
     "tradeable": false,
     "status": "NOT TRIGGERED",
     "r": 0.0
    },
    {
-    "symbol": "COFORGE",
+    "symbol": "INFY",
     "grade": "C",
-    "entry": 1951.0,
-    "stop": 1907.55,
-    "t1": 2037.9,
-    "open": 1968.7,
-    "high": 1986.6,
-    "low": 1901.1,
-    "last": 1908.8,
+    "entry": 1153.35,
+    "stop": 1128.96,
+    "t1": 1202.12,
+    "open": 1179.95,
+    "high": 1196.95,
+    "low": 1146.1,
+    "last": 1153.8,
     "tradeable": false,
-    "status": "SL HIT",
-    "entry_fill": 1962.3,
+    "status": "OPEN (day 1 of 2)",
+    "entry_fill": 1177.75,
     "entry_time": "09:30",
-    "r": -1.0,
-    "pnl_10k": -55,
-    "qty_10k": 1
+    "r": -0.49,
+    "pnl_10k": -48,
+    "qty_10k": 2
+   },
+   {
+    "symbol": "FEDERALBNK",
+    "grade": "C",
+    "entry": 347.8,
+    "stop": 340.35,
+    "t1": 362.71,
+    "open": 348.6,
+    "high": 349.0,
+    "low": 339.0,
+    "last": 340.9,
+    "tradeable": false,
+    "status": "NOT TRIGGERED",
+    "r": 0.0
    }
   ],
   "summary": {
-   "options_pnl_per_lot": 508,
-   "planned_max_reward": 7404,
-   "gap": -6896,
+   "options_pnl_per_lot": -212,
+   "planned_max_reward": 6331,
+   "gap": -6543,
    "trades": 2,
    "stocks_pnl_10k": 0,
    "stock_trades": 0,
-   "plan_pnl": 508
+   "plan_pnl": -212
   },
   "lessons": [
-   "Bias RANGEBOUND: Nifty -0.54% vs prev close. Call was wrong (move bigger than the sideways band).",
-   "NIFTY: Short strike 22,400 / 23,200 held (day 22,555\u201322,785). TIME: marked at 15:15.",
-   "BANKNIFTY: Short strike 54,100 / 55,800 held (day 54,462\u201355,133). TIME: marked at 15:15.",
+   "Bias RANGEBOUND: Nifty -0.39% vs prev close. Call was wrong (move bigger than the sideways band).",
+   "NIFTY: Short strike 22,300 / 23,050 held (day 22,372\u201322,787). TIME: marked at 15:15.",
+   "BANKNIFTY: Short strike 54,100 / 55,700 was crossed: day 53,945\u201354,980. TIME: marked at 15:15.",
    "No A/B stocks: watchlist shown for learning only (market gate closed)."
   ],
   "note": "Option P&L is a Black-Scholes estimate repriced with India VIX, per 1 lot, before costs. Stock results use a \u20b910,000 / 1% risk example."
  },
  "history": [
+  {
+   "session": "2026-10-23",
+   "final": true,
+   "bias": "RANGEBOUND",
+   "bias_correct": false,
+   "actual_pct": -0.39,
+   "options_pnl": -212,
+   "trades": 2,
+   "stocks_pnl": 0,
+   "plan_pnl": -212,
+   "detail": [
+    "NIFTY Iron Condor: TIME +254",
+    "BANKNIFTY Iron Condor: TIME -466"
+   ]
+  },
   {
    "session": "2026-10-22",
    "final": true,
@@ -180,6 +195,14 @@
  "paper": {
   "days": [
    {
+    "session": "2026-10-23",
+    "pnl": -638,
+    "detail": [
+     "NIFTY: still open (expiry 27 Oct), worth Rs -799 now"
+    ],
+    "total": -799
+   },
+   {
     "session": "2026-10-22",
     "pnl": -15,
     "detail": [
@@ -204,8 +227,8 @@
    }
   ],
   "realized": 0,
-  "open_value": -161,
-  "total": -161,
+  "open_value": -799,
+  "total": -799,
   "open": [
    {
     "index": "NIFTY",
@@ -213,7 +236,7 @@
     "expiry": "2026-10-27",
     "entry_session": "2026-10-21",
     "credit_rs": 3980,
-    "mark": -161
+    "mark": -799
    }
   ],
   "closed": [],
@@ -222,6 +245,14 @@
   "note": "Paper book: TRADE days only, 1 lot, held like the guardian holds it (target, stop, expiry-day 10:15), costs charged when a trade closes. Premiums are Black-Scholes estimates with India VIX.",
   "with_adjustment": {
    "days": [
+    {
+     "session": "2026-10-23",
+     "pnl": 351,
+     "detail": [
+      "NIFTY: still open (expiry 27 Oct), worth Rs -1,613 now"
+     ],
+     "total": -1613
+    },
     {
      "session": "2026-10-22",
      "pnl": -1818,
@@ -248,8 +279,8 @@
     }
    ],
    "realized": 0,
-   "open_value": -1964,
-   "total": -1964,
+   "open_value": -1613,
+   "total": -1613,
    "open": [
     {
      "index": "NIFTY",
@@ -257,7 +288,7 @@
      "expiry": "2026-10-27",
      "entry_session": "2026-10-21",
      "credit_rs": 3980,
-     "mark": -1964
+     "mark": -1613
     }
    ],
    "closed": [],
@@ -267,13 +298,13 @@
   }
  },
  "totals": {
-  "days": 3,
-  "bias_hit_pct": 33.3,
-  "options_pnl_sum": -2283,
-  "plan_pnl_sum": -2283,
+  "days": 4,
+  "bias_hit_pct": 25.0,
+  "options_pnl_sum": -2495,
+  "plan_pnl_sum": -2495,
   "plan_win_days": 1,
-  "plan_loss_days": 2,
+  "plan_loss_days": 3,
   "options_win_days": 1,
-  "options_trade_days": 3
+  "options_trade_days": 4
  }
 }
