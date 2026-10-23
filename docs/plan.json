@@ -1,64 +1,64 @@
 {
- "generated_at": "2026-10-22T21:11:34.263622+05:30",
+ "generated_at": "2026-10-23T07:13:53.650382+05:30",
  "session": "2026-10-23",
- "stage": "preview",
+ "stage": "final",
  "expected_open": {
-  "gap_pct": 0.05,
-  "error_pct": 0.33,
-  "day_pct": 0.04,
-  "snapshot": "Thu 22 Oct 21:11 IST",
-  "stage": "preview",
+  "gap_pct": -0.06,
+  "error_pct": 0.29,
+  "day_pct": -0.02,
+  "snapshot": "Fri 23 Oct 07:13 IST",
+  "stage": "final",
   "tip": "Flat open expected. Normal entry windows apply.",
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": -0.36
+    "move_pct": -0.34
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": -0.83
+    "move_pct": -1.27
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": 0.39
+    "move_pct": 0.54
    },
    {
     "key": "dax",
     "name": "DAX (Germany)",
-    "move_pct": -0.05
+    "move_pct": -0.11
    },
    {
     "key": "ftse",
     "name": "FTSE 100 (UK)",
-    "move_pct": 0.22
+    "move_pct": 0.17
    },
    {
     "key": "stoxx",
     "name": "Euro Stoxx 50",
-    "move_pct": -0.28
+    "move_pct": -0.36
    },
    {
     "key": "n225",
     "name": "Nikkei 225",
-    "move_pct": 0.0
+    "move_pct": -1.99
    },
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": -0.99
+    "move_pct": 0.56
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": -0.71
+    "move_pct": -1.61
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": 0.12
+    "move_pct": -0.13
    },
    {
     "key": "inr",
@@ -68,54 +68,54 @@
   ],
   "drivers": [
    {
-    "feature": "es",
-    "label": "S&P 500 futures",
-    "value": -0.36,
-    "contribution_pct": -0.149
-   },
-   {
     "feature": "nq",
     "label": "Nasdaq futures",
-    "value": -0.83,
-    "contribution_pct": 0.108
+    "value": -1.27,
+    "contribution_pct": 0.204
+   },
+   {
+    "feature": "es",
+    "label": "S&P 500 futures",
+    "value": -0.34,
+    "contribution_pct": -0.166
+   },
+   {
+    "feature": "n225",
+    "label": "Nikkei 225",
+    "value": -1.99,
+    "contribution_pct": -0.125
    },
    {
     "feature": "dxy",
     "label": "Dollar index",
-    "value": 0.12,
-    "contribution_pct": -0.049
-   },
-   {
-    "feature": "cl",
-    "label": "Crude oil",
-    "value": -0.99,
-    "contribution_pct": 0.047
-   },
-   {
-    "feature": "ftse",
-    "label": "FTSE 100 (UK)",
-    "value": 0.22,
-    "contribution_pct": 0.039
+    "value": -0.13,
+    "contribution_pct": 0.046
    },
    {
     "feature": "vix",
     "label": "India VIX level",
     "value": 15.76,
-    "contribution_pct": 0.039
+    "contribution_pct": 0.033
+   },
+   {
+    "feature": "stoxx",
+    "label": "Euro Stoxx 50",
+    "value": -0.36,
+    "contribution_pct": -0.025
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.42,
-   "gap_sign_pct": 67.3,
-   "directional_calls": 158,
-   "directional_accuracy": 67.7
+   "gap_corr": 0.7,
+   "gap_sign_pct": 72.0,
+   "directional_calls": 196,
+   "directional_accuracy": 70.4
   }
  },
  "headline": "Market bias SIDEWAYS \u2014 favour hedged premium selling",
  "bias": "RANGEBOUND",
- "score": 5,
- "bias_track_record_pct": 68.1,
+ "score": -4,
+ "bias_track_record_pct": 70.7,
  "options": [
   {
    "index": "NIFTY",
@@ -168,10 +168,10 @@
    "expiry": "2026-10-27",
    "lot_size": 30,
    "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is between 54,100 and 55,700",
-   "target": "Buy back at \u20b946.3 (keep ~55% of credit), else hold to expiry Tue 27 Oct",
-   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b93,084 per lot)",
-   "max_loss": 8916,
-   "max_reward": 3084,
+   "target": "Buy back at \u20b946.2 (keep ~55% of credit), else hold to expiry Tue 27 Oct",
+   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b93,081 per lot)",
+   "max_loss": 8919,
+   "max_reward": 3081,
    "reward_risk": 0.35,
    "decision": "CAUTION",
    "decision_reason": "3-6 days before: barely positive historically (74.3% wins, avg \u20b97 per lot over 35 trades). Too thin an edge after model error; half size or skip.",
@@ -210,15 +210,6 @@
  "market_gate_open": false,
  "events": [
   {
-   "symbol": "RELIANCE",
-   "name": "Reliance",
-   "when": "Fri 23 Oct",
-   "date": "2026-10-23",
-   "affects": "2026-10-26",
-   "past": false,
-   "bank": false
-  },
-  {
    "symbol": "INFY",
    "name": "Infosys",
    "when": "Fri 23 Oct",
@@ -235,6 +226,15 @@
    "affects": "2026-10-26",
    "past": false,
    "bank": true
+  },
+  {
+   "symbol": "RELIANCE",
+   "name": "Reliance",
+   "when": "Tue 27 Oct",
+   "date": "2026-10-27",
+   "affects": "2026-10-28",
+   "past": false,
+   "bank": false
   },
   {
    "symbol": "LT",

@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-22T21:11:33.333280+05:30",
+ "generated_at": "2026-10-23T07:13:47.261100+05:30",
  "market_open": false,
  "volume_projected": false,
  "bias": {
   "label": "RANGEBOUND",
-  "score": 5
+  "score": -4
  },
  "rules": {
   "vol_mult": 2.0,
@@ -37,7 +37,7 @@
    "bar_date": "2026-10-22",
    "cmp": 122.5,
    "day_chg": 0.0,
-   "vol_ratio": 1.63,
+   "vol_ratio": 1.64,
    "vol_badge": "1.6x Vol Surge",
    "volume_projected": false,
    "rsi": 64.0,
@@ -70,7 +70,7 @@
    "rr_t2": 4.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 0.49156113872039253,
+    "log_vol_ratio": 0.49183021884611744,
     "rsi": 63.98386273891858,
     "dist_high_pct": 2.1721779222067408,
     "ext_ema20": 4.512266879792337,
@@ -78,8 +78,8 @@
     "day_chg": 0.0,
     "ret5": 3.3755274261603407,
     "rs20": 7.450006440642099,
-    "bias_score": 5.0,
-    "news_sent": -0.386,
+    "bias_score": -4.0,
+    "news_sent": -0.344,
     "mkt_above50": 0.0,
     "mkt_ret20": -2.749151739787392
    },
@@ -87,10 +87,31 @@
    "r2_a": 0.4073144224424136,
    "news": [
     {
+     "title": "PNB Q2FY27 Results: Net profit up 13% to \u20b95,532 crore, NIM at 2.58%",
+     "source": "scanx.trade",
+     "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOblUzUkJSWk9QUWNuMTMzOUhERTJSVXVDYmpWMUZiay1rblMxTHRSaTdJVGJoeHF2RmRxYUlDTTJOT2R6Vk1oeV9zTjh2cVRpTDBfQURLbGd4VHBvV2h5R0hWcms3RnZBOXdpX1JKakktSGhOR2R1VFYwZ1dlcHhXMUVVUHlDTlhrOVVmYlR1VGhhYU9ob25aRkRobkw1Y0pweUJna2dpU2dITXJabGc0?oc=5",
+     "published": "Thu, 22 Oct 2026 21:18:23 GMT",
+     "sentiment": 0.25
+    },
+    {
+     "title": "Top 12 Bank Stocks To Buy In India October 2026",
+     "source": "Samco",
+     "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQVTJGTjNBTndCWnlCMVF4am9OclFTVEN0clJWVXBKc3BWX0E4bDhwTUxlVWFKd0xReUJWSVl6T0M3UnExVHowUHZHdkExQ016S1MtX1lJdjNKYUNoRzBpM19fbTZYeTNOVGpNY0NPMTQydUdvWDZWMGFveE12Umh4eVRkVC02b1FMYVJhZQ?oc=5",
+     "published": "Thu, 22 Oct 2026 06:50:56 GMT",
+     "sentiment": 0.202
+    },
+    {
+     "title": "Disclosure of frauds hit public sector bank stocks harder: Study",
+     "source": "The Times of India",
+     "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPUi01RGNZV3pxLXFDTDBwZ2ZNb0pRR0Vpd2x6ZWdFN2gwNUs5TDBrZnBnMkYxaGZXWDJNd1hQdkpvWmNSS0h3eHpQekhucEdGc25KaWw0R3gzQlF0N2tQbThEaUVkRnpYd1REN04wQlkzTzFqVGx5cG5IMHRLeUZ5UWVaRkpLRXNLdWxKcE5qUFc4MHNWNWlnWGZqbHhDRnNzcjNIU25hMDN2TTNGb0RfWlNJM01Pb21qQkgxUGlzWjBRcmd5SG5KMXhyMGRMNjNSaHhXdThn0gHbAUFVX3lxTE5HZFFkWExDNERDb1JLV1NvWlVPYXJJQzZDM2JfeXNSU2NHZXNiTWY5OHlOMGw5Q3JQRFFrMjhTc1dHRGgtdHZqckM5d0NmbDBWeUlhV09lMjh6RlRJU2lrZzBYVmN6VUEzT3NzMGFCa1dENFhTQ2l1Y0Y1ZXlfRlUxNEFwcTAzeFhUdVNteDFWM196VGJ4clItZDJpN1p5NkstdEZ3dmdYS3IyTFgtd1hJdzFhY1JTMGsyLVd2WU9DT25WTm5kZWVmSHBQZ2Z0dTF3aDZXRnBIQ1dwVQ?oc=5",
+     "published": "Thu, 22 Oct 2026 17:34:00 GMT",
+     "sentiment": -0.511
+    },
+    {
      "title": "Banking fraud disclosures trigger sharper stock market losses for public sector banks: Study",
      "source": "Nagaland Tribune",
      "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPdkhuMmE1YjhvbW14X192dmw3cHlBcjZZRU5DSFJXU0RKRVpOSUlTdkoxcU9BSkdtSHpHLTh4SktzYURWclVJMnZrU3BtZzRXMEc1Qkk0X0Etc3BGOXJtUk1uSGtSUi0zdFRyUUZxMGxmM2dZamtZa01wUnBRMzdYazE2b0RROVhrd2drdlVmV3JDUjJQV29IQ1gwbXBFR3NzclBXdjNlSUoyN3AxWkFsaEpTS1BTVVRxUEs4?oc=5",
-     "published": "Thu, 22 Oct 2026 11:56:17 GMT",
+     "published": "Thu, 22 Oct 2026 12:01:26 GMT",
      "sentiment": -0.743
     },
     {
@@ -99,143 +120,19 @@
      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNMW5sRHRsaUxxaHlIZk94V1ZZaENYb2c1c2FlaGNOZ2tYMlNOVHZORnEtR09HeExOME9LdWhZX2l6ekljWkhrdFZmaFEzTWZoXzF3c3RFUUFSTHYtNGtMYlZRSXZSYnBrbDhMQW1ZZE9EWWc3V0d4M04yTGJESE9KaEN3a2JteTV3UUg5S1JTM3NrZlZfTnZLQ3BfY2h4QU1odlE?oc=5",
      "published": "Thu, 22 Oct 2026 12:48:56 GMT",
      "sentiment": -0.827
-    },
-    {
-     "title": "Banking Fraud Hits Public Sector Bank Stocks Harder Than Private Banks, Study Finds",
-     "source": "The420.in",
-     "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOYXVhUFVYWW5LMDk1TGo5OWZ3dXN0T0xYemVZTXZibl82a0VzZ2szc3ZaYmFMd0ZXTENFRkFTbWlfNFBWa1p5dExZWGhIZUpqeXBjdF95RzUzd0h6bF9rQ3ZrSm9US1g3blF3U2ZjREl2bk5Ca1RMY0RmNDNKbjl4U0tJZHRkNzgxWFE?oc=5",
-     "published": "Thu, 22 Oct 2026 10:31:27 GMT",
-     "sentiment": -0.612
-    },
-    {
-     "title": "PNB cautions customers of AI-led cyberattacks amid surging frauds",
-     "source": "The Economic Times",
-     "link": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxPa1F2YkQ2YWFYbjZMNWpBQXJXbWhCdzNxY0xTQ24wM1hNeF81dE1wRllzX3FnWEpPQ1VQV2J4MnpLN3ZmdjdpVFRzWVBZdm51UWFZZkh1WjVVMnczN083cW90WFhOUDZGTVdBZzhlQ2tzOWNrY0VEZ0pVZUVmQk96OTRIeWxHUWlCS0Yya2k4Tnl5TGY1ZUNpajRFUENkUkJ2Q2hnZFhjWjNnbmY2Z3VYRGpzUWZ3dFdXNGx1STlpVno5SDlraTdNWVFXT0ZjSERPYjFyTkRuS0JlS3dZVFZDRjlRUXRkNzZyamFOV1Nn0gHnAUFVX3lxTFA3UDl5YjQ3RGV4cVZneWJRZjFtUFlrcEhWaDZlekpLUUtxSGg0R3lPWWZCenUzMmtYcUxkdFNkY01XcWJMLVBlblFvWU1fZ21GWEtRNTU0SV9rYThHV05PUktXa2pqcXFjYnRhTUlUQTdwTnNOT2w4c3dJbThfQkVDeDRVaE9kQjFpQkpoLWNrY1ZZMUxNMDR2ZWh6SXVMSWcwTGxkVVY2YXd4UEpXTUwxNl9UWUJZMDVyQUowS01qRHI4NWRrOHJYVTAxTXpFLXMtTGo4MlBjeks0ZlNJcElzRXE0ZjhySQ?oc=5",
-     "published": "Tue, 20 Oct 2026 11:57:41 GMT",
-     "sentiment": -0.511
-    },
-    {
-     "title": "PNB cautions customers of AI-led cyberattacks amid cyber fraud surge",
-     "source": "Business Standard",
-     "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPSXJqczNpWVNYYndxT2FBaEIwM0txc2FiRHNqQzVjcVZPYnhkZ1g0Y1hZMVdLQTBSV2JxQXBQcDFZR3NkdU5RMm5ZdU1ONHAwRUk1SE1ReHNTUUtVb1F2TjloTWRIX0ZsT2lnWFJpTXhmRmxhT3NxdnlhYmk5aks0UU5PejJRZzZWQzAxNzN2eU1mS2lzLUZBVmY3WnlOTEdROFY3TFFsMmlRYjRxRHFreG1laWkzSU9JLVpuZWFmald4dktfTldfTkVaaGJaTnRYdDJLU01B0gHbAUFVX3lxTFBIcURmMnFKelJXa19yNV9kdm1NandSVXJsbDFjSl9QMDh0MUFfQWJlcm1NcHlmaW1zUXNmTU9ZMnhZaFo1SXFoYnRUUW1rMWxMOG5MV0lDaVZKdVptaEhDRDQ3RlZ3UGNhV3RkZWgyUFJNNFozc0hZZnNzTDloS3RlOVFaaERCb0xBNS1NeFdIVVFuRnRIWEtsUWVBNXpyRWdDV1NJVGFhZVRvUTJqaUhjUk13QkJ1U2hJMFFjVGhyNk5BYTB4VFE0Yno1ZllPYXBYdmhraGp6OUtYdw?oc=5",
-     "published": "Tue, 20 Oct 2026 10:27:09 GMT",
-     "sentiment": -0.296
     }
    ],
    "news_sentiment": {
-    "score": -0.386,
+    "score": -0.344,
     "count": 8,
     "label": "NEGATIVE"
    },
-   "win_prob": 92.1,
-   "expected_r": 0.96,
+   "win_prob": 89.3,
+   "expected_r": 0.9,
    "model_used": true,
    "grade": "C",
    "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
    "action": "BUY PNB near \u20b9122.50 (skip if it opens above \u20b9127.29) \u00b7 SL \u20b9120.11 \u00b7 T1 \u20b9127.29 \u00b7 T2 \u20b9132.07 \u00b7 Qty 41 for \u20b910k @1% risk"
-  },
-  {
-   "symbol": "FEDERALBNK",
-   "name": "Federal Bank",
-   "bar_date": "2026-10-22",
-   "cmp": 347.8,
-   "day_chg": 1.1,
-   "vol_ratio": 0.9,
-   "vol_badge": "0.9x Vol Surge",
-   "volume_projected": false,
-   "rsi": 61.8,
-   "ema20": 334.71,
-   "ema50": 335.62,
-   "high20": 355.5,
-   "dist_high_pct": 2.17,
-   "atr": 9.94,
-   "checks": {
-    "volume": false,
-    "momentum": true,
-    "trend": true,
-    "breakout": true
-   },
-   "checks_passed": 3,
-   "passed": false,
-   "entry": 347.8,
-   "stop": 340.35,
-   "t1": 362.71,
-   "t2": 377.62,
-   "pivots": {
-    "P": 346.5,
-    "R1": 351.3,
-    "S1": 343.0,
-    "R2": 354.8,
-    "S2": 338.2
-   },
-   "risk_per_share": 7.45,
-   "rr_t1": 2.0,
-   "rr_t2": 4.0,
-   "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
-   "features": {
-    "log_vol_ratio": -0.10580048370944221,
-    "rsi": 61.83999268376957,
-    "dist_high_pct": 2.1659668655502813,
-    "ext_ema20": 3.9095987997761927,
-    "atr_pct": 2.857842176039372,
-    "day_chg": 1.1046476142350992,
-    "ret5": 5.393935694839014,
-    "rs20": 9.11000427586347,
-    "bias_score": 5.0,
-    "news_sent": 0.135,
-    "mkt_above50": 0.0,
-    "mkt_ret20": -2.749151739787392
-   },
-   "r1_a": 0.35212774105149736,
-   "r2_a": 0.7042554821029947,
-   "news": [
-    {
-     "title": "Top 2 stocks to buy tomorrow: Federal Bank, Indian Hotel by market expert; check stop-loss, target price for Fri, 23 Oct",
-     "source": "Livemint",
-     "link": "https://news.google.com/rss/articles/CBMikwJBVV95cUxOeHM1Y1U3ai1ka3dkUU1fQVREWlpCZGpYQ0RDV283MnZaME1ONGNfc05qbVB6QWxmMDZLbUJjcXM1c0FEbmZYVVJBbUlvQ0s3ZFM2ZVNDODNsa2dPM0xGNENJN1JvaWtjaXRnY0JtWFJFYXpOSldUcFhyNEtoVWI3RlMwX2tBVFRYcGUzcjMxdVpOVDdhbHdLaGY5bXMzQ1JScngyWVItSTl5ajNmbk80azFpRVdUUzBmMEFEaDJmdnducjRsOGJGb0Q1bFpiakkzOHppUDFGZUpLU3lfQUpXRDJPLWlFTnNtOUd5dDFPSFBFRG83aG1fR2JldzQzQ1YxRmtlb2YtVXM4cVk3M0J6YUpfa9IBmAJBVV95cUxQUW5QbFNVNTNjSUVwN0VGandINV9SVHFpcmE1d1ZYRzM2UjM3SzEzekRyd0ozVTBkNVduRkhuTVNwRkhDZFN4OFhIM1hzQ1ZDQWpvQnZ0VWtySDR2OXgybVJiOGw5WmtCVjZqcVh4M29IbGkwMU5OaTRUYmFJbVBHbTNqS1lfR3JubXRIWGt6blhhNEV5ZDNBdGNrS3N4bkFxNkhOMXVUQWkxb3VNZVVqWWsyMG5vOUdsQVZ4SU0xM2JjOEVmWk80ZmlVTXA5eE1XM2tvTXRfZ0tBVGJZRUFCcVlMS1RJclZmLWpCdG9QRVJpNDVRQkcyQkpwWnp6VXMtcEFvSF9feXhGVDE4am1NMEFSWDkya2Zx?oc=5",
-     "published": "Thu, 22 Oct 2026 12:03:50 GMT",
-     "sentiment": 0.202
-    },
-    {
-     "title": "Federal Bank holds virtual investor meets with HSBC, RARE, Franklin, WCM",
-     "source": "scanx.trade",
-     "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNc0ZGR1lPYlduNGt1S2NFM3ZtZXdKampuYzNRaE5aaWhDNGViQ3h3aC14dGt4emloT2pmR1Q0ZVhrZjlLV2Y3THAwQ2JZREhFS1hyV2k5dTNGNGV4WUZic1AzQnhoRnlRTFhybmpTdHdodVVscVlwdUtxQUZDWURhNXozNzhVQklLbGRXOGJ3RUNNbnFsVXJKZ1RRVm9KRzZ5eUdBUFBTdmZ0SWJaTTFDTlZRSQ?oc=5",
-     "published": "Thu, 22 Oct 2026 08:47:38 GMT",
-     "sentiment": 0.0
-    },
-    {
-     "title": "Market Trading Guide: Federal Bank among 4 stock recommendations for Wednesday",
-     "source": "The Economic Times",
-     "link": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxNOXVtdmtVX1BPVW5wTnFyZjZHMVFZUTFRODUwaFB5dVRQRFJ5OE9GSFdRWVFTM2JkRkFjRXFpcXJuZWtGTzYyQ0xGZE5KNm5vd3ZxX0V6NWNCUEVyb2NTckwxZXFkU3lLUF9UejNkWWpFUGVsVVVndjhHZmdkdlJzU09ISWFIcktILWg2V2lfSFRqQ2xXdC1iUlVNbzY4N2I0QnFaTzRMQ0t3R2NaQXA0UDdmdlFzNFI0c0d5a1JHWHlLM0htdDNtSlJsUmxZeGczTUM0UGQ1ODRQWlhWVDhnc2pEQ2NuVkJVUFBVcE41WQ?oc=5",
-     "published": "Tue, 20 Oct 2026 10:21:45 GMT",
-     "sentiment": 0.0
-    },
-    {
-     "title": "Federal Bank Q2 FY27: Steady quarter, FCNR(B) push up business growth",
-     "source": "Moneycontrol.com",
-     "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxOSDFzMWcxUXN5ZFFuRlhyeXgxQm9NUV9Nb2dXekh0VnVxZjBRbVhrZC03bDJkczk3Uk9TcmdFUGxPWF9SR0g0VEtYU0xSQzhYSDFyODhMcnBYbHdGRUcyZ055RUp6NW1VZV9GS3FUR2R0eE5sT1NILUMyZGR4V045MU5hOFROWHAtcWpKSlU2QjN6eDJILU01RXNTdFV2QmNnR0s1QUpCLVZHek4za09nMTFwR1B2akFIRzVPQ05IODcyZm1DemVEQ1I2UXVGTUhmRXl3TjBiU3daVmvSAeABQVVfeXFMT3BReTgzV2NGajUzNEpKbC1ndjBpNDIyZTEzRXVPLVhQajdUQi1neDI1V0UteElmbGdDWXBuamwtSE5QUmFWRTZBMFN0Rl9DbGZtTXc3RFZiWjI2ZGJxNy13YzRxU1V0NlhaTVoxNnQ2Z2hSMjZsQjM2Wm42R2JNNUpGTFhMVUI2UGVHbnFNMG44M3lKdGxNblFBLUdWM090TTNQUE44TW15WjZ2MjJrUHhOYWxWQmtnOFZtZllCVE1XTlJUSFBCZlcxclB3QVNudE1TanF6bDZRcEFBVjJHVnA?oc=5",
-     "published": "Wed, 21 Oct 2026 10:24:00 GMT",
-     "sentiment": 0.382
-    },
-    {
-     "title": "Rajesh Varrier Appointed Non-Executive Independent Director on the Board of Federal Bank",
-     "source": "https://hrtoday.in/",
-     "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQTDFPUXNrUkVJNjJyaEhGRDRZMWtSU01lUFZBUHFPcHBRRTRwMFY0MHBtVTNNVnRLRXI0VDJmeW4zbW5Kc1duX2E0eUpHdjg3N2tFWFFyNllCQUw0bWpOOEQtX29mRksxUUIyc1hvaElseG93VjdmX244enhjZmIwUW5kMTdEeXpMQVk0VENyUVZ1dTRydGN1Q1dwZ08tUXVNcXozSWtvQXZnOWxL?oc=5",
-     "published": "Thu, 22 Oct 2026 03:57:12 GMT",
-     "sentiment": 0.0
-    }
-   ],
-   "news_sentiment": {
-    "score": 0.135,
-    "count": 8,
-    "label": "POSITIVE"
-   },
-   "win_prob": 22.4,
-   "expected_r": -0.41,
-   "model_used": true,
-   "grade": "C",
-   "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
-   "action": "BUY FEDERALBNK near \u20b9347.80 (skip if it opens above \u20b9362.71) \u00b7 SL \u20b9340.35 \u00b7 T1 \u20b9362.71 \u00b7 T2 \u20b9377.62 \u00b7 Qty 13 for \u20b910k @1% risk"
   },
   {
    "symbol": "INFY",
@@ -276,7 +173,7 @@
    "rr_t2": 4.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 0.2517015971029055,
+    "log_vol_ratio": 0.2519315265967159,
     "rsi": 63.777845155140696,
     "dist_high_pct": 1.8007683622020008,
     "ext_ema20": 6.701054523898531,
@@ -284,8 +181,8 @@
     "day_chg": -1.2542829121628851,
     "ret5": 6.006431579589844,
     "rs20": 14.790141465081764,
-    "bias_score": 5.0,
-    "news_sent": 0.235,
+    "bias_score": -4.0,
+    "news_sent": 0.101,
     "mkt_above50": 0.0,
     "mkt_ret20": -2.749151739787392
    },
@@ -293,18 +190,11 @@
    "r2_a": 1.0580187652469115,
    "news": [
     {
-     "title": "Infosys Q2 results preview: Will the results provide oomph to surging IT stocks?",
-     "source": "The Economic Times",
-     "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxOeENHX19ZU3RPSWlvYTJNUlRJWDVMOXU3dnMxbDR2MmFkSGQ2c3N6ZExldy11RVNEOU15OU1TV3lvX3BnNm1pXzBPUWhzRTJOTmNfbWk0dW1qQ3dzUXlfaG5xSXR0by0yem1LeHIxZDh2c0EtOGJJQ29aSXc3bGhQb0VOUVI5RVM4WWV1TENUdW9wRlRUaGlrVnc5S0FLT0VXMkdyTDNJVTBVUmtuX0ZfN19vWjBSSVBPSmVHYWY2UWJ1WG4zaXdSX1JaX2FlQ205eUszaXc0VF9LUE9kY2dTQzI2dExZNnlPLUVya9IB8gFBVV95cUxQQ2MwWWVrVEZ6bHFRa3dTVDdKSHN3cmRvc05VaGVrbENGM1BmWnMxRHR0R1FWX1ZjLUF1Q0c3WWpBbGo2ZlJpNkJzdWJGQWxSYW9BZmVtOVhiUTB2ZG5PSk1vLW5OWVFTOWduY2I3c1hTS0VseEdySnl3Nzl3ejNWU1dZSWZoc0JPZVQ1c2xtSUlyY1NOVWc2QkRYWFY4VHRuaU9DQlpsalhfb2ljdFhhV3NwbjU3bmtlcXFiT2lJa25aNGRneTY0eThDM1dLZkl1WnhRYllmY3ZOYW0xeW1pQk9mWW4yYW4yRi1CbG5NNWh0QQ?oc=5",
-     "published": "Thu, 22 Oct 2026 04:26:16 GMT",
-     "sentiment": 0.0
-    },
-    {
-     "title": "Infosys Q2 results preview: Analysts see PAT rising 10%; guidance in focus",
-     "source": "Business Standard",
-     "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNcWZ1Zzc3SFY4LXRBVVoxWWtvZ015XzVhQUdnNXhvODdpNy1vYWM3ZnhGWHd0QXpvaHlncWpiSWhLLWVhTjBiUDdTVnpTMUVKOTZvYTdqNXQyLU9tYmlja3hXYnhDNXZVTlc2TElsS3NRNEIwLUhvaUZ4VkVzQXVycC1ndzZQSXc0VzZ5ZUQ4YjVxLUNobFdLdm9Wb0pBVFNRcnYwZTRlX1BkWEl1akVKSnVTMkRMTFZ1WC1ubUI1TWtBV2djMWQ2U0FpWmZlR2F3cXUyOdIB2gFBVV95cUxQVHJUU3F0V05VV3FCekZ1clJoaUxCRmhkcTVPUEpGTTJvYUFnYk4tNnhMX00xQkR0a3RDbTRhU0xPLXF5ZzJEbThCa3hKY0VKYUVSdmNtSW1scm5RM0IwYjF4VzVhZl9YQkZtWEp3TVBIZ25mQ3N0UFZSV3pacVM3OVMwWlpEQV9wSV95Q1lFRWQwRm9yNGR1bDdNaU53OGVIQjJPaERoMWtqc20tLXpjOUlLZi1JT2dLUl9kb3h2X3lJVHBRSWhldmxHOGV3bDk0d1hYQ0hlYXcwUQ?oc=5",
-     "published": "Thu, 22 Oct 2026 09:14:01 GMT",
-     "sentiment": 0.0
+     "title": "Infosys Limited (INFY) stock price, news, quote and history",
+     "source": "Yahoo Finance Singapore",
+     "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE81Vk82d2I1M1JmYWJ2QktDV01ncWo2TVgwbzlfU0FyQ1VodnJnZmw1THBTdkNLcjNRalFtM0QxMGtuNFNSaEV0ZUZiUUlPUjNYemc?oc=5",
+     "published": "Thu, 22 Oct 2026 13:12:35 GMT",
+     "sentiment": -0.226
     },
     {
      "title": "Infosys Q2 results, dividend: Earnings expectations, timing, FY27 guidance & targets",
@@ -314,31 +204,141 @@
      "sentiment": 0.202
     },
     {
-     "title": "INFY Share Price Today - Infosys on NSE/BSE",
-     "source": "scanx.trade",
-     "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9KUVlOa1VMNkdxOWM4Z21uZ1hHcGxZcW5mZ0lDaWZyLVZ1UVpZLXJmNHIyMUN5aGkxVW96a1FZdWYyMXlQZ1Nya2ZIbmJlcWlz?oc=5",
-     "published": "Tue, 20 Oct 2026 06:01:33 GMT",
-     "sentiment": 0.296
+     "title": "Stocks in news: Swiggy, Infosys, HPCL, eMudhra, Adani Power, Shriram Finance, Tata Motors and NLC India",
+     "source": "The Economic Times",
+     "link": "https://news.google.com/rss/articles/CBMi_wFBVV95cUxNdFJPb0cyclNCb2JtWlhvaHdmc2tUVWxsempPMlJrc1dPX3lVTjh4eXlKZ3BxeHBBS1lJQTJQSk9WSWgwdHRzTlhMTmQ0QVN3ZTgyUE9RQkczQ0txajhxbV9vZUs4X0VSMWNsV1JfYmNJSUJtV3lZS3Z2LWdpX2VyLV9ycG1ianVPMzZhTDN4NTdLSlp2RTJfbFNLRUhSQ0dGNmhnTGdrV1NRMUowMzNVZWJaV0ZmZTBJX1VVV3JIejhtcWN3eDhSTlpxOTIzMEl3S3ZVWlExMWUwclNTaXNrUG5lR0UzV1h0MkVvU0VMVEFIWkNfa3YtVE92UWVaY0k?oc=5",
+     "published": "Fri, 23 Oct 2026 00:30:00 GMT",
+     "sentiment": 0.0
     },
     {
-     "title": "Infosys Share Price rise: price action and fundamentals",
-     "source": "Univest",
-     "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9ZcERNWm1SeTBKN3FKZzU1Q2d3cEZadjhJb09kTHdEdGVwaWZsVl9UOExOSmhhdk9ZSV96VFpFTGxxZHV1SWJCMDVLanRSSFlPa1NfVFFoc0pNNVVPbHVPanZ5a291MkVwTWFUVWRWQ1QySTJSaEd3?oc=5",
-     "published": "Wed, 21 Oct 2026 22:12:28 GMT",
-     "sentiment": 0.296
+     "title": "Infosys Limited (INFY) Stock Price, News, Quote & History",
+     "source": "Yahoo! Finance Canada",
+     "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5zVTBfd1BXNDZZLWNrVTQySDYwME0wN2dYRENjeU9TZDBWZGg1SGpRZnUyWHJqcHFiRlpLd21tMXk0RFN0eG95dEFGeU9WMDA1V0E?oc=5",
+     "published": "Thu, 22 Oct 2026 13:39:33 GMT",
+     "sentiment": -0.226
+    },
+    {
+     "title": "Ahead of Infosys Earnings, Here's What Barchart Data Says Comes Next for INFY Stock",
+     "source": "Barchart.com",
+     "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPN052c1Q2R3BERVR1UXVOOVVxLUlsNG5OcElLSzc3UURlUVdMaXJVUUtERWZrQnB5eWExRGVyaXpSUGFkWWs2cWJCY25uMW91VTYxOWFvS0NkcjFvV2gtQVFxc0UtQ2ZqZWd1SGh1Y0tlQjR4QTI2NC1iQkRFR1Y1Vldhenl3aW9rZklzR05WX2prX09DSDhDdFY0alVrRkU2NFcxQmNiX3Q1eU5YNEdTeURuNDU1aDVoeEtueEpJMWNEUnFq?oc=5",
+     "published": "Thu, 22 Oct 2026 16:09:07 GMT",
+     "sentiment": 0.0
     }
    ],
    "news_sentiment": {
-    "score": 0.235,
+    "score": 0.101,
     "count": 8,
     "label": "POSITIVE"
    },
-   "win_prob": 13.3,
-   "expected_r": -0.59,
+   "win_prob": 27.8,
+   "expected_r": -0.3,
    "model_used": true,
    "grade": "C",
    "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
    "action": "BUY INFY near \u20b91,153.35 (skip if it opens above \u20b91,202.12) \u00b7 SL \u20b91,128.96 \u00b7 T1 \u20b91,202.12 \u00b7 T2 \u20b91,250.89 \u00b7 Qty 4 for \u20b910k @1% risk"
+  },
+  {
+   "symbol": "FEDERALBNK",
+   "name": "Federal Bank",
+   "bar_date": "2026-10-22",
+   "cmp": 347.8,
+   "day_chg": 1.1,
+   "vol_ratio": 0.9,
+   "vol_badge": "0.9x Vol Surge",
+   "volume_projected": false,
+   "rsi": 61.8,
+   "ema20": 334.71,
+   "ema50": 335.62,
+   "high20": 355.5,
+   "dist_high_pct": 2.17,
+   "atr": 9.94,
+   "checks": {
+    "volume": false,
+    "momentum": true,
+    "trend": true,
+    "breakout": true
+   },
+   "checks_passed": 3,
+   "passed": false,
+   "entry": 347.8,
+   "stop": 340.35,
+   "t1": 362.71,
+   "t2": 377.62,
+   "pivots": {
+    "P": 346.5,
+    "R1": 351.3,
+    "S1": 343.0,
+    "R2": 354.8,
+    "S2": 338.2
+   },
+   "risk_per_share": 7.45,
+   "rr_t1": 2.0,
+   "rr_t2": 4.0,
+   "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
+   "features": {
+    "log_vol_ratio": -0.10535718980259484,
+    "rsi": 61.83999268376957,
+    "dist_high_pct": 2.1659668655502813,
+    "ext_ema20": 3.9095987997761927,
+    "atr_pct": 2.857842176039372,
+    "day_chg": 1.1046476142350992,
+    "ret5": 5.393935694839014,
+    "rs20": 9.11000427586347,
+    "bias_score": -4.0,
+    "news_sent": 0.158,
+    "mkt_above50": 0.0,
+    "mkt_ret20": -2.749151739787392
+   },
+   "r1_a": 0.35212774105149736,
+   "r2_a": 0.7042554821029947,
+   "news": [
+    {
+     "title": "Top 12 Bank Stocks To Buy In India October 2026",
+     "source": "Samco",
+     "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQVTJGTjNBTndCWnlCMVF4am9OclFTVEN0clJWVXBKc3BWX0E4bDhwTUxlVWFKd0xReUJWSVl6T0M3UnExVHowUHZHdkExQ016S1MtX1lJdjNKYUNoRzBpM19fbTZYeTNOVGpNY0NPMTQydUdvWDZWMGFveE12Umh4eVRkVC02b1FMYVJhZQ?oc=5",
+     "published": "Thu, 22 Oct 2026 06:50:56 GMT",
+     "sentiment": 0.202
+    },
+    {
+     "title": "Top 2 stocks to buy tomorrow: Federal Bank, Indian Hotel by market expert; check stop-loss, target price for Fri, 23 Oct",
+     "source": "Livemint",
+     "link": "https://news.google.com/rss/articles/CBMikwJBVV95cUxOeHM1Y1U3ai1ka3dkUU1fQVREWlpCZGpYQ0RDV283MnZaME1ONGNfc05qbVB6QWxmMDZLbUJjcXM1c0FEbmZYVVJBbUlvQ0s3ZFM2ZVNDODNsa2dPM0xGNENJN1JvaWtjaXRnY0JtWFJFYXpOSldUcFhyNEtoVWI3RlMwX2tBVFRYcGUzcjMxdVpOVDdhbHdLaGY5bXMzQ1JScngyWVItSTl5ajNmbk80azFpRVdUUzBmMEFEaDJmdnducjRsOGJGb0Q1bFpiakkzOHppUDFGZUpLU3lfQUpXRDJPLWlFTnNtOUd5dDFPSFBFRG83aG1fR2JldzQzQ1YxRmtlb2YtVXM4cVk3M0J6YUpfa9IBmAJBVV95cUxQUW5QbFNVNTNjSUVwN0VGandINV9SVHFpcmE1d1ZYRzM2UjM3SzEzekRyd0ozVTBkNVduRkhuTVNwRkhDZFN4OFhIM1hzQ1ZDQWpvQnZ0VWtySDR2OXgybVJiOGw5WmtCVjZqcVh4M29IbGkwMU5OaTRUYmFJbVBHbTNqS1lfR3JubXRIWGt6blhhNEV5ZDNBdGNrS3N4bkFxNkhOMXVUQWkxb3VNZVVqWWsyMG5vOUdsQVZ4SU0xM2JjOEVmWk80ZmlVTXA5eE1XM2tvTXRfZ0tBVGJZRUFCcVlMS1RJclZmLWpCdG9QRVJpNDVRQkcyQkpwWnp6VXMtcEFvSF9feXhGVDE4am1NMEFSWDkya2Zx?oc=5",
+     "published": "Thu, 22 Oct 2026 12:03:50 GMT",
+     "sentiment": 0.202
+    },
+    {
+     "title": "Today\u2019s Stock Recommendation: October 23, 2026",
+     "source": "BusinessLine",
+     "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNNE9EY0ZSRlhyckR1Yl9jakt2RXVBM1BfdU44QlJhSVJlNDUyZnRNN0JiSFZQZTZQNDNNQjlNY2EwcmFuU2drRUEzZzlZSklCbVBWYUU3a1VaeVhUdFY3ZUdTT3R4SVB3MDlrdzZnbzRFTngwaDhjckhpY3kxYklSZjQyV3JsYkp1NlJ2QjBvVllZam1HREk3WjFjQ1g4NTVYSTc3S0gzZjFSX3VFd1V1Y3JFNFg0eDdU?oc=5",
+     "published": "Fri, 23 Oct 2026 01:06:00 GMT",
+     "sentiment": 0.0
+    },
+    {
+     "title": "Federal Bank holds virtual investor meets with HSBC, RARE, Franklin, WCM",
+     "source": "scanx.trade",
+     "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNc0ZGR1lPYlduNGt1S2NFM3ZtZXdKampuYzNRaE5aaWhDNGViQ3h3aC14dGt4emloT2pmR1Q0ZVhrZjlLV2Y3THAwQ2JZREhFS1hyV2k5dTNGNGV4WUZic1AzQnhoRnlRTFhybmpTdHdodVVscVlwdUtxQUZDWURhNXozNzhVQklLbGRXOGJ3RUNNbnFsVXJKZ1RRVm9KRzZ5eUdBUFBTdmZ0SWJaTTFDTlZRSQ?oc=5",
+     "published": "Thu, 22 Oct 2026 08:47:38 GMT",
+     "sentiment": 0.0
+    },
+    {
+     "title": "Market Trading Guide: Federal Bank among 4 stock recommendations for Wednesday",
+     "source": "The Economic Times",
+     "link": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxNOXVtdmtVX1BPVW5wTnFyZjZHMVFZUTFRODUwaFB5dVRQRFJ5OE9GSFdRWVFTM2JkRkFjRXFpcXJuZWtGTzYyQ0xGZE5KNm5vd3ZxX0V6NWNCUEVyb2NTckwxZXFkU3lLUF9UejNkWWpFUGVsVVVndjhHZmdkdlJzU09ISWFIcktILWg2V2lfSFRqQ2xXdC1iUlVNbzY4N2I0QnFaTzRMQ0t3R2NaQXA0UDdmdlFzNFI0c0d5a1JHWHlLM0htdDNtSlJsUmxZeGczTUM0UGQ1ODRQWlhWVDhnc2pEQ2NuVkJVUFBVcE41WQ?oc=5",
+     "published": "Tue, 20 Oct 2026 10:21:45 GMT",
+     "sentiment": 0.0
+    }
+   ],
+   "news_sentiment": {
+    "score": 0.158,
+    "count": 8,
+    "label": "POSITIVE"
+   },
+   "win_prob": 19.0,
+   "expected_r": -0.48,
+   "model_used": true,
+   "grade": "C",
+   "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
+   "action": "BUY FEDERALBNK near \u20b9347.80 (skip if it opens above \u20b9362.71) \u00b7 SL \u20b9340.35 \u00b7 T1 \u20b9362.71 \u00b7 T2 \u20b9377.62 \u00b7 Qty 13 for \u20b910k @1% risk"
   }
  ],
  "scanned": 82,
