@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-23T16:18:05.937212+05:30",
+ "generated_at": "2026-10-23T21:00:14.283945+05:30",
  "target_session": "2026-10-26",
  "reference_date": "2026-10-23",
  "us_session_used": "2026-10-23",
@@ -7,58 +7,58 @@
   {
    "name": "S&P 500",
    "symbol": "^GSPC",
-   "last": 7663.43,
-   "change": -1.208,
+   "last": 7654.64,
+   "change": -0.115,
    "change_unit": "%",
-   "as_of": "2026-10-22"
+   "as_of": "2026-10-23"
   },
   {
    "name": "Nasdaq",
    "symbol": "^IXIC",
-   "last": 26008.86,
-   "change": -2.599,
+   "last": 26070.02,
+   "change": 0.235,
    "change_unit": "%",
-   "as_of": "2026-10-22"
+   "as_of": "2026-10-23"
   },
   {
    "name": "Dow Jones",
    "symbol": "^DJI",
-   "last": 52867.98,
-   "change": 0.022,
+   "last": 52386.75,
+   "change": -0.91,
    "change_unit": "%",
-   "as_of": "2026-10-22"
+   "as_of": "2026-10-23"
   },
   {
    "name": "US 10Y Yield",
    "symbol": "^TNX",
-   "last": 4.95,
-   "change": -0.193,
+   "last": 4.99,
+   "change": 0.039,
    "change_unit": "pts",
-   "as_of": "2026-10-22"
+   "as_of": "2026-10-23"
   },
   {
    "name": "Crude Oil",
    "symbol": "CL=F",
-   "last": 101.03,
-   "change": 1.568,
+   "last": 102.16,
+   "change": 2.704,
    "change_unit": "%",
    "as_of": "2026-10-23"
   },
   {
    "name": "Dollar Index",
    "symbol": "DX-Y.NYB",
-   "last": 101.77,
-   "change": 0.157,
+   "last": 101.75,
+   "change": 0.137,
    "change_unit": "%",
    "as_of": "2026-10-23"
   },
   {
    "name": "Nikkei 225",
    "symbol": "^N225",
-   "last": 62693.16,
-   "change": -0.341,
+   "last": 62907.84,
+   "change": -2.651,
    "change_unit": "%",
-   "as_of": "2026-10-23"
+   "as_of": "2026-10-22"
   },
   {
    "name": "Hang Seng",
@@ -95,14 +95,20 @@
  ],
  "bias": {
   "label": "RANGEBOUND",
-  "score": 17,
-  "z": 0.174,
-  "model_z": 0.174,
-  "predicted_nifty_move_pct": 0.138,
+  "score": -2,
+  "z": -0.024,
+  "model_z": -0.024,
+  "predicted_nifty_move_pct": -0.019,
   "typical_daily_move_pct": 0.795,
   "source": "daily close model",
   "india_vix": 16.86,
   "components": [
+   {
+    "feature": "ndx",
+    "label": "Nasdaq minus S&P (tech tilt) %",
+    "value": 0.35,
+    "contribution_pct": -0.096
+   },
    {
     "feature": "vix_chg",
     "label": "India VIX change",
@@ -116,28 +122,28 @@
     "contribution_pct": 0.065
    },
    {
-    "feature": "dxy",
-    "label": "Dollar index %",
-    "value": 0.157,
-    "contribution_pct": -0.041
-   },
-   {
     "feature": "spx",
     "label": "S&P 500 overnight %",
-    "value": 0.0,
-    "contribution_pct": -0.022
+    "value": -0.115,
+    "contribution_pct": -0.056
+   },
+   {
+    "feature": "dxy",
+    "label": "Dollar index %",
+    "value": 0.137,
+    "contribution_pct": -0.036
+   },
+   {
+    "feature": "tnx",
+    "label": "US 10Y yield chg (pts)",
+    "value": 0.039,
+    "contribution_pct": -0.028
    },
    {
     "feature": "nifty_prev",
     "label": "Nifty previous day %",
     "value": -0.386,
     "contribution_pct": 0.015
-   },
-   {
-    "feature": "ndx",
-    "label": "Nasdaq minus S&P (tech tilt) %",
-    "value": 0.0,
-    "contribution_pct": 0.005
    },
    {
     "feature": "nifty_ext",
@@ -148,108 +154,102 @@
    {
     "feature": "crude",
     "label": "Crude oil %",
-    "value": 1.568,
+    "value": 2.704,
     "contribution_pct": 0.001
-   },
-   {
-    "feature": "tnx",
-    "label": "US 10Y yield chg (pts)",
-    "value": 0.0,
-    "contribution_pct": 0.0
    }
   ]
  },
  "news": {
   "summary": {
-   "score": 0.038,
-   "count": 38,
+   "score": 0.016,
+   "count": 20,
    "label": "NEUTRAL"
   },
   "weight": 0.0,
   "headlines": [
    {
-    "title": "Rupee little changed this week as oil-fueled declines wipe out early gains",
+    "title": "Jio IPO breaks 12 records: Rs 4.5 lakh crore bids, highest applications and more",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/forex/forex-news/rupee-little-changed-this-week-as-oil-fueled-declines-wipe-out-early-gains/articleshow/135142602.cms",
-    "published": "Fri, 23 Oct 2026 15:47:21 +0530",
-    "sentiment": 0.296
-   },
-   {
-    "title": "Global Market: Eurozone bond markets stabilise after volatile week",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/global-market-eurozone-bond-markets-stabilise-after-volatile-week/articleshow/135142036.cms",
-    "published": "Fri, 23 Oct 2026 15:19:47 +0530",
+    "link": "https://economictimes.indiatimes.com/markets/ipos/fpos/jio-ipo-breaks-12-records-rs-4-5-lakh-crore-bids-highest-applications-and-more/articleshow/135149311.cms",
+    "published": "Fri, 23 Oct 2026 20:34:30 +0530",
     "sentiment": 0.0
    },
    {
-    "title": "JSW Steel Q2 Results: Net profit rockets 225% YoY to Rs 5,279 crore; revenue rises 21%",
+    "title": "Aditya Birla Real Estate eyes Rs 1,650 cr revenue from new project in Pune",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/jsw-steel-q2-results-net-profit-rockets-225-yoy-to-rs-5279-crore-revenue-rises-21/articleshow/135141641.cms",
-    "published": "Fri, 23 Oct 2026 14:59:26 +0530",
-    "sentiment": 0.25
-   },
-   {
-    "title": "Adani Power Q2 Results: Profit zooms 134% YoY to Rs 6,919 crore; revenue jumps 45%",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/adani-power-q2-results-cons-profit-zooms-134-yoy-to-rs-6919-crore-revenue-jumps-45/articleshow/135141294.cms",
-    "published": "Fri, 23 Oct 2026 14:45:36 +0530",
-    "sentiment": 0.542
-   },
-   {
-    "title": "Global Market: European stocks edge lower as Kering slumps, oil prices rise",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/global-market-european-stocks-edge-lower-as-kering-slumps-oil-prices-rise/articleshow/135141363.cms",
-    "published": "Fri, 23 Oct 2026 14:42:02 +0530",
-    "sentiment": -0.637
-   },
-   {
-    "title": "Global Market: French bond selloff raises debt concerns across Europe amid social unrest",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/global-market-french-bond-selloff-raises-debt-concerns-across-europe-amid-social-unrest/articleshow/135141236.cms",
-    "published": "Fri, 23 Oct 2026 14:40:17 +0530",
-    "sentiment": -0.67
-   },
-   {
-    "title": "From mercury to gold? This San Francisco startup claims it can produce yellow metal at will",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/from-mercury-to-gold-this-san-francisco-startup-claims-it-can-produce-yellow-metal-at-will/articleshow/135140759.cms",
-    "published": "Fri, 23 Oct 2026 14:35:13 +0530",
+    "link": "https://economictimes.indiatimes.com/markets/digital-real-estate/realty-news/aditya-birla-real-estate-eyes-rs-1650-cr-revenue-from-new-project-in-pune/articleshow/135148283.cms",
+    "published": "Fri, 23 Oct 2026 19:40:45 +0530",
     "sentiment": 0.0
    },
    {
-    "title": "Sterlite Technologies Q2 Results: Profit surges 12,817% YoY to Rs 517 crore, revenue jumps 145%",
+    "title": "RBI does not target any specific Rupee level, focuses on curbing volatility, says Governor Sanjay Malhotra",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/sterlite-technologies-q2-results-profit-surges-12817-yoy-to-rs-517-crore-revenue-jumps-145/articleshow/135140910.cms",
-    "published": "Fri, 23 Oct 2026 14:27:35 +0530",
-    "sentiment": 0.743
+    "link": "https://economictimes.indiatimes.com/markets/forex/forex-news/rbi-does-not-target-any-specific-rupee-level-focuses-on-curbing-volatility-says-governor-sanjay-malhotra/articleshow/135148201.cms",
+    "published": "Fri, 23 Oct 2026 19:38:55 +0530",
+    "sentiment": 0.0
    },
    {
-    "title": "D-Street bleeds! Market value of all BSE-listed firms falls below Rs 450 lakh crore for first time since April. More pain ahead?",
+    "title": "SBI Cards Q2 profit jumps 75% YoY to Rs 778 crore as bad loan costs fall sharply",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/d-street-bleeds-market-value-of-all-bse-listed-firms-falls-below-rs-450-lakh-crore-for-first-time-since-april-more-pain-ahead/articleshow/135140291.cms",
-    "published": "Fri, 23 Oct 2026 13:59:38 +0530",
-    "sentiment": -0.57
+    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/sbi-cards-q2-profit-jumps-75-yoy-to-rs-778-crore-as-bad-loan-costs-fall-sharply/articleshow/135147815.cms",
+    "published": "Fri, 23 Oct 2026 19:15:08 +0530",
+    "sentiment": 0.0
    },
    {
-    "title": "Silver prices slide below Rs 2 lakh/kg, down nearly 55% from Jan peak. What\u2019s behind the rapid selloff?",
+    "title": "Why US stocks are falling: Dow Jones crashes over 700 points as AI selloff, SpaceX fears hit markets",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/commodities/news/silver-prices-slide-below-rs-2-lakh/kg-down-nearly-55-from-jan-peak-whats-behind-the-rapid-selloff/articleshow/135139949.cms",
-    "published": "Fri, 23 Oct 2026 13:50:53 +0530",
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/why-us-stocks-are-falling-dow-jones-crashes-over-700-points-as-ai-selloff-spacex-fears-hit-markets/articleshow/135147604.cms",
+    "published": "Fri, 23 Oct 2026 19:08:31 +0530",
+    "sentiment": -0.751
+   },
+   {
+    "title": "Bharat Electronics among 4 Sensex stocks to hit 52-week lows; shares fall up to 9% in a month",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/bharat-electronics-among-4-sensex-stocks-to-hit-52-week-lows-shares-fall-up-to-9-in-a-month/slideshow/135147674.cms",
+    "published": "Fri, 23 Oct 2026 19:04:27 +0530",
+    "sentiment": 0.103
+   },
+   {
+    "title": "Dr Reddy\u2019s Q2 Results: Net profit falls 36% YoY to Rs 913 crore, revenue declines marginally",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/dr-reddys-q2-results-net-profit-falls-36-yoy-to-rs-913-crore-revenue-declines-marginally/articleshow/135147475.cms",
+    "published": "Fri, 23 Oct 2026 19:02:47 +0530",
+    "sentiment": -0.052
+   },
+   {
+    "title": "Only 15% of midcap stocks above 50-DMA: Is buying the dip getting riskier? JM Financial spots signs of leadership shift",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/only-15-of-midcap-stocks-above-50-dma-is-buying-the-dip-getting-riskier-jm-financial-spots-signs-of-leadership-shift/articleshow/135146815.cms",
+    "published": "Fri, 23 Oct 2026 18:37:51 +0530",
+    "sentiment": -0.34
+   },
+   {
+    "title": "US Stock Market Live Updates: AI Selloff Dow Jones crashes over 500 points as AI, telecom stocks tumble",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/stock-market-live-updates-dow-jones-nasdaq-sp-500-ai-selloff-wall-street-futures-telecom-stocks-spacex-meta-coreweave-earnings-treasury-bond-yield-news-23rd-october-2026/liveblog/135145607.cms",
+    "published": "Fri, 23 Oct 2026 17:39:43 +0530",
     "sentiment": -0.459
    },
    {
-    "title": "Global Market: Anthropic presses ahead with November IPO as AI listings face delays",
+    "title": "India's 10-year bond falls for 10th week in record slump",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/global-market-anthropic-presses-ahead-with-november-ipo-as-ai-listings-face-delays/articleshow/135139929.cms",
-    "published": "Fri, 23 Oct 2026 13:39:22 +0530",
-    "sentiment": 0.0
+    "link": "https://economictimes.indiatimes.com/markets/bonds/indias-10-year-bond-falls-for-10th-week-in-record-slump/articleshow/135145225.cms",
+    "published": "Fri, 23 Oct 2026 17:36:01 +0530",
+    "sentiment": -0.052
    },
    {
-    "title": "Global Market: Bank Indonesia defends policy mix after market confusion",
+    "title": "Infosys ADRs crash 6% after Q2 results as revenue guidance cut spooks investors",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/global-market-bank-indonesia-defends-policy-mix-after-market-confusion/articleshow/135139934.cms",
-    "published": "Fri, 23 Oct 2026 13:37:42 +0530",
-    "sentiment": -0.296
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/infosys-adrs-crash-6-after-q2-results-as-revenue-guidance-cut-spooks-investors/articleshow/135145145.cms",
+    "published": "Fri, 23 Oct 2026 17:33:48 +0530",
+    "sentiment": -0.586
+   },
+   {
+    "title": "Market wrap: Eternal, Apollo Hospital, Shriram Finance, Adani Enterprises among top gainers and losers on Nifty and Sensex on Friday",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/market-wrap-eternal-apollo-hospital-shriram-finance-adani-enterprises-among-top-gainers-and-losers-on-nifty-and-sensex-on-friday/articleshow/135144888.cms",
+    "published": "Fri, 23 Oct 2026 17:30:35 +0530",
+    "sentiment": 0.026
    }
   ]
  },
@@ -259,7 +259,7 @@
   "directional_accuracy": 64.2,
   "sign_accuracy_all_days": 59.2,
   "trained_rows": 750,
-  "version": 11,
+  "version": 12,
   "bias_threshold": 0.2
  },
  "options": {
@@ -357,7 +357,7 @@
         "total": 3639
        }
       },
-      "reason": "1 day before, right after Infosys, Kotak Bank results: condors broke 60% of the time in this combination (small sample)."
+      "reason": "1 day before, right after Kotak Bank results: condors broke 60% of the time in this combination (small sample)."
      }
     },
     {
@@ -439,7 +439,7 @@
       "total": 3639
      }
     },
-    "reason": "No tested structure has a positive record for today. 1 day before, right after Infosys, Kotak Bank results: condors broke 60% of the time in this combination (small sample)."
+    "reason": "No tested structure has a positive record for today. 1 day before, right after Kotak Bank results: condors broke 60% of the time in this combination (small sample)."
    }
   },
   "BANKNIFTY": {
@@ -624,15 +624,6 @@
  },
  "events": [
   {
-   "symbol": "INFY",
-   "name": "Infosys",
-   "when": "Fri 23 Oct",
-   "date": "2026-10-23",
-   "affects": "2026-10-26",
-   "past": true,
-   "bank": false
-  },
-  {
    "symbol": "KOTAKBANK",
    "name": "Kotak Bank",
    "when": "Sat 24 Oct",
@@ -661,43 +652,43 @@
   }
  ],
  "preopen": {
-  "snapshot_ist": "Fri 23 Oct 16:18 IST",
+  "snapshot_ist": "Fri 23 Oct 21:00 IST",
   "stage": "preview",
-  "expected_gap_pct": 0.02,
+  "expected_gap_pct": -0.22,
   "gap_typical_error_pct": 0.38,
-  "expected_day_pct": 0.1,
-  "z": 0.127,
+  "expected_day_pct": 0.05,
+  "z": 0.059,
   "typical_daily_move_pct": 0.769,
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": 0.0
+    "move_pct": 0.08
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": 0.0
+    "move_pct": 0.48
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": 0.0
+    "move_pct": -0.38
    },
    {
     "key": "dax",
     "name": "DAX (Germany)",
-    "move_pct": 0.0
+    "move_pct": -0.24
    },
    {
     "key": "ftse",
     "name": "FTSE 100 (UK)",
-    "move_pct": 0.0
+    "move_pct": -0.1
    },
    {
     "key": "stoxx",
     "name": "Euro Stoxx 50",
-    "move_pct": 0.0
+    "move_pct": 0.11
    },
    {
     "key": "n225",
@@ -707,25 +698,37 @@
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": 0.0
+    "move_pct": 1.0
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": 0.0
+    "move_pct": -0.56
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": 0.0
+    "move_pct": -0.04
    },
    {
     "key": "inr",
     "name": "USD/INR",
-    "move_pct": 0.0
+    "move_pct": -0.01
    }
   ],
   "drivers": [
+   {
+    "feature": "ym",
+    "label": "Dow futures",
+    "value": -0.38,
+    "contribution_pct": 0.14
+   },
+   {
+    "feature": "nq",
+    "label": "Nasdaq futures",
+    "value": 0.48,
+    "contribution_pct": -0.099
+   },
    {
     "feature": "vix",
     "label": "India VIX level",
@@ -733,34 +736,22 @@
     "contribution_pct": 0.079
    },
    {
-    "feature": "nprev",
-    "label": "Nifty previous day",
-    "value": -0.39,
-    "contribution_pct": 0.021
+    "feature": "cl",
+    "label": "Crude oil",
+    "value": 1.0,
+    "contribution_pct": -0.071
    },
    {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": 0.0,
-    "contribution_pct": -0.02
-   },
-   {
-    "feature": "ym",
-    "label": "Dow futures",
-    "value": 0.0,
-    "contribution_pct": 0.013
-   },
-   {
-    "feature": "cl",
-    "label": "Crude oil",
-    "value": 0.0,
-    "contribution_pct": 0.007
+    "value": 0.08,
+    "contribution_pct": 0.045
    },
    {
     "feature": "ftse",
     "label": "FTSE 100 (UK)",
-    "value": 0.0,
-    "contribution_pct": -0.004
+    "value": -0.1,
+    "contribution_pct": -0.037
    }
   ],
   "wf": {
@@ -773,23 +764,23 @@
   "vix": 16.86
  },
  "global_table": {
-  "updated": "2026-10-23T16:18:17.111179+05:30",
+  "updated": "2026-10-23T21:00:32.655004+05:30",
   "rows": [
    {
     "group": "US, last close",
-    "move": "S&P 500 -1.2%, Nasdaq -2.6%, Dow +0.0%",
-    "effect": "red",
-    "note": "Negative lead for India"
+    "move": "S&P 500 -0.1%, Nasdaq +0.2%, Dow -0.9%",
+    "effect": "flat",
+    "note": "Little signal"
    },
    {
     "group": "US futures now",
-    "move": "S&P +0.00%, Nasdaq +0.00%, Dow +0.00% (since Nifty's close)",
-    "effect": "flat",
-    "note": "Flat"
+    "move": "S&P +0.08%, Nasdaq +0.48%, Dow -0.38% (since Nifty's close)",
+    "effect": "green",
+    "note": "Futures point to a firmer open"
    },
    {
     "group": "Europe, last close",
-    "move": "DAX -0.9%, FTSE -0.6%, Euro Stoxx -0.7%",
+    "move": "DAX -1.0%, FTSE -0.6%, Euro Stoxx -0.6%",
     "effect": "red",
     "note": "Weak"
    },
@@ -801,25 +792,25 @@
    },
    {
     "group": "Crude oil",
-    "move": "WTI ~$101, Brent ~$110 (+1.4%)",
+    "move": "WTI ~$102, Brent ~$111 (+2.6%)",
     "effect": "red",
     "note": "Rising oil hurts India \u00b7 Price is high for India"
    },
    {
     "group": "US 10-year yield",
-    "move": "4.95% (-20 bp)",
-    "effect": "green",
-    "note": "Easing yields help"
+    "move": "4.99% (+4 bp)",
+    "effect": "flat",
+    "note": "Steady"
    },
    {
     "group": "Dollar index",
-    "move": "101.77 (+0.16%)",
+    "move": "101.75 (+0.14%)",
     "effect": "flat",
     "note": "Steady"
    },
    {
     "group": "Rupee",
-    "move": "94.94 per $ (+0.14%)",
+    "move": "94.93 per $ (+0.13%)",
     "effect": "flat",
     "note": "Steady"
    },
@@ -831,14 +822,14 @@
    },
    {
     "group": "Model: Nifty open",
-    "move": "+0.02% (\u00b10.38%)",
-    "effect": "flat",
+    "move": "-0.22% (\u00b10.38%)",
+    "effect": "red",
     "note": "Combined forecast from all markets (preview)",
     "model": true
    }
   ],
   "tilt": "negative",
-  "score": -3
+  "score": -2
  },
  "notes": [
   "GIFT Nifty has no free data feed; the pre-open model reads what drives it (US/Dow futures, Europe, Asia, crude, rupee).",

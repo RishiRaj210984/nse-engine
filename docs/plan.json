@@ -1,44 +1,44 @@
 {
- "generated_at": "2026-10-23T16:18:21.085873+05:30",
+ "generated_at": "2026-10-23T21:00:40.831186+05:30",
  "session": "2026-10-26",
  "stage": "preview",
  "expected_open": {
-  "gap_pct": 0.02,
+  "gap_pct": -0.22,
   "error_pct": 0.38,
-  "day_pct": 0.1,
-  "snapshot": "Fri 23 Oct 16:18 IST",
+  "day_pct": 0.05,
+  "snapshot": "Fri 23 Oct 21:00 IST",
   "stage": "preview",
-  "tip": "Flat open expected. Normal entry windows apply.",
+  "tip": "Moderate gap down expected. Use limit orders only, and wait for 09:30.",
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": 0.0
+    "move_pct": 0.08
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": 0.0
+    "move_pct": 0.48
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": 0.0
+    "move_pct": -0.38
    },
    {
     "key": "dax",
     "name": "DAX (Germany)",
-    "move_pct": 0.0
+    "move_pct": -0.24
    },
    {
     "key": "ftse",
     "name": "FTSE 100 (UK)",
-    "move_pct": 0.0
+    "move_pct": -0.1
    },
    {
     "key": "stoxx",
     "name": "Euro Stoxx 50",
-    "move_pct": 0.0
+    "move_pct": 0.11
    },
    {
     "key": "n225",
@@ -48,25 +48,37 @@
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": 0.0
+    "move_pct": 1.0
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": 0.0
+    "move_pct": -0.56
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": 0.0
+    "move_pct": -0.04
    },
    {
     "key": "inr",
     "name": "USD/INR",
-    "move_pct": 0.0
+    "move_pct": -0.01
    }
   ],
   "drivers": [
+   {
+    "feature": "ym",
+    "label": "Dow futures",
+    "value": -0.38,
+    "contribution_pct": 0.14
+   },
+   {
+    "feature": "nq",
+    "label": "Nasdaq futures",
+    "value": 0.48,
+    "contribution_pct": -0.099
+   },
    {
     "feature": "vix",
     "label": "India VIX level",
@@ -74,34 +86,22 @@
     "contribution_pct": 0.079
    },
    {
-    "feature": "nprev",
-    "label": "Nifty previous day",
-    "value": -0.39,
-    "contribution_pct": 0.021
+    "feature": "cl",
+    "label": "Crude oil",
+    "value": 1.0,
+    "contribution_pct": -0.071
    },
    {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": 0.0,
-    "contribution_pct": -0.02
-   },
-   {
-    "feature": "ym",
-    "label": "Dow futures",
-    "value": 0.0,
-    "contribution_pct": 0.013
-   },
-   {
-    "feature": "cl",
-    "label": "Crude oil",
-    "value": 0.0,
-    "contribution_pct": 0.007
+    "value": 0.08,
+    "contribution_pct": 0.045
    },
    {
     "feature": "ftse",
     "label": "FTSE 100 (UK)",
-    "value": 0.0,
-    "contribution_pct": -0.004
+    "value": -0.1,
+    "contribution_pct": -0.037
    }
   ],
   "wf": {
@@ -114,7 +114,7 @@
  },
  "headline": "Market bias SIDEWAYS \u2014 favour hedged premium selling",
  "bias": "RANGEBOUND",
- "score": 17,
+ "score": -2,
  "bias_track_record_pct": 64.2,
  "options": [
   {
@@ -130,7 +130,7 @@
    "max_reward": 2190,
    "reward_risk": 0.29,
    "decision": "SKIP",
-   "decision_reason": "No tested structure has a positive record for today. 1 day before, right after Infosys, Kotak Bank results: condors broke 60% of the time in this combination (small sample).",
+   "decision_reason": "No tested structure has a positive record for today. 1 day before, right after Kotak Bank results: condors broke 60% of the time in this combination (small sample).",
    "enter_at": "10:15 IST, after the first hour",
    "exit_by": "target / stop, else expiry 2026-10-27",
    "setup_stats": {
@@ -209,15 +209,6 @@
  "stocks": [],
  "market_gate_open": false,
  "events": [
-  {
-   "symbol": "INFY",
-   "name": "Infosys",
-   "when": "Fri 23 Oct",
-   "date": "2026-10-23",
-   "affects": "2026-10-26",
-   "past": true,
-   "bank": false
-  },
   {
    "symbol": "KOTAKBANK",
    "name": "Kotak Bank",

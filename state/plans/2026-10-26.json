@@ -1,18 +1,24 @@
 {
  "bias": {
-  "generated_at": "2026-10-23T16:18:05.937212+05:30",
+  "generated_at": "2026-10-23T21:00:14.283945+05:30",
   "target_session": "2026-10-26",
   "reference_date": "2026-10-23",
   "bias": {
    "label": "RANGEBOUND",
-   "score": 17,
-   "z": 0.174,
-   "model_z": 0.174,
-   "predicted_nifty_move_pct": 0.138,
+   "score": -2,
+   "z": -0.024,
+   "model_z": -0.024,
+   "predicted_nifty_move_pct": -0.019,
    "typical_daily_move_pct": 0.795,
    "source": "daily close model",
    "india_vix": 16.86,
    "components": [
+    {
+     "feature": "ndx",
+     "label": "Nasdaq minus S&P (tech tilt) %",
+     "value": 0.35,
+     "contribution_pct": -0.096
+    },
     {
      "feature": "vix_chg",
      "label": "India VIX change",
@@ -26,28 +32,28 @@
      "contribution_pct": 0.065
     },
     {
-     "feature": "dxy",
-     "label": "Dollar index %",
-     "value": 0.157,
-     "contribution_pct": -0.041
-    },
-    {
      "feature": "spx",
      "label": "S&P 500 overnight %",
-     "value": 0.0,
-     "contribution_pct": -0.022
+     "value": -0.115,
+     "contribution_pct": -0.056
+    },
+    {
+     "feature": "dxy",
+     "label": "Dollar index %",
+     "value": 0.137,
+     "contribution_pct": -0.036
+    },
+    {
+     "feature": "tnx",
+     "label": "US 10Y yield chg (pts)",
+     "value": 0.039,
+     "contribution_pct": -0.028
     },
     {
      "feature": "nifty_prev",
      "label": "Nifty previous day %",
      "value": -0.386,
      "contribution_pct": 0.015
-    },
-    {
-     "feature": "ndx",
-     "label": "Nasdaq minus S&P (tech tilt) %",
-     "value": 0.0,
-     "contribution_pct": 0.005
     },
     {
      "feature": "nifty_ext",
@@ -58,14 +64,8 @@
     {
      "feature": "crude",
      "label": "Crude oil %",
-     "value": 1.568,
+     "value": 2.704,
      "contribution_pct": 0.001
-    },
-    {
-     "feature": "tnx",
-     "label": "US 10Y yield chg (pts)",
-     "value": 0.0,
-     "contribution_pct": 0.0
     }
    ]
   },
@@ -164,7 +164,7 @@
          "total": 3639
         }
        },
-       "reason": "1 day before, right after Infosys, Kotak Bank results: condors broke 60% of the time in this combination (small sample)."
+       "reason": "1 day before, right after Kotak Bank results: condors broke 60% of the time in this combination (small sample)."
       }
      },
      {
@@ -246,7 +246,7 @@
        "total": 3639
       }
      },
-     "reason": "No tested structure has a positive record for today. 1 day before, right after Infosys, Kotak Bank results: condors broke 60% of the time in this combination (small sample)."
+     "reason": "No tested structure has a positive record for today. 1 day before, right after Kotak Bank results: condors broke 60% of the time in this combination (small sample)."
     }
    },
    "BANKNIFTY": {
@@ -435,51 +435,51 @@
    "directional_accuracy": 64.2,
    "sign_accuracy_all_days": 59.2,
    "trained_rows": 750,
-   "version": 11,
+   "version": 12,
    "bias_threshold": 0.2
   }
  },
  "plan": {
-  "generated_at": "2026-10-23T16:18:21.086606+05:30",
+  "generated_at": "2026-10-23T21:00:40.832015+05:30",
   "session": "2026-10-26",
   "stage": "preview",
   "expected_open": {
-   "gap_pct": 0.02,
+   "gap_pct": -0.22,
    "error_pct": 0.38,
-   "day_pct": 0.1,
-   "snapshot": "Fri 23 Oct 16:18 IST",
+   "day_pct": 0.05,
+   "snapshot": "Fri 23 Oct 21:00 IST",
    "stage": "preview",
-   "tip": "Flat open expected. Normal entry windows apply.",
+   "tip": "Moderate gap down expected. Use limit orders only, and wait for 09:30.",
    "markets": [
     {
      "key": "es",
      "name": "S&P 500 futures",
-     "move_pct": 0.0
+     "move_pct": 0.08
     },
     {
      "key": "nq",
      "name": "Nasdaq futures",
-     "move_pct": 0.0
+     "move_pct": 0.48
     },
     {
      "key": "ym",
      "name": "Dow futures",
-     "move_pct": 0.0
+     "move_pct": -0.38
     },
     {
      "key": "dax",
      "name": "DAX (Germany)",
-     "move_pct": 0.0
+     "move_pct": -0.24
     },
     {
      "key": "ftse",
      "name": "FTSE 100 (UK)",
-     "move_pct": 0.0
+     "move_pct": -0.1
     },
     {
      "key": "stoxx",
      "name": "Euro Stoxx 50",
-     "move_pct": 0.0
+     "move_pct": 0.11
     },
     {
      "key": "n225",
@@ -489,25 +489,37 @@
     {
      "key": "cl",
      "name": "Crude oil",
-     "move_pct": 0.0
+     "move_pct": 1.0
     },
     {
      "key": "gold",
      "name": "Gold",
-     "move_pct": 0.0
+     "move_pct": -0.56
     },
     {
      "key": "dxy",
      "name": "Dollar index",
-     "move_pct": 0.0
+     "move_pct": -0.04
     },
     {
      "key": "inr",
      "name": "USD/INR",
-     "move_pct": 0.0
+     "move_pct": -0.01
     }
    ],
    "drivers": [
+    {
+     "feature": "ym",
+     "label": "Dow futures",
+     "value": -0.38,
+     "contribution_pct": 0.14
+    },
+    {
+     "feature": "nq",
+     "label": "Nasdaq futures",
+     "value": 0.48,
+     "contribution_pct": -0.099
+    },
     {
      "feature": "vix",
      "label": "India VIX level",
@@ -515,34 +527,22 @@
      "contribution_pct": 0.079
     },
     {
-     "feature": "nprev",
-     "label": "Nifty previous day",
-     "value": -0.39,
-     "contribution_pct": 0.021
+     "feature": "cl",
+     "label": "Crude oil",
+     "value": 1.0,
+     "contribution_pct": -0.071
     },
     {
      "feature": "es",
      "label": "S&P 500 futures",
-     "value": 0.0,
-     "contribution_pct": -0.02
-    },
-    {
-     "feature": "ym",
-     "label": "Dow futures",
-     "value": 0.0,
-     "contribution_pct": 0.013
-    },
-    {
-     "feature": "cl",
-     "label": "Crude oil",
-     "value": 0.0,
-     "contribution_pct": 0.007
+     "value": 0.08,
+     "contribution_pct": 0.045
     },
     {
      "feature": "ftse",
      "label": "FTSE 100 (UK)",
-     "value": 0.0,
-     "contribution_pct": -0.004
+     "value": -0.1,
+     "contribution_pct": -0.037
     }
    ],
    "wf": {
@@ -555,7 +555,7 @@
   },
   "headline": "Market bias SIDEWAYS \u2014 favour hedged premium selling",
   "bias": "RANGEBOUND",
-  "score": 17,
+  "score": -2,
   "bias_track_record_pct": 64.2,
   "options": [
    {
@@ -571,7 +571,7 @@
     "max_reward": 2190,
     "reward_risk": 0.29,
     "decision": "SKIP",
-    "decision_reason": "No tested structure has a positive record for today. 1 day before, right after Infosys, Kotak Bank results: condors broke 60% of the time in this combination (small sample).",
+    "decision_reason": "No tested structure has a positive record for today. 1 day before, right after Kotak Bank results: condors broke 60% of the time in this combination (small sample).",
     "enter_at": "10:15 IST, after the first hour",
     "exit_by": "target / stop, else expiry 2026-10-27",
     "setup_stats": {
@@ -650,15 +650,6 @@
   "stocks": [],
   "market_gate_open": false,
   "events": [
-   {
-    "symbol": "INFY",
-    "name": "Infosys",
-    "when": "Fri 23 Oct",
-    "date": "2026-10-23",
-    "affects": "2026-10-26",
-    "past": true,
-    "bank": false
-   },
    {
     "symbol": "KOTAKBANK",
     "name": "Kotak Bank",
