@@ -56,3 +56,14 @@ jobs:
           git commit -m "engine: $TASK $(TZ=Asia/Kolkata date '+%Y-%m-%d %H:%M IST')" || exit 0
           git pull --rebase
           git push
+      - name: Record the failure (error text only)
+        if: failure()
+        run: |
+          git config user.name "engine-bot"
+          git config user.email "engine-bot@users.noreply.github.com"
+          git checkout -- docs || true
+          git add state/run_errors.json || exit 0
+          git commit -m "engine: FAILED $TASK $(TZ=Asia/Kolkata date '+%Y-%m-%d %H:%M IST')" || exit 0
+          git stash --include-untracked || true   # half-written files from the failed run are not kept
+          git pull --rebase
+          git push
