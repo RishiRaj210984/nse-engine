@@ -127,15 +127,16 @@ def wf_metrics(wf, params):
 def _latest_features(hist, target_date):
     ts = pd.Timestamp(target_date)
     us = _us_frame(hist)
-    us = us[us.index < ts]
+    us = us[us.index < ts].dropna()          # skip a half-filled row for a day still in progress
     n = hist["^NSEI"]
-    prior = n[n.index < ts]
+    prior = n[n.index < ts].dropna(subset=["Close"])
     c = prior["Close"]
     v = _vix(hist, prior.index)
     row = {**us.iloc[-1].to_dict(),
            "nifty_prev": float(c.pct_change().iloc[-1] * 100),
            "nifty_ext": float((c.iloc[-1] / ema(c, 20).iloc[-1] - 1) * 100),
            "vix": float(v.iloc[-1]), "vix_chg": float(v.diff().iloc[-1])}
+    row = {k: (float(v) if np.isfinite(v) else 0.0) for k, v in row.items()}   # a missing input counts as "no move"
     return np.array([row[f] for f in FEATURES]), row, us.index[-1].date(), prior
 
 
@@ -157,6 +158,7 @@ def global_bias(force=False):
     target_date = data.next_session_date(now)
     x, raw, us_date, nifty_prior = _latest_features(hist, target_date)
     pred = float(predict_ridge(m, x[None, :])[0])
+    pred_daily = pred
     z_model = pred / m["resid_sd"]
 
     mnews = news.market_news()
@@ -191,6 +193,10 @@ def global_bias(force=False):
     except Exception as exc:
         pre = {"error": str(exc)[:200]}
     z = z_model + p["news_weight"] * news_z
+    if not np.isfinite(z):   # never crash the run on a data gap: fall back to the daily model, else neutral
+        z_daily = pred_daily / m["resid_sd"] + p["news_weight"] * news_z
+        z = z_daily if np.isfinite(z_daily) else 0.0
+        bias_source += " (data gap: fallback used)"
     label = label_for(z, raw["vix"], p)
 
     # Options structures for both indices

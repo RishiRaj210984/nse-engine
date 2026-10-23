@@ -52,7 +52,7 @@ def _daily(ticker):
     df.index = pd.to_datetime(df.index)
     if df.index.tz is not None:
         df.index = df.index.tz_localize(None)
-    return df
+    return df.dropna(subset=["Close"])   # at night Yahoo can add a row for the day in progress with no close
 
 
 def load_data():
@@ -144,6 +144,7 @@ def predict(session, params, now=None):
     vv = D["vix"]["Close"][D["vix"].index < pd.Timestamp(session)]
     live = _row(H, D, session, off, prior.index[-1].date(),
                 (prior.Close.iloc[-1] / prior.Close.iloc[-2] - 1) * 100, float(vv.iloc[-1]))
+    live = {k: (float(v) if np.isfinite(v) else 0.0) for k, v in live.items()}   # a missing input counts as "no move"
     x = np.array([[live[f] for f in FEATURES]])
     tr = F.iloc[-WINDOW:]
     m_gap, m_ret = _fit(tr[FEATURES].values, tr["gap"].values), _fit(tr[FEATURES].values, tr["ret"].values)
