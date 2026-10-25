@@ -1,12 +1,12 @@
 {
- "generated_at": "2026-10-26T00:07:50.000902+05:30",
+ "generated_at": "2026-10-26T02:41:55.799045+05:30",
  "session": "2026-10-26",
  "stage": "preview",
  "expected_open": {
-  "gap_pct": -0.29,
+  "gap_pct": -0.31,
   "error_pct": 0.32,
-  "day_pct": -0.1,
-  "snapshot": "Mon 26 Oct 00:07 IST",
+  "day_pct": -0.18,
+  "snapshot": "Mon 26 Oct 02:41 IST",
   "stage": "preview",
   "tip": "Moderate gap down expected. Use limit orders only, and wait for 09:30.",
   "markets": [
@@ -68,141 +68,105 @@
   ],
   "drivers": [
    {
-    "feature": "es",
-    "label": "S&P 500 futures",
-    "value": -0.28,
-    "contribution_pct": -0.129
-   },
-   {
     "feature": "cl",
     "label": "Crude oil",
     "value": 2.12,
-    "contribution_pct": -0.117
+    "contribution_pct": -0.137
+   },
+   {
+    "feature": "es",
+    "label": "S&P 500 futures",
+    "value": -0.28,
+    "contribution_pct": -0.123
    },
    {
     "feature": "vix",
     "label": "India VIX level",
     "value": 16.86,
-    "contribution_pct": 0.055
+    "contribution_pct": 0.047
    },
    {
     "feature": "gold",
     "label": "Gold",
     "value": -0.74,
-    "contribution_pct": 0.041
+    "contribution_pct": 0.017
    },
    {
     "feature": "ym",
     "label": "Dow futures",
     "value": -0.64,
-    "contribution_pct": 0.033
+    "contribution_pct": 0.014
    },
    {
     "feature": "dxy",
     "label": "Dollar index",
     "value": -0.03,
-    "contribution_pct": 0.015
+    "contribution_pct": 0.01
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.51,
-   "gap_sign_pct": 69.3,
-   "directional_calls": 161,
-   "directional_accuracy": 68.3
+   "gap_corr": 0.54,
+   "gap_sign_pct": 70.0,
+   "directional_calls": 167,
+   "directional_accuracy": 69.5
   }
  },
- "headline": "Market bias SIDEWAYS \u2014 favour hedged premium selling",
- "bias": "RANGEBOUND",
- "score": -14,
- "bias_track_record_pct": 69.5,
+ "headline": "Market bias DOWN \u2014 favour selling rallies / puts",
+ "bias": "BEARISH",
+ "score": -24,
+ "bias_track_record_pct": 69.9,
  "options": [
   {
    "index": "NIFTY",
-   "strategy": "Iron Condor",
-   "legs": "SELL 22850 CE + BUY 23000 CE + SELL 22350 PE + BUY 22200 PE",
+   "strategy": "Bear Call Spread",
+   "legs": "SELL 22850 CE + BUY 23000 CE",
    "expiry": "2026-10-27",
    "lot_size": 65,
-   "entry": "Enter at 10:15 (after the first hour) only if NIFTY is between 22,350 and 22,850",
-   "target": "Buy back at \u20b915.2 (keep ~55% of credit), else hold to expiry Tue 27 Oct",
-   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b92,190 per lot)",
-   "max_loss": 7560,
-   "max_reward": 2190,
-   "reward_risk": 0.29,
+   "entry": "Enter at 10:15 (after the first hour) only if NIFTY is below 22,850",
+   "target": "Buy back at \u20b98.0 (keep ~55% of credit), else hold to expiry Tue 27 Oct",
+   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,150 per lot)",
+   "max_loss": 8600,
+   "max_reward": 1150,
+   "reward_risk": 0.13,
    "decision": "SKIP",
-   "decision_reason": "No tested structure has a positive record for today. 1 day before, right after Infosys, Kotak Bank results: condors broke 60% of the time in this combination (small sample).",
+   "decision_reason": "No tested structure has a positive record for today. On days the model called BEARISH, this spread lost overall (55.7% wins, avg \u20b9-31 per lot over 167 trades). A good-looking slice is not trusted on its own.",
    "enter_at": "10:15 IST, after the first hour",
    "exit_by": "target / stop, else expiry 2026-10-27",
    "setup_stats": {
-    "trades": 33,
-    "win_pct": 75.8,
-    "avg_pnl": 107,
-    "worst": -3751,
-    "best": 2272,
-    "total": 3537,
-    "sample": "days the model called SIDEWAYS, full 2 years",
-    "allowed": true,
-    "marginal": false,
-    "quiet_first_hour": {
-     "trades": 21,
-     "win_pct": 76.2,
-     "avg_pnl": -4,
-     "worst": -3322,
-     "best": 1469,
-     "total": -102
-    },
-    "trending_first_hour": {
-     "trades": 12,
-     "win_pct": 75.0,
-     "avg_pnl": 303,
-     "worst": -3751,
-     "best": 2272,
-     "total": 3639
-    }
+    "trades": 167,
+    "win_pct": 55.7,
+    "avg_pnl": -31,
+    "worst": -4370,
+    "best": 2848,
+    "total": -5267,
+    "sample": "days the model called BEARISH"
    }
   },
   {
    "index": "BANKNIFTY",
-   "strategy": "Iron Condor",
-   "legs": "SELL 54800 CE + BUY 55100 CE + SELL 53800 PE + BUY 53500 PE",
+   "strategy": "Bear Call Spread",
+   "legs": "SELL 54800 CE + BUY 55100 CE",
    "expiry": "2026-10-27",
    "lot_size": 30,
-   "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is between 53,800 and 54,800",
-   "target": "Buy back at \u20b935.4 (keep ~55% of credit), else hold to expiry Tue 27 Oct",
-   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b92,361 per lot)",
-   "max_loss": 6639,
-   "max_reward": 2361,
-   "reward_risk": 0.36,
+   "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is below 54,800",
+   "target": "Buy back at \u20b918.0 (keep ~55% of credit), else hold to expiry Tue 27 Oct",
+   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,197 per lot)",
+   "max_loss": 7803,
+   "max_reward": 1197,
+   "reward_risk": 0.15,
    "decision": "SKIP",
-   "decision_reason": "No tested structure has a positive record for today. 1-2 days before, right after Kotak Bank results: condors broke 60% of the time in this combination (small sample).",
+   "decision_reason": "No tested structure has a positive record for today. On days the model called BEARISH, this spread lost on average: 64.2% wins, avg \u20b978 per lot over 165 trades.",
    "enter_at": "10:15 IST, after the first hour",
    "exit_by": "target / stop, else expiry 2026-10-27",
    "setup_stats": {
-    "trades": 47,
-    "win_pct": 72.3,
-    "avg_pnl": -85,
-    "worst": -6517,
-    "best": 2797,
-    "total": -4019,
-    "sample": "days the model called SIDEWAYS, full 2 years, all days",
-    "allowed": false,
-    "marginal": false,
-    "quiet_first_hour": {
-     "trades": 29,
-     "win_pct": 69.0,
-     "avg_pnl": -149,
-     "worst": -6517,
-     "best": 2797,
-     "total": -4335
-    },
-    "trending_first_hour": {
-     "trades": 18,
-     "win_pct": 77.8,
-     "avg_pnl": 17,
-     "worst": -6324,
-     "best": 2561,
-     "total": 316
-    }
+    "trades": 165,
+    "win_pct": 64.2,
+    "avg_pnl": 78,
+    "worst": -8301,
+    "best": 5042,
+    "total": 12993,
+    "sample": "days the model called BEARISH"
    }
   }
  ],

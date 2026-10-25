@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-26T00:07:22.100383+05:30",
+ "generated_at": "2026-10-26T02:41:39.337687+05:30",
  "target_session": "2026-10-26",
  "reference_date": "2026-10-23",
  "us_session_used": "2026-10-23",
@@ -94,56 +94,56 @@
   }
  ],
  "bias": {
-  "label": "RANGEBOUND",
-  "score": -14,
-  "z": -0.136,
-  "model_z": -0.136,
-  "predicted_nifty_move_pct": -0.1,
-  "typical_daily_move_pct": 0.742,
+  "label": "BEARISH",
+  "score": -24,
+  "z": -0.243,
+  "model_z": -0.243,
+  "predicted_nifty_move_pct": -0.18,
+  "typical_daily_move_pct": 0.73,
   "source": "pre-open global snapshot",
   "india_vix": 16.86,
   "components": [
    {
-    "feature": "es",
-    "label": "S&P 500 futures",
-    "value": -0.28,
-    "contribution_pct": -0.129
-   },
-   {
     "feature": "cl",
     "label": "Crude oil",
     "value": 2.12,
-    "contribution_pct": -0.117
+    "contribution_pct": -0.137
+   },
+   {
+    "feature": "es",
+    "label": "S&P 500 futures",
+    "value": -0.28,
+    "contribution_pct": -0.123
    },
    {
     "feature": "vix",
     "label": "India VIX level",
     "value": 16.86,
-    "contribution_pct": 0.055
+    "contribution_pct": 0.047
    },
    {
     "feature": "gold",
     "label": "Gold",
     "value": -0.74,
-    "contribution_pct": 0.041
+    "contribution_pct": 0.017
    },
    {
     "feature": "ym",
     "label": "Dow futures",
     "value": -0.64,
-    "contribution_pct": 0.033
+    "contribution_pct": 0.014
    },
    {
     "feature": "dxy",
     "label": "Dollar index",
     "value": -0.03,
-    "contribution_pct": 0.015
+    "contribution_pct": 0.01
    }
   ]
  },
  "news": {
   "summary": {
-   "score": 0.044,
+   "score": 0.064,
    "count": 38,
    "label": "NEUTRAL"
   },
@@ -237,11 +237,11 @@
  },
  "model": {
   "oos_days": 300,
-  "directional_calls": 151,
-  "directional_accuracy": 69.5,
-  "sign_accuracy_all_days": 62.3,
-  "gap_corr": 0.51,
-  "gap_sign_pct": 69.3,
+  "directional_calls": 156,
+  "directional_accuracy": 69.9,
+  "sign_accuracy_all_days": 63.3,
+  "gap_corr": 0.54,
+  "gap_sign_pct": 70.0,
   "trained_rows": 750,
   "version": 12,
   "bias_threshold": 0.2
@@ -272,7 +272,7 @@
    },
    "strategies": [
     {
-     "name": "Iron Condor",
+     "name": "Bear Call Spread",
      "legs": [
       {
        "action": "SELL",
@@ -285,109 +285,101 @@
        "strike": 23000,
        "type": "CE",
        "est_premium": 8.2
-      },
-      {
-       "action": "SELL",
-       "strike": 22350,
-       "type": "PE",
-       "est_premium": 22.7
-      },
-      {
-       "action": "BUY",
-       "strike": 22200,
-       "type": "PE",
-       "est_premium": 6.7
       }
      ],
-     "net_premium": 33.7,
-     "max_loss": 7560,
-     "max_reward": 2190,
-     "reward_risk": 0.29,
-     "entry": "Enter at 10:15 (after the first hour) only if NIFTY is between 22,350 and 22,850",
-     "target": "Buy back at \u20b915.2 (keep ~55% of credit), else hold to expiry Tue 27 Oct",
-     "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b92,190 per lot)",
+     "net_premium": 17.7,
+     "max_loss": 8600,
+     "max_reward": 1150,
+     "reward_risk": 0.13,
+     "entry": "Enter at 10:15 (after the first hour) only if NIFTY is below 22,850",
+     "target": "Buy back at \u20b98.0 (keep ~55% of credit), else hold to expiry Tue 27 Oct",
+     "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,150 per lot)",
      "breakeven": [
-      22316,
-      22884
+      22868
      ],
-     "notes": "Hedged premium selling. Check SPAN margin with your broker.",
+     "notes": "Earns time decay; wins if the index does not fall (bull put) / rise (bear call) past the short strike.",
      "verdict": {
       "decision": "SKIP",
       "dte": 1,
       "stats": {
-       "trades": 33,
-       "win_pct": 75.8,
-       "avg_pnl": 107,
-       "worst": -3751,
-       "best": 2272,
-       "total": 3537,
-       "sample": "days the model called SIDEWAYS, full 2 years",
-       "allowed": true,
-       "marginal": false,
-       "quiet_first_hour": {
-        "trades": 21,
-        "win_pct": 76.2,
-        "avg_pnl": -4,
-        "worst": -3322,
-        "best": 1469,
-        "total": -102
-       },
-       "trending_first_hour": {
-        "trades": 12,
-        "win_pct": 75.0,
-        "avg_pnl": 303,
-        "worst": -3751,
-        "best": 2272,
-        "total": 3639
-       }
+       "trades": 167,
+       "win_pct": 55.7,
+       "avg_pnl": -31,
+       "worst": -4370,
+       "best": 2848,
+       "total": -5267,
+       "sample": "days the model called BEARISH"
       },
-      "reason": "1 day before, right after Infosys, Kotak Bank results: condors broke 60% of the time in this combination (small sample)."
+      "reason": "On days the model called BEARISH, this spread lost overall (55.7% wins, avg \u20b9-31 per lot over 167 trades). A good-looking slice is not trusted on its own."
      }
     },
     {
-     "name": "Iron Fly (hedged short straddle)",
+     "name": "Bear Put Spread",
      "legs": [
       {
-       "action": "SELL",
-       "strike": 22600,
-       "type": "CE",
-       "est_premium": 108.8
-      },
-      {
-       "action": "SELL",
+       "action": "BUY",
        "strike": 22600,
        "type": "PE",
        "est_premium": 101.8
       },
       {
-       "action": "BUY",
-       "strike": 22900,
-       "type": "CE",
-       "est_premium": 18.1
-      },
-      {
-       "action": "BUY",
-       "strike": 22300,
+       "action": "SELL",
+       "strike": 22450,
        "type": "PE",
-       "est_premium": 15.6
+       "est_premium": 44.6
       }
      ],
-     "net_premium": 176.9,
-     "max_loss": 8002,
-     "max_reward": 11498,
-     "reward_risk": 1.44,
-     "entry": "Enter only if NIFTY opens within \u00b150 of 22,600",
-     "target": "Buy back at \u20b9123.8 (keep ~30% of credit)",
-     "stop_loss": "NIFTY moves beyond 22,450 / 22,750",
+     "net_premium": -57.2,
+     "max_loss": 3718,
+     "max_reward": 6032,
+     "reward_risk": 1.62,
+     "entry": "Enter on pullbacks that fail below 22,801 (EMA20 / R1 resistance zone)",
+     "target": "Exit spread near \u20b9112.9 or NIFTY at 22,450",
+     "stop_loss": "Spread falls to \u20b928.6, or NIFTY closes above 23,002",
      "breakeven": [
-      22423,
-      22777
+      22543
      ],
-     "notes": "Higher reward, tighter range. Never run an unhedged straddle.",
+     "notes": "Defined risk. Preferred structure.",
+     "verdict": {
+      "decision": "SKIP",
+      "dte": 1,
+      "stats": {
+       "trades": 168,
+       "win_pct": 37.5,
+       "avg_pnl": -243,
+       "worst": -6282,
+       "best": 9750,
+       "total": -40833,
+       "sample": "days the model called BEARISH"
+      },
+      "reason": "On days the model called BEARISH, this spread lost overall (37.5% wins, avg \u20b9-243 per lot over 168 trades). A good-looking slice is not trusted on its own."
+     }
+    },
+    {
+     "name": "ATM Put Buy",
+     "legs": [
+      {
+       "action": "BUY",
+       "strike": 22600,
+       "type": "PE",
+       "est_premium": 101.8
+      }
+     ],
+     "net_premium": -101.8,
+     "max_loss": 6617,
+     "max_reward": 6788,
+     "reward_risk": 1.03,
+     "entry": "Enter on pullbacks that fail below 22,801 (EMA20 / R1 resistance zone)",
+     "target": "Premium \u2248 \u20b9206.2 (NIFTY near 22,386)",
+     "stop_loss": "Premium \u20b971.3 (-30%), or NIFTY closes above 23,002",
+     "breakeven": [
+      22498
+     ],
+     "notes": "Max loss = full premium. Theta decay hurts if move is late.",
      "verdict": {
       "decision": "CAUTION",
       "dte": 1,
-      "reason": "Iron Fly (hedged short straddle) is not tested by the options lab.",
+      "reason": "ATM Put Buy is not tested by the options lab.",
       "stats": null
      }
     }
@@ -397,33 +389,15 @@
     "decision": "SKIP",
     "dte": 1,
     "stats": {
-     "trades": 33,
-     "win_pct": 75.8,
-     "avg_pnl": 107,
-     "worst": -3751,
-     "best": 2272,
-     "total": 3537,
-     "sample": "days the model called SIDEWAYS, full 2 years",
-     "allowed": true,
-     "marginal": false,
-     "quiet_first_hour": {
-      "trades": 21,
-      "win_pct": 76.2,
-      "avg_pnl": -4,
-      "worst": -3322,
-      "best": 1469,
-      "total": -102
-     },
-     "trending_first_hour": {
-      "trades": 12,
-      "win_pct": 75.0,
-      "avg_pnl": 303,
-      "worst": -3751,
-      "best": 2272,
-      "total": 3639
-     }
+     "trades": 167,
+     "win_pct": 55.7,
+     "avg_pnl": -31,
+     "worst": -4370,
+     "best": 2848,
+     "total": -5267,
+     "sample": "days the model called BEARISH"
     },
-    "reason": "No tested structure has a positive record for today. 1 day before, right after Infosys, Kotak Bank results: condors broke 60% of the time in this combination (small sample)."
+    "reason": "No tested structure has a positive record for today. On days the model called BEARISH, this spread lost overall (55.7% wins, avg \u20b9-31 per lot over 167 trades). A good-looking slice is not trusted on its own."
    }
   },
   "BANKNIFTY": {
@@ -451,7 +425,7 @@
    },
    "strategies": [
     {
-     "name": "Iron Condor",
+     "name": "Bear Call Spread",
      "legs": [
       {
        "action": "SELL",
@@ -464,109 +438,101 @@
        "strike": 55100,
        "type": "CE",
        "est_premium": 22.2
-      },
-      {
-       "action": "SELL",
-       "strike": 53800,
-       "type": "PE",
-       "est_premium": 59.0
-      },
-      {
-       "action": "BUY",
-       "strike": 53500,
-       "type": "PE",
-       "est_premium": 20.2
       }
      ],
-     "net_premium": 78.7,
-     "max_loss": 6639,
-     "max_reward": 2361,
-     "reward_risk": 0.36,
-     "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is between 53,800 and 54,800",
-     "target": "Buy back at \u20b935.4 (keep ~55% of credit), else hold to expiry Tue 27 Oct",
-     "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b92,361 per lot)",
+     "net_premium": 39.9,
+     "max_loss": 7803,
+     "max_reward": 1197,
+     "reward_risk": 0.15,
+     "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is below 54,800",
+     "target": "Buy back at \u20b918.0 (keep ~55% of credit), else hold to expiry Tue 27 Oct",
+     "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,197 per lot)",
      "breakeven": [
-      53721,
-      54879
+      54840
      ],
-     "notes": "Hedged premium selling. Check SPAN margin with your broker.",
+     "notes": "Earns time decay; wins if the index does not fall (bull put) / rise (bear call) past the short strike.",
      "verdict": {
       "decision": "SKIP",
       "dte": 1,
       "stats": {
-       "trades": 47,
-       "win_pct": 72.3,
-       "avg_pnl": -85,
-       "worst": -6517,
-       "best": 2797,
-       "total": -4019,
-       "sample": "days the model called SIDEWAYS, full 2 years, all days",
-       "allowed": false,
-       "marginal": false,
-       "quiet_first_hour": {
-        "trades": 29,
-        "win_pct": 69.0,
-        "avg_pnl": -149,
-        "worst": -6517,
-        "best": 2797,
-        "total": -4335
-       },
-       "trending_first_hour": {
-        "trades": 18,
-        "win_pct": 77.8,
-        "avg_pnl": 17,
-        "worst": -6324,
-        "best": 2561,
-        "total": 316
-       }
+       "trades": 165,
+       "win_pct": 64.2,
+       "avg_pnl": 78,
+       "worst": -8301,
+       "best": 5042,
+       "total": 12993,
+       "sample": "days the model called BEARISH"
       },
-      "reason": "1-2 days before, right after Kotak Bank results: condors broke 60% of the time in this combination (small sample)."
+      "reason": "On days the model called BEARISH, this spread lost on average: 64.2% wins, avg \u20b978 per lot over 165 trades."
      }
     },
     {
-     "name": "Iron Fly (hedged short straddle)",
+     "name": "Bear Put Spread",
      "legs": [
       {
-       "action": "SELL",
-       "strike": 54300,
-       "type": "CE",
-       "est_premium": 230.7
-      },
-      {
-       "action": "SELL",
+       "action": "BUY",
        "strike": 54300,
        "type": "PE",
        "est_premium": 226.4
       },
       {
-       "action": "BUY",
-       "strike": 54900,
-       "type": "CE",
-       "est_premium": 45.0
-      },
-      {
-       "action": "BUY",
-       "strike": 53700,
+       "action": "SELL",
+       "strike": 54000,
        "type": "PE",
-       "est_premium": 42.3
+       "est_premium": 107.4
       }
      ],
-     "net_premium": 369.8,
-     "max_loss": 6906,
-     "max_reward": 11094,
-     "reward_risk": 1.61,
-     "entry": "Enter only if BANKNIFTY opens within \u00b1100 of 54,300",
-     "target": "Buy back at \u20b9258.9 (keep ~30% of credit)",
-     "stop_loss": "BANKNIFTY moves beyond 54,000 / 54,600",
+     "net_premium": -119.0,
+     "max_loss": 3570,
+     "max_reward": 5430,
+     "reward_risk": 1.52,
+     "entry": "Enter on pullbacks that fail below 54,871 (EMA20 / R1 resistance zone)",
+     "target": "Exit spread near \u20b9227.6 or BANKNIFTY at 54,000",
+     "stop_loss": "Spread falls to \u20b959.5, or BANKNIFTY closes above 55,455",
      "breakeven": [
-      53930,
-      54670
+      54181
      ],
-     "notes": "Higher reward, tighter range. Never run an unhedged straddle.",
+     "notes": "Defined risk. Preferred structure.",
+     "verdict": {
+      "decision": "SKIP",
+      "dte": 1,
+      "stats": {
+       "trades": 167,
+       "win_pct": 38.9,
+       "avg_pnl": -393,
+       "worst": -14647,
+       "best": 13910,
+       "total": -65763,
+       "sample": "days the model called BEARISH"
+      },
+      "reason": "On days the model called BEARISH, this spread lost on average: 38.9% wins, avg \u20b9-393 per lot over 167 trades."
+     }
+    },
+    {
+     "name": "ATM Put Buy",
+     "legs": [
+      {
+       "action": "BUY",
+       "strike": 54300,
+       "type": "PE",
+       "est_premium": 226.4
+      }
+     ],
+     "net_premium": -226.4,
+     "max_loss": 6792,
+     "max_reward": 6895,
+     "reward_risk": 1.02,
+     "entry": "Enter on pullbacks that fail below 54,871 (EMA20 / R1 resistance zone)",
+     "target": "Premium \u2248 \u20b9456.2 (BANKNIFTY near 53,823)",
+     "stop_loss": "Premium \u20b9158.5 (-30%), or BANKNIFTY closes above 55,455",
+     "breakeven": [
+      54074
+     ],
+     "notes": "Max loss = full premium. Theta decay hurts if move is late.",
      "verdict": {
       "decision": "CAUTION",
       "dte": 1,
-      "reason": "Iron Fly (hedged short straddle) is not tested by the options lab.",
+      "reason": "ATM Put Buy is not tested by the options lab.",
       "stats": null
      }
     }
@@ -576,33 +542,15 @@
     "decision": "SKIP",
     "dte": 1,
     "stats": {
-     "trades": 47,
-     "win_pct": 72.3,
-     "avg_pnl": -85,
-     "worst": -6517,
-     "best": 2797,
-     "total": -4019,
-     "sample": "days the model called SIDEWAYS, full 2 years, all days",
-     "allowed": false,
-     "marginal": false,
-     "quiet_first_hour": {
-      "trades": 29,
-      "win_pct": 69.0,
-      "avg_pnl": -149,
-      "worst": -6517,
-      "best": 2797,
-      "total": -4335
-     },
-     "trending_first_hour": {
-      "trades": 18,
-      "win_pct": 77.8,
-      "avg_pnl": 17,
-      "worst": -6324,
-      "best": 2561,
-      "total": 316
-     }
+     "trades": 165,
+     "win_pct": 64.2,
+     "avg_pnl": 78,
+     "worst": -8301,
+     "best": 5042,
+     "total": 12993,
+     "sample": "days the model called BEARISH"
     },
-    "reason": "No tested structure has a positive record for today. 1-2 days before, right after Kotak Bank results: condors broke 60% of the time in this combination (small sample)."
+    "reason": "No tested structure has a positive record for today. On days the model called BEARISH, this spread lost on average: 64.2% wins, avg \u20b978 per lot over 165 trades."
    }
   }
  },
@@ -663,13 +611,13 @@
   }
  ],
  "preopen": {
-  "snapshot_ist": "Mon 26 Oct 00:07 IST",
+  "snapshot_ist": "Mon 26 Oct 02:41 IST",
   "stage": "preview",
-  "expected_gap_pct": -0.29,
+  "expected_gap_pct": -0.31,
   "gap_typical_error_pct": 0.32,
-  "expected_day_pct": -0.1,
-  "z": -0.136,
-  "typical_daily_move_pct": 0.742,
+  "expected_day_pct": -0.18,
+  "z": -0.243,
+  "typical_daily_move_pct": 0.73,
   "markets": [
    {
     "key": "es",
@@ -729,53 +677,53 @@
   ],
   "drivers": [
    {
-    "feature": "es",
-    "label": "S&P 500 futures",
-    "value": -0.28,
-    "contribution_pct": -0.129
-   },
-   {
     "feature": "cl",
     "label": "Crude oil",
     "value": 2.12,
-    "contribution_pct": -0.117
+    "contribution_pct": -0.137
+   },
+   {
+    "feature": "es",
+    "label": "S&P 500 futures",
+    "value": -0.28,
+    "contribution_pct": -0.123
    },
    {
     "feature": "vix",
     "label": "India VIX level",
     "value": 16.86,
-    "contribution_pct": 0.055
+    "contribution_pct": 0.047
    },
    {
     "feature": "gold",
     "label": "Gold",
     "value": -0.74,
-    "contribution_pct": 0.041
+    "contribution_pct": 0.017
    },
    {
     "feature": "ym",
     "label": "Dow futures",
     "value": -0.64,
-    "contribution_pct": 0.033
+    "contribution_pct": 0.014
    },
    {
     "feature": "dxy",
     "label": "Dollar index",
     "value": -0.03,
-    "contribution_pct": 0.015
+    "contribution_pct": 0.01
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.51,
-   "gap_sign_pct": 69.3,
-   "directional_calls": 161,
-   "directional_accuracy": 68.3
+   "gap_corr": 0.54,
+   "gap_sign_pct": 70.0,
+   "directional_calls": 167,
+   "directional_accuracy": 69.5
   },
   "vix": 16.86
  },
  "global_table": {
-  "updated": "2026-10-26T00:07:42.249540+05:30",
+  "updated": "2026-10-26T02:41:51.099082+05:30",
   "rows": [
    {
     "group": "US, last close",
@@ -803,9 +751,9 @@
    },
    {
     "group": "Crude oil",
-    "move": "WTI ~$103, Brent ~$112 (+3.3%)",
+    "move": "WTI ~$103, Brent ~$112 (+0.0%)",
     "effect": "red",
-    "note": "Rising oil hurts India \u00b7 Price is high for India"
+    "note": "Price is high for India"
    },
    {
     "group": "US 10-year yield",
@@ -815,7 +763,7 @@
    },
    {
     "group": "Dollar index",
-    "move": "101.75 (-0.06%)",
+    "move": "101.75 (+0.14%)",
     "effect": "flat",
     "note": "Steady"
    },
@@ -833,7 +781,7 @@
    },
    {
     "group": "Model: Nifty open",
-    "move": "-0.29% (\u00b10.32%)",
+    "move": "-0.31% (\u00b10.32%)",
     "effect": "red",
     "note": "Combined forecast from all markets (preview)",
     "model": true
