@@ -378,8 +378,14 @@ def paper_book(session, archived, bars_by_index, vix, adjust=False):
                 detail.append(f"{name}: entry condition not met at 10:15, no trade")
                 continue
             exp = date.fromisoformat(o["expiry"])
+            if exp < session:
+                detail.append(f"{name}: plan's expiry {exp} has passed, no trade")
+                continue
             iv0, vix0 = o["iv_used_pct"] / 100, _vix_at(vix, ts_e)
             v_e = _value(legs, spot_e, _T(exp, ts_e), iv0)
+            if -v_e * o["lot_size"] < 1:       # nothing to collect: a condor that pays no premium is not a trade
+                detail.append(f"{name}: no premium to collect at 10:15, no trade")
+                continue
             pos = {"index": name, "strategy": o["strategies"][0]["name"], "legs": legs, "lot": o["lot_size"],
                    "expiry": o["expiry"], "entry_session": s_iso, "entry_spot": round(spot_e, 2), "v_e": v_e,
                    "credit_rs": round(-v_e * o["lot_size"]), "iv0": iv0, "vix0": vix0, "mark": 0,
@@ -473,6 +479,28 @@ def save_review(rv, paper=None):
     })
 
 
+def _catch_up(session):
+    """If an evening run was missed, replay the skipped trading days first (5-minute data covers
+    about the last 5 sessions), so a target or stop hit on a skipped day is not missed."""
+    import nse_calendar
+    days = (store._read(store.state_path("paper_book.json"), {}) or {}).get("days") or []
+    if not days:
+        return
+    d = nse_calendar.next_trading_day(date.fromisoformat(max(x["session"] for x in days)))
+    while d < session:
+        arch = load_archived(d.isoformat()) or {"bias": {"options": {}}, "plan": {"options": []}}
+        bars = {n: intraday(INDEX_SPECS[n]["ticker"], d) for n in ("NIFTY", "BANKNIFTY")}
+        if all(b is None for b in bars.values()):
+            break          # older than the 5-minute data window: nothing more to replay
+        vix = intraday("^INDIAVIX", d)
+        paper_book(d, arch, bars, vix)
+        try:
+            paper_book(d, arch, bars, vix, adjust=True)
+        except Exception:
+            pass
+        d = nse_calendar.next_trading_day(d)
+
+
 def run(session=None, archived=None):
     session = session or datetime.now(IST).date()
     rv = review_session(session, archived)
@@ -480,6 +508,7 @@ def run(session=None, archived=None):
         paper = None
         arch = archived or load_archived(session.isoformat())
         if rv["final"] and arch:
+            _catch_up(session)
             bars = {n: intraday(INDEX_SPECS[n]["ticker"], session) for n in ("NIFTY", "BANKNIFTY")}
             vix = intraday("^INDIAVIX", session)
             paper = paper_book(session, arch, bars, vix)
