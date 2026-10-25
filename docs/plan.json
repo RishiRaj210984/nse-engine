@@ -1,44 +1,44 @@
 {
- "generated_at": "2026-10-23T21:00:40.831186+05:30",
+ "generated_at": "2026-10-26T00:07:50.000902+05:30",
  "session": "2026-10-26",
  "stage": "preview",
  "expected_open": {
-  "gap_pct": -0.22,
-  "error_pct": 0.38,
-  "day_pct": 0.05,
-  "snapshot": "Fri 23 Oct 21:00 IST",
+  "gap_pct": -0.29,
+  "error_pct": 0.32,
+  "day_pct": -0.1,
+  "snapshot": "Mon 26 Oct 00:07 IST",
   "stage": "preview",
   "tip": "Moderate gap down expected. Use limit orders only, and wait for 09:30.",
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": 0.08
+    "move_pct": -0.28
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": 0.48
+    "move_pct": 0.07
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": -0.38
+    "move_pct": -0.64
    },
    {
     "key": "dax",
     "name": "DAX (Germany)",
-    "move_pct": -0.24
+    "move_pct": -0.08
    },
    {
     "key": "ftse",
     "name": "FTSE 100 (UK)",
-    "move_pct": -0.1
+    "move_pct": 0.02
    },
    {
     "key": "stoxx",
     "name": "Euro Stoxx 50",
-    "move_pct": 0.11
+    "move_pct": 0.24
    },
    {
     "key": "n225",
@@ -48,17 +48,17 @@
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": 1.0
+    "move_pct": 2.12
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": -0.56
+    "move_pct": -0.74
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": -0.04
+    "move_pct": -0.03
    },
    {
     "key": "inr",
@@ -68,54 +68,54 @@
   ],
   "drivers": [
    {
-    "feature": "ym",
-    "label": "Dow futures",
-    "value": -0.38,
-    "contribution_pct": 0.14
+    "feature": "es",
+    "label": "S&P 500 futures",
+    "value": -0.28,
+    "contribution_pct": -0.129
    },
    {
-    "feature": "nq",
-    "label": "Nasdaq futures",
-    "value": 0.48,
-    "contribution_pct": -0.099
+    "feature": "cl",
+    "label": "Crude oil",
+    "value": 2.12,
+    "contribution_pct": -0.117
    },
    {
     "feature": "vix",
     "label": "India VIX level",
     "value": 16.86,
-    "contribution_pct": 0.079
+    "contribution_pct": 0.055
    },
    {
-    "feature": "cl",
-    "label": "Crude oil",
-    "value": 1.0,
-    "contribution_pct": -0.071
+    "feature": "gold",
+    "label": "Gold",
+    "value": -0.74,
+    "contribution_pct": 0.041
    },
    {
-    "feature": "es",
-    "label": "S&P 500 futures",
-    "value": 0.08,
-    "contribution_pct": 0.045
+    "feature": "ym",
+    "label": "Dow futures",
+    "value": -0.64,
+    "contribution_pct": 0.033
    },
    {
-    "feature": "ftse",
-    "label": "FTSE 100 (UK)",
-    "value": -0.1,
-    "contribution_pct": -0.037
+    "feature": "dxy",
+    "label": "Dollar index",
+    "value": -0.03,
+    "contribution_pct": 0.015
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.21,
-   "gap_sign_pct": 57.7,
-   "directional_calls": 80,
-   "directional_accuracy": 60.0
+   "gap_corr": 0.51,
+   "gap_sign_pct": 69.3,
+   "directional_calls": 161,
+   "directional_accuracy": 68.3
   }
  },
  "headline": "Market bias SIDEWAYS \u2014 favour hedged premium selling",
  "bias": "RANGEBOUND",
- "score": -2,
- "bias_track_record_pct": 64.2,
+ "score": -14,
+ "bias_track_record_pct": 69.5,
  "options": [
   {
    "index": "NIFTY",
@@ -130,7 +130,7 @@
    "max_reward": 2190,
    "reward_risk": 0.29,
    "decision": "SKIP",
-   "decision_reason": "No tested structure has a positive record for today. 1 day before, right after Kotak Bank results: condors broke 60% of the time in this combination (small sample).",
+   "decision_reason": "No tested structure has a positive record for today. 1 day before, right after Infosys, Kotak Bank results: condors broke 60% of the time in this combination (small sample).",
    "enter_at": "10:15 IST, after the first hour",
    "exit_by": "target / stop, else expiry 2026-10-27",
    "setup_stats": {
@@ -210,11 +210,29 @@
  "market_gate_open": false,
  "events": [
   {
+   "symbol": "INFY",
+   "name": "Infosys",
+   "when": "Fri 23 Oct",
+   "date": "2026-10-23",
+   "affects": "2026-10-26",
+   "past": true,
+   "bank": false
+  },
+  {
    "symbol": "KOTAKBANK",
    "name": "Kotak Bank",
    "when": "Sat 24 Oct",
    "date": "2026-10-24",
    "affects": "2026-10-26",
+   "past": true,
+   "bank": true
+  },
+  {
+   "symbol": "KOTAKBANK",
+   "name": "Kotak Bank",
+   "when": "Mon 26 Oct",
+   "date": "2026-10-26",
+   "affects": "2026-10-27",
    "past": false,
    "bank": true
   },
@@ -233,6 +251,15 @@
    "when": "Tue 27 Oct",
    "date": "2026-10-27",
    "affects": "2026-10-28",
+   "past": false,
+   "bank": false
+  },
+  {
+   "symbol": "ITC",
+   "name": "ITC",
+   "when": "Mon 02 Nov",
+   "date": "2026-11-02",
+   "affects": "2026-11-03",
    "past": false,
    "bank": false
   }

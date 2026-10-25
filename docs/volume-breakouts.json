@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-23T21:00:34.943539+05:30",
+ "generated_at": "2026-10-26T00:07:49.239288+05:30",
  "market_open": false,
  "volume_projected": false,
  "bias": {
   "label": "RANGEBOUND",
-  "score": -2
+  "score": -14
  },
  "rules": {
   "vol_mult": 2.0,
@@ -70,7 +70,7 @@
    "rr_t2": 4.35,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 0.8874937794503127,
+    "log_vol_ratio": 0.887569165489438,
     "rsi": 63.83631837675298,
     "dist_high_pct": 3.673401085852991,
     "ext_ema20": 6.0616061294211265,
@@ -78,21 +78,57 @@
     "day_chg": 0.03902312842716249,
     "ret5": 3.9459503448761257,
     "rs20": 16.673812654489307,
-    "bias_score": -2.0,
-    "news_sent": 0.0,
+    "bias_score": -14.0,
+    "news_sent": 0.321,
     "mkt_above50": 0.0,
     "mkt_ret20": -3.611583469959667
    },
    "r1_a": 1.6325375794321997,
    "r2_a": 3.2650751588644047,
-   "news": [],
+   "news": [
+    {
+     "title": "Infosys Share Price - Live NSE: INFY Stock Price & Chart",
+     "source": "Upstox",
+     "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5BbEJTdmZNbE5BN0ZRWWZpd2tZZnRCZWV0MFdhYW5nQ2NSSTgzUlI4TjVPaU5BV1FxQkpYUnFWa05Fb09uMkxlNDhUWVpvV2JLWGIxUmh3SUFKSzEwUHZpX1IyTVM?oc=5",
+     "published": "Fri, 23 Oct 2026 07:00:00 GMT",
+     "sentiment": 0.296
+    },
+    {
+     "title": "Infosys shares: Should you buy the IT stock after Q2 results, dividend 2026 announcement? Expert view on what to do",
+     "source": "Livemint",
+     "link": "https://news.google.com/rss/articles/CBMikgJBVV95cUxQMDhyWl9lU1Y2VTJvM01WUFg3YXRwWnN0dmpGS01NNXpwbDlYUVRJSkt2VjZyZ2cwb3dOMUVaY3lmR0xSU2FlZk9BcTlZWWhhTWN2Vjc0VUZubHFRRkFtZVZ1LWxscHBqQnZOWmtpOTVNQVlNcmhKMjc4MV9oVjNGMmV0WWVhR0YwOEVSZ0lBMWQ3cDBDd0VzcTNxbFFhdkhqeUM4b05BUlcwc2JkSFhYZzNjYzR5Y0hiLWNwUE0zcXVUdWtlUTFsbl9VVE9qR2lWcEM4U1NQRHFxY0hnYzl3cDNpQzkzeWp2QklOX1VzZ0ZJa3dtMWplSXFSdUZqUFpoNF9lOVVqeHBER2hGanlKZVVn0gGXAkFVX3lxTE9xeWFrNUxuZkw4Z0ppdzlwSGtVSllQMFNXSFc0WDJBS05zVVBINHVGMXBHeE5ZdGxLVDRnLXlfX1RZUFE3SnhZSDdJV3V3ekQ2c2E4T0Q5QjNhalc0c1lXOHpaWnFVSmhvVnJPRl9Rb2VqUlNWdTZGelpPY1o2dS01Z2JIWHpWQ0tLVlY3WFNKczU3Zk9mRXVYNkxkWVFkbWNJTVNfU1NXY1BWMGFzRzJ4TmN0OFlXXzN0YlA5T2pINmlyRnFUZjQ5QmN2ZGptU29YeC1Va252d2RuSzlhUmpvYVNlRlR3cTdTeUZJSkNlUXl2RzFPNnV4akJxOEN4ZlRMaUVCbFB3TFJ1aTI5WHpXVGFhWkoxVQ?oc=5",
+     "published": "Sat, 24 Oct 2026 07:37:16 GMT",
+     "sentiment": 0.459
+    },
+    {
+     "title": "Stocks to Watch for October 26: RIL, Infosys, BPCL, Kotak Mahindra Bank, Torrent Pharma and more",
+     "source": "CNBC TV18",
+     "link": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxNUk4yem1XVlhFWXhRc2hhUHFkcHEtdHlza1YwLVZiN0VaSEVtenVubWVtUFY1ckxUQjYzM2Vrc3ZCMjBpaS1vQ3pKMnFlNHYwUUhwY25sS0x0UjkxNkpwUC1Yc0hlckQ5X1RfNlVEUHVPbFFveml2cDVPWDJPcjNYTHBlMzdTZjYyaGhuWjRrVkp1Q0ItQk5DMEVZTXo2akhnbURSQmQ0MU80QjlEZUdYcW9kM2pwc1RtcE1NaUh5MGRFR1JDMU9fbmxKTklxLWExMUpZWUxoVmRKaUFhbnROUThqejRqVFRtUFlXeVhjWURsaGhN0gH6AUFVX3lxTE1MUm8yMXgwMVZ0amtBZFoyMzNOaTJFZHUwWXhibUtqemhVUXFSRFdQVGF1T2tIbDZIdWVtTVBzT1VkWHc1OHFSTV9tckI0VGJSMlpLWnVUcDNkb2JBSE13S19fUFlZUm4zNHV5VkFmQk83WXpkRFRrZGVsMU5nb181WE9wRVkxbVE2M2tTX29qeVNRUUtCMXJ1ZFI0RnpfdmJqcHBPZ2pPT2pDMXRTVmc0QXdGZmx4VUVoYW1Dc2lEQlZMR3JERndwd2tKakJ1Z0UyS2FNenVIVGdKSkFfdDRZWUh5Wjl1NldLalBIN0VCZlRid29kdWlrbHc?oc=5",
+     "published": "Sun, 25 Oct 2026 07:36:32 GMT",
+     "sentiment": 0.0
+    },
+    {
+     "title": "Infosys dividend alert! IT major announces Rs 26 per share dividend. Check record date",
+     "source": "The Economic Times",
+     "link": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxQdktLc281d0hFd1REckotMHh6aDMtVVpmSkQtdWR2dE5udk9yeVRVSUM3bURYTmw5ODc5YnBFanFod2VXdGVXMzEweUQ1cjM3YkNZamFPazZXLTM2TUgyUTJXb0FCdE5raExvMzlVUDhBRHdDdXhLUHJSUk1TcFRMYndCTThRVUJWNmozVnh1UHhDamVGMzR1UU9Kc0VKMTNlSFJUblVNN3hJT0drR3JyQ3RYYVdBRUlXVmptdGMtY19LamRsZWVNQVVySlJUQVJzTUJTNmViZWFBNnZVLU8tX3VNcHh3cnNweUZiaDl0UDR1ZWVt0gH6AUFVX3lxTE1lWmtCVmRObUR5V2tCNkFzWXFOeVFjajlEem9FdzRjTXdVMjdCcDZQbllOWlc4UnRMM1JGdV82alZXel9wV0J2ZVNRVVRpWWpjdEtGNjZLSWlISWpnWl9LVVdmUThYRk9YZ041SDNpRUpPazQtZkZMTkpPY2xpeXEtNDJ5S2FDbFZ4M2dNdDh5TmEwQUhORHNuNnA5UmdBZEJYS3RNQ1VlVWxmMzZCbXJlUVRzN2dPSjhuUXE5TFM4TzdsbV9SRnJFOXNSRVEwQkxUVzRsdVQ0TlduTjVRd2pLWlVyYVowc0ZTRWUxdGliSkFKMFFVWExWc2c?oc=5",
+     "published": "Fri, 23 Oct 2026 11:06:19 GMT",
+     "sentiment": 0.807
+    },
+    {
+     "title": "Infosys Plunges 10% in One Minute, Then Snaps Back: Inside the 10:38 AM Flash Crash",
+     "source": "Equitypandit",
+     "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNQ2tIVUgyOE5lS0d1bXRra3IxcllHNE5PZGVMNmh6azAtRGtNak93UDBOQmhaZjg3blllSEczcDBqb1NsRmdYYW1yQW11Nm1yTC1WLVB2UW5TYlR6NXVZbGJwVU80MEIxdEpQM1E2QWhjUnRDRmlabTA2dzcyQWtRcjRPVmZMaEJ0MmRFVzltaWdrUW1XVDhqd2x6RTl3UGFqQ3RwdEh6ZnJZYUNqOHc?oc=5",
+     "published": "Fri, 23 Oct 2026 10:26:46 GMT",
+     "sentiment": -0.772
+    }
+   ],
    "news_sentiment": {
-    "score": 0.0,
-    "count": 0,
-    "label": "NO NEWS"
+    "score": 0.321,
+    "count": 8,
+    "label": "POSITIVE"
    },
-   "win_prob": 45.5,
-   "expected_r": 0.04,
+   "win_prob": 11.3,
+   "expected_r": -0.63,
    "model_used": true,
    "grade": "C",
    "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
