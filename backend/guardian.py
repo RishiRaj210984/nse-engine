@@ -564,10 +564,14 @@ def emergency_watch(env, state, now):
     v = (lv.get("indices") or {}).get("INDIAVIX") or {}
     if (v.get("chg_pct") or 0) >= EMERGENCY["vix_jump_pct"]:
         reasons.append(("vix", f"India VIX {v['chg_pct']:+.0f}% (fear jumping)"))
+    # a paper trade at its target or stop is a normal automatic event, not an emergency: calm, separate note
     for x in lv.get("paper_open") or []:
-        if x.get("status") in ("STOP", "TARGET"):
-            reasons.append((f"paper:{x['index']}:{x['status']}", f"paper {x['index']} trade has reached its {x['status'].lower()} "
-                                                                  f"(worth Rs {x['value_now']:+,}); it closes in the evening review"))
+        k = f"paper:{x['index']}:{x.get('status')}"
+        if x.get("status") in ("STOP", "TARGET") and k not in seen:
+            seen[k] = now.strftime("%H:%M")
+            notify(env, f"Paper trade reached its {x['status'].lower()}",
+                   f"{x['index']} {x['strategy']} worth Rs {x['value_now']:+,} at {x.get('at')}. Nothing to do: the evening review "
+                   f"books it at the moment it was reached (live mode closes it at once).")
     new = [(k, m) for k, m in reasons if k not in seen]
     if new:
         for k, _ in new:

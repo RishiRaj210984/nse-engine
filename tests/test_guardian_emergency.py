@@ -63,4 +63,11 @@ t("a new reason alerts again", len(sent) == 2 and "BANKNIFTY" in sent[1][1])
 snap["indices"] = {"NIFTY": {"chg_pct": 0.3}, "INDIAVIX": {"chg_pct": 2}}; sent.clear()
 guardian.emergency_watch(env, {}, NOW)
 t("normal day: no alert", not sent)
+snap = {"indices": {"NIFTY": {"chg_pct": 0.2}, "INDIAVIX": {"chg_pct": 3}},
+        "paper_open": [{"index": "NIFTY", "strategy": "Iron Condor", "value_now": 2214, "status": "TARGET", "at": "13:30"}]}
+sent.clear(); st = {}
+guardian.emergency_watch(env, st, NOW)
+t("paper target: calm note (not urgent, not 'Emergency watch')", len(sent) == 1 and "target" in sent[0][0] and "Emergency" not in sent[0][0] and not sent[0][2])
+st["emerg_checked"] = 0; guardian.emergency_watch(env, st, NOW)
+t("...sent once", len(sent) == 1)
 print("ALL PASS" if all(res) else "SOME FAILED")
