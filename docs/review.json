@@ -1,13 +1,13 @@
 {
  "latest": {
-  "session": "2026-10-23",
-  "as_of": "2026-10-23T20:59:00.702065+05:30",
+  "session": "2026-10-26",
+  "as_of": "2026-10-26T16:17:24.259206+05:30",
   "final": true,
-  "plan_built": "2026-10-23T07:13:28.136140+05:30",
+  "plan_built": "2026-10-26T07:13:24.037418+05:30",
   "bias": {
    "label": "RANGEBOUND",
    "predicted_pct": -0.02,
-   "actual_pct": -0.39,
+   "actual_pct": 0.68,
    "band_pct": 0.34,
    "correct": false
   },
@@ -15,122 +15,91 @@
    {
     "index": "NIFTY",
     "strategy": "Iron Condor",
-    "legs": "SELL 23050 CE + BUY 23250 CE + SELL 22300 PE + BUY 22100 PE",
+    "legs": "SELL 22850 CE + BUY 23000 CE + SELL 22350 PE + BUY 22200 PE",
     "lot_size": 65,
-    "planned_max_reward": 3250,
-    "planned_max_loss": 9750,
-    "day_open": 22742.2,
-    "day_high": 22786.95,
-    "day_low": 22372.15,
-    "last": 22600.0,
-    "entry_condition": "NIFTY between 22,300 and 23,050 at 10:15",
-    "entry_spot": 22492.35,
+    "planned_max_reward": 2190,
+    "planned_max_loss": 7560,
+    "day_open": 22524.4,
+    "day_high": 22753.2,
+    "day_low": 22387.45,
+    "last": 22753.2,
+    "entry_condition": "plan said SKIP: No tested structure has a positive record for today. 1 day before, right after Infosys, Kotak Bank results: condors broke 60% of the time in this combination (small sample).",
+    "entry_spot": 22679.9,
     "entry_time": "10:15",
-    "opening_move_pct": -1.1,
-    "status": "TIME",
-    "exit_reason": "TIME: marked at 15:15",
-    "exit_time": "15:15",
-    "exit_spot": 22516.4,
-    "entry_value": -55.6,
-    "exit_value": -51.7,
-    "pnl_per_lot": 254,
-    "capture_pct": 7.8,
-    "range_held": true,
-    "verdict": "Short strike 22,300 / 23,050 held (day 22,372\u201322,787). TIME: marked at 15:15."
+    "opening_move_pct": 0.69,
+    "status": "NO ENTRY",
+    "pnl_per_lot": 0,
+    "verdict": "Entry condition not met, so no trade. The plan's filter kept you out."
    },
    {
     "index": "BANKNIFTY",
     "strategy": "Iron Condor",
-    "legs": "SELL 55700 CE + BUY 56100 CE + SELL 54100 PE + BUY 53700 PE",
+    "legs": "SELL 54800 CE + BUY 55100 CE + SELL 53800 PE + BUY 53500 PE",
     "lot_size": 30,
-    "planned_max_reward": 3081,
-    "planned_max_loss": 8919,
-    "day_open": 54980.4,
-    "day_high": 54980.5,
-    "day_low": 53944.6,
-    "last": 54287.35,
-    "entry_condition": "BANKNIFTY between 54,100 and 55,700 at 10:15",
-    "entry_spot": 54227.65,
+    "planned_max_reward": 2361,
+    "planned_max_loss": 6639,
+    "day_open": 54267.0,
+    "day_high": 54389.85,
+    "day_low": 53777.5,
+    "last": 54366.7,
+    "entry_condition": "plan said SKIP: No tested structure has a positive record for today. 1-2 days before, right after Kotak Bank results: condors broke 60% of the time in this combination (small sample).",
+    "entry_spot": 54272.9,
     "entry_time": "10:15",
-    "opening_move_pct": -1.37,
-    "status": "TIME",
-    "exit_reason": "TIME: marked at 15:15",
-    "exit_time": "15:15",
-    "exit_spot": 54111.55,
-    "entry_value": -145.7,
-    "exit_value": -161.2,
-    "pnl_per_lot": -466,
-    "capture_pct": -15.1,
-    "range_held": false,
-    "verdict": "Short strike 54,100 / 55,700 was crossed: day 53,945\u201354,980. TIME: marked at 15:15."
+    "opening_move_pct": 0.01,
+    "status": "NO ENTRY",
+    "pnl_per_lot": 0,
+    "verdict": "Entry condition not met, so no trade. The plan's filter kept you out."
    }
   ],
   "stocks": [
    {
-    "symbol": "PNB",
-    "grade": "C",
-    "entry": 122.5,
-    "stop": 120.11,
-    "t1": 127.29,
-    "open": 122.0,
-    "high": 122.19,
-    "low": 119.1,
-    "last": 120.37,
-    "tradeable": false,
-    "status": "NOT TRIGGERED",
-    "r": 0.0
-   },
-   {
     "symbol": "INFY",
     "grade": "C",
-    "entry": 1153.35,
-    "stop": 1128.96,
-    "t1": 1202.12,
-    "open": 1179.95,
-    "high": 1196.95,
-    "low": 1146.1,
-    "last": 1153.8,
+    "entry": 1153.8,
+    "stop": 1122.6,
+    "t1": 1221.72,
+    "open": 1118.0,
+    "high": 1166.0,
+    "low": 1114.1,
+    "last": 1166.0,
     "tradeable": false,
-    "status": "OPEN (day 1 of 2)",
-    "entry_fill": 1177.75,
-    "entry_time": "09:30",
-    "r": -0.49,
-    "pnl_10k": -48,
-    "qty_10k": 2
-   },
-   {
-    "symbol": "FEDERALBNK",
-    "grade": "C",
-    "entry": 347.8,
-    "stop": 340.35,
-    "t1": 362.71,
-    "open": 348.6,
-    "high": 349.0,
-    "low": 339.0,
-    "last": 340.9,
-    "tradeable": false,
-    "status": "NOT TRIGGERED",
+    "status": "SKIP (gap beyond T1/SL)",
     "r": 0.0
    }
   ],
   "summary": {
-   "options_pnl_per_lot": -212,
-   "planned_max_reward": 6331,
-   "gap": -6543,
-   "trades": 2,
+   "options_pnl_per_lot": 0,
+   "planned_max_reward": 0,
+   "gap": 0,
+   "trades": 0,
    "stocks_pnl_10k": 0,
    "stock_trades": 0,
-   "plan_pnl": -212
+   "plan_pnl": 0
   },
   "lessons": [
-   "Bias RANGEBOUND: Nifty -0.39% vs prev close. Call was wrong (move bigger than the sideways band).",
-   "NIFTY: Short strike 22,300 / 23,050 held (day 22,372\u201322,787). TIME: marked at 15:15.",
-   "BANKNIFTY: Short strike 54,100 / 55,700 was crossed: day 53,945\u201354,980. TIME: marked at 15:15.",
+   "Bias RANGEBOUND: Nifty +0.68% vs prev close. Call was wrong (move bigger than the sideways band).",
+   "NIFTY: Entry condition not met, so no trade. The plan's filter kept you out.",
+   "BANKNIFTY: Entry condition not met, so no trade. The plan's filter kept you out.",
    "No A/B stocks: watchlist shown for learning only (market gate closed)."
   ],
   "note": "Option P&L is a Black-Scholes estimate repriced with India VIX, per 1 lot, before costs. Stock results use a \u20b910,000 / 1% risk example."
  },
  "history": [
+  {
+   "session": "2026-10-26",
+   "final": true,
+   "bias": "RANGEBOUND",
+   "bias_correct": false,
+   "actual_pct": 0.68,
+   "options_pnl": 0,
+   "trades": 0,
+   "stocks_pnl": 0,
+   "plan_pnl": 0,
+   "detail": [
+    "NIFTY Iron Condor: NO ENTRY +0",
+    "BANKNIFTY Iron Condor: NO ENTRY +0"
+   ]
+  },
   {
    "session": "2026-10-23",
    "final": true,
@@ -195,6 +164,14 @@
  "paper": {
   "days": [
    {
+    "session": "2026-10-26",
+    "pnl": 2674,
+    "detail": [
+     "NIFTY: TARGET: 55% of credit kept (real NSE prices, 14:20), trade result Rs +1,798 after costs"
+    ],
+    "total": 1798
+   },
+   {
     "session": "2026-10-23",
     "pnl": -1055,
     "detail": [
@@ -227,25 +204,35 @@
     "total": 0
    }
   ],
-  "realized": 0,
-  "open_value": -876,
-  "total": -876,
-  "open": [
+  "realized": 1798,
+  "open_value": 0,
+  "total": 1798,
+  "open": [],
+  "closed": [
    {
     "index": "NIFTY",
     "strategy": "Iron Condor",
     "expiry": "2026-10-27",
     "entry_session": "2026-10-21",
     "credit_rs": 3702,
-    "mark": -876
+    "exit_session": "2026-10-26",
+    "reason": "TARGET: 55% of credit kept (real NSE prices, 14:20)",
+    "pnl": 1798
    }
   ],
-  "closed": [],
-  "trades": 0,
-  "wins": 0,
+  "trades": 1,
+  "wins": 1,
   "note": "Paper book: TRADE days only, 1 lot, held like the guardian holds it (target, stop, expiry-day 10:15), costs charged when a trade closes. Prices: real NSE option prices saved every 10 minutes; an estimate (Black-Scholes with India VIX) only where no real price was saved.",
   "with_adjustment": {
    "days": [
+    {
+     "session": "2026-10-26",
+     "pnl": 337,
+     "detail": [
+      "NIFTY: still open (expiry 27 Oct), worth Rs -1,276 now"
+     ],
+     "total": -1276
+    },
     {
      "session": "2026-10-23",
      "pnl": 351,
@@ -280,8 +267,8 @@
     }
    ],
    "realized": 0,
-   "open_value": -1613,
-   "total": -1613,
+   "open_value": -1276,
+   "total": -1276,
    "open": [
     {
      "index": "NIFTY",
@@ -289,18 +276,18 @@
      "expiry": "2026-10-27",
      "entry_session": "2026-10-21",
      "credit_rs": 3980,
-     "mark": -1613
+     "mark": -1276
     }
    ],
    "closed": [],
    "trades": 0,
    "wins": 0,
-   "note": "Paper book: TRADE days only, 1 lot, held like the guardian holds it (target, stop, expiry-day 10:15), costs charged when a trade closes. Premiums are Black-Scholes estimates with India VIX."
+   "note": "Paper book: TRADE days only, 1 lot, held like the guardian holds it (target, stop, expiry-day 10:15), costs charged when a trade closes. Prices: real NSE option prices saved every 10 minutes; an estimate (Black-Scholes with India VIX) only where no real price was saved."
   }
  },
  "totals": {
-  "days": 4,
-  "bias_hit_pct": 25.0,
+  "days": 5,
+  "bias_hit_pct": 20.0,
   "options_pnl_sum": -2495,
   "plan_pnl_sum": -2495,
   "plan_win_days": 1,

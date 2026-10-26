@@ -1,207 +1,207 @@
 {
- "generated_at": "2026-10-26T07:13:47.954657+05:30",
- "session": "2026-10-26",
- "stage": "final",
+ "generated_at": "2026-10-26T16:18:42.198425+05:30",
+ "session": "2026-10-27",
+ "stage": "preview",
  "expected_open": {
-  "gap_pct": -0.21,
-  "error_pct": 0.29,
-  "day_pct": -0.02,
-  "snapshot": "Mon 26 Oct 07:13 IST",
-  "stage": "final",
-  "tip": "Moderate gap down expected. Use limit orders only, and wait for 09:30.",
+  "gap_pct": 0.02,
+  "error_pct": 0.38,
+  "day_pct": 0.05,
+  "snapshot": "Mon 26 Oct 16:18 IST",
+  "stage": "preview",
+  "tip": "Flat open expected. Normal entry windows apply.",
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": -0.19
+    "move_pct": 0.0
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": 0.17
+    "move_pct": 0.0
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": -0.55
+    "move_pct": 0.0
    },
    {
     "key": "dax",
     "name": "DAX (Germany)",
-    "move_pct": -0.08
+    "move_pct": 0.0
    },
    {
     "key": "ftse",
     "name": "FTSE 100 (UK)",
-    "move_pct": 0.02
+    "move_pct": 0.0
    },
    {
     "key": "stoxx",
     "name": "Euro Stoxx 50",
-    "move_pct": 0.24
+    "move_pct": 0.0
    },
    {
     "key": "n225",
     "name": "Nikkei 225",
-    "move_pct": -0.2
+    "move_pct": 0.0
    },
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": 0.35
+    "move_pct": 0.0
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": -0.95
+    "move_pct": 0.0
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": -0.13
+    "move_pct": 0.0
    },
    {
     "key": "inr",
     "name": "USD/INR",
-    "move_pct": -0.01
+    "move_pct": 0.0
    }
   ],
   "drivers": [
    {
-    "feature": "es",
-    "label": "S&P 500 futures",
-    "value": -0.19,
-    "contribution_pct": -0.103
-   },
-   {
     "feature": "vix",
     "label": "India VIX level",
-    "value": 16.86,
-    "contribution_pct": 0.052
+    "value": 17.16,
+    "contribution_pct": 0.088
    },
    {
-    "feature": "dxy",
-    "label": "Dollar index",
-    "value": -0.13,
-    "contribution_pct": 0.047
+    "feature": "nprev",
+    "label": "Nifty previous day",
+    "value": 0.68,
+    "contribution_pct": -0.038
    },
    {
-    "feature": "n225",
-    "label": "Nikkei 225",
-    "value": -0.2,
+    "feature": "es",
+    "label": "S&P 500 futures",
+    "value": 0.0,
     "contribution_pct": -0.02
    },
    {
-    "feature": "stoxx",
-    "label": "Euro Stoxx 50",
-    "value": 0.24,
-    "contribution_pct": 0.018
+    "feature": "ym",
+    "label": "Dow futures",
+    "value": 0.0,
+    "contribution_pct": 0.013
    },
    {
-    "feature": "nq",
-    "label": "Nasdaq futures",
-    "value": 0.17,
-    "contribution_pct": -0.014
+    "feature": "cl",
+    "label": "Crude oil",
+    "value": 0.0,
+    "contribution_pct": 0.007
+   },
+   {
+    "feature": "ftse",
+    "label": "FTSE 100 (UK)",
+    "value": 0.0,
+    "contribution_pct": -0.004
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.7,
-   "gap_sign_pct": 71.0,
-   "directional_calls": 192,
-   "directional_accuracy": 71.4
+   "gap_corr": 0.22,
+   "gap_sign_pct": 57.7,
+   "directional_calls": 80,
+   "directional_accuracy": 62.5
   }
  },
  "headline": "Market bias SIDEWAYS \u2014 favour hedged premium selling",
  "bias": "RANGEBOUND",
- "score": -3,
- "bias_track_record_pct": 71.8,
+ "score": 9,
+ "bias_track_record_pct": 65.4,
  "options": [
   {
    "index": "NIFTY",
    "strategy": "Iron Condor",
-   "legs": "SELL 22850 CE + BUY 23000 CE + SELL 22350 PE + BUY 22200 PE",
+   "legs": "SELL 22900 CE + BUY 23000 CE + SELL 22600 PE + BUY 22500 PE",
    "expiry": "2026-10-27",
    "lot_size": 65,
-   "entry": "Enter at 10:15 (after the first hour) only if NIFTY is between 22,350 and 22,850",
-   "target": "Buy back at \u20b915.2 (keep ~55% of credit), else hold to expiry Tue 27 Oct",
-   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b92,190 per lot)",
-   "max_loss": 7560,
-   "max_reward": 2190,
-   "reward_risk": 0.29,
+   "entry": "Enter at 10:15 (after the first hour) only if NIFTY is between 22,600 and 22,900",
+   "target": "Buy back at \u20b911.9 (keep ~55% of credit), else hold to expiry Tue 27 Oct",
+   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,723 per lot)",
+   "max_loss": 4778,
+   "max_reward": 1723,
+   "reward_risk": 0.36,
    "decision": "SKIP",
-   "decision_reason": "No tested structure has a positive record for today. 1 day before, right after Infosys, Kotak Bank results: condors broke 60% of the time in this combination (small sample).",
+   "decision_reason": "No tested structure has a positive record for today. Expiry day: this setup lost money historically (33.3% wins, avg \u20b9-385 per lot over 27 trades).",
    "enter_at": "10:15 IST, after the first hour",
    "exit_by": "target / stop, else expiry 2026-10-27",
    "setup_stats": {
-    "trades": 33,
-    "win_pct": 75.8,
-    "avg_pnl": 107,
-    "worst": -3751,
-    "best": 2272,
-    "total": 3537,
-    "sample": "days the model called SIDEWAYS, full 2 years",
-    "allowed": true,
+    "trades": 27,
+    "win_pct": 33.3,
+    "avg_pnl": -385,
+    "worst": -4238,
+    "best": 1038,
+    "total": -10401,
+    "sample": "days the model called SIDEWAYS, current expiry schedule",
+    "allowed": false,
     "marginal": false,
     "quiet_first_hour": {
-     "trades": 21,
-     "win_pct": 76.2,
-     "avg_pnl": -4,
-     "worst": -3322,
-     "best": 1469,
-     "total": -102
+     "trades": 16,
+     "win_pct": 25.0,
+     "avg_pnl": -300,
+     "worst": -1371,
+     "best": 1038,
+     "total": -4806
     },
     "trending_first_hour": {
-     "trades": 12,
-     "win_pct": 75.0,
-     "avg_pnl": 303,
-     "worst": -3751,
-     "best": 2272,
-     "total": 3639
+     "trades": 11,
+     "win_pct": 45.5,
+     "avg_pnl": -508,
+     "worst": -4238,
+     "best": 965,
+     "total": -5595
     }
    }
   },
   {
    "index": "BANKNIFTY",
    "strategy": "Iron Condor",
-   "legs": "SELL 54800 CE + BUY 55100 CE + SELL 53800 PE + BUY 53500 PE",
+   "legs": "SELL 54700 CE + BUY 54900 CE + SELL 54000 PE + BUY 53800 PE",
    "expiry": "2026-10-27",
    "lot_size": 30,
-   "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is between 53,800 and 54,800",
-   "target": "Buy back at \u20b935.4 (keep ~55% of credit), else hold to expiry Tue 27 Oct",
-   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b92,361 per lot)",
-   "max_loss": 6639,
-   "max_reward": 2361,
-   "reward_risk": 0.36,
+   "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is between 54,000 and 54,700",
+   "target": "Buy back at \u20b919.4 (keep ~55% of credit), else hold to expiry Tue 27 Oct",
+   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,293 per lot)",
+   "max_loss": 4707,
+   "max_reward": 1293,
+   "reward_risk": 0.27,
    "decision": "SKIP",
-   "decision_reason": "No tested structure has a positive record for today. 1-2 days before, right after Kotak Bank results: condors broke 60% of the time in this combination (small sample).",
+   "decision_reason": "No tested structure has a positive record for today. Expiry day: this setup lost money historically (28.6% wins, avg \u20b9-219 per lot over 28 trades).",
    "enter_at": "10:15 IST, after the first hour",
    "exit_by": "target / stop, else expiry 2026-10-27",
    "setup_stats": {
-    "trades": 47,
-    "win_pct": 72.3,
-    "avg_pnl": -85,
-    "worst": -6517,
-    "best": 2797,
-    "total": -4019,
+    "trades": 28,
+    "win_pct": 28.6,
+    "avg_pnl": -219,
+    "worst": -2774,
+    "best": 1041,
+    "total": -6157,
     "sample": "days the model called SIDEWAYS, full 2 years, all days",
     "allowed": false,
     "marginal": false,
     "quiet_first_hour": {
-     "trades": 29,
-     "win_pct": 69.0,
-     "avg_pnl": -149,
-     "worst": -6517,
-     "best": 2797,
-     "total": -4335
+     "trades": 16,
+     "win_pct": 31.2,
+     "avg_pnl": 0,
+     "worst": -414,
+     "best": 1041,
+     "total": 7
     },
     "trending_first_hour": {
-     "trades": 18,
-     "win_pct": 77.8,
-     "avg_pnl": 17,
-     "worst": -6324,
-     "best": 2561,
-     "total": 316
+     "trades": 12,
+     "win_pct": 25.0,
+     "avg_pnl": -513,
+     "worst": -2774,
+     "best": 554,
+     "total": -6164
     }
    }
   }
@@ -209,24 +209,6 @@
  "stocks": [],
  "market_gate_open": false,
  "events": [
-  {
-   "symbol": "INFY",
-   "name": "Infosys",
-   "when": "Fri 23 Oct",
-   "date": "2026-10-23",
-   "affects": "2026-10-26",
-   "past": true,
-   "bank": false
-  },
-  {
-   "symbol": "KOTAKBANK",
-   "name": "Kotak Bank",
-   "when": "Sat 24 Oct",
-   "date": "2026-10-24",
-   "affects": "2026-10-26",
-   "past": true,
-   "bank": true
-  },
   {
    "symbol": "RELIANCE",
    "name": "Reliance",
@@ -259,85 +241,85 @@
  "no_trade_reason": "No stock passed all 4 rules with a positive expected value. Sitting out is a valid decision.",
  "timeline": [
   {
-   "date": "2026-10-26",
+   "date": "2026-10-27",
    "start": "07:45",
    "end": "09:00",
    "kind": "prep",
    "title": "Read the final plan",
    "do": "The ~07:15 run is final (US close, Dow and US futures, Europe, Asia open). Read the expected open, bias and trades. Set price alerts at each entry and stop-loss.",
-   "when": "Mon 26 Oct \u00b7 07:45\u201309:00"
+   "when": "Tue 27 Oct \u00b7 07:45\u201309:00"
   },
   {
-   "date": "2026-10-26",
+   "date": "2026-10-27",
    "start": "09:00",
    "end": "09:15",
    "kind": "wait",
    "title": "Pre-open",
    "do": "Place no market orders. Note where your stocks are indicated to open.",
-   "when": "Mon 26 Oct \u00b7 09:00\u201309:15"
+   "when": "Tue 27 Oct \u00b7 09:00\u201309:15"
   },
   {
-   "date": "2026-10-26",
+   "date": "2026-10-27",
    "start": "09:15",
    "end": "09:30",
    "kind": "wait",
    "title": "Wait",
    "do": "Opening 15 min is the most volatile. Cancel any stock that opens above its T1 or below its SL.",
-   "when": "Mon 26 Oct \u00b7 09:15\u201309:30"
+   "when": "Tue 27 Oct \u00b7 09:15\u201309:30"
   },
   {
-   "date": "2026-10-26",
+   "date": "2026-10-27",
    "start": "09:30",
    "end": "10:30",
    "kind": "act",
    "title": "Stock buy window",
    "do": "Buy only if price is holding above the entry and the 15-min opening high. Place the SL order immediately.",
-   "when": "Mon 26 Oct \u00b7 09:30\u201310:30"
+   "when": "Tue 27 Oct \u00b7 09:30\u201310:30"
   },
   {
-   "date": "2026-10-26",
+   "date": "2026-10-27",
    "start": "09:45",
    "end": "11:00",
    "kind": "act",
    "title": "Options window",
    "do": "Spreads / ATM buys only if the index respects the support/resistance shown. Iron condor / fly only after 10:00 with the index inside the range.",
-   "when": "Mon 26 Oct \u00b7 09:45\u201311:00"
+   "when": "Tue 27 Oct \u00b7 09:45\u201311:00"
   },
   {
-   "date": "2026-10-26",
+   "date": "2026-10-27",
    "start": "11:30",
    "end": "14:30",
    "kind": "manage",
    "title": "Manage only",
    "do": "No new stock entries. If it did not trigger, skip it. Keep stop-loss orders in place.",
-   "when": "Mon 26 Oct \u00b7 11:30\u201314:30"
+   "when": "Tue 27 Oct \u00b7 11:30\u201314:30"
   },
   {
-   "date": "2026-10-26",
+   "date": "2026-10-27",
    "start": "14:30",
    "end": "15:00",
    "kind": "exit",
    "title": "Option buyers exit",
    "do": "Exit option buys by 15:00 if target not hit (time decay). Spreads/condors: hold only if still inside the plan.",
-   "when": "Mon 26 Oct \u00b7 14:30\u201315:00"
+   "when": "Tue 27 Oct \u00b7 14:30\u201315:00"
   },
   {
-   "date": "2026-10-26",
+   "date": "2026-10-27",
    "start": "16:30",
    "end": "17:00",
    "kind": "review",
    "title": "Review",
    "do": "The engine grades today's plan. Check the Results tab: what worked, what the gap was.",
-   "when": "Mon 26 Oct \u00b7 16:30\u201317:00"
+   "when": "Tue 27 Oct \u00b7 16:30\u201317:00"
   },
   {
-   "date": "2026-10-27",
+   "date": "2026-10-28",
    "start": "09:15",
    "end": "15:15",
    "kind": "exit",
    "title": "Day 2: exit by 15:15",
    "do": "Book half at T1, trail SL to entry. Exit everything still open by 15:15 (this is a 1\u20132 day setup).",
-   "when": "Tue 27 Oct \u00b7 09:15\u201315:15"
+   "when": "Wed 28 Oct \u00b7 09:15\u201315:15"
   },
   {
    "date": "2026-10-27",

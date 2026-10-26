@@ -627,5 +627,90 @@
    "No A/B stocks: watchlist shown for learning only (market gate closed)."
   ],
   "note": "Option P&L is a Black-Scholes estimate repriced with India VIX, per 1 lot, before costs. Stock results use a \u20b910,000 / 1% risk example."
+ },
+ {
+  "session": "2026-10-26",
+  "as_of": "2026-10-26T16:17:24.259206+05:30",
+  "final": true,
+  "plan_built": "2026-10-26T07:13:24.037418+05:30",
+  "bias": {
+   "label": "RANGEBOUND",
+   "predicted_pct": -0.02,
+   "actual_pct": 0.68,
+   "band_pct": 0.34,
+   "correct": false
+  },
+  "options": [
+   {
+    "index": "NIFTY",
+    "strategy": "Iron Condor",
+    "legs": "SELL 22850 CE + BUY 23000 CE + SELL 22350 PE + BUY 22200 PE",
+    "lot_size": 65,
+    "planned_max_reward": 2190,
+    "planned_max_loss": 7560,
+    "day_open": 22524.4,
+    "day_high": 22753.2,
+    "day_low": 22387.45,
+    "last": 22753.2,
+    "entry_condition": "plan said SKIP: No tested structure has a positive record for today. 1 day before, right after Infosys, Kotak Bank results: condors broke 60% of the time in this combination (small sample).",
+    "entry_spot": 22679.9,
+    "entry_time": "10:15",
+    "opening_move_pct": 0.69,
+    "status": "NO ENTRY",
+    "pnl_per_lot": 0,
+    "verdict": "Entry condition not met, so no trade. The plan's filter kept you out."
+   },
+   {
+    "index": "BANKNIFTY",
+    "strategy": "Iron Condor",
+    "legs": "SELL 54800 CE + BUY 55100 CE + SELL 53800 PE + BUY 53500 PE",
+    "lot_size": 30,
+    "planned_max_reward": 2361,
+    "planned_max_loss": 6639,
+    "day_open": 54267.0,
+    "day_high": 54389.85,
+    "day_low": 53777.5,
+    "last": 54366.7,
+    "entry_condition": "plan said SKIP: No tested structure has a positive record for today. 1-2 days before, right after Kotak Bank results: condors broke 60% of the time in this combination (small sample).",
+    "entry_spot": 54272.9,
+    "entry_time": "10:15",
+    "opening_move_pct": 0.01,
+    "status": "NO ENTRY",
+    "pnl_per_lot": 0,
+    "verdict": "Entry condition not met, so no trade. The plan's filter kept you out."
+   }
+  ],
+  "stocks": [
+   {
+    "symbol": "INFY",
+    "grade": "C",
+    "entry": 1153.8,
+    "stop": 1122.6,
+    "t1": 1221.72,
+    "open": 1118.0,
+    "high": 1166.0,
+    "low": 1114.1,
+    "last": 1166.0,
+    "tradeable": false,
+    "status": "SKIP (gap beyond T1/SL)",
+    "r": 0.0
+   }
+  ],
+  "summary": {
+   "options_pnl_per_lot": 0,
+   "planned_max_reward": 0,
+   "gap": 0,
+   "trades": 0,
+   "stocks_pnl_10k": 0,
+   "stock_trades": 0,
+   "plan_pnl": 0
+  },
+  "lessons": [
+   "Bias RANGEBOUND: Nifty +0.68% vs prev close. Call was wrong (move bigger than the sideways band).",
+   "NIFTY: Entry condition not met, so no trade. The plan's filter kept you out.",
+   "BANKNIFTY: Entry condition not met, so no trade. The plan's filter kept you out.",
+   "No A/B stocks: watchlist shown for learning only (market gate closed)."
+  ],
+  "note": "Option P&L is a Black-Scholes estimate repriced with India VIX, per 1 lot, before costs. Stock results use a \u20b910,000 / 1% risk example."
  }
 ]

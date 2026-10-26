@@ -1,90 +1,17 @@
 {
- "open": {
-  "NIFTY": {
+ "open": {},
+ "closed": [
+  {
    "index": "NIFTY",
    "strategy": "Iron Condor",
-   "legs": [
-    {
-     "action": "SELL",
-     "strike": 23300,
-     "type": "CE",
-     "est_premium": 53.2
-    },
-    {
-     "action": "BUY",
-     "strike": 23550,
-     "type": "CE",
-     "est_premium": 18.7
-    },
-    {
-     "action": "SELL",
-     "strike": 22500,
-     "type": "PE",
-     "est_premium": 44.7
-    },
-    {
-     "action": "BUY",
-     "strike": 22250,
-     "type": "PE",
-     "est_premium": 14.2
-    }
-   ],
-   "lot": 65,
    "expiry": "2026-10-27",
    "entry_session": "2026-10-21",
-   "entry_spot": 22936.05,
-   "v_e": -56.95785628779155,
    "credit_rs": 3702,
-   "iv0": 0.1477,
-   "vix0": 15.1274995803833,
-   "mark": -876,
-   "groups": [
-    {
-     "legs": [
-      {
-       "action": "SELL",
-       "strike": 23300,
-       "type": "CE",
-       "est_premium": 53.2
-      },
-      {
-       "action": "BUY",
-       "strike": 23550,
-       "type": "CE",
-       "est_premium": 18.7
-      }
-     ],
-     "v0": -38.80778085215094,
-     "off": -0.778299010434365
-    },
-    {
-     "legs": [
-      {
-       "action": "SELL",
-       "strike": 22500,
-       "type": "PE",
-       "est_premium": 44.7
-      },
-      {
-       "action": "BUY",
-       "strike": 22250,
-       "type": "PE",
-       "est_premium": 14.2
-      }
-     ],
-     "v0": -18.15007543564061,
-     "off": 3.8686469617859984
-    }
-   ],
-   "realized": 0.0,
-   "credit0": 56.95785628779155,
-   "credit_all": 56.95785628779155,
-   "adjusted": null,
-   "extra_cost": 0,
-   "basis": "NSE"
+   "exit_session": "2026-10-26",
+   "reason": "TARGET: 55% of credit kept (real NSE prices, 14:20)",
+   "pnl": 1798
   }
- },
- "closed": [],
+ ],
  "days": [
   {
    "session": "2026-10-19",
@@ -117,10 +44,18 @@
     "NIFTY: still open (expiry 27 Oct), worth Rs -876 now"
    ],
    "total": -876
+  },
+  {
+   "session": "2026-10-26",
+   "pnl": 2674,
+   "detail": [
+    "NIFTY: TARGET: 55% of credit kept (real NSE prices, 14:20), trade result Rs +1,798 after costs"
+   ],
+   "total": 1798
   }
  ],
  "before": {
-  "session": "2026-10-23",
+  "session": "2026-10-26",
   "open": {
    "NIFTY": {
     "index": "NIFTY",
@@ -159,7 +94,7 @@
     "credit_rs": 3702,
     "iv0": 0.1477,
     "vix0": 15.1274995803833,
-    "mark": 179,
+    "mark": -876,
     "groups": [
      {
       "legs": [
@@ -177,7 +112,7 @@
        }
       ],
       "v0": -38.80778085215094,
-      "off": 1.00187416825856
+      "off": -0.778299010434365
      },
      {
       "legs": [
@@ -195,7 +130,7 @@
        }
       ],
       "v0": -18.15007543564061,
-      "off": 8.503573526731635
+      "off": 3.8686469617859984
      }
     ],
     "realized": 0.0,
