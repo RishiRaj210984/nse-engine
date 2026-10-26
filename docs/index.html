@@ -187,7 +187,7 @@ body.is-simple main{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 <script>
 const NSE_HOLIDAYS = ['2026-10-20', '2026-11-08', '2026-11-10', '2026-11-24', '2026-12-25'];   // fallback; meta.json has the live list
 const holidayList = () => (D.meta?.holidays?.length ? D.meta.holidays : NSE_HOLIDAYS);
-const APP_VERSION = 'v32';   // keep equal to CACHE in sw.js
+const APP_VERSION = 'v33';   // keep equal to CACHE in sw.js
 const FILES = ['plan', 'global-bias', 'volume-breakouts', 'performance', 'review', 'meta', 'live', 'small-capital', 'markets'];
 const D = {};
 let tab = 'dash', stockFilter = 'ab', lots = {}, loadErr = null, lastLoad = 0;

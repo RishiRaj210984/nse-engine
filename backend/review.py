@@ -361,12 +361,14 @@ def paper_book(session, archived, bars_by_index, vix, adjust=False):
     # an emergency close by hand earlier today stays part of today's result
     manual_pnl, manual_detail = today_old.get("manual_pnl", 0), list(today_old.get("manual_detail", []))
     day_pnl, detail = manual_pnl, list(manual_detail)
+    from live import legs_key
+    day_marks = (store._read(store.state_path("paper_marks.json"), {}) or {}).get(s_iso, {})   # real NSE values, every 10 min
     for name in ("NIFTY", "BANKNIFTY"):
         bars = bars_by_index.get(name)
         if bars is None:
             continue
         pos = book["open"].get(name)
-        start = bars.index[0]
+        start, start_hm = bars.index[0], "00:00"
         if pos is None:
             o = archived["bias"]["options"].get(name)
             if not o or _decision(archived, name) != "TRADE":
@@ -394,8 +396,18 @@ def paper_book(session, archived, bars_by_index, vix, adjust=False):
                    "credit_rs": round(-v_e * o["lot_size"]), "iv0": iv0, "vix0": vix0, "mark": 0,
                    "groups": [{"legs": g, "v0": _value(g, spot_e, _T(exp, ts_e), iv0)} for g in _sides(legs)],
                    "realized": 0.0, "credit0": -v_e, "credit_all": -v_e, "adjusted": None, "extra_cost": 0}
-            start = ts_e
-            detail.append(f"{name}: entered {pos['strategy']} at 10:15, credit Rs {pos['credit_rs']:,}")
+            start, start_hm = ts_e, "10:15"
+            em = [m for m in day_marks.get(legs_key(name, o["expiry"], legs), []) if "10:15" <= m[0] <= "10:35"]
+            if em and not adjust:   # a real price right at entry time; later ones re-base instead (below)
+                v = {"CE": em[0][2], "PE": em[0][3]}
+                for g in pos["groups"]:
+                    g["v0"] = v[g["legs"][0]["type"]]
+                pos["v_e"] = sum(g["v0"] for g in pos["groups"])
+                pos.update(credit0=-pos["v_e"], credit_all=-pos["v_e"], credit_rs=round(-pos["v_e"] * pos["lot"]),
+                           entry_spot=em[0][1], basis="NSE")
+                start_hm = em[0][0]
+            detail.append(f"{name}: entered {pos['strategy']} at 10:15, credit Rs {pos['credit_rs']:,}"
+                          + (" (real NSE prices)" if pos.get("basis") == "NSE" else " (estimated prices)"))
         exp = date.fromisoformat(pos["expiry"])
         iv = lambda ts: pos["iv0"] * (_vix_at(vix, ts) / pos["vix0"]) if pos["vix0"] and vix is not None else pos["iv0"]
         lot = pos["lot"]
@@ -403,11 +415,40 @@ def paper_book(session, archived, bars_by_index, vix, adjust=False):
             t_e = datetime.combine(date.fromisoformat(pos["entry_session"]), time(10, 15), IST)
             pos["groups"] = [{"legs": g, "v0": _value(g, pos["entry_spot"], _T(exp, t_e), pos["iv0"])} for g in _sides(pos["legs"])]
             pos.update(realized=0.0, credit0=-pos["v_e"], credit_all=-pos["v_e"], adjusted=None, extra_cost=0)
-        after = bars[bars.index > start].resample("15min", label="right", closed="right").last().dropna()
-        reason, total = None, pos["mark"] / lot   # unchanged if there are no bars after the start
+        reason, total = None, pos["mark"] / lot   # unchanged if there is nothing after the start
+        mk = [] if adjust else [m for m in day_marks.get(legs_key(name, pos["expiry"], pos["legs"]), []) if m[0] > start_hm]
+        if mk and len(pos["groups"]) == 2 and pos.get("basis") != "NSE":
+            if True:   # entered on estimates: re-base each side once, at its earliest real price
+                ts0 = datetime.combine(session, time(*map(int, mk[0][0].split(":"))), IST)
+                v = {"CE": mk[0][2], "PE": mk[0][3]}
+                for g in pos["groups"]:
+                    g["off"] = v[g["legs"][0]["type"]] - _value(g["legs"], mk[0][1], _T(exp, ts0), iv(ts0))   # real - estimate
+                    g["v0"] += g["off"]
+                pos["v_e"] = sum(g["v0"] for g in pos["groups"])
+                pos.update(credit0=-pos["v_e"], credit_all=-pos["v_e"], credit_rs=round(-pos["v_e"] * lot), basis="NSE")
+                detail.append(f"{name}: from now on valued at real NSE prices (entry premium re-based to Rs {pos['credit_rs']:,})")
+        if len(mk) >= 3 and len(pos["groups"]) == 2 and pos.get("basis") == "NSE":
+            for t, spot_m, v_ce, v_pe, _n in mk:
+                v = {"CE": v_ce, "PE": v_pe}
+                total = pos["realized"] + sum(v[g["legs"][0]["type"]] - g["v0"] for g in pos["groups"])
+                if total <= -pos["credit0"]:
+                    reason = f"STOP: loss reached 1x credit (real NSE prices, {t})"
+                elif total >= 0.55 * pos["credit_all"]:
+                    reason = f"TARGET: 55% of credit kept (real NSE prices, {t})"
+                elif session >= exp and t >= "10:15":
+                    reason = f"EXPIRY DAY: closed at {t} (real NSE prices)"
+                if reason:
+                    break
+            # remember how far the estimate is from real prices, to use if a later stretch has no real prices
+            ts_l = datetime.combine(session, time(*map(int, t.split(":"))), IST)
+            for g in pos["groups"]:
+                g["off"] = v[g["legs"][0]["type"]] - _value(g["legs"], spot_m, _T(exp, ts_l), iv(ts_l))
+            after = bars.iloc[0:0]   # real values used: skip the estimate walk below
+        else:
+            after = bars[bars.index > start].resample("15min", label="right", closed="right").last().dropna()
         for ts, row in after.iterrows():
             S = float(row["Close"])
-            vals = [_value(g["legs"], S, _T(exp, ts), iv(ts)) for g in pos["groups"]]
+            vals = [_value(g["legs"], S, _T(exp, ts), iv(ts)) + g.get("off", 0) for g in pos["groups"]]
             total = pos["realized"] + sum(v - g["v0"] for v, g in zip(vals, pos["groups"]))
             if total <= -pos["credit0"]:
                 reason = "STOP: loss reached 1x credit"
@@ -453,7 +494,8 @@ def _book_summary(book):
             "closed": book["closed"][::-1][:30], "trades": len(book["closed"]),
             "wins": sum(c["pnl"] > 0 for c in book["closed"]),
             "note": "Paper book: TRADE days only, 1 lot, held like the guardian holds it (target, stop, expiry-day 10:15), "
-                    "costs charged when a trade closes. Premiums are Black-Scholes estimates with India VIX."}
+                    "costs charged when a trade closes. Prices: real NSE option prices saved every 10 minutes; "
+                    "an estimate (Black-Scholes with India VIX) only where no real price was saved."}
 
 
 def paper_close_all(now=None):

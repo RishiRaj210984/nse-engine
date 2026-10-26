@@ -193,7 +193,69 @@ def plan_status(bias, chains, quotes, now):
     return out
 
 
-def paper_open(quotes, now, book_file="paper_book.json"):
+# ------------------------------------------------------------------ real prices for the paper book
+def legs_key(index, expiry_iso, legs):
+    return f"{index}|{expiry_iso}|" + ",".join(sorted(f"{l['action'][0]}{int(l['strike'])}{l['type']}" for l in legs))
+
+
+def real_sides(legs, chain, spot, T, vix):
+    """Real NSE value per unit of each side (calls, puts): bid/ask mid, else last price; a strike outside the
+    saved window is priced with the real implied volatility of the nearest saved strike. -> (v_ce, v_pe, nse_legs)"""
+    by = {x["strike"]: x for x in chain["strikes"]}
+    ks = sorted(by)
+    side, n = {"CE": 0.0, "PE": 0.0}, 0
+    for l in legs:
+        key = "ce" if l["type"] == "CE" else "pe"
+        x = by.get(l["strike"])
+        if x and x.get(f"{key}_ltp"):
+            b, a = x.get(f"{key}_bid"), x.get(f"{key}_ask")
+            p = (b + a) / 2 if b and a and a >= b > 0 else float(x[f"{key}_ltp"])
+            n += 1
+        else:
+            near = by[min(ks, key=lambda k: abs(k - l["strike"]))] if ks else {}
+            p = bs_price(spot, l["strike"], T, (near.get(f"{key}_iv") or vix) / 100, l["type"])
+        side[l["type"]] += (1 if l["action"] == "BUY" else -1) * p
+    return round(side["CE"], 3), round(side["PE"], 3), n
+
+
+def _chain_for(chains, index, expiry_iso):
+    ch = (chains or {}).get(index)
+    if ch and ch.get("strikes") and datetime.strptime(ch["expiry"], "%d-%b-%Y").date().isoformat() == expiry_iso:
+        return ch
+    return None
+
+
+def record_marks(bias, chains, quotes, now):
+    """Save, every live run, the real NSE value of each held paper trade and of today's planned structures.
+    The evening review uses these instead of estimates (state/paper_marks.json, last 15 days)."""
+    if not ("09:15" <= now.strftime("%H:%M") <= "15:30"):
+        return 0
+    vix = (quotes.get("^INDIAVIX") or {}).get("last")
+    book = store._read(store.state_path("paper_book.json"), {}) or {}
+    todo = [(p["index"], p["expiry"], p["legs"]) for p in (book.get("open") or {}).values()]
+    for name, o in (bias.get("options") or {}).items():
+        todo.append((name, o["expiry"], o["strategies"][0]["legs"]))
+    path = store.state_path("paper_marks.json")
+    marks = store._read(path, {}) or {}
+    day = marks.setdefault(now.date().isoformat(), {})
+    n = 0
+    for name, exp, legs in todo:
+        ch, spot = _chain_for(chains, name, exp), (quotes.get(INDEX_SPECS[name]["ticker"]) or {}).get("last")
+        if not ch or not spot or not vix:
+            continue
+        T = max((datetime.fromisoformat(exp).replace(hour=15, minute=30, tzinfo=IST) - now).total_seconds() / 86400, 0.002) / 365
+        v_ce, v_pe, nse = real_sides(legs, ch, spot, T, vix)
+        rows = day.setdefault(legs_key(name, exp, legs), [])
+        if not rows or rows[-1][0] != now.strftime("%H:%M"):
+            rows.append([now.strftime("%H:%M"), round(spot, 2), v_ce, v_pe, nse])
+            n += 1
+    for d in sorted(marks)[:-15]:
+        marks.pop(d)
+    store._write(path, marks)
+    return n
+
+
+def paper_open(quotes, now, book_file="paper_book.json", chains=None):
     """Value the trades the paper book holds, every live run, with the same Black-Scholes + India VIX
     method the evening review uses, so the daytime number and the evening number agree.
     book_file="paper_book_adjusted.json" values the comparison book (same trades with the adjustment)."""
@@ -208,7 +270,12 @@ def paper_open(quotes, now, book_file="paper_book.json"):
         exp = datetime.fromisoformat(p["expiry"]).replace(hour=15, minute=30, tzinfo=IST)
         T = max((exp - now).total_seconds() / 86400, 0.002) / 365
         val = lambda legs: sum((1 if l["action"] == "BUY" else -1) * bs_price(spot, l["strike"], T, iv, l["type"]) for l in legs)
-        if p.get("groups"):   # realized part of an adjusted trade + what is still open
+        ch = _chain_for(chains, name, p["expiry"]) if p.get("basis") == "NSE" else None
+        if ch and vix and len(p.get("groups") or []) == 2:   # real NSE prices, same basis as the entry
+            v_ce, v_pe, _ = real_sides(p["legs"], ch, spot, T, vix)
+            real = {"CE": v_ce, "PE": v_pe}
+            value = round((p.get("realized", 0) + sum(real[g["legs"][0]["type"]] - g["v0"] for g in p["groups"])) * p["lot"])
+        elif p.get("groups"):   # realized part of an adjusted trade + what is still open
             value = round((p.get("realized", 0) + sum(val(g["legs"]) - g["v0"] for g in p["groups"])) * p["lot"])
         else:
             value = round((val(p["legs"]) - p["v_e"]) * p["lot"])
@@ -283,7 +350,8 @@ def run(force=False):
         "stocks": stock_status(scan, quotes, now, bias.get("target_session")),
     }
     try:
-        out["paper_open"] = paper_open(quotes, now)
+        out["paper_marks"] = record_marks(bias, chains, quotes, now)
+        out["paper_open"] = paper_open(quotes, now, chains=chains)
         out["paper_open_adjusted"] = paper_open(quotes, now, "paper_book_adjusted.json")
     except Exception as exc:   # never let this block the live snapshot
         out["paper_open"] = []

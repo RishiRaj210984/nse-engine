@@ -33,11 +33,11 @@
    "expiry": "2026-10-27",
    "entry_session": "2026-10-21",
    "entry_spot": 22936.05,
-   "v_e": -61.22922883223737,
-   "credit_rs": 3980,
+   "v_e": -56.95785628779155,
+   "credit_rs": 3702,
    "iv0": 0.1477,
    "vix0": 15.1274995803833,
-   "mark": -799,
+   "mark": -876,
    "groups": [
     {
      "legs": [
@@ -54,7 +54,8 @@
        "est_premium": 18.7
       }
      ],
-     "v0": -37.66367414641218
+     "v0": -38.80778085215094,
+     "off": -0.778299010434365
     },
     {
      "legs": [
@@ -71,14 +72,16 @@
        "est_premium": 14.2
       }
      ],
-     "v0": -23.56555468582519
+     "v0": -18.15007543564061,
+     "off": 3.8686469617859984
     }
    ],
    "realized": 0.0,
-   "credit0": 61.22922883223737,
-   "credit_all": 61.22922883223737,
+   "credit0": 56.95785628779155,
+   "credit_all": 56.95785628779155,
    "adjusted": null,
-   "extra_cost": 0
+   "extra_cost": 0,
+   "basis": "NSE"
   }
  },
  "closed": [],
@@ -93,26 +96,27 @@
    "session": "2026-10-21",
    "pnl": -146,
    "detail": [
-    "NIFTY: entered Iron Condor at 10:15, credit Rs 3,980",
+    "NIFTY: entered Iron Condor at 10:15, credit Rs 3,980 (estimated prices)",
+    "NIFTY: from now on valued at real NSE prices (entry premium re-based to Rs 3,702)",
     "NIFTY: still open (expiry 27 Oct), worth Rs -146 now"
    ],
    "total": -146
   },
   {
    "session": "2026-10-22",
-   "pnl": -15,
+   "pnl": 325,
    "detail": [
-    "NIFTY: still open (expiry 27 Oct), worth Rs -161 now"
+    "NIFTY: still open (expiry 27 Oct), worth Rs +179 now"
    ],
-   "total": -161
+   "total": 179
   },
   {
    "session": "2026-10-23",
-   "pnl": -638,
+   "pnl": -1055,
    "detail": [
-    "NIFTY: still open (expiry 27 Oct), worth Rs -799 now"
+    "NIFTY: still open (expiry 27 Oct), worth Rs -876 now"
    ],
-   "total": -799
+   "total": -876
   }
  ],
  "before": {
@@ -151,11 +155,11 @@
     "expiry": "2026-10-27",
     "entry_session": "2026-10-21",
     "entry_spot": 22936.05,
-    "v_e": -61.22922883223737,
-    "credit_rs": 3980,
+    "v_e": -56.95785628779155,
+    "credit_rs": 3702,
     "iv0": 0.1477,
     "vix0": 15.1274995803833,
-    "mark": -161,
+    "mark": 179,
     "groups": [
      {
       "legs": [
@@ -172,7 +176,8 @@
         "est_premium": 18.7
        }
       ],
-      "v0": -37.66367414641218
+      "v0": -38.80778085215094,
+      "off": 1.00187416825856
      },
      {
       "legs": [
@@ -189,14 +194,16 @@
         "est_premium": 14.2
        }
       ],
-      "v0": -23.56555468582519
+      "v0": -18.15007543564061,
+      "off": 8.503573526731635
      }
     ],
     "realized": 0.0,
-    "credit0": 61.22922883223737,
-    "credit_all": 61.22922883223737,
+    "credit0": 56.95785628779155,
+    "credit_all": 56.95785628779155,
     "adjusted": null,
-    "extra_cost": 0
+    "extra_cost": 0,
+    "basis": "NSE"
    }
   },
   "n_closed": 0

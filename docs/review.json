@@ -196,25 +196,26 @@
   "days": [
    {
     "session": "2026-10-23",
-    "pnl": -638,
+    "pnl": -1055,
     "detail": [
-     "NIFTY: still open (expiry 27 Oct), worth Rs -799 now"
+     "NIFTY: still open (expiry 27 Oct), worth Rs -876 now"
     ],
-    "total": -799
+    "total": -876
    },
    {
     "session": "2026-10-22",
-    "pnl": -15,
+    "pnl": 325,
     "detail": [
-     "NIFTY: still open (expiry 27 Oct), worth Rs -161 now"
+     "NIFTY: still open (expiry 27 Oct), worth Rs +179 now"
     ],
-    "total": -161
+    "total": 179
    },
    {
     "session": "2026-10-21",
     "pnl": -146,
     "detail": [
-     "NIFTY: entered Iron Condor at 10:15, credit Rs 3,980",
+     "NIFTY: entered Iron Condor at 10:15, credit Rs 3,980 (estimated prices)",
+     "NIFTY: from now on valued at real NSE prices (entry premium re-based to Rs 3,702)",
      "NIFTY: still open (expiry 27 Oct), worth Rs -146 now"
     ],
     "total": -146
@@ -227,22 +228,22 @@
    }
   ],
   "realized": 0,
-  "open_value": -799,
-  "total": -799,
+  "open_value": -876,
+  "total": -876,
   "open": [
    {
     "index": "NIFTY",
     "strategy": "Iron Condor",
     "expiry": "2026-10-27",
     "entry_session": "2026-10-21",
-    "credit_rs": 3980,
-    "mark": -799
+    "credit_rs": 3702,
+    "mark": -876
    }
   ],
   "closed": [],
   "trades": 0,
   "wins": 0,
-  "note": "Paper book: TRADE days only, 1 lot, held like the guardian holds it (target, stop, expiry-day 10:15), costs charged when a trade closes. Premiums are Black-Scholes estimates with India VIX.",
+  "note": "Paper book: TRADE days only, 1 lot, held like the guardian holds it (target, stop, expiry-day 10:15), costs charged when a trade closes. Prices: real NSE option prices saved every 10 minutes; an estimate (Black-Scholes with India VIX) only where no real price was saved.",
   "with_adjustment": {
    "days": [
     {
