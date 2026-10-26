@@ -193,6 +193,30 @@ def plan_status(bias, chains, quotes, now):
     return out
 
 
+def paper_open(quotes, now):
+    """Value the trades the paper book holds, every live run, with the same Black-Scholes + India VIX
+    method the evening review uses, so the daytime number and the evening number agree."""
+    book = store._read(store.state_path("paper_book.json"), {}) or {}
+    out = []
+    for name, p in (book.get("open") or {}).items():
+        spot = (quotes.get(INDEX_SPECS[name]["ticker"]) or {}).get("last")
+        if not spot:
+            continue
+        vix = (quotes.get("^INDIAVIX") or {}).get("last")
+        iv = p["iv0"] * (vix / p["vix0"]) if vix and p.get("vix0") else p["iv0"]
+        exp = datetime.fromisoformat(p["expiry"]).replace(hour=15, minute=30, tzinfo=IST)
+        T = max((exp - now).total_seconds() / 86400, 0.002) / 365
+        v = sum((1 if l["action"] == "BUY" else -1) * bs_price(spot, l["strike"], T, iv, l["type"]) for l in p["legs"])
+        value = round((v - p["v_e"]) * p["lot"])
+        credit = round(-p["v_e"] * p["lot"])
+        status = ("TARGET" if value >= 0.55 * credit else "STOP" if value <= -credit else
+                  "EXPIRY 10:15" if now.date().isoformat() >= p["expiry"] and now.strftime("%H:%M") >= "10:15" else "HOLD")
+        out.append({"index": name, "strategy": p["strategy"], "expiry": p["expiry"], "entry_session": p["entry_session"],
+                    "credit_rs": credit, "value_now": value, "since_last_evening": value - p.get("mark", 0),
+                    "status": status, "spot": spot, "at": now.strftime("%H:%M")})
+    return out
+
+
 def stock_status(scan, quotes, now, session=None):
     out = []
     today = session == now.date().isoformat()
@@ -254,6 +278,11 @@ def run(force=False):
         "plan": plan_status(bias, chains, quotes, now) if bias else [],
         "stocks": stock_status(scan, quotes, now, bias.get("target_session")),
     }
+    try:
+        out["paper_open"] = paper_open(quotes, now)
+    except Exception as exc:   # never let this block the live snapshot
+        out["paper_open"] = []
+        log.warning("paper_open failed: %s", exc)
     store.publish("live.json", out)
     try:
         import markets
