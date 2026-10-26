@@ -523,6 +523,59 @@ def evening_report(env, state, now):
            f"({tot.get('plan_win_days', 0)} profit, {tot.get('plan_loss_days', 0)} loss). Paper only, 1 lot.")
 
 
+def dispatch(env, task):
+    """Start an engine task on GitHub (same as server/trigger.sh). Returns (ok, info)."""
+    token = env.get("GITHUB_TOKEN")
+    if not token:
+        return False, "no GITHUB_TOKEN in guardian.env"
+    try:
+        r = requests.post("https://api.github.com/repos/RishiRaj210984/nse-engine/actions/workflows/daily-engine.yml/dispatches",
+                          headers={"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json"},
+                          json={"ref": "main", "inputs": {"task": task}}, timeout=15)
+        return r.status_code == 204, f"HTTP {r.status_code}"
+    except Exception as exc:
+        return False, str(exc)[:120]
+
+
+# Emergency watch: alert (never act) when the market does something unusual. Auto exits stay on.
+EMERGENCY = {"move_pct": 2.0, "vix_jump_pct": 20.0}
+
+
+def emergency_watch(env, state, now):
+    """Every ~10 minutes in market hours, read the engine's live snapshot and alert once per reason a day."""
+    if time.time() - state.get("emerg_checked", 0) < 600:
+        return
+    state["emerg_checked"] = time.time()
+    try:
+        lv = requests.get(f"{PLAN_URL}/live.json", params={"t": int(time.time())}, timeout=15).json()
+    except Exception as exc:
+        log.info("emergency watch: %s", exc)
+        return
+    day = now.date().isoformat()
+    seen = state.setdefault("emerg", {})
+    if seen.get("day") != day:
+        seen.clear()
+        seen["day"] = day
+    reasons = []
+    for name in ("NIFTY", "BANKNIFTY"):
+        q = (lv.get("indices") or {}).get(name) or {}
+        if abs(q.get("chg_pct") or 0) >= EMERGENCY["move_pct"]:
+            reasons.append((f"move:{name}", f"{name} {q['chg_pct']:+.1f}% today ({q.get('last', 0):,.0f})"))
+    v = (lv.get("indices") or {}).get("INDIAVIX") or {}
+    if (v.get("chg_pct") or 0) >= EMERGENCY["vix_jump_pct"]:
+        reasons.append(("vix", f"India VIX {v['chg_pct']:+.0f}% (fear jumping)"))
+    for x in lv.get("paper_open") or []:
+        if x.get("status") in ("STOP", "TARGET"):
+            reasons.append((f"paper:{x['index']}:{x['status']}", f"paper {x['index']} trade has reached its {x['status'].lower()} "
+                                                                  f"(worth Rs {x['value_now']:+,}); it closes in the evening review"))
+    new = [(k, m) for k, m in reasons if k not in seen]
+    if new:
+        for k, _ in new:
+            seen[k] = now.strftime("%H:%M")
+        notify(env, "Emergency watch", "; ".join(m for _, m in new)
+               + ". Auto exits stay on. Use 'Close all' in the app only if you must.", urgent=True)
+
+
 def handle_command(cmd, breeze_box, env, state, live, now):
     _sent.clear()   # a command you sent always gets its answer, even a repeated one
     name = cmd[0]
@@ -542,9 +595,17 @@ def handle_command(cmd, breeze_box, env, state, live, now):
         if os.path.exists(STOP_FILE):
             os.remove(STOP_FILE)
         notify(env, "Guardian resumed", f"Mode: {'LIVE' if live else 'PAPER'}.")
+    elif name == "EXIT" and not live:
+        # PAPER: the open paper trades live in the engine's paper book, so ask the engine to close them
+        ok, info = dispatch(env, "paperclose")
+        notify(env, "Guardian EXIT ALL (paper)",
+               "Closing the open paper trades at their live value (marked 'closed by hand'). See Paper results in about 2 minutes."
+               if ok else f"Could not start the paper close: {info}", urgent=True)
+    elif name == "EXIT" and breeze_box[0] is None:
+        notify(env, "Guardian EXIT ALL: not logged in", "Send today's SESSION code first, or close the positions in the ICICI app.", urgent=True)
     elif breeze_box[0] is None:
         notify(env, "Guardian: not logged in", "Send today's SESSION code first.", urgent=True)
-    elif os.path.exists(STOP_FILE):
+    elif os.path.exists(STOP_FILE) and name != "EXIT":   # an emergency close still works while paused
         notify(env, "Guardian is paused", "Send RESUME first.", urgent=True)
     elif name == "ENTER" and len(cmd) >= 2 and cmd[1].upper() in BREEZE_CODE:
         demo = any(c.upper() == "DEMO" for c in cmd[2:])
@@ -555,18 +616,18 @@ def handle_command(cmd, breeze_box, env, state, live, now):
         ok, msg = enter_trade(breeze_box[0], env, state, cmd[1].upper(), lots, live, now, demo=demo)
         notify(env, f"Guardian ENTER {cmd[1].upper()}: {'OK' if ok else 'NOT DONE'}", msg, urgent=not ok)
     elif name in ("EXIT", "STATUS"):
+        if name == "EXIT":
+            state["exit_all"] = now.date().isoformat()   # every pass today closes whatever is still open
         trades = group_trades(legs_from_positions(breeze_box[0].get_portfolio_positions()))
         lines = []
         for t in trades:
             st, note, pnl, pct = evaluate(t, state, now.strftime("%H:%M"), int(env["TRAIL_PCT"]), now.date())
             lines.append(f"{label(t)}: {pnl:+,.0f} ({pct:+.1f}%) {st}")
             if name == "EXIT":
-                if live:
-                    exit_trade(breeze_box[0], t, env, state)
-                    lines[-1] += " -> exit sent"
-                else:
-                    lines[-1] += " -> PAPER: would exit"
-        notify(env, f"Guardian {name}", "\n".join(lines) or "No open option positions.", urgent=name == "EXIT")
+                res = exit_trade(breeze_box[0], t, env, state)
+                ok = all((r.get("response") or {}).get("Success") for r in res) and len(res) == len(t["legs"])
+                lines[-1] += " -> CLOSED" if ok else " -> not fully closed yet: the guardian keeps retrying"
+        notify(env, f"Guardian {'EXIT ALL' if name == 'EXIT' else name}", "\n".join(lines) or "No open option positions.", urgent=name == "EXIT")
 
 
 def run(live_flag=False, breeze=None, once=False, clock=None):
@@ -592,6 +653,8 @@ def run(live_flag=False, breeze=None, once=False, clock=None):
         now = clock() if clock else datetime.now(IST)
         check_capital_edge(env, state, now)
         evening_report(env, state, now)
+        if market_window(now):
+            emergency_watch(env, state, now)
         cmds = poll_commands(env, state)
         save_state(state)   # mark commands as read first, so a crash never replays them
         for cmd in cmds:
@@ -619,6 +682,8 @@ def run(live_flag=False, breeze=None, once=False, clock=None):
         alerted = state.setdefault("alerted", {})
         for t in trades:
             status, note, pnl, pct = evaluate(t, state, now.strftime("%H:%M"), int(env["TRAIL_PCT"]), now.date())
+            if state.get("exit_all") == now.date().isoformat():
+                status, note = "EXIT NOW", "emergency Close all"
             log.info("%s | %s | P&L %+.0f (%+.1f%%) | %s", label(t), status, pnl, pct, note)
             if status == "HOLD":
                 alerted.pop(t["id"], None)

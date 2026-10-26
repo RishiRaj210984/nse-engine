@@ -355,9 +355,12 @@ def paper_book(session, archived, bars_by_index, vix, adjust=False):
     if book.get("before") and book["before"]["session"] == s_iso:      # re-run: undo this day first
         book["open"] = book["before"]["open"]
         book["closed"] = book["closed"][:book["before"]["n_closed"]]
+    today_old = next((d for d in book["days"] if d["session"] == s_iso), {})
     book["days"] = [d for d in book["days"] if d["session"] != s_iso]
     book["before"] = {"session": s_iso, "open": json.loads(json.dumps(book["open"])), "n_closed": len(book["closed"])}
-    day_pnl, detail = 0, []
+    # an emergency close by hand earlier today stays part of today's result
+    manual_pnl, manual_detail = today_old.get("manual_pnl", 0), list(today_old.get("manual_detail", []))
+    day_pnl, detail = manual_pnl, list(manual_detail)
     for name in ("NIFTY", "BANKNIFTY"):
         bars = bars_by_index.get(name)
         if bars is None:
@@ -435,15 +438,77 @@ def paper_book(session, archived, bars_by_index, vix, adjust=False):
             book["open"][name] = pos
     realized = sum(c["pnl"] for c in book["closed"])
     unreal = sum(p["mark"] for p in book["open"].values())
-    book["days"].append({"session": s_iso, "pnl": round(day_pnl), "detail": detail, "total": realized + unreal})
+    book["days"].append({"session": s_iso, "pnl": round(day_pnl), "detail": detail, "total": realized + unreal,
+                         **({"manual_pnl": manual_pnl, "manual_detail": manual_detail} if manual_detail else {})})
     book["days"] = sorted(book["days"], key=lambda d: d["session"])[-250:]
     store._write(path, book, indent=1)
+    return _book_summary(book)
+
+
+def _book_summary(book):
+    realized = sum(c["pnl"] for c in book["closed"])
+    unreal = sum(p["mark"] for p in book["open"].values())
     return {"days": book["days"][::-1][:60], "realized": realized, "open_value": unreal, "total": realized + unreal,
             "open": [{k: p[k] for k in ("index", "strategy", "expiry", "entry_session", "credit_rs", "mark")} for p in book["open"].values()],
             "closed": book["closed"][::-1][:30], "trades": len(book["closed"]),
             "wins": sum(c["pnl"] > 0 for c in book["closed"]),
             "note": "Paper book: TRADE days only, 1 lot, held like the guardian holds it (target, stop, expiry-day 10:15), "
                     "costs charged when a trade closes. Premiums are Black-Scholes estimates with India VIX."}
+
+
+def paper_close_all(now=None):
+    """Emergency 'Close all' in PAPER mode: close every open paper trade at its live value, in your
+    book and in the comparison book, marked as closed by hand. Market hours only (like a real close)."""
+    import live
+    import nse_calendar
+    now = now or datetime.now(IST)
+    if not nse_calendar.is_trading_day(now.date()) or not ("09:15" <= now.strftime("%H:%M") <= "15:30"):
+        return {"closed": [], "note": "market is closed: nothing can be closed now"}
+    quotes = live.yahoo_quotes(["^NSEI", "^NSEBANK", "^INDIAVIX"])
+    s_iso, done, summaries = now.date().isoformat(), [], {}
+    for book_file in ("paper_book.json", "paper_book_adjusted.json"):
+        path = store.state_path(book_file)
+        book = store._read(path, None)
+        if not book:
+            continue
+        vals = {x["index"]: x for x in live.paper_open(quotes, now, book_file)}
+        day = next((d for d in book["days"] if d["session"] == s_iso), None)
+        if day is None:
+            day = {"session": s_iso, "pnl": 0, "detail": [], "total": 0}
+            book["days"].append(day)
+        for name in list(book["open"]):
+            if name not in vals:
+                continue   # no live price: leave it open, the guardian/evening review keeps managing it
+            p = book["open"].pop(name)
+            realized = vals[name]["value_now"] - BOOK_COSTS[name] - p.get("extra_cost", 0)
+            book["closed"].append({**{k: p[k] for k in ("index", "strategy", "expiry", "entry_session", "credit_rs")},
+                                   "exit_session": s_iso, "reason": f"CLOSED BY HAND (emergency) at {now.strftime('%H:%M')}",
+                                   "pnl": realized})
+            note = f"{name}: CLOSED BY HAND (emergency) at {now.strftime('%H:%M')}, trade result Rs {realized:+,} after costs"
+            change = realized - p.get("mark", 0)
+            day["pnl"] = round(day["pnl"] + change)
+            day["detail"].append(note)
+            day["manual_pnl"] = round(day.get("manual_pnl", 0) + change)
+            day["manual_detail"] = day.get("manual_detail", []) + [note]
+            if book_file == "paper_book.json":
+                done.append({"index": name, "pnl": realized})
+        book["days"] = sorted(book["days"], key=lambda d: d["session"])[-250:]
+        realized_all = sum(c["pnl"] for c in book["closed"])
+        day["total"] = realized_all + sum(p["mark"] for p in book["open"].values())
+        store._write(path, book, indent=1)
+        summaries[book_file] = _book_summary(book)
+    # publish at once: review.json (paper results) and live.json (no longer holding)
+    rj = store._read(os.path.join(store.PUBLIC_DIR, "review.json"), {}) or {}
+    if "paper_book.json" in summaries:
+        rj["paper"] = {**summaries["paper_book.json"], "with_adjustment": summaries.get("paper_book_adjusted.json")}
+        store.publish("review.json", rj)
+    lj = store._read(os.path.join(store.PUBLIC_DIR, "live.json"), None)
+    if lj:
+        closed = {d["index"] for d in done}
+        lj["paper_open"] = [x for x in lj.get("paper_open", []) if x["index"] not in closed]
+        lj["paper_open_adjusted"] = [x for x in lj.get("paper_open_adjusted", []) if x["index"] not in closed]
+        store.publish("live.json", lj)
+    return {"closed": done}
 
 
 def _T(expiry, ts):

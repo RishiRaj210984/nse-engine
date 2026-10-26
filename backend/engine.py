@@ -4,6 +4,7 @@
     python backend/engine.py premarket   # ~08:00 IST: bias + options, publish
     python backend/engine.py postclose   # ~16:30 IST: scan, grade, retrain, publish
     python backend/engine.py publish     # just refresh public/*.json
+    python backend/engine.py paperclose  # emergency: close open paper trades at live value
 """
 import json
 import logging
@@ -31,6 +32,9 @@ def main(task):
     elif task == "live":
         import live
         out = live.run()
+    elif task == "paperclose":   # emergency "Close all" in paper mode (started by the guardian)
+        import review
+        out = review.paper_close_all()
     elif task == "publish":
         jobs.publish_all()
         out = {"published": True}

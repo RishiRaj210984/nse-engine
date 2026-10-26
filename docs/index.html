@@ -187,7 +187,7 @@ body.is-simple main{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 <script>
 const NSE_HOLIDAYS = ['2026-10-20', '2026-11-08', '2026-11-10', '2026-11-24', '2026-12-25'];   // fallback; meta.json has the live list
 const holidayList = () => (D.meta?.holidays?.length ? D.meta.holidays : NSE_HOLIDAYS);
-const APP_VERSION = 'v30';   // keep equal to CACHE in sw.js
+const APP_VERSION = 'v31';   // keep equal to CACHE in sw.js
 const FILES = ['plan', 'global-bias', 'volume-breakouts', 'performance', 'review', 'meta', 'live', 'small-capital', 'markets'];
 const D = {};
 let tab = 'dash', stockFilter = 'ab', lots = {}, loadErr = null, lastLoad = 0;
@@ -628,7 +628,10 @@ function vSimple() {
       ${BIG('Pause guardian', 'data-act="g-cmd" data-cmd="STOP" data-confirm="Pause all automatic entries and exits?"', 'stop')}
       <button class="smore" data-act="wz-go" data-s="1">Start again from step 1</button>`;
   }
-  h += `</section>${step ? '<button class="sbtn" data-act="markets"><span class="slab" style="text-align:center">🌍 Markets &amp; news ›</span></button>' : ''}${paperResults(step === 4)}${step ? answersCheck() : ''}${capitalLine()}<button class="smore" data-act="advanced">More details ›</button>
+  h += `</section>`;
+  // emergency only: auto exits handle normal days. Kept apart from the step buttons, with a double confirm.
+  if (step) h += `<button class="sbtn stop" data-act="emergency" style="margin-top:14px"><span class="slab" style="text-align:center">🛑 Close all positions now<small>emergency only · auto exits handle normal days</small></span></button>`;
+  h += `${step ? '<button class="sbtn" data-act="markets"><span class="slab" style="text-align:center">🌍 Markets &amp; news ›</span></button>' : ''}${paperResults(step === 4)}${step ? answersCheck() : ''}${capitalLine()}<button class="smore" data-act="advanced">More details ›</button>
     <p class="fine">Research tool, not investment advice.</p></div>`;
   return h;
 }
@@ -1333,6 +1336,14 @@ $('#view').addEventListener('click', (e) => {
     if (a.dataset.act === 'advanced') { store.set('ui', 'advanced'); render(); window.scrollTo(0, 0); }
     if (a.dataset.act === 'simple') { store.set('ui', 'simple'); render(); window.scrollTo(0, 0); }
     if (a.dataset.act === 'sm-paste') pasteAndSend();
+    if (a.dataset.act === 'emergency') {
+      const live = store.get('g_live', false);
+      if (confirm(live ? 'EMERGENCY: close ALL open positions in ICICI now, at the best price the guardian can get?'
+                       : 'EMERGENCY (paper): close the open paper trades now at their live value?')
+          && confirm('Are you sure? This cannot be undone. Auto exits would otherwise keep managing the trade.')) {
+        gSend('EXIT ALL');
+      }
+    }
     if (a.dataset.act === 'markets') { showMarkets = !showMarkets; render(); window.scrollTo(0, 0); }
     if (a.dataset.act === 'wz-go') wizSet({ step: +a.dataset.s });
     if (a.dataset.act === 'wz-login') setTimeout(() => wizSet({ step: 2 }), 300);
