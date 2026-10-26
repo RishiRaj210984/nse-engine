@@ -193,10 +193,11 @@ def plan_status(bias, chains, quotes, now):
     return out
 
 
-def paper_open(quotes, now):
+def paper_open(quotes, now, book_file="paper_book.json"):
     """Value the trades the paper book holds, every live run, with the same Black-Scholes + India VIX
-    method the evening review uses, so the daytime number and the evening number agree."""
-    book = store._read(store.state_path("paper_book.json"), {}) or {}
+    method the evening review uses, so the daytime number and the evening number agree.
+    book_file="paper_book_adjusted.json" values the comparison book (same trades with the adjustment)."""
+    book = store._read(store.state_path(book_file), {}) or {}
     out = []
     for name, p in (book.get("open") or {}).items():
         spot = (quotes.get(INDEX_SPECS[name]["ticker"]) or {}).get("last")
@@ -206,8 +207,11 @@ def paper_open(quotes, now):
         iv = p["iv0"] * (vix / p["vix0"]) if vix and p.get("vix0") else p["iv0"]
         exp = datetime.fromisoformat(p["expiry"]).replace(hour=15, minute=30, tzinfo=IST)
         T = max((exp - now).total_seconds() / 86400, 0.002) / 365
-        v = sum((1 if l["action"] == "BUY" else -1) * bs_price(spot, l["strike"], T, iv, l["type"]) for l in p["legs"])
-        value = round((v - p["v_e"]) * p["lot"])
+        val = lambda legs: sum((1 if l["action"] == "BUY" else -1) * bs_price(spot, l["strike"], T, iv, l["type"]) for l in legs)
+        if p.get("groups"):   # realized part of an adjusted trade + what is still open
+            value = round((p.get("realized", 0) + sum(val(g["legs"]) - g["v0"] for g in p["groups"])) * p["lot"])
+        else:
+            value = round((val(p["legs"]) - p["v_e"]) * p["lot"])
         credit = round(-p["v_e"] * p["lot"])
         status = ("TARGET" if value >= 0.55 * credit else "STOP" if value <= -credit else
                   "EXPIRY 10:15" if now.date().isoformat() >= p["expiry"] and now.strftime("%H:%M") >= "10:15" else "HOLD")
@@ -280,6 +284,7 @@ def run(force=False):
     }
     try:
         out["paper_open"] = paper_open(quotes, now)
+        out["paper_open_adjusted"] = paper_open(quotes, now, "paper_book_adjusted.json")
     except Exception as exc:   # never let this block the live snapshot
         out["paper_open"] = []
         log.warning("paper_open failed: %s", exc)
