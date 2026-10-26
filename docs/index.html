@@ -187,7 +187,7 @@ body.is-simple main{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 <script>
 const NSE_HOLIDAYS = ['2026-10-20', '2026-11-08', '2026-11-10', '2026-11-24', '2026-12-25'];   // fallback; meta.json has the live list
 const holidayList = () => (D.meta?.holidays?.length ? D.meta.holidays : NSE_HOLIDAYS);
-const APP_VERSION = 'v33';   // keep equal to CACHE in sw.js
+const APP_VERSION = 'v34';   // keep equal to CACHE in sw.js
 const FILES = ['plan', 'global-bias', 'volume-breakouts', 'performance', 'review', 'meta', 'live', 'small-capital', 'markets'];
 const D = {};
 let tab = 'dash', stockFilter = 'ab', lots = {}, loadErr = null, lastLoad = 0;
@@ -485,12 +485,19 @@ function paperResults(open = false) {
   const day = (s) => new Date(s + 'T12:00:00+05:30').toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'Asia/Kolkata' });
   const d0 = pb.days[0];
   // the open trade's value from the latest live run (every 10 min in market hours)
-  const lv = (D.live?.paper_open || []).filter((x) => (pb.open || []).some((o) => o.index === x.index));
+  // daytime live values only while they are newer than the evening review
+  const liveNewer = D.live?.updated && (!D.review?.latest?.as_of || D.live.updated > D.review.latest.as_of);
+  const lv = liveNewer ? (D.live?.paper_open || []).filter((x) => (pb.open || []).some((o) => o.index === x.index)) : [];
   const liveToday = lv.reduce((a, x) => a + (x.since_last_evening || 0), 0);
   const liveTotal = pb.realized + lv.reduce((a, x) => a + x.value_now, 0) + (pb.open || []).filter((o) => !lv.some((x) => x.index === o.index)).reduce((a, o) => a + o.mark, 0);
+  // a trade closed on the latest day is said plainly in the summary line
+  const closedToday = (pb.closed || []).filter((c) => c.exit_session === d0.session);
+  const closedNote = closedToday.map((c) => `${c.pnl > 0 ? '✅' : '❌'} ${esc(c.index)} closed${/TARGET/.test(c.reason) ? ' at target' : /STOP/.test(c.reason) ? ' at stop' : /EXPIRY/.test(c.reason) ? ' on expiry' : /HAND/.test(c.reason) ? ' by hand' : ''}: ${rs(c.pnl)}`).join(' · ');
   const head = lv.length
     ? `today so far ${rs(liveToday)} · <span class="fine">total ${rs(liveTotal)} (live ${esc(lv[0].at)})</span>`
-    : `${esc(day(d0.session))}: ${rs(d0.pnl)} · <span class="fine">total ${rs(pb.total)}</span>`;
+    : closedNote
+      ? `${closedNote} · <span class="fine">total ${rs(pb.total)}</span>`
+      : `${esc(day(d0.session))}: ${rs(d0.pnl)} · <span class="fine">total ${rs(pb.total)}</span>`;
   return `<details class="sreply" ${open ? 'open' : ''}><summary><b>📒 Paper results</b> · ${head}</summary>
     ${(pb.open || []).map((o) => `<div class="srow">🟡 <b>Holding ${esc(o.index)} ${esc(o.strategy)}</b> since ${esc(day(o.entry_session))}, expiry ${esc(day(o.expiry))}<div class="fine">Premium collected ₹${Number(o.credit_rs).toLocaleString('en-IN')} · ${(() => { const x = lv.find((y) => y.index === o.index);
         return x ? `<b>worth ${rs(x.value_now)} now</b> (live ${esc(x.at)}, NIFTY ${Number(x.spot).toLocaleString('en-IN')}) · last evening ${rs(o.mark)}${x.status !== 'HOLD' ? ' · ⚠️ ' + esc(x.status) : ''}`
@@ -498,7 +505,7 @@ function paperResults(open = false) {
     ${(pb.closed || []).slice(0, 5).map((c) => `<div class="srow">${c.pnl > 0 ? '✅' : '❌'} <b>${esc(c.index)} ${esc(c.strategy)}</b> ${esc(day(c.entry_session))} → ${esc(day(c.exit_session))}: ${rs(c.pnl)}<div class="fine">${esc(c.reason)}</div></div>`).join('')}
     <div class="srow"><b>Day by day</b>${pb.days.slice(0, 7).map((x) => `<div class="fine">${esc(day(x.session))}: ${rs(x.pnl)} · ${esc((x.detail || []).join(' · ') || 'no trade')}</div>`).join('')}</div>
     ${pb.with_adjustment && pb.with_adjustment.total != null ? (() => { const wa = pb.with_adjustment;
-      const la = (D.live?.paper_open_adjusted || []).filter((x) => (wa.open || []).some((o) => o.index === x.index));
+      const la = liveNewer ? (D.live?.paper_open_adjusted || []).filter((x) => (wa.open || []).some((o) => o.index === x.index)) : [];
       const aTotal = la.length ? wa.realized + la.reduce((a, x) => a + x.value_now, 0) + (wa.open || []).filter((o) => !la.some((x) => x.index === o.index)).reduce((a, o) => a + o.mark, 0) : wa.total;
       const mTotal = lv.length ? liveTotal : pb.total;
       return `<div class="srow">🔧 <b>Same trades with automatic adjustment</b> (comparison only, not used): total ${rs(aTotal)}${la.length ? ` <span class="fine">(live ${esc(la[0].at)})</span>` : ''}
