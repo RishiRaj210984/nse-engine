@@ -1,44 +1,44 @@
 {
- "generated_at": "2026-10-26T16:18:42.198425+05:30",
+ "generated_at": "2026-10-26T22:31:34.895436+05:30",
  "session": "2026-10-27",
  "stage": "preview",
  "expected_open": {
-  "gap_pct": 0.02,
-  "error_pct": 0.38,
-  "day_pct": 0.05,
-  "snapshot": "Mon 26 Oct 16:18 IST",
+  "gap_pct": 0.07,
+  "error_pct": 0.33,
+  "day_pct": 0.08,
+  "snapshot": "Mon 26 Oct 22:31 IST",
   "stage": "preview",
   "tip": "Flat open expected. Normal entry windows apply.",
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": 0.0
+    "move_pct": 0.57
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": 0.0
+    "move_pct": 1.14
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": 0.0
+    "move_pct": -0.15
    },
    {
     "key": "dax",
     "name": "DAX (Germany)",
-    "move_pct": 0.0
+    "move_pct": 0.22
    },
    {
     "key": "ftse",
     "name": "FTSE 100 (UK)",
-    "move_pct": 0.0
+    "move_pct": 0.27
    },
    {
     "key": "stoxx",
     "name": "Euro Stoxx 50",
-    "move_pct": 0.0
+    "move_pct": 0.45
    },
    {
     "key": "n225",
@@ -48,74 +48,74 @@
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": 0.0
+    "move_pct": 1.94
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": 0.0
+    "move_pct": 0.07
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": 0.0
+    "move_pct": 0.09
    },
    {
     "key": "inr",
     "name": "USD/INR",
-    "move_pct": 0.0
+    "move_pct": -0.04
    }
   ],
   "drivers": [
    {
-    "feature": "vix",
-    "label": "India VIX level",
-    "value": 17.16,
-    "contribution_pct": 0.088
-   },
-   {
-    "feature": "nprev",
-    "label": "Nifty previous day",
-    "value": 0.68,
-    "contribution_pct": -0.038
-   },
-   {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": 0.0,
-    "contribution_pct": -0.02
+    "value": 0.57,
+    "contribution_pct": 0.205
    },
    {
-    "feature": "ym",
-    "label": "Dow futures",
-    "value": 0.0,
-    "contribution_pct": 0.013
+    "feature": "nq",
+    "label": "Nasdaq futures",
+    "value": 1.14,
+    "contribution_pct": -0.16
    },
    {
     "feature": "cl",
     "label": "Crude oil",
-    "value": 0.0,
-    "contribution_pct": 0.007
+    "value": 1.94,
+    "contribution_pct": -0.071
+   },
+   {
+    "feature": "vix",
+    "label": "India VIX level",
+    "value": 17.16,
+    "contribution_pct": 0.064
    },
    {
     "feature": "ftse",
     "label": "FTSE 100 (UK)",
-    "value": 0.0,
-    "contribution_pct": -0.004
+    "value": 0.27,
+    "contribution_pct": 0.048
+   },
+   {
+    "feature": "dxy",
+    "label": "Dollar index",
+    "value": 0.09,
+    "contribution_pct": -0.044
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.22,
-   "gap_sign_pct": 57.7,
-   "directional_calls": 80,
-   "directional_accuracy": 62.5
+   "gap_corr": 0.45,
+   "gap_sign_pct": 68.3,
+   "directional_calls": 158,
+   "directional_accuracy": 70.3
   }
  },
  "headline": "Market bias SIDEWAYS \u2014 favour hedged premium selling",
  "bias": "RANGEBOUND",
- "score": 9,
- "bias_track_record_pct": 65.4,
+ "score": 11,
+ "bias_track_record_pct": 70.3,
  "options": [
   {
    "index": "NIFTY",
@@ -210,8 +210,8 @@
  "market_gate_open": false,
  "events": [
   {
-   "symbol": "RELIANCE",
-   "name": "Reliance",
+   "symbol": "LT",
+   "name": "L&T",
    "when": "Tue 27 Oct",
    "date": "2026-10-27",
    "affects": "2026-10-28",
@@ -219,11 +219,11 @@
    "bank": false
   },
   {
-   "symbol": "LT",
-   "name": "L&T",
-   "when": "Tue 27 Oct",
-   "date": "2026-10-27",
-   "affects": "2026-10-28",
+   "symbol": "RELIANCE",
+   "name": "Reliance",
+   "when": "Thu 29 Oct",
+   "date": "2026-10-29",
+   "affects": "2026-10-30",
    "past": false,
    "bank": false
   },

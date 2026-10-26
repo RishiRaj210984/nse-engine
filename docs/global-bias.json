@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-26T16:18:28.775430+05:30",
+ "generated_at": "2026-10-26T22:31:22.175125+05:30",
  "target_session": "2026-10-27",
  "reference_date": "2026-10-26",
  "us_session_used": "2026-10-26",
@@ -7,66 +7,66 @@
   {
    "name": "S&P 500",
    "symbol": "^GSPC",
-   "last": 7623.68,
-   "change": -0.519,
+   "last": 7683.3,
+   "change": 0.782,
    "change_unit": "%",
-   "as_of": "2026-10-23"
+   "as_of": "2026-10-26"
   },
   {
    "name": "Nasdaq",
    "symbol": "^IXIC",
-   "last": 25955.34,
-   "change": -0.206,
+   "last": 26225.82,
+   "change": 1.042,
    "change_unit": "%",
-   "as_of": "2026-10-23"
+   "as_of": "2026-10-26"
   },
   {
    "name": "Dow Jones",
    "symbol": "^DJI",
-   "last": 52215.16,
-   "change": -1.235,
+   "last": 52369.01,
+   "change": 0.295,
    "change_unit": "%",
-   "as_of": "2026-10-23"
+   "as_of": "2026-10-26"
   },
   {
    "name": "US 10Y Yield",
    "symbol": "^TNX",
-   "last": 4.99,
-   "change": 0.035,
+   "last": 4.98,
+   "change": -0.01,
    "change_unit": "pts",
-   "as_of": "2026-10-23"
+   "as_of": "2026-10-26"
   },
   {
    "name": "Crude Oil",
    "symbol": "CL=F",
-   "last": 101.09,
-   "change": -2.111,
+   "last": 102.91,
+   "change": -0.349,
    "change_unit": "%",
    "as_of": "2026-10-26"
   },
   {
    "name": "Dollar Index",
    "symbol": "DX-Y.NYB",
-   "last": 101.83,
-   "change": 0.022,
+   "last": 101.94,
+   "change": 0.131,
    "change_unit": "%",
    "as_of": "2026-10-26"
   },
   {
    "name": "Nikkei 225",
    "symbol": "^N225",
-   "last": 62189.65,
-   "change": -0.803,
+   "last": 62693.16,
+   "change": -0.341,
    "change_unit": "%",
-   "as_of": "2026-10-26"
+   "as_of": "2026-10-23"
   },
   {
    "name": "Hang Seng",
    "symbol": "^HSI",
-   "last": 23211.81,
-   "change": 0.513,
+   "last": 23093.37,
+   "change": 0.692,
    "change_unit": "%",
-   "as_of": "2026-10-26"
+   "as_of": "2026-10-23"
   },
   {
    "name": "India VIX",
@@ -95,171 +95,155 @@
  ],
  "bias": {
   "label": "RANGEBOUND",
-  "score": 9,
-  "z": 0.092,
-  "model_z": 0.092,
-  "predicted_nifty_move_pct": 0.073,
-  "typical_daily_move_pct": 0.795,
-  "source": "daily close model",
+  "score": 11,
+  "z": 0.106,
+  "model_z": 0.106,
+  "predicted_nifty_move_pct": 0.08,
+  "typical_daily_move_pct": 0.756,
+  "source": "pre-open global snapshot",
   "india_vix": 17.16,
   "components": [
+   {
+    "feature": "es",
+    "label": "S&P 500 futures",
+    "value": 0.57,
+    "contribution_pct": 0.205
+   },
+   {
+    "feature": "nq",
+    "label": "Nasdaq futures",
+    "value": 1.14,
+    "contribution_pct": -0.16
+   },
+   {
+    "feature": "cl",
+    "label": "Crude oil",
+    "value": 1.94,
+    "contribution_pct": -0.071
+   },
    {
     "feature": "vix",
     "label": "India VIX level",
     "value": 17.16,
-    "contribution_pct": 0.07
+    "contribution_pct": 0.064
    },
    {
-    "feature": "vix_chg",
-    "label": "India VIX change",
-    "value": 0.3,
-    "contribution_pct": 0.024
-   },
-   {
-    "feature": "nifty_prev",
-    "label": "Nifty previous day %",
-    "value": 0.678,
-    "contribution_pct": -0.022
-   },
-   {
-    "feature": "spx",
-    "label": "S&P 500 overnight %",
-    "value": 0.0,
-    "contribution_pct": -0.021
+    "feature": "ftse",
+    "label": "FTSE 100 (UK)",
+    "value": 0.27,
+    "contribution_pct": 0.048
    },
    {
     "feature": "dxy",
-    "label": "Dollar index %",
-    "value": 0.022,
-    "contribution_pct": -0.007
-   },
-   {
-    "feature": "ndx",
-    "label": "Nasdaq minus S&P (tech tilt) %",
-    "value": 0.0,
-    "contribution_pct": 0.004
-   },
-   {
-    "feature": "crude",
-    "label": "Crude oil %",
-    "value": -2.111,
-    "contribution_pct": -0.002
-   },
-   {
-    "feature": "nifty_ext",
-    "label": "Nifty vs EMA20 %",
-    "value": -0.345,
-    "contribution_pct": 0.002
-   },
-   {
-    "feature": "tnx",
-    "label": "US 10Y yield chg (pts)",
-    "value": 0.0,
-    "contribution_pct": 0.0
+    "label": "Dollar index",
+    "value": 0.09,
+    "contribution_pct": -0.044
    }
   ]
  },
  "news": {
   "summary": {
-   "score": 0.26,
-   "count": 40,
+   "score": 0.314,
+   "count": 39,
    "label": "POSITIVE"
   },
   "weight": 0.0,
   "headlines": [
    {
-    "title": "SoftBank sells 1.21 crore Ola Electric rights entitlements as EV maker seeks to raise Rs 1,000 crore",
+    "title": "Ahead of Market: 10 things that will decide stock market action on Tuesday",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/softbank-sells-1-21-crore-ola-electric-rights-entitlements-as-ev-maker-seeks-to-raise-rs-1000-crore/articleshow/135209308.cms",
-    "published": "Mon, 26 Oct 2026 16:04:38 +0530",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/ahead-of-market-10-things-that-will-decide-stock-market-action-on-tuesday/articleshow/135215629.cms",
+    "published": "Mon, 26 Oct 2026 22:08:34 +0530",
     "sentiment": 0.0
    },
    {
-    "title": "The war bump is a false victory for S&amp;P 500 profits",
+    "title": "Anthropic vs OpenAI: How Claude maker\u2019s growth is challenging ChatGPT ahead of IPO",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/the-war-bump-is-a-false-victory-for-sp-500-profits/articleshow/135209183.cms",
-    "published": "Mon, 26 Oct 2026 16:01:42 +0530",
-    "sentiment": -0.25
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/anthropic-vs-openai-how-claude-makers-growth-is-challenging-chatgpt-ahead-of-ipo/articleshow/135215446.cms",
+    "published": "Mon, 26 Oct 2026 21:57:14 +0530",
+    "sentiment": 0.494
    },
    {
-    "title": "Rupee weakens for third session as importers step up dollar bids, foreign outflows bite",
+    "title": "Paytm Q2 Results: Profit rockets 976% YoY to Rs 226 crore, revenue jumps 28%",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/forex/rupee-weakens-for-third-session-as-importers-step-up-dollar-bids-foreign-outflows-bite/articleshow/135208766.cms",
-    "published": "Mon, 26 Oct 2026 15:38:23 +0530",
-    "sentiment": -0.511
-   },
-   {
-    "title": "Michael Burry's top 10 life lessons for GenZ: 'Buy half the house you can afford'",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/michael-burrys-top-10-life-lessons-for-genz-buy-half-the-house-you-can-afford/articleshow/135208206.cms",
-    "published": "Mon, 26 Oct 2026 15:11:09 +0530",
-    "sentiment": 0.202
-   },
-   {
-    "title": "Silver prices are tarnished but not forgotten. Why HSBC thinks gains in white metal may be limited?",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/commodities/news/silver-prices-are-tarnished-but-not-forgotten-why-hsbc-thinks-gains-in-white-metal-may-be-limited/articleshow/135207313.cms",
-    "published": "Mon, 26 Oct 2026 14:21:56 +0530",
-    "sentiment": 0.35
-   },
-   {
-    "title": "Sumitomo Life to remain cautious on JGB yields, keep investment pace unchanged from H1",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/bonds/sumitomo-life-to-remain-cautious-on-jgb-yields-keep-investment-pace-unchanged-from-h1/articleshow/135207033.cms",
-    "published": "Mon, 26 Oct 2026 14:04:51 +0530",
-    "sentiment": -0.103
-   },
-   {
-    "title": "French bond selloff eases as country spared ratings downgrade",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/bonds/french-bond-selloff-eases-as-country-spared-ratings-downgrade/articleshow/135206922.cms",
-    "published": "Mon, 26 Oct 2026 14:01:56 +0530",
-    "sentiment": -0.572
-   },
-   {
-    "title": "Global Market: BOJ nears historic inflation milestone, shifts focus to rate hikes",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/global-market-boj-nears-historic-inflation-milestone-shifts-focus-to-rate-hikes/articleshow/135206926.cms",
-    "published": "Mon, 26 Oct 2026 13:59:45 +0530",
-    "sentiment": 0.0
-   },
-   {
-    "title": "ECB Meeting: Five key questions on rates, inflation and Lagarde's exit",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/ecb-meeting-five-key-questions-on-rates-inflation-and-lagardes-exit/articleshow/135206869.cms",
-    "published": "Mon, 26 Oct 2026 13:56:09 +0530",
-    "sentiment": 0.0
-   },
-   {
-    "title": "Meta to create non-voting shares to fund AI expansion, retain Zuckerberg\u2019s control",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/meta-to-create-non-voting-shares-to-fund-ai-expansion-retain-zuckerbergs-control/articleshow/135206256.cms",
-    "published": "Mon, 26 Oct 2026 13:36:26 +0530",
-    "sentiment": 0.511
-   },
-   {
-    "title": "Global equity funds attract $28.16 billion as easing yields boost sentiment",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/global-equity-funds-attract-28-16-billion-as-easing-yields-boost-sentiment/articleshow/135206114.cms",
-    "published": "Mon, 26 Oct 2026 13:13:14 +0530",
-    "sentiment": 0.735
-   },
-   {
-    "title": "Global Market | SK Hynix weighs $12 billion special dividend ahead of Q3 Results: Reports",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/global-market-sk-hynix-weighs-12-billion-special-dividend-ahead-of-q3-results-reports/articleshow/135205842.cms",
-    "published": "Mon, 26 Oct 2026 13:01:26 +0530",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/paytm-q2-results-profit-rockets-976-yoy-to-rs-226-crore-revenue-jumps-28/articleshow/135214973.cms",
+    "published": "Mon, 26 Oct 2026 21:15:42 +0530",
     "sentiment": 0.542
+   },
+   {
+    "title": "Tamilnad Mercantile Bank Q2 Results: Net profit rises 42% to record Rs 451 crore on high net interest income",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/tamilnad-mercantile-bank-q2-results-net-profit-rises-42-to-record-rs-451-crore-on-high-net-interest-income/articleshow/135214844.cms",
+    "published": "Mon, 26 Oct 2026 20:56:51 +0530",
+    "sentiment": 0.718
+   },
+   {
+    "title": "Indian Overseas Bank to raise $500 million as Q2 profit jumps 56%",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/indian-overseas-bank-to-raise-500-million-as-q2-profit-jumps-56/articleshow/135214567.cms",
+    "published": "Mon, 26 Oct 2026 20:44:37 +0530",
+    "sentiment": 0.542
+   },
+   {
+    "title": "MMT reports net profit of $1.8 million in Q2, revenues at $ 235.2 million",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/mmt-reports-net-profit-of-1-8-million-in-q2-revenues-at-235-2-million/articleshow/135214497.cms",
+    "published": "Mon, 26 Oct 2026 20:36:23 +0530",
+    "sentiment": 0.25
+   },
+   {
+    "title": "Bank of Maharashtra Q2 profit jumps 41.5% as bad loans decline",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/bank-of-maharashtra-q2-profit-jumps-41-5-as-bad-loans-decline/articleshow/135214440.cms",
+    "published": "Mon, 26 Oct 2026 20:34:08 +0530",
+    "sentiment": 0.0
+   },
+   {
+    "title": "The Rs 1.5 lakh crore MTF problem: How shrinking leveraged positions are deepening India's smallcap sell-off",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/the-rs-1-5-lakh-crore-mtf-problem-how-shrinking-leveraged-positions-are-deepening-indias-smallcap-sell-off/articleshow/135214401.cms",
+    "published": "Mon, 26 Oct 2026 20:31:48 +0530",
+    "sentiment": -0.691
+   },
+   {
+    "title": "Anthropic IPO: 5 jaw-dropping numbers investors need to know about $1.5 trillion public offer",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/anthropic-ipo-5-jaw-dropping-numbers-investors-need-to-know-about-1-5-trillion-public-offer/articleshow/135214380.cms",
+    "published": "Mon, 26 Oct 2026 20:28:19 +0530",
+    "sentiment": 0.0
+   },
+   {
+    "title": "Anthropic IPO: Rising costs, risks, rapid growth mark AI frontrunner",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/anthropic-ipo-rising-costs-risks-rapid-growth-market-ai-frontrunner/articleshow/135213738.cms",
+    "published": "Mon, 26 Oct 2026 19:43:20 +0530",
+    "sentiment": 0.128
+   },
+   {
+    "title": "Anthropic's top investors include Amazon, Google, Fidelity Management",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/anthropics-top-investors-include-amazon-google-fidelity-management/articleshow/135213715.cms",
+    "published": "Mon, 26 Oct 2026 19:41:06 +0530",
+    "sentiment": 0.361
+   },
+   {
+    "title": "Anthropic's filing for blockbuster US IPO shows key executives and board",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/anthropics-filing-for-blockbuster-us-ipo-shows-key-executives-and-board/articleshow/135213686.cms",
+    "published": "Mon, 26 Oct 2026 19:38:53 +0530",
+    "sentiment": 0.599
    }
   ]
  },
  "model": {
-  "oos_days": 250,
-  "directional_calls": 107,
-  "directional_accuracy": 65.4,
-  "sign_accuracy_all_days": 58.8,
+  "oos_days": 300,
+  "directional_calls": 148,
+  "directional_accuracy": 70.3,
+  "sign_accuracy_all_days": 62.7,
+  "gap_corr": 0.45,
+  "gap_sign_pct": 68.3,
   "trained_rows": 750,
-  "version": 13,
+  "version": 14,
   "bias_threshold": 0.2
  },
  "options": {
@@ -642,8 +626,8 @@
    "bank": true
   },
   {
-   "symbol": "RELIANCE",
-   "name": "Reliance",
+   "symbol": "LT",
+   "name": "L&T",
    "when": "Tue 27 Oct",
    "date": "2026-10-27",
    "affects": "2026-10-28",
@@ -651,11 +635,11 @@
    "bank": false
   },
   {
-   "symbol": "LT",
-   "name": "L&T",
-   "when": "Tue 27 Oct",
-   "date": "2026-10-27",
-   "affects": "2026-10-28",
+   "symbol": "RELIANCE",
+   "name": "Reliance",
+   "when": "Thu 29 Oct",
+   "date": "2026-10-29",
+   "affects": "2026-10-30",
    "past": false,
    "bank": false
   },
@@ -670,43 +654,43 @@
   }
  ],
  "preopen": {
-  "snapshot_ist": "Mon 26 Oct 16:18 IST",
+  "snapshot_ist": "Mon 26 Oct 22:31 IST",
   "stage": "preview",
-  "expected_gap_pct": 0.02,
-  "gap_typical_error_pct": 0.38,
-  "expected_day_pct": 0.05,
-  "z": 0.066,
-  "typical_daily_move_pct": 0.77,
+  "expected_gap_pct": 0.07,
+  "gap_typical_error_pct": 0.33,
+  "expected_day_pct": 0.08,
+  "z": 0.106,
+  "typical_daily_move_pct": 0.756,
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": 0.0
+    "move_pct": 0.57
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": 0.0
+    "move_pct": 1.14
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": 0.0
+    "move_pct": -0.15
    },
    {
     "key": "dax",
     "name": "DAX (Germany)",
-    "move_pct": 0.0
+    "move_pct": 0.22
    },
    {
     "key": "ftse",
     "name": "FTSE 100 (UK)",
-    "move_pct": 0.0
+    "move_pct": 0.27
    },
    {
     "key": "stoxx",
     "name": "Euro Stoxx 50",
-    "move_pct": 0.0
+    "move_pct": 0.45
    },
    {
     "key": "n225",
@@ -716,89 +700,89 @@
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": 0.0
+    "move_pct": 1.94
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": 0.0
+    "move_pct": 0.07
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": 0.0
+    "move_pct": 0.09
    },
    {
     "key": "inr",
     "name": "USD/INR",
-    "move_pct": 0.0
+    "move_pct": -0.04
    }
   ],
   "drivers": [
    {
-    "feature": "vix",
-    "label": "India VIX level",
-    "value": 17.16,
-    "contribution_pct": 0.088
-   },
-   {
-    "feature": "nprev",
-    "label": "Nifty previous day",
-    "value": 0.68,
-    "contribution_pct": -0.038
-   },
-   {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": 0.0,
-    "contribution_pct": -0.02
+    "value": 0.57,
+    "contribution_pct": 0.205
    },
    {
-    "feature": "ym",
-    "label": "Dow futures",
-    "value": 0.0,
-    "contribution_pct": 0.013
+    "feature": "nq",
+    "label": "Nasdaq futures",
+    "value": 1.14,
+    "contribution_pct": -0.16
    },
    {
     "feature": "cl",
     "label": "Crude oil",
-    "value": 0.0,
-    "contribution_pct": 0.007
+    "value": 1.94,
+    "contribution_pct": -0.071
+   },
+   {
+    "feature": "vix",
+    "label": "India VIX level",
+    "value": 17.16,
+    "contribution_pct": 0.064
    },
    {
     "feature": "ftse",
     "label": "FTSE 100 (UK)",
-    "value": 0.0,
-    "contribution_pct": -0.004
+    "value": 0.27,
+    "contribution_pct": 0.048
+   },
+   {
+    "feature": "dxy",
+    "label": "Dollar index",
+    "value": 0.09,
+    "contribution_pct": -0.044
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.22,
-   "gap_sign_pct": 57.7,
-   "directional_calls": 80,
-   "directional_accuracy": 62.5
+   "gap_corr": 0.45,
+   "gap_sign_pct": 68.3,
+   "directional_calls": 158,
+   "directional_accuracy": 70.3
   },
   "vix": 17.16
  },
  "global_table": {
-  "updated": "2026-10-26T16:18:38.888625+05:30",
+  "updated": "2026-10-26T22:31:31.560328+05:30",
   "rows": [
    {
     "group": "US, last close",
-    "move": "S&P 500 -0.5%, Nasdaq -0.2%, Dow -1.2%",
-    "effect": "red",
-    "note": "Negative lead for India"
+    "move": "S&P 500 +0.8%, Nasdaq +1.1%, Dow +0.3%",
+    "effect": "green",
+    "note": "Positive lead for India"
    },
    {
     "group": "US futures now",
-    "move": "S&P +0.00%, Nasdaq +0.00%, Dow +0.00% (since Nifty's close)",
-    "effect": "flat",
-    "note": "Flat"
+    "move": "S&P +0.57%, Nasdaq +1.14%, Dow -0.15% (since Nifty's close)",
+    "effect": "green",
+    "note": "Futures point to a firmer open"
    },
    {
     "group": "Europe, last close",
-    "move": "DAX +0.8%, FTSE +0.4%, Euro Stoxx +0.4%",
+    "move": "DAX +0.9%, FTSE +0.7%, Euro Stoxx +0.8%",
     "effect": "green",
     "note": "Supportive"
    },
@@ -810,25 +794,25 @@
    },
    {
     "group": "Crude oil",
-    "move": "WTI ~$101, Brent ~$110 (-1.8%)",
-    "effect": "green",
-    "note": "Falling oil helps India \u00b7 Price is high for India"
+    "move": "WTI ~$103, Brent ~$112 (-0.1%)",
+    "effect": "red",
+    "note": "Price is high for India"
    },
    {
     "group": "US 10-year yield",
-    "move": "4.99% (+4 bp)",
+    "move": "4.98% (-1 bp)",
     "effect": "flat",
     "note": "Steady"
    },
    {
     "group": "Dollar index",
-    "move": "101.83 (+0.02%)",
+    "move": "101.94 (+0.13%)",
     "effect": "flat",
     "note": "Steady"
    },
    {
     "group": "Rupee",
-    "move": "95.21 per $ (+0.29%)",
+    "move": "95.17 per $ (+0.26%)",
     "effect": "red",
     "note": "Rupee weakening"
    },
@@ -840,14 +824,14 @@
    },
    {
     "group": "Model: Nifty open",
-    "move": "+0.02% (\u00b10.38%)",
+    "move": "+0.07% (\u00b10.33%)",
     "effect": "flat",
     "note": "Combined forecast from all markets (preview)",
     "model": true
    }
   ],
   "tilt": "mixed",
-  "score": -1
+  "score": 0
  },
  "notes": [
   "GIFT Nifty has no free data feed; the pre-open model reads what drives it (US/Dow futures, Europe, Asia, crude, rupee).",

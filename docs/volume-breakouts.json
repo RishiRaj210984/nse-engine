@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-26T16:18:41.361082+05:30",
+ "generated_at": "2026-10-26T22:31:34.130214+05:30",
  "market_open": false,
  "volume_projected": false,
  "bias": {
   "label": "RANGEBOUND",
-  "score": 9
+  "score": 11
  },
  "rules": {
   "vol_mult": 2.0,
@@ -19,8 +19,8 @@
  },
  "market_gate_open": false,
  "model": {
-  "version": 13,
-  "updated": "2026-10-26T16:17:47.814874+05:30",
+  "version": 14,
+  "updated": "2026-10-26T22:30:49.632293+05:30",
   "ranker_on": true,
   "samples": 2138,
   "live_samples": 17,
@@ -70,20 +70,20 @@
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
     "log_vol_ratio": 0.7581659000554979,
-    "rsi": 64.13568983411156,
+    "rsi": 64.13568983407794,
     "dist_high_pct": 0.23027511224254152,
-    "ext_ema20": 5.370781230622024,
-    "atr_pct": 3.5994075236389413,
+    "ext_ema20": 5.3707812306220015,
+    "atr_pct": 3.599407523640858,
     "day_chg": 4.86714022625625,
     "ret5": 2.105639380699076,
     "rs20": 12.940099045157517,
-    "bias_score": 9.0,
-    "news_sent": 0.269,
+    "bias_score": 11.0,
+    "news_sent": 0.294,
     "mkt_above50": 0.0,
     "mkt_ret20": -1.3437065957041971
    },
-   "r1_a": 0.8828644456190062,
-   "r2_a": 1.7657288912380125,
+   "r1_a": 0.8828644456185362,
+   "r2_a": 1.7657288912370723,
    "news": [
     {
      "title": "Coforge's shares rise up 2.51% at \u20b91,948.20 around midday on Monday",
@@ -107,27 +107,27 @@
      "sentiment": 0.527
     },
     {
-     "title": "Coforge slips 3% even as Jefferies, Nomura, others raise targets after Q2 earnings. Why are they bullish?",
-     "source": "The Economic Times",
-     "link": "https://news.google.com/rss/articles/CBMihAJBVV95cUxOSGhOdWZQM2hmYzdLZVZCN3Q3NnhFd1gwQnRab0syUERFZ1dKb0kxZmhiVllrUkx6d1UwbU9HcnpsVnhJdUNZWEFjUldnLXc5Skh5YzVsWUNXZ0hlQ3pRMGRtQXZNS1hUWVpCb2VtMXZDV2tJdWQtZmpMcUc5XzJsdGo4WGRFemNpNG56YnpENU5FVUhwYlJUYy04b2lmaHpEbWN1RUJOQmRsMjFucEdzdl8xZlFIS0ZrdVdITHZEdnhqUEJwa1BVUEplaE5OeDcwdFQ1WUJRX2ppbEdpUjltZGZ0cmRUR2hDbFdva0dxcmJMWkYwcjR3N3dJa0NteVRnU2VrX9IBigJBVV95cUxQa1dUM1c3N1JLSjRrUlBldG0ySUhMbGxnSVFjWjZlTkJyaWRHLTN5WVh3b19sVTBBM3lGaE1ySy1OMDA4bk5SSXU3dndpVjYyRVc5T2dhR3RoMnhDWTNhem5udjV4czJMckRGRlhlY2RudEhSWEluQ3lGaU4temZjTEtFcTkxcVkzVEUtZmJPdU5tZ0s4YUtNOXZFZ3pDZVBtWmtRbTNhU01WZThZMFRPZUFoRG1SVGJHcEprN3MwbVphZmsyTENhbHFSUE1heFNDV05IdTFUd1pxZFZtWXpMaF9jeC11cU1xNWJtRG5yWnZiRkNzcjF4WHEyMnlpdTlsZ2JtQ0pnX0dUUQ?oc=5",
-     "published": "Mon, 26 Oct 2026 04:27:33 GMT",
-     "sentiment": 0.202
-    },
-    {
      "title": "Coforge Shares Fall Despite Brokerages Raising Target Prices After Q2 Results",
      "source": "NDTV Profit",
      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQY0JvanBLSlZ4dTdwbWJSd1V1Y3VTWmNjRFFMVnpKLXFyTWpDQVFrd0toZjJVb0FNa29UZVR0US1SRzN6Ylh6Wi10VzRVZk9OTE5fNHcxMjVOcHI1dWhPZFVWTERNbmFvbDdLbHFiV3doZDR4Uks2aFg2azRLcnhuUExQUnU1LThNMEZKTVdqeFNXd0pBQ3h3MUNPVDI3by12eFc1VEpQZ1lTaS1WUnFhMHVxZUJCR3d2cFHSAcIBQVVfeXFMT2dfZVdzajBBelZEbElHRVhWdWVzendsZkRYUzBqQk5PcHFzM1l3aDlXdjFrZVE1MVlHajdVa1J0a0NrdFI2LUhSNy1Yend5Y3NncEJEY1Y2X2llODRZVHFKY2lpZExMdzRTNzM0R0VRWTJJaGtNM3JkOXFPeS1tSWlnaXd1d005S1FZQVk3VGdPcWFJcWlzZ0U4N1Z5aHc4NkRNRllHNGkyQVRNZkNfSHBxbEpsRUw5RUZqeHNFNjZneVE?oc=5",
      "published": "Mon, 26 Oct 2026 04:05:30 GMT",
      "sentiment": 0.296
+    },
+    {
+     "title": "Coforge slips 3% even as Jefferies, Nomura, others raise targets after Q2 earnings. Why are they bullish?",
+     "source": "The Economic Times",
+     "link": "https://news.google.com/rss/articles/CBMihAJBVV95cUxOSGhOdWZQM2hmYzdLZVZCN3Q3NnhFd1gwQnRab0syUERFZ1dKb0kxZmhiVllrUkx6d1UwbU9HcnpsVnhJdUNZWEFjUldnLXc5Skh5YzVsWUNXZ0hlQ3pRMGRtQXZNS1hUWVpCb2VtMXZDV2tJdWQtZmpMcUc5XzJsdGo4WGRFemNpNG56YnpENU5FVUhwYlJUYy04b2lmaHpEbWN1RUJOQmRsMjFucEdzdl8xZlFIS0ZrdVdITHZEdnhqUEJwa1BVUEplaE5OeDcwdFQ1WUJRX2ppbEdpUjltZGZ0cmRUR2hDbFdva0dxcmJMWkYwcjR3N3dJa0NteVRnU2VrX9IBigJBVV95cUxQa1dUM1c3N1JLSjRrUlBldG0ySUhMbGxnSVFjWjZlTkJyaWRHLTN5WVh3b19sVTBBM3lGaE1ySy1OMDA4bk5SSXU3dndpVjYyRVc5T2dhR3RoMnhDWTNhem5udjV4czJMckRGRlhlY2RudEhSWEluQ3lGaU4temZjTEtFcTkxcVkzVEUtZmJPdU5tZ0s4YUtNOXZFZ3pDZVBtWmtRbTNhU01WZThZMFRPZUFoRG1SVGJHcEprN3MwbVphZmsyTENhbHFSUE1heFNDV05IdTFUd1pxZFZtWXpMaF9jeC11cU1xNWJtRG5yWnZiRkNzcjF4WHEyMnlpdTlsZ2JtQ0pnX0dUUQ?oc=5",
+     "published": "Mon, 26 Oct 2026 04:27:33 GMT",
+     "sentiment": 0.202
     }
    ],
    "news_sentiment": {
-    "score": 0.269,
+    "score": 0.294,
     "count": 8,
     "label": "POSITIVE"
    },
-   "win_prob": 9.6,
-   "expected_r": -0.66,
+   "win_prob": 8.3,
+   "expected_r": -0.69,
    "model_used": true,
    "grade": "C",
    "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
@@ -182,7 +182,7 @@
     "day_chg": 6.620579456206799,
     "ret5": 6.317925743232977,
     "rs20": 10.54897132018111,
-    "bias_score": 9.0,
+    "bias_score": 11.0,
     "news_sent": 0.227,
     "mkt_above50": 0.0,
     "mkt_ret20": -1.3437065957041971
@@ -198,24 +198,17 @@
      "sentiment": 0.637
     },
     {
-     "title": "Dr. Reddy\u2019s surges over 5% as analysts turn cautious despite strong margin beat",
+     "title": "Dr. Reddy\u2019s shares rise 5% despite cautious analyst outlook",
      "source": "BusinessLine",
-     "link": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxObzhhM01DQmFfRTgwVmZzY1JkYXotWWd6T0JQbHNuY09YLWZMU01LLXQ1Y0prdHo4bmhjRWxSYk1JcEtkZWFrUUZnLU9lWWR6SWZjMG9KUGtpdEdBc1hkTExOTU9hVEtISGEyVE1kWGVGYWphUW9ic2VzOEswSl9XSElDSmZkc2JYU0M2cy1DVDM2OTYwdDlmbzA5VmdPN3dRNXBGSkhGM2NLSC0xcGZkQklNbzhlVURRckxfY2VfeGFrbDNsV2JIT0x1bndPc3hnX1d6Nm51VThGWUJFYkw1bWt2Z1FIUWNIYnhj?oc=5",
+     "link": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxObzhhM01DQmFfRTgwVmZzY1JkYXotWWd6T0JQbHNuY09YLWZMU01LLXQ1Y0prdHo4bmhjRWxSYk1JcEtkZWFrUUZnLU9lWWR6SWZjMG9KUGtpdEdBc1hkTExOTU9hVEtISGEyVE1kWGVGYWphUW9ic2VzOEswSl9XSElDSmZkc2JYU0M2cy1DVDM2OTYwdDlmbzA5VmdPN3dRNXBGSkhGM2NLSC0xcGZkQklNbzhlVURRckxfY2VfeGFrbDNsV2JIT0x1bndPc3hnX1d6Nm51VThGWUJFYkw1bWt2Z1FIUWNIYnhj0gHyAUFVX3lxTE5YcFZaUjBOdDdxRDduOG4zSWZrZ3NwbVV6eERGRHp1eG9jTTVJQnFWOUJxMFpiTlpiSGJnb2lOTGFHdlpob0tFV1lpQ3hJbms4SG90bHBRcGJ2TFZLQXlXRnBZbl9iVHZfMnVEWDRBczJ1N3pMVXphcExNZ05DLXFEX05heHU5dzFabXYzYUlicWhod3huRjdybDNCMWlGRGxaUFFPckRsdVRDM2w4Z3Y0ZmlkNE1rZWFBSUVnUjI5M2o3bkJVNy1QUDFvLWxxblJrcWY3SXE3X2ZyY0c3YjdIZldXSmNIMnYwS29NVGRoU0Vn?oc=5",
      "published": "Mon, 26 Oct 2026 07:00:33 GMT",
-     "sentiment": -0.097
+     "sentiment": 0.36
     },
     {
-     "title": "Dr Reddy's shares jump despite 36% Q2 profit fall: Buy, sell or hold? What Nomura, Citi and others say",
-     "source": "Moneycontrol.com",
-     "link": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxQWGFvRGdhallvemdzQUVXbG9SemVydHgtRzNXSjZLM1VDcEhTVVY2bFFxYWcydFdEaDlVNnVHdWVZem9HV1VEWjVON094ZmFJRmlZQkFXbUFwelJTWnloY2FyU0ZVdE1vSkNwMlNIVlR5clliWjQ0aHJXZkNXRDRZZ05Qa1NZdzhlOE5MYXEyck56UEl6UkhqcS1KbkU4Q0R4R2JSLWJLZUk5Y3RfcmpEU0lySUxDNERCYVJYblQwM01reEtndEJvdnhfbFMtampJQ1lCS3pfT3FhNElEamM2VHMtTl92Y012Q1ZZQW1YSU9ncEVHNXhBRtIB-AFBVV95cUxQWGFvRGdhallvemdzQUVXbG9SemVydHgtRzNXSjZLM1VDcEhTVVY2bFFxYWcydFdEaDlVNnVHdWVZem9HV1VEWjVON094ZmFJRmlZQkFXbUFwelJTWnloY2FyU0ZVdE1vSkNwMlNIVlR5clliWjQ0aHJXZkNXRDRZZ05Qa1NZdzhlOE5MYXEyck56UEl6UkhqcS1KbkU4Q0R4R2JSLWJLZUk5Y3RfcmpEU0lySUxDNERCYVJYblQwM01reEtndEJvdnhfbFMtampJQ1lCS3pfT3FhNElEamM2VHMtTl92Y012Q1ZZQW1YSU9ncEVHNXhBRg?oc=5",
-     "published": "Mon, 26 Oct 2026 05:15:35 GMT",
-     "sentiment": 0.118
-    },
-    {
-     "title": "Dr. Reddy's Laboratories Ltd Stock 12\u2011Month Price Target Raised to $13.42, Implies 2% Upside",
+     "title": "Dr. Reddy's Laboratories Ltd Stock 12\u2011Month Price Target Raised to $13.55, Implies 3% Upside",
      "source": "TradingView",
-     "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxPTDBPa0VCWC1SbDA5ODRvd1dsbzNuS2NfNXU2TU41ZHQtbmxVOFFURHpZSllCRmR5OHNrSThJNm9ac1pOdVJZVzBrUzU1ajJiUXE4cGl3c2MxQ1dZYmxyaHIwcTF3YlhXWUFRQ0dwRGw1QWR2dkk1c1JncnN0R09EV0dFSTViMG4zY1g3YVJ5M2ViSDAxRzllS1JpaXlJNlVoSndEMmc5eGFFd195NFdqWTN6ZkFET1lMNWRsR3VyZkRoWVVMUlU4SDFYX0hrZUhWanZGQU5zVlI1U2FZbUxoc1BsMXM?oc=5",
-     "published": "Mon, 26 Oct 2026 07:20:00 GMT",
+     "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxPUVp4S21jdk1aaFZUd0I1X2xGMk5ob2p5NFNFd3lDMUoyTWhObDdYZGxJSHdkTE5OaU1icmlyejRyV1N0UWhWYm5pWDJKaWxnbnY3S05EQnFQcmdPcl9YVW0wb1BBNXZNV25fWHVFZXhXQm5qandvdkVlLUNBU1VnbHFKTnB3S09KYTRXbnp2eHJtbDFZLU1maWloeHZOUzVyVWV1Vk42UW1YN1g3TWJEb1lOazJqVHpyYlRILV9kR2FyQ0h2dnU5Tk9VV01aYTE1Q0t1VkozNUdNbkNiMEZaU0toM2c?oc=5",
+     "published": "Mon, 26 Oct 2026 10:20:00 GMT",
      "sentiment": 0.0
     },
     {
@@ -224,6 +217,13 @@
      "link": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxOZ21LbTFmZUFOeGF1Wm1hcEcweG1tcnV6V1puXy1EYXNKUlZQTTFLODloUzV5b0Z2QVJXc0xIQXpaTGR5LVdrdHkxWnZkTWV1VHowdGhkNjRwaGRGYzdTSnNjVWJXc2h3YzFFNkZUSGY3UjlxWWFBdW5IQWd2Y1JjTjkza2MzaDd1Z0dmVWxkUzNrZmJZQzNpQXhpNHRyZFpCcFY0ak1NTnpwZ2hLMXhqSnJiYW82MDJLb2toN3lPRFE2RTBBa0RYYkFYN29MMXY3THNsREpYUHVZdk1VYTVfWU54OFhzMndxVGFOeUw3NmY4REtsbktr0gH8AUFVX3lxTFBIWmNzT21Kd29kOFVEeURoT0xEQU54NXhicU9JNTJadndKM1RqT1dxMkI4aTh3QlBqdGljcGlmQko4LU1wT3NwQTBKZ0JyUEJtTExwanduQ3kwYk5jSXZHMjVoVkZJamdlUzhqd3M3dEF2ME45dkVENktpZE1KdGFTZ3lYUFdhdXpESDlqdHZLSlpJdDhTT1A5dmhieEZtSE9EcFNmTTJnZFdSUGlyZGpjU0otUU9PQUhSdFlYODZ0dE4tWlpzc1BIa3VEVUVnYlNZSEFXeGtTb0djZEh0Y25BVk5XaWVZWUpHVU8wRWJ5QmJ6clRqSHN1d05JbA?oc=5",
      "published": "Mon, 26 Oct 2026 10:22:28 GMT",
      "sentiment": 0.0
+    },
+    {
+     "title": "Dr Reddy's shares jump despite 36% Q2 profit fall: Buy, sell or hold? What Nomura, Citi and others say",
+     "source": "Moneycontrol.com",
+     "link": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxQWGFvRGdhallvemdzQUVXbG9SemVydHgtRzNXSjZLM1VDcEhTVVY2bFFxYWcydFdEaDlVNnVHdWVZem9HV1VEWjVON094ZmFJRmlZQkFXbUFwelJTWnloY2FyU0ZVdE1vSkNwMlNIVlR5clliWjQ0aHJXZkNXRDRZZ05Qa1NZdzhlOE5MYXEyck56UEl6UkhqcS1KbkU4Q0R4R2JSLWJLZUk5Y3RfcmpEU0lySUxDNERCYVJYblQwM01reEtndEJvdnhfbFMtampJQ1lCS3pfT3FhNElEamM2VHMtTl92Y012Q1ZZQW1YSU9ncEVHNXhBRtIB-AFBVV95cUxQWGFvRGdhallvemdzQUVXbG9SemVydHgtRzNXSjZLM1VDcEhTVVY2bFFxYWcydFdEaDlVNnVHdWVZem9HV1VEWjVON094ZmFJRmlZQkFXbUFwelJTWnloY2FyU0ZVdE1vSkNwMlNIVlR5clliWjQ0aHJXZkNXRDRZZ05Qa1NZdzhlOE5MYXEyck56UEl6UkhqcS1KbkU4Q0R4R2JSLWJLZUk5Y3RfcmpEU0lySUxDNERCYVJYblQwM01reEtndEJvdnhfbFMtampJQ1lCS3pfT3FhNElEamM2VHMtTl92Y012Q1ZZQW1YSU9ncEVHNXhBRg?oc=5",
+     "published": "Mon, 26 Oct 2026 05:15:35 GMT",
+     "sentiment": 0.118
     }
    ],
    "news_sentiment": {
@@ -231,7 +231,7 @@
     "count": 8,
     "label": "POSITIVE"
    },
-   "win_prob": 13.2,
+   "win_prob": 13.3,
    "expected_r": -0.59,
    "model_used": true,
    "grade": "C",
@@ -285,8 +285,8 @@
     "day_chg": 1.3424250695947881,
     "ret5": 0.6561679790026309,
     "rs20": 8.120627626043397,
-    "bias_score": 9.0,
-    "news_sent": 0.234,
+    "bias_score": 11.0,
+    "news_sent": 0.26,
     "mkt_above50": 0.0,
     "mkt_ret20": -1.3437065957041971
    },
@@ -301,6 +301,20 @@
      "sentiment": 0.494
     },
     {
+     "title": "Bharti Airtel BHARTIARTL Reg 74(5) Certificate Q2 2026",
+     "source": "Kalkine India",
+     "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOWWVQRmVlR2xmdU5OR3dGeE0zc0NkUWFFT3ZHanh2ZUlPWVNNYUw5NnFNZmQ1a0xBM1ZGSGdFS1FRLTZKYTZibUUyWUROcVc5VE9RUThseEVLcHBTWWZ0M0oxYV8tblh3SjA5Z0pFQzFac0pXb2lVelIxYXN0MUZCaE1kdDJsREhzYmtSRUZta0U0dEdDWFp6RV9oOGZvek1uQVFmOC1fWUFnT3A5R29ibVp4N3IzWUU?oc=5",
+     "published": "Mon, 26 Oct 2026 13:31:00 GMT",
+     "sentiment": 0.0
+    },
+    {
+     "title": "Airtel Money H1 revenue up 34%, expects stronger H2 margin; shares jump",
+     "source": "Yahoo Finance",
+     "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNdGlOQlo0dzVfLW5qX3dEVklBcjRXcVloMEcybFFUSThLdmFNRXBOWk50MFB5LUVjSVpxODctMGxPWGVZMEhwd2xFUklKU1Q1ODNlM2lZSWUzSjlGYmxDaW03MVRjSWVSSlRoUEJMU2N6cFR6c0hXUHVta1llbFJuTEZaNGRhZV90bDZTTUFXeEZ1ZmNiMlE?oc=5",
+     "published": "Mon, 26 Oct 2026 08:48:40 GMT",
+     "sentiment": 0.586
+    },
+    {
      "title": "Tech Query: Bharti Airtel, Power Finance Corporation (PFC), REC, Alkyl Amines Chemicals \u2014 What is the outlook? Where are these stocks headed?",
      "source": "BusinessLine",
      "link": "https://news.google.com/rss/articles/CBMivgJBVV95cUxOYzNxbTN4OWl5Q0RETVZqUVYtNjZ6a1U3dEo0Nzh0c1JjLWlQWld4TmNxdFhsUVlsdUo3R3FEcF9ia0tkTkpOZHgtX3o5UmYzRExicW5HZjR0Wl9fNlVFc0U3Z2NVZFlDRHVUYk4xVTFwb3pMQTBqSHFwUjZnUmJGVFBIWi1RS08zSnpFeG9NRF91UkxSNGVHODhPaTREdTlWTXN3S1BXNE02aUcwXzNHWk9rVWhUR0dnems0dGQ0WXJVd01oQVR5b0J5d2pqOVFMRlRtN1o4bEkwb2pSOGJXeC1hWWNGU0lDS2dfbF9TZEdOQmh6UEROUUlpVU93ZWEzTHVQWHBlR3RZR01XTWtoWmZJZnNuVEdacEtpa05UVktpRlB0d0xxSFVQOFhQZWhHSnFaZkVab2U3RVVfQ1HSAcQCQVVfeXFMTnZHSTQweTU0MDh6RzRBVlI0bGM1b0hQeTFDM3Vvd3d1TDc2T3Vlb19tYlNvbU1PRE8wRFU5U0syT1dHTjIxNE9VcS1wRzl6dm5uOEdGSmhodXg3THVpTlA2Y1ZSdmQxck5SRHc3eVItcnBhcEZRRDJMQVY4dFBfVFVDU3lHN0FJM2JGMVltc3FYb2dTb2d0bko5Qk11Y0E5ZVEyTWpsZGhyVkNYM2szUXZKaV9HYldyTDZGV0s3N3lBQXp3TkFEbFlZdGdyR3JlZ1B0dy1TS05DTUtEdmM1bEt4ejNuOUR6R3pRWTQ0aVp2U0hmbFR0UTIyUTQ4eEEtWk9PVHdtYUdhZF9NRkZVZlFaUk82LUZhSlhWVnpKRXBDZUNMNTFONmZQQ2M0eURudW82NUpmTEhJcFZVcVN3SFFHcEpq?oc=5",
@@ -308,34 +322,20 @@
      "sentiment": 0.0
     },
     {
-     "title": "Bharti Airtel Ltd Rights 2021-21.10.21 For Shares Estimates \u2013 BSE:AIRTEL_RE",
-     "source": "TradingView",
-     "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE05VFR1R1hRelVKcnFpb3JOZmlIQko3TTZmMWw1RkdjWTJqQWJiaENsUzVCQmZRZHZ3TTFqOHkzWnVlWWFFOHBOcTJ0MVdaQmpwRlYtbU9HdXNBQk5vR0lpWERZZzVxbG03WnNVQXdwYVd2aGg0bXF3NHp1RQ?oc=5",
-     "published": "Fri, 23 Oct 2026 20:34:36 GMT",
-     "sentiment": 0.296
-    },
-    {
-     "title": "Market Shake-Up: Airtel Surpasses HDFC Bank as Market Cap Hits Rs 11.8 Lakh Crore; Reliance Retains Top Spot",
-     "source": "Goodreturns",
-     "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPMU5LVThkWjU0UDdmVXM0RmNrOHZEeEd6blJIYTBRX1pialItaFVULVFpUURNa0NJejRkWVIwRlVEOTBaQ21fdGNLSGVGNDFabHhMT1JLamFoOWlLOXNEQ05KMGtXMk5vcHZKYlFiVzExXzltVGVOWC1EYkV4YmQyNGtSTWFQSW5uT3F4VnlKTWxuVWFHeGh3Y0QtV3dzTGNvNHA0SnhIV1NfUDJiSUlvYlYwWC13UkVLYlpTbGhDRHNQSF9SUUZ6eFkxRTltblNjOEJHMEtn?oc=5",
-     "published": "Fri, 23 Oct 2026 11:23:51 GMT",
-     "sentiment": 0.202
-    },
-    {
-     "title": "Ambit sets INR 2,732 target for Bharti Airtel stock",
-     "source": "ad-hoc-news.de",
-     "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOLTl2X0VzSGFnVTlBU1hzbGFxZTdCSGRxZHAtU20yd3FpWUVvMHE1S0VsRHhmbjdBcXpsNElITk5seDR3NW1CbnBMYmdNOVNEY081Sl9USkoyR2Z4ZHhTVi01eHEzdTB0RFpGSGsxMVZSd3AzZm5ILUtwRXE1Y1UwcS02c2hnM21rSFMxX0xFcTFwWTFQZ1NwR3JudE91WHhhcjJCMFdBdV94QjE3TDZj?oc=5",
-     "published": "Sun, 25 Oct 2026 02:00:50 GMT",
-     "sentiment": 0.0
+     "title": "Bharti Airtel - Negative Breakout: These 5 stocks cross below their 200 DMAs",
+     "source": "The Economic Times",
+     "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxOeEdURzZqVWMtalRQVm5yUFJhTDktYnlYRVlRQ294NDI3VURMNW13Qy1FaWlHX25ETjYwSklNSWRfQ1dHN212bGpEZk9RMFNtU2RjTEdDN01TNklYMjhXN2FFNWRwUmN0OWpORGQwdkV5TVRXZlBMTE9jQ2xtUExfeG1rNkY3SFFjMHYxaG1fN3pwTm1kY3ZHS0w2UkhVak1jVW96Mm1GUWFMVzRVNm41NjFFZkk4a09iU1JlYTJKRW4xcXRHTWpqaVhkb2lTd3NFZWIxTTBqSlkzbXJrWkE?oc=5",
+     "published": "Mon, 26 Oct 2026 04:30:25 GMT",
+     "sentiment": -0.296
     }
    ],
    "news_sentiment": {
-    "score": 0.234,
+    "score": 0.26,
     "count": 8,
     "label": "POSITIVE"
    },
-   "win_prob": 7.6,
-   "expected_r": -0.7,
+   "win_prob": 6.5,
+   "expected_r": -0.72,
    "model_used": true,
    "grade": "C",
    "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
