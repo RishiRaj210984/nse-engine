@@ -1,54 +1,54 @@
 {
- "generated_at": "2026-10-27T21:32:58.613057+05:30",
+ "generated_at": "2026-10-28T00:07:28.928533+05:30",
  "target_session": "2026-10-28",
- "reference_date": "2026-10-27",
+ "reference_date": "2026-10-26",
  "us_session_used": "2026-10-27",
  "tickers": [
   {
    "name": "S&P 500",
    "symbol": "^GSPC",
-   "last": 7732.75,
-   "change": 0.729,
+   "last": 7716.87,
+   "change": 0.522,
    "change_unit": "%",
    "as_of": "2026-10-27"
   },
   {
    "name": "Nasdaq",
    "symbol": "^IXIC",
-   "last": 26514.33,
-   "change": 1.318,
+   "last": 26459.68,
+   "change": 1.109,
    "change_unit": "%",
    "as_of": "2026-10-27"
   },
   {
    "name": "Dow Jones",
    "symbol": "^DJI",
-   "last": 52469.4,
-   "change": 0.206,
+   "last": 52353.63,
+   "change": -0.015,
    "change_unit": "%",
    "as_of": "2026-10-27"
   },
   {
    "name": "US 10Y Yield",
    "symbol": "^TNX",
-   "last": 4.98,
-   "change": -0.002,
+   "last": 4.99,
+   "change": 0.009,
    "change_unit": "pts",
    "as_of": "2026-10-27"
   },
   {
    "name": "Crude Oil",
    "symbol": "CL=F",
-   "last": 100.14,
-   "change": -1.592,
+   "last": 99.97,
+   "change": -1.759,
    "change_unit": "%",
    "as_of": "2026-10-27"
   },
   {
    "name": "Dollar Index",
    "symbol": "DX-Y.NYB",
-   "last": 102.24,
-   "change": 0.279,
+   "last": 102.32,
+   "change": 0.349,
    "change_unit": "%",
    "as_of": "2026-10-27"
   },
@@ -71,84 +71,140 @@
   {
    "name": "India VIX",
    "symbol": "^INDIAVIX",
-   "last": 16.4,
-   "change": -4.414,
+   "last": 17.16,
+   "change": 1.779,
    "change_unit": "%",
-   "as_of": "2026-10-27"
+   "as_of": "2026-10-26"
   },
   {
    "name": "Nifty 50",
    "symbol": "^NSEI",
-   "last": 22749.75,
-   "change": -0.015,
+   "last": 22753.2,
+   "change": 0.678,
    "change_unit": "%",
-   "as_of": "2026-10-27"
+   "as_of": "2026-10-26"
   },
   {
    "name": "Bank Nifty",
    "symbol": "^NSEBANK",
-   "last": 53974.9,
-   "change": -0.721,
+   "last": 54366.7,
+   "change": 0.146,
    "change_unit": "%",
-   "as_of": "2026-10-27"
+   "as_of": "2026-10-26"
   }
  ],
  "bias": {
   "label": "RANGEBOUND",
-  "score": 14,
-  "z": 0.137,
-  "model_z": 0.137,
-  "predicted_nifty_move_pct": 0.1,
-  "typical_daily_move_pct": 0.762,
+  "score": 12,
+  "z": 0.119,
+  "model_z": 0.119,
+  "predicted_nifty_move_pct": 0.09,
+  "typical_daily_move_pct": 0.743,
   "source": "pre-open global snapshot",
-  "india_vix": 16.4,
+  "india_vix": 17.16,
   "components": [
-   {
-    "feature": "nq",
-    "label": "Nasdaq futures",
-    "value": 1.02,
-    "contribution_pct": -0.172
-   },
    {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": 0.43,
-    "contribution_pct": 0.168
+    "value": 1.18,
+    "contribution_pct": 0.45
    },
    {
-    "feature": "stoxx",
-    "label": "Euro Stoxx 50",
-    "value": 0.6,
-    "contribution_pct": 0.076
+    "feature": "nq",
+    "label": "Nasdaq futures",
+    "value": 2.39,
+    "contribution_pct": -0.316
+   },
+   {
+    "feature": "dxy",
+    "label": "Dollar index",
+    "value": 0.46,
+    "contribution_pct": -0.196
+   },
+   {
+    "feature": "n225",
+    "label": "Nikkei 225",
+    "value": 1.56,
+    "contribution_pct": 0.125
+   },
+   {
+    "feature": "ftse",
+    "label": "FTSE 100 (UK)",
+    "value": -0.47,
+    "contribution_pct": -0.107
    },
    {
     "feature": "vix",
     "label": "India VIX level",
-    "value": 16.4,
-    "contribution_pct": 0.051
-   },
-   {
-    "feature": "cl",
-    "label": "Crude oil",
-    "value": -1.12,
-    "contribution_pct": 0.042
-   },
-   {
-    "feature": "dax",
-    "label": "DAX (Germany)",
-    "value": 0.53,
-    "contribution_pct": -0.025
+    "value": 17.16,
+    "contribution_pct": 0.062
    }
   ]
  },
  "news": {
   "summary": {
-   "score": 0.216,
-   "count": 37,
+   "score": 0.181,
+   "count": 38,
    "label": "POSITIVE"
   },
   "weight": 0.0,
   "headlines": [
+   {
+    "title": "Prediction market Kalshi expands safeguards for young traders",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/prediction-market-kalshi-expands-safeguards-for-young-traders/articleshow/135241699.cms",
+    "published": "Tue, 27 Oct 2026 22:49:02 +0530",
+    "sentiment": 0.421
+   },
+   {
+    "title": "GM to transfer stock listing to Nasdaq",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/gm-to-transfer-stock-listing-to-nasdaq/articleshow/135241585.cms",
+    "published": "Tue, 27 Oct 2026 22:44:44 +0530",
+    "sentiment": 0.0
+   },
+   {
+    "title": "Trading starts on LME's first contract from Shanghai exchange collaboration",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/trading-starts-on-lmes-first-contract-from-shanghai-exchange-collaboration/articleshow/135241517.cms",
+    "published": "Tue, 27 Oct 2026 22:40:33 +0530",
+    "sentiment": 0.0
+   },
+   {
+    "title": "Allied Blenders Q2 Results: Profit rises 9.7% to Rs 69 crore, revenue up 6.8%",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/allied-blenders-q2-results-profit-rises-9-7-to-rs-69-crore-revenue-up-6-8/articleshow/135240967.cms",
+    "published": "Tue, 27 Oct 2026 22:29:10 +0530",
+    "sentiment": 0.25
+   },
+   {
+    "title": "Indus Towers Q2 Results: Net profit slips 2.5% to Rs 1,793 crore",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/indus-towers-q2-results-net-profit-slips-2-5-to-rs-1793-crore/articleshow/135240759.cms",
+    "published": "Tue, 27 Oct 2026 22:26:07 +0530",
+    "sentiment": 0.0
+   },
+   {
+    "title": "SAIL Q2 Results: Net profit surges four-fold to Rs 1750 crore on higher revenue",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/sail-q2-results-net-profit-surges-four-fold-to-rs-1750-crore-on-higher-revenue/articleshow/135240695.cms",
+    "published": "Tue, 27 Oct 2026 22:18:09 +0530",
+    "sentiment": 0.586
+   },
+   {
+    "title": "United Breweries Q2 Results: Profit jumps nearly 3 times to Rs 134 crore on volume growth, premiumisation",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/united-breweries-q2-results-profit-jumps-nearly-3-times-to-rs-134-crore-on-volume-growth-premiumisation/articleshow/135240644.cms",
+    "published": "Tue, 27 Oct 2026 22:09:32 +0530",
+    "sentiment": 0.836
+   },
+   {
+    "title": "SBI Life Insurance Q2 Results: Net profit grows 11% YoY to Rs 549 crore",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/sbi-life-insurance-q2-results-net-profit-grows-11-yoy-to-rs-549-crore/articleshow/135240500.cms",
+    "published": "Tue, 27 Oct 2026 22:01:57 +0530",
+    "sentiment": 0.25
+   },
    {
     "title": "Tata Capital Q2 net profit rises 51% on higher income",
     "source": "ET Markets",
@@ -176,72 +232,16 @@
     "link": "https://economictimes.indiatimes.com/markets/stocks/news/us-fed-opens-two-day-meeting-with-markets-expecting-rate-hold/articleshow/135238252.cms",
     "published": "Tue, 27 Oct 2026 20:21:31 +0530",
     "sentiment": 0.0
-   },
-   {
-    "title": "RIL to announce Q2 results on October 30, board to also consider fundraising",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/ril-to-announce-q2-results-on-october-30-board-to-also-consider-fundraising/articleshow/135237289.cms",
-    "published": "Tue, 27 Oct 2026 19:44:58 +0530",
-    "sentiment": 0.0
-   },
-   {
-    "title": "Global bond issuance set to grow at slowest pace in five years in 2027, S&amp;P Global Ratings says",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/bonds/global-bond-issuance-set-to-grow-at-slowest-pace-in-five-years-in-2027-sp-global-ratings-says/articleshow/135237268.cms",
-    "published": "Tue, 27 Oct 2026 19:42:15 +0530",
-    "sentiment": 0.0
-   },
-   {
-    "title": "JetBlue shares surge 12% as airline seeks to calm financial concerns",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/jetblue-shares-surge-12-as-airline-seeks-to-calm-financial-concerns/articleshow/135237199.cms",
-    "published": "Tue, 27 Oct 2026 19:40:58 +0530",
-    "sentiment": 0.743
-   },
-   {
-    "title": "US stocks today: S&amp;P 500, Nasdaq advance as oil eases ahead of Fed decision",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/us-stocks-today-sp-500-nasdaq-open-higher-as-oil-pulls-back-ahead-of-fed-decision/articleshow/135236366.cms",
-    "published": "Tue, 27 Oct 2026 19:07:38 +0530",
-    "sentiment": 0.318
-   },
-   {
-    "title": "PVR Inox among stocks that hit 52-week highs and rallied up to 20% in a month",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/pvr-inox-among-stocks-that-hit-52-week-highs-and-rallied-up-to-20-in-a-month/slideshow/135236374.cms",
-    "published": "Tue, 27 Oct 2026 18:58:57 +0530",
-    "sentiment": 0.0
-   },
-   {
-    "title": "JSW Infrastructure Q2 Results: Net profit falls 11% to Rs 328 crore",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/jsw-infrastructure-q2-results-net-profit-falls-11-to-rs-328-crore/articleshow/135236084.cms",
-    "published": "Tue, 27 Oct 2026 18:56:43 +0530",
-    "sentiment": -0.052
-   },
-   {
-    "title": "Sebi extends deadline for debenture trustees to comply with norms till April 2027",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/sebi-extends-deadline-for-debenture-trustees-to-comply-with-norms-till-april-2027/articleshow/135235986.cms",
-    "published": "Tue, 27 Oct 2026 18:53:44 +0530",
-    "sentiment": 0.202
-   },
-   {
-    "title": "Coca-Cola raises profit forecast as premium drinks, sodas hold strong",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/coca-cola-raises-profit-forecast-as-premium-drinks-sodas-hold-strong/articleshow/135235940.cms",
-    "published": "Tue, 27 Oct 2026 18:51:14 +0530",
-    "sentiment": 0.494
    }
   ]
  },
  "model": {
   "oos_days": 300,
-  "directional_calls": 137,
-  "directional_accuracy": 70.1,
-  "sign_accuracy_all_days": 60.7,
-  "gap_corr": 0.44,
-  "gap_sign_pct": 69.0,
+  "directional_calls": 149,
+  "directional_accuracy": 69.8,
+  "sign_accuracy_all_days": 62.7,
+  "gap_corr": 0.51,
+  "gap_sign_pct": 70.0,
   "trained_rows": 750,
   "version": 16,
   "bias_threshold": 0.2
@@ -249,25 +249,25 @@
  "options": {
   "NIFTY": {
    "index": "NIFTY",
-   "spot": 22749.75,
+   "spot": 22753.2,
    "atm": 22750,
    "lot_size": 65,
    "expiry": "2026-11-03",
    "days_to_expiry": 6.75,
-   "iv_used_pct": 16.4,
-   "expected_move": 507,
+   "iv_used_pct": 17.16,
+   "expected_move": 531,
    "levels": {
-    "prev_close": 22749.75,
-    "ema20": 22824.04,
-    "support": 22647.82,
-    "resistance": 22824.04,
-    "atr": 293.06,
+    "prev_close": 22753.2,
+    "ema20": 22831.86,
+    "support": 22509.3,
+    "resistance": 22831.86,
+    "atr": 300.76,
     "pivots": {
-     "P": 22738.78,
-     "R1": 22840.72,
-     "S1": 22647.82,
-     "R2": 22931.68,
-     "S2": 22545.88
+     "P": 22631.25,
+     "R1": 22875.15,
+     "S1": 22509.3,
+     "R2": 22997.1,
+     "S2": 22265.4
     }
    },
    "strategies": [
@@ -276,39 +276,39 @@
      "legs": [
       {
        "action": "SELL",
-       "strike": 23200,
+       "strike": 23250,
        "type": "CE",
-       "est_premium": 58.9
+       "est_premium": 56.5
       },
       {
        "action": "BUY",
-       "strike": 23450,
+       "strike": 23500,
        "type": "CE",
-       "est_premium": 23.2
+       "est_premium": 22.9
       },
       {
        "action": "SELL",
        "strike": 22300,
        "type": "PE",
-       "est_premium": 46.0
+       "est_premium": 51.4
       },
       {
        "action": "BUY",
        "strike": 22050,
        "type": "PE",
-       "est_premium": 16.2
+       "est_premium": 19.3
       }
      ],
-     "net_premium": 65.5,
-     "max_loss": 11992,
-     "max_reward": 4258,
+     "net_premium": 65.7,
+     "max_loss": 11980,
+     "max_reward": 4270,
      "reward_risk": 0.36,
-     "entry": "Enter at 10:15 (after the first hour) only if NIFTY is between 22,300 and 23,200",
-     "target": "Buy back at \u20b929.5 (keep ~55% of credit), else hold to expiry Tue 03 Nov",
-     "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b94,258 per lot)",
+     "entry": "Enter at 10:15 (after the first hour) only if NIFTY is between 22,300 and 23,250",
+     "target": "Buy back at \u20b929.6 (keep ~55% of credit), else hold to expiry Tue 03 Nov",
+     "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b94,270 per lot)",
      "breakeven": [
       22234,
-      23266
+      23316
      ],
      "notes": "Hedged premium selling. Check SPAN margin with your broker.",
      "verdict": {
@@ -351,37 +351,37 @@
        "action": "SELL",
        "strike": 22750,
        "type": "CE",
-       "est_premium": 216.1
+       "est_premium": 227.3
       },
       {
        "action": "SELL",
        "strike": 22750,
        "type": "PE",
-       "est_premium": 189.1
+       "est_premium": 196.8
       },
       {
        "action": "BUY",
        "strike": 23250,
        "type": "CE",
-       "est_premium": 49.5
+       "est_premium": 56.5
       },
       {
        "action": "BUY",
        "strike": 22250,
        "type": "PE",
-       "est_premium": 38.0
+       "est_premium": 42.9
       }
      ],
-     "net_premium": 317.7,
-     "max_loss": 11850,
-     "max_reward": 20650,
-     "reward_risk": 1.74,
+     "net_premium": 324.7,
+     "max_loss": 11394,
+     "max_reward": 21106,
+     "reward_risk": 1.85,
      "entry": "Enter only if NIFTY opens within \u00b150 of 22,750",
-     "target": "Buy back at \u20b9222.4 (keep ~30% of credit)",
+     "target": "Buy back at \u20b9227.3 (keep ~30% of credit)",
      "stop_loss": "NIFTY moves beyond 22,500 / 23,000",
      "breakeven": [
-      22432,
-      23068
+      22425,
+      23075
      ],
      "notes": "Higher reward, tighter range. Never run an unhedged straddle.",
      "verdict": {
@@ -428,25 +428,25 @@
   },
   "BANKNIFTY": {
    "index": "BANKNIFTY",
-   "spot": 53974.9,
-   "atm": 54000,
+   "spot": 54366.7,
+   "atm": 54400,
    "lot_size": 30,
    "expiry": "2026-11-23",
    "days_to_expiry": 26.75,
-   "iv_used_pct": 14.06,
-   "expected_move": 2055,
+   "iv_used_pct": 14.52,
+   "expected_move": 2138,
    "levels": {
-    "prev_close": 53974.9,
-    "ema20": 55084.44,
-    "support": 53732.71,
-    "resistance": 54435.57,
-    "atr": 717.41,
+    "prev_close": 54366.7,
+    "ema20": 55201.23,
+    "support": 53965.3,
+    "resistance": 54580.3,
+    "atr": 718.53,
     "pivots": {
-     "P": 54193.38,
-     "R1": 54435.57,
-     "S1": 53732.71,
-     "R2": 54896.23,
-     "S2": 53490.53
+     "P": 54178.9,
+     "R1": 54580.3,
+     "S1": 53965.3,
+     "R2": 54793.9,
+     "S2": 53563.9
     }
    },
    "strategies": [
@@ -455,39 +455,39 @@
      "legs": [
       {
        "action": "SELL",
-       "strike": 55800,
+       "strike": 56300,
        "type": "CE",
-       "est_premium": 274.1
+       "est_premium": 276.1
       },
       {
        "action": "BUY",
-       "strike": 56800,
+       "strike": 57400,
        "type": "CE",
-       "est_premium": 114.4
+       "est_premium": 108.6
       },
       {
        "action": "SELL",
-       "strike": 52100,
+       "strike": 52400,
        "type": "PE",
-       "est_premium": 151.3
+       "est_premium": 155.9
       },
       {
        "action": "BUY",
-       "strike": 51100,
+       "strike": 51300,
        "type": "PE",
-       "est_premium": 50.6
+       "est_premium": 48.4
       }
      ],
-     "net_premium": 260.4,
-     "max_loss": 22188,
-     "max_reward": 7812,
-     "reward_risk": 0.35,
-     "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is between 52,100 and 55,800",
-     "target": "Buy back at \u20b9117.2 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
-     "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b97,812 per lot)",
+     "net_premium": 275.0,
+     "max_loss": 24750,
+     "max_reward": 8250,
+     "reward_risk": 0.33,
+     "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is between 52,400 and 56,300",
+     "target": "Buy back at \u20b9123.8 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
+     "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b98,250 per lot)",
      "breakeven": [
-      51840,
-      56060
+      52125,
+      56575
      ],
      "notes": "Hedged premium selling. Check SPAN margin with your broker.",
      "verdict": {
@@ -528,39 +528,39 @@
      "legs": [
       {
        "action": "SELL",
-       "strike": 54000,
+       "strike": 54400,
        "type": "CE",
-       "est_premium": 938.9
+       "est_premium": 968.4
       },
       {
        "action": "SELL",
-       "strike": 54000,
+       "strike": 54400,
        "type": "PE",
-       "est_premium": 707.4
+       "est_premium": 743.2
       },
       {
        "action": "BUY",
-       "strike": 56000,
+       "strike": 56600,
        "type": "CE",
-       "est_premium": 232.8
+       "est_premium": 217.5
       },
       {
        "action": "BUY",
-       "strike": 52000,
+       "strike": 52200,
        "type": "PE",
-       "est_premium": 136.9
+       "est_premium": 128.4
       }
      ],
-     "net_premium": 1276.6,
-     "max_loss": 21702,
-     "max_reward": 38298,
-     "reward_risk": 1.76,
-     "entry": "Enter only if BANKNIFTY opens within \u00b1100 of 54,000",
-     "target": "Buy back at \u20b9893.6 (keep ~30% of credit)",
-     "stop_loss": "BANKNIFTY moves beyond 53,000 / 55,000",
+     "net_premium": 1365.7,
+     "max_loss": 25029,
+     "max_reward": 40971,
+     "reward_risk": 1.64,
+     "entry": "Enter only if BANKNIFTY opens within \u00b1100 of 54,400",
+     "target": "Buy back at \u20b9956.0 (keep ~30% of credit)",
+     "stop_loss": "BANKNIFTY moves beyond 53,300 / 55,500",
      "breakeven": [
-      52723,
-      55277
+      53034,
+      55766
      ],
      "notes": "Higher reward, tighter range. Never run an unhedged straddle.",
      "verdict": {
@@ -617,15 +617,6 @@
    "bank": true
   },
   {
-   "symbol": "LT",
-   "name": "L&T",
-   "when": "Tue 27 Oct",
-   "date": "2026-10-27",
-   "affects": "2026-10-28",
-   "past": true,
-   "bank": false
-  },
-  {
    "symbol": "RELIANCE",
    "name": "Reliance",
    "when": "Thu 29 Oct",
@@ -654,137 +645,137 @@
   }
  ],
  "preopen": {
-  "snapshot_ist": "Tue 27 Oct 21:32 IST",
+  "snapshot_ist": "Wed 28 Oct 00:07 IST",
   "stage": "preview",
-  "expected_gap_pct": -0.01,
-  "gap_typical_error_pct": 0.33,
-  "expected_day_pct": 0.1,
-  "z": 0.137,
-  "typical_daily_move_pct": 0.762,
+  "expected_gap_pct": -0.06,
+  "gap_typical_error_pct": 0.32,
+  "expected_day_pct": 0.09,
+  "z": 0.119,
+  "typical_daily_move_pct": 0.743,
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": 0.43
+    "move_pct": 1.18
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": 1.02
+    "move_pct": 2.39
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": -0.25
+    "move_pct": -0.02
    },
    {
     "key": "dax",
     "name": "DAX (Germany)",
-    "move_pct": 0.53
+    "move_pct": 0.89
    },
    {
     "key": "ftse",
     "name": "FTSE 100 (UK)",
-    "move_pct": -0.08
+    "move_pct": -0.47
    },
    {
     "key": "stoxx",
     "name": "Euro Stoxx 50",
-    "move_pct": 0.6
+    "move_pct": 1.21
    },
    {
     "key": "n225",
     "name": "Nikkei 225",
-    "move_pct": 0.0
+    "move_pct": 1.56
    },
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": -1.12
+    "move_pct": -0.95
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": 1.36
+    "move_pct": 1.0
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": 0.05
+    "move_pct": 0.46
    },
    {
     "key": "inr",
     "name": "USD/INR",
-    "move_pct": -0.02
+    "move_pct": -0.11
    }
   ],
   "drivers": [
    {
-    "feature": "nq",
-    "label": "Nasdaq futures",
-    "value": 1.02,
-    "contribution_pct": -0.172
-   },
-   {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": 0.43,
-    "contribution_pct": 0.168
+    "value": 1.18,
+    "contribution_pct": 0.45
    },
    {
-    "feature": "stoxx",
-    "label": "Euro Stoxx 50",
-    "value": 0.6,
-    "contribution_pct": 0.076
+    "feature": "nq",
+    "label": "Nasdaq futures",
+    "value": 2.39,
+    "contribution_pct": -0.316
+   },
+   {
+    "feature": "dxy",
+    "label": "Dollar index",
+    "value": 0.46,
+    "contribution_pct": -0.196
+   },
+   {
+    "feature": "n225",
+    "label": "Nikkei 225",
+    "value": 1.56,
+    "contribution_pct": 0.125
+   },
+   {
+    "feature": "ftse",
+    "label": "FTSE 100 (UK)",
+    "value": -0.47,
+    "contribution_pct": -0.107
    },
    {
     "feature": "vix",
     "label": "India VIX level",
-    "value": 16.4,
-    "contribution_pct": 0.051
-   },
-   {
-    "feature": "cl",
-    "label": "Crude oil",
-    "value": -1.12,
-    "contribution_pct": 0.042
-   },
-   {
-    "feature": "dax",
-    "label": "DAX (Germany)",
-    "value": 0.53,
-    "contribution_pct": -0.025
+    "value": 17.16,
+    "contribution_pct": 0.062
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.44,
-   "gap_sign_pct": 69.0,
-   "directional_calls": 148,
-   "directional_accuracy": 68.2
+   "gap_corr": 0.51,
+   "gap_sign_pct": 70.0,
+   "directional_calls": 159,
+   "directional_accuracy": 69.2
   },
-  "vix": 16.4
+  "vix": 17.16
  },
  "global_table": {
-  "updated": "2026-10-27T21:33:12.684001+05:30",
+  "updated": "2026-10-28T00:07:45.251495+05:30",
   "rows": [
    {
     "group": "US, last close",
-    "move": "S&P 500 +0.7%, Nasdaq +1.3%, Dow +0.2%",
+    "move": "S&P 500 +0.5%, Nasdaq +1.1%, Dow -0.0%",
     "effect": "green",
     "note": "Positive lead for India"
    },
    {
     "group": "US futures now",
-    "move": "S&P +0.43%, Nasdaq +1.02%, Dow -0.25% (since Nifty's close)",
+    "move": "S&P +1.18%, Nasdaq +2.39%, Dow -0.02% (since Nifty's close)",
     "effect": "green",
     "note": "Futures point to a firmer open"
    },
    {
     "group": "Europe, last close",
-    "move": "DAX +0.9%, FTSE -0.7%, Euro Stoxx +0.9%",
-    "effect": "green",
-    "note": "Supportive"
+    "move": "DAX +0.7%, FTSE -0.8%, Euro Stoxx +0.8%",
+    "effect": "flat",
+    "note": "Mixed / flat"
    },
    {
     "group": "Asia today",
@@ -800,15 +791,15 @@
    },
    {
     "group": "US 10-year yield",
-    "move": "4.99% (+0 bp)",
-    "effect": "flat",
-    "note": "Steady"
+    "move": "5.00% (+1 bp)",
+    "effect": "red",
+    "note": "High yields pull money from emerging markets"
    },
    {
     "group": "Dollar index",
-    "move": "102.24 (+0.27%)",
-    "effect": "flat",
-    "note": "Steady"
+    "move": "102.32 (+0.35%)",
+    "effect": "red",
+    "note": "Strong dollar weighs on India"
    },
    {
     "group": "Rupee",
@@ -824,14 +815,14 @@
    },
    {
     "group": "Model: Nifty open",
-    "move": "-0.01% (\u00b10.33%)",
+    "move": "-0.06% (\u00b10.32%)",
     "effect": "flat",
     "note": "Combined forecast from all markets (preview)",
     "model": true
    }
   ],
   "tilt": "positive",
-  "score": 5
+  "score": 2
  },
  "notes": [
   "GIFT Nifty has no free data feed; the pre-open model reads what drives it (US/Dow futures, Europe, Asia, crude, rupee).",
