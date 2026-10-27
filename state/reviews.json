@@ -712,5 +712,96 @@
    "No A/B stocks: watchlist shown for learning only (market gate closed)."
   ],
   "note": "Option P&L is a Black-Scholes estimate repriced with India VIX, per 1 lot, before costs. Stock results use a \u20b910,000 / 1% risk example."
+ },
+ {
+  "session": "2026-10-27",
+  "as_of": "2026-10-27T16:17:23.349265+05:30",
+  "final": true,
+  "plan_built": "2026-10-27T07:13:30.825955+05:30",
+  "bias": {
+   "label": "BULLISH",
+   "predicted_pct": 0.26,
+   "actual_pct": -0.02,
+   "band_pct": 0.34,
+   "correct": false
+  },
+  "options": [
+   {
+    "index": "NIFTY",
+    "strategy": "Bull Put Spread",
+    "legs": "SELL 22600 PE + BUY 22500 PE",
+    "lot_size": 65,
+    "planned_max_reward": 812,
+    "planned_max_loss": 5688,
+    "day_open": 22707.55,
+    "day_high": 22829.7,
+    "day_low": 22637.1,
+    "last": 22749.75,
+    "entry_condition": "plan said SKIP: No tested structure has a positive record for today. On days the model called BULLISH, this spread lost overall (47.9% wins, avg \u20b9-320 per lot over 194 trades). A good-looking slice is not trusted on its own.",
+    "entry_spot": 22747.1,
+    "entry_time": "10:15",
+    "opening_move_pct": 0.17,
+    "status": "NO ENTRY",
+    "pnl_per_lot": 0,
+    "verdict": "Entry condition not met, so no trade. The plan's filter kept you out."
+   },
+   {
+    "index": "BANKNIFTY",
+    "strategy": "Bull Call Spread",
+    "legs": "BUY 54400 CE + SELL 54600 CE",
+    "lot_size": 30,
+    "planned_max_reward": 3822,
+    "planned_max_loss": 2178,
+    "day_open": 54402.05,
+    "day_high": 54654.05,
+    "day_low": 53953.2,
+    "last": 53974.9,
+    "entry_condition": "BANKNIFTY above support 53,965 at 09:45",
+    "entry_spot": 54584.95,
+    "entry_time": "09:45",
+    "opening_move_pct": 0.34,
+    "status": "STOP",
+    "exit_reason": "STOP",
+    "exit_time": "11:15",
+    "exit_spot": 54330.25,
+    "entry_value": 132.6,
+    "exit_value": 34.8,
+    "pnl_per_lot": -2933,
+    "capture_pct": -76.7,
+    "verdict": "STOP. Est. \u20b9-2,933 per lot."
+   }
+  ],
+  "stocks": [
+   {
+    "symbol": "INFY",
+    "grade": "C",
+    "entry": 1153.8,
+    "stop": 1122.6,
+    "t1": 1221.72,
+    "open": 1151.95,
+    "high": 1165.7,
+    "low": 1129.5,
+    "last": 1163.0,
+    "tradeable": false,
+    "status": "NOT TRIGGERED",
+    "r": 0.0
+   }
+  ],
+  "summary": {
+   "options_pnl_per_lot": -2933,
+   "planned_max_reward": 3822,
+   "gap": -6755,
+   "trades": 1,
+   "stocks_pnl_10k": 0,
+   "stock_trades": 0,
+   "plan_pnl": -2933
+  },
+  "lessons": [
+   "Bias BULLISH: Nifty -0.02% vs prev close. Call was wrong (direction missed).",
+   "NIFTY: Entry condition not met, so no trade. The plan's filter kept you out.",
+   "BANKNIFTY: STOP. Est. \u20b9-2,933 per lot.",
+   "No A/B stocks: watchlist shown for learning only (market gate closed)."
+  ],
+  "note": "Option P&L is a Black-Scholes estimate repriced with India VIX, per 1 lot, before costs. Stock results use a \u20b910,000 / 1% risk example."
  }
 ]

@@ -1,70 +1,17 @@
 {
- "open": {
-  "NIFTY": {
+ "open": {},
+ "closed": [
+  {
    "index": "NIFTY",
    "strategy": "Iron Condor",
-   "legs": [
-    {
-     "action": "SELL",
-     "strike": 23300,
-     "type": "CE",
-     "est_premium": 53.2
-    },
-    {
-     "action": "BUY",
-     "strike": 23550,
-     "type": "CE",
-     "est_premium": 18.7
-    },
-    {
-     "action": "SELL",
-     "strike": 22500,
-     "type": "PE",
-     "est_premium": 44.7
-    },
-    {
-     "action": "BUY",
-     "strike": 22250,
-     "type": "PE",
-     "est_premium": 14.2
-    }
-   ],
-   "lot": 65,
    "expiry": "2026-10-27",
    "entry_session": "2026-10-21",
-   "entry_spot": 22936.05,
-   "v_e": -61.22922883223737,
    "credit_rs": 3980,
-   "iv0": 0.1477,
-   "vix0": 15.1274995803833,
-   "mark": -1276,
-   "groups": [
-    {
-     "legs": [
-      {
-       "action": "SELL",
-       "strike": 23300,
-       "type": "CE",
-       "est_premium": 53.2
-      },
-      {
-       "action": "BUY",
-       "strike": 23550,
-       "type": "CE",
-       "est_premium": 18.7
-      }
-     ],
-     "v0": -37.66367414641218
-    }
-   ],
-   "realized": -57.071874996931,
-   "credit0": 61.22922883223737,
-   "credit_all": 61.22922883223737,
-   "adjusted": "closed the tested put spread",
-   "extra_cost": 0
+   "exit_session": "2026-10-27",
+   "reason": "EXPIRY DAY: closed at 10:15 (after adjustment: closed the tested put spread)",
+   "pnl": -1662
   }
- },
- "closed": [],
+ ],
  "days": [
   {
    "session": "2026-10-19",
@@ -105,10 +52,18 @@
     "NIFTY: still open (expiry 27 Oct), worth Rs -1,276 now"
    ],
    "total": -1276
+  },
+  {
+   "session": "2026-10-27",
+   "pnl": -386,
+   "detail": [
+    "NIFTY: EXPIRY DAY: closed at 10:15, trade result Rs -1,662 after costs"
+   ],
+   "total": -1662
   }
  ],
  "before": {
-  "session": "2026-10-26",
+  "session": "2026-10-27",
   "open": {
    "NIFTY": {
     "index": "NIFTY",
@@ -147,7 +102,7 @@
     "credit_rs": 3980,
     "iv0": 0.1477,
     "vix0": 15.1274995803833,
-    "mark": -1613,
+    "mark": -1276,
     "groups": [
      {
       "legs": [
