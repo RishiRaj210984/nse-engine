@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-27T16:18:24.064859+05:30",
+ "generated_at": "2026-10-27T21:33:17.302563+05:30",
  "live_stocks": {
   "trades": 2,
   "win_rate": 0.0,
@@ -271,8 +271,8 @@
  ],
  "open_signals": 11,
  "model": {
-  "version": 15,
-  "updated": "2026-10-27T16:17:47.665428+05:30",
+  "version": 16,
+  "updated": "2026-10-27T21:32:22.778317+05:30",
   "ranker_on": true,
   "samples": 2138,
   "live_samples": 17,
@@ -297,6 +297,45 @@
   "cost_pct": 0.25
  },
  "history": [
+  {
+   "version": 16,
+   "created_at": "2026-10-27T21:32:22.778317+05:30",
+   "params": {
+    "vol_mult": 2.0,
+    "rsi_lo": 60,
+    "rsi_hi": 65,
+    "near_high_pct": 3.0,
+    "sl_atr": 0.75,
+    "t1_atr": 1.5,
+    "t2_atr": 3.0,
+    "bias_threshold": 0.2,
+    "vix_high": 18.0,
+    "news_weight": 0.0,
+    "max_day_chg": 4.0,
+    "regime_gate": 1,
+    "cost_pct": 0.25
+   },
+   "metrics": {
+    "samples": 2138,
+    "live_samples": 17,
+    "rule_trades": 99,
+    "base_win_rate": 0.4716,
+    "avg_win_r": 1.109,
+    "avg_loss_r": 0.849,
+    "expectancy_r": 0.075,
+    "holdout_logloss": 0.6819,
+    "baseline_logloss": 0.6869,
+    "holdout_auc": 0.545,
+    "holdout_n": 428,
+    "bias_wf": {
+     "oos_days": 500,
+     "directional_calls": 206,
+     "directional_accuracy": 59.2,
+     "sign_accuracy_all_days": 53.8
+    }
+   },
+   "note": "ranker ON (holdout AUC 0.55)"
+  },
   {
    "version": 15,
    "created_at": "2026-10-27T16:17:47.665428+05:30",
@@ -842,31 +881,10 @@
     }
    },
    "note": "vol_mult 2.5\u21922.0; rsi_lo 55\u219260; rsi_hi 70\u219265; near_high_pct 2.0\u21923.0; sl_atr 1.0\u21920.75; t1_atr 1.0\u21921.5; t2_atr 2.0\u21922.5; bias_threshold 0.35\u21920.3; max_day_chg 7.0\u21925.0; ranker OFF: no out-of-sample edge, using rule stats only"
-  },
-  {
-   "version": 1,
-   "created_at": "2026-10-18T23:41:02.205451+05:30",
-   "params": {
-    "vol_mult": 2.5,
-    "rsi_lo": 55,
-    "rsi_hi": 70,
-    "near_high_pct": 2.0,
-    "sl_atr": 1.0,
-    "t1_atr": 1.0,
-    "t2_atr": 2.0,
-    "bias_threshold": 0.35,
-    "vix_high": 18.0,
-    "news_weight": 0.0,
-    "max_day_chg": 7.0,
-    "regime_gate": 1,
-    "cost_pct": 0.25
-   },
-   "metrics": {},
-   "note": "Initial rule set (your spec)"
   }
  ],
  "options_lab": {
-  "generated_at": "2026-10-27T16:17:48.913399+05:30",
+  "generated_at": "2026-10-27T21:32:25.198657+05:30",
   "costs_per_lot": {
    "NIFTY condor": 400,
    "NIFTY spread": 240,

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-27T16:18:05.238488+05:30",
+ "generated_at": "2026-10-27T21:32:58.613057+05:30",
  "target_session": "2026-10-28",
  "reference_date": "2026-10-27",
  "us_session_used": "2026-10-27",
@@ -7,40 +7,40 @@
   {
    "name": "S&P 500",
    "symbol": "^GSPC",
-   "last": 7676.77,
-   "change": 0.696,
+   "last": 7732.75,
+   "change": 0.729,
    "change_unit": "%",
-   "as_of": "2026-10-26"
+   "as_of": "2026-10-27"
   },
   {
    "name": "Nasdaq",
    "symbol": "^IXIC",
-   "last": 26169.38,
-   "change": 0.825,
+   "last": 26514.33,
+   "change": 1.318,
    "change_unit": "%",
-   "as_of": "2026-10-26"
+   "as_of": "2026-10-27"
   },
   {
    "name": "Dow Jones",
    "symbol": "^DJI",
-   "last": 52361.58,
-   "change": 0.28,
+   "last": 52469.4,
+   "change": 0.206,
    "change_unit": "%",
-   "as_of": "2026-10-26"
+   "as_of": "2026-10-27"
   },
   {
    "name": "US 10Y Yield",
    "symbol": "^TNX",
-   "last": 4.99,
+   "last": 4.98,
    "change": -0.002,
    "change_unit": "pts",
-   "as_of": "2026-10-26"
+   "as_of": "2026-10-27"
   },
   {
    "name": "Crude Oil",
    "symbol": "CL=F",
-   "last": 102.25,
-   "change": 0.482,
+   "last": 100.14,
+   "change": -1.592,
    "change_unit": "%",
    "as_of": "2026-10-27"
   },
@@ -48,25 +48,25 @@
    "name": "Dollar Index",
    "symbol": "DX-Y.NYB",
    "last": 102.24,
-   "change": 0.273,
+   "change": 0.279,
    "change_unit": "%",
    "as_of": "2026-10-27"
   },
   {
    "name": "Nikkei 225",
    "symbol": "^N225",
-   "last": 63268.37,
-   "change": 1.735,
+   "last": 62189.65,
+   "change": -0.803,
    "change_unit": "%",
-   "as_of": "2026-10-27"
+   "as_of": "2026-10-26"
   },
   {
    "name": "Hang Seng",
    "symbol": "^HSI",
-   "last": 23041.32,
-   "change": -0.734,
+   "last": 23211.81,
+   "change": 0.513,
    "change_unit": "%",
-   "as_of": "2026-10-27"
+   "as_of": "2026-10-26"
   },
   {
    "name": "India VIX",
@@ -95,171 +95,155 @@
  ],
  "bias": {
   "label": "RANGEBOUND",
-  "score": -9,
-  "z": -0.088,
-  "model_z": -0.088,
-  "predicted_nifty_move_pct": -0.07,
-  "typical_daily_move_pct": 0.795,
-  "source": "daily close model",
+  "score": 14,
+  "z": 0.137,
+  "model_z": 0.137,
+  "predicted_nifty_move_pct": 0.1,
+  "typical_daily_move_pct": 0.762,
+  "source": "pre-open global snapshot",
   "india_vix": 16.4,
   "components": [
    {
-    "feature": "dxy",
-    "label": "Dollar index %",
-    "value": 0.273,
-    "contribution_pct": -0.071
+    "feature": "nq",
+    "label": "Nasdaq futures",
+    "value": 1.02,
+    "contribution_pct": -0.172
    },
    {
-    "feature": "vix_chg",
-    "label": "India VIX change",
-    "value": -0.757,
-    "contribution_pct": -0.063
+    "feature": "es",
+    "label": "S&P 500 futures",
+    "value": 0.43,
+    "contribution_pct": 0.168
+   },
+   {
+    "feature": "stoxx",
+    "label": "Euro Stoxx 50",
+    "value": 0.6,
+    "contribution_pct": 0.076
    },
    {
     "feature": "vix",
     "label": "India VIX level",
-    "value": 16.403,
-    "contribution_pct": 0.053
+    "value": 16.4,
+    "contribution_pct": 0.051
    },
    {
-    "feature": "spx",
-    "label": "S&P 500 overnight %",
-    "value": 0.0,
-    "contribution_pct": -0.021
+    "feature": "cl",
+    "label": "Crude oil",
+    "value": -1.12,
+    "contribution_pct": 0.042
    },
    {
-    "feature": "ndx",
-    "label": "Nasdaq minus S&P (tech tilt) %",
-    "value": 0.0,
-    "contribution_pct": 0.005
-   },
-   {
-    "feature": "nifty_ext",
-    "label": "Nifty vs EMA20 %",
-    "value": -0.326,
-    "contribution_pct": 0.002
-   },
-   {
-    "feature": "nifty_prev",
-    "label": "Nifty previous day %",
-    "value": -0.015,
-    "contribution_pct": 0.001
-   },
-   {
-    "feature": "tnx",
-    "label": "US 10Y yield chg (pts)",
-    "value": 0.0,
-    "contribution_pct": 0.0
-   },
-   {
-    "feature": "crude",
-    "label": "Crude oil %",
-    "value": 0.482,
-    "contribution_pct": 0.0
+    "feature": "dax",
+    "label": "DAX (Germany)",
+    "value": 0.53,
+    "contribution_pct": -0.025
    }
   ]
  },
  "news": {
   "summary": {
-   "score": 0.085,
-   "count": 38,
-   "label": "NEUTRAL"
+   "score": 0.216,
+   "count": 37,
+   "label": "POSITIVE"
   },
   "weight": 0.0,
   "headlines": [
    {
-    "title": "Rupee boxed in range; traders focus on oil, outflows and RBI's defence",
+    "title": "Tata Capital Q2 net profit rises 51% on higher income",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/forex/forex-news/rupee-boxed-in-range-traders-focus-on-oil-outflows-and-rbis-defence/articleshow/135231121.cms",
-    "published": "Tue, 27 Oct 2026 16:03:08 +0530",
-    "sentiment": -0.153
+    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/tata-capital-q2-net-profit-rises-51-on-higher-income/articleshow/135239343.cms",
+    "published": "Tue, 27 Oct 2026 21:11:07 +0530",
+    "sentiment": 0.25
    },
    {
-    "title": "Maruti Suzuki Q2 Results: Profit falls 26% YoY to Rs 2,466 crore, but revenue rises 26%",
+    "title": "Ahead of Market: 10 things that will decide stock market action on Wednesday",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/maruti-suzuki-q2-results-profit-falls-26-yoy-to-rs-2466-crore-but-revenue-rises-26/articleshow/135230515.cms",
-    "published": "Tue, 27 Oct 2026 15:43:00 +0530",
-    "sentiment": -0.026
-   },
-   {
-    "title": "Cipla Q2 net profit falls 35% to Rs 878 crore, revenue dips 2%",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/cipla-q2-net-profit-falls-35-to-rs-878-crore-revenue-dips-2/articleshow/135230643.cms",
-    "published": "Tue, 27 Oct 2026 15:41:06 +0530",
-    "sentiment": -0.052
-   },
-   {
-    "title": "Indian lenders defer dollar debt sale plan as rates turn expensive",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/indian-lenders-defer-dollar-debt-sale-plan-as-rates-turn-expensive/articleshow/135230457.cms",
-    "published": "Tue, 27 Oct 2026 15:33:49 +0530",
-    "sentiment": -0.572
-   },
-   {
-    "title": "Bajaj Auto Q2 Results: Profit jumps 35% YoY to Rs 3,354 crore; revenue up 34%",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/bajaj-auto-q2-results-profit-jumps-35-yoy-to-rs-3354-crore-revenue-up-34/articleshow/135230311.cms",
-    "published": "Tue, 27 Oct 2026 15:33:12 +0530",
-    "sentiment": 0.542
-   },
-   {
-    "title": "US IPO Process: How companies navigate the road to Wall Street listing",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/us-ipo-process-how-companies-navigate-the-road-to-wall-street-listing/articleshow/135229659.cms",
-    "published": "Tue, 27 Oct 2026 14:53:08 +0530",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/ahead-of-market-10-things-that-will-decide-stock-market-action-on-wednesday/articleshow/135239298.cms",
+    "published": "Tue, 27 Oct 2026 21:07:19 +0530",
     "sentiment": 0.0
    },
    {
-    "title": "Global Market: Japan life insurers eye domestic bonds as foreign debt selling grows",
+    "title": "Waaree Energies Q2 Results: Profit falls 15% YoY to Rs 719 crore, revenue rises 24%",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/global-market-japan-life-insurers-eye-domestic-bonds-as-foreign-debt-selling-grows/articleshow/135228458.cms",
-    "published": "Tue, 27 Oct 2026 14:23:34 +0530",
-    "sentiment": -0.361
+    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/waaree-energies-q2-results-profit-falls-15-yoy-to-rs-719-crore-revenue-rises-24/articleshow/135239084.cms",
+    "published": "Tue, 27 Oct 2026 20:56:33 +0530",
+    "sentiment": 0.178
    },
    {
-    "title": "Anthropic IPO: Firm uses \u2018catastrophic\u2019 word 10 times in document to highlight \u2018humanitarian\u2019 AI risks",
+    "title": "US Fed opens two-day meeting with markets expecting rate hold",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/ipos/fpos/anthropic-ipo-firm-uses-catastrophic-word-10-times-in-document-to-highlight-humanitarian-ai-risks/articleshow/135228864.cms",
-    "published": "Tue, 27 Oct 2026 14:05:16 +0530",
-    "sentiment": 0.077
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/us-fed-opens-two-day-meeting-with-markets-expecting-rate-hold/articleshow/135238252.cms",
+    "published": "Tue, 27 Oct 2026 20:21:31 +0530",
+    "sentiment": 0.0
    },
    {
-    "title": "Global Market: JGB yields climb as investors await BOJ, Fed policy decisions",
+    "title": "RIL to announce Q2 results on October 30, board to also consider fundraising",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/global-market-jgb-yields-climb-as-investors-await-boj-fed-policy-decisions/articleshow/135228326.cms",
-    "published": "Tue, 27 Oct 2026 13:43:07 +0530",
-    "sentiment": 0.103
+    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/ril-to-announce-q2-results-on-october-30-board-to-also-consider-fundraising/articleshow/135237289.cms",
+    "published": "Tue, 27 Oct 2026 19:44:58 +0530",
+    "sentiment": 0.0
    },
    {
-    "title": "Cipla Q2 Results: Profit falls 35% YoY to Rs 878 crore; revenue slips 2%",
+    "title": "Global bond issuance set to grow at slowest pace in five years in 2027, S&amp;P Global Ratings says",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/cipla-q2-results-profit-falls-35-yoy-to-rs-878-crore-revenue-slips-2/articleshow/135228386.cms",
-    "published": "Tue, 27 Oct 2026 13:41:08 +0530",
-    "sentiment": -0.296
+    "link": "https://economictimes.indiatimes.com/markets/bonds/global-bond-issuance-set-to-grow-at-slowest-pace-in-five-years-in-2027-sp-global-ratings-says/articleshow/135237268.cms",
+    "published": "Tue, 27 Oct 2026 19:42:15 +0530",
+    "sentiment": 0.0
    },
    {
-    "title": "D-Street in gloomy mood, but Kotak sees 3 triggers for rebounds and adds 5 midcap stocks to portfolio",
+    "title": "JetBlue shares surge 12% as airline seeks to calm financial concerns",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/d-street-in-gloomy-mood-but-kotak-sees-3-triggers-for-rebounds-and-adds-5-midcap-stocks-to-portfolio/articleshow/135228137.cms",
-    "published": "Tue, 27 Oct 2026 13:37:47 +0530",
-    "sentiment": -0.077
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/jetblue-shares-surge-12-as-airline-seeks-to-calm-financial-concerns/articleshow/135237199.cms",
+    "published": "Tue, 27 Oct 2026 19:40:58 +0530",
+    "sentiment": 0.743
    },
    {
-    "title": "Global Market: HSBC third-quarter profit jumps 32% to $9.6 billion",
+    "title": "US stocks today: S&amp;P 500, Nasdaq advance as oil eases ahead of Fed decision",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/global-market-hsbc-third-quarter-profit-jumps-32-to-9-6-billion/articleshow/135228083.cms",
-    "published": "Tue, 27 Oct 2026 13:26:53 +0530",
-    "sentiment": 0.542
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/us-stocks-today-sp-500-nasdaq-open-higher-as-oil-pulls-back-ahead-of-fed-decision/articleshow/135236366.cms",
+    "published": "Tue, 27 Oct 2026 19:07:38 +0530",
+    "sentiment": 0.318
+   },
+   {
+    "title": "PVR Inox among stocks that hit 52-week highs and rallied up to 20% in a month",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/pvr-inox-among-stocks-that-hit-52-week-highs-and-rallied-up-to-20-in-a-month/slideshow/135236374.cms",
+    "published": "Tue, 27 Oct 2026 18:58:57 +0530",
+    "sentiment": 0.0
+   },
+   {
+    "title": "JSW Infrastructure Q2 Results: Net profit falls 11% to Rs 328 crore",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/jsw-infrastructure-q2-results-net-profit-falls-11-to-rs-328-crore/articleshow/135236084.cms",
+    "published": "Tue, 27 Oct 2026 18:56:43 +0530",
+    "sentiment": -0.052
+   },
+   {
+    "title": "Sebi extends deadline for debenture trustees to comply with norms till April 2027",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/sebi-extends-deadline-for-debenture-trustees-to-comply-with-norms-till-april-2027/articleshow/135235986.cms",
+    "published": "Tue, 27 Oct 2026 18:53:44 +0530",
+    "sentiment": 0.202
+   },
+   {
+    "title": "Coca-Cola raises profit forecast as premium drinks, sodas hold strong",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/coca-cola-raises-profit-forecast-as-premium-drinks-sodas-hold-strong/articleshow/135235940.cms",
+    "published": "Tue, 27 Oct 2026 18:51:14 +0530",
+    "sentiment": 0.494
    }
   ]
  },
  "model": {
-  "oos_days": 250,
-  "directional_calls": 109,
-  "directional_accuracy": 65.1,
-  "sign_accuracy_all_days": 58.8,
+  "oos_days": 300,
+  "directional_calls": 137,
+  "directional_accuracy": 70.1,
+  "sign_accuracy_all_days": 60.7,
+  "gap_corr": 0.44,
+  "gap_sign_pct": 69.0,
   "trained_rows": 750,
-  "version": 15,
+  "version": 16,
   "bias_threshold": 0.2
  },
  "options": {
@@ -624,15 +608,6 @@
  },
  "events": [
   {
-   "symbol": "INFY",
-   "name": "Infosys",
-   "when": "Fri 23 Oct",
-   "date": "2026-10-23",
-   "affects": "2026-10-26",
-   "past": true,
-   "bank": false
-  },
-  {
    "symbol": "KOTAKBANK",
    "name": "Kotak Bank",
    "when": "Sat 24 Oct",
@@ -679,43 +654,43 @@
   }
  ],
  "preopen": {
-  "snapshot_ist": "Tue 27 Oct 16:18 IST",
+  "snapshot_ist": "Tue 27 Oct 21:32 IST",
   "stage": "preview",
-  "expected_gap_pct": 0.02,
-  "gap_typical_error_pct": 0.38,
-  "expected_day_pct": 0.07,
-  "z": 0.089,
-  "typical_daily_move_pct": 0.769,
+  "expected_gap_pct": -0.01,
+  "gap_typical_error_pct": 0.33,
+  "expected_day_pct": 0.1,
+  "z": 0.137,
+  "typical_daily_move_pct": 0.762,
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": 0.0
+    "move_pct": 0.43
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": 0.0
+    "move_pct": 1.02
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": 0.0
+    "move_pct": -0.25
    },
    {
     "key": "dax",
     "name": "DAX (Germany)",
-    "move_pct": 0.0
+    "move_pct": 0.53
    },
    {
     "key": "ftse",
     "name": "FTSE 100 (UK)",
-    "move_pct": 0.0
+    "move_pct": -0.08
    },
    {
     "key": "stoxx",
     "name": "Euro Stoxx 50",
-    "move_pct": 0.0
+    "move_pct": 0.6
    },
    {
     "key": "n225",
@@ -725,91 +700,91 @@
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": 0.0
+    "move_pct": -1.12
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": 0.0
+    "move_pct": 1.36
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": 0.0
+    "move_pct": 0.05
    },
    {
     "key": "inr",
     "name": "USD/INR",
-    "move_pct": 0.0
+    "move_pct": -0.02
    }
   ],
   "drivers": [
    {
-    "feature": "vix",
-    "label": "India VIX level",
-    "value": 16.4,
-    "contribution_pct": 0.067
+    "feature": "nq",
+    "label": "Nasdaq futures",
+    "value": 1.02,
+    "contribution_pct": -0.172
    },
    {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": 0.0,
-    "contribution_pct": -0.02
+    "value": 0.43,
+    "contribution_pct": 0.168
    },
    {
-    "feature": "ym",
-    "label": "Dow futures",
-    "value": 0.0,
-    "contribution_pct": 0.013
+    "feature": "stoxx",
+    "label": "Euro Stoxx 50",
+    "value": 0.6,
+    "contribution_pct": 0.076
+   },
+   {
+    "feature": "vix",
+    "label": "India VIX level",
+    "value": 16.4,
+    "contribution_pct": 0.051
    },
    {
     "feature": "cl",
     "label": "Crude oil",
-    "value": 0.0,
-    "contribution_pct": 0.007
+    "value": -1.12,
+    "contribution_pct": 0.042
    },
    {
-    "feature": "ftse",
-    "label": "FTSE 100 (UK)",
-    "value": 0.0,
-    "contribution_pct": -0.004
-   },
-   {
-    "feature": "dxy",
-    "label": "Dollar index",
-    "value": 0.0,
-    "contribution_pct": -0.003
+    "feature": "dax",
+    "label": "DAX (Germany)",
+    "value": 0.53,
+    "contribution_pct": -0.025
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.2,
-   "gap_sign_pct": 56.3,
-   "directional_calls": 80,
-   "directional_accuracy": 62.5
+   "gap_corr": 0.44,
+   "gap_sign_pct": 69.0,
+   "directional_calls": 148,
+   "directional_accuracy": 68.2
   },
   "vix": 16.4
  },
  "global_table": {
-  "updated": "2026-10-27T16:18:18.480993+05:30",
+  "updated": "2026-10-27T21:33:12.684001+05:30",
   "rows": [
    {
     "group": "US, last close",
-    "move": "S&P 500 +0.7%, Nasdaq +0.8%, Dow +0.3%",
+    "move": "S&P 500 +0.7%, Nasdaq +1.3%, Dow +0.2%",
     "effect": "green",
     "note": "Positive lead for India"
    },
    {
     "group": "US futures now",
-    "move": "S&P +0.00%, Nasdaq +0.00%, Dow +0.00% (since Nifty's close)",
-    "effect": "flat",
-    "note": "Flat"
+    "move": "S&P +0.43%, Nasdaq +1.02%, Dow -0.25% (since Nifty's close)",
+    "effect": "green",
+    "note": "Futures point to a firmer open"
    },
    {
     "group": "Europe, last close",
-    "move": "DAX -0.1%, FTSE -0.9%, Euro Stoxx -0.1%",
-    "effect": "red",
-    "note": "Weak"
+    "move": "DAX +0.9%, FTSE -0.7%, Euro Stoxx +0.9%",
+    "effect": "green",
+    "note": "Supportive"
    },
    {
     "group": "Asia today",
@@ -819,9 +794,9 @@
    },
    {
     "group": "Crude oil",
-    "move": "WTI ~$102, Brent ~$111 (+0.3%)",
-    "effect": "red",
-    "note": "Price is high for India"
+    "move": "WTI ~$100, Brent ~$109 (-1.4%)",
+    "effect": "green",
+    "note": "Falling oil helps India \u00b7 Price is high for India"
    },
    {
     "group": "US 10-year yield",
@@ -837,7 +812,7 @@
    },
    {
     "group": "Rupee",
-    "move": "95.12 per $ (-0.06%)",
+    "move": "95.11 per $ (-0.07%)",
     "effect": "flat",
     "note": "Steady"
    },
@@ -849,14 +824,14 @@
    },
    {
     "group": "Model: Nifty open",
-    "move": "+0.02% (\u00b10.38%)",
+    "move": "-0.01% (\u00b10.33%)",
     "effect": "flat",
     "note": "Combined forecast from all markets (preview)",
     "model": true
    }
   ],
-  "tilt": "mixed",
-  "score": 0
+  "tilt": "positive",
+  "score": 5
  },
  "notes": [
   "GIFT Nifty has no free data feed; the pre-open model reads what drives it (US/Dow futures, Europe, Asia, crude, rupee).",

@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-27T16:18:22.157343+05:30",
+ "generated_at": "2026-10-27T21:33:16.402514+05:30",
  "market_open": false,
  "volume_projected": false,
  "bias": {
   "label": "RANGEBOUND",
-  "score": -9
+  "score": 14
  },
  "rules": {
   "vol_mult": 2.0,
@@ -19,8 +19,8 @@
  },
  "market_gate_open": false,
  "model": {
-  "version": 15,
-  "updated": "2026-10-27T16:17:47.665428+05:30",
+  "version": 16,
+  "updated": "2026-10-27T21:32:22.778317+05:30",
   "ranker_on": true,
   "samples": 2138,
   "live_samples": 17,
@@ -78,14 +78,28 @@
     "day_chg": -0.2572898799313883,
     "ret5": 2.856641922965397,
     "rs20": 17.965341144710155,
-    "bias_score": -9.0,
-    "news_sent": -0.039,
+    "bias_score": 14.0,
+    "news_sent": 0.1,
     "mkt_above50": 0.0,
     "mkt_ret20": -1.688597912750378
    },
    "r1_a": 0.3089209946263459,
    "r2_a": 0.6178419892526972,
    "news": [
+    {
+     "title": "Infosys Limited (INFY.NS) Stock Price, News, Quote & History",
+     "source": "Yahoo! Finance Canada",
+     "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1qSFdlY3hSZ25GUmxrZmtVMHdua1AxMGRoVzVyZjEwb2JxYzdWanBWQzA4dzhJVVVQYUFTbHlNdmEydXRNX2hCNDJDcmY4alI1VHFTWWpR?oc=5",
+     "published": "Mon, 26 Oct 2026 23:40:09 GMT",
+     "sentiment": -0.226
+    },
+    {
+     "title": "Stock market today: Sensex, Nifty flat as smallcaps rally and IT stocks fall",
+     "source": "BusinessLine",
+     "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPWGZBRmlDeUJ2YWlaNjVHQXo2RnRkS2R3VlRrdEVNd0t2Ymg0Ri1qQi15dEI2NFdhYkRKSkVBejd6SzJZSS1FejBQcWNaNmY5UC1ZcUVqZ0U4djcxNk9BWHZmeEFQRjNrT2dmZEI5bkUxUlNMbk9HTk9Uam9zRGlDclI4bmNVOFNYMS0xQ2tQUm5SYjdvb2Vmb3NsaDFzcExOeWlRT3p0M05jbnk3VDlqQ0ZKaExWN09RdGp0ZVZUQVc2X0VxYVlKNjVZZDRlbWVv0gHXAUFVX3lxTE5GZHRLX2Y0cVZ4eUM3TUUtZ0dEMTd3Ml9senV2YWFkTmVXX3RndG5vZzRFN2xJNmZidi16ZHhVTllyLTJzcUExcWp5SDJJVXJnRUtpOF92WWNXMkNnN0ljVURlbVhwcENBZmFhYXBGNTRyazhwZ09FMURzd2dRSDI5dXZyTW1PYWlfa0FZV1RTRkRQQ3lfSFVFT3ZGSTZvMnVtS2VQck9yYTFxbmlfX2pOeUtEN0xybDBKeE9CU3A2T1RzVFNVNUM0dk8wanVnZHUwWGEwMTRV?oc=5",
+     "published": "Tue, 27 Oct 2026 12:05:33 GMT",
+     "sentiment": 0.649
+    },
     {
      "title": "Dividend, Bonus Issue, Stock Split Record Dates to Mark: Reliance, Infosys, Adani, Tata, Trent, Inox and More",
      "source": "Goodreturns",
@@ -103,32 +117,18 @@
     {
      "title": "Nifty IT falls 1.5% as AI trade bounces back on Anthropic IPO filing; TCS, Infosys lead losses",
      "source": "Moneycontrol.com",
-     "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxOT1Z6dmJjZkRiTVdXYmpaUFltZDYzcEU2V2lKRVhSYlRSQThQbFhqaWVxR1dleHFrUzZTQkczLTVLbWVOaV9FOHZrS2JVUzhmMmdWRDJ4VjByOWRON3lNaDF3TVA2b3BnSXRVcUloTHdXNkJsWXJ5LU90RmhwanUyTWNka0RaRVVjUGhOa0oyQklkbTU2cDlDN1ZCSjBwV3QyM08xMFdLa182dDV1bkNPbHczUGpieVJ4UnhvN2s5blV3cjFBWU9MSTNYdFg2TzY2LTBVWElaUUhZc1NnX085ejdMNjIydk5sNEk5SNIB8gFBVV95cUxNNmFkWWtYcGxzUjZwWnJWV0UxSy1VVEtwOUwtZUdyYkZ6V2tJTWlZZDlsQ2dkUnJLMlM5N3h2SGlMNG9YcnMxenVVUlM1RmQwa0xPQV9xQUFqMDNaQWxHX3psYUptOGlXVWdkMU0tUWRRczNuUHdhZWFtNF9NREpyaERZRVo4UW5Tckp3ck9pUjc5eWhJMXZBVXMzcDNvSENtTDk2OUYyZkxZZW83SHJIci0wV3pXNTlmRHFaRzZpT2RtSDlCU3VtM19nTXdDT1JhSkJQN2F3UF9FM05YQkk4VmZxd2dGWk1RRkk0eFFVVFVvdw?oc=5",
+     "link": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxNNmFkWWtYcGxzUjZwWnJWV0UxSy1VVEtwOUwtZUdyYkZ6V2tJTWlZZDlsQ2dkUnJLMlM5N3h2SGlMNG9YcnMxenVVUlM1RmQwa0xPQV9xQUFqMDNaQWxHX3psYUptOGlXVWdkMU0tUWRRczNuUHdhZWFtNF9NREpyaERZRVo4UW5Tckp3ck9pUjc5eWhJMXZBVXMzcDNvSENtTDk2OUYyZkxZZW83SHJIci0wV3pXNTlmRHFaRzZpT2RtSDlCU3VtM19nTXdDT1JhSkJQN2F3UF9FM05YQkk4VmZxd2dGWk1RRkk0eFFVVFVvd9IB8gFBVV95cUxNNmFkWWtYcGxzUjZwWnJWV0UxSy1VVEtwOUwtZUdyYkZ6V2tJTWlZZDlsQ2dkUnJLMlM5N3h2SGlMNG9YcnMxenVVUlM1RmQwa0xPQV9xQUFqMDNaQWxHX3psYUptOGlXVWdkMU0tUWRRczNuUHdhZWFtNF9NREpyaERZRVo4UW5Tckp3ck9pUjc5eWhJMXZBVXMzcDNvSENtTDk2OUYyZkxZZW83SHJIci0wV3pXNTlmRHFaRzZpT2RtSDlCU3VtM19nTXdDT1JhSkJQN2F3UF9FM05YQkk4VmZxd2dGWk1RRkk0eFFVVFVvdw?oc=5",
      "published": "Tue, 27 Oct 2026 06:08:50 GMT",
-     "sentiment": -0.202
-    },
-    {
-     "title": "Infosys Limited (INFY.NS) Stock Price, News, Quote & History",
-     "source": "Yahoo! Finance Canada",
-     "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1qSFdlY3hSZ25GUmxrZmtVMHdua1AxMGRoVzVyZjEwb2JxYzdWanBWQzA4dzhJVVVQYUFTbHlNdmEydXRNX2hCNDJDcmY4alI1VHFTWWpR?oc=5",
-     "published": "Mon, 26 Oct 2026 11:15:23 GMT",
-     "sentiment": -0.226
-    },
-    {
-     "title": "Infosys share price analysis amid analysts' downgrades: is it a contrarian buy?",
-     "source": "Invezz",
-     "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOT0lUa29CUWpHWU8zQUw3Y2ZoMGdMVXUzcjBRQVpaZERGTmdtcmpEdlNBZjAxbjVFVmJjVHczQ2pha2RFTUlxQTdHbVVfV3BaRHcxWVVvUWtXUGdYRmRIdmZwYkhsYW9oNEhZbW55d21Ic3IxZE1vMW0wR1ZfRUdVSDA3blNadnJjSjRqYjZKcDJ4aV9BZ2JUdWF1WlJDTHBFcXpBVVRSSlFmTnF4d2h3bWhn?oc=5",
-     "published": "Tue, 27 Oct 2026 05:28:45 GMT",
      "sentiment": -0.202
     }
    ],
    "news_sentiment": {
-    "score": -0.039,
+    "score": 0.1,
     "count": 8,
     "label": "NEUTRAL"
    },
-   "win_prob": 43.1,
-   "expected_r": -0.01,
+   "win_prob": 24.4,
+   "expected_r": -0.37,
    "model_used": true,
    "grade": "C",
    "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
@@ -174,14 +174,14 @@
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
     "log_vol_ratio": 0.44037700929309553,
-    "rsi": 64.4844350519873,
+    "rsi": 64.48443505199029,
     "dist_high_pct": 0.5874177887943005,
     "ext_ema20": 5.023909567479734,
     "atr_pct": 3.5351975968514857,
     "day_chg": 0.2007024586051287,
     "ret5": 3.7402597402597326,
     "rs20": 13.628059796158443,
-    "bias_score": -9.0,
+    "bias_score": 14.0,
     "news_sent": 0.196,
     "mkt_above50": 0.0,
     "mkt_ret20": -1.688597912750378
@@ -230,8 +230,8 @@
     "count": 8,
     "label": "POSITIVE"
    },
-   "win_prob": 14.3,
-   "expected_r": -0.57,
+   "win_prob": 15.6,
+   "expected_r": -0.54,
    "model_used": true,
    "grade": "C",
    "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
@@ -284,8 +284,8 @@
     "day_chg": 0.3970504821327214,
     "ret5": 0.04522093885404033,
     "rs20": 11.218300883047405,
-    "bias_score": -9.0,
-    "news_sent": 0.332,
+    "bias_score": 14.0,
+    "news_sent": 0.389,
     "mkt_above50": 0.0,
     "mkt_ret20": -1.688597912750378
    },
@@ -307,18 +307,18 @@
      "sentiment": 0.599
     },
     {
-     "title": "Mankind Pharma stock surges 9% after strong Q2 results; Kotak sees big upside, other brokerages cautious",
-     "source": "Moneycontrol.com",
-     "link": "https://news.google.com/rss/articles/CBMi_wFBVV95cUxNTG03WGFMeGg3ZnlXSkw5ZEZRdnl5N1VST0FyZk1CLU50Ykx4QXREQzlPUmpUcmNvMG5RSURVeFFZSk4zN2tKa2ZPZ0lRaHdfWXFtS29QelJPNXFoWWtENGw0ejA3NWpUdFB1by1EQjhmbXBENTdTYVUzUHJkTUpRbWhEMk52Slc5ZHRqUWVrc0lGRnR6MEZHLUVfTUJTSzNkWGFEbU5LeWowUHdneW1VelpXWVNNMmpBXzVhd0VMdzdFbHNYeUEyVGItcHdXS0c5OEV4V3JzSHlBVUhzSUZkQ0FNTGZuZWstV0FMTkFPTUZJSUoxRlhQMFk2cGRMYm_SAf8BQVVfeXFMTUxtN1hhTHhoN2Z5V0pMOWRGUXZ5eTdVUk9BcmZNQi1OdGJMeEF0REM5T1JqVHJjbzBuUUlEVXhRWUpOMzdrSmtmT2dJUWh3X1lxbUtvUHpSTzVxaFlrRDRsNHowNzVqVHRQdW8tREI4Zm1wRDU3U2FVM1ByZE1KUW1oRDJOdkpXOWR0alFla3NJRkZ0ejBGRy1FX01CU0szZFhhRG1OS3lqMFB3Z3ltVXpaV1lTTTJqQV81YXdFTHc3RWxzWHlBMlRiLXB3V0tHOThFeFdyc0h5QVVIc0lGZENBTUxmbmVrLVdBTE5BT01GSUlKMUZYUDBZNnBkTGJv?oc=5",
-     "published": "Tue, 27 Oct 2026 08:45:04 GMT",
-     "sentiment": 0.557
+     "title": "Kotak Mahindra Bank Share Price Rallies Over 3% After Strong Q2 Beat. Time To Buy?",
+     "source": "NDTV Profit",
+     "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNZndVOWVGaFZHSnBXNVNrWGZhaVZIS2lPUnloX3ZFRlVXVzZEcGRwTjFScXM5dGd0a1NLeVQxMWhkMFFZSVZJa1ZCc1hfcTVQMWNsZldNRWREZi1yNFJOQlJhM3F2Z3NSV1B5N2twaHl3ZkxWWXl2X3JPRVY0WWJOaGFIS1pJYXFEY2pYX3hTczdobVFidDdRZjE3WFFwaGo4UVlsbl9JdE1UX1VKTmoxWEdTSnNKc0tUZU1Tbk92VEzSAcgBQVVfeXFMTlJxYXFpX3dqd012WFVCMWhJVndad2RyUjUzUUZTN0hDeExmaVkwR0dWZDdpT1BrdU1GRnpYQld1RGVpLTctMDRZbXF2OXhMbjRwenFzUTI1M0NGTmdQaXNOMmpDbzZqTkYzSkNNT1FsYUFQaG1WdkZ3QlJJdmNReFgyRkhrQVZPX040WlBNWl9HNWpkcHgzakI2MUdRR3ZENWk2NnlfdzVEWFRKMXJLajlBU1BMLVRwZXhRcjN6eDBpX0ZFeGRDcE8?oc=5",
+     "published": "Mon, 26 Oct 2026 04:31:34 GMT",
+     "sentiment": 0.802
     },
     {
-     "title": "Q2 earnings done for HDFC Bank, ICICI, other private lenders. What's next?",
+     "title": "Kotak Mahindra Bank shares climb 4% after Q2 results. What are Jefferies, Goldman Sachs saying?",
      "source": "The Economic Times",
-     "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPclZFdGVQbHp1bTE1c2piSG43SDBCMjFpck1HLXVDcnVNakVhdWF4NnlHb3Z5MlpVeHM3a2FybmR6LUNIUFVnX1RUekw1RnpCSXlnM3h3ek1ZRnI3X2dTSUM0UkFWUjZ5LXNZRlg2dVhxN3pjMXljdnczNTdnYnJxempRb0VaalJaa0hSMVpQOUlFV1dkZGVMb0tjanRESVlsSkVpV2FSUGZZWTJGRWFRR2FrMWVFel8wc1VCVjVzZFJnUExybU1yNmNFLVI5bmFKbXlWTWlHbkdTc0HSAeABQVVfeXFMTXV5SEl6ZFJBSWVfWEQtZkdJc3lzaUZWY0xzNDYtamM4dXBCWGFOOUZ1bjhOWHFPRExjbmI4VklDOEFUZUQ2WkJZVDNrNVluaS1wWktvQkRtVmNDODBLUnRianZlVEp2VXJjMGlHTmhURENRbE9vUnp1dmYwVEtpSlNZanVDbGR6ZTR4bk9ib1VIRGV5Y1VFOU1lQ2FZTGZ3a0F2NmV5OWlQM0dHTHZuWWV4RzM0cF9qMW1mY3M3SnNnT2VCSHI1ZFFKemtYM3BHTFpoUmQ1VUhCT0t4azVlcUQ?oc=5",
-     "published": "Tue, 27 Oct 2026 04:11:29 GMT",
-     "sentiment": 0.0
+     "link": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxNUERDTFpkQWZ4VzJxbW9TQV9yYVlnZjdiUGF4MFIwVE5EdURZa0d5YUlFeDZ2V0FNT1pmWk5VM3dOUXctd0hubXBSa0FnazVNc3pqVC1vdEs5UGM5R2FUNFFFSXhsX25BZWdySW5jd3k4bzFSdWY1WGdBOU1MMXJjWG5oVmtiNGVqbDRYdjNjTkY2UlVYLWFpZXNoR0NIOS1tOWRVR2hYdUZ5dWM3VHN2M0xYQjBzbW1VZFZ2QzF6cl94ZnBlX3dEcUdPT2QxYkRHdU1NZ1JnUlhKVWpDMVMwMlRCaDEtR3NuR2RJTkhaSzJRZm1rVWdZc9IB_gFBVV95cUxPNmJOQ0ZoY3dSUVNvNGw1eGZ5ZWR3OVRwM0JsaVl2RldpaVJFUTBPQmVXS29hbjdodE9RQ3plcGIycHRKeDR3MVVCR2VseHBKZkF5VFpicVVKSzNUNEU0SVlRazJod2RKUzNGaVU0NXM3X3kxSlpRYjN5ZHJuTFJSMVBzNjZ5SllPVzhYeDc4c3NoWklPU1gtNWlyR1p2TUp1dVFLZWw5d0xyXzZ3VXFXb2I0bGg2UXpiODFSaG4wOEJyaWNjdWJfSklHWDhMNC1iUm5wQ3EySXdWNnYybkdPakV6RDhXdnBsMnpvZFRRR1ZycTJKOGVvU1NycXBEQQ?oc=5",
+     "published": "Mon, 26 Oct 2026 04:06:22 GMT",
+     "sentiment": 0.296
     },
     {
      "title": "Kotak Mahindra Bank shares rise 2% as top Nifty gainer | Is it right time to book profits or wait? Target, stop loss",
@@ -329,12 +329,12 @@
     }
    ],
    "news_sentiment": {
-    "score": 0.332,
+    "score": 0.389,
     "count": 8,
     "label": "POSITIVE"
    },
-   "win_prob": 4.4,
-   "expected_r": -0.76,
+   "win_prob": 3.4,
+   "expected_r": -0.78,
    "model_used": true,
    "grade": "C",
    "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
