@@ -187,7 +187,7 @@ body.is-simple main{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 <script>
 const NSE_HOLIDAYS = ['2026-10-20', '2026-11-08', '2026-11-10', '2026-11-24', '2026-12-25'];   // fallback; meta.json has the live list
 const holidayList = () => (D.meta?.holidays?.length ? D.meta.holidays : NSE_HOLIDAYS);
-const APP_VERSION = 'v35';   // keep equal to CACHE in sw.js
+const APP_VERSION = 'v36';   // keep equal to CACHE in sw.js
 const FILES = ['plan', 'global-bias', 'volume-breakouts', 'performance', 'review', 'meta', 'live', 'small-capital', 'markets'];
 const D = {};
 let tab = 'dash', stockFilter = 'ab', lots = {}, loadErr = null, lastLoad = 0;
@@ -627,6 +627,8 @@ function vSimple() {
           <dt>Worst case</dt><dd class="down">−₹${Number(trade.max_loss || 0).toLocaleString('en-IN')} per lot</dd>
           <dt>Exit</dt><dd>${esc(trade.target)}. ${esc(trade.stop_loss)}.</dd>
           <dt>History</dt><dd class="fine">${esc(trade.decision_reason || '')}</dd></dl></div>`;
+      const others = (p.options || []).filter((o) => o.decision === 'TRADE' && o.index !== trade.index).map((o) => o.index === 'BANKNIFTY' ? 'BankNifty' : o.index);
+      if (others.length) h += `<p class="fine">${esc(others.join(', '))} is also a trade today, but it needs far more money than ₹10,000, so it is tracked in 📒 Paper results only.</p>`;
       if (inWindow) {
         h += BIG(live ? 'Place this trade (real money)' : 'Practice: what would it place?', `data-act="wz-enter" data-ix="${esc(trade.index)}"`, 'go')
           + `<p class="fine">${live ? 'The guardian buys and sells all 4 legs, then exits by itself at the target or stop.' : 'Paper mode: nothing is bought. The guardian only tells you what it would place.'}</p>`;
