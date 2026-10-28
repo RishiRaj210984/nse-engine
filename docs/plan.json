@@ -1,209 +1,242 @@
 {
- "generated_at": "2026-10-28T07:13:50.487655+05:30",
- "session": "2026-10-28",
- "stage": "final",
+ "generated_at": "2026-10-28T16:18:59.476720+05:30",
+ "session": "2026-10-29",
+ "stage": "preview",
  "expected_open": {
-  "gap_pct": -0.08,
-  "error_pct": 0.29,
-  "day_pct": 0.02,
-  "snapshot": "Wed 28 Oct 07:13 IST",
-  "stage": "final",
+  "gap_pct": 0.02,
+  "error_pct": 0.38,
+  "day_pct": 0.08,
+  "snapshot": "Wed 28 Oct 16:18 IST",
+  "stage": "preview",
   "tip": "Flat open expected. Normal entry windows apply.",
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": 0.36
+    "move_pct": 0.0
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": 1.17
+    "move_pct": 0.0
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": -0.46
+    "move_pct": 0.0
    },
    {
     "key": "dax",
     "name": "DAX (Germany)",
-    "move_pct": 0.44
+    "move_pct": 0.0
    },
    {
     "key": "ftse",
     "name": "FTSE 100 (UK)",
-    "move_pct": -0.11
+    "move_pct": 0.0
    },
    {
     "key": "stoxx",
     "name": "Euro Stoxx 50",
-    "move_pct": 0.54
+    "move_pct": 0.0
    },
    {
     "key": "n225",
     "name": "Nikkei 225",
-    "move_pct": 1.3
+    "move_pct": 0.0
    },
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": -0.24
+    "move_pct": 0.0
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": 1.18
+    "move_pct": 0.0
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": 0.18
+    "move_pct": 0.0
    },
    {
     "key": "inr",
     "name": "USD/INR",
-    "move_pct": -0.02
+    "move_pct": 0.0
    }
   ],
   "drivers": [
    {
-    "feature": "nq",
-    "label": "Nasdaq futures",
-    "value": 1.17,
-    "contribution_pct": -0.147
+    "feature": "vix",
+    "label": "India VIX level",
+    "value": 16.25,
+    "contribution_pct": 0.062
    },
    {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": 0.36,
-    "contribution_pct": 0.117
+    "value": 0.0,
+    "contribution_pct": -0.02
    },
    {
-    "feature": "dxy",
-    "label": "Dollar index",
-    "value": 0.18,
-    "contribution_pct": -0.076
+    "feature": "ym",
+    "label": "Dow futures",
+    "value": 0.0,
+    "contribution_pct": 0.013
    },
    {
-    "feature": "n225",
-    "label": "Nikkei 225",
-    "value": 1.3,
-    "contribution_pct": 0.068
+    "feature": "nprev",
+    "label": "Nifty previous day",
+    "value": -0.22,
+    "contribution_pct": 0.013
    },
    {
-    "feature": "vix",
-    "label": "India VIX level",
-    "value": 16.4,
-    "contribution_pct": 0.044
+    "feature": "cl",
+    "label": "Crude oil",
+    "value": 0.0,
+    "contribution_pct": 0.007
    },
    {
-    "feature": "stoxx",
-    "label": "Euro Stoxx 50",
-    "value": 0.54,
-    "contribution_pct": 0.039
+    "feature": "ftse",
+    "label": "FTSE 100 (UK)",
+    "value": 0.0,
+    "contribution_pct": -0.004
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.69,
-   "gap_sign_pct": 72.0,
-   "directional_calls": 193,
-   "directional_accuracy": 71.0
+   "gap_corr": 0.26,
+   "gap_sign_pct": 56.0,
+   "directional_calls": 81,
+   "directional_accuracy": 61.7
   }
  },
  "headline": "Market bias SIDEWAYS \u2014 favour hedged premium selling",
  "bias": "RANGEBOUND",
- "score": 3,
- "bias_track_record_pct": 71.4,
+ "score": 5,
+ "bias_track_record_pct": 65.1,
  "options": [
   {
    "index": "NIFTY",
    "strategy": "Iron Condor",
-   "legs": "SELL 23200 CE + BUY 23450 CE + SELL 22300 PE + BUY 22050 PE",
+   "legs": "SELL 23100 CE + BUY 23350 CE + SELL 22300 PE + BUY 22050 PE",
    "expiry": "2026-11-03",
    "lot_size": 65,
-   "entry": "Enter at 10:15 (after the first hour) only if NIFTY is between 22,300 and 23,200",
-   "target": "Buy back at \u20b929.5 (keep ~55% of credit), else hold to expiry Tue 03 Nov",
-   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b94,258 per lot)",
-   "max_loss": 11992,
-   "max_reward": 4258,
+   "entry": "Enter at 10:15 (after the first hour) only if NIFTY is between 22,300 and 23,100",
+   "target": "Buy back at \u20b929.6 (keep ~55% of credit), else hold to expiry Tue 03 Nov",
+   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b94,270 per lot)",
+   "max_loss": 11980,
+   "max_reward": 4270,
    "reward_risk": 0.36,
    "decision": "TRADE",
-   "decision_reason": "6 days before: this setup won 70.7% of 41 trades, avg \u20b9250 per lot after costs (worst \u20b9-7,083). If the first hour moves more than 0.25%, the win rate drops to 65.0% (from 76.2% on quiet mornings): consider skipping.",
+   "decision_reason": "5 days before: this setup won 77.8% of 54 trades, avg \u20b9871 per lot after costs (worst \u20b9-9,952).",
    "enter_at": "10:15 IST, after the first hour",
    "exit_by": "target / stop, else expiry 2026-11-03",
    "setup_stats": {
-    "trades": 41,
-    "win_pct": 70.7,
-    "avg_pnl": 250,
-    "worst": -7083,
-    "best": 4230,
-    "total": 10283,
-    "sample": "days the model called SIDEWAYS, full 2 years",
+    "trades": 54,
+    "win_pct": 77.8,
+    "avg_pnl": 871,
+    "worst": -9952,
+    "best": 6705,
+    "total": 47035,
+    "sample": "days the model called SIDEWAYS, current expiry schedule, all days",
     "allowed": true,
     "marginal": false,
     "quiet_first_hour": {
-     "trades": 21,
-     "win_pct": 76.2,
-     "avg_pnl": 681,
-     "worst": -6216,
-     "best": 4230,
-     "total": 14318
+     "trades": 35,
+     "win_pct": 71.4,
+     "avg_pnl": 347,
+     "worst": -9952,
+     "best": 3750,
+     "total": 12169
     },
     "trending_first_hour": {
-     "trades": 20,
-     "win_pct": 65.0,
-     "avg_pnl": -201,
-     "worst": -7083,
-     "best": 3964,
-     "total": -4035
+     "trades": 19,
+     "win_pct": 89.5,
+     "avg_pnl": 1835,
+     "worst": -9797,
+     "best": 6705,
+     "total": 34866
     }
+   },
+   "test": {
+    "wing": 150,
+    "legs": [
+     {
+      "action": "SELL",
+      "strike": 23100,
+      "type": "CE",
+      "est_premium": 55.2
+     },
+     {
+      "action": "BUY",
+      "strike": 23250,
+      "type": "CE",
+      "est_premium": 30.5
+     },
+     {
+      "action": "SELL",
+      "strike": 22300,
+      "type": "PE",
+      "est_premium": 44.4
+     },
+     {
+      "action": "BUY",
+      "strike": 22150,
+      "type": "PE",
+      "est_premium": 23.1
+     }
+    ],
+    "net_premium": 46.0,
+    "max_loss": 6760,
+    "max_reward": 2990
    }
   },
   {
    "index": "BANKNIFTY",
    "strategy": "Iron Condor",
-   "legs": "SELL 55800 CE + BUY 56800 CE + SELL 52100 PE + BUY 51100 PE",
+   "legs": "SELL 56000 CE + BUY 56900 CE + SELL 52600 PE + BUY 51700 PE",
    "expiry": "2026-11-23",
    "lot_size": 30,
-   "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is between 52,100 and 55,800",
-   "target": "Buy back at \u20b9117.2 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
-   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b97,812 per lot)",
-   "max_loss": 22188,
-   "max_reward": 7812,
+   "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is between 52,600 and 56,000",
+   "target": "Buy back at \u20b9104.4 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
+   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b96,963 per lot)",
+   "max_loss": 20037,
+   "max_reward": 6963,
    "reward_risk": 0.35,
    "decision": "TRADE",
-   "decision_reason": "2+ weeks before: this setup won 89.6% of 48 trades, avg \u20b92,885 per lot after costs (worst \u20b9-22,393). If the first hour moves more than 0.25%, the win rate drops to 82.6% (from 96.0% on quiet mornings): consider skipping.",
+   "decision_reason": "2+ weeks before: this setup won 93.6% of 47 trades, avg \u20b93,585 per lot after costs (worst \u20b9-17,489). If the first hour moves more than 0.25%, the win rate drops to 90.0% (from 96.3% on quiet mornings): consider skipping.",
    "enter_at": "10:15 IST, after the first hour",
    "exit_by": "target / stop, else expiry 2026-11-23",
    "setup_stats": {
-    "trades": 48,
-    "win_pct": 89.6,
-    "avg_pnl": 2885,
-    "worst": -22393,
+    "trades": 47,
+    "win_pct": 93.6,
+    "avg_pnl": 3585,
+    "worst": -17489,
     "best": 9535,
-    "total": 138492,
+    "total": 168539,
     "sample": "days the model called SIDEWAYS, current expiry schedule",
     "allowed": true,
     "marginal": false,
     "quiet_first_hour": {
-     "trades": 25,
-     "win_pct": 96.0,
-     "avg_pnl": 4103,
+     "trades": 27,
+     "win_pct": 96.3,
+     "avg_pnl": 4145,
      "worst": -7115,
      "best": 9535,
-     "total": 102597
+     "total": 111929
     },
     "trending_first_hour": {
-     "trades": 23,
-     "win_pct": 82.6,
-     "avg_pnl": 1560,
-     "worst": -22393,
+     "trades": 20,
+     "win_pct": 90.0,
+     "avg_pnl": 2830,
+     "worst": -17489,
      "best": 7837,
-     "total": 35895
+     "total": 56610
     }
-   }
+   },
+   "test": null
   }
  ],
  "stocks": [],
@@ -235,91 +268,100 @@
    "affects": "2026-11-05",
    "past": false,
    "bank": true
+  },
+  {
+   "symbol": "BHARTIARTL",
+   "name": "Bharti Airtel",
+   "when": "Thu 05 Nov",
+   "date": "2026-11-05",
+   "affects": "2026-11-06",
+   "past": false,
+   "bank": false
   }
  ],
  "stock_track_record": null,
  "no_trade_reason": "No stock passed all 4 rules with a positive expected value. Sitting out is a valid decision.",
  "timeline": [
   {
-   "date": "2026-10-28",
+   "date": "2026-10-29",
    "start": "07:45",
    "end": "09:00",
    "kind": "prep",
    "title": "Read the final plan",
    "do": "The ~07:15 run is final (US close, Dow and US futures, Europe, Asia open). Read the expected open, bias and trades. Set price alerts at each entry and stop-loss.",
-   "when": "Wed 28 Oct \u00b7 07:45\u201309:00"
+   "when": "Thu 29 Oct \u00b7 07:45\u201309:00"
   },
   {
-   "date": "2026-10-28",
+   "date": "2026-10-29",
    "start": "09:00",
    "end": "09:15",
    "kind": "wait",
    "title": "Pre-open",
    "do": "Place no market orders. Note where your stocks are indicated to open.",
-   "when": "Wed 28 Oct \u00b7 09:00\u201309:15"
+   "when": "Thu 29 Oct \u00b7 09:00\u201309:15"
   },
   {
-   "date": "2026-10-28",
+   "date": "2026-10-29",
    "start": "09:15",
    "end": "09:30",
    "kind": "wait",
    "title": "Wait",
    "do": "Opening 15 min is the most volatile. Cancel any stock that opens above its T1 or below its SL.",
-   "when": "Wed 28 Oct \u00b7 09:15\u201309:30"
+   "when": "Thu 29 Oct \u00b7 09:15\u201309:30"
   },
   {
-   "date": "2026-10-28",
+   "date": "2026-10-29",
    "start": "09:30",
    "end": "10:30",
    "kind": "act",
    "title": "Stock buy window",
    "do": "Buy only if price is holding above the entry and the 15-min opening high. Place the SL order immediately.",
-   "when": "Wed 28 Oct \u00b7 09:30\u201310:30"
+   "when": "Thu 29 Oct \u00b7 09:30\u201310:30"
   },
   {
-   "date": "2026-10-28",
+   "date": "2026-10-29",
    "start": "09:45",
    "end": "11:00",
    "kind": "act",
    "title": "Options window",
    "do": "Spreads / ATM buys only if the index respects the support/resistance shown. Iron condor / fly only after 10:00 with the index inside the range.",
-   "when": "Wed 28 Oct \u00b7 09:45\u201311:00"
+   "when": "Thu 29 Oct \u00b7 09:45\u201311:00"
   },
   {
-   "date": "2026-10-28",
+   "date": "2026-10-29",
    "start": "11:30",
    "end": "14:30",
    "kind": "manage",
    "title": "Manage only",
    "do": "No new stock entries. If it did not trigger, skip it. Keep stop-loss orders in place.",
-   "when": "Wed 28 Oct \u00b7 11:30\u201314:30"
+   "when": "Thu 29 Oct \u00b7 11:30\u201314:30"
   },
   {
-   "date": "2026-10-28",
+   "date": "2026-10-29",
    "start": "14:30",
    "end": "15:00",
    "kind": "exit",
    "title": "Option buyers exit",
    "do": "Exit option buys by 15:00 if target not hit (time decay). Spreads/condors: hold only if still inside the plan.",
-   "when": "Wed 28 Oct \u00b7 14:30\u201315:00"
+   "when": "Thu 29 Oct \u00b7 14:30\u201315:00"
   },
   {
-   "date": "2026-10-28",
+   "date": "2026-10-29",
    "start": "16:30",
    "end": "17:00",
    "kind": "review",
    "title": "Review",
    "do": "The engine grades today's plan. Check the Results tab: what worked, what the gap was.",
-   "when": "Wed 28 Oct \u00b7 16:30\u201317:00"
+   "when": "Thu 29 Oct \u00b7 16:30\u201317:00"
   },
   {
-   "date": "2026-10-29",
+   "date": "2026-10-30",
    "start": "09:15",
    "end": "15:15",
    "kind": "exit",
    "title": "Day 2: exit by 15:15",
    "do": "Book half at T1, trail SL to entry. Exit everything still open by 15:15 (this is a 1\u20132 day setup).",
-   "when": "Thu 29 Oct \u00b7 09:15\u201315:15"
+   "when": "Fri 30 Oct \u00b7 09:15\u201315:15"
   },
   {
    "date": "2026-11-03",

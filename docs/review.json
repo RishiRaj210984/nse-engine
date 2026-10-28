@@ -1,96 +1,147 @@
 {
  "latest": {
-  "session": "2026-10-27",
-  "as_of": "2026-10-27T21:31:53.294316+05:30",
+  "session": "2026-10-28",
+  "as_of": "2026-10-28T16:17:25.897703+05:30",
   "final": true,
-  "plan_built": "2026-10-27T07:13:30.825955+05:30",
+  "plan_built": "2026-10-28T07:13:26.545362+05:30",
   "bias": {
-   "label": "BULLISH",
-   "predicted_pct": 0.26,
-   "actual_pct": -0.02,
+   "label": "RANGEBOUND",
+   "predicted_pct": 0.02,
+   "actual_pct": -0.22,
    "band_pct": 0.34,
-   "correct": false
+   "correct": true
   },
   "options": [
    {
     "index": "NIFTY",
-    "strategy": "Bull Put Spread",
-    "legs": "SELL 22600 PE + BUY 22500 PE",
+    "strategy": "Iron Condor",
+    "legs": "SELL 23200 CE + BUY 23450 CE + SELL 22300 PE + BUY 22050 PE",
     "lot_size": 65,
-    "planned_max_reward": 812,
-    "planned_max_loss": 5688,
-    "day_open": 22707.55,
-    "day_high": 22829.7,
-    "day_low": 22637.1,
-    "last": 22749.75,
-    "entry_condition": "plan said SKIP: No tested structure has a positive record for today. On days the model called BULLISH, this spread lost overall (47.9% wins, avg \u20b9-320 per lot over 194 trades). A good-looking slice is not trusted on its own.",
-    "entry_spot": 22747.1,
+    "planned_max_reward": 4258,
+    "planned_max_loss": 11992,
+    "day_open": 22678.0,
+    "day_high": 22777.85,
+    "day_low": 22497.9,
+    "last": 22698.85,
+    "entry_condition": "NIFTY between 22,300 and 23,200 at 10:15",
+    "entry_spot": 22517.65,
     "entry_time": "10:15",
-    "opening_move_pct": 0.17,
-    "status": "NO ENTRY",
-    "pnl_per_lot": 0,
-    "verdict": "Entry condition not met, so no trade. The plan's filter kept you out."
+    "opening_move_pct": -0.71,
+    "status": "TIME",
+    "exit_reason": "TIME: marked at 15:15",
+    "exit_time": "15:15",
+    "exit_spot": 22706.8,
+    "entry_value": -69.7,
+    "exit_value": -52.1,
+    "pnl_per_lot": 1140,
+    "capture_pct": 26.8,
+    "range_held": true,
+    "verdict": "Short strike 22,300 / 23,200 held (day 22,498\u201322,778). TIME: marked at 15:15."
    },
    {
     "index": "BANKNIFTY",
-    "strategy": "Bull Call Spread",
-    "legs": "BUY 54400 CE + SELL 54600 CE",
+    "strategy": "Iron Condor",
+    "legs": "SELL 55800 CE + BUY 56800 CE + SELL 52100 PE + BUY 51100 PE",
     "lot_size": 30,
-    "planned_max_reward": 3822,
-    "planned_max_loss": 2178,
-    "day_open": 54402.05,
-    "day_high": 54654.05,
-    "day_low": 53953.2,
-    "last": 53974.9,
-    "entry_condition": "BANKNIFTY above support 53,965 at 09:45",
-    "entry_spot": 54584.95,
-    "entry_time": "09:45",
-    "opening_move_pct": 0.34,
-    "status": "STOP",
-    "exit_reason": "STOP",
-    "exit_time": "11:15",
-    "exit_spot": 54330.25,
-    "entry_value": 132.6,
-    "exit_value": 34.8,
-    "pnl_per_lot": -2933,
-    "capture_pct": -76.7,
-    "verdict": "STOP. Est. \u20b9-2,933 per lot."
+    "planned_max_reward": 7812,
+    "planned_max_loss": 22188,
+    "day_open": 53836.75,
+    "day_high": 54439.6,
+    "day_low": 53626.15,
+    "last": 54267.4,
+    "entry_condition": "BANKNIFTY between 52,100 and 55,800 at 10:15",
+    "entry_spot": 53760.9,
+    "entry_time": "10:15",
+    "opening_move_pct": -0.14,
+    "status": "TIME",
+    "exit_reason": "TIME: marked at 15:15",
+    "exit_time": "15:15",
+    "exit_spot": 54275.4,
+    "entry_value": -246.5,
+    "exit_value": -243.7,
+    "pnl_per_lot": 85,
+    "capture_pct": 1.1,
+    "range_held": true,
+    "verdict": "Short strike 52,100 / 55,800 held (day 53,626\u201354,440). TIME: marked at 15:15."
    }
   ],
   "stocks": [
    {
     "symbol": "INFY",
     "grade": "C",
-    "entry": 1153.8,
-    "stop": 1122.6,
-    "t1": 1221.72,
-    "open": 1151.95,
-    "high": 1165.7,
-    "low": 1129.5,
-    "last": 1163.0,
+    "entry": 1163.0,
+    "stop": 1131.2,
+    "t1": 1226.61,
+    "open": 1130.0,
+    "high": 1130.0,
+    "low": 1103.7,
+    "last": 1123.15,
+    "tradeable": false,
+    "status": "SKIP (gap beyond T1/SL)",
+    "r": 0.0
+   },
+   {
+    "symbol": "COFORGE",
+    "grade": "C",
+    "entry": 1997.0,
+    "stop": 1944.05,
+    "t1": 2102.9,
+    "open": 1930.7,
+    "high": 1977.0,
+    "low": 1905.0,
+    "last": 1961.9,
+    "tradeable": false,
+    "status": "SKIP (gap beyond T1/SL)",
+    "r": 0.0
+   },
+   {
+    "symbol": "KOTAKBANK",
+    "grade": "C",
+    "entry": 442.5,
+    "stop": 435.28,
+    "t1": 456.93,
+    "open": 438.4,
+    "high": 444.25,
+    "low": 438.4,
+    "last": 440.0,
     "tradeable": false,
     "status": "NOT TRIGGERED",
     "r": 0.0
    }
   ],
   "summary": {
-   "options_pnl_per_lot": -2933,
-   "planned_max_reward": 3822,
-   "gap": -6755,
-   "trades": 1,
+   "options_pnl_per_lot": 1225,
+   "planned_max_reward": 12070,
+   "gap": -10845,
+   "trades": 2,
    "stocks_pnl_10k": 0,
    "stock_trades": 0,
-   "plan_pnl": -2933
+   "plan_pnl": 1225
   },
   "lessons": [
-   "Bias BULLISH: Nifty -0.02% vs prev close. Call was wrong (direction missed).",
-   "NIFTY: Entry condition not met, so no trade. The plan's filter kept you out.",
-   "BANKNIFTY: STOP. Est. \u20b9-2,933 per lot.",
+   "Bias RANGEBOUND: Nifty -0.22% vs prev close. Call was right.",
+   "NIFTY: Short strike 22,300 / 23,200 held (day 22,498\u201322,778). TIME: marked at 15:15.",
+   "BANKNIFTY: Short strike 52,100 / 55,800 held (day 53,626\u201354,440). TIME: marked at 15:15.",
    "No A/B stocks: watchlist shown for learning only (market gate closed)."
   ],
   "note": "Option P&L is a Black-Scholes estimate repriced with India VIX, per 1 lot, before costs. Stock results use a \u20b910,000 / 1% risk example."
  },
  "history": [
+  {
+   "session": "2026-10-28",
+   "final": true,
+   "bias": "RANGEBOUND",
+   "bias_correct": true,
+   "actual_pct": -0.22,
+   "options_pnl": 1225,
+   "trades": 2,
+   "stocks_pnl": 0,
+   "plan_pnl": 1225,
+   "detail": [
+    "NIFTY Iron Condor: TIME +1,140",
+    "BANKNIFTY Iron Condor: TIME +85"
+   ]
+  },
   {
    "session": "2026-10-27",
    "final": true,
@@ -185,6 +236,17 @@
  "paper": {
   "days": [
    {
+    "session": "2026-10-28",
+    "pnl": 2126,
+    "detail": [
+     "NIFTY: entered Iron Condor at 10:15, credit Rs 4,796 (real NSE prices)",
+     "NIFTY: still open (expiry 03 Nov), worth Rs +1,690 now",
+     "BANKNIFTY: entered Iron Condor at 10:15, credit Rs 10,272 (real NSE prices)",
+     "BANKNIFTY: still open (expiry 23 Nov), worth Rs +436 now"
+    ],
+    "total": 3924
+   },
+   {
     "session": "2026-10-27",
     "pnl": 0,
     "detail": [],
@@ -232,9 +294,26 @@
    }
   ],
   "realized": 1798,
-  "open_value": 0,
-  "total": 1798,
-  "open": [],
+  "open_value": 2126,
+  "total": 3924,
+  "open": [
+   {
+    "index": "NIFTY",
+    "strategy": "Iron Condor",
+    "expiry": "2026-11-03",
+    "entry_session": "2026-10-28",
+    "credit_rs": 4796,
+    "mark": 1690
+   },
+   {
+    "index": "BANKNIFTY",
+    "strategy": "Iron Condor",
+    "expiry": "2026-11-23",
+    "entry_session": "2026-10-28",
+    "credit_rs": 10272,
+    "mark": 436
+   }
+  ],
   "closed": [
    {
     "index": "NIFTY",
@@ -252,6 +331,17 @@
   "note": "Paper book: TRADE days only, 1 lot, held like the guardian holds it (target, stop, expiry-day 10:15), costs charged when a trade closes. Prices: real NSE option prices saved every 10 minutes; an estimate (Black-Scholes with India VIX) only where no real price was saved.",
   "with_adjustment": {
    "days": [
+    {
+     "session": "2026-10-28",
+     "pnl": 1294,
+     "detail": [
+      "NIFTY: entered Iron Condor at 10:15, credit Rs 4,595 (estimated prices)",
+      "NIFTY: still open (expiry 03 Nov), worth Rs +1,149 now",
+      "BANKNIFTY: entered Iron Condor at 10:15, credit Rs 7,539 (estimated prices)",
+      "BANKNIFTY: still open (expiry 23 Nov), worth Rs +145 now"
+     ],
+     "total": -368
+    },
     {
      "session": "2026-10-27",
      "pnl": -386,
@@ -302,9 +392,26 @@
     }
    ],
    "realized": -1662,
-   "open_value": 0,
-   "total": -1662,
-   "open": [],
+   "open_value": 1294,
+   "total": -368,
+   "open": [
+    {
+     "index": "NIFTY",
+     "strategy": "Iron Condor",
+     "expiry": "2026-11-03",
+     "entry_session": "2026-10-28",
+     "credit_rs": 4595,
+     "mark": 1149
+    },
+    {
+     "index": "BANKNIFTY",
+     "strategy": "Iron Condor",
+     "expiry": "2026-11-23",
+     "entry_session": "2026-10-28",
+     "credit_rs": 7539,
+     "mark": 145
+    }
+   ],
    "closed": [
     {
      "index": "NIFTY",
@@ -323,13 +430,13 @@
   }
  },
  "totals": {
-  "days": 6,
-  "bias_hit_pct": 16.7,
-  "options_pnl_sum": -5428,
-  "plan_pnl_sum": -5428,
-  "plan_win_days": 1,
+  "days": 7,
+  "bias_hit_pct": 28.6,
+  "options_pnl_sum": -4203,
+  "plan_pnl_sum": -4203,
+  "plan_win_days": 2,
   "plan_loss_days": 4,
-  "options_win_days": 1,
-  "options_trade_days": 5
+  "options_win_days": 2,
+  "options_trade_days": 6
  }
 }

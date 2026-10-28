@@ -803,5 +803,132 @@
    "No A/B stocks: watchlist shown for learning only (market gate closed)."
   ],
   "note": "Option P&L is a Black-Scholes estimate repriced with India VIX, per 1 lot, before costs. Stock results use a \u20b910,000 / 1% risk example."
+ },
+ {
+  "session": "2026-10-28",
+  "as_of": "2026-10-28T16:17:25.897703+05:30",
+  "final": true,
+  "plan_built": "2026-10-28T07:13:26.545362+05:30",
+  "bias": {
+   "label": "RANGEBOUND",
+   "predicted_pct": 0.02,
+   "actual_pct": -0.22,
+   "band_pct": 0.34,
+   "correct": true
+  },
+  "options": [
+   {
+    "index": "NIFTY",
+    "strategy": "Iron Condor",
+    "legs": "SELL 23200 CE + BUY 23450 CE + SELL 22300 PE + BUY 22050 PE",
+    "lot_size": 65,
+    "planned_max_reward": 4258,
+    "planned_max_loss": 11992,
+    "day_open": 22678.0,
+    "day_high": 22777.85,
+    "day_low": 22497.9,
+    "last": 22698.85,
+    "entry_condition": "NIFTY between 22,300 and 23,200 at 10:15",
+    "entry_spot": 22517.65,
+    "entry_time": "10:15",
+    "opening_move_pct": -0.71,
+    "status": "TIME",
+    "exit_reason": "TIME: marked at 15:15",
+    "exit_time": "15:15",
+    "exit_spot": 22706.8,
+    "entry_value": -69.7,
+    "exit_value": -52.1,
+    "pnl_per_lot": 1140,
+    "capture_pct": 26.8,
+    "range_held": true,
+    "verdict": "Short strike 22,300 / 23,200 held (day 22,498\u201322,778). TIME: marked at 15:15."
+   },
+   {
+    "index": "BANKNIFTY",
+    "strategy": "Iron Condor",
+    "legs": "SELL 55800 CE + BUY 56800 CE + SELL 52100 PE + BUY 51100 PE",
+    "lot_size": 30,
+    "planned_max_reward": 7812,
+    "planned_max_loss": 22188,
+    "day_open": 53836.75,
+    "day_high": 54439.6,
+    "day_low": 53626.15,
+    "last": 54267.4,
+    "entry_condition": "BANKNIFTY between 52,100 and 55,800 at 10:15",
+    "entry_spot": 53760.9,
+    "entry_time": "10:15",
+    "opening_move_pct": -0.14,
+    "status": "TIME",
+    "exit_reason": "TIME: marked at 15:15",
+    "exit_time": "15:15",
+    "exit_spot": 54275.4,
+    "entry_value": -246.5,
+    "exit_value": -243.7,
+    "pnl_per_lot": 85,
+    "capture_pct": 1.1,
+    "range_held": true,
+    "verdict": "Short strike 52,100 / 55,800 held (day 53,626\u201354,440). TIME: marked at 15:15."
+   }
+  ],
+  "stocks": [
+   {
+    "symbol": "INFY",
+    "grade": "C",
+    "entry": 1163.0,
+    "stop": 1131.2,
+    "t1": 1226.61,
+    "open": 1130.0,
+    "high": 1130.0,
+    "low": 1103.7,
+    "last": 1123.15,
+    "tradeable": false,
+    "status": "SKIP (gap beyond T1/SL)",
+    "r": 0.0
+   },
+   {
+    "symbol": "COFORGE",
+    "grade": "C",
+    "entry": 1997.0,
+    "stop": 1944.05,
+    "t1": 2102.9,
+    "open": 1930.7,
+    "high": 1977.0,
+    "low": 1905.0,
+    "last": 1961.9,
+    "tradeable": false,
+    "status": "SKIP (gap beyond T1/SL)",
+    "r": 0.0
+   },
+   {
+    "symbol": "KOTAKBANK",
+    "grade": "C",
+    "entry": 442.5,
+    "stop": 435.28,
+    "t1": 456.93,
+    "open": 438.4,
+    "high": 444.25,
+    "low": 438.4,
+    "last": 440.0,
+    "tradeable": false,
+    "status": "NOT TRIGGERED",
+    "r": 0.0
+   }
+  ],
+  "summary": {
+   "options_pnl_per_lot": 1225,
+   "planned_max_reward": 12070,
+   "gap": -10845,
+   "trades": 2,
+   "stocks_pnl_10k": 0,
+   "stock_trades": 0,
+   "plan_pnl": 1225
+  },
+  "lessons": [
+   "Bias RANGEBOUND: Nifty -0.22% vs prev close. Call was right.",
+   "NIFTY: Short strike 22,300 / 23,200 held (day 22,498\u201322,778). TIME: marked at 15:15.",
+   "BANKNIFTY: Short strike 52,100 / 55,800 held (day 53,626\u201354,440). TIME: marked at 15:15.",
+   "No A/B stocks: watchlist shown for learning only (market gate closed)."
+  ],
+  "note": "Option P&L is a Black-Scholes estimate repriced with India VIX, per 1 lot, before costs. Stock results use a \u20b910,000 / 1% risk example."
  }
 ]
