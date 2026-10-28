@@ -1,12 +1,13 @@
 {
- "generated_at": "2026-10-28T16:18:45.652195+05:30",
+ "generated_at": "2026-10-28T22:21:49.856892+05:30",
  "capital": 15000,
  "edge_found": false,
  "best": null,
  "setups": [
   {
    "name": "NIFTY condor, 50-point wings, 1 lot",
-   "fits": true,
+   "fits": false,
+   "margin": 63567,
    "max_loss": 2615,
    "trades": 535,
    "win_pct": 73.6,
@@ -15,11 +16,13 @@
    "best": 987,
    "total": -110136,
    "recent_avg": -50,
-   "edge": false
+   "edge": false,
+   "note": "sells 2 options: exposure margin applies"
   },
   {
    "name": "NIFTY condor, 100-point wings, 1 lot",
-   "fits": true,
+   "fits": false,
+   "margin": 68117,
    "max_loss": 5058,
    "trades": 535,
    "win_pct": 75.5,
@@ -28,11 +31,13 @@
    "best": 2080,
    "total": -6475,
    "recent_avg": 198,
-   "edge": false
+   "edge": false,
+   "note": "sells 2 options: exposure margin applies"
   },
   {
    "name": "NIFTY condor, 150-point wings, 1 lot",
    "fits": false,
+   "margin": 72667,
    "max_loss": 7686,
    "trades": 535,
    "win_pct": 76.8,
@@ -41,11 +46,43 @@
    "best": 3178,
    "total": 87253,
    "recent_avg": 365,
-   "edge": false
+   "edge": false,
+   "note": "sells 2 options: exposure margin applies"
+  },
+  {
+   "name": "NIFTY bull call spread (buy), on UP days, 1 lot",
+   "fits": true,
+   "margin": 5183,
+   "max_loss": 5183,
+   "trades": 160,
+   "win_pct": 35.6,
+   "avg_pnl": -810,
+   "worst": -7798,
+   "best": 9656,
+   "total": -129696,
+   "recent_avg": -790,
+   "edge": false,
+   "note": "buys only: margin is the premium paid"
+  },
+  {
+   "name": "NIFTY bear put spread (buy), on DOWN days, 1 lot",
+   "fits": true,
+   "margin": 4660,
+   "max_loss": 4660,
+   "trades": 125,
+   "win_pct": 38.4,
+   "avg_pnl": -284,
+   "worst": -8430,
+   "best": 9750,
+   "total": -35512,
+   "recent_avg": -815,
+   "edge": false,
+   "note": "buys only: margin is the premium paid"
   },
   {
    "name": "BANKNIFTY condor, 100-point wings, 1 lot",
-   "fits": true,
+   "fits": false,
+   "margin": 69321,
    "max_loss": 2445,
    "trades": 661,
    "win_pct": 73.8,
@@ -54,11 +91,13 @@
    "best": 864,
    "total": -201147,
    "recent_avg": -74,
-   "edge": false
+   "edge": false,
+   "note": "sells 2 options: exposure margin applies"
   },
   {
    "name": "BANKNIFTY condor, 200-point wings, 1 lot",
-   "fits": true,
+   "fits": false,
+   "margin": 73521,
    "max_loss": 4490,
    "trades": 661,
    "win_pct": 74.6,
@@ -67,11 +106,13 @@
    "best": 2079,
    "total": -81762,
    "recent_avg": 309,
-   "edge": false
+   "edge": false,
+   "note": "sells 2 options: exposure margin applies"
   },
   {
    "name": "BANKNIFTY condor, 300-point wings, 1 lot",
-   "fits": true,
+   "fits": false,
+   "margin": 77721,
    "max_loss": 6625,
    "trades": 661,
    "win_pct": 75.0,
@@ -80,7 +121,38 @@
    "best": 2736,
    "total": 27585,
    "recent_avg": 648,
-   "edge": false
+   "edge": false,
+   "note": "sells 2 options: exposure margin applies"
+  },
+  {
+   "name": "BANKNIFTY bull call spread (buy), on UP days, 1 lot",
+   "fits": false,
+   "margin": 12197,
+   "max_loss": 12197,
+   "trades": 191,
+   "win_pct": 43.5,
+   "avg_pnl": -361,
+   "worst": -10869,
+   "best": 11669,
+   "total": -69118,
+   "recent_avg": -441,
+   "edge": false,
+   "note": "buys only: margin is the premium paid"
+  },
+  {
+   "name": "BANKNIFTY bear put spread (buy), on DOWN days, 1 lot",
+   "fits": false,
+   "margin": 10571,
+   "max_loss": 10571,
+   "trades": 149,
+   "win_pct": 38.9,
+   "avg_pnl": -540,
+   "worst": -14647,
+   "best": 13910,
+   "total": -80562,
+   "recent_avg": -323,
+   "edge": false,
+   "note": "buys only: margin is the premium paid"
   },
   {
    "name": "Stock picks (volume breakout), about 1% of money at risk",
@@ -91,5 +163,5 @@
    "edge": false
   }
  ],
- "rule": "edge = 40+ past trades, 70%+ wins, avg above Rs 100 per trade after costs, positive in the last 120 days, worst loss within Rs 7,500"
+ "rule": "fits = ICICI margin (estimate) within Rs 15,000 and worst loss within Rs 7,500; edge = also 40+ past trades, 70%+ wins, avg above Rs 100 per trade after costs, positive in the last 120 days"
 }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-28T16:18:45.655199+05:30",
+ "generated_at": "2026-10-28T22:21:49.859870+05:30",
  "target_session": "2026-10-29",
  "reference_date": "2026-10-28",
  "us_session_used": "2026-10-28",
@@ -7,66 +7,66 @@
   {
    "name": "S&P 500",
    "symbol": "^GSPC",
-   "last": 7722.6,
-   "change": 0.597,
+   "last": 7737.58,
+   "change": 0.194,
    "change_unit": "%",
-   "as_of": "2026-10-27"
+   "as_of": "2026-10-28"
   },
   {
    "name": "Nasdaq",
    "symbol": "^IXIC",
-   "last": 26477.81,
-   "change": 1.179,
+   "last": 26463.3,
+   "change": -0.055,
    "change_unit": "%",
-   "as_of": "2026-10-27"
+   "as_of": "2026-10-28"
   },
   {
    "name": "Dow Jones",
    "symbol": "^DJI",
-   "last": 52377.57,
-   "change": 0.031,
+   "last": 52535.19,
+   "change": 0.301,
    "change_unit": "%",
-   "as_of": "2026-10-27"
+   "as_of": "2026-10-28"
   },
   {
    "name": "US 10Y Yield",
    "symbol": "^TNX",
-   "last": 4.99,
-   "change": 0.007,
+   "last": 5.03,
+   "change": 0.039,
    "change_unit": "pts",
-   "as_of": "2026-10-27"
+   "as_of": "2026-10-28"
   },
   {
    "name": "Crude Oil",
    "symbol": "CL=F",
-   "last": 101.11,
-   "change": 1.211,
+   "last": 103.43,
+   "change": 3.534,
    "change_unit": "%",
    "as_of": "2026-10-28"
   },
   {
    "name": "Dollar Index",
    "symbol": "DX-Y.NYB",
-   "last": 102.37,
-   "change": 0.053,
+   "last": 102.27,
+   "change": -0.049,
    "change_unit": "%",
    "as_of": "2026-10-28"
   },
   {
    "name": "Nikkei 225",
    "symbol": "^N225",
-   "last": 63954.19,
-   "change": 1.084,
+   "last": 63268.37,
+   "change": 1.735,
    "change_unit": "%",
-   "as_of": "2026-10-28"
+   "as_of": "2026-10-27"
   },
   {
    "name": "Hang Seng",
    "symbol": "^HSI",
-   "last": 23094.83,
-   "change": 0.232,
+   "last": 23041.32,
+   "change": -0.734,
    "change_unit": "%",
-   "as_of": "2026-10-28"
+   "as_of": "2026-10-27"
   },
   {
    "name": "India VIX",
@@ -94,172 +94,156 @@
   }
  ],
  "bias": {
-  "label": "RANGEBOUND",
-  "score": 5,
-  "z": 0.05,
-  "model_z": 0.05,
-  "predicted_nifty_move_pct": 0.04,
-  "typical_daily_move_pct": 0.795,
-  "source": "daily close model",
+  "label": "BULLISH",
+  "score": 20,
+  "z": 0.204,
+  "model_z": 0.204,
+  "predicted_nifty_move_pct": 0.16,
+  "typical_daily_move_pct": 0.762,
+  "source": "pre-open global snapshot",
   "india_vix": 16.25,
   "components": [
    {
-    "feature": "vix",
-    "label": "India VIX level",
-    "value": 16.245,
-    "contribution_pct": 0.05
+    "feature": "nq",
+    "label": "Nasdaq futures",
+    "value": -0.35,
+    "contribution_pct": 0.069
    },
    {
-    "feature": "spx",
-    "label": "S&P 500 overnight %",
-    "value": 0.0,
-    "contribution_pct": -0.021
+    "feature": "cl",
+    "label": "Crude oil",
+    "value": 1.86,
+    "contribution_pct": -0.061
    },
    {
     "feature": "dxy",
-    "label": "Dollar index %",
-    "value": 0.053,
-    "contribution_pct": -0.015
+    "label": "Dollar index",
+    "value": -0.14,
+    "contribution_pct": 0.058
    },
    {
-    "feature": "vix_chg",
-    "label": "India VIX change",
-    "value": -0.155,
-    "contribution_pct": -0.013
+    "feature": "ftse",
+    "label": "FTSE 100 (UK)",
+    "value": 0.28,
+    "contribution_pct": 0.048
    },
    {
-    "feature": "nifty_prev",
-    "label": "Nifty previous day %",
-    "value": -0.224,
-    "contribution_pct": 0.009
+    "feature": "vix",
+    "label": "India VIX level",
+    "value": 16.25,
+    "contribution_pct": 0.048
    },
    {
-    "feature": "ndx",
-    "label": "Nasdaq minus S&P (tech tilt) %",
-    "value": 0.0,
-    "contribution_pct": 0.005
-   },
-   {
-    "feature": "nifty_ext",
-    "label": "Nifty vs EMA20 %",
-    "value": -0.497,
-    "contribution_pct": 0.002
-   },
-   {
-    "feature": "tnx",
-    "label": "US 10Y yield chg (pts)",
-    "value": 0.0,
-    "contribution_pct": 0.001
-   },
-   {
-    "feature": "crude",
-    "label": "Crude oil %",
-    "value": 1.211,
-    "contribution_pct": 0.001
+    "feature": "stoxx",
+    "label": "Euro Stoxx 50",
+    "value": 0.28,
+    "contribution_pct": 0.033
    }
   ]
  },
  "news": {
   "summary": {
-   "score": 0.065,
-   "count": 39,
+   "score": 0.041,
+   "count": 38,
    "label": "NEUTRAL"
   },
   "weight": 0.0,
   "headlines": [
    {
-    "title": "US Market: Rising Treasury yields put US banks under pressure over bond losses",
+    "title": "Satin Creditcare Q2 profit surges over three-fold as asset quality improves",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/us-market-rising-treasury-yields-put-us-banks-under-pressure-over-bond-losses/articleshow/135260352.cms",
-    "published": "Wed, 28 Oct 2026 15:25:28 +0530",
-    "sentiment": -0.402
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/satin-creditcare-q2-profit-surges-over-three-fold-as-asset-quality-improves/articleshow/135272520.cms",
+    "published": "Wed, 28 Oct 2026 21:38:45 +0530",
+    "sentiment": 0.844
    },
    {
-    "title": "Diwali 2026: Sensex plunged 10,000 points, Nifty dropped 12% since last Diwali. Will Samvat 2083 bring some relief?",
+    "title": "Cholamandalam Investment Q2 net profit rises 41% on strong income growth, plans Rs 5000 crore capital raise",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/diwali-2026-sensex-plunged-10000-points-nifty-dropped-12-since-last-diwali-will-samvat-2083-bring-some-relief/articleshow/135259845.cms",
-    "published": "Wed, 28 Oct 2026 15:09:34 +0530",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/cholamandalam-investment-q2-net-profit-rises-41-on-strong-income-growth-plans-rs-5000-crore-capital-raise/articleshow/135272371.cms",
+    "published": "Wed, 28 Oct 2026 21:34:42 +0530",
     "sentiment": 0.7
    },
    {
-    "title": "Hyundai Motor India Q2 Results: Standalone profit falls 24% YoY to Rs 1,189 crore, but revenue rises 18%",
+    "title": "Hero MotoCorp Q2 profit jumps 41% as scooter and EV sales surge",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/hyundai-motor-india-q2-results-standalone-profit-falls-24-to-rs-1189-crore-but-revenue-gains-18-yoy/articleshow/135259321.cms",
-    "published": "Wed, 28 Oct 2026 14:49:48 +0530",
-    "sentiment": -0.026
+    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/hero-motocorp-q2-profit-jumps-41-as-scooter-and-ev-sales-surge/articleshow/135272243.cms",
+    "published": "Wed, 28 Oct 2026 21:31:33 +0530",
+    "sentiment": 0.872
    },
    {
-    "title": "From Dhirubhai Ambani\u2019s Rs 10 crore IPO to Akash Ambani\u2019s Rs 12.5 lakh crore Jio debut: Reliance\u2019s biggest wealth story",
+    "title": "Ahead of Market: 10 things that will decide stock market action on Wednesday",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/from-dhirubhai-ambanis-rs-10-crore-ipo-to-akash-ambanis-rs-12-5-lakh-crore-jio-debut-reliances-biggest-wealth-story/articleshow/135258986.cms",
-    "published": "Wed, 28 Oct 2026 14:38:29 +0530",
-    "sentiment": 0.494
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/ahead-of-market-10-things-that-will-decide-stock-market-action-on-wednesday/articleshow/135271636.cms",
+    "published": "Wed, 28 Oct 2026 21:08:47 +0530",
+    "sentiment": 0.0
    },
    {
-    "title": "Vedanta Q2 Results: Profit zooms 78% YoY to Rs 6,202 crore; revenue surges 57%",
+    "title": "British homebuilder shares slump on lack of clarity over first-time buyer plan in budget",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/vedanta-q2-results-profit-zooms-78-yoy-to-rs-6202-crore-revenue-surges-57/articleshow/135258623.cms",
-    "published": "Wed, 28 Oct 2026 14:21:53 +0530",
-    "sentiment": 0.586
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/british-homebuilder-shares-slump-on-lack-of-clarity-over-first-time-buyer-plan-in-budget/articleshow/135271559.cms",
+    "published": "Wed, 28 Oct 2026 21:06:36 +0530",
+    "sentiment": 0.382
    },
    {
-    "title": "Ambani bluechip bet gets bigger: Investors mark 82% of traded Jio shares for holding beyond listing",
+    "title": "Weak returns at home fuel India's overseas retail investing boom",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/ambani-blue-chip-bet-gets-bigger-investors-mark-82-of-traded-shares-for-holding-beyond-listing/articleshow/135258717.cms",
-    "published": "Wed, 28 Oct 2026 14:21:52 +0530",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/weak-returns-at-home-fuel-indias-overseas-retail-investing-boom/articleshow/135271438.cms",
+    "published": "Wed, 28 Oct 2026 21:03:19 +0530",
+    "sentiment": -0.296
+   },
+   {
+    "title": "Hero MotoCorp Q2 Results: Profit surges 41% YoY to Rs 1,861 crore, revenue jumps 23%",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/hero-motocorp-q2-results-profit-surges-41-yoy-to-rs-1861-crore-revenue-jumps-23/articleshow/135270862.cms",
+    "published": "Wed, 28 Oct 2026 20:38:33 +0530",
+    "sentiment": 0.872
+   },
+   {
+    "title": "Sebi to review FPI compliance norms, issue consultation paper to align with global standards",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/sebi-to-review-fpi-compliance-norms-issue-consultation-paper-to-align-with-global-standards/articleshow/135269023.cms",
+    "published": "Wed, 28 Oct 2026 19:40:10 +0530",
+    "sentiment": 0.0
+   },
+   {
+    "title": "Acutaas Chemicals among 5 stocks hitting 52-week highs; rallied up to 18% in a month",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/acutaas-chemicals-among-5-stocks-hitting-52-week-highs-rallied-up-to-18-in-a-month/slideshow/135268346.cms",
+    "published": "Wed, 28 Oct 2026 19:14:25 +0530",
+    "sentiment": 0.0
+   },
+   {
+    "title": "Vedanta Aluminium Q2 Results: Profit doubles to Rs 6,187 crore, revenue jumps 41%",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/vedanta-aluminium-q2-results-profit-doubles-to-rs-6187-crore-revenue-jumps-41/articleshow/135268184.cms",
+    "published": "Wed, 28 Oct 2026 19:13:05 +0530",
+    "sentiment": 0.542
+   },
+   {
+    "title": "US stocks today: US stocks turn choppy as megacaps offset chip gains before Fed meet",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/us-stocks-today-sp-500-nasdaq-open-higher-as-sk-hynix-lifts-chips-fed-meet-in-focus/articleshow/135267943.cms",
+    "published": "Wed, 28 Oct 2026 19:09:22 +0530",
     "sentiment": 0.296
    },
    {
-    "title": "Adani Enterprises Q2 Results: Revenue spikes 75% YoY to Rs 37,216 crore,  profit at Rs 1,492 crore",
+    "title": "Sebi signs MoU with Bank of England to strengthen oversight of clearing corporations",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/adani-enterprises-q2-results-revenue-spikes-75-yoy-to-rs-37216-crore-profit-at-rs-1492-crore/articleshow/135257734.cms",
-    "published": "Wed, 28 Oct 2026 13:53:13 +0530",
-    "sentiment": 0.25
-   },
-   {
-    "title": "Jio effect! Reliance beats Tata to become India's most valued conglomerate",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/jio-effect-reliance-beats-tata-to-become-indias-most-valued-conglomerate/articleshow/135257354.cms",
-    "published": "Wed, 28 Oct 2026 13:26:18 +0530",
-    "sentiment": 0.726
-   },
-   {
-    "title": "Hyundai Motor Q2 Results Live Updates: Standalone profit at Rs 1189 cr vs Rs 1570 cr, down 24% YoY",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/live-blog/q2-results-today-live-updates-hyundai-vedanta-adani-enterprises-quarter-2-fy27-earnings-result-dividend-share-price-updates/liveblog/135257115.cms",
-    "published": "Wed, 28 Oct 2026 13:11:09 +0530",
-    "sentiment": 0.25
-   },
-   {
-    "title": "Global Market: UBS Q3 profit rises 8% to $2.69 billion, accelerates buyback plan",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/global-market-ubs-q3-profit-rises-8-to-2-69-billion-accelerates-buyback-plan/articleshow/135256901.cms",
-    "published": "Wed, 28 Oct 2026 13:09:23 +0530",
-    "sentiment": 0.542
-   },
-   {
-    "title": "US Market: AI boom could weaken dollar\u2019s safe-haven appeal as foreign flows rise",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/us-market-ai-boom-could-weaken-dollars-safe-haven-appeal-as-foreign-flows-rise/articleshow/135256789.cms",
-    "published": "Wed, 28 Oct 2026 13:07:31 +0530",
-    "sentiment": -0.421
-   },
-   {
-    "title": "Adani Ports Q2 Results: Net profit jumps 17% YoY to Rs 3,622 crore; revenue up 24%",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/adani-ports-q2-results-net-profit-jumps-17-yoy-to-rs-3622-crore-revenue-up-24/articleshow/135256370.cms",
-    "published": "Wed, 28 Oct 2026 12:53:19 +0530",
-    "sentiment": 0.542
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/sebi-signs-mou-with-bank-of-england-to-strengthen-oversight-of-clearing-corporations/articleshow/135267165.cms",
+    "published": "Wed, 28 Oct 2026 18:45:56 +0530",
+    "sentiment": 0.318
    }
   ]
  },
  "model": {
-  "oos_days": 250,
-  "directional_calls": 109,
-  "directional_accuracy": 65.1,
-  "sign_accuracy_all_days": 58.8,
+  "oos_days": 300,
+  "directional_calls": 141,
+  "directional_accuracy": 70.2,
+  "sign_accuracy_all_days": 61.7,
+  "gap_corr": 0.46,
+  "gap_sign_pct": 69.0,
   "trained_rows": 750,
-  "version": 17,
+  "version": 18,
   "bias_threshold": 0.2
  },
  "options": {
@@ -288,20 +272,8 @@
    },
    "strategies": [
     {
-     "name": "Iron Condor",
+     "name": "Bull Put Spread",
      "legs": [
-      {
-       "action": "SELL",
-       "strike": 23100,
-       "type": "CE",
-       "est_premium": 55.2
-      },
-      {
-       "action": "BUY",
-       "strike": 23350,
-       "type": "CE",
-       "est_premium": 19.7
-      },
       {
        "action": "SELL",
        "strike": 22300,
@@ -315,163 +287,117 @@
        "est_premium": 14.2
       }
      ],
-     "net_premium": 65.7,
-     "max_loss": 11980,
-     "max_reward": 4270,
-     "reward_risk": 0.36,
-     "entry": "Enter at 10:15 (after the first hour) only if NIFTY is between 22,300 and 23,100",
-     "target": "Buy back at \u20b929.6 (keep ~55% of credit), else hold to expiry Tue 03 Nov",
-     "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b94,270 per lot)",
+     "net_premium": 30.2,
+     "max_loss": 14287,
+     "max_reward": 1963,
+     "reward_risk": 0.14,
+     "entry": "Enter at 10:15 (after the first hour) only if NIFTY is above 22,300",
+     "target": "Buy back at \u20b913.6 (keep ~55% of credit), else hold to expiry Tue 03 Nov",
+     "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,963 per lot)",
      "breakeven": [
-      22234,
-      23166
+      22270
      ],
-     "notes": "Hedged premium selling. Check SPAN margin with your broker.",
-     "test": {
-      "wing": 150,
-      "legs": [
-       {
-        "action": "SELL",
-        "strike": 23100,
-        "type": "CE",
-        "est_premium": 55.2
-       },
-       {
-        "action": "BUY",
-        "strike": 23250,
-        "type": "CE",
-        "est_premium": 30.5
-       },
-       {
-        "action": "SELL",
-        "strike": 22300,
-        "type": "PE",
-        "est_premium": 44.4
-       },
-       {
-        "action": "BUY",
-        "strike": 22150,
-        "type": "PE",
-        "est_premium": 23.1
-       }
-      ],
-      "net_premium": 46.0,
-      "max_loss": 6760,
-      "max_reward": 2990
-     },
+     "notes": "Earns time decay; wins if the index does not fall (bull put) / rise (bear call) past the short strike.",
      "verdict": {
-      "decision": "TRADE",
+      "decision": "SKIP",
       "dte": 5,
       "stats": {
-       "trades": 54,
-       "win_pct": 77.8,
-       "avg_pnl": 871,
-       "worst": -9952,
-       "best": 6705,
-       "total": 47035,
-       "sample": "days the model called SIDEWAYS, current expiry schedule, all days",
-       "allowed": true,
-       "marginal": false,
-       "quiet_first_hour": {
-        "trades": 35,
-        "win_pct": 71.4,
-        "avg_pnl": 347,
-        "worst": -9952,
-        "best": 3750,
-        "total": 12169
-       },
-       "trending_first_hour": {
-        "trades": 19,
-        "win_pct": 89.5,
-        "avg_pnl": 1835,
-        "worst": -9797,
-        "best": 6705,
-        "total": 34866
-       }
+       "trades": 187,
+       "win_pct": 47.6,
+       "avg_pnl": -349,
+       "worst": -5730,
+       "best": 2710,
+       "total": -65435,
+       "sample": "days the model called BULLISH"
       },
-      "reason": "5 days before: this setup won 77.8% of 54 trades, avg \u20b9871 per lot after costs (worst \u20b9-9,952)."
+      "reason": "On days the model called BULLISH, this spread lost on average: 47.6% wins, avg \u20b9-349 per lot over 187 trades."
      }
     },
     {
-     "name": "Iron Fly (hedged short straddle)",
+     "name": "Bull Call Spread",
      "legs": [
       {
-       "action": "SELL",
+       "action": "BUY",
        "strike": 22700,
        "type": "CE",
        "est_premium": 195.8
       },
       {
        "action": "SELL",
-       "strike": 22700,
-       "type": "PE",
-       "est_premium": 173.7
-      },
-      {
-       "action": "BUY",
-       "strike": 23200,
+       "strike": 22950,
        "type": "CE",
-       "est_premium": 37.4
-      },
-      {
-       "action": "BUY",
-       "strike": 22200,
-       "type": "PE",
-       "est_premium": 29.0
+       "est_premium": 93.5
       }
      ],
-     "net_premium": 303.1,
-     "max_loss": 12798,
-     "max_reward": 19702,
-     "reward_risk": 1.54,
-     "entry": "Enter only if NIFTY opens within \u00b150 of 22,700",
-     "target": "Buy back at \u20b9212.2 (keep ~30% of credit)",
-     "stop_loss": "NIFTY moves beyond 22,450 / 22,950",
+     "net_premium": -102.3,
+     "max_loss": 6650,
+     "max_reward": 9600,
+     "reward_risk": 1.44,
+     "entry": "Enter on dips that hold above 22,538 (EMA20 / S1 support zone)",
+     "target": "Exit spread near \u20b9190.9 or NIFTY at 22,950",
+     "stop_loss": "Spread falls to \u20b951.2, or NIFTY closes below 22,378",
      "breakeven": [
-      22397,
-      23003
+      22802
      ],
-     "notes": "Higher reward, tighter range. Never run an unhedged straddle.",
+     "notes": "Defined risk. Preferred structure.",
+     "verdict": {
+      "decision": "SKIP",
+      "dte": 5,
+      "stats": {
+       "trades": 193,
+       "win_pct": 35.2,
+       "avg_pnl": -633,
+       "worst": -7798,
+       "best": 9656,
+       "total": -122325,
+       "sample": "days the model called BULLISH"
+      },
+      "reason": "On days the model called BULLISH, this spread lost on average: 35.2% wins, avg \u20b9-633 per lot over 193 trades."
+     }
+    },
+    {
+     "name": "ATM Call Buy",
+     "legs": [
+      {
+       "action": "BUY",
+       "strike": 22700,
+       "type": "CE",
+       "est_premium": 195.8
+      }
+     ],
+     "net_premium": -195.8,
+     "max_loss": 12727,
+     "max_reward": 4075,
+     "reward_risk": 0.32,
+     "entry": "Enter on dips that hold above 22,538 (EMA20 / S1 support zone)",
+     "target": "Premium \u2248 \u20b9258.5 (NIFTY near 22,819)",
+     "stop_loss": "Premium \u20b9137.1 (-30%), or NIFTY closes below 22,378",
+     "breakeven": [
+      22896
+     ],
+     "notes": "Max loss = full premium. Theta decay hurts if move is late.",
      "verdict": {
       "decision": "CAUTION",
       "dte": 5,
-      "reason": "Iron Fly (hedged short straddle) is not tested by the options lab.",
+      "reason": "ATM Call Buy is not tested by the options lab.",
       "stats": null
      }
     }
    ],
    "premium_note": "Premiums are Black-Scholes estimates from India VIX, not live quotes.",
    "setup": {
-    "decision": "TRADE",
+    "decision": "SKIP",
     "dte": 5,
     "stats": {
-     "trades": 54,
-     "win_pct": 77.8,
-     "avg_pnl": 871,
-     "worst": -9952,
-     "best": 6705,
-     "total": 47035,
-     "sample": "days the model called SIDEWAYS, current expiry schedule, all days",
-     "allowed": true,
-     "marginal": false,
-     "quiet_first_hour": {
-      "trades": 35,
-      "win_pct": 71.4,
-      "avg_pnl": 347,
-      "worst": -9952,
-      "best": 3750,
-      "total": 12169
-     },
-     "trending_first_hour": {
-      "trades": 19,
-      "win_pct": 89.5,
-      "avg_pnl": 1835,
-      "worst": -9797,
-      "best": 6705,
-      "total": 34866
-     }
+     "trades": 187,
+     "win_pct": 47.6,
+     "avg_pnl": -349,
+     "worst": -5730,
+     "best": 2710,
+     "total": -65435,
+     "sample": "days the model called BULLISH"
     },
-    "reason": "5 days before: this setup won 77.8% of 54 trades, avg \u20b9871 per lot after costs (worst \u20b9-9,952)."
+    "reason": "No tested structure has a positive record for today. On days the model called BULLISH, this spread lost on average: 47.6% wins, avg \u20b9-349 per lot over 187 trades."
    }
   },
   "BANKNIFTY": {
@@ -499,20 +425,8 @@
    },
    "strategies": [
     {
-     "name": "Iron Condor",
+     "name": "Bull Put Spread",
      "legs": [
-      {
-       "action": "SELL",
-       "strike": 56000,
-       "type": "CE",
-       "est_premium": 237.3
-      },
-      {
-       "action": "BUY",
-       "strike": 56900,
-       "type": "CE",
-       "est_premium": 98.9
-      },
       {
        "action": "SELL",
        "strike": 52600,
@@ -526,131 +440,117 @@
        "est_premium": 49.1
       }
      ],
-     "net_premium": 232.1,
-     "max_loss": 20037,
-     "max_reward": 6963,
-     "reward_risk": 0.35,
-     "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is between 52,600 and 56,000",
-     "target": "Buy back at \u20b9104.4 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
-     "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b96,963 per lot)",
+     "net_premium": 93.7,
+     "max_loss": 24189,
+     "max_reward": 2811,
+     "reward_risk": 0.12,
+     "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is above 52,600",
+     "target": "Buy back at \u20b942.2 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
+     "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b92,811 per lot)",
      "breakeven": [
-      52368,
-      56232
+      52506
      ],
-     "notes": "Hedged premium selling. Check SPAN margin with your broker.",
+     "notes": "Earns time decay; wins if the index does not fall (bull put) / rise (bear call) past the short strike.",
      "verdict": {
-      "decision": "TRADE",
+      "decision": "SKIP",
       "dte": 25,
       "stats": {
-       "trades": 47,
-       "win_pct": 93.6,
-       "avg_pnl": 3585,
-       "worst": -17489,
-       "best": 9535,
-       "total": 168539,
-       "sample": "days the model called SIDEWAYS, current expiry schedule",
-       "allowed": true,
-       "marginal": false,
-       "quiet_first_hour": {
-        "trades": 27,
-        "win_pct": 96.3,
-        "avg_pnl": 4145,
-        "worst": -7115,
-        "best": 9535,
-        "total": 111929
-       },
-       "trending_first_hour": {
-        "trades": 20,
-        "win_pct": 90.0,
-        "avg_pnl": 2830,
-        "worst": -17489,
-        "best": 7837,
-        "total": 56610
-       }
+       "trades": 195,
+       "win_pct": 63.1,
+       "avg_pnl": -245,
+       "worst": -9320,
+       "best": 7497,
+       "total": -47916,
+       "sample": "days the model called BULLISH"
       },
-      "reason": "2+ weeks before: this setup won 93.6% of 47 trades, avg \u20b93,585 per lot after costs (worst \u20b9-17,489). If the first hour moves more than 0.25%, the win rate drops to 90.0% (from 96.3% on quiet mornings): consider skipping."
+      "reason": "On days the model called BULLISH, this spread lost overall (63.1% wins, avg \u20b9-245 per lot over 195 trades). A good-looking slice is not trusted on its own."
      }
     },
     {
-     "name": "Iron Fly (hedged short straddle)",
+     "name": "Bull Call Spread",
      "legs": [
       {
-       "action": "SELL",
+       "action": "BUY",
        "strike": 54300,
        "type": "CE",
        "est_premium": 858.7
       },
       {
        "action": "SELL",
-       "strike": 54300,
-       "type": "PE",
-       "est_premium": 642.8
-      },
-      {
-       "action": "BUY",
-       "strike": 56100,
+       "strike": 55200,
        "type": "CE",
-       "est_premium": 216.8
-      },
-      {
-       "action": "BUY",
-       "strike": 52500,
-       "type": "PE",
-       "est_premium": 128.1
+       "est_premium": 460.3
       }
      ],
-     "net_premium": 1156.6,
-     "max_loss": 19302,
-     "max_reward": 34698,
-     "reward_risk": 1.8,
-     "entry": "Enter only if BANKNIFTY opens within \u00b1100 of 54,300",
-     "target": "Buy back at \u20b9809.6 (keep ~30% of credit)",
-     "stop_loss": "BANKNIFTY moves beyond 53,400 / 55,200",
+     "net_premium": -398.4,
+     "max_loss": 11952,
+     "max_reward": 15048,
+     "reward_risk": 1.26,
+     "entry": "Enter on dips that hold above 53,782 (EMA20 / S1 support zone)",
+     "target": "Exit spread near \u20b9699.4 or BANKNIFTY at 55,200",
+     "stop_loss": "Spread falls to \u20b9199.2, or BANKNIFTY closes below 53,297",
      "breakeven": [
-      53143,
-      55457
+      54698
      ],
-     "notes": "Higher reward, tighter range. Never run an unhedged straddle.",
+     "notes": "Defined risk. Preferred structure.",
+     "verdict": {
+      "decision": "SKIP",
+      "dte": 25,
+      "stats": {
+       "trades": 196,
+       "win_pct": 42.9,
+       "avg_pnl": -372,
+       "worst": -10869,
+       "best": 11669,
+       "total": -73034,
+       "sample": "days the model called BULLISH"
+      },
+      "reason": "On days the model called BULLISH, this spread lost overall (42.9% wins, avg \u20b9-372 per lot over 196 trades). A good-looking slice is not trusted on its own."
+     }
+    },
+    {
+     "name": "ATM Call Buy",
+     "legs": [
+      {
+       "action": "BUY",
+       "strike": 54300,
+       "type": "CE",
+       "est_premium": 858.7
+      }
+     ],
+     "net_premium": -858.7,
+     "max_loss": 25761,
+     "max_reward": 5456,
+     "reward_risk": 0.21,
+     "entry": "Enter on dips that hold above 53,782 (EMA20 / S1 support zone)",
+     "target": "Premium \u2248 \u20b91040.6 (BANKNIFTY near 54,596)",
+     "stop_loss": "Premium \u20b9601.1 (-30%), or BANKNIFTY closes below 53,297",
+     "breakeven": [
+      55159
+     ],
+     "notes": "Max loss = full premium. Theta decay hurts if move is late.",
      "verdict": {
       "decision": "CAUTION",
       "dte": 25,
-      "reason": "Iron Fly (hedged short straddle) is not tested by the options lab.",
+      "reason": "ATM Call Buy is not tested by the options lab.",
       "stats": null
      }
     }
    ],
    "premium_note": "Premiums are Black-Scholes estimates from India VIX, not live quotes.",
    "setup": {
-    "decision": "TRADE",
+    "decision": "SKIP",
     "dte": 25,
     "stats": {
-     "trades": 47,
-     "win_pct": 93.6,
-     "avg_pnl": 3585,
-     "worst": -17489,
-     "best": 9535,
-     "total": 168539,
-     "sample": "days the model called SIDEWAYS, current expiry schedule",
-     "allowed": true,
-     "marginal": false,
-     "quiet_first_hour": {
-      "trades": 27,
-      "win_pct": 96.3,
-      "avg_pnl": 4145,
-      "worst": -7115,
-      "best": 9535,
-      "total": 111929
-     },
-     "trending_first_hour": {
-      "trades": 20,
-      "win_pct": 90.0,
-      "avg_pnl": 2830,
-      "worst": -17489,
-      "best": 7837,
-      "total": 56610
-     }
+     "trades": 195,
+     "win_pct": 63.1,
+     "avg_pnl": -245,
+     "worst": -9320,
+     "best": 7497,
+     "total": -47916,
+     "sample": "days the model called BULLISH"
     },
-    "reason": "2+ weeks before: this setup won 93.6% of 47 trades, avg \u20b93,585 per lot after costs (worst \u20b9-17,489). If the first hour moves more than 0.25%, the win rate drops to 90.0% (from 96.3% on quiet mornings): consider skipping."
+    "reason": "No tested structure has a positive record for today. On days the model called BULLISH, this spread lost overall (63.1% wins, avg \u20b9-245 per lot over 195 trades). A good-looking slice is not trusted on its own."
    }
   }
  },
@@ -693,43 +593,43 @@
   }
  ],
  "preopen": {
-  "snapshot_ist": "Wed 28 Oct 16:18 IST",
+  "snapshot_ist": "Wed 28 Oct 22:21 IST",
   "stage": "preview",
-  "expected_gap_pct": 0.02,
-  "gap_typical_error_pct": 0.38,
-  "expected_day_pct": 0.08,
-  "z": 0.097,
-  "typical_daily_move_pct": 0.77,
+  "expected_gap_pct": 0.04,
+  "gap_typical_error_pct": 0.32,
+  "expected_day_pct": 0.16,
+  "z": 0.204,
+  "typical_daily_move_pct": 0.762,
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": 0.0
+    "move_pct": 0.04
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": 0.0
+    "move_pct": -0.35
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": 0.0
+    "move_pct": 0.46
    },
    {
     "key": "dax",
     "name": "DAX (Germany)",
-    "move_pct": 0.0
+    "move_pct": 0.48
    },
    {
     "key": "ftse",
     "name": "FTSE 100 (UK)",
-    "move_pct": 0.0
+    "move_pct": 0.28
    },
    {
     "key": "stoxx",
     "name": "Euro Stoxx 50",
-    "move_pct": 0.0
+    "move_pct": 0.28
    },
    {
     "key": "n225",
@@ -739,17 +639,17 @@
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": 0.0
+    "move_pct": 1.86
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": 0.0
+    "move_pct": -0.15
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": 0.0
+    "move_pct": -0.14
    },
    {
     "key": "inr",
@@ -759,69 +659,69 @@
   ],
   "drivers": [
    {
-    "feature": "vix",
-    "label": "India VIX level",
-    "value": 16.25,
-    "contribution_pct": 0.062
-   },
-   {
-    "feature": "es",
-    "label": "S&P 500 futures",
-    "value": 0.0,
-    "contribution_pct": -0.02
-   },
-   {
-    "feature": "ym",
-    "label": "Dow futures",
-    "value": 0.0,
-    "contribution_pct": 0.013
-   },
-   {
-    "feature": "nprev",
-    "label": "Nifty previous day",
-    "value": -0.22,
-    "contribution_pct": 0.013
+    "feature": "nq",
+    "label": "Nasdaq futures",
+    "value": -0.35,
+    "contribution_pct": 0.069
    },
    {
     "feature": "cl",
     "label": "Crude oil",
-    "value": 0.0,
-    "contribution_pct": 0.007
+    "value": 1.86,
+    "contribution_pct": -0.061
+   },
+   {
+    "feature": "dxy",
+    "label": "Dollar index",
+    "value": -0.14,
+    "contribution_pct": 0.058
    },
    {
     "feature": "ftse",
     "label": "FTSE 100 (UK)",
-    "value": 0.0,
-    "contribution_pct": -0.004
+    "value": 0.28,
+    "contribution_pct": 0.048
+   },
+   {
+    "feature": "vix",
+    "label": "India VIX level",
+    "value": 16.25,
+    "contribution_pct": 0.048
+   },
+   {
+    "feature": "stoxx",
+    "label": "Euro Stoxx 50",
+    "value": 0.28,
+    "contribution_pct": 0.033
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.26,
-   "gap_sign_pct": 56.0,
-   "directional_calls": 81,
-   "directional_accuracy": 61.7
+   "gap_corr": 0.46,
+   "gap_sign_pct": 69.0,
+   "directional_calls": 153,
+   "directional_accuracy": 68.6
   },
   "vix": 16.25
  },
  "global_table": {
-  "updated": "2026-10-28T16:18:56.441111+05:30",
+  "updated": "2026-10-28T22:22:08.983355+05:30",
   "rows": [
    {
     "group": "US, last close",
-    "move": "S&P 500 +0.6%, Nasdaq +1.2%, Dow +0.0%",
-    "effect": "green",
-    "note": "Positive lead for India"
+    "move": "S&P 500 +0.2%, Nasdaq -0.1%, Dow +0.3%",
+    "effect": "flat",
+    "note": "Little signal"
    },
    {
     "group": "US futures now",
-    "move": "S&P +0.00%, Nasdaq +0.00%, Dow +0.00% (since Nifty's close)",
+    "move": "S&P +0.04%, Nasdaq -0.35%, Dow +0.46% (since Nifty's close)",
     "effect": "flat",
     "note": "Flat"
    },
    {
     "group": "Europe, last close",
-    "move": "DAX +0.0%, FTSE -0.3%, Euro Stoxx -0.2%",
+    "move": "DAX +0.4%, FTSE +0.1%, Euro Stoxx +0.1%",
     "effect": "flat",
     "note": "Mixed / flat"
    },
@@ -833,19 +733,19 @@
    },
    {
     "group": "Crude oil",
-    "move": "WTI ~$101, Brent ~$111 (+1.2%)",
+    "move": "WTI ~$103, Brent ~$112 (+3.1%)",
     "effect": "red",
     "note": "Rising oil hurts India \u00b7 Price is high for India"
    },
    {
     "group": "US 10-year yield",
-    "move": "4.99% (+0 bp)",
-    "effect": "flat",
-    "note": "Steady"
+    "move": "5.03% (+4 bp)",
+    "effect": "red",
+    "note": "High yields pull money from emerging markets"
    },
    {
     "group": "Dollar index",
-    "move": "102.37 (+0.05%)",
+    "move": "102.27 (-0.05%)",
     "effect": "flat",
     "note": "Steady"
    },
@@ -863,14 +763,14 @@
    },
    {
     "group": "Model: Nifty open",
-    "move": "+0.02% (\u00b10.38%)",
+    "move": "+0.04% (\u00b10.32%)",
     "effect": "flat",
     "note": "Combined forecast from all markets (preview)",
     "model": true
    }
   ],
-  "tilt": "positive",
-  "score": 2
+  "tilt": "mixed",
+  "score": 0
  },
  "notes": [
   "GIFT Nifty has no free data feed; the pre-open model reads what drives it (US/Dow futures, Europe, Asia, crude, rupee).",

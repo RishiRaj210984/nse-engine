@@ -1,7 +1,7 @@
 {
  "latest": {
   "session": "2026-10-28",
-  "as_of": "2026-10-28T16:17:25.897703+05:30",
+  "as_of": "2026-10-28T22:20:32.173041+05:30",
   "final": true,
   "plan_built": "2026-10-28T07:13:26.545362+05:30",
   "bias": {
@@ -427,6 +427,14 @@
    "trades": 1,
    "wins": 0,
    "note": "Paper book: TRADE days only, 1 lot, held like the guardian holds it (target, stop, expiry-day 10:15), costs charged when a trade closes. Prices: real NSE option prices saved every 10 minutes; an estimate (Black-Scholes with India VIX) only where no real price was saved."
+  },
+  "momentum": {
+   "today": null,
+   "trades": 0,
+   "wins": 0,
+   "total": 0,
+   "recent": [],
+   "rule": "Paper only. If NIFTY moves \u00b10.5% from 09:15 to 10:15, buy 1 lot of the ATM call/put that way at the real NSE price (not on expiry day, premium up to Rs 15,000). Stop -30%, cost after +20%, trail from +40%, book +60%, else close 15:15. Costs Rs 150 per trade."
   }
  },
  "totals": {
