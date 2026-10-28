@@ -221,7 +221,7 @@ def simulate(index, ih, vix_h, vix_d, iv_scale, labels, fixed_width=None):
                 if pnl is None:
                     pnl = _value(legs, float(path_all["Close"].iloc[-1]), 0, iv0) - v0
                 trades.append({**base, "strategy": "bull_spread" if bull else "bear_spread",
-                               "pnl": round(pnl * lot - COSTS[(index, "spread")])})
+                               "pnl": round(pnl * lot - COSTS[(index, "spread")]), "cost": round(v0 * lot)})
     return pd.DataFrame(trades)
 
 
@@ -327,7 +327,7 @@ def run():
     ratio = (b_d.pct_change().rolling(20).std() / n_d.pct_change().rolling(20).std()).clip(0.8, 1.8).dropna()
     lab = {"generated_at": store.now_ist().isoformat(), "costs_per_lot": {f"{k[0]} {k[1]}": v for k, v in COSTS.items()},
            "bucket_labels": BUCKET_LABELS}
-    small = {}
+    small, runs = {}, {}
     for index, scale in (("NIFTY", pd.Series(dtype=float)), ("BANKNIFTY", ratio)):
         ih = _hourly(INDEX_SPECS[index]["ticker"])
         if ih is None:
@@ -336,10 +336,11 @@ def run():
         lab[index] = _summarise(index, R)
         lab.setdefault("rule_curves", {})[index] = rule_curve(index, R, lab[index])
         small[index] = (ih, vh, vd, scale)
+        runs[index] = R
     store._write(store.state_path("options_lab.json"), lab, indent=1)
     try:
         import learning
-        store.publish("small-capital.json", capital_check(small, labels, learning.performance().get("backtest_stocks")))
+        store.publish("small-capital.json", capital_check(small, labels, learning.performance().get("backtest_stocks"), runs=runs))
     except Exception as exc:   # never block the main lab
         log.warning("small-capital check failed: %s", exc)
     return lab
@@ -347,6 +348,17 @@ def run():
 
 # ------------------------------------------------------------------ does anything fit my money?
 SMALL_WIDTHS = {"NIFTY": (50, 100, 150), "BANKNIFTY": (100, 200, 300)}
+# Margin ICICI blocks for a trade. Every SOLD index option carries NSE's exposure margin (2% of the contract
+# value) whatever the hedge, plus the hedged SPAN margin. ELM + 1.4 x wing x lot matched ICICI's own
+# calculator for a 150-point NIFTY condor on 28 Oct 2026 (Rs 72,727 at NIFTY 22,700). A bought-only
+# (debit) spread blocks just the premium paid.
+ELM_PCT = 0.02
+SPAN_PER_WING = 1.4
+
+
+def sold_margin(index, spot, wing, sold=2):
+    lot = INDEX_SPECS[index]["lot"]
+    return round(ELM_PCT * spot * lot * sold + SPAN_PER_WING * wing * lot)
 
 
 def _edge(stats, recent, worst_cap):
@@ -356,21 +368,36 @@ def _edge(stats, recent, worst_cap):
                 and recent and recent["trades"] >= 10 and recent["avg_pnl"] > 0 and stats["worst"] >= -worst_cap)
 
 
-def capital_check(data_by_index, labels, stock_stats=None, capital=CAPITAL):
-    """Re-test, every night, the setups whose worst loss fits `capital`. Published as small-capital.json."""
+def capital_check(data_by_index, labels, stock_stats=None, capital=CAPITAL, runs=None):
+    """Re-test, every night, the setups that fit `capital`: ICICI's margin (estimate) within it and the worst
+    loss within half of it. Condors are re-run with narrow wings; bought-only (debit) spreads come from `runs`,
+    the lab's full replay, on the days the model made that call. Published as small-capital.json."""
     cap = 0.5 * capital
     rows = []
+
+    def row(name, R, margin, max_loss, extra=""):
+        st, recent = _group(R), _group(R[pd.to_datetime(R.date) >= pd.Timestamp.now() - pd.Timedelta(days=120)])
+        fits = margin <= capital and max_loss <= cap
+        rows.append({"name": name, "fits": fits, "margin": int(margin), "max_loss": int(max_loss), **st,
+                     "recent_avg": recent["avg_pnl"] if recent else None,
+                     "edge": fits and _edge(st, recent, cap), "note": extra})
+
     for index, (ih, vh, vd, scale) in data_by_index.items():
+        spot = float(ih["Close"].iloc[-1])
         for w in SMALL_WIDTHS[index]:
             R = simulate(index, ih, vh, vd, scale, labels, fixed_width=w)
             if R is None or not len(R):
                 continue
             R = R[R.dte >= 1]   # never on expiry day
-            st, recent = _group(R), _group(R[pd.to_datetime(R.date) >= pd.Timestamp.now() - pd.Timedelta(days=120)])
-            fits = float(R.max_loss.mean()) <= cap
-            rows.append({"name": f"{index} condor, {w}-point wings, 1 lot", "fits": fits, "max_loss": int(R.max_loss.mean()),
-                         **st, "recent_avg": recent["avg_pnl"] if recent else None,
-                         "edge": fits and _edge(st, recent, cap)})
+            row(f"{index} condor, {w}-point wings, 1 lot", R, sold_margin(index, spot, w), R.max_loss.mean(),
+                "sells 2 options: exposure margin applies")
+        R = (runs or {}).get(index)
+        for strat, what in (("bull_spread", "bull call spread (buy), on UP days"), ("bear_spread", "bear put spread (buy), on DOWN days")):
+            S = R[(R.strategy == strat) & (R.dte >= 1)] if R is not None and len(R) else None
+            if S is None or not len(S) or "cost" not in S:
+                continue
+            paid = float(S.cost.mean()) + COSTS[(index, "spread")]
+            row(f"{index} {what}, 1 lot", S, paid, paid, "buys only: margin is the premium paid")
     if stock_stats and stock_stats.get("trades"):
         e = stock_stats["trades"] >= 50 and stock_stats.get("avg_r", 0) >= 0.1
         rows.append({"name": "Stock picks (volume breakout), about 1% of money at risk", "fits": True,
@@ -379,8 +406,9 @@ def capital_check(data_by_index, labels, stock_stats=None, capital=CAPITAL):
     best = next((r for r in sorted(rows, key=lambda r: -(r.get("avg_pnl") or 0)) if r["edge"]), None)
     return {"generated_at": store.now_ist().isoformat(), "capital": capital, "edge_found": best is not None,
             "best": best["name"] if best else None, "setups": rows,
-            "rule": f"edge = 40+ past trades, 70%+ wins, avg above Rs {MIN_EDGE} per trade after costs, "
-                    f"positive in the last 120 days, worst loss within Rs {int(cap):,}"}
+            "rule": f"fits = ICICI margin (estimate) within Rs {capital:,} and worst loss within Rs {int(cap):,}; "
+                    f"edge = also 40+ past trades, 70%+ wins, avg above Rs {MIN_EDGE} per trade after costs, "
+                    f"positive in the last 120 days"}
 
 
 def load():

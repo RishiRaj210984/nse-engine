@@ -187,7 +187,7 @@ body.is-simple main{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 <script>
 const NSE_HOLIDAYS = ['2026-10-20', '2026-11-08', '2026-11-10', '2026-11-24', '2026-12-25'];   // fallback; meta.json has the live list
 const holidayList = () => (D.meta?.holidays?.length ? D.meta.holidays : NSE_HOLIDAYS);
-const APP_VERSION = 'v38';   // keep equal to CACHE in sw.js
+const APP_VERSION = 'v39';   // keep equal to CACHE in sw.js
 const TEST_FROM = '2026-11-04';   // the one real test trade (guardian LIVE_FROM)
 const FILES = ['plan', 'global-bias', 'volume-breakouts', 'performance', 'review', 'meta', 'live', 'small-capital', 'markets'];
 const D = {};
@@ -530,7 +530,8 @@ function capitalLine() {
   return `<details class="sreply"><summary><b>${c.edge_found ? '✅' : '🔎'} Fits ${money}?</b> ${c.edge_found ? esc(c.best) + ' shows an edge.' : 'No setup with a real edge yet. Stay in paper.'}
       <span class="fine">Checked ${ago(c.generated_at)}</span></summary>
     ${(c.setups || []).map((s) => `<div class="srow"><b>${s.edge ? '✅' : '❌'} ${esc(s.name)}</b><div class="fine">${s.trades} past trades · ${s.win_pct}% won · `
-      + (s.avg_pnl != null ? `avg ₹${s.avg_pnl} · worst ₹${s.worst} · last 120 days avg ₹${s.recent_avg ?? '–'}` : `avg ${s.avg_r}R`) + `</div></div>`).join('')}
+      + (s.avg_pnl != null ? `avg ₹${s.avg_pnl} · worst ₹${s.worst} · last 120 days avg ₹${s.recent_avg ?? '–'}` : `avg ${s.avg_r}R`)
+      + (s.margin != null ? ` · <b class="${s.margin <= c.capital ? 'up' : 'down'}">margin ≈ ₹${Number(s.margin).toLocaleString('en-IN')}</b>` : '') + `</div></div>`).join('')}
     <p class="fine">${esc(c.rule || '')}</p></details>`;
 }
 function vSimple() {
