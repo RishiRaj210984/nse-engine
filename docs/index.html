@@ -187,7 +187,7 @@ body.is-simple main{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 <script>
 const NSE_HOLIDAYS = ['2026-10-20', '2026-11-08', '2026-11-10', '2026-11-24', '2026-12-25'];   // fallback; meta.json has the live list
 const holidayList = () => (D.meta?.holidays?.length ? D.meta.holidays : NSE_HOLIDAYS);
-const APP_VERSION = 'v36';   // keep equal to CACHE in sw.js
+const APP_VERSION = 'v37';   // keep equal to CACHE in sw.js
 const FILES = ['plan', 'global-bias', 'volume-breakouts', 'performance', 'review', 'meta', 'live', 'small-capital', 'markets'];
 const D = {};
 let tab = 'dash', stockFilter = 'ab', lots = {}, loadErr = null, lastLoad = 0;
@@ -429,7 +429,8 @@ const wizSet = (w) => { store.set(wizKey(), w); render(); window.scrollTo(0, 0);
 // the guardian's answer to what we sent, if it has arrived
 function wizAnswer(w) {
   if (!w.wait) return null;
-  const pat = w.wait.cmd === 'SESSION' ? /logged in|login failed/i : /ENTER|not logged in|paused|refused/i;
+  const pat = w.wait.cmd === 'SESSION' ? /logged in|login failed/i
+    : new RegExp('ENTER ' + (w.wait.ix || '') + '\\b|not logged in|paused|refused', 'i');
   return gReplies.find((m) => m.time >= w.wait.at - 20 && pat.test(m.title || '')) || null;   // 20 s slack for a fast phone clock
 }
 async function wizSend(cmd, w) {
@@ -437,7 +438,7 @@ async function wizSend(cmd, w) {
   try {
     const r = await fetch('https://ntfy.sh/' + encodeURIComponent(topic), { method: 'POST', body: pin + ' ' + cmd });
     if (!r.ok) throw new Error('HTTP ' + r.status);
-    wizSet({ ...w, wait: { cmd: cmd.split(' ')[0], at: Date.now() / 1000 }, err: null });
+    wizSet({ ...w, wait: { cmd: cmd.split(' ')[0], ix: cmd.split(' ')[0] === 'ENTER' ? cmd.split(' ')[1] : null, at: Date.now() / 1000 }, err: null });
     [4, 8, 12, 16, 20, 30].forEach((s) => setTimeout(pollReplies, s * 1000));
   } catch (e) { wizSet({ ...w, err: 'Could not reach ntfy: ' + e.message + '. Check the internet and tap again.' }); }
 }
@@ -538,9 +539,11 @@ function vSimple() {
   if (w.step === 3 && ans && /not logged in/i.test(ans.title)) {
     w = { step: 1, err: 'The guardian is not logged in to ICICI today. Do steps 1 and 2 first, then the trade.' }; store.set(wizKey(), w); ans = null;
   } else if (w.step === 3 && w.wait && !ans && Date.now() / 1000 - w.wait.at > 60) {
-    w = { step: 3, err: 'No answer from the guardian in a minute. Check your phone alerts, then try again.' }; store.set(wizKey(), w);
+    w = { step: 3, done: w.done, err: 'No answer from the guardian in a minute. Check your phone alerts, then try again.' }; store.set(wizKey(), w);
   }
-  const trade = (p.options || []).find((o) => o.decision === 'TRADE');
+  const trades = (p.options || []).filter((o) => o.decision === 'TRADE'), trade = trades[0];
+  const heldOf = (o) => !live && (D.review?.paper?.open || []).find((x) => x.index === o.index);
+  const todo = trades.filter((o) => !heldOf(o));
   const today = p.session === t.date, inWindow = today && t.hm >= '10:10' && t.hm <= '11:30';
   const sess = p.session ? new Date(p.session + 'T12:00:00+05:30').toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'short', timeZone: 'Asia/Kolkata' }) : '';
   const setup = !(store.get('g_key', '') && store.get('g_topic', '') && store.get('g_pin', '') && store.get('g_alerts', ''));
@@ -552,8 +555,7 @@ function vSimple() {
   if (step) h += `<div class="wdots">${names.map((n, i) => `<span data-act="wz-go" data-s="${i + 1}" class="${i + 1 < step ? 'ok' : i + 1 === step ? 'on' : ''}">${i + 1 < step ? '✓' : i + 1} ${n}</span>`).join('')}</div>`;
   h += `<section class="wcard">`;
   if (w.err) h += `<div class="banner err">${esc(w.err)}</div>`;
-  const heldIx = trade && !live && (D.review?.paper?.open || []).some((o) => o.index === trade.index);
-  if (step === 3 && !heldIx) {
+  if (step === 3 && todo.length) {
     // is the guardian logged in today? (from its alerts since midnight)
     const midnight = new Date(t.date + 'T00:00:00+05:30').getTime() / 1000;
     const login = gReplies.find((m) => m.time >= midnight && /^Guardian: (logged in|login failed|not logged in)/i.test(m.title || ''));
@@ -600,42 +602,44 @@ function vSimple() {
         <button class="smore" data-act="wz-go" data-s="1">‹ Back to step 1</button>`;
     }
   } else if (step === 3) {
-    const held = trade && !live && (D.review?.paper?.open || []).find((o) => o.index === trade.index);
-    if (held) {
-      h += `<h2>Step 3 · Already holding ${esc(held.index)}</h2><div class="wwait">🟡</div>
-        <p>The paper book still holds the <b>${esc(held.index)} ${esc(held.strategy)}</b> from ${esc(new Date(held.entry_session + 'T12:00:00+05:30').toDateString().slice(0, 10))} (expiry ${esc(new Date(held.expiry + 'T12:00:00+05:30').toDateString().slice(0, 10))}). One trade per index at a time, so <b>no new ${esc(held.index)} trade today</b>.</p>
-        <p class="fine">It closes by itself at the target, the stop, or at 10:15 on expiry day. See 📒 Paper results below.</p>`
-        + BIG('OK, finish', 'data-act="wz-go" data-s="4"', 'go');
-    } else if (!trade) {
+    // every index the plan marks TRADE is shown, one card each, in the plan's order
+    const held = trades.map((o) => heldOf(o)).filter(Boolean);
+    const wix = w.wait?.ix || 'NIFTY';
+    if (!trades.length) {
       h += `<h2>Step 3 · No trade today</h2><div class="wwait">😴</div><p>Today's plan says <b>do not trade</b>. Nothing to buy or sell. You are done.</p>`
         + BIG('OK, finish', 'data-act="wz-go" data-s="4"', 'go');
     } else if (w.wait && !ans) {
       const s = Math.round(Date.now() / 1000 - w.wait.at), last = gReplies[0];
-      h += `<h2>Step 3 · Asking the guardian…</h2><div class="wwait">⏳</div><p>It checks the plan, the time and the NIFTY price, then answers in 15–30 seconds.</p>
+      h += `<h2>Step 3 · Asking the guardian about ${esc(wix)}…</h2><div class="wwait">⏳</div><p>It checks the plan, the time and the ${esc(wix)} price, then answers in 15–30 seconds.</p>
         <p class="fine">Waiting ${s} s…${last ? ` Last alert: <b>${esc(last.title || '')}</b>` : ''}</p>`;
     } else if (ans) {
-      const ok = /: OK/i.test(ans.title);
-      h += `<h2>Step 3 · ${ok ? 'Done' : 'Not placed'}</h2><div class="wwait">${ok ? '✅' : '⚠️'}</div><p>${esc(ans.message || ans.title)}</p>`
-        + (ok ? BIG('Next ›', 'data-act="wz-go" data-s="4"', 'go') : BIG('Back', 'data-act="wz-go" data-s="3"'));
+      const ok = /: OK/i.test(ans.title), done = [...(w.done || []), wix];
+      const more = todo.some((o) => !done.includes(o.index));
+      h += `<h2>Step 3 · ${esc(wix)} ${ok ? 'done' : 'not placed'}</h2><div class="wwait">${ok ? '✅' : '⚠️'}</div><p>${esc(ans.message || ans.title)}</p>`
+        + (ok ? (more ? BIG('Next trade ›', `data-act="wz-next" data-ix="${esc(wix)}"`, 'go') : BIG('Next ›', 'data-act="wz-go" data-s="4"', 'go'))
+              : BIG('Back', 'data-act="wz-go" data-s="3"'));
     } else {
-      const legs = String(trade.legs || '').split('+').map((x) => x.trim()).filter(Boolean);
-      h += `<h2>Step 3 · Today's trade</h2>
-        <div class="wtrade"><div class="wt-h">${esc(trade.index)} · ${esc(trade.strategy)} · 1 lot (${esc(trade.lot_size)} qty)</div>
+      const left = todo.filter((o) => !(w.done || []).includes(o.index));
+      h += `<h2>Step 3 · Today's ${trades.length > 1 ? trades.length + ' trades' : 'trade'}</h2>`;
+      held.forEach((x) => {
+        h += `<div class="sreply">🟡 <b>${esc(x.index)}</b>: the paper book still holds the ${esc(x.strategy)} from ${esc(new Date(x.entry_session + 'T12:00:00+05:30').toDateString().slice(0, 10))} (expiry ${esc(new Date(x.expiry + 'T12:00:00+05:30').toDateString().slice(0, 10))}). One trade per index at a time, so no new ${esc(x.index)} trade today. It closes by itself; see 📒 Paper results.</div>`;
+      });
+      left.forEach((o) => {
+        const legs = String(o.legs || '').split('+').map((x) => x.trim()).filter(Boolean);
+        h += `<div class="wtrade"><div class="wt-h">${esc(o.index)} · ${esc(o.strategy)} · 1 lot (${esc(o.lot_size)} qty)</div>
           ${legs.map((l) => `<div class="leg ${l.startsWith('BUY') ? 'BUY' : 'SELL'}">${esc(l)}</div>`).join('')}
-          <dl class="kv"><dt>When</dt><dd>${esc(trade.entry || trade.enter_at)}</dd>
-          <dt>Best case</dt><dd class="up">+₹${Number(trade.max_reward || 0).toLocaleString('en-IN')} per lot</dd>
-          <dt>Worst case</dt><dd class="down">−₹${Number(trade.max_loss || 0).toLocaleString('en-IN')} per lot</dd>
-          <dt>Exit</dt><dd>${esc(trade.target)}. ${esc(trade.stop_loss)}.</dd>
-          <dt>History</dt><dd class="fine">${esc(trade.decision_reason || '')}</dd></dl></div>`;
-      const others = (p.options || []).filter((o) => o.decision === 'TRADE' && o.index !== trade.index).map((o) => o.index === 'BANKNIFTY' ? 'BankNifty' : o.index);
-      if (others.length) h += `<p class="fine">${esc(others.join(', '))} is also a trade today, but it needs far more money than ₹10,000, so it is tracked in 📒 Paper results only.</p>`;
-      if (inWindow) {
-        h += BIG(live ? 'Place this trade (real money)' : 'Practice: what would it place?', `data-act="wz-enter" data-ix="${esc(trade.index)}"`, 'go')
-          + `<p class="fine">${live ? 'The guardian buys and sells all 4 legs, then exits by itself at the target or stop.' : 'Paper mode: nothing is bought. The guardian only tells you what it would place.'}</p>`;
-      } else {
-        h += `<div class="banner">⏰ Come back between <b>10:10 and 11:30</b>${today ? '' : ' on ' + esc(sess)}. The button to place the trade appears then.</div>`
-          + BIG('Practice now (demo, nothing bought)', 'data-act="wz-demo"');
-      }
+          <dl class="kv"><dt>When</dt><dd>${esc(o.entry || o.enter_at)}</dd>
+          <dt>Best case</dt><dd class="up">+₹${Number(o.max_reward || 0).toLocaleString('en-IN')} per lot</dd>
+          <dt>Worst case</dt><dd class="down">−₹${Number(o.max_loss || 0).toLocaleString('en-IN')} per lot</dd>
+          <dt>Exit</dt><dd>${esc(o.target)}. ${esc(o.stop_loss)}.</dd>
+          <dt>History</dt><dd class="fine">${esc(o.decision_reason || '')}</dd></dl>`
+          + (inWindow ? BIG(live ? `Place ${esc(o.index)} (real money)` : `Practice ${esc(o.index)}: what would it place?`, `data-act="wz-enter" data-ix="${esc(o.index)}"`, 'go')
+                      : BIG(`Practice ${esc(o.index)} now (demo, nothing bought)`, `data-act="wz-demo" data-ix="${esc(o.index)}"`))
+          + `</div>`;
+      });
+      if (!left.length) h += BIG('OK, finish', 'data-act="wz-go" data-s="4"', 'go');
+      else if (inWindow) h += `<p class="fine">${live ? 'The guardian buys and sells all 4 legs, then exits by itself at the target or stop. Check the margin ICICI shows before placing.' : 'Paper mode: nothing is bought. The guardian only tells you what it would place. The paper book tracks every trade above.'}</p>`;
+      else h += `<div class="banner">⏰ Come back between <b>10:10 and 11:30</b>${today ? '' : ' on ' + esc(sess)}. The buttons to place the trades appear then.</div>`;
     }
   } else {
     h += `<h2>All done</h2><div class="wwait">🎉</div>
@@ -1362,11 +1366,12 @@ $('#view').addEventListener('click', (e) => {
       }
     }
     if (a.dataset.act === 'markets') { showMarkets = !showMarkets; render(); window.scrollTo(0, 0); }
-    if (a.dataset.act === 'wz-go') wizSet({ step: +a.dataset.s });
+    if (a.dataset.act === 'wz-go') wizSet({ step: +a.dataset.s, done: +a.dataset.s === 3 ? wizGet().done : undefined });
     if (a.dataset.act === 'wz-login') setTimeout(() => wizSet({ step: 2 }), 300);
     if (a.dataset.act === 'wz-paste') wizPaste();
     if (a.dataset.act === 'wz-enter') { if (confirm(store.get('g_live', false) ? 'Place this trade with real money?' : 'Ask the guardian what it would place (paper, nothing bought)?')) wizSend('ENTER ' + a.dataset.ix + ' 1', wizGet()); }
-    if (a.dataset.act === 'wz-demo') wizSend('ENTER NIFTY 1 DEMO', wizGet());
+    if (a.dataset.act === 'wz-demo') wizSend('ENTER ' + (a.dataset.ix || 'NIFTY') + ' 1 DEMO', wizGet());
+    if (a.dataset.act === 'wz-next') { const w = wizGet(); wizSet({ step: 3, done: [...(w.done || []), a.dataset.ix] }); }
     if (a.dataset.act === 'sm-done') { doneSet(a.dataset.k); render(); }
     if (a.dataset.act === 'sm-plan') { doneSet('plan'); render(); [...document.querySelectorAll('.box h3 span')].find((x) => x.textContent.startsWith('Quick view'))?.scrollIntoView({ behavior: 'smooth' }); }
     if (a.dataset.act === 'sm-results') { doneSet('review'); render(); [...document.querySelectorAll('.box h3 span')].find((x) => x.textContent.startsWith('Profit'))?.scrollIntoView({ behavior: 'smooth' }); }
