@@ -821,6 +821,9 @@ def _mask(v):
 def check():
     """Read-only test of every piece. Never prints keys or personal details; places no orders."""
     env = load_env()
+    st = load_state()
+    if st.get("session_day") == datetime.now(IST).date().isoformat() and st.get("session_token"):
+        env["BREEZE_SESSION_TOKEN"] = st["session_token"]   # today's login sent from the phone
     ok = True
     print("1) guardian.env:", "found" if os.path.exists(ENV_FILE) else "NOT FOUND (copy guardian.env.example to guardian.env)")
     for k in ("BREEZE_API_KEY", "BREEZE_API_SECRET", "BREEZE_SESSION_TOKEN"):
