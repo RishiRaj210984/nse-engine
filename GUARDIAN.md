@@ -48,3 +48,16 @@ If ICICI rejects an order (for example, no registered static IP) you get an urge
 
 **Tested offline** (`python tests/test_guardian.py`): condor hold / book / stop, bought-option stop,
 trailing exit and book, paper mode sends no orders, STOP file, rejected-order alert.
+
+## One real test trade (₹15,000)
+When the guardian runs in LIVE mode it places **one** real trade, then goes back to paper entries:
+- only **NIFTY**, only from **4 Nov 2026** (after the 3 Nov expiry), **1 lot**;
+- the plan's Iron Condor with **150-point wings** (same sold strikes, bought strikes 150 points out),
+  so the worst case is about ₹7,500 instead of about ₹12,000;
+- before any order it asks **ICICI's margin calculator** for the whole basket and reads your free F&O money.
+  If the margin is unknown, above ₹15,000, or above your free F&O money, nothing is placed;
+- BankNifty and every later entry are paper. The real position is exited automatically
+  (55% target, 1× stop, 10:15 on expiry day), and the emergency Close all still works.
+
+Settings (guardian.env): `CAPITAL`, `LIVE_INDEX`, `LIVE_FROM`, `LIVE_WING`, `LIVE_MAX_TRADES`.
+Run `python backend/guardian.py check` once before the day: line 7 shows ICICI's margin for the test trade.

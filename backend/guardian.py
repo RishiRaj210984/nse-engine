@@ -49,6 +49,11 @@ LONG_TIME_EXIT = "15:15"
 # Sold structures still open on expiry day are closed at 10:15: of exits up to 12:00 it was the best
 # in a 2-year replay (Nifty about equal to holding to the close, BankNifty clearly better)
 EXPIRY_EXIT = "10:15"
+# One real test trade (guardian.env can change these). In LIVE mode the guardian places at most
+# LIVE_MAX_TRADES real entries, only for LIVE_INDEX, only from LIVE_FROM, as the plan's condor with
+# LIVE_WING-point wings, and only after ICICI's own margin check fits your free F&O money and CAPITAL.
+# Every other entry is paper. Exits of real positions stay live and automatic.
+LIVE_DEFAULTS = {"CAPITAL": "15000", "LIVE_INDEX": "NIFTY", "LIVE_FROM": "2026-11-04", "LIVE_WING": "150", "LIVE_MAX_TRADES": "1"}
 
 
 def _expiry_date(exp):
@@ -73,6 +78,8 @@ def load_env():
     env.setdefault("POLL_SECONDS", "20")
     env.setdefault("MAX_DAILY_ORDERS", "12")
     env.setdefault("TRAIL_PCT", "25")
+    for k, v in LIVE_DEFAULTS.items():
+        env.setdefault(k, v)
     return env
 
 
@@ -425,7 +432,78 @@ def _place_legs(breeze, index, legs, expiry_iso, qty, now, live):
     return True, plan_lines, placed, None
 
 
-def enter_trade(breeze, env, state, index, lots, live, now, plan=None, demo=False):
+def live_gate(env, state, index, now):
+    """In LIVE mode, may this entry use real money? Returns (True, '') or (False, why it is paper)."""
+    used = len(state.get("live_trades") or [])
+    if index != env["LIVE_INDEX"].upper():
+        return False, f"{index} is paper only (the real test is {env['LIVE_INDEX']})"
+    if now.date().isoformat() < env["LIVE_FROM"]:
+        return False, f"the real test starts {env['LIVE_FROM']}"
+    if used >= int(env["LIVE_MAX_TRADES"]):
+        return False, "the real test trade is already done; new entries are paper again"
+    return True, ""
+
+
+def test_legs(legs, wing):
+    """The plan's condor with narrower wings: same sold strikes, bought strikes `wing` points beyond them.
+    None if the plan's structure is not a condor."""
+    sells = {l["type"]: l for l in legs if l["action"] == "SELL"}
+    if len(legs) != 4 or set(sells) != {"CE", "PE"}:
+        return None
+    out = []
+    for l in legs:
+        if l["action"] == "BUY":
+            k = sells[l["type"]]["strike"] + (wing if l["type"] == "CE" else -wing)
+            l = {**l, "strike": k, "est_premium": 0}
+        out.append(l)
+    return out
+
+
+def _num(v):
+    try:
+        return float(str(v).replace(",", ""))
+    except (TypeError, ValueError):
+        return None
+
+
+def margin_check(breeze, index, legs, expiry, qty, capital):
+    """ICICI's own margin for the whole basket against your free F&O money and CAPITAL.
+    Returns (ok, need, free, message). Anything unreadable counts as NOT ok: no real order on a guess."""
+    exp = datetime.strptime(expiry, "%Y-%m-%d").strftime("%d-%b-%Y")
+    rows = []
+    for l in legs:
+        q = _opt_quote(breeze, BREEZE_CODE[index], "call" if l["type"] == "CE" else "put", l["strike"],
+                       datetime.strptime(expiry, "%Y-%m-%d").strftime("%Y-%m-%dT06:00:00.000Z"))
+        rows.append({"strike_price": str(int(l["strike"])), "quantity": str(qty), "right": "Call" if l["type"] == "CE" else "Put",
+                     "product": "options", "action": l["action"].lower(), "price": f"{float(q.get('ltp') or l.get('est_premium') or 0):.2f}",
+                     "expiry_date": exp, "stock_code": BREEZE_CODE[index], "cover_order_flow": "N", "fresh_order_type": "N",
+                     "cover_limit_rate": "0", "cover_sltp_price": "0", "fresh_limit_rate": "0", "open_quantity": "0"})
+    try:
+        r = breeze.margin_calculator(rows, exchange_code="NFO") or {}
+        f = breeze.get_funds() or {}
+    except Exception as exc:
+        return False, None, None, f"could not ask ICICI for the margin ({str(exc)[:80]})"
+    s = r.get("Success") or {}
+    s = (s[0] if s else {}) if isinstance(s, list) else s
+    parts = [x for x in (_num(s.get("span_margin_required")), _num(s.get("non_span_margin_required"))) if x is not None]
+    named = [_num(v) for k, v in s.items() if "margin" in k.lower() and _num(v) is not None]
+    need = max([sum(parts)] + named) if (parts or named) else None   # the largest figure ICICI gives: safest
+    fd = f.get("Success") or {}
+    fd = (fd[0] if fd else {}) if isinstance(fd, list) else fd
+    alloc, blocked = _num(fd.get("allocated_fno")), _num(fd.get("block_by_trade_fno")) or 0
+    free = None if alloc is None else alloc - blocked
+    if not need or need <= 0:
+        return False, need, free, f"ICICI gave no margin figure ({str(r.get('Error') or s)[:100]})"
+    if free is None:
+        return False, need, free, f"could not read your free F&O money ({str(f.get('Error') or '')[:80]})"
+    if need > capital:
+        return False, need, free, f"ICICI margin Rs {need:,.0f} is above your Rs {capital:,} limit"
+    if need > free:
+        return False, need, free, f"ICICI margin Rs {need:,.0f} is more than your free F&O money Rs {free:,.0f}: add funds to F&O"
+    return True, need, free, f"ICICI margin Rs {need:,.0f}, free F&O money Rs {free:,.0f}"
+
+
+def enter_trade(breeze, env, state, index, lots, live, now, plan=None, demo=False, test=False):
     """Place today's plan trade for `index`: BUY legs first, then SELL legs, limit orders at the touch.
     Refuses unless the plan is for today, marks the index TRADE, and the entry window/condition holds."""
     lots = max(1, min(int(lots), int(env.get("MAX_LOTS", "1"))))
@@ -460,8 +538,19 @@ def enter_trade(breeze, env, state, index, lots, live, now, plan=None, demo=Fals
         spot = 0
     if not demo and spot and len(shorts) >= 2 and not (shorts[0] < spot < shorts[-1]):
         return False, f"{index} {spot:,.0f} is outside the short strikes {shorts[0]:,}-{shorts[-1]:,}: entry condition not met"
+    legs, margin_note = s["legs"], ""
+    if live and test:   # the one real test trade: 1 lot, narrower wings, ICICI margin checked first
+        lots, wing = 1, int(env["LIVE_WING"])
+        legs = test_legs(s["legs"], wing)
+        if legs is None:
+            return False, f"today's {index} trade is a {s['name']}; the real test is for the Iron Condor only. Not placed."
+        if wing * full["lot_size"] > int(env["CAPITAL"]):
+            return False, f"worst case Rs {wing * full['lot_size']:,} is above your Rs {int(env['CAPITAL']):,} limit. Not placed."
+        ok, need, free, margin_note = margin_check(breeze, index, legs, full["expiry"], full["lot_size"], int(env["CAPITAL"]))
+        if not ok:
+            return False, f"{margin_note}. Not placed (nothing bought)."
     qty = full["lot_size"] * lots
-    legs = sorted(s["legs"], key=lambda l: 0 if l["action"] == "BUY" else 1)
+    legs = sorted(legs, key=lambda l: 0 if l["action"] == "BUY" else 1)
     ok, plan_lines, placed, err = _place_legs(breeze, index, legs, expiry_iso, qty, now, live)
     if not ok:
         return False, err
@@ -470,7 +559,14 @@ def enter_trade(breeze, env, state, index, lots, live, now, plan=None, demo=Fals
         if not spot:
             tag += ", plan prices (market closed)"
         return True, f"{tag}: {s['name']} exp {full['expiry']}: would place " + "; ".join(plan_lines) + (f". {index} now {spot:,.0f}." if spot else "")
-    return True, "Entered: " + "; ".join(placed)
+    state.setdefault("live_trades", []).append({"day": now.date().isoformat(), "time": now.strftime("%H:%M"), "index": index,
+                                                "legs": placed, "margin": margin_note})
+    if not test:
+        return True, "Entered: " + "; ".join(placed)
+    left = int(env["LIVE_MAX_TRADES"]) - len(state["live_trades"])
+    return True, (f"REAL TEST TRADE placed: {s['name']} ({env['LIVE_WING']}-point wings) exp {full['expiry']}: " + "; ".join(placed)
+                  + f". {margin_note}. The guardian exits it by itself (55% target, 1x stop, 10:15 on expiry day). "
+                  + ("New entries are paper again." if left <= 0 else f"{left} real trade(s) left."))
 
 
 def check_capital_edge(env, state, now):
@@ -612,12 +708,12 @@ def handle_command(cmd, breeze_box, env, state, live, now):
     elif os.path.exists(STOP_FILE) and name != "EXIT":   # an emergency close still works while paused
         notify(env, "Guardian is paused", "Send RESUME first.", urgent=True)
     elif name == "ENTER" and len(cmd) >= 2 and cmd[1].upper() in BREEZE_CODE:
-        demo = any(c.upper() == "DEMO" for c in cmd[2:])
-        if demo and live:
-            notify(env, "Guardian: demo refused", "Demo works only in PAPER mode.", urgent=True)
-            return
+        demo = any(c.upper() == "DEMO" for c in cmd[2:])   # a demo never places orders, in either mode
         lots = next((c for c in cmd[2:] if c.isdigit()), 1)
-        ok, msg = enter_trade(breeze_box[0], env, state, cmd[1].upper(), lots, live, now, demo=demo)
+        real, why = live_gate(env, state, cmd[1].upper(), now) if live and not demo else (False, "")
+        ok, msg = enter_trade(breeze_box[0], env, state, cmd[1].upper(), lots, real, now, demo=demo, test=real)
+        if live and not demo and not real:
+            msg = f"Paper, not real: {why}. " + msg
         notify(env, f"Guardian ENTER {cmd[1].upper()}: {'OK' if ok else 'NOT DONE'}", msg, urgent=not ok)
     elif name in ("EXIT", "STATUS"):
         if name == "EXIT":
@@ -649,8 +745,12 @@ def run(live_flag=False, breeze=None, once=False, clock=None):
             log.warning("startup login failed (%s); waiting for a SESSION command", exc)
     # a restart within 30 minutes (crash, update) stays quiet
     if time.time() - state.get("started_at", 0) > 30 * 60:
-        notify(env, "Guardian started", f"Mode: {'LIVE (may place and exit orders)' if live else 'PAPER (alerts only, no orders)'}"
-                                        f"{'' if box[0] else '. Waiting for today’s SESSION code.'}")
+        used = len(state.get("live_trades") or [])
+        notify(env, "Guardian started", ((f"Mode: LIVE TEST: {used} of {env['LIVE_MAX_TRADES']} real {env['LIVE_INDEX']} trade(s) used, "
+                                          f"from {env['LIVE_FROM']}, {env['LIVE_WING']}-point wings, limit Rs {int(env['CAPITAL']):,}. "
+                                          "Other entries are paper. Real positions are exited automatically")
+                                         if live else 'Mode: PAPER (alerts only, no orders)')
+                                        + ('' if box[0] else '. Waiting for today’s SESSION code.'))
     state["started_at"] = time.time()
     save_state(state)
     while True:
@@ -765,10 +865,26 @@ def check():
             print("   Nifty last price:", (q.get("Success") or [{}])[0].get("ltp"))
         except Exception:
             pass
+    # the real test trade: ask ICICI's margin calculator now, so a problem shows up before the day
+    try:
+        ix, wing = env["LIVE_INDEX"].upper(), int(env["LIVE_WING"])
+        full = (fetch_plan()[0].get("options") or {}).get(ix) or {}
+        tl = test_legs(full["strategies"][0]["legs"], wing) if full.get("strategies") else None
+        if tl is None:
+            print(f"7) Margin for the real test: today's plan has no {ix} condor to price (try again another day)")
+        else:
+            ok7, need, free, msg = margin_check(b, ix, tl, full["expiry"], full["lot_size"], int(env["CAPITAL"]))
+            print(f"7) Margin for the real test ({ix} condor, {wing}-point wings, 1 lot, exp {full['expiry']}): "
+                  f"{'FITS' if ok7 else 'DOES NOT FIT'}. {msg}")
+            print("   " + ", ".join(f"{l['action']} {l['strike']} {l['type']}" for l in tl))
+    except Exception as exc:
+        print(f"7) Margin for the real test: could not check ({str(exc)[:160]})")
+    print(f"   Real trades used: {len(load_state().get('live_trades') or [])} of {env['LIVE_MAX_TRADES']}, "
+          f"from {env['LIVE_FROM']}, MODE={env['MODE']}")
     if env.get("NTFY_TOPIC"):
         notify(env, "Guardian check", "Test alert: if you see this on your phone, alerts work.")
-        print("7) Test alert sent to your ntfy topic: check your phone.")
-    print("\nNo orders were placed. If 3-6 are OK, you are ready for the paper trial: python backend/guardian.py run")
+        print("8) Test alert sent to your ntfy topic: check your phone.")
+    print("\nNo orders were placed. If 3-7 are OK, the guardian is ready: python backend/guardian.py run")
 
 
 def login_link():

@@ -7,7 +7,7 @@ your broker's option chain before placing an order.
 from datetime import date, datetime, time, timedelta
 from math import erf, exp, log, sqrt
 
-from config import INDEX_SPECS, RISK_FREE_RATE
+from config import INDEX_SPECS, RISK_FREE_RATE, TEST_WINGS
 from indicators import atr, ema, pivots
 
 
@@ -167,6 +167,12 @@ def build(name, label, df_prior, spot, iv, target_date, now):
             f"Buy back at ₹{credit * 0.45:.1f} (keep ~55% of credit), else hold to expiry {expiry:%a %d %b}",
             f"Exit if the loss reaches 1× credit (≈₹{credit * lot:,.0f} per lot)",
             [sp - credit, sc + credit], "Hedged premium selling. Check SPAN margin with your broker."))
+        tw = TEST_WINGS.get(name)
+        if tw:   # the one-real-trade test: same short strikes, narrower wings
+            tl = [leg("SELL", sc, "CE"), leg("BUY", sc + tw, "CE"), leg("SELL", sp, "PE"), leg("BUY", sp - tw, "PE")]
+            tc = tl[0]["est_premium"] - tl[1]["est_premium"] + tl[2]["est_premium"] - tl[3]["est_premium"]
+            strategies[-1]["test"] = {"wing": tw, "legs": tl, "net_premium": round(tc, 1),
+                                      "max_loss": round((tw - tc) * lot), "max_reward": round(tc * lot)}
 
         fly_w = 2 * width
         legs = [leg("SELL", atm, "CE"), leg("SELL", atm, "PE"), leg("BUY", atm + fly_w, "CE"), leg("BUY", atm - fly_w, "PE")]

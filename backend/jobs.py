@@ -79,6 +79,7 @@ def build_plan(bias, scan):
             "enter_at": "10:15 IST, after the first hour" if s["net_premium"] > 0 else "09:45–11:00 IST",
             "exit_by": f"target / stop, else expiry {o['expiry']}" if s["net_premium"] > 0 else "15:00 IST same day if no target",
             "setup_stats": o.get("setup", {}).get("stats"),
+            "test": s.get("test"),
         })
     picks = [c for c in scan["candidates"] if c["grade"] in ("A", "B")][:5]
     conf = bias["model"].get("directional_accuracy")

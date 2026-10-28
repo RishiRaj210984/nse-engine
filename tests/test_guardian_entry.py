@@ -87,9 +87,9 @@ print("ALL PASS" if all(res) else "SOME FAILED")
 # demo: skips time/plan/spot checks, never places orders, refused in live mode
 fb = FB(spot=23400); ok, msg = guardian.enter_trade(fb, env, {}, "NIFTY", 1, True, datetime(2026, 10, 21, 19, 40, tzinfo=IST), PLAN, demo=True)
 t("DEMO outside hours/plan/spot: OK, no orders even with live=True", ok and msg.startswith("DEMO") and not fb.orders)
-sent.clear(); box = [FB()]; guardian.handle_command(["ENTER", "NIFTY", "1", "DEMO"], box, env, {}, True, NOW)
-t("ENTER ... DEMO refused when guardian is live", "demo refused" in sent[-1][0] and not box[0].orders)
 guardian.fetch_plan = lambda: PLAN
+sent.clear(); box = [FB()]; guardian.handle_command(["ENTER", "NIFTY", "1", "DEMO"], box, guardian.load_env() | env, {}, True, NOW)
+t("ENTER ... DEMO when guardian is live: allowed, still no orders", "OK" in sent[-1][0] and sent[-1][1].startswith("DEMO") and not box[0].orders)
 sent.clear(); box = [FB()]; guardian.handle_command(["ENTER", "NIFTY", "1", "DEMO"], box, env, {}, False, datetime(2026, 10, 21, 19, 40, tzinfo=IST))
 t("ENTER ... DEMO in paper mode: alert lists the legs", "OK" in sent[-1][0] and "would place" in sent[-1][1] and not box[0].orders)
 print("ALL PASS" if all(res) else "SOME FAILED")

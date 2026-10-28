@@ -346,7 +346,7 @@ def run():
 
 
 # ------------------------------------------------------------------ does anything fit my money?
-SMALL_WIDTHS = {"NIFTY": (50, 100), "BANKNIFTY": (100, 200)}
+SMALL_WIDTHS = {"NIFTY": (50, 100, 150), "BANKNIFTY": (100, 200, 300)}
 
 
 def _edge(stats, recent, worst_cap):

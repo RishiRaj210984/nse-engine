@@ -187,7 +187,8 @@ body.is-simple main{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 <script>
 const NSE_HOLIDAYS = ['2026-10-20', '2026-11-08', '2026-11-10', '2026-11-24', '2026-12-25'];   // fallback; meta.json has the live list
 const holidayList = () => (D.meta?.holidays?.length ? D.meta.holidays : NSE_HOLIDAYS);
-const APP_VERSION = 'v37';   // keep equal to CACHE in sw.js
+const APP_VERSION = 'v38';   // keep equal to CACHE in sw.js
+const TEST_FROM = '2026-11-04';   // the one real test trade (guardian LIVE_FROM)
 const FILES = ['plan', 'global-bias', 'volume-breakouts', 'performance', 'review', 'meta', 'live', 'small-capital', 'markets'];
 const D = {};
 let tab = 'dash', stockFilter = 'ab', lots = {}, loadErr = null, lastLoad = 0;
@@ -550,7 +551,7 @@ function vSimple() {
   const BIG = (label, attrs, tone = '') => `<button class="sbtn ${tone}" ${attrs}><span class="slab" style="text-align:center">${label}</span></button>`;
   const step = setup ? 0 : w.step;
   const names = ['Log in', 'Send code', 'Trade', 'Done'];
-  let h = `<div class="simple"><div class="sstatus"><b>${esc(sess)}</b> · <span class="${live ? 'up' : 'warn'}">${live ? 'LIVE money' : 'PAPER (practice)'}</span> <span class="fine">· app ${APP_VERSION}</span></div>`;
+  let h = `<div class="simple"><div class="sstatus"><b>${esc(sess)}</b> · <span class="${live ? 'up' : 'warn'}">${live ? 'LIVE TEST (1 real NIFTY trade)' : 'PAPER (practice)'}</span> <span class="fine">· app ${APP_VERSION}</span></div>`;
   // tap a step to go to it
   if (step) h += `<div class="wdots">${names.map((n, i) => `<span data-act="wz-go" data-s="${i + 1}" class="${i + 1 < step ? 'ok' : i + 1 === step ? 'on' : ''}">${i + 1 < step ? '✓' : i + 1} ${n}</span>`).join('')}</div>`;
   h += `<section class="wcard">`;
@@ -625,20 +626,24 @@ function vSimple() {
         h += `<div class="sreply">🟡 <b>${esc(x.index)}</b>: the paper book still holds the ${esc(x.strategy)} from ${esc(new Date(x.entry_session + 'T12:00:00+05:30').toDateString().slice(0, 10))} (expiry ${esc(new Date(x.expiry + 'T12:00:00+05:30').toDateString().slice(0, 10))}). One trade per index at a time, so no new ${esc(x.index)} trade today. It closes by itself; see 📒 Paper results.</div>`;
       });
       left.forEach((o) => {
-        const legs = String(o.legs || '').split('+').map((x) => x.trim()).filter(Boolean);
-        h += `<div class="wtrade"><div class="wt-h">${esc(o.index)} · ${esc(o.strategy)} · 1 lot (${esc(o.lot_size)} qty)</div>
+        // LIVE: only the one real test trade uses money (the plan's condor with narrower wings); the rest is paper
+        const real = live && o.test && t.date >= TEST_FROM;
+        const x = real ? { ...o, legs: o.test.legs.map((l) => `${l.action} ${l.strike} ${l.type}`).join(' + '), max_reward: o.test.max_reward, max_loss: o.test.max_loss } : o;
+        const legs = String(x.legs || '').split('+').map((s) => s.trim()).filter(Boolean);
+        const tag = real ? ` · <span class="up">REAL TEST, ${o.test.wing}-point wings</span>` : live ? ' · <span class="warn">paper</span>' : '';
+        h += `<div class="wtrade"><div class="wt-h">${esc(o.index)} · ${esc(o.strategy)} · 1 lot (${esc(o.lot_size)} qty)${tag}</div>
           ${legs.map((l) => `<div class="leg ${l.startsWith('BUY') ? 'BUY' : 'SELL'}">${esc(l)}</div>`).join('')}
           <dl class="kv"><dt>When</dt><dd>${esc(o.entry || o.enter_at)}</dd>
-          <dt>Best case</dt><dd class="up">+₹${Number(o.max_reward || 0).toLocaleString('en-IN')} per lot</dd>
-          <dt>Worst case</dt><dd class="down">−₹${Number(o.max_loss || 0).toLocaleString('en-IN')} per lot</dd>
+          <dt>Best case</dt><dd class="up">+₹${Number(x.max_reward || 0).toLocaleString('en-IN')} per lot${real ? ' (estimate)' : ''}</dd>
+          <dt>Worst case</dt><dd class="down">−₹${Number(x.max_loss || 0).toLocaleString('en-IN')} per lot${real ? ' (estimate)' : ''}</dd>
           <dt>Exit</dt><dd>${esc(o.target)}. ${esc(o.stop_loss)}.</dd>
           <dt>History</dt><dd class="fine">${esc(o.decision_reason || '')}</dd></dl>`
-          + (inWindow ? BIG(live ? `Place ${esc(o.index)} (real money)` : `Practice ${esc(o.index)}: what would it place?`, `data-act="wz-enter" data-ix="${esc(o.index)}"`, 'go')
+          + (inWindow ? BIG(real ? `Place ${esc(o.index)} (real money)` : `Practice ${esc(o.index)}: what would it place?`, `data-act="wz-enter" data-ix="${esc(o.index)}" data-real="${real ? 1 : ''}"`, 'go')
                       : BIG(`Practice ${esc(o.index)} now (demo, nothing bought)`, `data-act="wz-demo" data-ix="${esc(o.index)}"`))
           + `</div>`;
       });
       if (!left.length) h += BIG('OK, finish', 'data-act="wz-go" data-s="4"', 'go');
-      else if (inWindow) h += `<p class="fine">${live ? 'The guardian buys and sells all 4 legs, then exits by itself at the target or stop. Check the margin ICICI shows before placing.' : 'Paper mode: nothing is bought. The guardian only tells you what it would place. The paper book tracks every trade above.'}</p>`;
+      else if (inWindow) h += `<p class="fine">${live ? `One real test trade only: NIFTY from ${+TEST_FROM.slice(8)} Nov, 1 lot, after ICICI's margin check. The guardian buys and sells all 4 legs and exits by itself. Everything else, and every trade after it, is paper.` : 'Paper mode: nothing is bought. The guardian only tells you what it would place. The paper book tracks every trade above.'}</p>`;
       else h += `<div class="banner">⏰ Come back between <b>10:10 and 11:30</b>${today ? '' : ' on ' + esc(sess)}. The buttons to place the trades appear then.</div>`;
     }
   } else {
@@ -1369,7 +1374,7 @@ $('#view').addEventListener('click', (e) => {
     if (a.dataset.act === 'wz-go') wizSet({ step: +a.dataset.s, done: +a.dataset.s === 3 ? wizGet().done : undefined });
     if (a.dataset.act === 'wz-login') setTimeout(() => wizSet({ step: 2 }), 300);
     if (a.dataset.act === 'wz-paste') wizPaste();
-    if (a.dataset.act === 'wz-enter') { if (confirm(store.get('g_live', false) ? 'Place this trade with real money?' : 'Ask the guardian what it would place (paper, nothing bought)?')) wizSend('ENTER ' + a.dataset.ix + ' 1', wizGet()); }
+    if (a.dataset.act === 'wz-enter') { if (confirm(a.dataset.real ? 'REAL MONEY: place the one test trade (' + a.dataset.ix + ', 1 lot)? ICICI margin is checked first.' : 'Ask the guardian what it would place (paper, nothing bought)?')) wizSend('ENTER ' + a.dataset.ix + ' 1', wizGet()); }
     if (a.dataset.act === 'wz-demo') wizSend('ENTER ' + (a.dataset.ix || 'NIFTY') + ' 1 DEMO', wizGet());
     if (a.dataset.act === 'wz-next') { const w = wizGet(); wizSet({ step: 3, done: [...(w.done || []), a.dataset.ix] }); }
     if (a.dataset.act === 'sm-done') { doneSet(a.dataset.k); render(); }
