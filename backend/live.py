@@ -80,7 +80,7 @@ def nse_date(iso):
 
 
 # ------------------------------------------------------------------ analysis
-def summarise_chain(rec, step, window=12):
+def summarise_chain(rec, step, window=12, keep=()):
     spot = float(rec.get("underlyingValue") or 0)
     rows = []
     for r in rec.get("data", []):
@@ -126,7 +126,7 @@ def summarise_chain(rec, step, window=12):
             "fresh_put_writing": [{"strike": x["strike"], "chg_oi": x["pe_chg_oi"]} for x in adds_pe if x["pe_chg_oi"] > 0],
             "view": view,
             "note": "Context only: in 200 days of NSE data, OI walls, PCR and max pain did not predict moves better than chance.",
-            "strikes": [x for x in rows if abs(x["strike"] - atm) <= window * step]}
+            "strikes": [x for x in rows if abs(x["strike"] - atm) <= window * step or x["strike"] in keep]}
 
 
 def leg_price(leg, chain, spot, T, iv):
@@ -255,6 +255,38 @@ def record_marks(bias, chains, quotes, now):
     return n
 
 
+def paper_today(bias, now):
+    """Today's new paper trade, before the evening review adds it to the book: the plan's TRADE structure,
+    entered at its first real price between 10:15 and 10:35 if the index was between the short strikes,
+    valued at the latest real price. Mirrors the evening review's entry rule."""
+    book = store._read(store.state_path("paper_book.json"), {}) or {}
+    day = (store._read(store.state_path("paper_marks.json"), {}) or {}).get(now.date().isoformat(), {})
+    out = []
+    for name, o in (bias.get("options") or {}).items():
+        if (o.get("setup") or {}).get("decision") != "TRADE" or name in (book.get("open") or {}):
+            continue
+        legs = o["strategies"][0]["legs"]
+        if not any(l["action"] == "SELL" for l in legs):
+            continue
+        rows = day.get(legs_key(name, o["expiry"], legs), [])
+        entry = next((r for r in rows if "10:15" <= r[0] <= "10:35"), None)
+        base = {"index": name, "strategy": o["strategies"][0]["name"], "expiry": o["expiry"],
+                "legs": " + ".join(f"{l['action']} {l['strike']} {l['type']}" for l in legs)}
+        if entry is None:
+            out.append({**base, "status": "WAITING" if now.strftime("%H:%M") < "10:35" else "NO REAL PRICE AT 10:15"})
+            continue
+        shorts = sorted(l["strike"] for l in legs if l["action"] == "SELL")
+        if len(shorts) >= 2 and not (shorts[0] < entry[1] < shorts[-1]):
+            out.append({**base, "status": "NOT ENTERED", "note": f"{name} {entry[1]:,.0f} was outside {shorts[0]:,}-{shorts[-1]:,} at {entry[0]}"})
+            continue
+        lot, v_e, last = o["lot_size"], entry[2] + entry[3], rows[-1]
+        credit, value = round(-v_e * lot), round(((last[2] + last[3]) - v_e) * lot)
+        status = "TARGET" if value >= 0.55 * credit else "STOP" if value <= -credit else "HOLD"
+        out.append({**base, "status": status, "entered_at": entry[0], "credit_rs": credit, "value_now": value,
+                    "target_rs": round(0.55 * credit), "stop_rs": -credit, "at": last[0], "spot": last[1]})
+    return out
+
+
 def paper_open(quotes, now, book_file="paper_book.json", chains=None):
     """Value the trades the paper book holds, every live run, with the same Black-Scholes + India VIX
     method the evening review uses, so the daytime number and the evening number agree.
@@ -329,7 +361,11 @@ def run(force=False):
             exps = nse.expiries(name)
             exp = nse_date(o["expiry"]) if o and nse_date(o["expiry"]) in exps else exps[0]
             rec = nse.chain(name, exp)
-            sm = summarise_chain(rec, INDEX_SPECS[name]["step"])
+            # always keep the strikes the plan and any held paper trade use, so their real prices are saved
+            keep = {int(l["strike"]) for l in (o["strategies"][0]["legs"] if o else [])}
+            keep |= {int(l["strike"]) for p in (store._read(store.state_path("paper_book.json"), {}) or {}).get("open", {}).values()
+                     if p["index"] == name for l in p["legs"]}
+            sm = summarise_chain(rec, INDEX_SPECS[name]["step"], keep=keep)
             if sm:
                 sm["expiry"] = exp
                 chains[name] = sm
@@ -351,6 +387,7 @@ def run(force=False):
     }
     try:
         out["paper_marks"] = record_marks(bias, chains, quotes, now)
+        out["paper_today"] = paper_today(bias, now)
         out["paper_open"] = paper_open(quotes, now, chains=chains)
         out["paper_open_adjusted"] = paper_open(quotes, now, "paper_book_adjusted.json")
     except Exception as exc:   # never let this block the live snapshot

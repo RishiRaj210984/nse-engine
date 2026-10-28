@@ -43,4 +43,16 @@ o = out["open"][0] if out["open"] else {}
 book = json.load(open(os.path.join(tmp, "paper_book.json")))
 p = book["open"]["NIFTY"]
 t("value after re-base follows the real prices (unchanged real -> value equals the 09:20 value)", p["basis"] == "NSE" and o.get("mark") == round((p["realized"] + sum({"CE": -15.0, "PE": -40.0}[g["legs"][0]["type"]] - g["v0"] for g in p["groups"])) * 65))
+# today's paper trade, live (before the evening review)
+from datetime import datetime
+os.remove(os.path.join(tmp, "paper_book.json")) if os.path.exists(os.path.join(tmp, "paper_book.json")) else None
+BIAS = {"options": {"NIFTY": {**ARCH["bias"]["options"]["NIFTY"], "setup": {"decision": "TRADE"}}}}
+marks("2026-10-28", [["10:10", 22890, -21.0, -46.0, 4], ["10:20", 22900, -20.0, -45.0, 4], ["11:00", 22910, -16.0, -38.0, 4]])
+x = live.paper_today(BIAS, datetime(2026, 10, 28, 11, 0, tzinfo=IST))[0]
+t("today: entered at the first real price from 10:15 (10:20), premium Rs 4,225", x.get("entered_at") == "10:20" and x["credit_rs"] == 4225)
+t("today: value now = (65 - 54) x 65 = Rs 715", x["value_now"] == 715 and x["status"] == "HOLD")
+marks("2026-10-28", [["10:05", 22890, -21.0, -46.0, 4]])
+t("before 10:15: waiting", live.paper_today(BIAS, datetime(2026, 10, 28, 10, 10, tzinfo=IST))[0]["status"] == "WAITING")
+marks("2026-10-28", [["10:20", 23400, -20.0, -45.0, 4]])
+t("index outside the short strikes at entry: not entered", live.paper_today(BIAS, datetime(2026, 10, 28, 11, 0, tzinfo=IST))[0]["status"] == "NOT ENTERED")
 print("ALL PASS" if all(res) else "SOME FAILED")

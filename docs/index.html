@@ -187,7 +187,7 @@ body.is-simple main{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 <script>
 const NSE_HOLIDAYS = ['2026-10-20', '2026-11-08', '2026-11-10', '2026-11-24', '2026-12-25'];   // fallback; meta.json has the live list
 const holidayList = () => (D.meta?.holidays?.length ? D.meta.holidays : NSE_HOLIDAYS);
-const APP_VERSION = 'v34';   // keep equal to CACHE in sw.js
+const APP_VERSION = 'v35';   // keep equal to CACHE in sw.js
 const FILES = ['plan', 'global-bias', 'volume-breakouts', 'performance', 'review', 'meta', 'live', 'small-capital', 'markets'];
 const D = {};
 let tab = 'dash', stockFilter = 'ab', lots = {}, loadErr = null, lastLoad = 0;
@@ -488,17 +488,25 @@ function paperResults(open = false) {
   // daytime live values only while they are newer than the evening review
   const liveNewer = D.live?.updated && (!D.review?.latest?.as_of || D.live.updated > D.review.latest.as_of);
   const lv = liveNewer ? (D.live?.paper_open || []).filter((x) => (pb.open || []).some((o) => o.index === x.index)) : [];
-  const liveToday = lv.reduce((a, x) => a + (x.since_last_evening || 0), 0);
-  const liveTotal = pb.realized + lv.reduce((a, x) => a + x.value_now, 0) + (pb.open || []).filter((o) => !lv.some((x) => x.index === o.index)).reduce((a, o) => a + o.mark, 0);
+  // today's new paper trade (entered at 10:15 on real prices), shown live until the evening review books it
+  const todays = liveNewer ? (D.live?.paper_today || []) : [];
+  const tIn = todays.filter((x) => x.credit_rs != null);
+  const liveToday = lv.reduce((a, x) => a + (x.since_last_evening || 0), 0) + tIn.reduce((a, x) => a + x.value_now, 0);
+  const liveTotal = tIn.reduce((a, x) => a + x.value_now, 0) + pb.realized + lv.reduce((a, x) => a + x.value_now, 0) + (pb.open || []).filter((o) => !lv.some((x) => x.index === o.index)).reduce((a, o) => a + o.mark, 0);
   // a trade closed on the latest day is said plainly in the summary line
   const closedToday = (pb.closed || []).filter((c) => c.exit_session === d0.session);
   const closedNote = closedToday.map((c) => `${c.pnl > 0 ? '✅' : '❌'} ${esc(c.index)} closed${/TARGET/.test(c.reason) ? ' at target' : /STOP/.test(c.reason) ? ' at stop' : /EXPIRY/.test(c.reason) ? ' on expiry' : /HAND/.test(c.reason) ? ' by hand' : ''}: ${rs(c.pnl)}`).join(' · ');
-  const head = lv.length
-    ? `today so far ${rs(liveToday)} · <span class="fine">total ${rs(liveTotal)} (live ${esc(lv[0].at)})</span>`
+  const head = (lv.length || tIn.length)
+    ? `today so far ${rs(liveToday)} · <span class="fine">total ${rs(liveTotal)} (live ${esc((lv[0] || tIn[0]).at)})</span>`
     : closedNote
       ? `${closedNote} · <span class="fine">total ${rs(pb.total)}</span>`
       : `${esc(day(d0.session))}: ${rs(d0.pnl)} · <span class="fine">total ${rs(pb.total)}</span>`;
-  return `<details class="sreply" ${open ? 'open' : ''}><summary><b>📒 Paper results</b> · ${head}</summary>
+  const todayRows = todays.map((x) => x.credit_rs != null
+    ? `<div class="srow">🆕 <b>Today: ${esc(x.index)} ${esc(x.strategy)}</b> entered ${esc(x.entered_at)} · premium ₹${Number(x.credit_rs).toLocaleString('en-IN')}
+        · <b>worth ${rs(x.value_now)} now</b> (live ${esc(x.at)})${x.status !== 'HOLD' ? ' · ⚠️ ' + esc(x.status) : ''}
+        <div class="fine">${esc(x.legs)} · target ${rs(x.target_rs)} · stop ${rs(x.stop_rs)} · real NSE prices; the evening review adds it to the book</div></div>`
+    : `<div class="srow">🕙 <b>Today: ${esc(x.index)} ${esc(x.strategy)}</b> · ${x.status === 'WAITING' ? 'waiting for the 10:15 entry' : esc(x.status)}${x.note ? ' · ' + esc(x.note) : ''}</div>`).join('');
+  return `<details class="sreply" ${open ? 'open' : ''}><summary><b>📒 Paper results</b> · ${head}</summary>${todayRows}
     ${(pb.open || []).map((o) => `<div class="srow">🟡 <b>Holding ${esc(o.index)} ${esc(o.strategy)}</b> since ${esc(day(o.entry_session))}, expiry ${esc(day(o.expiry))}<div class="fine">Premium collected ₹${Number(o.credit_rs).toLocaleString('en-IN')} · ${(() => { const x = lv.find((y) => y.index === o.index);
         return x ? `<b>worth ${rs(x.value_now)} now</b> (live ${esc(x.at)}, NIFTY ${Number(x.spot).toLocaleString('en-IN')}) · last evening ${rs(o.mark)}${x.status !== 'HOLD' ? ' · ⚠️ ' + esc(x.status) : ''}`
                  : `worth ${rs(o.mark)} at last evening's close`; })()} (before costs)</div></div>`).join('')}
