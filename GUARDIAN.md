@@ -61,3 +61,12 @@ When the guardian runs in LIVE mode it places **one** real trade, then goes back
 
 Settings (guardian.env): `CAPITAL`, `LIVE_INDEX`, `LIVE_FROM`, `LIVE_WING`, `LIVE_MAX_TRADES`.
 Run `python backend/guardian.py check` once before the day: line 7 shows ICICI's margin for the test trade.
+
+## 3rd trade: NIFTY first-hour momentum buy
+If NIFTY moves 0.5% or more from 09:15 to 10:15, the engine marks a momentum buy: 1 lot of the ATM call (up)
+or put (down), not on expiry day, premium up to ₹15,000. It is paper-tracked by itself on real NSE prices.
+In the app (step 3) it gets its own card and button between 10:15 and 11:30, like the condor.
+Tapping it sends `ENTER MOMENTUM`: in paper mode the guardian answers with what it would buy; real orders
+only with `LIVE_MOMENTUM=1` in guardian.env **and** the guardian in live mode. Real exits are automatic:
+stop −30%, cost after +20%, trail from +40%, book +60%, close 15:15. It is refused if you already hold a NIFTY
+position on the same expiry, because the exits treat one expiry as one structure.

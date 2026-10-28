@@ -34,7 +34,7 @@ STOP_FILE = os.path.join(ROOT, "STOP")
 LOG_FILE = os.path.join(ROOT, "guardian.log")
 
 sys.path.insert(0, HERE)
-from config import IST  # noqa: E402
+from config import INDEX_SPECS, IST  # noqa: E402
 
 log = logging.getLogger("guardian")
 
@@ -53,7 +53,10 @@ EXPIRY_EXIT = "10:15"
 # LIVE_MAX_TRADES real entries, only for LIVE_INDEX, only from LIVE_FROM, as the plan's condor with
 # LIVE_WING-point wings, and only after ICICI's own margin check fits your free F&O money and CAPITAL.
 # Every other entry is paper. Exits of real positions stay live and automatic.
-LIVE_DEFAULTS = {"CAPITAL": "15000", "LIVE_INDEX": "NIFTY", "LIVE_FROM": "2026-11-04", "LIVE_WING": "150", "LIVE_MAX_TRADES": "1"}
+LIVE_DEFAULTS = {"CAPITAL": "15000", "LIVE_INDEX": "NIFTY", "LIVE_FROM": "2026-11-04", "LIVE_WING": "150", "LIVE_MAX_TRADES": "1",
+                 # the NIFTY first-hour momentum buy (3rd trade): paper unless this is 1 AND the guardian is live
+                 "LIVE_MOMENTUM": "0"}
+MOMENTUM_MAX_PREMIUM = 15000   # same limit as the engine's paper tracker (backend/momentum.py)
 
 
 def _expiry_date(exp):
@@ -503,6 +506,66 @@ def margin_check(breeze, index, legs, expiry, qty, capital):
     return True, need, free, f"ICICI margin Rs {need:,.0f}, free F&O money Rs {free:,.0f}"
 
 
+def fetch_momentum():
+    """Today's NIFTY first-hour momentum signal, as the engine's live run published it."""
+    lv = requests.get(f"{PLAN_URL}/live.json", params={"t": int(time.time())}, timeout=15).json()
+    return (lv.get("momentum") or {}).get("today") or {}
+
+
+def enter_momentum(breeze, env, state, live, now, demo=False, signal=None):
+    """The 3rd trade: buy 1 lot of the NIFTY ATM option the first-hour move points to (the engine decides the
+    signal at 10:15). The guardian then exits it like any bought option (stop -30%, cost after +20%,
+    trail from +40%, book +60%, close 15:15). Returns (ok, message)."""
+    day, hm = now.date().isoformat(), now.strftime("%H:%M")
+    t = signal if signal is not None else fetch_momentum()
+    has = t.get("date") == day and t.get("strike") and t.get("kind")
+    if not has and not demo:
+        why = (t.get("note") or t.get("status", "").lower()) if t.get("date") == day else "the signal is decided at 10:15"
+        return False, f"no momentum buy today ({why}). Nothing placed."
+    if not demo and not ("10:15" <= hm <= "11:30"):
+        return False, f"momentum entry window is 10:15-11:30 IST (now {hm})"
+    lot = INDEX_SPECS["NIFTY"]["lot"]
+    if has:
+        strike, kind, expiry_iso = int(t["strike"]), t["kind"], iso_expiry(t["expiry"])
+    else:   # demo with no signal today: what a call at the money would look like
+        full = (fetch_plan()[0].get("options") or {}).get("NIFTY") or {}
+        try:
+            spot = float(((breeze.get_quotes(stock_code="NIFTY", exchange_code="NSE", product_type="cash") or {}).get("Success") or [{}])[0].get("ltp") or 0)
+        except Exception:
+            spot = 0
+        if not spot or not full.get("expiry"):
+            return False, "demo: no NIFTY price or expiry right now"
+        strike, kind = int(round(spot / 50) * 50), "CE"
+        expiry_iso = datetime.strptime(full["expiry"], "%Y-%m-%d").strftime("%Y-%m-%dT06:00:00.000Z")
+    if live:
+        if state.get("momentum_day") == day:
+            return False, "today's momentum buy was already placed. One a day."
+        try:
+            held = [l for l in legs_from_positions(breeze.get_portfolio_positions())
+                    if l["stock_code"] == "NIFTY" and _expiry_date(l["expiry"]) == datetime.strptime(expiry_iso[:10], "%Y-%m-%d").date()]
+        except Exception as exc:
+            return False, f"could not read your positions ({str(exc)[:80]}). Not placed."
+        if held:   # one expiry = one structure for the exit rules; a single option would be mixed into it
+            return False, "you hold another NIFTY position on the same expiry; the exits could not tell them apart. Not placed."
+        q = _opt_quote(breeze, "NIFTY", "call" if kind == "CE" else "put", strike, expiry_iso)
+        ask = float(q.get("best_offer_price") or q.get("ltp") or 0)
+        if not ask:
+            return False, "no live price for the option. Not placed."
+        if ask * lot > MOMENTUM_MAX_PREMIUM:
+            return False, f"premium Rs {ask * lot:,.0f} is above Rs {MOMENTUM_MAX_PREMIUM:,}. Not placed."
+    ok, lines, placed, err = _place_legs(breeze, "NIFTY", [{"action": "BUY", "strike": strike, "type": kind, "est_premium": 0}],
+                                         expiry_iso, lot, now, live)
+    if not ok:
+        return False, err
+    if not live:
+        return True, (f"{'DEMO' if demo else 'PAPER'}: momentum buy would place " + "; ".join(lines)
+                      + (f" (first hour {t.get('first_hour_pct'):+.2f}%)" if has and t.get("first_hour_pct") is not None else "")
+                      + ". The paper tracker follows it on real NSE prices.")
+    state["momentum_day"] = day
+    return True, ("REAL momentum buy placed: " + "; ".join(placed) + ". The guardian exits it by itself "
+                  "(stop -30%, cost after +20%, trail from +40%, book +60%, close 15:15).")
+
+
 def enter_trade(breeze, env, state, index, lots, live, now, plan=None, demo=False, test=False):
     """Place today's plan trade for `index`: BUY legs first, then SELL legs, limit orders at the touch.
     Refuses unless the plan is for today, marks the index TRADE, and the entry window/condition holds."""
@@ -724,6 +787,13 @@ def handle_command(cmd, breeze_box, env, state, live, now):
         notify(env, "Guardian: not logged in", "Send today's SESSION code first.", urgent=True)
     elif os.path.exists(STOP_FILE) and name != "EXIT":   # an emergency close still works while paused
         notify(env, "Guardian is paused", "Send RESUME first.", urgent=True)
+    elif name == "ENTER" and len(cmd) >= 2 and cmd[1].upper() == "MOMENTUM":
+        demo = any(c.upper() == "DEMO" for c in cmd[2:])
+        real = live and not demo and env["LIVE_MOMENTUM"] == "1"
+        ok, msg = enter_momentum(breeze_box[0], env, state, real, now, demo=demo)
+        if live and not demo and not real:
+            msg = "Paper, not real: the momentum buy is paper only (LIVE_MOMENTUM=0 on the server). " + msg
+        notify(env, f"Guardian ENTER MOMENTUM: {'OK' if ok else 'NOT DONE'}", msg, urgent=not ok)
     elif name == "ENTER" and len(cmd) >= 2 and cmd[1].upper() in BREEZE_CODE:
         demo = any(c.upper() == "DEMO" for c in cmd[2:])   # a demo never places orders, in either mode
         lots = next((c for c in cmd[2:] if c.isdigit()), 1)

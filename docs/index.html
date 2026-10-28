@@ -187,7 +187,7 @@ body.is-simple main{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 <script>
 const NSE_HOLIDAYS = ['2026-10-20', '2026-11-08', '2026-11-10', '2026-11-24', '2026-12-25'];   // fallback; meta.json has the live list
 const holidayList = () => (D.meta?.holidays?.length ? D.meta.holidays : NSE_HOLIDAYS);
-const APP_VERSION = 'v40';   // keep equal to CACHE in sw.js
+const APP_VERSION = 'v41';   // keep equal to CACHE in sw.js
 const TEST_FROM = '2026-11-04';   // the one real test trade (guardian LIVE_FROM)
 const FILES = ['plan', 'global-bias', 'volume-breakouts', 'performance', 'review', 'meta', 'live', 'small-capital', 'markets'];
 const D = {};
@@ -553,7 +553,14 @@ function vSimple() {
   } else if (w.step === 3 && w.wait && !ans && Date.now() / 1000 - w.wait.at > 60) {
     w = { step: 3, done: w.done, err: 'No answer from the guardian in a minute. Check your phone alerts, then try again.' }; store.set(wizKey(), w);
   }
-  const trades = (p.options || []).filter((o) => o.decision === 'TRADE'), trade = trades[0];
+  // 3rd trade: the NIFTY first-hour momentum buy, once the 10:15 live run has marked it (paper unless switched on at the server)
+  const mo = D.live?.momentum?.today, moLot = (p.options || []).find((o) => o.index === 'NIFTY')?.lot_size || 65;
+  const moTrade = mo && mo.date === t.date && mo.strike ? { index: 'MOMENTUM', title: `🚀 NIFTY momentum buy · 1 lot (${moLot} qty)`, short: 'momentum buy',
+    legs: `BUY ${mo.strike} ${mo.kind}`, entry: `10:15–11:30 · NIFTY moved ${mo.first_hour_pct > 0 ? '+' : ''}${mo.first_hour_pct}% in the first hour; the paper tracker bought at ₹${mo.entry_px} (${mo.entry_at})`,
+    max_reward: Math.round(0.6 * mo.entry_px * moLot), max_loss: Math.round(mo.entry_px * moLot),
+    target: 'Book at +60%', stop_loss: 'Stop −30% (about −₹' + Math.round(0.3 * mo.entry_px * moLot).toLocaleString('en-IN') + '); cost after +20%; trail from +40%; else close 15:15 the same day',
+    decision_reason: '2-year replay: 77 trades, 52% won, avg +₹1,117 after costs. Paper until it proves itself on real prices.' } : null;
+  const trades = [...(p.options || []).filter((o) => o.decision === 'TRADE'), ...(moTrade ? [moTrade] : [])], trade = trades[0];
   const heldOf = (o) => !live && (D.review?.paper?.open || []).find((x) => x.index === o.index);
   const todo = trades.filter((o) => !heldOf(o));
   const today = p.session === t.date, inWindow = today && t.hm >= '10:10' && t.hm <= '11:30';
@@ -642,17 +649,18 @@ function vSimple() {
         const x = real ? { ...o, legs: o.test.legs.map((l) => `${l.action} ${l.strike} ${l.type}`).join(' + '), max_reward: o.test.max_reward, max_loss: o.test.max_loss } : o;
         const legs = String(x.legs || '').split('+').map((s) => s.trim()).filter(Boolean);
         const tag = real ? ` · <span class="up">REAL TEST, ${o.test.wing}-point wings</span>` : live ? ' · <span class="warn">paper</span>' : '';
-        h += `<div class="wtrade"><div class="wt-h">${esc(o.index)} · ${esc(o.strategy)} · 1 lot (${esc(o.lot_size)} qty)${tag}</div>
+        h += `<div class="wtrade"><div class="wt-h">${o.title ? esc(o.title) : `${esc(o.index)} · ${esc(o.strategy)} · 1 lot (${esc(o.lot_size)} qty)`}${tag}</div>
           ${legs.map((l) => `<div class="leg ${l.startsWith('BUY') ? 'BUY' : 'SELL'}">${esc(l)}</div>`).join('')}
           <dl class="kv"><dt>When</dt><dd>${esc(o.entry || o.enter_at)}</dd>
           <dt>Best case</dt><dd class="up">+₹${Number(x.max_reward || 0).toLocaleString('en-IN')} per lot${real ? ' (estimate)' : ''}</dd>
           <dt>Worst case</dt><dd class="down">−₹${Number(x.max_loss || 0).toLocaleString('en-IN')} per lot${real ? ' (estimate)' : ''}</dd>
           <dt>Exit</dt><dd>${esc(o.target)}. ${esc(o.stop_loss)}.</dd>
           <dt>History</dt><dd class="fine">${esc(o.decision_reason || '')}</dd></dl>`
-          + (inWindow ? BIG(real ? `Place ${esc(o.index)} (real money)` : `Practice ${esc(o.index)}: what would it place?`, `data-act="wz-enter" data-ix="${esc(o.index)}" data-real="${real ? 1 : ''}"`, 'go')
-                      : BIG(`Practice ${esc(o.index)} now (demo, nothing bought)`, `data-act="wz-demo" data-ix="${esc(o.index)}"`))
+          + (inWindow ? BIG(real ? `Place ${esc(o.short || o.index)} (real money)` : `Practice ${esc(o.short || o.index)}: what would it place?`, `data-act="wz-enter" data-ix="${esc(o.index)}" data-real="${real ? 1 : ''}"`, 'go')
+                      : BIG(`Practice ${esc(o.short || o.index)} now (demo, nothing bought)`, `data-act="wz-demo" data-ix="${esc(o.index)}"`))
           + `</div>`;
       });
+      if (!moTrade) h += `<p class="fine">🚀 Momentum buy: ${!mo || mo.date !== t.date ? (t.hm < '10:15' ? 'decided at 10:15 from NIFTY’s first-hour move (±0.5% needed)' : 'no signal yet') : 'no trade today · ' + esc(mo.note || mo.status)}</p>`;
       if (!left.length) h += BIG('OK, finish', 'data-act="wz-go" data-s="4"', 'go');
       else if (inWindow) h += `<p class="fine">${live ? `One real test trade only: NIFTY from ${+TEST_FROM.slice(8)} Nov, 1 lot, after ICICI's margin check. The guardian buys and sells all 4 legs and exits by itself. Everything else, and every trade after it, is paper.` : 'Paper mode: nothing is bought. The guardian only tells you what it would place. The paper book tracks every trade above.'}</p>`;
       else h += `<div class="banner">⏰ Come back between <b>10:10 and 11:30</b>${today ? '' : ' on ' + esc(sess)}. The buttons to place the trades appear then.</div>`;
