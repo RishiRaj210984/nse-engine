@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-28T04:05:20.228281+05:30",
+ "generated_at": "2026-10-28T07:13:47.134189+05:30",
  "market_open": false,
  "volume_projected": false,
  "bias": {
-  "label": "BULLISH",
-  "score": 35
+  "label": "RANGEBOUND",
+  "score": 3
  },
  "rules": {
   "vol_mult": 2.0,
@@ -29,61 +29,165 @@
   "holdout_auc": 0.545,
   "note": "ranker ON (holdout AUC 0.55)"
  },
- "candidates": [
+ "candidates": [],
+ "near_misses": [
   {
-   "symbol": "COFORGE",
-   "name": "Coforge",
-   "bar_date": "2026-10-26",
-   "cmp": 1993.0,
-   "day_chg": 4.87,
-   "vol_ratio": 2.13,
-   "vol_badge": "2.1x Vol Surge",
+   "symbol": "INFY",
+   "name": "Infosys",
+   "bar_date": "2026-10-27",
+   "cmp": 1163.0,
+   "day_chg": -0.26,
+   "vol_ratio": 1.26,
+   "vol_badge": "1.3x Vol Surge",
    "volume_projected": false,
-   "rsi": 64.1,
-   "ema20": 1891.42,
-   "ema50": 1831.54,
-   "high20": 1997.6,
-   "dist_high_pct": 0.23,
-   "atr": 71.74,
+   "rsi": 64.7,
+   "ema20": 1101.75,
+   "ema50": 1090.11,
+   "high20": 1197.8,
+   "dist_high_pct": 2.91,
+   "atr": 42.41,
    "checks": {
-    "volume": true,
+    "volume": false,
     "momentum": true,
     "trend": true,
     "breakout": true
    },
-   "checks_passed": 4,
-   "passed": true,
-   "entry": 1993.0,
-   "stop": 1939.2,
-   "t1": 2100.6,
-   "t2": 2208.21,
+   "checks_passed": 3,
+   "passed": false,
+   "entry": 1163.0,
+   "stop": 1131.2,
+   "t1": 1226.61,
+   "t2": 1290.22,
    "pivots": {
-    "P": 1934.27,
-    "R1": 2056.33,
-    "S1": 1870.93,
-    "R2": 2119.67,
-    "S2": 1748.87
+    "P": 1152.7,
+    "R1": 1176.1,
+    "S1": 1139.6,
+    "R2": 1189.2,
+    "S2": 1116.2
    },
-   "risk_per_share": 53.8,
+   "risk_per_share": 31.8,
    "rr_t1": 2.0,
    "rr_t2": 4.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 0.7582363850169385,
-    "rsi": 64.13568983411457,
-    "dist_high_pct": 0.23027511224254152,
-    "ext_ema20": 5.370781230622024,
-    "atr_pct": 3.5994075236389413,
-    "day_chg": 4.86714022625625,
-    "ret5": 2.105639380699076,
-    "rs20": 12.940099045157517,
-    "bias_score": 35.0,
-    "news_sent": 0.215,
+    "log_vol_ratio": 0.23193779054244937,
+    "rsi": 64.69281389323262,
+    "dist_high_pct": 2.9053303898402607,
+    "ext_ema20": 5.5595290628673855,
+    "atr_pct": 3.6462353403509016,
+    "day_chg": -0.2572898799313883,
+    "ret5": 2.856641922965397,
+    "rs20": 17.965341144710155,
+    "bias_score": 3.0,
+    "news_sent": 0.078,
     "mkt_above50": 0.0,
-    "mkt_ret20": -1.3437065957041971
+    "mkt_ret20": -1.688597912750378
    },
-   "r1_a": 0.8828644456190062,
-   "r2_a": 1.7657288912380125,
+   "r1_a": 0.3089209946263459,
+   "r2_a": 0.6178419892526972,
+   "news": [
+    {
+     "title": "Infosys Limited (INFY) stock price, news, quote and history",
+     "source": "Yahoo Finance Australia",
+     "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9GaHBMWV9lMjZlRloxbDZHbW5uRHI3NXMyUHE1UDFXVFRzYnBBeHFmenFIck9teHR2Zlg5YlRDQkpfZWVUT1A1V25RbUVDT0YzMlE?oc=5",
+     "published": "Tue, 27 Oct 2026 03:19:32 GMT",
+     "sentiment": -0.226
+    },
+    {
+     "title": "Infosys Share Price Today, Infosys Stock Price Live NSE/BSE Updates",
+     "source": "The Economic Times",
+     "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNVjlMN1ZPcF9lSVR3eVJPSjduVHNKbl84UkVRV1c1NnVYSXhsekJ3cTltNHJwVmtIRzlTMEZQajBRUkFEbE13MUw5YkdPaE1iQ2Z5c0NRRG1HWGJkdDcwZjBZTXZ3TnhFbHNQNVJiRVVsb1ZqdkxXUFhZdjRDNGVSOA?oc=5",
+     "published": "Tue, 27 Oct 2026 19:54:45 GMT",
+     "sentiment": 0.296
+    },
+    {
+     "title": "Infosys draws four downgrades in a day on weaker annual sales outlook",
+     "source": "Business Standard",
+     "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNT0NLWnM2UFJCVUZRYzdjWk1Yd1JreV9tb1lUWDRaczJwZFNQYm90OG5FX190Qi1mdXFITFdpUkx4N01pZGt1cDNobjRRbkg2ZGI0ZzBobC1DbVVRamVJZFFZQ3YxM251RUc4V1ZRTGgyVGZGN3BGSG9ETFY5Rk9RdWFiWEtFRGdnQUMzS1NaWE5mQ3h4OUZkSkJZQk5LWFk3SjNCaHJJREpvU3RRWUxYYlJRS19YSmNpQUpPSElRSkh6Vy1kdEJZVGdpZnVBUWV0M0HSAdcBQVVfeXFMUHpRT1pBVE4tZS1Xck5fODdaaUpGMHpBcC1wSkEyWUl6V2d6dTdyOHExMWJtQ3NqNGVVWG9QaWN0R3hodlF1bjBqN0dRdV8tMFA2YkRGOHVKNjFiOWlpOUtEX2dQSHpmSXY1X1pmWDhkU3dZZG5QdTFzd19mQ3daQWx5VHNfdUswQzhCWmhHUmU5SnBNVURFUVo1WkVJdGd6TXJMeHBEVEpNZkxUN29jbW1iTG4tQ0JHRWhFSjVQYTRoRUZyVnlkb2ZGS0ZIX1Z4UnlGU3o2cEk?oc=5",
+     "published": "Tue, 27 Oct 2026 18:26:10 GMT",
+     "sentiment": -0.71
+    },
+    {
+     "title": "Stock market today: Sensex, Nifty flat as smallcaps rally and IT stocks fall",
+     "source": "BusinessLine",
+     "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPWGZBRmlDeUJ2YWlaNjVHQXo2RnRkS2R3VlRrdEVNd0t2Ymg0Ri1qQi15dEI2NFdhYkRKSkVBejd6SzJZSS1FejBQcWNaNmY5UC1ZcUVqZ0U4djcxNk9BWHZmeEFQRjNrT2dmZEI5bkUxUlNMbk9HTk9Uam9zRGlDclI4bmNVOFNYMS0xQ2tQUm5SYjdvb2Vmb3NsaDFzcExOeWlRT3p0M05jbnk3VDlqQ0ZKaExWN09RdGp0ZVZUQVc2X0VxYVlKNjVZZDRlbWVv0gHXAUFVX3lxTE5GZHRLX2Y0cVZ4eUM3TUUtZ0dEMTd3Ml9senV2YWFkTmVXX3RndG5vZzRFN2xJNmZidi16ZHhVTllyLTJzcUExcWp5SDJJVXJnRUtpOF92WWNXMkNnN0ljVURlbVhwcENBZmFhYXBGNTRyazhwZ09FMURzd2dRSDI5dXZyTW1PYWlfa0FZV1RTRkRQQ3lfSFVFT3ZGSTZvMnVtS2VQck9yYTFxbmlfX2pOeUtEN0xybDBKeE9CU3A2T1RzVFNVNUM0dk8wanVnZHUwWGEwMTRV?oc=5",
+     "published": "Tue, 27 Oct 2026 12:05:33 GMT",
+     "sentiment": 0.649
+    },
+    {
+     "title": "India's Infosys falls after revenue growth view cut flags AI, competitive pressures",
+     "source": "Reuters",
+     "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQWkVSX0U4bzJ0NS15dGRlUG96cGItNW5zNXZ0bF84bmRiNmJQOEdubGdlVkZUVnUzNDl1UFNvZHhZRVJZMXpzanBGRGtCQnRueTZKR3gweTdWYXlCWE4zOUZ1Q3RoUjBZaHpobVlNZHo5SXhzbTF1ZmpOODlnUWFJUER1TVp6Z1Jnc0QyemxOdEhOdzlyYndvVFNjelI2Rnpicm14U2pjSU1zM1ZFVWJOYU51NWctdnlJRnc?oc=5",
+     "published": "Mon, 26 Oct 2026 03:50:00 GMT",
+     "sentiment": -0.128
+    }
+   ],
+   "news_sentiment": {
+    "score": 0.078,
+    "count": 8,
+    "label": "NEUTRAL"
+   },
+   "win_prob": 26.3,
+   "expected_r": -0.33,
+   "model_used": true,
+   "grade": "C",
+   "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
+   "action": "BUY INFY near \u20b91,163.00 (skip if it opens above \u20b91,226.61) \u00b7 SL \u20b91,131.20 \u00b7 T1 \u20b91,226.61 \u00b7 T2 \u20b91,290.22 \u00b7 Qty 3 for \u20b910k @1% risk"
+  },
+  {
+   "symbol": "COFORGE",
+   "name": "Coforge",
+   "bar_date": "2026-10-27",
+   "cmp": 1997.0,
+   "day_chg": 0.2,
+   "vol_ratio": 1.55,
+   "vol_badge": "1.6x Vol Surge",
+   "volume_projected": false,
+   "rsi": 64.5,
+   "ema20": 1901.47,
+   "ema50": 1838.03,
+   "high20": 2008.8,
+   "dist_high_pct": 0.59,
+   "atr": 70.6,
+   "checks": {
+    "volume": false,
+    "momentum": true,
+    "trend": true,
+    "breakout": true
+   },
+   "checks_passed": 3,
+   "passed": false,
+   "entry": 1997.0,
+   "stop": 1944.05,
+   "t1": 2102.9,
+   "t2": 2208.79,
+   "pivots": {
+    "P": 1986.27,
+    "R1": 2019.53,
+    "S1": 1963.73,
+    "R2": 2042.07,
+    "S2": 1930.47
+   },
+   "risk_per_share": 52.95,
+   "rr_t1": 2.0,
+   "rr_t2": 4.0,
+   "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
+   "features": {
+    "log_vol_ratio": 0.44040755326812775,
+    "rsi": 64.48443505195013,
+    "dist_high_pct": 0.5874177887943005,
+    "ext_ema20": 5.023909567479734,
+    "atr_pct": 3.5351975968532616,
+    "day_chg": 0.2007024586051287,
+    "ret5": 3.7402597402597326,
+    "rs20": 13.628059796158443,
+    "bias_score": 3.0,
+    "news_sent": 0.24,
+    "mkt_above50": 0.0,
+    "mkt_ret20": -1.688597912750378
+   },
+   "r1_a": 0.31917900049730874,
+   "r2_a": 0.6383580009946207,
    "news": [
     {
      "title": "Infosys, TCS, Coforge shares: IT stocks fall after Anthropic IPO filing; here's why -",
@@ -122,137 +226,32 @@
     }
    ],
    "news_sentiment": {
-    "score": 0.215,
+    "score": 0.24,
     "count": 8,
     "label": "POSITIVE"
    },
-   "win_prob": 14.7,
-   "expected_r": -0.56,
+   "win_prob": 11.5,
+   "expected_r": -0.62,
    "model_used": true,
    "grade": "C",
    "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
-   "action": "BUY COFORGE near \u20b91,993.00 (skip if it opens above \u20b92,100.60) \u00b7 SL \u20b91,939.20 \u00b7 T1 \u20b92,100.60 \u00b7 T2 \u20b92,208.21 \u00b7 Qty 1 for \u20b910k @1% risk"
-  }
- ],
- "near_misses": [
-  {
-   "symbol": "DRREDDY",
-   "name": "Dr Reddy's",
-   "bar_date": "2026-10-26",
-   "cmp": 1310.9,
-   "day_chg": 6.62,
-   "vol_ratio": 4.61,
-   "vol_badge": "4.6x Vol Surge",
-   "volume_projected": false,
-   "rsi": 70.4,
-   "ema20": 1227.16,
-   "ema50": 1211.33,
-   "high20": 1319.0,
-   "dist_high_pct": 0.61,
-   "atr": 31.85,
-   "checks": {
-    "volume": true,
-    "momentum": false,
-    "trend": true,
-    "breakout": true
-   },
-   "checks_passed": 3,
-   "passed": false,
-   "entry": 1310.9,
-   "stop": 1287.01,
-   "t1": 1358.68,
-   "t2": 1406.46,
-   "pivots": {
-    "P": 1284.63,
-    "R1": 1345.27,
-    "S1": 1250.27,
-    "R2": 1379.63,
-    "S2": 1189.63
-   },
-   "risk_per_share": 23.89,
-   "rr_t1": 2.0,
-   "rr_t2": 4.0,
-   "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
-   "features": {
-    "log_vol_ratio": 1.5291896623359054,
-    "rsi": 70.41205028932082,
-    "dist_high_pct": 0.6140997411628127,
-    "ext_ema20": 6.824050959740613,
-    "atr_pct": 2.4300013968952303,
-    "day_chg": 6.620579456206799,
-    "ret5": 6.317925743232977,
-    "rs20": 10.54897132018111,
-    "bias_score": 35.0,
-    "news_sent": 0.292,
-    "mkt_above50": 0.0,
-    "mkt_ret20": -1.3437065957041971
-   },
-   "r1_a": 1.0788503651970782,
-   "r2_a": 2.1577007303941493,
-   "news": [
-    {
-     "title": "Dr. Reddy's Laboratories Share Price - Live NSE: DRREDDY Stock Price & Chart",
-     "source": "Upstox",
-     "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE0zSVhMclV3N2dOMVJfcHNVbWN1LUhfYWFxQ3gzMjMxamNNaGhDOEt2bEQ0NGhXU2paSVEwVWpseW1ZZzNRUm5XSkRiSm9TMEhBVkRmNzdGYTVkeC04QVZMY0NUYlhGX2Z3cm1iR2ZzSQ?oc=5",
-     "published": "Mon, 26 Oct 2026 18:10:35 GMT",
-     "sentiment": 0.296
-    },
-    {
-     "title": "Dr Reddy's shares jump despite 36% Q2 profit fall: Buy, sell or hold? What Nomura, Citi and others say",
-     "source": "Moneycontrol.com",
-     "link": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxPUTVKOEZRZzJWdTliUGQ1b0hGclNCc0FscGNwVjhKS1EtZFdNME9la1NwcTlRVjYtUWx4TS0zLXN6M0JNdTRDcGRFUUNWSEcwa2lzc196dzgxZnp6ejl1dmcyb05qOWNOWXVSRGZLR0xJM1lTcEY4Vnc0dk9EZndEVVVZQlFTOGxOdndQTlVFdHdGaEVjME1zOHdOUTdJUHc1ZE9ybW1xdDY1QW4xaVNPbndBakdpMGU3NTZqdlhKekttcnFOOEt0VG4tV2gybm1HT2ZhRGpQNG5GckluekNDTDBLV0syZGFKSWJ1d2RhcWQzMTTSAfgBQVVfeXFMUFhhb0RnYWpZb3pnc0FFV2xvUnplcnR4LUczV0o2SzNVQ3BIU1VWNmxRcWFnMnRXRGg5VTZ1R3VlWXpvR1dVRFo1TjdPeGZhSUZpWUJBV21BcHpSU1p5aGNhclNGVXRNb0pDcDJTSFZUeXJZYlo0NGhyV2ZDV0Q0WWdOUGtTWXc4ZThOTGFxMnJOelBJelJIanEtSm5FOENEeEdiUi1iS2VJOWN0X3JqRFNJcklMQzREQmFSWG5UMDNNa3hLZ3RCb3Z4X2xTLWpqSUNZQkt6X09xYTRJRGpjNlRzLU5fdmNNdkNWWUFtWElPZ3BFRzV4QUY?oc=5",
-     "published": "Mon, 26 Oct 2026 05:15:35 GMT",
-     "sentiment": 0.118
-    },
-    {
-     "title": "Dr Reddy's stock could rise 10-15% if a major biosimilar gets approved in December: Systematix",
-     "source": "CNBC TV18",
-     "link": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxPd2kxODgybEFZSENRMGM3TmFWR1FyWUdOaWsxVkMyVVMycElVQ3dORVNjUldCa08yOVpYeWJQc3JGQUd0Q3drQXFWMWdYVVpyejFGcWx2a3hoc0ZMMUNHcURWLTBuNFJfOFNHR1kxa3gwNmpWTHU2M0RmbDg1Xzl6ZnVpc0lzR3AxWU9jbTBGT2lQa2lWeTNyUk1FTklHODVjeDg0a0Rqb09wd1BraGdDQXQtV2ljMVNXQldfcFNmSkg2SXB2MlZjMGZHc2UzNXA3dE5SMVBJdVh3R1RYTmNKTV9EbTJRZnd5ak5MSXVIb9IB9AFBVV95cUxNMGl1b1hPTHV0ejhOaWRtbEpHVmxSMTV1SUs5WGZlNG0xcnJSZnY5NEZmZmVTcXR1MUxlR1c4S3U0ellkS3BiT3ZfVUQxWXNDS2MtWDVEWG9LM3NpdDEzOUlEU0U2dVFjQ2pEOW8zMWFjTHl2MmpINzU4Z1pYWHB3Q1FhaDFldjZlTW9mMUdPMjZGanVqTzFhWkg4T2t1WEk1bUI2SER3SmI0dWFENnZNN09RblFrX3d6eHE0VDR5THdqcEU0bUQ5emRGdVJLRm1wN0NXVjhDakxGbXNUa1hrb0hQRXF5b0dfLXloZl8zeFFucWVS?oc=5",
-     "published": "Tue, 27 Oct 2026 06:06:51 GMT",
-     "sentiment": 0.47
-    },
-    {
-     "title": "Dr Reddy's share price spurts 4% post Q2 earnings; analysts upgrade rating",
-     "source": "Business Standard",
-     "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxOa0Z1MVZNNDFDamtRMnpaWUxTZ2ZBZDlZSW9DRmotZFBiMVZBdzNKb0dSSENjWU1VOThnS2JwbFVDaFl6TDJpZ2hCSWExZFRWQ0FlUHZYdEhoOHFvckl1Y0toelBmTU1aMUEwbF8zeko4UnhBLU1IQWkyeXY0TzhLNkxiNU5MbV9uT0R5Ul9ua3FaQVZramM1T0VudXcxQ0Radm9OMFJaU2t0UE1Gd2xHQzVMQVdVYmRKWGxyb3huYUQ4NUpWb0tJWFdNbm1obHpCRldOV3Nn0gHbAUFVX3lxTE9xUGlpeHJ1MW1SV1ZtQ0lJQkZDTVoycjBsNkVqR0ZRVG0xcFNWd2xqQ1QzUHdaeGVlZEpQZFlKaVhkSGpVbGN6WTdvUWw5T2xqcEVaMWdodzVndWhqNjhST29aX01CeFJQVjNpbEJXenpxVmVBSWtISUxzN2NwUjJRLXVncU9PZVJROVNSOTJrV1RsYWxsd2pybG5BR2ZvdWYzUmZJOWQ3RktvYldpZk0tUGRiOVdUd3JzUHpmdUJhVG9zcWlCc3RZeDdoZmZBYlhNWGszQWVibDIyaw?oc=5",
-     "published": "Mon, 26 Oct 2026 05:02:00 GMT",
-     "sentiment": 0.637
-    },
-    {
-     "title": "Dr. Reddy\u2019s shares rise 5% despite cautious analyst outlook",
-     "source": "BusinessLine",
-     "link": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxObzhhM01DQmFfRTgwVmZzY1JkYXotWWd6T0JQbHNuY09YLWZMU01LLXQ1Y0prdHo4bmhjRWxSYk1JcEtkZWFrUUZnLU9lWWR6SWZjMG9KUGtpdEdBc1hkTExOTU9hVEtISGEyVE1kWGVGYWphUW9ic2VzOEswSl9XSElDSmZkc2JYU0M2cy1DVDM2OTYwdDlmbzA5VmdPN3dRNXBGSkhGM2NLSC0xcGZkQklNbzhlVURRckxfY2VfeGFrbDNsV2JIT0x1bndPc3hnX1d6Nm51VThGWUJFYkw1bWt2Z1FIUWNIYnhj0gHyAUFVX3lxTE5YcFZaUjBOdDdxRDduOG4zSWZrZ3NwbVV6eERGRHp1eG9jTTVJQnFWOUJxMFpiTlpiSGJnb2lOTGFHdlpob0tFV1lpQ3hJbms4SG90bHBRcGJ2TFZLQXlXRnBZbl9iVHZfMnVEWDRBczJ1N3pMVXphcExNZ05DLXFEX05heHU5dzFabXYzYUlicWhod3huRjdybDNCMWlGRGxaUFFPckRsdVRDM2w4Z3Y0ZmlkNE1rZWFBSUVnUjI5M2o3bkJVNy1QUDFvLWxxblJrcWY3SXE3X2ZyY0c3YjdIZldXSmNIMnYwS29NVGRoU0Vn?oc=5",
-     "published": "Mon, 26 Oct 2026 07:00:33 GMT",
-     "sentiment": 0.36
-    }
-   ],
-   "news_sentiment": {
-    "score": 0.292,
-    "count": 8,
-    "label": "POSITIVE"
-   },
-   "win_prob": 9.9,
-   "expected_r": -0.66,
-   "model_used": true,
-   "grade": "C",
-   "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
-   "action": "BUY DRREDDY near \u20b91,310.90 (skip if it opens above \u20b91,358.68) \u00b7 SL \u20b91,287.01 \u00b7 T1 \u20b91,358.68 \u00b7 T2 \u20b91,406.46 \u00b7 Qty 4 for \u20b910k @1% risk"
+   "action": "BUY COFORGE near \u20b91,997.00 (skip if it opens above \u20b92,102.90) \u00b7 SL \u20b91,944.05 \u00b7 T1 \u20b92,102.90 \u00b7 T2 \u20b92,208.79 \u00b7 Qty 1 for \u20b910k @1% risk"
   },
   {
-   "symbol": "BHARTIARTL",
-   "name": "Bharti Airtel",
-   "bar_date": "2026-10-26",
-   "cmp": 1917.5,
-   "day_chg": 1.34,
-   "vol_ratio": 0.36,
-   "vol_badge": "0.4x Vol Surge",
+   "symbol": "KOTAKBANK",
+   "name": "Kotak Mahindra Bank",
+   "bar_date": "2026-10-27",
+   "cmp": 442.5,
+   "day_chg": 0.4,
+   "vol_ratio": 0.95,
+   "vol_badge": "0.9x Vol Surge",
    "volume_projected": false,
-   "rsi": 62.0,
-   "ema20": 1850.51,
-   "ema50": 1851.87,
-   "high20": 1929.6,
-   "dist_high_pct": 0.63,
-   "atr": 43.28,
+   "rsi": 60.0,
+   "ema20": 433.57,
+   "ema50": 421.56,
+   "high20": 453.1,
+   "dist_high_pct": 2.34,
+   "atr": 9.62,
    "checks": {
     "volume": false,
     "momentum": true,
@@ -261,85 +260,85 @@
    },
    "checks_passed": 3,
    "passed": false,
-   "entry": 1917.5,
-   "stop": 1885.04,
-   "t1": 1982.43,
-   "t2": 2047.35,
+   "entry": 442.5,
+   "stop": 435.28,
+   "t1": 456.93,
+   "t2": 471.37,
    "pivots": {
-    "P": 1903.17,
-    "R1": 1931.83,
-    "S1": 1888.83,
-    "R2": 1946.17,
-    "S2": 1860.17
+    "P": 442.4,
+    "R1": 444.9,
+    "S1": 440.0,
+    "R2": 447.3,
+    "S2": 437.5
    },
-   "risk_per_share": 32.46,
+   "risk_per_share": 7.22,
    "rr_t1": 2.0,
    "rr_t2": 4.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": -1.02373854116001,
-    "rsi": 62.00938652539081,
-    "dist_high_pct": 0.6270717111852808,
-    "ext_ema20": 3.620211914097249,
-    "atr_pct": 2.257334827125234,
-    "day_chg": 1.3424250695947881,
-    "ret5": 0.6561679790026309,
-    "rs20": 8.120627626043397,
-    "bias_score": 35.0,
-    "news_sent": 0.314,
+    "log_vol_ratio": -0.052852892381393395,
+    "rsi": 60.046551030984034,
+    "dist_high_pct": 2.3394407328906413,
+    "ext_ema20": 2.0604068181542035,
+    "atr_pct": 2.1746458446667245,
+    "day_chg": 0.3970504821327214,
+    "ret5": 0.04522093885404033,
+    "rs20": 11.218300883047405,
+    "bias_score": 3.0,
+    "news_sent": 0.389,
     "mkt_above50": 0.0,
-    "mkt_ret20": -1.3437065957041971
+    "mkt_ret20": -1.688597912750378
    },
-   "r1_a": 0.3311432037027952,
-   "r2_a": 0.6622864074055851,
+   "r1_a": 0.2494068187519005,
+   "r2_a": 0.498813637503801,
    "news": [
     {
-     "title": "Bharti Airtel share price up 3%; rallies 12% in October, outperforms market",
-     "source": "Business Standard",
-     "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNc0M3a29UYWNtY0wtT2JBRWlvMEVVRjJGb3ZoeTh3cDdrU2hPWVRCN2xPdjFuQi1YZ0ptVV9VeFhHckQ1QUpMYzhhQzhyUHJyc3I4MTc3cFNVeFhUdlgta2NOT3VEU2FiRTZPcE11UTk1d1JSYzlwdWdTU2UyUmdHZnRxaE55aUFaYTRzdHZGejM5WkpFb2k1YjhpeWs1cUo3NzRSVXRucS02cXAzcVZ2cUZXNzJMeGhCazMzOHRvdzl0N0IzNzgtUEh3elZsR3RNdGoyWNIB2gFBVV95cUxPQU5MZTVZRkkyeW1HX04xN3haaTdLa3NkTFlMUTdyZjFTZXI2XzJ2MEhHLUM4OHFhamc2d3VjU1ItUXRJU2hPODJjd2dIRVE1S2VOQ1d3RUZJanFtXzBkMVhIRFBMRFl6MDF3aUY2QmxudlpLSmF4RHAxVjRSbTFaMC0yMXpOaWllMi1TVmFWMElXRk4xRmRwZEdDREVuUVh4N2VST2RhQ3ZVMjhMblpjUkpaNFdKbW56MGtZdGx6TE4zMmI3NXF6U0RVZEpVNEpZSksxbzFneGpxQQ?oc=5",
-     "published": "Tue, 27 Oct 2026 07:46:34 GMT",
-     "sentiment": 0.586
+     "title": "Kotak Mahindra bank shares lead Nifty 50 gainers after Q2 results",
+     "source": "BusinessLine",
+     "link": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxQeHpfczJlT00taVc2ZnRQT09GTHpkbTdpUHdIbkJrckhrZ2hmZk5QazgxajdVTHZXUVlCczZ1OWFweWFYMjR4YWo5WkR2cUVuNHd4NjgyVUdiU3FXaVFfRW5GNVMyWFJ0ektNdGh3ZHhvRlVRalZpb2ZXYzFDY2xYdk9EWXFSZXg3aTM4b1ctUzRmZ0l0NEFLS0F3NnVKaWhEZEFhejZaUmZ5ZTBrclN4TDN5OXdNNWdwV1ZmQkcyc0NQc25HX1NReWE0NllTMjhJaUZNdzdqMXJEOWFQTmlzWmtta1RVbU1DZXREMFBaVFloRFdqVFduX3ZQTlnSAYMCQVVfeXFMUGhFeHdPcjU0THNxdm9EZDhUMW56UmxTc2lsdW9zVDBYa0RydUJVZ0xNRkpvSm9GcTZJdy12MlRoYVEyQUNUVUtMSDNpYmxPY2FWTkpaRWZQZXYzYmQzLURCeEMtdFRqLTFDVG9pcTZYSkJ2UlpvSVB3a2N6ZFRFcno4VWxaVV9hRE1qcnlJajJST1loZGdXdFBaQld5X0pCMWI1aFlJTWd2cTdtYzZ0aUNfeDJzZ0lZTjF5WURxcXREZlpkV3FRc1REMnZ5Wk1WMXRRQjdka1JFLWdQZE5CbENaMnF6NTJyUURSLWotVk1oTkVmUG0zZGo4anNIenh3QjJZRQ?oc=5",
+     "published": "Mon, 26 Oct 2026 04:28:02 GMT",
+     "sentiment": 0.599
     },
     {
-     "title": "Bharti Airtel\u2019s revenue grows faster than Jio\u2019s since FY22: New Street Research",
-     "source": "ET Telecom",
-     "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQSHlRb3VTZTN2ZmpiajdBQnM3bEplOG1DNUs4QlpTaW9aei1VYU5RSmx0V3hxUVBjdjVwRFJzS2N1Y3R1T0FNNUhIZ0REdkhYN3hPZHhvR3pZd3ltWHRSUHI5TkJJQnJ2cUR0czRVcV83d3dXbEpGbG9WRFU2dWZPaTNPMlFOWERLY2pGMzJmaHNJejNNRVF2Ty1vQnFRdTZkdFRNY0JNNEt0ZkJ5aWZvYWwzdGJlZWFuNXpXYjI3UHpOUl8zNTltRDkxb0pfRUpnOVR6VmxxSnV0amFLTlHSAeMBQVVfeXFMTWpQaHI2Qno4Qmk4RGFEQW5qVWJTRUFKSTBxb01PdzB6Q3NWV1l6eFdaUGRPXzh2QVBqdUcwRWtYTVlqR185eEJaRDNTV05renNjNm1hWWJZMjV3bEtGeWFTV29oa1lYYVlod3NwdmJLSVI0V0ZfUUFBRHNTVTRYc1ZyS25KLTlQUndKZzZVT3ZDQl9rbWFERzhpclpwT1RpbWtXWlZYVXY4WnhMX05jU01Wc1E0M3A5TE9OQzdVZS1hbmxJWFlBd3h2NGV5ZDV2MFllTkszVHpFMmo3eEIzRnVzcUE?oc=5",
-     "published": "Tue, 27 Oct 2026 09:29:35 GMT",
-     "sentiment": 0.0
-    },
-    {
-     "title": "Market wrap: Bharti Airtel, Tata Consumer, Asian Paints, Coal India top gainers and losers on Nifty and Se",
-     "source": "The Economic Times",
-     "link": "https://news.google.com/rss/articles/CBMimwJBVV95cUxNZnFOR1I2VGNySnFDWnJpeHZZRFJhOUo1dGplZXFGUUYxRmMwMVUzQTFoRlQwYzZUX19MNXBiY01JdE52YldycFlkeXdyeXBMZlcyN0NmYjR4SF9BZlI4UzVNRi1GZ2NIN3BCem1oZTZSYW1aMGJwYk9xYUVqTFQ3VDdhNnlualFoSnh0Z3MwLWVobUdtWU9nSDRtNmJpNnJHVl8tZzJ4RkExcGpfMTJSdEMwaE9PSFVFSFVlLW5TUS1nWGJKM25TanVZT3N2TFlrX1lBREZTd3VQcEdYR1o0MTlaYTVZdWdtX0xFU25nbHVpREt1RmxadU9HWnlhMVJzSVhmRGNXS01TYmhZcXNVOG1IZHIxSTlvdkI00gGgAkFVX3lxTFBGbXNYazFXZDMwS0tDOFE2SEJTZm9VU29uaFBmcmJDVDlzQWtPb2dXYVBCWFdrWjZURFFmR0JXWGFQY2Z3ZFdDOFYxWDFONVFUSGF4VzRvUnJLTk91WmFzLVRMeGtNSzdDZmM0MTR4a2EyVmgyQ19FcXNMUlRrWlowcnVTZ3U1b3VYYzUwczRkcHlyMXNmN1B3d1l1R1FJSzIzRy04S3FFeG9lWGNSSmFEZzVNZ083cURtOG5QOEFFQlFSdWhlUDd5b0piTnV6bDFVMUo4VFlTUEozNElJTUVVVDJGdDRJY0s2Z0dwcFhPeEc1dHE1bGtMd2xBbGIwNTBmVGdOdEt4TVVLSVl1OFd3ZlFGTUtqVWNTRzAwUTNFMQ?oc=5",
-     "published": "Tue, 27 Oct 2026 12:28:53 GMT",
-     "sentiment": 0.026
-    },
-    {
-     "title": "Buy, Sell Or Hold: Vedanta, United Breweries, Bharti Airtel, Mazagon Dock And Godrej Consumer \u2014 Ask Profit",
+     "title": "Kotak Mahindra Bank Share Price Rallies Over 3% After Strong Q2 Beat. Time To Buy?",
      "source": "NDTV Profit",
-     "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPUWptV1A2WG5QcXJTSERJVS0zQzNud290dnMtaTcwVHNfb3o2VjBBWDdnT3ZJZkU4OE9JcXZnaUZhblVUVlJ3N3dzOUFoMGNzWmcxakFsUFNScFVtZVhtQUVZUTN2N0dsY3V2NzRxWXM5dWFQNXFXQ191ZDVyNW96aDNvYlNyRE1SN000Y09iemh1dlRfNWZoRVVmamdvWW54UTFKbTBUQlBqeVdHNzA4dVVjZ29ocTZaSlpuR0NwamFoTXNOZXRpal9iN25XTUVoOThUendyNU5LalHSAeMBQVVfeXFMTXNuQThpcTNiM2tQcVVZcWJIQ1BrVVlBalB6V1NwNFZ3aDQyU0tpWVMtWkVLVUVqb2ZGZTRTM3UwZWJaYVBKNFJpQkl2VHUxaHR2OWhoNlJwUGRiLWpBRlpadHhQRGVCeUhCZTc3VTAtOVZEODIyWGtVcUZyUkxfeWVHUzdMX3psUTE3aWEyMUd6a1JpYkRoOGNvSktwRHdGakRZQ3VtTWJDeV94bVdjQjJRWkxfZUJxWmVvOUFseC02aDE4aDcxMWFiRjJDSFpHWDFMQ3M2MUtGSXhOTVJLWjJ2aEU?oc=5",
-     "published": "Tue, 27 Oct 2026 17:33:01 GMT",
-     "sentiment": 0.586
+     "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNZndVOWVGaFZHSnBXNVNrWGZhaVZIS2lPUnloX3ZFRlVXVzZEcGRwTjFScXM5dGd0a1NLeVQxMWhkMFFZSVZJa1ZCc1hfcTVQMWNsZldNRWREZi1yNFJOQlJhM3F2Z3NSV1B5N2twaHl3ZkxWWXl2X3JPRVY0WWJOaGFIS1pJYXFEY2pYX3hTczdobVFidDdRZjE3WFFwaGo4UVlsbl9JdE1UX1VKTmoxWEdTSnNKc0tUZU1Tbk92VEzSAcgBQVVfeXFMTlJxYXFpX3dqd012WFVCMWhJVndad2RyUjUzUUZTN0hDeExmaVkwR0dWZDdpT1BrdU1GRnpYQld1RGVpLTctMDRZbXF2OXhMbjRwenFzUTI1M0NGTmdQaXNOMmpDbzZqTkYzSkNNT1FsYUFQaG1WdkZ3QlJJdmNReFgyRkhrQVZPX040WlBNWl9HNWpkcHgzakI2MUdRR3ZENWk2NnlfdzVEWFRKMXJLajlBU1BMLVRwZXhRcjN6eDBpX0ZFeGRDcE8?oc=5",
+     "published": "Mon, 26 Oct 2026 04:31:34 GMT",
+     "sentiment": 0.802
     },
     {
-     "title": "Jio Platforms IPO Could Overtake Bharti Airtel",
-     "source": "Passionate In Marketing",
-     "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNYlF5ZTROOVFjaWJ4WWlMZWNsZUFMcTExaFFLem5WbC10Yno4ajdaSy1tVWY3dnp2S3NNYVF5ajJRNFFxb28wbHU0dW00Yzg3LWVLNVp2VUZVRm1GYUdSTmRjLUx4d1BVX3NvWDJ1Z1NYdHUxa1F0cHE3cDhJeEVsR3V3R3VBZkJ2ZU1zdlVLUmxMaFVsenZWYjNjZUNxR3dvTmc?oc=5",
-     "published": "Tue, 27 Oct 2026 13:42:05 GMT",
-     "sentiment": 0.0
+     "title": "Kotak Mahindra Bank shares rise 2% as top Nifty gainer | Is it right time to book profits or wait? Target, stop loss",
+     "source": "TradingView",
+     "link": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxPSFZUODJxRjBWRlV6UFY0TUlHWEpaVV9ERzBNWUR2MlNpcFNsUHRuTmxkRm9hZldEQmRrNDJXRTNMb24tR2hGS3JDbFRKWmx2cExxc0pha2N5T1ljM2VSUHkteURRNnZqV3NFQldNNHNaX0RYcDQ4NjVha2REV2lxSlFNYU51SHFneFBaWDE2YmhBZnR4NTZVd2c3Mzl5YjFfbXpmQUNaSnJHYnBEM3haN0hVTXFtaVdDb0xPVlhYRFVUdHloQUxYQjNyWGJIQ1FHMkhJU3dtYWtkT19MYjJoZ0lGMFlKSThlZTAxVUtya2g1SERRMG9RanFadlQ?oc=5",
+     "published": "Mon, 26 Oct 2026 13:13:37 GMT",
+     "sentiment": 0.625
+    },
+    {
+     "title": "Kotak Mahindra Bank shares climb 4% after Q2 results. What are Jefferies, Goldman Sachs saying?",
+     "source": "The Economic Times",
+     "link": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxNUERDTFpkQWZ4VzJxbW9TQV9yYVlnZjdiUGF4MFIwVE5EdURZa0d5YUlFeDZ2V0FNT1pmWk5VM3dOUXctd0hubXBSa0FnazVNc3pqVC1vdEs5UGM5R2FUNFFFSXhsX25BZWdySW5jd3k4bzFSdWY1WGdBOU1MMXJjWG5oVmtiNGVqbDRYdjNjTkY2UlVYLWFpZXNoR0NIOS1tOWRVR2hYdUZ5dWM3VHN2M0xYQjBzbW1VZFZ2QzF6cl94ZnBlX3dEcUdPT2QxYkRHdU1NZ1JnUlhKVWpDMVMwMlRCaDEtR3NuR2RJTkhaSzJRZm1rVWdZc9IB_gFBVV95cUxPNmJOQ0ZoY3dSUVNvNGw1eGZ5ZWR3OVRwM0JsaVl2RldpaVJFUTBPQmVXS29hbjdodE9RQ3plcGIycHRKeDR3MVVCR2VseHBKZkF5VFpicVVKSzNUNEU0SVlRazJod2RKUzNGaVU0NXM3X3kxSlpRYjN5ZHJuTFJSMVBzNjZ5SllPVzhYeDc4c3NoWklPU1gtNWlyR1p2TUp1dVFLZWw5d0xyXzZ3VXFXb2I0bGg2UXpiODFSaG4wOEJyaWNjdWJfSklHWDhMNC1iUm5wQ3EySXdWNnYybkdPakV6RDhXdnBsMnpvZFRRR1ZycTJKOGVvU1NycXBEQQ?oc=5",
+     "published": "Mon, 26 Oct 2026 04:06:22 GMT",
+     "sentiment": 0.296
+    },
+    {
+     "title": "Kotak Mahindra Bank stock jumps 2%, among top Nifty gainers after Q2 results; JPMorgan raises target price",
+     "source": "Moneycontrol.com",
+     "link": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxONWRyOXZubWx4SVZGNms3T1R3Xy1DS0JkN0QtN1Y5NnJGUERNRHhWbFZIdTNOSUpjcjhRb3Z6cVc2bkpORWdZRnZSTFJVd2RDMTM1VkhRSExMLVZsRm1ZYU1jSmQ2aGxJWWFpWWdra3duMXlyMy1MTE5ORWZTakZxVzNDczI5b2luOFh5dTF3TWRNR0xyZ2NtUWgzNkZxY1cxVEFBLUwyRUpTc3Z6MWpKSGFsVnRtXzAwRDM0Nm1mYU03WVg3ZWNoT3NEckI5UzZCSFR6MEE4UjhLd2FsRDRvWkIzZDRQbXI2SUlTZm4wVzVLZ0FIUVhhcXl0TmLSAYICQVVfeXFMTnRVQnpiMkYwVXA5c0YtSlNac1poMXU1emh0eTFuOEkzdEFOX3Y4SFZvNy10RC1kdkxBa29UcWhENkxKb3lVM1RtUzhjeWJkZUpKek1vbFNOM3l1dWpqejNXRTYzTWhvTGV5N0hRNkR4TWdxeF9IZDhVMzVZX2NmZk9GZ09ZdnRUWXhPYUtycXRpNVFiR3ZlYUM1a01qLXJWenRWcEpuS0VWMVlZMjI1V0N4dnY2Qm12S2hxMXNIdlFac1o4OElKTDBTVXdsOUJNSWVjZ3JSRFpobjdRVWxYZ2RjZ01pQ0xuTFNVTTRnU0t3OXVXWkozNk1FT2J4elprZVZR?oc=5",
+     "published": "Mon, 26 Oct 2026 04:38:23 GMT",
+     "sentiment": 0.718
     }
    ],
    "news_sentiment": {
-    "score": 0.314,
+    "score": 0.389,
     "count": 8,
     "label": "POSITIVE"
    },
-   "win_prob": 5.0,
-   "expected_r": -0.75,
+   "win_prob": 3.2,
+   "expected_r": -0.79,
    "model_used": true,
    "grade": "C",
    "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
-   "action": "BUY BHARTIARTL near \u20b91,917.50 (skip if it opens above \u20b91,982.43) \u00b7 SL \u20b91,885.04 \u00b7 T1 \u20b91,982.43 \u00b7 T2 \u20b92,047.35 \u00b7 Qty 3 for \u20b910k @1% risk"
+   "action": "BUY KOTAKBANK near \u20b9442.50 (skip if it opens above \u20b9456.93) \u00b7 SL \u20b9435.28 \u00b7 T1 \u20b9456.93 \u00b7 T2 \u20b9471.37 \u00b7 Qty 13 for \u20b910k @1% risk"
   }
  ],
  "scanned": 82,
