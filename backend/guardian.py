@@ -589,6 +589,22 @@ def check_capital_edge(env, state, now):
         state.pop("edge_alerted", None)
 
 
+def momentum_line(m, day):
+    """The paper-only third trade (NIFTY first-hour momentum buy), one line for the evening alert."""
+    if not m or m.get("error"):
+        return ""
+    t = m.get("today") or {}
+    if t.get("date") != day:
+        now = "no record today"
+    elif t.get("status") == "CLOSED":
+        now = (f"bought {t['strike']} {t['kind']} at {t['entry_px']} ({t['entry_at']}), {t['reason']}: "
+               f"{'+' if t['pnl'] >= 0 else '-'}Rs {abs(t['pnl']):,}")
+    else:
+        now = t.get("status", "").lower() + (f" ({t['note']})" if t.get("note") else "")
+    return (f"\nMomentum buy (3rd trade): {now}. Total Rs {m.get('total', 0):+,} "
+            f"({m.get('trades', 0)} trades, {m.get('wins', 0)} won).")
+
+
 def evening_report(env, state, now):
     """Once each evening: today's paper result and the running total, as one phone alert."""
     day = now.date().isoformat()
@@ -610,7 +626,8 @@ def evening_report(env, state, now):
         pnl = d0.get("pnl", 0)
         notify(env, f"Paper result today: {'+' if pnl >= 0 else '-'}Rs {abs(pnl):,}",
                "\n".join(d0.get("detail") or ["No trade today."]) + f"\nTotal: Rs {pb.get('total', 0):+,} "
-               f"({pb.get('trades', 0)} closed trades, {pb.get('wins', 0)} won; open now Rs {pb.get('open_value', 0):+,}). Paper only, 1 lot.")
+               f"({pb.get('trades', 0)} closed trades, {pb.get('wins', 0)} won; open now Rs {pb.get('open_value', 0):+,}). Paper only, 1 lot."
+               + momentum_line(pb.get("momentum"), day))
         return
     h0 = next((x for x in r.get("history") or [] if x.get("session") == day), {})
     pnl = h0.get("plan_pnl", 0)

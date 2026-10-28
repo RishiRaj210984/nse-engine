@@ -18,6 +18,7 @@ from datetime import datetime
 
 import requests
 
+import momentum
 import store
 from config import INDEX_SPECS, IST, PUBLIC_DIR
 from options import bs_price
@@ -43,9 +44,15 @@ def yahoo_quotes(symbols):
             last = float(meta.get("regularMarketPrice") or (closes[-1] if closes else 0))
             prev = float(meta.get("chartPreviousClose") or meta.get("previousClose") or last)
             t = meta.get("regularMarketTime")
+            # the day's open and the price at 10:15 (close of the 10:14 one-minute bar), for the first-hour move
+            stamps = [datetime.fromtimestamp(x, IST).strftime("%H:%M") for x in res.get("timestamp") or []]
+            opens = [o for o in q.get("open") or [] if o is not None]
+            upto = [c for hm, c in zip(stamps, q.get("close") or []) if c is not None and hm <= "10:14"]
             out[sym] = {"last": round(last, 2), "prev_close": round(prev, 2), "chg_pct": round((last / prev - 1) * 100, 2) if prev else 0,
                         "high": round(max(highs), 2) if highs else None, "low": round(min(lows), 2) if lows else None,
-                        "as_of": datetime.fromtimestamp(t, IST).strftime("%H:%M") if t else None}
+                        "as_of": datetime.fromtimestamp(t, IST).strftime("%H:%M") if t else None,
+                        "open": round(opens[0], 2) if opens else None,
+                        "at_1015": round(upto[-1], 2) if upto and any(hm >= "10:14" for hm in stamps) else None}
         except Exception as exc:
             log.info("yahoo %s failed: %s", sym, exc)
     return out
@@ -352,19 +359,22 @@ def run(force=False):
     scan = store._read(os.path.join(PUBLIC_DIR, "volume-breakouts.json"), {})
     syms = ["^NSEI", "^NSEBANK", "^INDIAVIX"] + [c["symbol"] + ".NS" for c in (scan.get("candidates", []) + scan.get("near_misses", []))[:12]]
     quotes = yahoo_quotes(syms)
-    chains, chain_src, err = {}, "NSE", None
+    chains, chain_src, err, nearest = {}, "NSE", None, {}
     nse = NSEClient()
     try:
         nse.warm()
         for name in ("NIFTY", "BANKNIFTY"):
             o = (bias.get("options") or {}).get(name)
             exps = nse.expiries(name)
+            nearest[name] = datetime.strptime(exps[0], "%d-%b-%Y").date().isoformat()
             exp = nse_date(o["expiry"]) if o and nse_date(o["expiry"]) in exps else exps[0]
             rec = nse.chain(name, exp)
             # always keep the strikes the plan and any held paper trade use, so their real prices are saved
             keep = {int(l["strike"]) for l in (o["strategies"][0]["legs"] if o else [])}
             keep |= {int(l["strike"]) for p in (store._read(store.state_path("paper_book.json"), {}) or {}).get("open", {}).values()
                      if p["index"] == name for l in p["legs"]}
+            if name == "NIFTY":
+                keep |= momentum.keep_strikes(now)   # today's paper momentum buy
             sm = summarise_chain(rec, INDEX_SPECS[name]["step"], keep=keep)
             if sm:
                 sm["expiry"] = exp
@@ -393,6 +403,10 @@ def run(force=False):
     except Exception as exc:   # never let this block the live snapshot
         out["paper_open"] = []
         log.warning("paper_open failed: %s", exc)
+    try:   # paper-only third trade: NIFTY first-hour momentum buy
+        out["momentum"] = momentum.step(now, quotes.get("^NSEI"), chains.get("NIFTY"), nearest.get("NIFTY"))
+    except Exception as exc:
+        log.warning("momentum step failed: %s", exc)
     store.publish("live.json", out)
     try:
         import markets
