@@ -930,5 +930,148 @@
    "No A/B stocks: watchlist shown for learning only (market gate closed)."
   ],
   "note": "Option P&L is a Black-Scholes estimate repriced with India VIX, per 1 lot, before costs. Stock results use a \u20b910,000 / 1% risk example."
+ },
+ {
+  "session": "2026-10-29",
+  "as_of": "2026-10-29T16:17:19.949656+05:30",
+  "final": true,
+  "plan_built": "2026-10-29T07:13:26.265476+05:30",
+  "bias": {
+   "label": "BULLISH",
+   "predicted_pct": 0.27,
+   "actual_pct": 1.05,
+   "band_pct": 0.34,
+   "correct": true
+  },
+  "options": [
+   {
+    "index": "NIFTY",
+    "strategy": "Bull Put Spread",
+    "legs": "SELL 22300 PE + BUY 22050 PE",
+    "lot_size": 65,
+    "planned_max_reward": 1963,
+    "planned_max_loss": 14287,
+    "day_open": 22690.65,
+    "day_high": 22961.6,
+    "day_low": 22656.85,
+    "last": 22936.75,
+    "entry_condition": "plan said SKIP: No tested structure has a positive record for today. On days the model called BULLISH, this spread lost on average: 47.6% wins, avg \u20b9-349 per lot over 187 trades.",
+    "entry_spot": 22806.6,
+    "entry_time": "10:15",
+    "opening_move_pct": 0.51,
+    "status": "NO ENTRY",
+    "pnl_per_lot": 0,
+    "verdict": "Entry condition not met, so no trade. The plan's filter kept you out."
+   },
+   {
+    "index": "BANKNIFTY",
+    "strategy": "Bull Put Spread",
+    "legs": "SELL 52600 PE + BUY 51700 PE",
+    "lot_size": 30,
+    "planned_max_reward": 2811,
+    "planned_max_loss": 24189,
+    "day_open": 54167.8,
+    "day_high": 54978.75,
+    "day_low": 54050.65,
+    "last": 54909.65,
+    "entry_condition": "plan said SKIP: No tested structure has a positive record for today. On days the model called BULLISH, this spread lost overall (63.1% wins, avg \u20b9-245 per lot over 195 trades). A good-looking slice is not trusted on its own.",
+    "entry_spot": 54531.25,
+    "entry_time": "10:15",
+    "opening_move_pct": 0.67,
+    "status": "NO ENTRY",
+    "pnl_per_lot": 0,
+    "verdict": "Entry condition not met, so no trade. The plan's filter kept you out."
+   }
+  ],
+  "stocks": [
+   {
+    "symbol": "BHARTIARTL",
+    "grade": "C",
+    "entry": 1948.1,
+    "stop": 1913.92,
+    "t1": 2016.46,
+    "open": 1967.5,
+    "high": 1977.4,
+    "low": 1943.3,
+    "last": 1972.1,
+    "tradeable": false,
+    "status": "OPEN (day 1 of 2)",
+    "entry_fill": 1954.4,
+    "entry_time": "09:30",
+    "r": 0.44,
+    "pnl_10k": 35,
+    "qty_10k": 2
+   },
+   {
+    "symbol": "KOTAKBANK",
+    "grade": "C",
+    "entry": 442.5,
+    "stop": 435.28,
+    "t1": 456.93,
+    "open": 441.5,
+    "high": 460.1,
+    "low": 440.05,
+    "last": 459.0,
+    "tradeable": false,
+    "status": "T1 HIT (half booked)",
+    "entry_fill": 444.0,
+    "entry_time": "09:30",
+    "r": 1.6,
+    "pnl_10k": 154,
+    "qty_10k": 11
+   },
+   {
+    "symbol": "LT",
+    "grade": "C",
+    "entry": 3801.3,
+    "stop": 3738.08,
+    "t1": 3927.75,
+    "open": 3814.7,
+    "high": 3844.0,
+    "low": 3765.7,
+    "last": 3837.1,
+    "tradeable": false,
+    "status": "OPEN (day 1 of 2)",
+    "entry_fill": 3801.8,
+    "entry_time": "10:25",
+    "r": 0.55,
+    "pnl_10k": 35,
+    "qty_10k": 1
+   },
+   {
+    "symbol": "TVSMOTOR",
+    "grade": "C",
+    "entry": 4239.9,
+    "stop": 4152.29,
+    "t1": 4415.11,
+    "open": 4275.1,
+    "high": 4308.1,
+    "low": 4128.2,
+    "last": 4280.0,
+    "tradeable": false,
+    "status": "OPEN (day 1 of 2)",
+    "entry_fill": 4262.5,
+    "entry_time": "09:30",
+    "r": 0.16,
+    "pnl_10k": 0,
+    "qty_10k": 0
+   }
+  ],
+  "summary": {
+   "options_pnl_per_lot": 0,
+   "planned_max_reward": 0,
+   "gap": 0,
+   "trades": 0,
+   "stocks_pnl_10k": 0,
+   "stock_trades": 0,
+   "plan_pnl": 0
+  },
+  "lessons": [
+   "Bias BULLISH: Nifty +1.05% vs prev close. Call was right.",
+   "NIFTY: Entry condition not met, so no trade. The plan's filter kept you out.",
+   "BANKNIFTY: Entry condition not met, so no trade. The plan's filter kept you out.",
+   "No A/B stocks: watchlist shown for learning only (market gate closed)."
+  ],
+  "note": "Option P&L is a Black-Scholes estimate repriced with India VIX, per 1 lot, before costs. Stock results use a \u20b910,000 / 1% risk example."
  }
 ]

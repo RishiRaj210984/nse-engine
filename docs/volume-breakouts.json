@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-29T07:13:54.894674+05:30",
+ "generated_at": "2026-10-29T16:18:28.902191+05:30",
  "market_open": false,
  "volume_projected": false,
  "bias": {
-  "label": "BULLISH",
-  "score": 37
+  "label": "RANGEBOUND",
+  "score": -13
  },
  "rules": {
   "vol_mult": 2.0,
@@ -19,239 +19,137 @@
  },
  "market_gate_open": false,
  "model": {
-  "version": 18,
-  "updated": "2026-10-28T22:20:56.919469+05:30",
-  "ranker_on": true,
-  "samples": 2143,
-  "live_samples": 22,
+  "version": 19,
+  "updated": "2026-10-29T16:17:50.783930+05:30",
+  "ranker_on": false,
+  "samples": 2145,
+  "live_samples": 24,
   "base_win_rate": 0.4716,
   "expectancy_r": 0.075,
-  "holdout_auc": 0.541,
-  "note": "ranker ON (holdout AUC 0.54)"
+  "holdout_auc": 0.539,
+  "note": "ranker OFF: no out-of-sample edge, using rule stats only"
  },
- "candidates": [],
+ "candidates": [
+  {
+   "symbol": "ADANIPORTS",
+   "name": "Adani Ports",
+   "bar_date": "2026-10-29",
+   "cmp": 1872.0,
+   "day_chg": 6.29,
+   "vol_ratio": 2.52,
+   "vol_badge": "2.5x Vol Surge",
+   "volume_projected": false,
+   "rsi": 64.8,
+   "ema20": 1763.03,
+   "ema50": 1751.74,
+   "high20": 1872.0,
+   "dist_high_pct": 0.0,
+   "atr": 50.57,
+   "checks": {
+    "volume": true,
+    "momentum": true,
+    "trend": true,
+    "breakout": true
+   },
+   "checks_passed": 4,
+   "passed": true,
+   "entry": 1872.0,
+   "stop": 1834.08,
+   "t1": 1947.85,
+   "t2": 2023.7,
+   "pivots": {
+    "P": 1839.7,
+    "R1": 1904.3,
+    "S1": 1807.4,
+    "R2": 1936.6,
+    "S2": 1742.8
+   },
+   "risk_per_share": 37.92,
+   "rr_t1": 2.0,
+   "rr_t2": 4.0,
+   "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
+   "features": {
+    "log_vol_ratio": 0.9234916975746522,
+    "rsi": 64.83202764823326,
+    "dist_high_pct": 0.0,
+    "ext_ema20": 6.180926330455816,
+    "atr_pct": 2.7011601455503924,
+    "day_chg": 6.285127354963094,
+    "ret5": 6.971428571428562,
+    "rs20": 1.7733406104403215,
+    "bias_score": -13.0,
+    "news_sent": 0.533,
+    "mkt_above50": 0.0,
+    "mkt_ret20": 0.9708964916453011
+   },
+   "r1_a": 0.6387728576526579,
+   "r2_a": 1.2775457153053114,
+   "news": [
+    {
+     "title": "Adani Ports shares gain 2% after Q2 profit rises 18%",
+     "source": "India Infoline",
+     "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPRHBHd1FqN3Nmbng5c2VSYTJ6WjgtekRhbzh5MDRndlZwUm8zX09XY2ZLb0taYUktY0JOZEdNU05nMkM3bWg4N2JGeWdzRUpZMHAzTlJoNm9lNXdIblM4UFFCV01kWGk5ZzFRWTV0WDh2QUI1cTR3YkFYTDluS1hnQ3BWVkExR19QUk5XaVVfNC1nN1NzeGtyVDlBZw?oc=5",
+     "published": "Thu, 29 Oct 2026 06:28:43 GMT",
+     "sentiment": 0.765
+    },
+    {
+     "title": "Adani Ports soars 4% on healthy Q2, raises FY27 guidance; brokerages upbeat",
+     "source": "Business Standard",
+     "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxOaU1wSllZOHZiZndwVkJ4Yy0wZExzSElabWVzLXF0Sm9tNjh0eWZwUXVqQy1ELVhmT0I0NXZZYUZjazQxejVFY3A4b3o4cXNSTkh5UnNYc1lDT184QTJDbEh4ajVUZVNSUEltSmFIOGFTekh4SU8zQWJmZkFKMTVnc01tYUR1UGxaY0NWRDFyVFhRNGxlaVZtVVV4NG9fWjJEUlJSd3NWeFpxY3Bka210OEtBS0FyVFVwTl9YTHFPTWo5WUNHUmNhbUFZVmVhY3R5SUg5S1RB0gHbAUFVX3lxTE91dFpzckprRjZpaG1uQXpXQXhyalhTa2JuS0Y3UmJSZzJrRTc4ZTZxMDE5REt1dDVKRGZYenFILUh2c25FUkZvLW1SX0E3aUlONjB3bWNNb1pqaExtSFlLQkVMMF85QVRPS3VsQjNqUXZWVlFvSXNocG1OOVh1U0R1eDdkbmxTYUw3MktNR2ZxdnA4WC1YYllvOU4wejBaNDRSWDA4dmdDSE1GcFROZkgyWnQ0cVM4Qk5Yb3gwbzQ4NENlbFZmMjdfeHpOcFg3QWluQVRMQXlRdU5JNA?oc=5",
+     "published": "Thu, 29 Oct 2026 05:38:08 GMT",
+     "sentiment": 0.691
+    },
+    {
+     "title": "Adani Ports shares rise 3% after Q2 results. Why did Jefferies and Nomura raise target prices?",
+     "source": "The Economic Times",
+     "link": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxPQ2M2eTJkbW1TNHR2LUxJZzhHdFd3WWpLSzJuLS1nblE4OVN4YUpUSkVqd3lFeGppc2xJekl5QkIxNXRZNkJZa191SV9QRDJkNDJXZHQtRHRtOXlMb2ljQk9va2RrenZlamdzU3BLSFNxTW1NS1YwNlluQ2hMQ0VnclBmdlRINnhhdUFRcUc3Z0dFcTVoWDNXai03dmdrVjVGaE1YNkxRNWZ6WHVvbkZ0blYtaGdlWnFIakxadWczOUZ1VzRRd1VjYkp4OG5aRG5pbHNoWnp2RmphYmJZbmY4dmNxVVBRc05lT3hOYUtpX09xMHh4Z2JCatIB_gFBVV95cUxOUjR0bk1wXzB1dmRsTFBwUE0yd3B6TXJ2MkhHbFFwMzVLT3Zua1BNczFmb3QtcnAzdzNOOENwQUQ4dmE1R0JZVWdWX19Pa2NUeS1YaHRBWDA4aUVsMHgwSDRGOFRJMVptZVRhdExrc0k1UEM1cXVsNE1WbEo2RW9wbm10ZEVjbmFtZnRRQ0J0eGxmT3ZNQ0VjMW1xbENaUWZzdDdSbUh3QkVISFRJdHpQdV9LbnpuaHZDNUtwaTh0dlRBSG8wcWU5SnRmUHpYS1d6NHBZNGJXM1FfZnBVUHEzb0dNd1dLbXlDNmhhZU1oeUZLbXVMdmdIanZXR1Z2Zw?oc=5",
+     "published": "Thu, 29 Oct 2026 04:15:40 GMT",
+     "sentiment": 0.296
+    },
+    {
+     "title": "Adani Ports stock climbs over 5 pc after Q2 profit rises to Rs 3,682.44-cr",
+     "source": "Daily Excelsior",
+     "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPZjVHNUtjMTVTcm9VOHZvcWdyNElpYUxLeGYzNHpTMnpDa3J6M3RRSWNmZUZpQlJJamhLMTNJeHJsUzJWbDk0enZMbTRuR0QxV2lBNUFSU0FvZmpYSVc1MlBRM2JNVG5Dbk02Z25XeHJ5bzd3QUhhZzlWOHV4YXRzMlQzV29lel9mVmJWUW1QNFJLbFZpZ2hiQjVRV1A5UmJTbDFpeWtmZnPSAawBQVVfeXFMUE9rYmJzVU8tQjFfbERURjdHS1hQc01FTWNWamgzajNqOENFU25nMk0wMW5UY21vdFdOanp5S1BfVUxQZVEtemFoNGdmRHU5LVBDbDhHZjZGQ2FWY0tneldxMlgxUzZETWFnYVdYelplVkFuMG9Dby1ZV1ZDdDBhSE9Yb0s5UHVvZzNCeXdrUnVyRjFWcWlrNzNQQTNlVW11cjZ2alp6dHJBQVVyNg?oc=5",
+     "published": "Thu, 29 Oct 2026 08:02:56 GMT",
+     "sentiment": 0.25
+    },
+    {
+     "title": "Adani Ports stock climbs over 5 pc after Q2 profit rises to Rs 3,682.44-cr",
+     "source": "Press Trust of India",
+     "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPXzE4YjJ2bTBqeEVwX1ZXLThMeWZFWUNtUzlRSkNFbV94TV9XRUJhaG5zVGRDcXl3YnhVdGx1OVh5eTVGS1FaZnF1MHA2c1BXMnNvcjFHUWpWVDZTb2VpRlZ0Ni1veWxfaDVKTG10SHQ1YU9XUHduMFh0QVZheU93dUUzMkdpb3NGMmVPVEhVbXNKeHBLVVpzRm5wT1hIRGxiWjVmMkF5TF93eS1lc296X2VzaC1GWXBkTk9rVDhn?oc=5",
+     "published": "Thu, 29 Oct 2026 07:28:00 GMT",
+     "sentiment": 0.25
+    }
+   ],
+   "news_sentiment": {
+    "score": 0.533,
+    "count": 8,
+    "label": "POSITIVE"
+   },
+   "win_prob": 47.2,
+   "expected_r": 0.07,
+   "model_used": false,
+   "grade": "C",
+   "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
+   "action": "BUY ADANIPORTS near \u20b91,872.00 (skip if it opens above \u20b91,947.85) \u00b7 SL \u20b91,834.08 \u00b7 T1 \u20b91,947.85 \u00b7 T2 \u20b92,023.70 \u00b7 Qty 2 for \u20b910k @1% risk"
+  }
+ ],
  "near_misses": [
   {
-   "symbol": "BHARTIARTL",
-   "name": "Bharti Airtel",
-   "bar_date": "2026-10-28",
-   "cmp": 1948.1,
-   "day_chg": -1.55,
-   "vol_ratio": 1.67,
-   "vol_badge": "1.7x Vol Surge",
+   "symbol": "TVSMOTOR",
+   "name": "TVS Motor",
+   "bar_date": "2026-10-29",
+   "cmp": 4280.0,
+   "day_chg": 0.95,
+   "vol_ratio": 2.7,
+   "vol_badge": "2.7x Vol Surge",
    "volume_projected": false,
-   "rsi": 62.7,
-   "ema20": 1870.86,
-   "ema50": 1860.42,
-   "high20": 1978.8,
-   "dist_high_pct": 1.55,
-   "atr": 45.57,
-   "checks": {
-    "volume": false,
-    "momentum": true,
-    "trend": true,
-    "breakout": true
-   },
-   "checks_passed": 3,
-   "passed": false,
-   "entry": 1948.1,
-   "stop": 1913.92,
-   "t1": 2016.46,
-   "t2": 2084.82,
-   "pivots": {
-    "P": 1948.5,
-    "R1": 1970.4,
-    "S1": 1926.2,
-    "R2": 1992.7,
-    "S2": 1904.3
-   },
-   "risk_per_share": 34.18,
-   "rr_t1": 2.0,
-   "rr_t2": 4.0,
-   "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
-   "features": {
-    "log_vol_ratio": 0.5145009769875796,
-    "rsi": 62.730951046866984,
-    "dist_high_pct": 1.5514489834568452,
-    "ext_ema20": 4.128755383698968,
-    "atr_pct": 2.3393973694104533,
-    "day_chg": -1.551448983456849,
-    "ret5": 2.981446628421369,
-    "rs20": 10.332486781091077,
-    "bias_score": 37.0,
-    "news_sent": 0.234,
-    "mkt_above50": 0.0,
-    "mkt_ret20": -0.3573287853513407
-   },
-   "r1_a": 0.48931730583123956,
-   "r2_a": 0.9786346116624791,
-   "news": [
-    {
-     "title": "Bharti Airtel Stock And 2 Indian Telecom Shares Riding The Jio IPO Shift",
-     "source": "Yahoo Finance",
-     "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQRW1PN2NUVkx4c0Q5d3lFc3NHYTg1WWY0N3lsWHpNajBwakJseEhNT20xYjUtSDNjSlRDR2owOFhrMFpGazY0RzNKVGstVnVpWmh3RnFtaFY3OTNmSHFRZFdWT1dtTGFRczFFUXRra0poUWtMeEJ5NWI0YXk4S2c2d3lDYW1kaWk0anpDZGJreHhtT1Y0NjZZXw?oc=5",
-     "published": "Wed, 28 Oct 2026 12:09:44 GMT",
-     "sentiment": 0.296
-    },
-    {
-     "title": "Bharti Airtel Share Price - Live NSE: BHARTIARTL Stock Price & Chart",
-     "source": "Upstox",
-     "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5yVGN2YlBzbU5xc0FJSkctUlVUMzAzSHdiOENtSzV1TlJyZHhSVGZIVVVyUEw0MVpwMm1HVDRxOGM3akMyaGhNaUZUZ09TQ0N4b2Vjd3lLaW1DaEg4QXRJbU5BQjZJcjN3MGlBSQ?oc=5",
-     "published": "Wed, 28 Oct 2026 01:33:16 GMT",
-     "sentiment": 0.296
-    },
-    {
-     "title": "How to trade Bharti Airtel stock: Analyst's advice amid Jio Platform's market debut",
-     "source": "Business Today",
-     "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxNNlJHQzE2bUQzMzRpREV6VThqODBxXzlDelZpamVrVlhJRDUwdVJ3MEFuc1Uwa21tRUxYZC01X29iYjVJVFlpUm44c0N4eDljRm1NajhfazJLbEc3cUMwZUpmNTBHMlBRUFhGRWxXejg4Uk9wV05mdWVNbFlZamllNExsanpRcDEyTmRUUC1xRXJyUTNBVXpsWDlmWVdOdVVRN2xaU0VjQ2pXRHAxaVVWbExhRlpfMDdaXzVVMVE5T3FmSnZYWDBVWDhVN1plRTk5TkRmcUExVmZ2M1AwZG9qUGh30gHnAUFVX3lxTE5GaVBTRW9ad3VfVWZXWUJMYzhKRU85MzdOUnpSeDdmajQxeGdWY0dud2xPWko0RlJWRVlabm5WUU5RQTVzSDZJRUJjdWc2Z1BuQ0x2SFR4RElvam5kMl93S3huRk55R29oZ3F4anlCSGYwMmZnM0g4bVBNZ3NFNkYtT2oxa3VvN1lMRkw1dlJZWXZqVUZFNm5jYUZiYTI3d1A0dkNHZ0JHN3hqY1ZIMnRyLXVvRXRPb1RsUzZEOXBSR01UMWJlalhtbzBsTldzZV9YNEQ1Mm5fSk5nRVpxbUctZGtVS3IzNA?oc=5",
-     "published": "Wed, 28 Oct 2026 11:38:34 GMT",
-     "sentiment": 0.0
-    },
-    {
-     "title": "Jio Platforms surges 21% on debut, overtakes Bharti Airtel",
-     "source": "The Economic Times",
-     "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQSVhWYjBLZUtKS2t2WGRrajFBT2c5Z0pydVlCbzdrMEhlclRNM09QSXBHZS1BRnM3c3d0RlZ1TkpwSUJoclJQZjh1WHE3WTUtZ0lNS0Z1bFFPQUtzakZVOTRGdDVXTEoyeVladDRIYm9YX1JaeUN0STRJRERIOHpjdXdXREdPX1BlZEt2VDlMQzJZQ01LTW5lZzlJMTJmRi1CeTVTM2J5UndqNFpZd2MwbTJiTkNockQ5UlJBXzBkaWUyMzNLdW4zcFFn0gHPAUFVX3lxTFB4bnhFX2kzWFhkT3ZuMTBpMFdSd1k2V1g1MnRWTnQ3Xzh5QUF5dU92SnhDQmRvU2ZsM0Z5V2FrSDZ6a2p4cUJNRlh1RDRqVGRkWUs5Z3B4aFJhQ2NldEdJZTYzeEdFaWg0R28xUmhBNnRDZFdkUDVTay1QajFZZTR5c01mTTdkTllpMC03ZkFaMC1HdjBRcUFYb3hrNGpuaHZtbFNxLVpFZFZRWnB0REVMai1HYmFNZmx5SDc0MVhkUlFYMlpMTUpuOFZOVjZxQQ?oc=5",
-     "published": "Thu, 29 Oct 2026 00:55:41 GMT",
-     "sentiment": 0.421
-    },
-    {
-     "title": "Bharti Airtel share price up 3%; rallies 12% in October, outperforms market",
-     "source": "Business Standard",
-     "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNc0M3a29UYWNtY0wtT2JBRWlvMEVVRjJGb3ZoeTh3cDdrU2hPWVRCN2xPdjFuQi1YZ0ptVV9VeFhHckQ1QUpMYzhhQzhyUHJyc3I4MTc3cFNVeFhUdlgta2NOT3VEU2FiRTZPcE11UTk1d1JSYzlwdWdTU2UyUmdHZnRxaE55aUFaYTRzdHZGejM5WkpFb2k1YjhpeWs1cUo3NzRSVXRucS02cXAzcVZ2cUZXNzJMeGhCazMzOHRvdzl0N0IzNzgtUEh3elZsR3RNdGoyWNIB2gFBVV95cUxPQU5MZTVZRkkyeW1HX04xN3haaTdLa3NkTFlMUTdyZjFTZXI2XzJ2MEhHLUM4OHFhamc2d3VjU1ItUXRJU2hPODJjd2dIRVE1S2VOQ1d3RUZJanFtXzBkMVhIRFBMRFl6MDF3aUY2QmxudlpLSmF4RHAxVjRSbTFaMC0yMXpOaWllMi1TVmFWMElXRk4xRmRwZEdDREVuUVh4N2VST2RhQ3ZVMjhMblpjUkpaNFdKbW56MGtZdGx6TE4zMmI3NXF6U0RVZEpVNEpZSksxbzFneGpxQQ?oc=5",
-     "published": "Tue, 27 Oct 2026 07:46:34 GMT",
-     "sentiment": 0.586
-    }
-   ],
-   "news_sentiment": {
-    "score": 0.234,
-    "count": 8,
-    "label": "POSITIVE"
-   },
-   "win_prob": 20.9,
-   "expected_r": -0.44,
-   "model_used": true,
-   "grade": "C",
-   "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
-   "action": "BUY BHARTIARTL near \u20b91,948.10 (skip if it opens above \u20b92,016.46) \u00b7 SL \u20b91,913.92 \u00b7 T1 \u20b92,016.46 \u00b7 T2 \u20b92,084.82 \u00b7 Qty 2 for \u20b910k @1% risk"
-  },
-  {
-   "symbol": "KOTAKBANK",
-   "name": "Kotak Mahindra Bank",
-   "bar_date": "2026-10-27",
-   "cmp": 442.5,
-   "day_chg": 0.4,
-   "vol_ratio": 0.95,
-   "vol_badge": "0.9x Vol Surge",
-   "volume_projected": false,
-   "rsi": 60.0,
-   "ema20": 433.57,
-   "ema50": 421.56,
-   "high20": 453.1,
-   "dist_high_pct": 2.34,
-   "atr": 9.62,
-   "checks": {
-    "volume": false,
-    "momentum": true,
-    "trend": true,
-    "breakout": true
-   },
-   "checks_passed": 3,
-   "passed": false,
-   "entry": 442.5,
-   "stop": 435.28,
-   "t1": 456.93,
-   "t2": 471.37,
-   "pivots": {
-    "P": 442.4,
-    "R1": 444.9,
-    "S1": 440.0,
-    "R2": 447.3,
-    "S2": 437.5
-   },
-   "risk_per_share": 7.22,
-   "rr_t1": 2.0,
-   "rr_t2": 4.0,
-   "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
-   "features": {
-    "log_vol_ratio": -0.052852892381393395,
-    "rsi": 60.04655045996903,
-    "dist_high_pct": 2.3394407328906413,
-    "ext_ema20": 2.0604068181436785,
-    "atr_pct": 2.1746458254627554,
-    "day_chg": 0.3970504821327214,
-    "ret5": 0.04522093885404033,
-    "rs20": 11.218300883047405,
-    "bias_score": 37.0,
-    "news_sent": 0.271,
-    "mkt_above50": 0.0,
-    "mkt_ret20": -1.688597912750378
-   },
-   "r1_a": 0.24940682095437444,
-   "r2_a": 0.4988136419087489,
-   "news": [
-    {
-     "title": "Kotak Mahindra Bank Limited (KOTAKBANK.NS) stock price, news, quote and history",
-     "source": "Yahoo Finance Singapore",
-     "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE4ydDcwaWg5Y2NVd2psSkFKQktrTVNnZTF3TmloQWQ5Q1c0TFRMR1NtM2syWEhya2RoSDFmV282OWJiTkgxbENmRjlwd0xkT2dxbFhuY3NEZ09DRW9G?oc=5",
-     "published": "Tue, 27 Oct 2026 12:47:06 GMT",
-     "sentiment": -0.226
-    },
-    {
-     "title": "Delhi HC orders removing fake Kotak Bank, securities accounts from social media platforms",
-     "source": "Moneycontrol.com",
-     "link": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxNUjlncHprLTN5clNqWVNBcEhyQ3VmeXBIaGdQSDdrbDlNWWhYM0ZxZUJrVUVGV3dQZWhwMWN5X203eGVzNzRoYUVTZGRkNVJJYWZ1d3RMbFBzRzFhRTZRaWY2UWtPVVJPVHptcHN0WmFmTXlVeURneEZibDRiUnFSbzFDUm42YzN1Z3pjSEM0b2xCcGVpMmoyLTIzV1dzYW5rcnVHeTZRU0Exd21jS2NsbzU5YnhlNEctTjFKYlJKcE9mbEZXZWNtbzU3Q3Z5NkFLU2JWVjVMTnJ6cFdwLWViX01venljek92ck9Kd3pB0gHuAUFVX3lxTE1SOWdwemstM3lyU2pZU0FwSHJDdWZ5cEhoZ1BIN2tsOU1ZaFgzRnFlQmtVRUZXd1BlaHAxY3lfbTd4ZXM3NGhhRVNkZGQ1UklhZnV3dExsUHNHMWFFNlFpZjZRa09VUk9Uem1wc3RaYWZNeVV5RGd4RmJsNGJScVJvMUNSbjZjM3VnemNIQzRvbEJwZWkyajItMjNXV3NhbmtydUd5NlFTQTF3bWNLY2xvNTlieGU0Ry1OMUpiUkpwT2ZsRldlY21vNTdDdnk2QUtTYlZWNUxOcnpwV3AtZWJfTW96eWN6T3ZyT0p3ekE?oc=5",
-     "published": "Wed, 28 Oct 2026 06:53:22 GMT",
-     "sentiment": -0.226
-    },
-    {
-     "title": "Kotak Mahindra bank shares lead Nifty 50 gainers after Q2 results",
-     "source": "BusinessLine",
-     "link": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxQeHpfczJlT00taVc2ZnRQT09GTHpkbTdpUHdIbkJrckhrZ2hmZk5QazgxajdVTHZXUVlCczZ1OWFweWFYMjR4YWo5WkR2cUVuNHd4NjgyVUdiU3FXaVFfRW5GNVMyWFJ0ektNdGh3ZHhvRlVRalZpb2ZXYzFDY2xYdk9EWXFSZXg3aTM4b1ctUzRmZ0l0NEFLS0F3NnVKaWhEZEFhejZaUmZ5ZTBrclN4TDN5OXdNNWdwV1ZmQkcyc0NQc25HX1NReWE0NllTMjhJaUZNdzdqMXJEOWFQTmlzWmtta1RVbU1DZXREMFBaVFloRFdqVFduX3ZQTlnSAYMCQVVfeXFMUGhFeHdPcjU0THNxdm9EZDhUMW56UmxTc2lsdW9zVDBYa0RydUJVZ0xNRkpvSm9GcTZJdy12MlRoYVEyQUNUVUtMSDNpYmxPY2FWTkpaRWZQZXYzYmQzLURCeEMtdFRqLTFDVG9pcTZYSkJ2UlpvSVB3a2N6ZFRFcno4VWxaVV9hRE1qcnlJajJST1loZGdXdFBaQld5X0pCMWI1aFlJTWd2cTdtYzZ0aUNfeDJzZ0lZTjF5WURxcXREZlpkV3FRc1REMnZ5Wk1WMXRRQjdka1JFLWdQZE5CbENaMnF6NTJyUURSLWotVk1oTkVmUG0zZGo4anNIenh3QjJZRQ?oc=5",
-     "published": "Mon, 26 Oct 2026 04:28:02 GMT",
-     "sentiment": 0.599
-    },
-    {
-     "title": "Kotak Mahindra Bank shares rise 2% as top Nifty gainer | Is it right time to book profits or wait? Target, stop loss",
-     "source": "TradingView",
-     "link": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxPSFZUODJxRjBWRlV6UFY0TUlHWEpaVV9ERzBNWUR2MlNpcFNsUHRuTmxkRm9hZldEQmRrNDJXRTNMb24tR2hGS3JDbFRKWmx2cExxc0pha2N5T1ljM2VSUHkteURRNnZqV3NFQldNNHNaX0RYcDQ4NjVha2REV2lxSlFNYU51SHFneFBaWDE2YmhBZnR4NTZVd2c3Mzl5YjFfbXpmQUNaSnJHYnBEM3haN0hVTXFtaVdDb0xPVlhYRFVUdHloQUxYQjNyWGJIQ1FHMkhJU3dtYWtkT19MYjJoZ0lGMFlKSThlZTAxVUtya2g1SERRMG9RanFadlQ?oc=5",
-     "published": "Mon, 26 Oct 2026 13:13:37 GMT",
-     "sentiment": 0.625
-    },
-    {
-     "title": "Kotak Mahindra Bank shares climb 4% after Q2 results. What are Jefferies, Goldman Sachs saying?",
-     "source": "The Economic Times",
-     "link": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxNUERDTFpkQWZ4VzJxbW9TQV9yYVlnZjdiUGF4MFIwVE5EdURZa0d5YUlFeDZ2V0FNT1pmWk5VM3dOUXctd0hubXBSa0FnazVNc3pqVC1vdEs5UGM5R2FUNFFFSXhsX25BZWdySW5jd3k4bzFSdWY1WGdBOU1MMXJjWG5oVmtiNGVqbDRYdjNjTkY2UlVYLWFpZXNoR0NIOS1tOWRVR2hYdUZ5dWM3VHN2M0xYQjBzbW1VZFZ2QzF6cl94ZnBlX3dEcUdPT2QxYkRHdU1NZ1JnUlhKVWpDMVMwMlRCaDEtR3NuR2RJTkhaSzJRZm1rVWdZc9IB_gFBVV95cUxPNmJOQ0ZoY3dSUVNvNGw1eGZ5ZWR3OVRwM0JsaVl2RldpaVJFUTBPQmVXS29hbjdodE9RQ3plcGIycHRKeDR3MVVCR2VseHBKZkF5VFpicVVKSzNUNEU0SVlRazJod2RKUzNGaVU0NXM3X3kxSlpRYjN5ZHJuTFJSMVBzNjZ5SllPVzhYeDc4c3NoWklPU1gtNWlyR1p2TUp1dVFLZWw5d0xyXzZ3VXFXb2I0bGg2UXpiODFSaG4wOEJyaWNjdWJfSklHWDhMNC1iUm5wQ3EySXdWNnYybkdPakV6RDhXdnBsMnpvZFRRR1ZycTJKOGVvU1NycXBEQQ?oc=5",
-     "published": "Mon, 26 Oct 2026 04:06:22 GMT",
-     "sentiment": 0.296
-    }
-   ],
-   "news_sentiment": {
-    "score": 0.271,
-    "count": 8,
-    "label": "POSITIVE"
-   },
-   "win_prob": 16.4,
-   "expected_r": -0.53,
-   "model_used": true,
-   "grade": "C",
-   "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
-   "action": "BUY KOTAKBANK near \u20b9442.50 (skip if it opens above \u20b9456.93) \u00b7 SL \u20b9435.28 \u00b7 T1 \u20b9456.93 \u00b7 T2 \u20b9471.37 \u00b7 Qty 13 for \u20b910k @1% risk"
-  },
-  {
-   "symbol": "LT",
-   "name": "Larsen & Toubro",
-   "bar_date": "2026-10-28",
-   "cmp": 3801.3,
-   "day_chg": 3.72,
-   "vol_ratio": 3.2,
-   "vol_badge": "3.2x Vol Surge",
-   "volume_projected": false,
-   "rsi": 56.2,
-   "ema20": 3709.92,
-   "ema50": 3800.83,
-   "high20": 3894.0,
-   "dist_high_pct": 2.38,
-   "atr": 84.3,
+   "rsi": 65.4,
+   "ema20": 4069.8,
+   "ema50": 4066.3,
+   "high20": 4308.1,
+   "dist_high_pct": 0.65,
+   "atr": 121.46,
    "checks": {
     "volume": true,
     "momentum": false,
@@ -260,101 +158,101 @@
    },
    "checks_passed": 3,
    "passed": false,
-   "entry": 3801.3,
-   "stop": 3738.08,
-   "t1": 3927.75,
-   "t2": 4054.2,
+   "entry": 4280.0,
+   "stop": 4188.91,
+   "t1": 4462.19,
+   "t2": 4644.37,
    "pivots": {
-    "P": 3821.77,
-    "R1": 3873.53,
-    "S1": 3749.53,
-    "R2": 3945.77,
-    "S2": 3697.77
+    "P": 4238.1,
+    "R1": 4350.0,
+    "S1": 4168.1,
+    "R2": 4420.0,
+    "S2": 4056.2
    },
-   "risk_per_share": 63.22,
+   "risk_per_share": 91.09,
    "rr_t1": 2.0,
    "rr_t2": 4.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 1.1626933025943327,
-    "rsi": 56.23017664310534,
-    "dist_high_pct": 2.380584262246405,
-    "ext_ema20": 2.4631394398153095,
-    "atr_pct": 2.217626569022247,
-    "day_chg": 3.7161318256756948,
-    "ret5": 4.546205963369765,
-    "rs20": 1.2839469721948826,
-    "bias_score": 37.0,
-    "news_sent": 0.525,
+    "log_vol_ratio": 0.9946057637414173,
+    "rsi": 65.37375710752133,
+    "dist_high_pct": 0.6522619488701618,
+    "ext_ema20": 5.164984486187851,
+    "atr_pct": 2.8378093741422434,
+    "day_chg": 0.9457793480945886,
+    "ret5": 7.700050327126329,
+    "rs20": 3.6464410907807387,
+    "bias_score": -13.0,
+    "news_sent": 0.415,
     "mkt_above50": 0.0,
-    "mkt_ret20": -0.3573287853513407
+    "mkt_ret20": 0.9708964916453011
    },
-   "r1_a": 0.8568740514070905,
-   "r2_a": 1.7137481028141754,
+   "r1_a": 0.5763297681634939,
+   "r2_a": 1.1526595363269878,
    "news": [
     {
-     "title": "LT Share Price Today - Larsen & Toubro on NSE/BSE",
-     "source": "scanx.trade",
-     "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5Va2pjTGxndWVGRWViRmlVZzB0LVJoYy1QWENCdHFJQzdzclE5ZUhOTVcwUnlEX01DQ3NHbFlBdkExYnViYjRmY0RqTkNNVkFoclJBUlhQdlMzeXNF?oc=5",
-     "published": "Tue, 27 Oct 2026 22:25:16 GMT",
-     "sentiment": 0.296
+     "title": "TVS Motor shares in focus after Q2 profit jumps 50%; CLSA, Nomura see up to 15% upside",
+     "source": "Moneycontrol.com",
+     "link": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxQbDhOWWRKdzZKWDlua3E5WFd2Z0gyVUpIeU93V2dWWGc0R29kMXVoVG5xNDEzRS15OUpfWllldk80eTlsa0p6QXJybEZ0NEtxZTFYc2ltRDNCbHp1VDM5dmQwV3ZReDB6cmdUU2FrT1g3OVhkVDR3aVhuT29pYjNZY3RyTnRQNGI1Z1dLQW9ZcTJYOGpaLWVqTUtSRDJjQ29BdTJPZHZKaEt2bTJDX094U0REdGFaYXNQdWxmYk9zZ2NGcHViVlQ2MklZdjBHZHA1bGM2V2hqZXV5eEdxTkxoRlFyN2Fkd9IB5gFBVV95cUxQbDhOWWRKdzZKWDlua3E5WFd2Z0gyVUpIeU93V2dWWGc0R29kMXVoVG5xNDEzRS15OUpfWllldk80eTlsa0p6QXJybEZ0NEtxZTFYc2ltRDNCbHp1VDM5dmQwV3ZReDB6cmdUU2FrT1g3OVhkVDR3aVhuT29pYjNZY3RyTnRQNGI1Z1dLQW9ZcTJYOGpaLWVqTUtSRDJjQ29BdTJPZHZKaEt2bTJDX094U0REdGFaYXNQdWxmYk9zZ2NGcHViVlQ2MklZdjBHZHA1bGM2V2hqZXV5eEdxTkxoRlFyN2Fkdw?oc=5",
+     "published": "Thu, 29 Oct 2026 05:00:26 GMT",
+     "sentiment": 0.691
     },
     {
-     "title": "L&T share price jumps 6% after strong Q2 results 2026 | Should you buy, sell or hold? Check target, upside",
-     "source": "TradingView",
-     "link": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxNVmpXcWJzQWpuTDBUOTlHNjVXZ2V2QjA2OVpCLXJnUUlhcXFJWDVzYTJhNHRCdG8ycGNWeEJSRlFTcEdkS2JjeF9rRFlQdGZra0ppb1lqdHV2SVhxYmpRTHc3YVVzM2wtYTJ5VVNSeUZhMjF3VkZVZGZidHhXSWJQd0N3eXFaTF9VM2ZyNDV5dUFIdTZxWklUUkxTM1lTbXFpNjhJcjBMZVdTMWFXSnlIbGtLNHRGeHl3V1BZSHBrQkxCUDZ6dVpkbTM4ZF9LZWFZcXB4MzF4SVhiUUZsOUQtTDNVeUNOZ3NuVktjRmFB?oc=5",
-     "published": "Wed, 28 Oct 2026 10:23:28 GMT",
-     "sentiment": 0.71
-    },
-    {
-     "title": "Larsen & Toubro Limited (LT.NS) stock price, news, quote and history",
-     "source": "Yahoo Finance Singapore",
-     "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBqN1BMbW1jT1NjZXFfQ3B5Q09RVEVORXNnOUpnbms2a0xnMFAzT0VnUXlGSWhSZWQ3SGF0aWVhMmpPX2U5a0FwblhWTEV0M01Ca2pn?oc=5",
-     "published": "Mon, 26 Oct 2026 18:46:44 GMT",
-     "sentiment": -0.226
-    },
-    {
-     "title": "L&T Shares Climb 4% on Strong Q2 Profit & Revenue Growth",
-     "source": "Rediff MoneyWiz",
-     "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPUE8wZDhlSTBOcGN5R0RnczQ1WTRfbXFIVjlaY2pQa1M4LWswUUJoTGs3S1ZSenlGSzQ0QlQ5c3BqOGZpM2FZMkR1Y3hXcUg0QXNXRDRHdzIyTXFscVZ2WjZQZkZCZWNLb2lSanBBTlFoWXZnQURQb1VtWlJBQml3N1VuUnBBdkVLb2YwdnpxdTVJVHU1dWNpazk5R0IzSWZFcDdobXZDU1rSAa4BQVVfeXFMT3JPd2lZRWVzaVAzWWlNMnN4UXg1UkFwcFlrV2RVSTBPcWZ4YTUwcDFvc0RhSG16blJPZnlMQTRLa0NXZzZKZmtnZnJyd1d2Mml4cmMtMXFSOUlfSjk4Z3owV2VFdEF3ZzBvTkJ5LXliZngxM3d6LTJwZ3kyMzZCejNkbHEyZmM0NDA4Um15M3Y4Tm0zRnkxWVRyRzVBZU56VEpSLVVVYklMOGFaTjVn?oc=5",
-     "published": "Wed, 28 Oct 2026 12:55:31 GMT",
-     "sentiment": 0.791
-    },
-    {
-     "title": "L&T Share Price Jump Over 6%: Will stock hit Rs 4,700 or fall to Rs 3,400? Jefferies, Citi & MOFSL weigh in",
+     "title": "TVS Motor vs Bajaj Auto vs Hero MotoCorp: Which 2- and 3-wheeler stock is best to buy after Q2 results?",
      "source": "Zee Business",
-     "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxNYURDWmRDNk9HNkxlUkYxMC1lQ2FoR3g1d3R1amhxUWZfWHg2YW1WallkOXE0elh1YlZ0ck1RckJmWkx3cWZSR1I1UUFQZFFneHFrLVZFVms2bzk4bzgwaDE1aEdfaVdhc3l6VGhuelBEOWZ5MmhXdUFocXlmMlpjLWhEaTRDVnRYVE1FZ1J6ZUZFbzhHMFcwQkE5c0hsR3JMUXJmZXQ5SVR4RDJJVzdtbTRTZ3FiQTkwSnVwSkFYT1AxSnFrVS15azl5RjN3VkVZUGxfQy12YVotOHVjcEE?oc=5",
-     "published": "Wed, 28 Oct 2026 05:39:31 GMT",
+     "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxOcG5OVFJkTUszX2NkcDNLaDdrUnhoNDFzZUM0R2lCU0lMTm8zOWRzX2NFVEpVRTJnY2tlM05PZ20wRHYzN2ppSm9id24wTTM4Rm1jdFVmdXBabTBDVnYzeFVmbGgxQ1N5cG5wTnBwZTlUaUNnNFpTbUlkZjRJNnJ4LXZRTjNPQlQtNzVSel9BdWdmNmdDcUJtUks0Nnl2LW50T0FnNEo1UUJYUTBhMWZDZ1pZU0FnWWk2MjkyMlUzT0NXVWNnUUZoQ082eEQxNi1xWlN4Ti1DNzBBV0V0MzlkTg?oc=5",
+     "published": "Thu, 29 Oct 2026 05:33:23 GMT",
+     "sentiment": 0.832
+    },
+    {
+     "title": "TVS Motor shares trade off 4% from day's high after Q2 results, financial services demerger; check latest targ",
+     "source": "CNBC TV18",
+     "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxNRHJsdkotYndvakRBVVRrb0JMS01nTFZsTjNnMVBaQkM4X0lENDVHVFV5ZjJ6LVU1MjFzempsU2dJRzFXNHJIMVZSa0xNMUJJcTZIQmVpMDNFTnl2UEdubFozLVVRdThZd2JuZGNialBtS201SHF1a19TMWd3MkxYLWxqQXNOZjNraE5NNVhjaF9uYXVoTGlQQjZjRTNnVnBUNDdwbjN2SzNNYS1UVTlyMU5oc2RubFMtTUMtWWNoRHdyb3RWQ2hxNE9wdm5EMmxHSjhwOUhOZHVCd044SGxWUVRiWdIB4wFBVV95cUxNRHJsdkotYndvakRBVVRrb0JMS01nTFZsTjNnMVBaQkM4X0lENDVHVFV5ZjJ6LVU1MjFzempsU2dJRzFXNHJIMVZSa0xNMUJJcTZIQmVpMDNFTnl2UEdubFozLVVRdThZd2JuZGNialBtS201SHF1a19TMWd3MkxYLWxqQXNOZjNraE5NNVhjaF9uYXVoTGlQQjZjRTNnVnBUNDdwbjN2SzNNYS1UVTlyMU5oc2RubFMtTUMtWWNoRHdyb3RWQ2hxNE9wdm5EMmxHSjhwOUhOZHVCd044SGxWUVRiWQ?oc=5",
+     "published": "Thu, 29 Oct 2026 05:05:08 GMT",
      "sentiment": 0.296
+    },
+    {
+     "title": "TVS Motor Q2 Review: Record Market Share, 47% EBITDA Growth Spur Target Hikes; Why Citi Still Says 'Sell'",
+     "source": "NDTV Profit",
+     "link": "https://news.google.com/rss/articles/CBMikwJBVV95cUxOSDBwbFJtd1VGOHhicFZvZnRvRFhpYkowXy1FLWxfRUZnTFRLQTZJTTRqa0RHTmJuTHpEd0VRb1hxaHE5dFk4aFFoTXZBb2ZKeVlEQzRCbVdfdU9jelZNZG1zQk9pczltZUF1Wm9aOVpfcl9QazdFd1FDajBoRHRhWEFHNFJodDFKX3RMNmFKbk40TXhYdDctanBXc1JCbnZ4ZWMySWZ4el9rNy1kVUdUdFRVdUN0eV9KZzNTdnBuY08xSXYxN1V4MFF5S3VNbWtnbXZHQUZ6ekJ6NDB0dW1oSWp5LXpQM1A3SDh6WWMwSjdIMEQweGY4VHdFVEtYem9tTjFLTXRock9rV1VXTFhXeDdNTdIBmwJBVV95cUxPVWpDRHBBWHhYd0lkdmtVd3hIYlU4Mk9PV3NSUWdIeU5kVlJLajNzaVRXRUk4OHRHMjMxT1l4UjlGdENqT2d5WlotTE1GMDNWUDd4cHZsa3BueERLWlQyekdVZzBjdUxMQ2VLZ2NjQUN5Z25jTUVjYnpFZnBRRXVnWkI5UEMtdE84clFHMmc3cXVkdWNCVDNycjJEbGJVSzlqeldSOWxNQVh6N3NsMjlxU3d2a3VaTk1WYWtmeTlMU3lOVzU3Y3dkdWtpRlZfYVEzQWR2U19XZzNuakdLSG1FSWd5WlhZZDBXbVA1U0gzOWE2YjRYZHVtbzRJREg3V2kycWRXb2N5c1luekpVUVhoRUtNcGY5T0RKcExn?oc=5",
+     "published": "Thu, 29 Oct 2026 02:57:51 GMT",
+     "sentiment": 0.7
+    },
+    {
+     "title": "India's TVS Motor to demerge finance business; beats quarterly profit view on strong demand",
+     "source": "Reuters",
+     "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPdXZlSTVMQTI5UTdkTlFNcUY3elhfVldKVGpsZGhpcGs2TGw5QUJBTHphNERZUkppQ29vc05rR2lzdjN5NDJpQVVNNF9oYkhzQm91cVBQYzAwSHRXRV9wU2N6cHByVEpJWmozUVBpdUhYOHJodzNXZUVmcHc4UEU0V3I0X01ZZllZMkxiZGR0R0ZjSWIxeDN6VmFSaDFPUURTOVVld3k5VFkxZzV1VWo4WGJvb2huOG9qczljcTd3eHlKZw?oc=5",
+     "published": "Wed, 28 Oct 2026 10:34:13 GMT",
+     "sentiment": 0.649
     }
    ],
    "news_sentiment": {
-    "score": 0.525,
+    "score": 0.415,
     "count": 8,
     "label": "POSITIVE"
    },
-   "win_prob": 10.7,
-   "expected_r": -0.64,
-   "model_used": true,
+   "win_prob": 47.2,
+   "expected_r": 0.07,
+   "model_used": false,
    "grade": "C",
    "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
-   "action": "BUY LT near \u20b93,801.30 (skip if it opens above \u20b93,927.75) \u00b7 SL \u20b93,738.08 \u00b7 T1 \u20b93,927.75 \u00b7 T2 \u20b94,054.20 \u00b7 Qty 1 for \u20b910k @1% risk"
+   "action": "BUY TVSMOTOR near \u20b94,280.00 (skip if it opens above \u20b94,462.19) \u00b7 SL \u20b94,188.91 \u00b7 T1 \u20b94,462.19 \u00b7 T2 \u20b94,644.37 \u00b7 Qty 1 for \u20b910k @1% risk"
   },
   {
-   "symbol": "TVSMOTOR",
-   "name": "TVS Motor",
-   "bar_date": "2026-10-28",
-   "cmp": 4239.9,
-   "day_chg": 3.74,
-   "vol_ratio": 1.96,
-   "vol_badge": "2.0x Vol Surge",
+   "symbol": "PNB",
+   "name": "Punjab National Bank",
+   "bar_date": "2026-10-29",
+   "cmp": 123.9,
+   "day_chg": 2.98,
+   "vol_ratio": 1.37,
+   "vol_badge": "1.4x Vol Surge",
    "volume_projected": false,
-   "rsi": 63.4,
-   "ema20": 4047.67,
-   "ema50": 4057.58,
-   "high20": 4258.0,
-   "dist_high_pct": 0.43,
-   "atr": 116.81,
+   "rsi": 63.9,
+   "ema20": 118.89,
+   "ema50": 116.54,
+   "high20": 125.22,
+   "dist_high_pct": 1.05,
+   "atr": 3.12,
    "checks": {
     "volume": false,
     "momentum": true,
@@ -363,85 +261,291 @@
    },
    "checks_passed": 3,
    "passed": false,
-   "entry": 4239.9,
-   "stop": 4152.29,
-   "t1": 4415.11,
-   "t2": 4590.33,
+   "entry": 123.9,
+   "stop": 121.56,
+   "t1": 128.57,
+   "t2": 133.25,
    "pivots": {
-    "P": 4189.3,
-    "R1": 4308.6,
-    "S1": 4120.6,
-    "R2": 4377.3,
-    "S2": 4001.3
+    "P": 122.47,
+    "R1": 125.33,
+    "S1": 121.05,
+    "R2": 126.75,
+    "S2": 118.19
    },
-   "risk_per_share": 87.61,
+   "risk_per_share": 2.34,
    "rr_t1": 2.0,
    "rr_t2": 4.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 0.6742284857371306,
-    "rsi": 63.362198517431345,
-    "dist_high_pct": 0.42508449169210893,
-    "ext_ema20": 4.749177667560844,
-    "atr_pct": 2.754991526163322,
-    "day_chg": 3.7411280240702283,
-    "ret5": 6.1939537804617695,
-    "rs20": 3.89578793904487,
-    "bias_score": 37.0,
-    "news_sent": 0.519,
+    "log_vol_ratio": 0.3167812005531565,
+    "rsi": 63.88166229270172,
+    "dist_high_pct": 1.0541444513306537,
+    "ext_ema20": 4.211607804174378,
+    "atr_pct": 2.514426889662606,
+    "day_chg": 2.9839614663251357,
+    "ret5": 1.1428583884725674,
+    "rs20": 9.901588095270952,
+    "bias_score": -13.0,
+    "news_sent": -0.003,
     "mkt_above50": 0.0,
-    "mkt_ret20": -0.3573287853513407
+    "mkt_ret20": 0.9708964916453011
    },
-   "r1_a": 0.5881404801720623,
-   "r2_a": 1.1762809603441169,
+   "r1_a": 0.4579436762923287,
+   "r2_a": 0.9158873525846574,
    "news": [
     {
-     "title": "TVS Motor Q2 results: Net profit rises 52% to Rs 1,377 crore; announces consumer finance demerger",
-     "source": "Moneycontrol.com",
-     "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQdHMzTlBHYXIyTmVDTUYxSHhTZlhMNDdaVTZlRVpvYVZaeEpEOW9ZaW1xQVFSWVZHS2c4YWt4aUZsbEUyX3cwR2lBX0pZZWxlM01GbE5ITmQ1T2g5RUxfTk9JemlkTFIya3EyVGREMWw3M3VKbEt2ajR3Y19VZ2VqV05VMHhETGpPdmN5NjI2ZC1KZ1VqNVdMY2h2dWREaFRDdGpVQldLbUo2eXpzUGthaWZUUldOenU3RDJuWEc2WjVsbU9HNTdSY3YtLXg5TGJ2UGfSAdcBQVVfeXFMT2V6cFNtc1MyLXdHV2l0bS10ZHA1RnRVZmk1YXZmWmNrRkpJTzZvTXR6eUlPSjlOSzYwdmIwNEFGekxreF9naWl5VUVvUGd4WXcxQ0VyNnBPRE95c0VCS1FpVTItOWNGelN0dVZIc2NqTVFnQzVPS0taRGhwdFpXRE1YUkQ4NGtLMGlJanBmbUY3UTdPbW85akF5Y3hudElOVTctZjVRcTFsQUktc2xlWUZ0dDNEc3UxTkNBMEFUWEpacDBEQloyVEVrMGpVdkRQeGp3b214VkU?oc=5",
-     "published": "Wed, 28 Oct 2026 09:39:00 GMT",
-     "sentiment": 0.25
+     "title": "Punjab National Bank shares gain 2% as Q2 net profit climbs 13%",
+     "source": "Business Today",
+     "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQNWJfR0RELVg5RVQtbG9IOC1RVTh5ejMxcnhHRmRsMS1KaDVzRm9EdkNuNndlUFBIdnpTWklqbGZwT2ctVm45YXdTTG5mZk5HakpLQXBmanhOdElLVkY4TlFGbWFrTThWcG5Lb0ZXSDY5bUJDU1RuT3F1bkJudWRCd3l6M3AtaXVaWnlwX0JvTm85c1djUTBlMFRsLUxnb0hma25NSDhpUHJJRXFNN3RvYVZpVG1sQzRTZFVMVXB4dDE3TXpGSndrMNIBzgFBVV95cUxQMzNLM3BUUnU5R3ZrQmh1aHhVUThvajlHLXdoM3JvQVI5V013RW51cG5LcGpKUjNJWUZjRHVTdkFzbUN3eXRsY0tndVgwcjhqajdiYnZ3LW44cDRwWW85bm9EQUNmS3pPb21hRzh5bE83UDZjakRDdHRod0RCNERfRzg0OURQbkZCTnBOSEhxWDAwSkROdDBpa3RLZUJXRDVtUXl1ZUdYNHplemNGbzJHMnlLWlpYT2p6ODlVZ2k0OG12ai0wS24xaUdOZlh0Zw?oc=5",
+     "published": "Thu, 29 Oct 2026 05:21:52 GMT",
+     "sentiment": 0.765
     },
     {
-     "title": "India's TVS Motor to demerge finance business; beats quarterly profit view on strong demand",
-     "source": "Reuters",
-     "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPdXZlSTVMQTI5UTdkTlFNcUY3elhfVldKVGpsZGhpcGs2TGw5QUJBTHphNERZUkppQ29vc05rR2lzdjN5NDJpQVVNNF9oYkhzQm91cVBQYzAwSHRXRV9wU2N6cHByVEpJWmozUVBpdUhYOHJodzNXZUVmcHc4UEU0V3I0X01ZZllZMkxiZGR0R0ZjSWIxeDN6VmFSaDFPUURTOVVld3k5VFkxZzV1VWo4WGJvb2huOG9qczljcTd3eHlKZw?oc=5",
-     "published": "Wed, 28 Oct 2026 10:34:13 GMT",
-     "sentiment": 0.649
+     "title": "Axis Bank sees highest growth in active debit cards; HDFC Bank leads credit card market",
+     "source": "bfsi.economictimes.indiatimes.com",
+     "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxPLVRCNW5Ib3BVM2RGUkVRM0F6OFNCbnlEQWVqNkN3Z0N3SHkteW8xREVUb29hR25IWkVETmNLN2pRV1A0TENTb1dUQmplem9hNDFtVUZyZU9leHdURi1XSXhvWHBzbWNhbkxsN3BmMHY2OUJKaEpzMTgxWngtNThpSWVSQTViY1pFQmtaQmtiUmxZa0JWUGNpVFhzNUNNWndSXzV0elZiTjVpQnBXalZYa01sWjEwTFdwcDVCakVhLUgyR3BwVE4tUTNfQnczUW1yNjkzSGN4elpUSFFQOGNkcdIB5gFBVV95cUxOWVlHUEpNNzRCSkttbzd6YnBrRUd6XzZpZWNCZjBjNktJMzQ4LUdWRjFTWV96enZOOThycVFhVnlkcHd4bzdvclZNakJ5TVllUTAzSWlwb2tUQllyeTJrLXV4Z3R0LWhSd3JkTnA2WmV4bkJsVVBKcGJrMWhzVXRPMXpmZTdYOHQ4N3RMSGxDSzA4aHBqU0tudlVENllrQmgwcDZJMVhXQkl0TXRnRFdpd0xuVWtsOWRzc3VmTE1oa1pucnpTQ1doN1cyY0FQSGRFMTZ3d25McXh6bGxROENGM2paRHFVUQ?oc=5",
+     "published": "Thu, 29 Oct 2026 06:53:32 GMT",
+     "sentiment": 0.784
     },
     {
-     "title": "Earnings call transcript: TVS Motor posts record Q2 2026 results, shares rise",
-     "source": "Investing.com India",
-     "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQb1FtUFJDNnlpZWdJWXlHODhySFlEVXFyUlFNX2xjOGIyQlJfMjh0NmRvekp0WjZIZ2VwUVZxZzZ4VFlyNU1zZ0tPNm1HMF9jZktsR3JQNzFHUmhtcVBfUUt5dDNEZnVOOG9jQjYzWFNYbjFranQ0OGdscGpOZ1hjWWpiT1h0TkVnZUtqTHlLMXg2QkE2LW1kSzhHV2FmWnkyajZPWV9teVl1dDZISG0wNEZoT3hjajNPT2pmV1RQNW1GcVZOSWYyR09keWUza3hzUFE?oc=5",
-     "published": "Wed, 28 Oct 2026 12:47:56 GMT",
-     "sentiment": 0.494
+     "title": "PNB re-submits Q2FY27 results; confirms no change in financial figures",
+     "source": "scanx.trade",
+     "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOblUzUkJSWk9QUWNuMTMzOUhERTJSVXVDYmpWMUZiay1rblMxTHRSaTdJVGJoeHF2RmRxYUlDTTJOT2R6Vk1oeV9zTjh2cVRpTDBfQURLbGd4VHBvV2h5R0hWcms3RnZBOXdpX1JKakktSGhOR2R1VFYwZ1dlcHhXMUVVUHlDTlhrOVVmYlR1VGhhYU9ob25aRkRobkw1Y0pweUJna2dpU2dITXJabGc0?oc=5",
+     "published": "Wed, 28 Oct 2026 11:16:06 GMT",
+     "sentiment": -0.296
     },
     {
-     "title": "TVS Motor to demerge consumer finance business",
-     "source": "The New Indian Express",
-     "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOa2dRbG5ndWtrUkU4RmJOWndyMkJGVXNBYUtBMDFPMVNNQkkzREpwdGs0NkZ5bU9JbWFYLVM2SjNpMFllWlhXMEx6WWJ1S21QdGJ5SGszZy02VG50TUJCVXFhZUs0eHZVQ0VXUzVSODFYU0dVTlVTZ0RXVzFDQmxtVEp3ZFVpak1CM3RyOGhHWHJjQmpBZ3YwaENWajIzY25FZGfSAa8BQVVfeXFMTTVqTmkySFJVR2VFU1R6dnItRXZDdnUyQWxpMUkwLWRWdXY0aDNIb3AyeDNNRHYwaTYxX1VKOFdVYlQzWkNTMDRpZWFyU1QybmlIcE43V3h5S3pMUEZxWWt4N2MwdmFtNU5DUEhwZkhpMmV6SzljUmJoWWFkM2NMRWpKNXpDUjlrdmRYR2I4dWxwUGVWSDI4bkRiLXhNRTYzczBrTkVTSDRQc1owVnB3Yw?oc=5",
-     "published": "Wed, 28 Oct 2026 18:35:25 GMT",
-     "sentiment": 0.0
+     "title": "Punjab National Bank Customers Allege Rs 35 Crore Fraud, Several PSB Employees Suspended",
+     "source": "NDTV Profit",
+     "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxOc3NLTXU4MkZNRTlkSUhDc3pWUzgyUVBqemFFRlpOTEpTRDRIVkc1SUhIN1BfNUU1RTZvbmJXNlJlcExOZERuMnl2Q1MzRFBfemxvTDdYcVNVeUgzTXJOZXg4Mllld2dxb1ByMnpCSTUyaUJrTjF0TlpUMWd2dVdLWTUyNnpvbGpkV2hjeGhySlJkZkp6dVM4c3FCY3A3dEF1QUtLUzNUbzdvSDNsTnhiSS1ETTVDeUJ3ZWFiLXBScW14UE9ranpYS00ySWVUYTJzRlBQQWlQblFuN1kyZU83cGd5VjDSAewBQVVfeXFMTW04cmNPTVpvZk1mcmY3Sm95NG5DUk15SnpqV1B5Wm5KNzI3bW1sTHpiTmJLUzFxenU4aXo1LXM3bjVFZHBvdW41MGVGVVkxTEZaOVNsaDQ5WC02MDBoR2RIVm9pWnh3cGhKX0ZLUHJTbEJNeEpaVU4tVnpVdTJTcWtnRnhMaXZNWV9hSk96Y05ORXJlN1RSaGVYWGNicHlpelhmaUN0T3A3RkREeFF3VE1DT3FHWUg4SXJQaFZBaHFjdHRmcEUwWDZsazhvSVY4SVRLMkhhRXltR1BOYmdOZ0dDa0p2dGJCUk4zRm0?oc=5",
+     "published": "Wed, 28 Oct 2026 15:00:18 GMT",
+     "sentiment": -0.796
     },
     {
-     "title": "TVS Motor Reports Strong Q2 Growth, Plans Business Demerger",
-     "source": "India News Network",
-     "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNaUYwQ0RLZnM1d0J5SnNjNm9TUlpFcXNYZ0FPTkFfV2VESzBhYjZnQlY2Y29uRGg2UTFOY3ZCRmJGZGhJWnFFVHN2Zlc3R2FibEFZOEZYRnpEQ3JRWmxoeVVJbUh2N3B4X2p0Ykh3MnhjeUd2d0VXa1BzU25nNGFGejY3aUVON25CVk10OGhzSjBQNFJJQnFMY2tjR1I0b3pWN2Y5aXBn?oc=5",
-     "published": "Thu, 29 Oct 2026 00:08:21 GMT",
-     "sentiment": 0.586
+     "title": "Punjab National Bank customers in Greater Noida allege Rs 35 crore fraud, several employees suspended",
+     "source": "The Economic Times",
+     "link": "https://news.google.com/rss/articles/CBMiogJBVV95cUxPUHAzdWV6XzRQMDgyMEJGb0R0aFpMV1g2cjVOaURubHRlTVBDZWIxQXBvMm9FOFBDdkFYRGdFbnZGcnVFbVBrUXJLVnllVDlEbUpVQkFnVGF4bk1yTUZNaXFrYWh2UmFUcVo2elZQT090cHRuRWN0Z0ktZUoyak52ODludVpvR1ZqLUVtUzEwYzNaYnNNRGJKTUNWVVM4M3JRRzBKblhXNkhjYms0QWFnb181ZVp2MEQ2XzVfbFRVNzRGRkk1dkp6N3E4bXpKWHJxbXRZUWhVbk0zVExXM21xSVI0cUl2c2Z0ZVpkVnlYbmFSemlza2djSGxRQkt5S2x5X3NSN0ZEdUM1OTF0VHpfUVU0bzI2NXNWY0xnb09tTUdDUdIBmwJBVV95cUxPaHJUTjcyOUR6NURRUXB0SWp0djR0bE9kOHFNMGJFeW1RZEhUa25RbnVXN0FqNDR3clYtcFVQYUN3SFI0UDdSbjdtbWc5Rko4OHJLQ2xRMEJMUnYzQmttckpYWW1SUzFtb3p2TWZHZ3o0aVNIdVd1dmFhZExxNDNKMlpLakRFSGVIVEk3anBhLXpVdGtVZ0g3aTd0TGVtOXpvMWNJNjRUdzFoeF9sM3Q5TkFkQloxcmRQMnUxUDlxTXFQcTBjbXRSeG1JTktMRnpZbEF6cXd3VEI4eEpvRzYyS08zWVY5czBNWU01WFduSHFTbnRsYy1YZnRpZG1YcDNCS3JhNFJhQU5FMTZWaUFKSjhIUHpOb1E3YTBj?oc=5",
+     "published": "Wed, 28 Oct 2026 13:21:55 GMT",
+     "sentiment": -0.681
     }
    ],
    "news_sentiment": {
-    "score": 0.519,
+    "score": -0.003,
+    "count": 8,
+    "label": "NEUTRAL"
+   },
+   "win_prob": 47.2,
+   "expected_r": 0.07,
+   "model_used": false,
+   "grade": "C",
+   "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
+   "action": "BUY PNB near \u20b9123.90 (skip if it opens above \u20b9128.57) \u00b7 SL \u20b9121.56 \u00b7 T1 \u20b9128.57 \u00b7 T2 \u20b9133.25 \u00b7 Qty 42 for \u20b910k @1% risk"
+  },
+  {
+   "symbol": "DLF",
+   "name": "DLF",
+   "bar_date": "2026-10-29",
+   "cmp": 694.35,
+   "day_chg": 4.21,
+   "vol_ratio": 0.99,
+   "vol_badge": "1.0x Vol Surge",
+   "volume_projected": false,
+   "rsi": 62.0,
+   "ema20": 666.64,
+   "ema50": 661.55,
+   "high20": 696.0,
+   "dist_high_pct": 0.24,
+   "atr": 17.13,
+   "checks": {
+    "volume": false,
+    "momentum": true,
+    "trend": true,
+    "breakout": true
+   },
+   "checks_passed": 3,
+   "passed": false,
+   "entry": 694.35,
+   "stop": 681.5,
+   "t1": 720.05,
+   "t2": 745.75,
+   "pivots": {
+    "P": 685.12,
+    "R1": 705.23,
+    "S1": 674.23,
+    "R2": 716.12,
+    "S2": 654.12
+   },
+   "risk_per_share": 12.85,
+   "rr_t1": 2.0,
+   "rr_t2": 4.0,
+   "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
+   "features": {
+    "log_vol_ratio": -0.007553980456201115,
+    "rsi": 61.97659767777317,
+    "dist_high_pct": 0.23707247328484193,
+    "ext_ema20": 4.156349322887931,
+    "atr_pct": 2.4677022247155396,
+    "day_chg": 4.209813643533256,
+    "ret5": 4.689027604362983,
+    "rs20": 5.361412173888769,
+    "bias_score": -13.0,
+    "news_sent": 0.16,
+    "mkt_above50": 0.0,
+    "mkt_ret20": 0.9708964916453011
+   },
+   "r1_a": 0.6351716101069975,
+   "r2_a": 1.2703432202139884,
+   "news": [
+    {
+     "title": "Diwali Stock Picks 2026: Jindal Steel, Apollo Hospitals, DLF, Among PL Capital's Top 10 Bets For Samvat 2083",
+     "source": "NDTV Profit",
+     "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxOSXB4N1FRX3hqeVFfM2VUUkJPNFRpVmVvR0xCeWRSaG1XZEJmckpManpTX2hmSE1ndDg1OVRsRkh1LXNMRUdqdzdQaHQyTWZrOElRM3VjbFluMVdSYmRYODJyWmpoN3JQZGZsbmtIMFlwRXlaenBDeUJSOGtIcmZHNUF6OUJzS0NJSVIxUURfZ0xNZjRHT242Mk5LMlZXeEdmNUpFSHNMWnQ2U3lrTnRwejJ5Si1iNEx6ZGNkcHRHSVhNS3Z4eFA4M0FPOEZrSEJZZmJRdnlUQWxkYXM3VEowRtIB6AFBVV95cUxOSVZKWFVZZDVERmVMSThGbmd5dGFudVRHRG9zWEtGUzA5RDhCcTJYdms4Q3JNVkxQWVo3RmZBOXFMZjdiYjNRb3RrRUJ6bzBvdF9wNC00SkhSS2NjS0wyRi1kdGJWc1NrdnVwN2tzVXB4QzVrNmlJblU2cnFDRlRuV3U3TU41eTNQeThPSHlUVWFMSnhlR2NSZlluVE00OTBrUHJrWk1tVk9ZZGdJdDZCV0FqY3AyTEZ6M0RuYm5mY3dIaVFSQ2xkTW9DWExwYzFDVVA5V2dYXzEyamw5cmh4dTRBb2ZTeWNj?oc=5",
+     "published": "Wed, 28 Oct 2026 08:03:13 GMT",
+     "sentiment": 0.202
+    },
+    {
+     "title": "Dynasty Stock Watch: College Edition",
+     "source": "Dynasty League Football",
+     "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxONFNwWEt4Q0NUZ1djOFVsSkFJMG5rX0VhQVpSbTkxMXdlYmUyR0tYNFFiY2tfZHhSa0FhMEU2QzRUZW5raDhnbWg4QzRyTUtTTldaaE1SekNoeEdzU0Z2R3plZmZGLWlNWTF2aHZQOWp0akw5cjZRcG1ROWwxZ0JkTnoyamI1YW1Bd0lF?oc=5",
+     "published": "Tue, 27 Oct 2026 08:00:00 GMT",
+     "sentiment": 0.0
+    },
+    {
+     "title": "Technical picks for Diwali! 10 stocks PL Capital is bullish on this festive season. See full list",
+     "source": "The Economic Times",
+     "link": "https://news.google.com/rss/articles/CBMihwJBVV95cUxQQW9rdFhKQnd3SXRMVjVDajRaLTNNbVRfTnJVWFBER3hMVGVTQTJoTnFrX2RXWG1jMEllX21TVy1QMThwODJvSW5YX3FiWWpvbmdFa2k4YkpOTG9DZnBOeE9tbDRSdXUySTFvbEtHaGFaLUJsUTJ4b3NuWFY1WUN5U2hRbHgyZUZmaHpBOHhzeC04ZGE4VlJ3SjJDbTczV0kzYjB5SG5BNVpaVGg2X29IX08wVUlFdlBtanFjRVB6S29WTzZVSHotSTBLdDZjdjQ1RmhSaDd4ZGtTdWpDNkpyU08wNVBhdnZoYVBiM1p3bERaNG51Tzg2azhEbkdrRVhPYTZXU2lpbw?oc=5",
+     "published": "Thu, 29 Oct 2026 07:27:53 GMT",
+     "sentiment": 0.726
+    },
+    {
+     "title": "DLF Camellias Monthly Maintenance Costs More Than Your Salary: Let\u2019s Do the Math",
+     "source": "theoptimist.news",
+     "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE11MnpodEliZ3EwRkdwaURxdkU5MVVNRHNuWEM3bE1lamFqYmNWNnJOQjY4bjhBdnZ6ZXpIM3ZLaTIwdzl6OHV2XzF0R2FnTnNiOGNjZXJOUzFSYm9IVGVpTV95aWYyU04yQjhaTnlBZHc0b3M?oc=5",
+     "published": "Tue, 27 Oct 2026 09:33:44 GMT",
+     "sentiment": 0.0
+    },
+    {
+     "title": "DLF Ltd. is Rated Sell by MarketsMOJO",
+     "source": "MarketsMojo",
+     "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPTUNzc1JHNm05MEl1REZkOTA2aEJZUlIzdnlCWDBpcThhUXN1TEhhbzctblhBdktFQzlfM2RqZE9TdWVZQWxvbXhZcl9pa2lCUmltTTZlMzFUU1g0UDI2LWUwT1dEUEJEU3Y4X01qUC1tQmZtMFJ3SUZySERTQ2VGc3RYelBXUjBnMEVIU3E5MFAxMzVEbGR0Q2Z5R09hZ0U?oc=5",
+     "published": "Tue, 27 Oct 2026 08:13:44 GMT",
+     "sentiment": 0.0
+    }
+   ],
+   "news_sentiment": {
+    "score": 0.16,
     "count": 8,
     "label": "POSITIVE"
    },
-   "win_prob": 10.0,
-   "expected_r": -0.65,
-   "model_used": true,
+   "win_prob": 47.2,
+   "expected_r": 0.07,
+   "model_used": false,
    "grade": "C",
    "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
-   "action": "BUY TVSMOTOR near \u20b94,239.90 (skip if it opens above \u20b94,415.11) \u00b7 SL \u20b94,152.29 \u00b7 T1 \u20b94,415.11 \u00b7 T2 \u20b94,590.33 \u00b7 Qty 1 for \u20b910k @1% risk"
+   "action": "BUY DLF near \u20b9694.35 (skip if it opens above \u20b9720.05) \u00b7 SL \u20b9681.50 \u00b7 T1 \u20b9720.05 \u00b7 T2 \u20b9745.75 \u00b7 Qty 7 for \u20b910k @1% risk"
+  },
+  {
+   "symbol": "DIVISLAB",
+   "name": "Divi's Laboratories",
+   "bar_date": "2026-10-29",
+   "cmp": 9664.0,
+   "day_chg": 1.1,
+   "vol_ratio": 0.66,
+   "vol_badge": "0.7x Vol Surge",
+   "volume_projected": false,
+   "rsi": 61.9,
+   "ema20": 9298.97,
+   "ema50": 9043.95,
+   "high20": 9699.5,
+   "dist_high_pct": 0.37,
+   "atr": 246.68,
+   "checks": {
+    "volume": false,
+    "momentum": true,
+    "trend": true,
+    "breakout": true
+   },
+   "checks_passed": 3,
+   "passed": false,
+   "entry": 9664.0,
+   "stop": 9478.99,
+   "t1": 10034.02,
+   "t2": 10404.03,
+   "pivots": {
+    "P": 9627.83,
+    "R1": 9721.67,
+    "S1": 9570.17,
+    "R2": 9779.33,
+    "S2": 9476.33
+   },
+   "risk_per_share": 185.01,
+   "rr_t1": 2.0,
+   "rr_t2": 4.0,
+   "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
+   "features": {
+    "log_vol_ratio": -0.4225362171851498,
+    "rsi": 61.89348948296521,
+    "dist_high_pct": 0.3659982473323367,
+    "ext_ema20": 3.9254648981515095,
+    "atr_pct": 2.5525362508291596,
+    "day_chg": 1.1037296646963402,
+    "ret5": 5.479153023357353,
+    "rs20": 1.4996792691435834,
+    "bias_score": -13.0,
+    "news_sent": 0.086,
+    "mkt_above50": 0.0,
+    "mkt_ret20": 0.9708964916453011
+   },
+   "r1_a": 0.2337738926712659,
+   "r2_a": 0.4675477853425244,
+   "news": [
+    {
+     "title": "Aurobindo Pharma Limited (AUROPHARMA.NS) stock price, news, quote and history",
+     "source": "Yahoo Finance Singapore",
+     "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1fS1Q4TWhNOUFkR2Q1VkFYbUd3RlpGLTRacFZDMlJNNE1rYlZJaXk0bXFXbnZuT2lhemh4OEllSmxMU2Nxbkx1c0JoNjVXSXhXdUxhMmF0dnpoT1hkUXc?oc=5",
+     "published": "Mon, 26 Oct 2026 18:06:35 GMT",
+     "sentiment": -0.226
+    },
+    {
+     "title": "Nilima Prasad Divi on where Divi\u2019s spends, invests, and expands",
+     "source": "Business Today",
+     "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxPWXI2ZGxOSDlHNE5VVmVSNmZ6UlhRU01UUG5NVjRlYVRFYjBOOGVDVkJOSFU2R19UVGF6WVhJM1lOdS1tZHFGQ0paWklRYUE5UHJJQmlTcHhfN3FKRkRYc19PQWhkZEQ4TmxlUktoN3ltM3NfQ0Z1NVZKRWhFZVlLRnJyQU1pcDVINnh5UTQ0bXF3YlhKbHA1aHpqRDNaVXNDXzNoZDdRVlUxaFJIUDZJSVZub1k1bmFDekxxR0I2MWVNT3FlR1NmOGxOM0t0aTDSAc8BQVVfeXFMT1lyNmRsTkg5RzROVVZlUjZmelJYUVNNVFBuTVY0ZWFURWIwTjhlQ1ZCTkhVNkdfVFRhellYSTNZTnUtbWRxRkNKWlpJUWFBOVBySUJpU3B4XzdxSkZEWHNfT0FoZGREOE5sZVJLaDd5bTNzX0NGdTVWSkVoRWVZS0ZyckFNaXA1SDZ4eVE0NG1xd2JYSmxwNWh6akQzWlVzQ18zaGQ3UVZVMWhSSFA2SUlWbm9ZNW5hQ3pMcUdCNjFlTU9xZUdTZjhsTjNLdGkw?oc=5",
+     "published": "Tue, 27 Oct 2026 14:15:52 GMT",
+     "sentiment": 0.103
+    },
+    {
+     "title": "Aurobindo Pharma Limited (AUROPHARMA.NS) Stock Price, News, Quote & History",
+     "source": "Yahoo! Finance Canada",
+     "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9QOThCWno3YUNOUlFwTHBmLTNMMTc1SFhGcG41SEV4VDU2UmE3eWxWaVhuNUxTRmUxVEg2Q1pKUDhTNVNKSWFPd3ZLQnktb3ZhMnpHbjlKekdwdGNybFE?oc=5",
+     "published": "Mon, 26 Oct 2026 22:25:42 GMT",
+     "sentiment": -0.226
+    },
+    {
+     "title": "Aarti Drugs (AARTIDRUGS) Share Price Rises 12.25% Today: Price Action and Fundamental Analysis",
+     "source": "Univest",
+     "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE5nMFlORmM1MEFkbi1QRU9mRzJMdGhMQ1JNeDFqM24yaGJ4OURlQm9oQUJrVzBDU1F5dUJkY080Q3F2VUhNVTdsX1loY19lMlpCOFBYQ0xFakRrR2tlOG1ZNGg1WV8zZ08xaVhTenNUQkRHXzhhY2VRT0xoV18?oc=5",
+     "published": "Wed, 28 Oct 2026 04:37:00 GMT",
+     "sentiment": 0.296
+    },
+    {
+     "title": "Lactose (India) Share Price Today: Up 8.27% to Rs 110.00",
+     "source": "Univest",
+     "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE0yaGNNNlhVdk9sVzk2V214eW5DZ20zU1dKQVJHQ00tODNqZnp3c2NhM0xqb3JvOHlpMElNeGxuaU8wLTE5eXkzOHZndFNYdjhrVG1IaUlqQzFvTzZrRkxtYm9vQ3NXdXBxSHhhY0UzOXVNNG5qbHR0WVJmd2sycFk?oc=5",
+     "published": "Wed, 28 Oct 2026 08:44:00 GMT",
+     "sentiment": 0.296
+    }
+   ],
+   "news_sentiment": {
+    "score": 0.086,
+    "count": 7,
+    "label": "NEUTRAL"
+   },
+   "win_prob": 47.2,
+   "expected_r": 0.07,
+   "model_used": false,
+   "grade": "C",
+   "skip_reason": "Market gate closed: Nifty below 50-DMA or down over 20 days",
+   "action": "BUY DIVISLAB near \u20b99,664.00 (skip if it opens above \u20b910,034.02) \u00b7 SL \u20b99,478.99 \u00b7 T1 \u20b910,034.02 \u00b7 T2 \u20b910,404.03"
   }
  ],
  "scanned": 82,
