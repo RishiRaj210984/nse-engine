@@ -1,71 +1,53 @@
 {
  "bias": {
-  "generated_at": "2026-10-29T16:18:14.212534+05:30",
+  "generated_at": "2026-10-29T22:36:24.921947+05:30",
   "target_session": "2026-10-30",
   "reference_date": "2026-10-29",
   "bias": {
    "label": "RANGEBOUND",
-   "score": -13,
-   "z": -0.133,
-   "model_z": -0.133,
-   "predicted_nifty_move_pct": -0.106,
-   "typical_daily_move_pct": 0.795,
-   "source": "daily close model",
+   "score": 11,
+   "z": 0.112,
+   "model_z": 0.112,
+   "predicted_nifty_move_pct": 0.08,
+   "typical_daily_move_pct": 0.757,
+   "source": "pre-open global snapshot",
    "india_vix": 15.12,
    "components": [
     {
-     "feature": "vix_chg",
-     "label": "India VIX change",
-     "value": -1.132,
-     "contribution_pct": -0.092
+     "feature": "es",
+     "label": "S&P 500 futures",
+     "value": -0.2,
+     "contribution_pct": -0.095
     },
     {
-     "feature": "nifty_prev",
-     "label": "Nifty previous day %",
-     "value": 1.048,
-     "contribution_pct": -0.038
+     "feature": "nq",
+     "label": "Nasdaq futures",
+     "value": -0.45,
+     "contribution_pct": 0.073
+    },
+    {
+     "feature": "dxy",
+     "label": "Dollar index",
+     "value": -0.16,
+     "contribution_pct": 0.069
+    },
+    {
+     "feature": "stoxx",
+     "label": "Euro Stoxx 50",
+     "value": 0.35,
+     "contribution_pct": 0.028
     },
     {
      "feature": "vix",
      "label": "India VIX level",
-     "value": 15.118,
+     "value": 15.12,
      "contribution_pct": 0.023
     },
     {
-     "feature": "spx",
-     "label": "S&P 500 overnight %",
-     "value": 0.0,
-     "contribution_pct": -0.021
-    },
-    {
-     "feature": "ndx",
-     "label": "Nasdaq minus S&P (tech tilt) %",
-     "value": 0.0,
-     "contribution_pct": 0.005
-    },
-    {
-     "feature": "dxy",
-     "label": "Dollar index %",
-     "value": 0.015,
-     "contribution_pct": -0.005
-    },
-    {
-     "feature": "tnx",
-     "label": "US 10Y yield chg (pts)",
-     "value": 0.0,
-     "contribution_pct": 0.001
-    },
-    {
-     "feature": "crude",
-     "label": "Crude oil %",
-     "value": -1.382,
-     "contribution_pct": -0.001
-    },
-    {
-     "feature": "nifty_ext",
-     "label": "Nifty vs EMA20 %",
-     "value": 0.494,
-     "contribution_pct": -0.001
+     "feature": "ftse",
+     "label": "FTSE 100 (UK)",
+     "value": -0.06,
+     "contribution_pct": -0.017
     }
    ]
   },
@@ -462,56 +444,58 @@
    }
   },
   "model": {
-   "oos_days": 250,
-   "directional_calls": 106,
-   "directional_accuracy": 64.2,
-   "sign_accuracy_all_days": 58.8,
+   "oos_days": 300,
+   "directional_calls": 150,
+   "directional_accuracy": 68.0,
+   "sign_accuracy_all_days": 64.0,
+   "gap_corr": 0.46,
+   "gap_sign_pct": 67.7,
    "trained_rows": 750,
-   "version": 19,
+   "version": 20,
    "bias_threshold": 0.2
   }
  },
  "plan": {
-  "generated_at": "2026-10-29T16:18:29.815108+05:30",
+  "generated_at": "2026-10-29T22:36:43.809782+05:30",
   "session": "2026-10-30",
   "stage": "preview",
   "expected_open": {
-   "gap_pct": -0.0,
-   "error_pct": 0.38,
-   "day_pct": -0.02,
-   "snapshot": "Thu 29 Oct 16:18 IST",
+   "gap_pct": -0.08,
+   "error_pct": 0.33,
+   "day_pct": 0.08,
+   "snapshot": "Thu 29 Oct 22:36 IST",
    "stage": "preview",
    "tip": "Flat open expected. Normal entry windows apply.",
    "markets": [
     {
      "key": "es",
      "name": "S&P 500 futures",
-     "move_pct": 0.0
+     "move_pct": -0.2
     },
     {
      "key": "nq",
      "name": "Nasdaq futures",
-     "move_pct": 0.0
+     "move_pct": -0.45
     },
     {
      "key": "ym",
      "name": "Dow futures",
-     "move_pct": 0.0
+     "move_pct": -0.39
     },
     {
      "key": "dax",
      "name": "DAX (Germany)",
-     "move_pct": 0.0
+     "move_pct": 0.39
     },
     {
      "key": "ftse",
      "name": "FTSE 100 (UK)",
-     "move_pct": 0.0
+     "move_pct": -0.06
     },
     {
      "key": "stoxx",
      "name": "Euro Stoxx 50",
-     "move_pct": 0.0
+     "move_pct": 0.35
     },
     {
      "key": "n225",
@@ -526,12 +510,12 @@
     {
      "key": "gold",
      "name": "Gold",
-     "move_pct": 0.0
+     "move_pct": -0.38
     },
     {
      "key": "dxy",
      "name": "Dollar index",
-     "move_pct": 0.0
+     "move_pct": -0.16
     },
     {
      "key": "inr",
@@ -541,54 +525,54 @@
    ],
    "drivers": [
     {
-     "feature": "nprev",
-     "label": "Nifty previous day",
-     "value": 1.05,
-     "contribution_pct": -0.059
+     "feature": "es",
+     "label": "S&P 500 futures",
+     "value": -0.2,
+     "contribution_pct": -0.095
+    },
+    {
+     "feature": "nq",
+     "label": "Nasdaq futures",
+     "value": -0.45,
+     "contribution_pct": 0.073
+    },
+    {
+     "feature": "dxy",
+     "label": "Dollar index",
+     "value": -0.16,
+     "contribution_pct": 0.069
+    },
+    {
+     "feature": "stoxx",
+     "label": "Euro Stoxx 50",
+     "value": 0.35,
+     "contribution_pct": 0.028
     },
     {
      "feature": "vix",
      "label": "India VIX level",
      "value": 15.12,
-     "contribution_pct": 0.032
-    },
-    {
-     "feature": "es",
-     "label": "S&P 500 futures",
-     "value": 0.0,
-     "contribution_pct": -0.02
-    },
-    {
-     "feature": "ym",
-     "label": "Dow futures",
-     "value": 0.0,
-     "contribution_pct": 0.013
-    },
-    {
-     "feature": "cl",
-     "label": "Crude oil",
-     "value": 0.0,
-     "contribution_pct": 0.007
+     "contribution_pct": 0.023
     },
     {
      "feature": "ftse",
      "label": "FTSE 100 (UK)",
-     "value": 0.0,
-     "contribution_pct": -0.004
+     "value": -0.06,
+     "contribution_pct": -0.017
     }
    ],
    "wf": {
     "oos_days": 300,
-    "gap_corr": 0.26,
-    "gap_sign_pct": 56.0,
-    "directional_calls": 84,
-    "directional_accuracy": 61.9
+    "gap_corr": 0.46,
+    "gap_sign_pct": 67.7,
+    "directional_calls": 163,
+    "directional_accuracy": 68.7
    }
   },
   "headline": "Market bias SIDEWAYS \u2014 favour hedged premium selling",
   "bias": "RANGEBOUND",
-  "score": -13,
-  "bias_track_record_pct": 64.2,
+  "score": 11,
+  "bias_track_record_pct": 68.0,
   "options": [
    {
     "index": "NIFTY",

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-29T16:18:29.810793+05:30",
+ "generated_at": "2026-10-29T22:36:43.805711+05:30",
  "live_stocks": {
   "trades": 3,
   "win_rate": 0.0,
@@ -288,8 +288,8 @@
  ],
  "open_signals": 11,
  "model": {
-  "version": 19,
-  "updated": "2026-10-29T16:17:50.783930+05:30",
+  "version": 20,
+  "updated": "2026-10-29T22:36:02.357410+05:30",
   "ranker_on": false,
   "samples": 2145,
   "live_samples": 24,
@@ -314,6 +314,45 @@
   "cost_pct": 0.25
  },
  "history": [
+  {
+   "version": 20,
+   "created_at": "2026-10-29T22:36:02.357410+05:30",
+   "params": {
+    "vol_mult": 2.0,
+    "rsi_lo": 60,
+    "rsi_hi": 65,
+    "near_high_pct": 3.0,
+    "sl_atr": 0.75,
+    "t1_atr": 1.5,
+    "t2_atr": 3.0,
+    "bias_threshold": 0.2,
+    "vix_high": 18.0,
+    "news_weight": 0.0,
+    "max_day_chg": 4.0,
+    "regime_gate": 1,
+    "cost_pct": 0.25
+   },
+   "metrics": {
+    "samples": 2145,
+    "live_samples": 24,
+    "rule_trades": 99,
+    "base_win_rate": 0.4716,
+    "avg_win_r": 1.109,
+    "avg_loss_r": 0.849,
+    "expectancy_r": 0.075,
+    "holdout_logloss": 0.6881,
+    "baseline_logloss": 0.6876,
+    "holdout_auc": 0.539,
+    "holdout_n": 429,
+    "bias_wf": {
+     "oos_days": 500,
+     "directional_calls": 212,
+     "directional_accuracy": 61.3,
+     "sign_accuracy_all_days": 55.4
+    }
+   },
+   "note": "ranker OFF: no out-of-sample edge, using rule stats only"
+  },
   {
    "version": 19,
    "created_at": "2026-10-29T16:17:50.783930+05:30",
@@ -859,49 +898,10 @@
     }
    },
    "note": "ranker OFF: no out-of-sample edge, using rule stats only"
-  },
-  {
-   "version": 5,
-   "created_at": "2026-10-19T22:50:47.570287+05:30",
-   "params": {
-    "vol_mult": 2.0,
-    "rsi_lo": 60,
-    "rsi_hi": 65,
-    "near_high_pct": 3.0,
-    "sl_atr": 0.75,
-    "t1_atr": 1.5,
-    "t2_atr": 3.0,
-    "bias_threshold": 0.2,
-    "vix_high": 18.0,
-    "news_weight": 0.0,
-    "max_day_chg": 4.0,
-    "regime_gate": 1,
-    "cost_pct": 0.25
-   },
-   "metrics": {
-    "samples": 2121,
-    "live_samples": 0,
-    "rule_trades": 99,
-    "base_win_rate": 0.4716,
-    "avg_win_r": 1.109,
-    "avg_loss_r": 0.849,
-    "expectancy_r": 0.075,
-    "holdout_logloss": 0.6924,
-    "baseline_logloss": 0.6896,
-    "holdout_auc": 0.525,
-    "holdout_n": 425,
-    "bias_wf": {
-     "oos_days": 500,
-     "directional_calls": 209,
-     "directional_accuracy": 61.2,
-     "sign_accuracy_all_days": 54.8
-    }
-   },
-   "note": "t2_atr 2.5\u21923.0; bias_threshold 0.3\u21920.2; max_day_chg 5.0\u21924.0; ranker OFF: no out-of-sample edge, using rule stats only"
   }
  ],
  "options_lab": {
-  "generated_at": "2026-10-29T16:17:52.085573+05:30",
+  "generated_at": "2026-10-29T22:36:03.680749+05:30",
   "costs_per_lot": {
    "NIFTY condor": 400,
    "NIFTY spread": 240,
