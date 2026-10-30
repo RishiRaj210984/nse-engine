@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-30T16:18:59.074649+05:30",
+ "generated_at": "2026-10-30T22:21:30.883522+05:30",
  "target_session": "2026-11-02",
  "reference_date": "2026-10-30",
  "us_session_used": "2026-10-30",
@@ -7,66 +7,66 @@
   {
    "name": "S&P 500",
    "symbol": "^GSPC",
-   "last": 7720.39,
-   "change": -0.305,
+   "last": 7579.22,
+   "change": -1.829,
    "change_unit": "%",
-   "as_of": "2026-10-29"
+   "as_of": "2026-10-30"
   },
   {
    "name": "Nasdaq",
    "symbol": "^IXIC",
-   "last": 26184.72,
-   "change": -1.375,
+   "last": 25400.84,
+   "change": -2.994,
    "change_unit": "%",
-   "as_of": "2026-10-29"
+   "as_of": "2026-10-30"
   },
   {
    "name": "Dow Jones",
    "symbol": "^DJI",
-   "last": 52342.56,
-   "change": -0.253,
+   "last": 51872.41,
+   "change": -0.898,
    "change_unit": "%",
-   "as_of": "2026-10-29"
+   "as_of": "2026-10-30"
   },
   {
    "name": "US 10Y Yield",
    "symbol": "^TNX",
-   "last": 4.99,
-   "change": -0.056,
+   "last": 4.95,
+   "change": -0.042,
    "change_unit": "pts",
-   "as_of": "2026-10-29"
+   "as_of": "2026-10-30"
   },
   {
    "name": "Crude Oil",
    "symbol": "CL=F",
-   "last": 104.05,
-   "change": 2.01,
+   "last": 104.56,
+   "change": 2.51,
    "change_unit": "%",
    "as_of": "2026-10-30"
   },
   {
    "name": "Dollar Index",
    "symbol": "DX-Y.NYB",
-   "last": 101.65,
-   "change": -0.384,
+   "last": 101.94,
+   "change": -0.096,
    "change_unit": "%",
    "as_of": "2026-10-30"
   },
   {
    "name": "Nikkei 225",
    "symbol": "^N225",
-   "last": 63290.11,
-   "change": -2.118,
+   "last": 64659.47,
+   "change": 1.103,
    "change_unit": "%",
-   "as_of": "2026-10-30"
+   "as_of": "2026-10-29"
   },
   {
    "name": "Hang Seng",
    "symbol": "^HSI",
-   "last": 23294.42,
-   "change": 1.462,
+   "last": 22958.65,
+   "change": -0.59,
    "change_unit": "%",
-   "as_of": "2026-10-30"
+   "as_of": "2026-10-29"
   },
   {
    "name": "India VIX",
@@ -95,19 +95,31 @@
  ],
  "bias": {
   "label": "RANGEBOUND",
-  "score": 16,
-  "z": 0.165,
-  "model_z": 0.165,
-  "predicted_nifty_move_pct": 0.131,
+  "score": -16,
+  "z": -0.162,
+  "model_z": -0.162,
+  "predicted_nifty_move_pct": -0.129,
   "typical_daily_move_pct": 0.795,
   "source": "daily close model",
   "india_vix": 15.3,
   "components": [
    {
-    "feature": "dxy",
-    "label": "Dollar index %",
-    "value": -0.384,
-    "contribution_pct": 0.098
+    "feature": "spx",
+    "label": "S&P 500 overnight %",
+    "value": -1.829,
+    "contribution_pct": -0.567
+   },
+   {
+    "feature": "ndx",
+    "label": "Nasdaq minus S&P (tech tilt) %",
+    "value": -1.165,
+    "contribution_pct": 0.337
+   },
+   {
+    "feature": "tnx",
+    "label": "US 10Y yield chg (pts)",
+    "value": -0.042,
+    "contribution_pct": 0.028
    },
    {
     "feature": "vix",
@@ -116,10 +128,10 @@
     "contribution_pct": 0.028
    },
    {
-    "feature": "spx",
-    "label": "S&P 500 overnight %",
-    "value": 0.0,
-    "contribution_pct": -0.021
+    "feature": "dxy",
+    "label": "Dollar index %",
+    "value": -0.096,
+    "contribution_pct": 0.023
    },
    {
     "feature": "nifty_prev",
@@ -134,122 +146,110 @@
     "contribution_pct": 0.014
    },
    {
-    "feature": "ndx",
-    "label": "Nasdaq minus S&P (tech tilt) %",
-    "value": 0.0,
-    "contribution_pct": 0.004
-   },
-   {
     "feature": "crude",
     "label": "Crude oil %",
-    "value": 2.01,
-    "contribution_pct": 0.002
+    "value": 2.51,
+    "contribution_pct": 0.003
    },
    {
     "feature": "nifty_ext",
     "label": "Nifty vs EMA20 %",
     "value": 0.907,
     "contribution_pct": -0.002
-   },
-   {
-    "feature": "tnx",
-    "label": "US 10Y yield chg (pts)",
-    "value": 0.0,
-    "contribution_pct": 0.0
    }
   ]
  },
  "news": {
   "summary": {
-   "score": 0.33,
+   "score": 0.371,
    "count": 39,
    "label": "POSITIVE"
   },
   "weight": 0.0,
   "headlines": [
    {
-    "title": "Sebi issues final order against Axis Capital, imposes regulatory censure; Axis Bank shares fall over 1%",
+    "title": "Syrma SGS reports best-ever quarter; Q2 revenue up 73% to Rs 1,999.5 crore",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/sebi-issues-final-order-against-axis-capital-imposes-regulatory-censure-axis-bank-shares-fall-over-1/articleshow/135357153.cms",
-    "published": "Fri, 30 Oct 2026 16:15:07 +0530",
-    "sentiment": 0.296
-   },
-   {
-    "title": "Rupee rises 33 paise to close at 94.93 against US dollar",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/forex/rupee-rises-33-paise-to-close-at-94-93-against-us-dollar/articleshow/135357047.cms",
-    "published": "Fri, 30 Oct 2026 16:11:59 +0530",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/syrma-sgs-reports-best-ever-quarter-q2-revenue-up-73-to-rs-1999-5-crore/articleshow/135369732.cms",
+    "published": "Fri, 30 Oct 2026 22:05:53 +0530",
     "sentiment": 0.0
    },
    {
-    "title": "Asian Paints\u2019 consolidated profit jumps 7.5% YoY in Q2",
+    "title": "Zee Entertainment Q2 profit drops 40% to Rs 46 crore as EBITDA margin contracts to 3.2%",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/asian-paints-consolidated-profit-jumps-7-5-yoy-in-q2/articleshow/135356862.cms",
-    "published": "Fri, 30 Oct 2026 16:08:58 +0530",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/zee-entertainment-q2-profit-drops-40-to-rs-46-crore-as-ebitda-margin-contracts-to-3-2/articleshow/135369566.cms",
+    "published": "Fri, 30 Oct 2026 21:50:52 +0530",
+    "sentiment": 0.586
+   },
+   {
+    "title": "Lodha Developers H1FY27 net profit soars 63%, expects to beat full-year guidance",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/lodha-developers-h1fy27-net-profit-soars-63-expects-to-beat-full-year-guidance/articleshow/135369310.cms",
+    "published": "Fri, 30 Oct 2026 21:43:16 +0530",
+    "sentiment": 0.735
+   },
+   {
+    "title": "Spandana Sphoorty returns to profit at Rs 18 crore in Q2FY27",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/spandana-sphoorty-returns-to-profit-at-rs-18-crore-in-q2fy27/articleshow/135369091.cms",
+    "published": "Fri, 30 Oct 2026 21:35:19 +0530",
+    "sentiment": 0.25
+   },
+   {
+    "title": "Bank of Baroda Q2 profit jumps 36% to Rs 6,532 crore on NSE stake sale",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/bank-of-baroda-q2-profit-jumps-36-to-rs-6532-crore-on-nse-stake-sale/articleshow/135369087.cms",
+    "published": "Fri, 30 Oct 2026 21:32:22 +0530",
     "sentiment": 0.542
    },
    {
-    "title": "Sensex rises 308 points, Nifty above 23,000 even as broader markets crash. Will D-Street bulls extend recovery next week?",
+    "title": "Record earnings! 5 big takeaways from RIL Q2 results investors should watch for Monday trading",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/sensex-rises-308-points-nifty-above-23000-even-as-broader-markets-crash-will-d-street-bulls-extend-recovery-next-week/articleshow/135356125.cms",
-    "published": "Fri, 30 Oct 2026 16:05:37 +0530",
-    "sentiment": -0.026
+    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/record-earnings-5-big-takeaways-from-ril-q2-results-investors-should-watch-for-monday-trading/articleshow/135367917.cms",
+    "published": "Fri, 30 Oct 2026 20:48:47 +0530",
+    "sentiment": 0.316
    },
    {
-    "title": "Global Market: European blue-chips set for strongest earnings in four years",
+    "title": "Reliance Retail Q2 Results: Revenue up 6%, but late festive season, digital spends hit profit",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/global-market-european-blue-chips-set-for-strongest-earnings-in-four-years/articleshow/135356294.cms",
-    "published": "Fri, 30 Oct 2026 15:57:10 +0530",
-    "sentiment": 0.44
+    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/reliance-retail-q2-results-net-profit-falls-24-yoy-to-rs-2611-crore-gross-revenue-rises-6/articleshow/135366729.cms",
+    "published": "Fri, 30 Oct 2026 20:15:00 +0530",
+    "sentiment": 0.758
    },
    {
-    "title": "GAIL Q2 Results: Profit zooms 139% YoY to Rs 4,720 crore, revenue rises 33%; board approves GAIL Gas IPO",
+    "title": "Reliance Industries announces fundraising, to raise Rs 15,000 crore through NCDs",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/ipos/fpos/gail-q2-results-profit-zooms-139-yoy-to-rs-4720-crore-revenue-rises-33-board-approves-gail-gas-ipo/articleshow/135356210.cms",
-    "published": "Fri, 30 Oct 2026 15:51:14 +0530",
-    "sentiment": 0.572
+    "link": "https://economictimes.indiatimes.com/markets/bonds/reliance-industries-to-raise-rs-15000-crore-via-ncds/articleshow/135366327.cms",
+    "published": "Fri, 30 Oct 2026 20:09:10 +0530",
+    "sentiment": 0.0
    },
    {
-    "title": "Nasdaq futures tumble over 2% as Amazon, Intel stoke AI spending concerns",
+    "title": "Reliance Industries Q2 Results: Profit shoots up 41% YoY to Rs 25,548 crore, revenue surges 29%",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/nasdaq-futures-tumble-over-2-as-amazon-intel-stoke-ai-spending-concerns/articleshow/135356130.cms",
-    "published": "Fri, 30 Oct 2026 15:49:18 +0530",
-    "sentiment": 0.178
+    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/reliance-industries-q2-results-profit-shoots-up-41-yoy-to-rs-25548-crore-revenue-up-12/articleshow/135361960.cms",
+    "published": "Fri, 30 Oct 2026 19:46:49 +0530",
+    "sentiment": 0.586
    },
    {
-    "title": "FIIs hold $717 billion worth of Indian stocks, but trim exposure across 56% of Nifty 500 companies.  Where are they investing?",
+    "title": "Jio Platforms Q2 Results: Profit rises 14% YoY to Rs 8,389 crore; revenue up 11%",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/fiis-hold-717-billion-worth-of-indian-stocks-but-trim-exposure-across-56-of-nifty-500-companies-where-are-they-investing/articleshow/135353242.cms",
-    "published": "Fri, 30 Oct 2026 14:37:37 +0530",
-    "sentiment": 0.612
+    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/jio-platforms-q2-results-profit-rises-14-yoy-to-rs-8389-crore-revenue-up-11/articleshow/135364558.cms",
+    "published": "Fri, 30 Oct 2026 19:13:48 +0530",
+    "sentiment": 0.25
    },
    {
-    "title": "Sun Pharma Q2 Results: Profit falls 36% YoY to Rs 1,989 crore on exceptional charges",
+    "title": "US stocks today: Nasdaq sinks 2.2% as Amazon, Intel fuel fresh fears over AI spending",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/sun-pharma-q2-results-profit-falls-36-yoy-to-rs-1989-crore-on-exceptional-charges/articleshow/135352681.cms",
-    "published": "Fri, 30 Oct 2026 14:32:06 +0530",
-    "sentiment": -0.38
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/us-stocks-today-nasdaq-tumbles-over-2-sp-1-at-open-as-amazon-intel-add-to-ai-spending-woes/articleshow/135364444.cms",
+    "published": "Fri, 30 Oct 2026 19:08:23 +0530",
+    "sentiment": 0.052
    },
    {
-    "title": "Global Market: European automakers get earnings boost as Chinese competition weighs on recovery",
+    "title": "NTPC Green Energy Q2 Results: Profit jumps 56% YoY to Rs 137 crore, revenue rises 53%",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/global-market-european-automakers-get-earnings-boost-as-chinese-competition-weighs-on-recovery/articleshow/135352780.cms",
-    "published": "Fri, 30 Oct 2026 14:25:32 +0530",
-    "sentiment": 0.402
-   },
-   {
-    "title": "Varun Beverages shares fall over 4% as Q3 margin pressure weighs despite a 33% YoY revenue growth",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/varun-beverages-shares-fall-over-4-as-q3-margin-pressure-weighs-despite-a-33-yoy-revenue-growth/articleshow/135352713.cms",
-    "published": "Fri, 30 Oct 2026 14:23:44 +0530",
-    "sentiment": 0.382
-   },
-   {
-    "title": "Global Market: Binance breach rekindles fears over cryptocurrency security",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/global-market-binance-breach-rekindles-fears-over-cryptocurrency-security/articleshow/135351569.cms",
-    "published": "Fri, 30 Oct 2026 14:00:16 +0530",
-    "sentiment": -0.103
+    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/ntpc-green-energy-q2-results-profit-jumps-56-yoy-to-rs-137-crore-revenue-rises-53/articleshow/135363615.cms",
+    "published": "Fri, 30 Oct 2026 18:43:34 +0530",
+    "sentiment": 0.681
    }
   ]
  },
@@ -259,7 +259,7 @@
   "directional_accuracy": 66.0,
   "sign_accuracy_all_days": 59.6,
   "trained_rows": 750,
-  "version": 21,
+  "version": 22,
   "bias_threshold": 0.2
  },
  "options": {
@@ -363,12 +363,12 @@
       "decision": "SKIP",
       "dte": 1,
       "stats": {
-       "trades": 37,
-       "win_pct": 75.7,
-       "avg_pnl": 112,
+       "trades": 38,
+       "win_pct": 76.3,
+       "avg_pnl": 132,
        "worst": -3751,
        "best": 1944,
-       "total": 4159,
+       "total": 5029,
        "sample": "days the model called SIDEWAYS, full 2 years",
        "allowed": true,
        "marginal": false,
@@ -378,18 +378,18 @@
         "avg_pnl": 152,
         "worst": -2788,
         "best": 1944,
-        "total": 3955
+        "total": 3954
        },
        "trending_first_hour": {
-        "trades": 11,
-        "win_pct": 72.7,
-        "avg_pnl": 18,
+        "trades": 12,
+        "win_pct": 75.0,
+        "avg_pnl": 89,
         "worst": -3751,
         "best": 1595,
-        "total": 204
+        "total": 1075
        }
       },
-      "reason": "1 day before, right after Reliance results: condors broke 60% of the time in this combination (small sample)."
+      "reason": "1 day before, right after Reliance, Reliance results: condors broke 60% of the time in this combination (small sample)."
      }
     },
     {
@@ -445,12 +445,12 @@
     "decision": "SKIP",
     "dte": 1,
     "stats": {
-     "trades": 37,
-     "win_pct": 75.7,
-     "avg_pnl": 112,
+     "trades": 38,
+     "win_pct": 76.3,
+     "avg_pnl": 132,
      "worst": -3751,
      "best": 1944,
-     "total": 4159,
+     "total": 5029,
      "sample": "days the model called SIDEWAYS, full 2 years",
      "allowed": true,
      "marginal": false,
@@ -460,18 +460,18 @@
       "avg_pnl": 152,
       "worst": -2788,
       "best": 1944,
-      "total": 3955
+      "total": 3954
      },
      "trending_first_hour": {
-      "trades": 11,
-      "win_pct": 72.7,
-      "avg_pnl": 18,
+      "trades": 12,
+      "win_pct": 75.0,
+      "avg_pnl": 89,
       "worst": -3751,
       "best": 1595,
-      "total": 204
+      "total": 1075
      }
     },
-    "reason": "No tested structure has a positive record for today. 1 day before, right after Reliance results: condors broke 60% of the time in this combination (small sample)."
+    "reason": "No tested structure has a positive record for today. 1 day before, right after Reliance, Reliance results: condors broke 60% of the time in this combination (small sample)."
    }
   },
   "BANKNIFTY": {
@@ -544,31 +544,31 @@
       "stats": {
        "trades": 49,
        "win_pct": 91.8,
-       "avg_pnl": 3379,
+       "avg_pnl": 3445,
        "worst": -17489,
        "best": 9535,
-       "total": 165577,
+       "total": 168841,
        "sample": "days the model called SIDEWAYS, current expiry schedule",
        "allowed": true,
        "marginal": false,
        "quiet_first_hour": {
         "trades": 25,
         "win_pct": 96.0,
-        "avg_pnl": 4115,
+        "avg_pnl": 4142,
         "worst": -7115,
         "best": 9535,
-        "total": 102885
+        "total": 103571
        },
        "trending_first_hour": {
         "trades": 24,
         "win_pct": 87.5,
-        "avg_pnl": 2612,
+        "avg_pnl": 2719,
         "worst": -17489,
         "best": 7837,
-        "total": 62692
+        "total": 65270
        }
       },
-      "reason": "2+ weeks before: this setup won 91.8% of 49 trades, avg \u20b93,379 per lot after costs (worst \u20b9-17,489). If the first hour moves more than 0.25%, the win rate drops to 87.5% (from 96.0% on quiet mornings): consider skipping."
+      "reason": "2+ weeks before: this setup won 91.8% of 49 trades, avg \u20b93,445 per lot after costs (worst \u20b9-17,489). If the first hour moves more than 0.25%, the win rate drops to 87.5% (from 96.0% on quiet mornings): consider skipping."
      }
     },
     {
@@ -626,35 +626,44 @@
     "stats": {
      "trades": 49,
      "win_pct": 91.8,
-     "avg_pnl": 3379,
+     "avg_pnl": 3445,
      "worst": -17489,
      "best": 9535,
-     "total": 165577,
+     "total": 168841,
      "sample": "days the model called SIDEWAYS, current expiry schedule",
      "allowed": true,
      "marginal": false,
      "quiet_first_hour": {
       "trades": 25,
       "win_pct": 96.0,
-      "avg_pnl": 4115,
+      "avg_pnl": 4142,
       "worst": -7115,
       "best": 9535,
-      "total": 102885
+      "total": 103571
      },
      "trending_first_hour": {
       "trades": 24,
       "win_pct": 87.5,
-      "avg_pnl": 2612,
+      "avg_pnl": 2719,
       "worst": -17489,
       "best": 7837,
-      "total": 62692
+      "total": 65270
      }
     },
-    "reason": "2+ weeks before: this setup won 91.8% of 49 trades, avg \u20b93,379 per lot after costs (worst \u20b9-17,489). If the first hour moves more than 0.25%, the win rate drops to 87.5% (from 96.0% on quiet mornings): consider skipping."
+    "reason": "2+ weeks before: this setup won 91.8% of 49 trades, avg \u20b93,445 per lot after costs (worst \u20b9-17,489). If the first hour moves more than 0.25%, the win rate drops to 87.5% (from 96.0% on quiet mornings): consider skipping."
    }
   }
  },
  "events": [
+  {
+   "symbol": "RELIANCE",
+   "name": "Reliance",
+   "when": "Fri 30 Oct",
+   "date": "2026-10-30",
+   "affects": "2026-11-02",
+   "past": true,
+   "bank": false
+  },
   {
    "symbol": "RELIANCE",
    "name": "Reliance",
@@ -693,43 +702,43 @@
   }
  ],
  "preopen": {
-  "snapshot_ist": "Fri 30 Oct 16:18 IST",
+  "snapshot_ist": "Fri 30 Oct 22:21 IST",
   "stage": "preview",
-  "expected_gap_pct": 0.0,
+  "expected_gap_pct": -0.12,
   "gap_typical_error_pct": 0.38,
-  "expected_day_pct": 0.02,
-  "z": 0.02,
-  "typical_daily_move_pct": 0.772,
+  "expected_day_pct": -0.23,
+  "z": -0.293,
+  "typical_daily_move_pct": 0.771,
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": 0.0
+    "move_pct": -0.53
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": 0.0
+    "move_pct": -0.81
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": 0.0
+    "move_pct": -0.81
    },
    {
     "key": "dax",
     "name": "DAX (Germany)",
-    "move_pct": 0.0
+    "move_pct": -0.34
    },
    {
     "key": "ftse",
     "name": "FTSE 100 (UK)",
-    "move_pct": 0.0
+    "move_pct": -0.23
    },
    {
     "key": "stoxx",
     "name": "Euro Stoxx 50",
-    "move_pct": 0.0
+    "move_pct": -0.5
    },
    {
     "key": "n225",
@@ -739,89 +748,89 @@
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": 0.0
+    "move_pct": 0.31
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": 0.0
+    "move_pct": -2.09
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": 0.0
+    "move_pct": 0.3
    },
    {
     "key": "inr",
     "name": "USD/INR",
-    "move_pct": 0.0
+    "move_pct": -0.01
    }
   ],
   "drivers": [
    {
-    "feature": "vix",
-    "label": "India VIX level",
-    "value": 15.3,
-    "contribution_pct": 0.037
-   },
-   {
-    "feature": "nprev",
-    "label": "Nifty previous day",
-    "value": 0.51,
-    "contribution_pct": -0.027
-   },
-   {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": 0.0,
-    "contribution_pct": -0.019
+    "value": -0.53,
+    "contribution_pct": -0.464
    },
    {
     "feature": "ym",
     "label": "Dow futures",
-    "value": 0.0,
-    "contribution_pct": 0.013
+    "value": -0.81,
+    "contribution_pct": 0.301
    },
    {
-    "feature": "cl",
-    "label": "Crude oil",
-    "value": 0.0,
-    "contribution_pct": 0.007
+    "feature": "dxy",
+    "label": "Dollar index",
+    "value": 0.3,
+    "contribution_pct": -0.197
+   },
+   {
+    "feature": "nq",
+    "label": "Nasdaq futures",
+    "value": -0.81,
+    "contribution_pct": 0.171
+   },
+   {
+    "feature": "stoxx",
+    "label": "Euro Stoxx 50",
+    "value": -0.5,
+    "contribution_pct": 0.088
    },
    {
     "feature": "ftse",
     "label": "FTSE 100 (UK)",
-    "value": 0.0,
-    "contribution_pct": -0.003
+    "value": -0.23,
+    "contribution_pct": -0.087
    }
   ],
   "wf": {
    "oos_days": 300,
    "gap_corr": 0.26,
    "gap_sign_pct": 56.0,
-   "directional_calls": 86,
-   "directional_accuracy": 59.3
+   "directional_calls": 85,
+   "directional_accuracy": 60.0
   },
   "vix": 15.3
  },
  "global_table": {
-  "updated": "2026-10-30T16:19:13.391360+05:30",
+  "updated": "2026-10-30T22:21:40.439830+05:30",
   "rows": [
    {
     "group": "US, last close",
-    "move": "S&P 500 -0.3%, Nasdaq -1.4%, Dow -0.2%",
+    "move": "S&P 500 -1.8%, Nasdaq -3.0%, Dow -0.9%",
     "effect": "red",
     "note": "Negative lead for India"
    },
    {
     "group": "US futures now",
-    "move": "S&P +0.00%, Nasdaq +0.00%, Dow +0.00% (since Nifty's close)",
-    "effect": "flat",
-    "note": "Flat"
+    "move": "S&P -0.53%, Nasdaq -0.81%, Dow -0.81% (since Nifty's close)",
+    "effect": "red",
+    "note": "Futures point to a softer open"
    },
    {
     "group": "Europe, last close",
-    "move": "DAX -0.6%, FTSE +0.2%, Euro Stoxx -0.8%",
+    "move": "DAX -0.8%, FTSE +0.1%, Euro Stoxx -1.2%",
     "effect": "red",
     "note": "Weak"
    },
@@ -833,25 +842,25 @@
    },
    {
     "group": "Crude oil",
-    "move": "WTI ~$104, Brent ~$113 (+2.1%)",
+    "move": "WTI ~$105, Brent ~$114 (+2.6%)",
     "effect": "red",
     "note": "Rising oil hurts India \u00b7 Price is high for India"
    },
    {
     "group": "US 10-year yield",
-    "move": "4.99% (-5 bp)",
+    "move": "4.95% (-4 bp)",
     "effect": "flat",
     "note": "Steady"
    },
    {
     "group": "Dollar index",
-    "move": "101.65 (-0.38%)",
-    "effect": "green",
-    "note": "Weaker dollar helps"
+    "move": "101.94 (-0.09%)",
+    "effect": "flat",
+    "note": "Steady"
    },
    {
     "group": "Rupee",
-    "move": "94.95 per $ (-0.27%)",
+    "move": "94.94 per $ (-0.28%)",
     "effect": "green",
     "note": "Rupee strengthening"
    },
@@ -863,14 +872,14 @@
    },
    {
     "group": "Model: Nifty open",
-    "move": "+0.00% (\u00b10.38%)",
+    "move": "-0.12% (\u00b10.38%)",
     "effect": "flat",
     "note": "Combined forecast from all markets (preview)",
     "model": true
    }
   ],
-  "tilt": "mixed",
-  "score": -1
+  "tilt": "negative",
+  "score": -3
  },
  "notes": [
   "GIFT Nifty has no free data feed; the pre-open model reads what drives it (US/Dow futures, Europe, Asia, crude, rupee).",
