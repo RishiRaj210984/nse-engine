@@ -20,7 +20,7 @@ import requests
 
 import momentum
 import store
-from config import INDEX_SPECS, IST, PUBLIC_DIR
+from config import BOOK_COSTS, INDEX_SPECS, IST, PUBLIC_DIR
 from options import bs_price
 
 log = logging.getLogger(__name__)
@@ -262,6 +262,22 @@ def record_marks(bias, chains, quotes, now):
     return n
 
 
+def first_exit(rows, base, credit, expiry_iso, day_iso, stop_credit=None):
+    """The evening review's exit rule over today's real NSE marks, in time order: the first mark at the stop
+    (loss 1x credit), the target (55% of credit kept) or, on expiry day, from 10:15. Once reached the trade
+    stays booked there even if prices come back, as the evening review books it.
+    base(row) -> value per unit. -> (status, time, value per unit) or None"""
+    for r in rows:
+        v = base(r)
+        if v <= -(credit if stop_credit is None else stop_credit):
+            return "STOP", r[0], v
+        if v >= 0.55 * credit:
+            return "TARGET", r[0], v
+        if day_iso >= expiry_iso and r[0] >= "10:15":
+            return "EXPIRY 10:15", r[0], v
+    return None
+
+
 def paper_today(bias, now):
     """Today's new paper trade, before the evening review adds it to the book: the plan's TRADE structure,
     entered at its first real price between 10:15 and 10:35 if the index was between the short strikes,
@@ -288,17 +304,23 @@ def paper_today(bias, now):
             continue
         lot, v_e, last = o["lot_size"], entry[2] + entry[3], rows[-1]
         credit, value = round(-v_e * lot), round(((last[2] + last[3]) - v_e) * lot)
-        status = "TARGET" if value >= 0.55 * credit else "STOP" if value <= -credit else "HOLD"
-        out.append({**base, "status": status, "entered_at": entry[0], "credit_rs": credit, "value_now": value,
-                    "target_rs": round(0.55 * credit), "stop_rs": -credit, "at": last[0], "spot": last[1]})
+        hit = first_exit([r for r in rows if r[0] > entry[0]], lambda r: (r[2] + r[3]) - v_e, -v_e, o["expiry"], now.date().isoformat())
+        booked = {}
+        if hit:
+            value = round(hit[2] * lot)
+            booked = {"reached_at": hit[1], "result_rs": value - BOOK_COSTS[name]}
+        out.append({**base, "status": hit[0] if hit else "HOLD", "entered_at": entry[0], "credit_rs": credit, "value_now": value,
+                    "target_rs": round(0.55 * credit), "stop_rs": -credit, "at": last[0], "spot": last[1], **booked})
     return out
 
 
 def paper_open(quotes, now, book_file="paper_book.json", chains=None):
-    """Value the trades the paper book holds, every live run, with the same Black-Scholes + India VIX
-    method the evening review uses, so the daytime number and the evening number agree.
+    """Value the trades the paper book holds, every live run, on the same basis the evening review uses (real NSE
+    prices, else Black-Scholes + India VIX), and book a target or stop reached earlier today at that moment, so the
+    daytime number and the evening number agree.
     book_file="paper_book_adjusted.json" values the comparison book (same trades with the adjustment)."""
     book = store._read(store.state_path(book_file), {}) or {}
+    day = (store._read(store.state_path("paper_marks.json"), {}) or {}).get(now.date().isoformat(), {})
     out = []
     for name, p in (book.get("open") or {}).items():
         spot = (quotes.get(INDEX_SPECS[name]["ticker"]) or {}).get("last")
@@ -309,21 +331,35 @@ def paper_open(quotes, now, book_file="paper_book.json", chains=None):
         exp = datetime.fromisoformat(p["expiry"]).replace(hour=15, minute=30, tzinfo=IST)
         T = max((exp - now).total_seconds() / 86400, 0.002) / 365
         val = lambda legs: sum((1 if l["action"] == "BUY" else -1) * bs_price(spot, l["strike"], T, iv, l["type"]) for l in legs)
-        ch = _chain_for(chains, name, p["expiry"]) if p.get("basis") == "NSE" else None
-        if ch and vix and len(p.get("groups") or []) == 2:   # real NSE prices, same basis as the entry
+        real_basis = p.get("basis") == "NSE" and len(p.get("groups") or []) == 2
+        # today's real NSE marks (every 10 min); the comparison book is valued on estimates, like the evening review
+        rows = day.get(legs_key(name, p["expiry"], p["legs"]), []) if real_basis and book_file == "paper_book.json" else []
+        unit = lambda v: p.get("realized", 0) + sum(v[g["legs"][0]["type"]] - g["v0"] for g in p["groups"])
+        ch = _chain_for(chains, name, p["expiry"]) if real_basis else None
+        at = now.strftime("%H:%M")
+        if ch and vix:   # real NSE prices, same basis as the entry
             v_ce, v_pe, _ = real_sides(p["legs"], ch, spot, T, vix)
-            real = {"CE": v_ce, "PE": v_pe}
-            value = round((p.get("realized", 0) + sum(real[g["legs"][0]["type"]] - g["v0"] for g in p["groups"])) * p["lot"])
+            value = round(unit({"CE": v_ce, "PE": v_pe}) * p["lot"])
+        elif rows:       # no chain passed (Close all): the latest saved real NSE mark
+            value, at = round(unit({"CE": rows[-1][2], "PE": rows[-1][3]}) * p["lot"]), rows[-1][0]
         elif p.get("groups"):   # realized part of an adjusted trade + what is still open
             value = round((p.get("realized", 0) + sum(val(g["legs"]) - g["v0"] for g in p["groups"])) * p["lot"])
         else:
             value = round((val(p["legs"]) - p["v_e"]) * p["lot"])
         credit = round(-p["v_e"] * p["lot"])
-        status = ("TARGET" if value >= 0.55 * credit else "STOP" if value <= -credit else
-                  "EXPIRY 10:15" if now.date().isoformat() >= p["expiry"] and now.strftime("%H:%M") >= "10:15" else "HOLD")
+        hit = first_exit(rows, lambda r: unit({"CE": r[2], "PE": r[3]}), p.get("credit_all", -p["v_e"]), p["expiry"],
+                         now.date().isoformat(), stop_credit=p.get("credit0", -p["v_e"]))
+        if hit:
+            status, value = hit[0], round(hit[2] * p["lot"])
+            booked = {"reached_at": hit[1], "result_rs": value - BOOK_COSTS[name] - p.get("extra_cost", 0)}
+        else:
+            status = ("TARGET" if value >= 0.55 * credit else "STOP" if value <= -credit else
+                      "EXPIRY 10:15" if now.date().isoformat() >= p["expiry"] and now.strftime("%H:%M") >= "10:15" else "HOLD")
+            booked = {}
         out.append({"index": name, "strategy": p["strategy"], "expiry": p["expiry"], "entry_session": p["entry_session"],
-                    "credit_rs": credit, "value_now": value, "since_last_evening": value - p.get("mark", 0),
-                    "status": status, "spot": spot, "at": now.strftime("%H:%M")})
+                    "credit_rs": credit, "value_now": value,
+                    "since_last_evening": booked.get("result_rs", value) - p.get("mark", 0),
+                    "status": status, "spot": spot, "at": at, **booked})
     return out
 
 

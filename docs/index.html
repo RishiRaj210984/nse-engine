@@ -187,7 +187,7 @@ body.is-simple main{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 <script>
 const NSE_HOLIDAYS = ['2026-10-20', '2026-11-08', '2026-11-10', '2026-11-24', '2026-12-25'];   // fallback; meta.json has the live list
 const holidayList = () => (D.meta?.holidays?.length ? D.meta.holidays : NSE_HOLIDAYS);
-const APP_VERSION = 'v42';   // keep equal to CACHE in sw.js
+const APP_VERSION = 'v43';   // keep equal to CACHE in sw.js
 const TEST_FROM = '2026-11-04';   // the one real test trade (guardian LIVE_FROM)
 const FILES = ['plan', 'global-bias', 'volume-breakouts', 'performance', 'review', 'meta', 'live', 'small-capital', 'markets'];
 const D = {};
@@ -493,8 +493,11 @@ function paperResults(open = false) {
   // today's new paper trade (entered at 10:15 on real prices), shown live until the evening review books it
   const todays = liveNewer ? (D.live?.paper_today || []) : [];
   const tIn = todays.filter((x) => x.credit_rs != null);
-  const liveToday = lv.reduce((a, x) => a + (x.since_last_evening || 0), 0) + tIn.reduce((a, x) => a + x.value_now, 0);
-  const liveTotal = tIn.reduce((a, x) => a + x.value_now, 0) + pb.realized + lv.reduce((a, x) => a + x.value_now, 0) + (pb.open || []).filter((o) => !lv.some((x) => x.index === o.index)).reduce((a, o) => a + o.mark, 0);
+  // a trade that reached its target or stop today counts at its booked result after costs, as the evening review books it
+  const res = (x) => x.result_rs ?? x.value_now;
+  const booked = (x) => x.reached_at ? `${x.result_rs >= 0 ? '✅' : '❌'} <b>reached its ${/STOP/.test(x.status) ? 'stop' : /EXPIRY/.test(x.status) ? 'expiry-day exit' : 'target'} at ${esc(x.reached_at)}: ${rs(x.result_rs)} after costs</b> (booked; prices after that don't count)` : '';
+  const liveToday = lv.reduce((a, x) => a + (x.since_last_evening || 0), 0) + tIn.reduce((a, x) => a + res(x), 0);
+  const liveTotal = tIn.reduce((a, x) => a + res(x), 0) + pb.realized + lv.reduce((a, x) => a + res(x), 0) + (pb.open || []).filter((o) => !lv.some((x) => x.index === o.index)).reduce((a, o) => a + o.mark, 0);
   // a trade closed on the latest day is said plainly in the summary line
   const closedToday = (pb.closed || []).filter((c) => c.exit_session === d0.session);
   const closedNote = closedToday.map((c) => `${c.pnl > 0 ? '✅' : '❌'} ${esc(c.index)} closed${/TARGET/.test(c.reason) ? ' at target' : /STOP/.test(c.reason) ? ' at stop' : /EXPIRY/.test(c.reason) ? ' on expiry' : /HAND/.test(c.reason) ? ' by hand' : ''}: ${rs(c.pnl)}`).join(' · ');
@@ -506,7 +509,7 @@ function paperResults(open = false) {
       : `<b>overall ${rs(pb.total)}</b> · <span class="fine">${esc(day(d0.session))}: ${rs(d0.pnl)}</span>`;
   const todayRows = todays.map((x) => x.credit_rs != null
     ? `<div class="srow">🆕 <b>Today: ${esc(x.index)} ${esc(x.strategy)}</b> entered ${esc(x.entered_at)} · premium ₹${Number(x.credit_rs).toLocaleString('en-IN')}
-        · <b>worth ${rs(x.value_now)} now</b> (live ${esc(x.at)})${x.status !== 'HOLD' ? ' · ⚠️ ' + esc(x.status) : ''}
+        · ${x.reached_at ? booked(x) : `<b>worth ${rs(x.value_now)} now</b> (live ${esc(x.at)})${x.status !== 'HOLD' ? ' · ⚠️ ' + esc(x.status) : ''}`}
         <div class="fine">${esc(x.legs)} · target ${rs(x.target_rs)} · stop ${rs(x.stop_rs)} · real NSE prices; the evening review adds it to the book</div></div>`
     : `<div class="srow">🕙 <b>Today: ${esc(x.index)} ${esc(x.strategy)}</b> · ${x.status === 'WAITING' ? 'waiting for the 10:15 entry' : esc(x.status)}${x.note ? ' · ' + esc(x.note) : ''}</div>`).join('');
   // paper-only third trade: NIFTY first-hour momentum buy (live during the day, else the evening review)
@@ -520,9 +523,10 @@ function paperResults(open = false) {
       <div class="fine">Total ${rs(mo.total)} (${mo.trades} trades, ${mo.wins} won). ${esc(mo.rule || '')}</div>
       ${(mo.recent || []).slice(0, 3).map((x) => `<div class="fine">${x.pnl > 0 ? '✅' : '❌'} ${esc(day(x.date))}: ${x.strike} ${esc(x.kind)} ₹${x.entry_px} → ₹${x.exit_px}, ${esc(x.reason)}: ${rs(x.pnl)}</div>`).join('')}</div>`;
   return `<details class="sreply" ${open ? 'open' : ''}><summary><b>📒 Paper results</b> · ${head}${mt && mt.status === 'OPEN' ? ` · 🚀 ${rs(mt.value_now)}` : mt && mt.status === 'CLOSED' ? ` · 🚀 ${rs(mt.pnl)}` : ''}</summary>${todayRows}${moRow}
-    ${(pb.open || []).map((o) => `<div class="srow">🟡 <b>Holding ${esc(o.index)} ${esc(o.strategy)}</b> since ${esc(day(o.entry_session))}, expiry ${esc(day(o.expiry))}<div class="fine">Premium collected ₹${Number(o.credit_rs).toLocaleString('en-IN')} · ${(() => { const x = lv.find((y) => y.index === o.index);
-        return x ? `<b>worth ${rs(x.value_now)} now</b> (live ${esc(x.at)}, NIFTY ${Number(x.spot).toLocaleString('en-IN')}) · last evening ${rs(o.mark)}${x.status !== 'HOLD' ? ' · ⚠️ ' + esc(x.status) : ''}`
-                 : `worth ${rs(o.mark)} at last evening's close`; })()} (before costs)</div></div>`).join('')}
+    ${(pb.open || []).map((o) => `<div class="srow">${lv.find((y) => y.index === o.index)?.reached_at ? '🏁 <b>Closed (paper):' : '🟡 <b>Holding'} ${esc(o.index)} ${esc(o.strategy)}</b> since ${esc(day(o.entry_session))}, expiry ${esc(day(o.expiry))}<div class="fine">Premium collected ₹${Number(o.credit_rs).toLocaleString('en-IN')} · ${(() => { const x = lv.find((y) => y.index === o.index);
+        return x?.reached_at ? booked(x)
+          : x ? `<b>worth ${rs(x.value_now)} now</b> (live ${esc(x.at)}, ${esc(o.index)} ${Number(x.spot).toLocaleString('en-IN')}) · last evening ${rs(o.mark)}${x.status !== 'HOLD' ? ' · ⚠️ ' + esc(x.status) : ''} (before costs)`
+                 : `worth ${rs(o.mark)} at last evening's close (before costs)`; })()}</div></div>`).join('')}
     ${(pb.closed || []).slice(0, 5).map((c) => `<div class="srow">${c.pnl > 0 ? '✅' : '❌'} <b>${esc(c.index)} ${esc(c.strategy)}</b> ${esc(day(c.entry_session))} → ${esc(day(c.exit_session))}: ${rs(c.pnl)}<div class="fine">${esc(c.reason)}</div></div>`).join('')}
     <div class="srow"><b>Day by day</b>${pb.days.slice(0, 7).map((x) => `<div class="fine">${esc(day(x.session))}: ${rs(x.pnl)} · ${esc((x.detail || []).join(' · ') || 'no trade')}</div>`).join('')}</div>
     ${pb.with_adjustment && pb.with_adjustment.total != null ? (() => { const wa = pb.with_adjustment;

@@ -32,6 +32,8 @@ CAPITAL = int(os.getenv("CAPITAL", 15000))
 # One real test trade: the plan's NIFTY condor with narrower wings, so its worst loss fits CAPITAL.
 # The guardian places exactly this when it is switched to live (see GUARDIAN.md, "One real test trade").
 TEST_WINGS = {"NIFTY": 150}
+# Paper book costs, Rs per round trip (same as the options lab), charged when a paper trade closes.
+BOOK_COSTS = {"NIFTY": 400, "BANKNIFTY": 500}
 
 # Lot sizes and expiry rules change by NSE circular. VERIFY on nseindia.com
 # before trading and update here (or via env vars).

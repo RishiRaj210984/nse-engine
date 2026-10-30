@@ -746,7 +746,9 @@ def emergency_watch(env, state, now):
         if x.get("status") in ("STOP", "TARGET") and k not in seen:
             seen[k] = now.strftime("%H:%M")
             notify(env, f"Paper trade reached its {x['status'].lower()}",
-                   f"{x['index']} {x['strategy']} worth Rs {x['value_now']:+,} at {x.get('at')}. Nothing to do: the evening review "
+                   f"{x['index']} {x['strategy']} worth Rs {x['value_now']:+,} at {x.get('reached_at') or x.get('at')}"
+                   + (f" (Rs {x['result_rs']:+,} after costs)" if x.get("result_rs") is not None else "")
+                   + ". Nothing to do: the evening review "
                    f"books it at the moment it was reached (live mode closes it at once).")
     new = [(k, m) for k, m in reasons if k not in seen]
     if new:

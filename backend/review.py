@@ -285,7 +285,7 @@ def review_session(session, archived=None):
 # position per index, entered at 10:15 if the entry condition holds, then carried day to day with the
 # guardian's exits (target 55% of credit kept, stop at 1x credit, expiry day 10:15). Costs are charged
 # when a trade closes. Each day's P&L is the change in value of what was held, so open trades count too.
-BOOK_COSTS = {"NIFTY": 400, "BANKNIFTY": 500}   # Rs per round trip, same as the options lab
+from config import BOOK_COSTS  # noqa: E402  Rs per round trip, same as the options lab
 EXPIRY_EXIT = time(10, 15)
 
 
