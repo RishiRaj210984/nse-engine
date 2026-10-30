@@ -337,7 +337,7 @@ def paper_open(quotes, now, book_file="paper_book.json", chains=None):
         unit = lambda v: p.get("realized", 0) + sum(v[g["legs"][0]["type"]] - g["v0"] for g in p["groups"])
         ch = _chain_for(chains, name, p["expiry"]) if real_basis else None
         at = now.strftime("%H:%M")
-        if ch and vix:   # real NSE prices, same basis as the entry
+        if ch and vix and (at <= "15:30" or not rows):   # real NSE prices, same basis as the entry; after the close the 15:30 mark, as the evening review
             v_ce, v_pe, _ = real_sides(p["legs"], ch, spot, T, vix)
             value = round(unit({"CE": v_ce, "PE": v_pe}) * p["lot"])
         elif rows:       # no chain passed (Close all): the latest saved real NSE mark

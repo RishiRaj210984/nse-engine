@@ -65,4 +65,14 @@ t("today's trade: TARGET at 12:00 stays, booked +Rs 2,405, after costs +Rs 2,005
 put("paper_marks.json", {"2026-10-29": {KEY: [["10:20", 22800, -20.0, -45.0, 4], ["13:00", 22800, -16.0, -40.0, 4]]}})
 x = live.paper_today(BIAS, at("13:00"))[0]
 t("today's trade below target: HOLD, no booking", x["status"] == "HOLD" and "result_rs" not in x)
+# after the close (15:40 run) the chain shows post-close prices: value at the 15:30 mark, as the evening review
+put("paper_book.json", POS)
+put("paper_marks.json", {"2026-10-29": {KEY: [["15:20", 22900, -20.0, -45.0, 4], ["15:30", 22900, -18.0, -44.0, 4]]}})
+live._chain_for = lambda chains, name, expiry: {"fake": True}
+live.real_sides = lambda legs, ch, spot, T, vix: (-1.0, -1.0, None)
+x = live.paper_open(Q, at("15:40"), chains={"x": 1})[0]
+t("15:40: valued at the 15:30 mark, not the post-close chain",
+  x["at"] == "15:30" and x["value_now"] == round(((-18.0 + 15.807) + (-44.0 + 57.975)) * 65))
+x = live.paper_open(Q, at("15:20"), chains={"x": 1})[0]
+t("15:20: in market hours the chain is used", x["at"] == "15:20" and x["value_now"] == round(((-1.0 + 15.807) + (-1.0 + 57.975)) * 65))
 print("ALL PASS" if all(res) else "SOME FAILED")

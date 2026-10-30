@@ -406,7 +406,7 @@ def paper_book(session, archived, bars_by_index, vix, adjust=False):
                 pos.update(credit0=-pos["v_e"], credit_all=-pos["v_e"], credit_rs=round(-pos["v_e"] * pos["lot"]),
                            entry_spot=em[0][1], basis="NSE")
                 start_hm = em[0][0]
-            detail.append(f"{name}: entered {pos['strategy']} at 10:15, credit Rs {pos['credit_rs']:,}"
+            detail.append(f"{name}: entered {pos['strategy']} at {start_hm}, credit Rs {pos['credit_rs']:,}"
                           + (" (real NSE prices)" if pos.get("basis") == "NSE" else " (estimated prices)"))
         exp = date.fromisoformat(pos["expiry"])
         iv = lambda ts: pos["iv0"] * (_vix_at(vix, ts) / pos["vix0"]) if pos["vix0"] and vix is not None else pos["iv0"]
