@@ -37,25 +37,8 @@
    "credit_rs": 4595,
    "iv0": 0.16399999999999998,
    "vix0": 17.040000915527344,
-   "mark": 1341,
+   "mark": 259,
    "groups": [
-    {
-     "legs": [
-      {
-       "action": "SELL",
-       "strike": 23200,
-       "type": "CE",
-       "est_premium": 58.9
-      },
-      {
-       "action": "BUY",
-       "strike": 23450,
-       "type": "CE",
-       "est_premium": 23.2
-      }
-     ],
-     "v0": -14.025810906559059
-    },
     {
      "legs": [
       {
@@ -74,10 +57,10 @@
      "v0": -56.67396158637712
     }
    ],
-   "realized": 0.0,
+   "realized": -51.18568971067032,
    "credit0": 70.69977249293618,
    "credit_all": 70.69977249293618,
-   "adjusted": null,
+   "adjusted": "closed the tested call spread",
    "extra_cost": 0
   },
   "BANKNIFTY": {
@@ -117,7 +100,7 @@
    "credit_rs": 7539,
    "iv0": 0.1406,
    "vix0": 17.040000915527344,
-   "mark": -970,
+   "mark": 99,
    "groups": [
     {
      "legs": [
@@ -241,10 +224,20 @@
     "BANKNIFTY: still open (expiry 23 Nov), worth Rs -970 now"
    ],
    "total": -1291
+  },
+  {
+   "session": "2026-10-30",
+   "pnl": -13,
+   "detail": [
+    "NIFTY: 11:45 ADJUSTED (closed the tested call spread) with NIFTY at 23,072",
+    "NIFTY: still open (expiry 03 Nov), worth Rs +259 now",
+    "BANKNIFTY: still open (expiry 23 Nov), worth Rs +99 now"
+   ],
+   "total": -1304
   }
  ],
  "before": {
-  "session": "2026-10-29",
+  "session": "2026-10-30",
   "open": {
    "NIFTY": {
     "index": "NIFTY",
@@ -283,7 +276,7 @@
     "credit_rs": 4595,
     "iv0": 0.16399999999999998,
     "vix0": 17.040000915527344,
-    "mark": 1149,
+    "mark": 1341,
     "groups": [
      {
       "legs": [
@@ -363,7 +356,7 @@
     "credit_rs": 7539,
     "iv0": 0.1406,
     "vix0": 17.040000915527344,
-    "mark": 145,
+    "mark": -970,
     "groups": [
      {
       "legs": [
