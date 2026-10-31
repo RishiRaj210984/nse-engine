@@ -481,7 +481,7 @@ def setup_verdict(index, strategy_name, session, lab=None, events=None):
 def events_calendar(days_back=4, days_ahead=8):
     """Results dates of Nifty heavyweights around now, and which session each affects."""
     now = datetime.now(IST)
-    out = []
+    out, seen = [], set()
     for sym, name in HEAVYWEIGHTS.items():
         try:
             df = yf.Ticker(sym + ".NS").get_earnings_dates(limit=8)
@@ -497,6 +497,9 @@ def events_calendar(days_back=4, days_ahead=8):
             aff = t.date() + timedelta(days=1) if after else t.date()
             while aff.weekday() >= 5:
                 aff += timedelta(days=1)
+            if (sym, aff) in seen:   # Yahoo can list the same results twice (e.g. standalone and consolidated)
+                continue
+            seen.add((sym, aff))
             out.append({"symbol": sym, "name": name, "when": t.strftime("%a %d %b"), "date": t.date().isoformat(),
                         "affects": aff.isoformat(), "past": t < now, "bank": sym in BANK_HEAVY})
     return sorted(out, key=lambda e: e["date"])

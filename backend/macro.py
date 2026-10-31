@@ -231,7 +231,7 @@ def global_bias(force=False):
                                             -((s["verdict"].get("stats") or {}).get("avg_pnl") or -10**9)))
         o["setup"] = o["strategies"][0]["verdict"]
         if o["setup"]["decision"] == "SKIP":
-            o["setup"] = {**o["setup"], "reason": "No tested structure has a positive record for today. "
+            o["setup"] = {**o["setup"], "reason": "No tested structure qualifies for today. "
                           + o["setup"]["reason"]}
 
     score = int(round(100 * np.tanh(z)))
