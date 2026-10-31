@@ -9,8 +9,15 @@ Why: in a 2-year replay (hourly bars, estimated prices) it made 77 trades, 52% w
 costs, positive in 2024, 2025 and 2026. The 0.5% level was picked after seeing the results, so it is
 tracked on paper with real prices before any money goes in. Buying the model's UP/DOWN call instead lost.
 
+Tracked alongside (paper comparison, 31 Oct 2026): the same rule without trades taken the day before expiry.
+A 3-year replay (hourly bars, estimated prices) had those 18 trades win 28%, avg -Rs 1,087, against 52% and
++Rs 649 with 2 or more days left (a 1-day option loses value fast). That cut was also found after seeing the
+results, so both are tracked and compared on real prices before either is trusted.
+
 Every live run (about every 10 minutes) moves it one step. state/momentum.json keeps one record per day.
 """
+from datetime import date
+
 import store
 from config import INDEX_SPECS
 
@@ -74,7 +81,9 @@ def step(now, quote, chain, nearest_expiry):
             if px and px * lot > MAX_PREMIUM:
                 days[day] = {**base, "status": "SKIPPED", "note": f"premium Rs {px * lot:,.0f} is above Rs {MAX_PREMIUM:,}"}
             elif px:
+                dte = (date.fromisoformat(nearest_expiry) - now.date()).days if nearest_expiry else None
                 days[day] = {**base, "status": "OPEN", "kind": kind, "strike": strike, "expiry": chain["expiry"], "lot": lot,
+                             "day_before_expiry": dte is not None and dte <= 1,
                              "entry_px": px, "entry_at": hm, "spot": chain.get("spot"), "peak": 0.0, "marks": [[hm, px]]}
         if day not in days and hm > ENTRY_TO:
             days[day] = {**base, "status": "NO ENTRY", "note": "no live NIFTY or option price between 10:15 and 10:45"}
@@ -110,9 +119,13 @@ def summary(now=None, day=None):
         t.update(value_now=round((last[1] - t["entry_px"]) * t["lot"]), pct_now=round((last[1] / t["entry_px"] - 1) * 100, 1),
                  at=last[0], stop_pct=stop_level(t["peak"]))
     t.pop("marks", None)
+    kept = [r for r in closed if not r.get("day_before_expiry")]
     return {"today": t or None, "trades": len(closed), "wins": sum(r["pnl"] > 0 for r in closed),
             "total": sum(r["pnl"] for r in closed),
-            "recent": [{k: r.get(k) for k in ("date", "kind", "strike", "entry_px", "exit_px", "pnl", "pct", "reason", "first_hour_pct")}
+            # comparison: the same rule without trades taken the day before expiry
+            "skip_day_before": {"trades": len(kept), "wins": sum(r["pnl"] > 0 for r in kept), "total": sum(r["pnl"] for r in kept)},
+            "recent": [{k: r.get(k) for k in ("date", "kind", "strike", "entry_px", "exit_px", "pnl", "pct", "reason", "first_hour_pct",
+                                              "day_before_expiry")}
                        for r in closed[::-1][:8]],
             "rule": f"Paper only. If NIFTY moves ±{THRESH_PCT}% from 09:15 to 10:15, buy 1 lot of the ATM call/put that way at the "
                     f"real NSE price (not on expiry day, premium up to Rs {MAX_PREMIUM:,}). Stop -30%, cost after +20%, trail from +40%, "

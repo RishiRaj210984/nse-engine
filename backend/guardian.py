@@ -664,8 +664,13 @@ def momentum_line(m, day):
                f"{'+' if t['pnl'] >= 0 else '-'}Rs {abs(t['pnl']):,}")
     else:
         now = t.get("status", "").lower() + (f" ({t['note']})" if t.get("note") else "")
+    if t.get("date") == day and t.get("day_before_expiry"):
+        now += " [day before expiry]"
+    sk = m.get("skip_day_before") or {}
     return (f"\nMomentum buy (3rd trade): {now}. Total Rs {m.get('total', 0):+,} "
-            f"({m.get('trades', 0)} trades, {m.get('wins', 0)} won).")
+            f"({m.get('trades', 0)} trades, {m.get('wins', 0)} won)."
+            + (f" Without day-before-expiry trades: Rs {sk.get('total', 0):+,} ({sk.get('trades', 0)} trades, "
+               f"{sk.get('wins', 0)} won)." if sk else ""))
 
 
 def evening_report(env, state, now):

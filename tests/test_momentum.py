@@ -97,4 +97,18 @@ q = live.yahoo_quotes(["^NSEI"])["^NSEI"]
 t("Yahoo: open = first bar open, 10:15 price = close of the 10:14 bar", q["open"] == 22560 and q["at_1015"] == 22700)
 body["chart"]["result"][0]["timestamp"] = ts[:3]
 t("Yahoo: before 10:14 there is no 10:15 price yet", live.yahoo_quotes(["^NSEI"])["^NSEI"]["at_1015"] is None)
+# day before expiry: traded as before, flagged, and left out of the comparison total
+reset()
+M.step(at(D, "10:20"), UP, chain(120), NEXT)                       # 29 Oct, expiry 03 Nov: 5 days
+M.step(at(D, "10:40"), UP, chain(195), NEXT)                       # booked +4,725
+x = M.step(at("2026-11-02", "10:20"), UP, chain(120), NEXT)        # Mon 02 Nov, expiry Tue 03 Nov
+t("day before expiry: still bought, flagged", x["today"]["status"] == "OPEN" and x["today"]["day_before_expiry"] is True)
+x = M.step(at("2026-11-02", "11:00"), UP, chain(80), NEXT)         # -33%: stop
+sk = x["skip_day_before"]
+t("totals: both trades; comparison: only the 29 Oct one",
+  x["trades"] == 2 and x["total"] == 4725 + round((80 - 120) * 65 - 150) and sk == {"trades": 1, "wins": 1, "total": 4725})
+t("recent rows carry the flag", [r["day_before_expiry"] for r in x["recent"]] == [True, False])
+import guardian  # noqa: E402
+line = guardian.momentum_line(x, "2026-11-02")
+t("evening alert shows both totals", "[day before expiry]" in line and "Without day-before-expiry trades: Rs +4,725 (1 trades, 1 won)" in line)
 print("ALL PASS" if all(res) else "SOME FAILED")
