@@ -8,6 +8,7 @@ on:
     # starts the same jobs on the minute through workflow_dispatch. A duplicate run is harmless.
     - cron: "37 18 * * 0-4"   # 00:07 IST  overnight PREVIEW (Europe closed, US mid-session)
     - cron: "43 1 * * 1-5"    # 07:13 IST  FINAL pre-market plan (US close, futures, Asia open)
+    - cron: "43 1 * * 6"      # Sat 07:13 IST  weekend refresh: Monday's preview with Friday's US close (no server step needed)
     - cron: "47 10 * * 1-5"   # 16:17 IST  scan, grade results, retrain, publish
     - cron: "7-57/10 3-9 * * 1-5" # :07,:17.. 08:37-15:27 IST: live snapshot (skips outside 09:00-15:45)
   workflow_dispatch:

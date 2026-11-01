@@ -187,7 +187,7 @@ body.is-simple main{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 <script>
 const NSE_HOLIDAYS = ['2026-10-20', '2026-11-08', '2026-11-10', '2026-11-24', '2026-12-25'];   // fallback; meta.json has the live list
 const holidayList = () => (D.meta?.holidays?.length ? D.meta.holidays : NSE_HOLIDAYS);
-const APP_VERSION = 'v44';   // keep equal to CACHE in sw.js
+const APP_VERSION = 'v45';   // keep equal to CACHE in sw.js
 const TEST_FROM = '2026-11-04';   // the one real test trade (guardian LIVE_FROM)
 const FILES = ['plan', 'global-bias', 'volume-breakouts', 'performance', 'review', 'meta', 'live', 'small-capital', 'markets'];
 const D = {};
@@ -265,7 +265,9 @@ function notices() {
     out.push(`<div class="banner">Market closed today${holidayList().includes(t.date) ? ' (NSE holiday)' : ''}. No live prices or trades today.${nxt ? ' Next session: <strong>' + esc(nxt) + '</strong>.' : ''}</div>`);
   }
   const due = m.next_run && new Date(m.next_run.at).getTime();
-  if (due && Date.now() - due > 20 * 60 * 1000) {
+  // the Saturday weekend refresh runs on GitHub's own schedule only, which can be hours late; nothing waits on it
+  const grace = m.next_run?.name === 'weekend refresh' ? 6 * 60 : 20;
+  if (due && Date.now() - due > grace * 60 * 1000) {
     out.push(`<div class="banner err">The ${esc(m.next_run.name)} run due at ${esc(fmtIst(m.next_run.at))} IST has not arrived yet (GitHub delays its scheduled jobs). You are seeing data from ${esc(fmtIst(m.updated))}. Tap ↻ in a few minutes.</div>`);
   }
   return out.join('');

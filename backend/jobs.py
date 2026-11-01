@@ -122,6 +122,10 @@ def next_run(now=None):
     d = now.date()
     from nse_calendar import is_trading_day, next_trading_day
     for _ in range(8):
+        if d.weekday() == 5:   # Saturday 07:13: weekend refresh of Monday's preview (Friday's US close)
+            t = datetime.combine(d, datetime.strptime("07:13", "%H:%M").time(), store.now_ist().tzinfo)
+            if t > now:
+                return {"at": t.isoformat(), "name": "weekend refresh"}
         # the midnight run belongs to the coming session; skip days with no session
         if is_trading_day(d):
             for hm, name in RUNS:
@@ -175,7 +179,8 @@ def premarket():
     if stage == "final":  # only the 07:30 run is graded; the midnight run is a preview
         learning.log_bias(bias)
         learning.journal_index_views(bias)
-    publish_all(bias=bias, task="final pre-market plan" if stage == "final" else "midnight preview")
+    publish_all(bias=bias, task="final pre-market plan" if stage == "final"
+                else "weekend refresh" if now.weekday() >= 5 else "midnight preview")
     return {"bias": bias["bias"]["label"], "session": bias["target_session"], "stage": stage,
             "source": bias["bias"].get("source")}
 
