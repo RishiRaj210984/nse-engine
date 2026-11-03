@@ -20,7 +20,7 @@ import requests
 
 import momentum
 import store
-from config import BOOK_COSTS, INDEX_SPECS, IST, PUBLIC_DIR
+from config import BOOK_COSTS, INDEX_SPECS, IST, PROTECT_AT, PROTECT_INDEX, PUBLIC_DIR
 from options import bs_price
 
 log = logging.getLogger(__name__)
@@ -238,8 +238,8 @@ def record_marks(bias, chains, quotes, now):
     if not ("09:15" <= now.strftime("%H:%M") <= "15:30"):
         return 0
     vix = (quotes.get("^INDIAVIX") or {}).get("last")
-    book = store._read(store.state_path("paper_book.json"), {}) or {}
-    todo = [(p["index"], p["expiry"], p["legs"]) for p in (book.get("open") or {}).values()]
+    todo = [(p["index"], p["expiry"], p["legs"]) for f in ("paper_book.json", "paper_book_protect.json")
+            for p in ((store._read(store.state_path(f), {}) or {}).get("open") or {}).values()]
     for name, o in (bias.get("options") or {}).items():
         todo.append((name, o["expiry"], o["strategies"][0]["legs"]))
     path = store.state_path("paper_marks.json")
@@ -262,17 +262,25 @@ def record_marks(bias, chains, quotes, now):
     return n
 
 
-def first_exit(rows, base, credit, expiry_iso, day_iso, stop_credit=None):
+def first_exit(rows, base, credit, expiry_iso, day_iso, stop_credit=None, protect=None):
     """The evening review's exit rule over today's real NSE marks, in time order: the first mark at the stop
     (loss 1x credit), the target (55% of credit kept) or, on expiry day, from 10:15. Once reached the trade
     stays booked there even if prices come back, as the evening review books it.
+    protect=(lot, costs, best Rs after costs so far or None): the comparison book's extra rule, a trade that was
+    Rs 1,000+ up after costs closes when it falls back to Rs 0.
     base(row) -> value per unit. -> (status, time, value per unit) or None"""
+    peak = protect[2] if protect else None
     for r in rows:
         v = base(r)
         if v <= -(credit if stop_credit is None else stop_credit):
             return "STOP", r[0], v
         if v >= 0.55 * credit:
             return "TARGET", r[0], v
+        if protect:
+            net = v * protect[0] - protect[1]
+            if peak is not None and peak >= PROTECT_AT and net <= 0:
+                return "PROTECT", r[0], v
+            peak = net if peak is None else max(peak, net)
         if day_iso >= expiry_iso and r[0] >= "10:15":
             return "EXPIRY 10:15", r[0], v
     return None
@@ -332,8 +340,8 @@ def paper_open(quotes, now, book_file="paper_book.json", chains=None):
         T = max((exp - now).total_seconds() / 86400, 0.002) / 365
         val = lambda legs: sum((1 if l["action"] == "BUY" else -1) * bs_price(spot, l["strike"], T, iv, l["type"]) for l in legs)
         real_basis = p.get("basis") == "NSE" and len(p.get("groups") or []) == 2
-        # today's real NSE marks (every 10 min); the comparison book is valued on estimates, like the evening review
-        rows = day.get(legs_key(name, p["expiry"], p["legs"]), []) if real_basis and book_file == "paper_book.json" else []
+        # today's real NSE marks (every 10 min); the adjustment comparison is valued on estimates, like the evening review
+        rows = day.get(legs_key(name, p["expiry"], p["legs"]), []) if real_basis and book_file != "paper_book_adjusted.json" else []
         unit = lambda v: p.get("realized", 0) + sum(v[g["legs"][0]["type"]] - g["v0"] for g in p["groups"])
         ch = _chain_for(chains, name, p["expiry"]) if real_basis else None
         at = now.strftime("%H:%M")
@@ -348,7 +356,9 @@ def paper_open(quotes, now, book_file="paper_book.json", chains=None):
             value = round((val(p["legs"]) - p["v_e"]) * p["lot"])
         credit = round(-p["v_e"] * p["lot"])
         hit = first_exit(rows, lambda r: unit({"CE": r[2], "PE": r[3]}), p.get("credit_all", -p["v_e"]), p["expiry"],
-                         now.date().isoformat(), stop_credit=p.get("credit0", -p["v_e"]))
+                         now.date().isoformat(), stop_credit=p.get("credit0", -p["v_e"]),
+                         protect=(p["lot"], BOOK_COSTS[name] + p.get("extra_cost", 0), p.get("peak_net"))
+                         if book_file == "paper_book_protect.json" and name == PROTECT_INDEX else None)
         if hit:
             status, value = hit[0], round(hit[2] * p["lot"])
             booked = {"reached_at": hit[1], "result_rs": value - BOOK_COSTS[name] - p.get("extra_cost", 0)}
@@ -407,7 +417,8 @@ def run(force=False):
             rec = nse.chain(name, exp)
             # always keep the strikes the plan and any held paper trade use, so their real prices are saved
             keep = {int(l["strike"]) for l in (o["strategies"][0]["legs"] if o else [])}
-            keep |= {int(l["strike"]) for p in (store._read(store.state_path("paper_book.json"), {}) or {}).get("open", {}).values()
+            keep |= {int(l["strike"]) for f in ("paper_book.json", "paper_book_protect.json")
+                     for p in (store._read(store.state_path(f), {}) or {}).get("open", {}).values()
                      if p["index"] == name for l in p["legs"]}
             if name == "NIFTY":
                 keep |= momentum.keep_strikes(now)   # today's paper momentum buy
@@ -436,6 +447,7 @@ def run(force=False):
         out["paper_today"] = paper_today(bias, now)
         out["paper_open"] = paper_open(quotes, now, chains=chains)
         out["paper_open_adjusted"] = paper_open(quotes, now, "paper_book_adjusted.json")
+        out["paper_open_protect"] = paper_open(quotes, now, "paper_book_protect.json", chains=chains)
     except Exception as exc:   # never let this block the live snapshot
         out["paper_open"] = []
         log.warning("paper_open failed: %s", exc)

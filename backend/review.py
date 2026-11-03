@@ -287,6 +287,17 @@ def review_session(session, archived=None):
 # when a trade closes. Each day's P&L is the change in value of what was held, so open trades count too.
 from config import BOOK_COSTS  # noqa: E402  Rs per round trip, same as the options lab
 EXPIRY_EXIT = time(10, 15)
+from config import PROTECT_AT, PROTECT_INDEX  # noqa: E402  comparison book only
+
+
+def _protect_hit(pos, name, total):
+    """Has this trade given back a Rs 1,000+ profit (after costs) to Rs 0? Remembers its best value so far."""
+    if name != PROTECT_INDEX:
+        return False
+    net = total * pos["lot"] - BOOK_COSTS[name] - pos.get("extra_cost", 0)
+    hit = pos.get("peak_net", net) >= PROTECT_AT and net <= 0
+    pos["peak_net"] = round(max(pos.get("peak_net", net), net))
+    return hit
 
 
 def _decision(archived, name):
@@ -346,10 +357,11 @@ def _adjust(pos, name, S, vals, T, iv):
     return f"ADJUSTED ({pos['adjusted']}) with {name} at {S:,.0f}"
 
 
-def paper_book(session, archived, bars_by_index, vix, adjust=False):
+def paper_book(session, archived, bars_by_index, vix, adjust=False, protect=False):
     """Advance the paper book through `session`. Safe to re-run for the same day.
-    adjust=True runs the separate comparison book with the automatic adjustment."""
-    path = store.state_path("paper_book_adjusted.json" if adjust else "paper_book.json")
+    adjust=True runs the separate comparison book with the automatic adjustment; protect=True the comparison
+    book that also closes a NIFTY trade which gave back a Rs 1,000 profit (real NSE prices, like your book)."""
+    path = store.state_path("paper_book_adjusted.json" if adjust else "paper_book_protect.json" if protect else "paper_book.json")
     book = store._read(path, {"open": {}, "closed": [], "days": [], "before": None})
     s_iso = session.isoformat()
     if book.get("before") and book["before"]["session"] == s_iso:      # re-run: undo this day first
@@ -435,6 +447,8 @@ def paper_book(session, archived, bars_by_index, vix, adjust=False):
                     reason = f"STOP: loss reached 1x credit (real NSE prices, {t})"
                 elif total >= 0.55 * pos["credit_all"]:
                     reason = f"TARGET: 55% of credit kept (real NSE prices, {t})"
+                elif protect and _protect_hit(pos, name, total):
+                    reason = f"PROTECT: was Rs {PROTECT_AT:,}+ up after costs, back to Rs 0 (real NSE prices, {t})"
                 elif session >= exp and t >= "10:15":
                     reason = f"EXPIRY DAY: closed at {t} (real NSE prices)"
                 if reason:
@@ -454,6 +468,8 @@ def paper_book(session, archived, bars_by_index, vix, adjust=False):
                 reason = "STOP: loss reached 1x credit"
             elif total >= 0.55 * pos["credit_all"]:
                 reason = "TARGET: 55% of credit kept"
+            elif protect and _protect_hit(pos, name, total):
+                reason = f"PROTECT: was Rs {PROTECT_AT:,}+ up after costs, back to Rs 0 at {ts.strftime('%H:%M')}"
             elif session >= exp and ts.time() >= EXPIRY_EXIT:
                 reason = f"EXPIRY DAY: closed at {ts.strftime('%H:%M')}"
             if reason:
@@ -508,7 +524,7 @@ def paper_close_all(now=None):
         return {"closed": [], "note": "market is closed: nothing can be closed now"}
     quotes = live.yahoo_quotes(["^NSEI", "^NSEBANK", "^INDIAVIX"])
     s_iso, done, summaries = now.date().isoformat(), [], {}
-    for book_file in ("paper_book.json", "paper_book_adjusted.json"):
+    for book_file in ("paper_book.json", "paper_book_adjusted.json", "paper_book_protect.json"):
         path = store.state_path(book_file)
         book = store._read(path, None)
         if not book:
@@ -542,7 +558,8 @@ def paper_close_all(now=None):
     # publish at once: review.json (paper results) and live.json (no longer holding)
     rj = store._read(os.path.join(store.PUBLIC_DIR, "review.json"), {}) or {}
     if "paper_book.json" in summaries:
-        rj["paper"] = {**summaries["paper_book.json"], "with_adjustment": summaries.get("paper_book_adjusted.json")}
+        rj["paper"] = {**summaries["paper_book.json"], "with_adjustment": summaries.get("paper_book_adjusted.json"),
+                       "with_protect": summaries.get("paper_book_protect.json")}
         store.publish("review.json", rj)
     lj = store._read(os.path.join(store.PUBLIC_DIR, "live.json"), None)
     if lj:
@@ -601,10 +618,11 @@ def _catch_up(session):
             break          # older than the 5-minute data window: nothing more to replay
         vix = intraday("^INDIAVIX", d)
         paper_book(d, arch, bars, vix)
-        try:
-            paper_book(d, arch, bars, vix, adjust=True)
-        except Exception:
-            pass
+        for kw in ({"adjust": True}, {"protect": True}):
+            try:
+                paper_book(d, arch, bars, vix, **kw)
+            except Exception:
+                pass
         d = nse_calendar.next_trading_day(d)
 
 
@@ -623,6 +641,10 @@ def run(session=None, archived=None):
                 paper["with_adjustment"] = paper_book(session, arch, bars, vix, adjust=True)   # comparison only
             except Exception as exc:
                 paper["with_adjustment"] = {"error": str(exc)[:200]}
+            try:
+                paper["with_protect"] = paper_book(session, arch, bars, vix, protect=True)   # comparison only
+            except Exception as exc:
+                paper["with_protect"] = {"error": str(exc)[:200]}
             try:   # paper-only third trade, tracked by the live runs on real NSE prices
                 import momentum
                 paper["momentum"] = momentum.summary(day=session.isoformat())

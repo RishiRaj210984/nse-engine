@@ -34,6 +34,9 @@ CAPITAL = int(os.getenv("CAPITAL", 15000))
 TEST_WINGS = {"NIFTY": 150}
 # Paper book costs, Rs per round trip (same as the options lab), charged when a paper trade closes.
 BOOK_COSTS = {"NIFTY": 400, "BANKNIFTY": 500}
+# Comparison paper book only (not used to trade): once a NIFTY condor has been Rs 1,000 up after costs, close it if
+# it falls back to Rs 0. In the 3-year replay this helped NIFTY (avg +Rs 284 vs +Rs 245 per trade) but not BankNifty.
+PROTECT_INDEX, PROTECT_AT = "NIFTY", 1000
 
 # Lot sizes and expiry rules change by NSE circular. VERIFY on nseindia.com
 # before trading and update here (or via env vars).

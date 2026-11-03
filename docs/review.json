@@ -642,6 +642,143 @@
    },
    "recent": [],
    "rule": "Paper only. If NIFTY moves \u00b10.5% from 09:15 to 10:15, buy 1 lot of the ATM call/put that way at the real NSE price (not on expiry day, premium up to Rs 15,000). Stop -30%, cost after +20%, trail from +40%, book +60%, else close 15:15. Costs Rs 150 per trade."
+  },
+  "with_protect": {
+   "days": [
+    {
+     "session": "2026-11-02",
+     "pnl": -3778,
+     "detail": [
+      "NIFTY: STOP: loss reached 1x credit (real NSE prices, 09:40), trade result Rs -2,810 after costs",
+      "BANKNIFTY: still open (expiry 23 Nov), worth Rs +584 now"
+     ],
+     "total": -218
+    },
+    {
+     "session": "2026-10-30",
+     "pnl": 2058,
+     "detail": [
+      "NIFTY: entered Iron Condor at 10:20, credit Rs 2,340 (real NSE prices)",
+      "NIFTY: still open (expiry 03 Nov), worth Rs +543 now",
+      "BANKNIFTY: still open (expiry 23 Nov), worth Rs +1,009 now"
+     ],
+     "total": 3560
+    },
+    {
+     "session": "2026-10-29",
+     "pnl": -274,
+     "detail": [
+      "NIFTY: TARGET: 55% of credit kept (real NSE prices, 12:50), trade result Rs +2,358 after costs",
+      "BANKNIFTY: still open (expiry 23 Nov), worth Rs -506 now"
+     ],
+     "total": 1502
+    },
+    {
+     "session": "2026-10-28",
+     "pnl": 2126,
+     "detail": [
+      "NIFTY: entered Iron Condor at 10:20, credit Rs 4,796 (real NSE prices)",
+      "NIFTY: still open (expiry 03 Nov), worth Rs +1,690 now",
+      "BANKNIFTY: entered Iron Condor at 10:20, credit Rs 10,272 (real NSE prices)",
+      "BANKNIFTY: still open (expiry 23 Nov), worth Rs +436 now"
+     ],
+     "total": 1776
+    },
+    {
+     "session": "2026-10-27",
+     "pnl": 0,
+     "detail": [],
+     "total": -350
+    },
+    {
+     "session": "2026-10-26",
+     "pnl": 526,
+     "detail": [
+      "NIFTY: PROTECT: was Rs 1,000+ up after costs, back to Rs 0 (real NSE prices, 11:40), trade result Rs -350 after costs"
+     ],
+     "total": -350
+    },
+    {
+     "session": "2026-10-23",
+     "pnl": -1055,
+     "detail": [
+      "NIFTY: still open (expiry 27 Oct), worth Rs -876 now"
+     ],
+     "total": -876
+    },
+    {
+     "session": "2026-10-22",
+     "pnl": 325,
+     "detail": [
+      "NIFTY: still open (expiry 27 Oct), worth Rs +179 now"
+     ],
+     "total": 179
+    },
+    {
+     "session": "2026-10-21",
+     "pnl": -146,
+     "detail": [
+      "NIFTY: entered Iron Condor at 10:15, credit Rs 3,980 (estimated prices)",
+      "NIFTY: from now on valued at real NSE prices (entry premium re-based to Rs 3,702)",
+      "NIFTY: still open (expiry 27 Oct), worth Rs -146 now"
+     ],
+     "total": -146
+    },
+    {
+     "session": "2026-10-19",
+     "pnl": 0,
+     "detail": [],
+     "total": 0
+    }
+   ],
+   "realized": -802,
+   "open_value": 584,
+   "total": -218,
+   "open": [
+    {
+     "index": "BANKNIFTY",
+     "strategy": "Iron Condor",
+     "expiry": "2026-11-23",
+     "entry_session": "2026-10-28",
+     "credit_rs": 10272,
+     "mark": 584
+    }
+   ],
+   "closed": [
+    {
+     "index": "NIFTY",
+     "strategy": "Iron Condor",
+     "expiry": "2026-11-03",
+     "entry_session": "2026-10-30",
+     "credit_rs": 2340,
+     "exit_session": "2026-11-02",
+     "reason": "STOP: loss reached 1x credit (real NSE prices, 09:40)",
+     "pnl": -2810
+    },
+    {
+     "index": "NIFTY",
+     "strategy": "Iron Condor",
+     "expiry": "2026-11-03",
+     "entry_session": "2026-10-28",
+     "credit_rs": 4796,
+     "exit_session": "2026-10-29",
+     "reason": "TARGET: 55% of credit kept (real NSE prices, 12:50)",
+     "pnl": 2358
+    },
+    {
+     "index": "NIFTY",
+     "strategy": "Iron Condor",
+     "expiry": "2026-10-27",
+     "entry_session": "2026-10-21",
+     "credit_rs": 3702,
+     "exit_session": "2026-10-26",
+     "reason": "PROTECT: was Rs 1,000+ up after costs, back to Rs 0 (real NSE prices, 11:40)",
+     "pnl": -350
+    }
+   ],
+   "trades": 3,
+   "wins": 1,
+   "note": "Paper book: TRADE days only, 1 lot, held like the guardian holds it (target, stop, expiry-day 10:15), costs charged when a trade closes. Prices: real NSE option prices saved every 10 minutes; an estimate (Black-Scholes with India VIX) only where no real price was saved."
   }
  },
  "totals": {

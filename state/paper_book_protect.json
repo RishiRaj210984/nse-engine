@@ -1,0 +1,379 @@
+{
+ "open": {
+  "BANKNIFTY": {
+   "index": "BANKNIFTY",
+   "strategy": "Iron Condor",
+   "legs": [
+    {
+     "action": "SELL",
+     "strike": 55800,
+     "type": "CE",
+     "est_premium": 274.0
+    },
+    {
+     "action": "BUY",
+     "strike": 56800,
+     "type": "CE",
+     "est_premium": 114.3
+    },
+    {
+     "action": "SELL",
+     "strike": 52100,
+     "type": "PE",
+     "est_premium": 151.2
+    },
+    {
+     "action": "BUY",
+     "strike": 51100,
+     "type": "PE",
+     "est_premium": 50.5
+    }
+   ],
+   "lot": 30,
+   "expiry": "2026-11-23",
+   "entry_session": "2026-10-28",
+   "entry_spot": 53761.25,
+   "v_e": -342.398,
+   "credit_rs": 10272,
+   "iv0": 0.1406,
+   "vix0": 17.040000915527344,
+   "mark": 584,
+   "groups": [
+    {
+     "legs": [
+      {
+       "action": "SELL",
+       "strike": 55800,
+       "type": "CE",
+       "est_premium": 274.0
+      },
+      {
+       "action": "BUY",
+       "strike": 56800,
+       "type": "CE",
+       "est_premium": 114.3
+      }
+     ],
+     "v0": -176.948,
+     "off": -16.098141244207
+    },
+    {
+     "legs": [
+      {
+       "action": "SELL",
+       "strike": 52100,
+       "type": "PE",
+       "est_premium": 151.2
+      },
+      {
+       "action": "BUY",
+       "strike": 51100,
+       "type": "PE",
+       "est_premium": 50.5
+      }
+     ],
+     "v0": -165.45,
+     "off": -33.69062182373891
+    }
+   ],
+   "realized": 0.0,
+   "credit0": 342.398,
+   "credit_all": 342.398,
+   "adjusted": null,
+   "extra_cost": 0,
+   "basis": "NSE"
+  }
+ },
+ "closed": [
+  {
+   "index": "NIFTY",
+   "strategy": "Iron Condor",
+   "expiry": "2026-10-27",
+   "entry_session": "2026-10-21",
+   "credit_rs": 3702,
+   "exit_session": "2026-10-26",
+   "reason": "PROTECT: was Rs 1,000+ up after costs, back to Rs 0 (real NSE prices, 11:40)",
+   "pnl": -350
+  },
+  {
+   "index": "NIFTY",
+   "strategy": "Iron Condor",
+   "expiry": "2026-11-03",
+   "entry_session": "2026-10-28",
+   "credit_rs": 4796,
+   "exit_session": "2026-10-29",
+   "reason": "TARGET: 55% of credit kept (real NSE prices, 12:50)",
+   "pnl": 2358
+  },
+  {
+   "index": "NIFTY",
+   "strategy": "Iron Condor",
+   "expiry": "2026-11-03",
+   "entry_session": "2026-10-30",
+   "credit_rs": 2340,
+   "exit_session": "2026-11-02",
+   "reason": "STOP: loss reached 1x credit (real NSE prices, 09:40)",
+   "pnl": -2810
+  }
+ ],
+ "days": [
+  {
+   "session": "2026-10-19",
+   "pnl": 0,
+   "detail": [],
+   "total": 0
+  },
+  {
+   "session": "2026-10-21",
+   "pnl": -146,
+   "detail": [
+    "NIFTY: entered Iron Condor at 10:15, credit Rs 3,980 (estimated prices)",
+    "NIFTY: from now on valued at real NSE prices (entry premium re-based to Rs 3,702)",
+    "NIFTY: still open (expiry 27 Oct), worth Rs -146 now"
+   ],
+   "total": -146
+  },
+  {
+   "session": "2026-10-22",
+   "pnl": 325,
+   "detail": [
+    "NIFTY: still open (expiry 27 Oct), worth Rs +179 now"
+   ],
+   "total": 179
+  },
+  {
+   "session": "2026-10-23",
+   "pnl": -1055,
+   "detail": [
+    "NIFTY: still open (expiry 27 Oct), worth Rs -876 now"
+   ],
+   "total": -876
+  },
+  {
+   "session": "2026-10-26",
+   "pnl": 526,
+   "detail": [
+    "NIFTY: PROTECT: was Rs 1,000+ up after costs, back to Rs 0 (real NSE prices, 11:40), trade result Rs -350 after costs"
+   ],
+   "total": -350
+  },
+  {
+   "session": "2026-10-27",
+   "pnl": 0,
+   "detail": [],
+   "total": -350
+  },
+  {
+   "session": "2026-10-28",
+   "pnl": 2126,
+   "detail": [
+    "NIFTY: entered Iron Condor at 10:20, credit Rs 4,796 (real NSE prices)",
+    "NIFTY: still open (expiry 03 Nov), worth Rs +1,690 now",
+    "BANKNIFTY: entered Iron Condor at 10:20, credit Rs 10,272 (real NSE prices)",
+    "BANKNIFTY: still open (expiry 23 Nov), worth Rs +436 now"
+   ],
+   "total": 1776
+  },
+  {
+   "session": "2026-10-29",
+   "pnl": -274,
+   "detail": [
+    "NIFTY: TARGET: 55% of credit kept (real NSE prices, 12:50), trade result Rs +2,358 after costs",
+    "BANKNIFTY: still open (expiry 23 Nov), worth Rs -506 now"
+   ],
+   "total": 1502
+  },
+  {
+   "session": "2026-10-30",
+   "pnl": 2058,
+   "detail": [
+    "NIFTY: entered Iron Condor at 10:20, credit Rs 2,340 (real NSE prices)",
+    "NIFTY: still open (expiry 03 Nov), worth Rs +543 now",
+    "BANKNIFTY: still open (expiry 23 Nov), worth Rs +1,009 now"
+   ],
+   "total": 3560
+  },
+  {
+   "session": "2026-11-02",
+   "pnl": -3778,
+   "detail": [
+    "NIFTY: STOP: loss reached 1x credit (real NSE prices, 09:40), trade result Rs -2,810 after costs",
+    "BANKNIFTY: still open (expiry 23 Nov), worth Rs +584 now"
+   ],
+   "total": -218
+  }
+ ],
+ "before": {
+  "session": "2026-11-02",
+  "open": {
+   "BANKNIFTY": {
+    "index": "BANKNIFTY",
+    "strategy": "Iron Condor",
+    "legs": [
+     {
+      "action": "SELL",
+      "strike": 55800,
+      "type": "CE",
+      "est_premium": 274.0
+     },
+     {
+      "action": "BUY",
+      "strike": 56800,
+      "type": "CE",
+      "est_premium": 114.3
+     },
+     {
+      "action": "SELL",
+      "strike": 52100,
+      "type": "PE",
+      "est_premium": 151.2
+     },
+     {
+      "action": "BUY",
+      "strike": 51100,
+      "type": "PE",
+      "est_premium": 50.5
+     }
+    ],
+    "lot": 30,
+    "expiry": "2026-11-23",
+    "entry_session": "2026-10-28",
+    "entry_spot": 53761.25,
+    "v_e": -342.398,
+    "credit_rs": 10272,
+    "iv0": 0.1406,
+    "vix0": 17.040000915527344,
+    "mark": 1009,
+    "groups": [
+     {
+      "legs": [
+       {
+        "action": "SELL",
+        "strike": 55800,
+        "type": "CE",
+        "est_premium": 274.0
+       },
+       {
+        "action": "BUY",
+        "strike": 56800,
+        "type": "CE",
+        "est_premium": 114.3
+       }
+      ],
+      "v0": -176.948,
+      "off": -22.685616402687458
+     },
+     {
+      "legs": [
+       {
+        "action": "SELL",
+        "strike": 52100,
+        "type": "PE",
+        "est_premium": 151.2
+       },
+       {
+        "action": "BUY",
+        "strike": 51100,
+        "type": "PE",
+        "est_premium": 50.5
+       }
+      ],
+      "v0": -165.45,
+      "off": -38.03722753914481
+     }
+    ],
+    "realized": 0.0,
+    "credit0": 342.398,
+    "credit_all": 342.398,
+    "adjusted": null,
+    "extra_cost": 0,
+    "basis": "NSE"
+   },
+   "NIFTY": {
+    "index": "NIFTY",
+    "strategy": "Iron Condor",
+    "legs": [
+     {
+      "action": "SELL",
+      "strike": 23300,
+      "type": "CE",
+      "est_premium": 42.9
+     },
+     {
+      "action": "BUY",
+      "strike": 23500,
+      "type": "CE",
+      "est_premium": 16.1
+     },
+     {
+      "action": "SELL",
+      "strike": 22600,
+      "type": "PE",
+      "est_premium": 39.0
+     },
+     {
+      "action": "BUY",
+      "strike": 22400,
+      "type": "PE",
+      "est_premium": 13.7
+     }
+    ],
+    "lot": 65,
+    "expiry": "2026-11-03",
+    "entry_session": "2026-10-30",
+    "entry_spot": 22919.65,
+    "v_e": -36.0,
+    "credit_rs": 2340,
+    "iv0": 0.1512,
+    "vix0": 15.657500267028809,
+    "mark": 543,
+    "groups": [
+     {
+      "legs": [
+       {
+        "action": "SELL",
+        "strike": 23300,
+        "type": "CE",
+        "est_premium": 42.9
+       },
+       {
+        "action": "BUY",
+        "strike": 23500,
+        "type": "CE",
+        "est_premium": 16.1
+       }
+      ],
+      "v0": -11.95,
+      "off": 17.086819684571402
+     },
+     {
+      "legs": [
+       {
+        "action": "SELL",
+        "strike": 22600,
+        "type": "PE",
+        "est_premium": 39.0
+       },
+       {
+        "action": "BUY",
+        "strike": 22400,
+        "type": "PE",
+        "est_premium": 13.7
+       }
+      ],
+      "v0": -24.05,
+      "off": 2.28890309122653
+     }
+    ],
+    "realized": 0.0,
+    "credit0": 36.0,
+    "credit_all": 36.0,
+    "adjusted": null,
+    "extra_cost": 0,
+    "basis": "NSE",
+    "peak_net": 217
+   }
+  },
+  "n_closed": 2
+ }
+}

@@ -187,7 +187,7 @@ body.is-simple main{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 <script>
 const NSE_HOLIDAYS = ['2026-10-20', '2026-11-08', '2026-11-10', '2026-11-24', '2026-12-25'];   // fallback; meta.json has the live list
 const holidayList = () => (D.meta?.holidays?.length ? D.meta.holidays : NSE_HOLIDAYS);
-const APP_VERSION = 'v45';   // keep equal to CACHE in sw.js
+const APP_VERSION = 'v46';   // keep equal to CACHE in sw.js
 const TEST_FROM = '2026-11-04';   // the one real test trade (guardian LIVE_FROM)
 const FILES = ['plan', 'global-bias', 'volume-breakouts', 'performance', 'review', 'meta', 'live', 'small-capital', 'markets'];
 const D = {};
@@ -541,6 +541,19 @@ function paperResults(open = false) {
       return `<div class="srow">🔧 <b>Same trades with automatic adjustment</b> (comparison only, not used): total ${rs(aTotal)}${la.length ? ` <span class="fine">(live ${esc(la[0].at)})</span>` : ''}
       <div class="fine">Closed ${wa.trades} (${wa.wins} won). Difference vs your rules: ${rs(aTotal - mTotal)}.`; })() + `
       ${esc(((pb.with_adjustment.days || [])[0]?.detail || []).filter((x) => x.includes('ADJUSTED')).join(' · '))}</div></div>` : ''}
+    ${pb.with_protect && pb.with_protect.total != null ? (() => { const wp = pb.with_protect;
+      // comparison: NIFTY closed once a Rs 1,000 profit (after costs) falls back to Rs 0; helped NIFTY in the 3-year replay
+      const lp = liveNewer ? (D.live?.paper_open_protect || []).filter((x) => (wp.open || []).some((o) => o.index === x.index)) : [];
+      const pTotal = !liveNewer ? wp.total : wp.realized + lp.reduce((a, x) => a + res(x), 0)
+        + (wp.open || []).filter((o) => !lp.some((x) => x.index === o.index)).reduce((a, o) => {   // same trade as yours: your live value
+          const y = lv.find((x) => x.index === o.index && x.entry_session === o.entry_session); return a + (y ? res(y) : o.mark); }, 0)
+        + tIn.filter((x) => !(wp.open || []).some((o) => o.index === x.index)).reduce((a, x) => a + res(x), 0);
+      const mTotal = lv.length || tIn.length ? liveTotal : pb.total;
+      const pc = (wp.closed || []).filter((c) => /PROTECT/.test(c.reason)).slice(0, 2);
+      const pn = lp.find((x) => x.status === 'PROTECT');
+      return `<div class="srow">🛡️ <b>Same trades, NIFTY closed if a ₹1,000 profit falls back to ₹0</b> (comparison only, not used): total ${rs(pTotal)}${lp.length ? ` <span class="fine">(live ${esc(lp[0].at)})</span>` : ''}
+      <div class="fine">Closed ${wp.trades} (${wp.wins} won). Difference vs your rules: ${rs(pTotal - mTotal)}. It helped NIFTY in the 3-year replay, so both are tracked.${pn ? ` Today it closed NIFTY at ${esc(pn.reached_at)}: ${rs(pn.result_rs)}.` : ''}</div>
+      ${pc.map((c) => `<div class="fine">${c.pnl > 0 ? '✅' : '❌'} ${esc(day(c.entry_session))} → ${esc(day(c.exit_session))}: ${rs(c.pnl)}, ${esc(c.reason)}</div>`).join('')}</div>`; })() : ''}
     <p class="fine">Closed trades: ${pb.trades} (${pb.wins} won) = ${rs(pb.realized)} after costs. Open: ${rs(pb.open_value)}. ${esc(pb.note || '')} Updated each evening after 4:30 pm.</p></details>`;
 }
 function capitalLine() {
