@@ -1,29 +1,29 @@
 {
- "generated_at": "2026-11-03T06:42:39.141228+05:30",
+ "generated_at": "2026-11-03T07:13:52.411436+05:30",
  "session": "2026-11-03",
  "stage": "final",
  "expected_open": {
-  "gap_pct": 0.02,
+  "gap_pct": -0.01,
   "error_pct": 0.29,
-  "day_pct": 0.04,
-  "snapshot": "Tue 03 Nov 06:42 IST",
+  "day_pct": 0.01,
+  "snapshot": "Tue 03 Nov 07:13 IST",
   "stage": "final",
   "tip": "Flat open expected. Normal entry windows apply.",
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": -1.23
+    "move_pct": -1.24
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": -2.34
+    "move_pct": -2.14
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": -0.86
+    "move_pct": -1.0
    },
    {
     "key": "dax",
@@ -48,17 +48,17 @@
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": -7.1
+    "move_pct": -7.28
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": -0.7
+    "move_pct": -0.74
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": 0.17
+    "move_pct": 0.18
    },
    {
     "key": "inr",
@@ -70,26 +70,26 @@
    {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": -1.23,
-    "contribution_pct": -0.541
+    "value": -1.24,
+    "contribution_pct": -0.557
    },
    {
     "feature": "nq",
     "label": "Nasdaq futures",
-    "value": -2.34,
-    "contribution_pct": 0.384
+    "value": -2.14,
+    "contribution_pct": 0.36
    },
    {
     "feature": "cl",
     "label": "Crude oil",
-    "value": -7.1,
-    "contribution_pct": 0.25
+    "value": -7.28,
+    "contribution_pct": 0.258
    },
    {
     "feature": "dxy",
     "label": "Dollar index",
-    "value": 0.17,
-    "contribution_pct": -0.076
+    "value": 0.18,
+    "contribution_pct": -0.078
    },
    {
     "feature": "vix",
@@ -101,21 +101,21 @@
     "feature": "dax",
     "label": "DAX (Germany)",
     "value": 0.3,
-    "contribution_pct": -0.024
+    "contribution_pct": -0.023
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.7,
-   "gap_sign_pct": 70.3,
-   "directional_calls": 190,
-   "directional_accuracy": 71.6
+   "gap_corr": 0.71,
+   "gap_sign_pct": 71.0,
+   "directional_calls": 192,
+   "directional_accuracy": 71.9
   }
  },
  "headline": "Market bias SIDEWAYS \u2014 favour hedged premium selling",
  "bias": "RANGEBOUND",
- "score": 6,
- "bias_track_record_pct": 71.4,
+ "score": 1,
+ "bias_track_record_pct": 71.7,
  "options": [
   {
    "index": "NIFTY",
