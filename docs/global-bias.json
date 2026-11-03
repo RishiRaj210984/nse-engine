@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-04T00:07:45.488917+05:30",
+ "generated_at": "2026-11-04T05:08:02.923103+05:30",
  "target_session": "2026-11-04",
  "reference_date": "2026-11-02",
  "us_session_used": "2026-11-03",
@@ -7,24 +7,24 @@
   {
    "name": "S&P 500",
    "symbol": "^GSPC",
-   "last": 7590.12,
-   "change": 0.646,
+   "last": 7568.92,
+   "change": 0.365,
    "change_unit": "%",
    "as_of": "2026-11-03"
   },
   {
    "name": "Nasdaq",
    "symbol": "^IXIC",
-   "last": 25448.54,
-   "change": 1.13,
+   "last": 25372.01,
+   "change": 0.825,
    "change_unit": "%",
    "as_of": "2026-11-03"
   },
   {
    "name": "Dow Jones",
    "symbol": "^DJI",
-   "last": 51877.29,
-   "change": -0.205,
+   "last": 51786.72,
+   "change": -0.379,
    "change_unit": "%",
    "as_of": "2026-11-03"
   },
@@ -39,16 +39,16 @@
   {
    "name": "Crude Oil",
    "symbol": "CL=F",
-   "last": 96.08,
-   "change": -0.394,
+   "last": 96.72,
+   "change": 0.27,
    "change_unit": "%",
    "as_of": "2026-11-03"
   },
   {
    "name": "Dollar Index",
    "symbol": "DX-Y.NYB",
-   "last": 101.79,
-   "change": 0.034,
+   "last": 101.89,
+   "change": 0.138,
    "change_unit": "%",
    "as_of": "2026-11-03"
   },
@@ -95,60 +95,95 @@
  ],
  "bias": {
   "label": "RANGEBOUND",
-  "score": 5,
-  "z": 0.054,
-  "model_z": 0.054,
-  "predicted_nifty_move_pct": 0.04,
-  "typical_daily_move_pct": 0.748,
+  "score": -2,
+  "z": -0.023,
+  "model_z": -0.023,
+  "predicted_nifty_move_pct": -0.02,
+  "typical_daily_move_pct": 0.699,
   "source": "pre-open global snapshot",
   "india_vix": 15.5,
   "components": [
    {
-    "feature": "es",
-    "label": "S&P 500 futures",
-    "value": -0.52,
-    "contribution_pct": -0.239
-   },
-   {
-    "feature": "nq",
-    "label": "Nasdaq futures",
-    "value": -1.39,
-    "contribution_pct": 0.209
-   },
-   {
     "feature": "cl",
     "label": "Crude oil",
-    "value": -3.61,
-    "contribution_pct": 0.206
+    "value": -2.95,
+    "contribution_pct": 0.181
+   },
+   {
+    "feature": "es",
+    "label": "S&P 500 futures",
+    "value": -0.38,
+    "contribution_pct": -0.166
    },
    {
     "feature": "ftse",
     "label": "FTSE 100 (UK)",
     "value": -0.85,
-    "contribution_pct": -0.195
+    "contribution_pct": -0.128
+   },
+   {
+    "feature": "nq",
+    "label": "Nasdaq futures",
+    "value": -1.05,
+    "contribution_pct": 0.094
+   },
+   {
+    "feature": "dxy",
+    "label": "Dollar index",
+    "value": 0.17,
+    "contribution_pct": -0.063
    },
    {
     "feature": "inr",
     "label": "USD/INR",
     "value": -0.18,
-    "contribution_pct": 0.073
-   },
-   {
-    "feature": "gold",
-    "label": "Gold",
-    "value": 0.86,
-    "contribution_pct": -0.064
+    "contribution_pct": 0.043
    }
   ]
  },
  "news": {
   "summary": {
-   "score": 0.31,
+   "score": 0.327,
    "count": 38,
    "label": "POSITIVE"
   },
   "weight": 0.0,
   "headlines": [
+   {
+    "title": "US stocks today: Nasdaq rebounds as chipmakers rally, Apple slides ahead of US midterm results",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/us-stocks-today-nasdaq-rebounds-as-chipmakers-rally-apple-slides-ahead-of-us-midterm-results/articleshow/135513181.cms",
+    "published": "Wed, 04 Nov 2026 02:50:14 +0530",
+    "sentiment": 0.382
+   },
+   {
+    "title": "US Treasury yields climb as strong jobs data, midterm polls weigh; 10-year yield eyes 5% again",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/us-treasury-yields-climb-as-strong-jobs-data-and-midterm-uncertainty-weigh-on-bonds/articleshow/135511549.cms",
+    "published": "Wed, 04 Nov 2026 00:40:49 +0530",
+    "sentiment": 0.459
+   },
+   {
+    "title": "Taco Bell sales fall more than expected on cyclosporiasis outbreak hit",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/taco-bell-sales-fall-more-than-expected-on-cyclosporiasis-outbreak-hit/articleshow/135510804.cms",
+    "published": "Wed, 04 Nov 2026 00:32:54 +0530",
+    "sentiment": 0.0
+   },
+   {
+    "title": "Polymarket unit gets US industry organization's approval to be futures broker",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/polymarket-unit-gets-us-industry-organizations-approval-to-be-futures-broker/articleshow/135510648.cms",
+    "published": "Wed, 04 Nov 2026 00:05:03 +0530",
+    "sentiment": 0.477
+   },
+   {
+    "title": "US midterms put Trump-era crypto boom and prediction markets at risk",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/us-midterms-put-trump-era-crypto-boom-and-prediction-markets-at-risk/articleshow/135509801.cms",
+    "published": "Tue, 03 Nov 2026 23:39:41 +0530",
+    "sentiment": -0.273
+   },
    {
     "title": "CleanMax beats Q2 EBITDA estimates, reports strong H1 growth",
     "source": "ET Markets",
@@ -197,51 +232,16 @@
     "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/loan-growth-fall-in-provisions-help-sbi-profits-in-q2/articleshow/135505841.cms",
     "published": "Tue, 03 Nov 2026 21:33:26 +0530",
     "sentiment": 0.802
-   },
-   {
-    "title": "Ahead of Market: 10 things that will decide stock market action on Wednesday",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/ahead-of-market-10-things-that-will-decide-stock-market-action-on-wednesday/articleshow/135505565.cms",
-    "published": "Tue, 03 Nov 2026 21:21:49 +0530",
-    "sentiment": 0.0
-   },
-   {
-    "title": "MCX Q2 Results: Profit rockets 130% YoY to Rs 455 crore, revenue jumps 114%",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/mcx-q2-results-profit-rockets-130-yoy-to-rs-455-crore-revenue-jumps-114/articleshow/135504568.cms",
-    "published": "Tue, 03 Nov 2026 20:44:21 +0530",
-    "sentiment": 0.542
-   },
-   {
-    "title": "Motilal Oswal Financial Services announces leadership rejig; appoints new heads across businesses",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/motilal-oswal-financial-services-announces-leadership-rejig-appoints-new-heads-across-businesses/articleshow/135504517.cms",
-    "published": "Tue, 03 Nov 2026 20:42:23 +0530",
-    "sentiment": 0.0
-   },
-   {
-    "title": "US stocks today: Technology stocks lift S&amp;P 500 as US midterm vote keeps investors on edge",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/us-stocks-today-sp-500-nasdaq-open-higher-as-oil-prices-extend-declines-midterms-on-tap/articleshow/135503356.cms",
-    "published": "Tue, 03 Nov 2026 20:08:54 +0530",
-    "sentiment": 0.0
-   },
-   {
-    "title": "DuPont raises annual profit forecasts on strong healthcare, aerospace demand",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/dupont-raises-annual-profit-forecasts-on-strong-healthcare-aerospace-demand/articleshow/135502681.cms",
-    "published": "Tue, 03 Nov 2026 19:44:08 +0530",
-    "sentiment": 0.402
    }
   ]
  },
  "model": {
   "oos_days": 300,
-  "directional_calls": 159,
-  "directional_accuracy": 69.8,
-  "sign_accuracy_all_days": 62.7,
-  "gap_corr": 0.52,
-  "gap_sign_pct": 69.7,
+  "directional_calls": 172,
+  "directional_accuracy": 72.1,
+  "sign_accuracy_all_days": 64.0,
+  "gap_corr": 0.66,
+  "gap_sign_pct": 72.0,
   "trained_rows": 750,
   "version": 26,
   "bias_threshold": 0.2
@@ -668,28 +668,28 @@
   }
  ],
  "preopen": {
-  "snapshot_ist": "Wed 04 Nov 00:07 IST",
+  "snapshot_ist": "Wed 04 Nov 05:08 IST",
   "stage": "preview",
-  "expected_gap_pct": 0.16,
-  "gap_typical_error_pct": 0.33,
-  "expected_day_pct": 0.04,
-  "z": 0.054,
-  "typical_daily_move_pct": 0.748,
+  "expected_gap_pct": 0.1,
+  "gap_typical_error_pct": 0.29,
+  "expected_day_pct": -0.02,
+  "z": -0.023,
+  "typical_daily_move_pct": 0.699,
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": -0.52
+    "move_pct": -0.38
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": -1.39
+    "move_pct": -1.05
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": -0.45
+    "move_pct": -0.59
    },
    {
     "key": "dax",
@@ -714,7 +714,7 @@
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": -3.61
+    "move_pct": -2.95
    },
    {
     "key": "gold",
@@ -724,7 +724,7 @@
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": 0.07
+    "move_pct": 0.17
    },
    {
     "key": "inr",
@@ -734,63 +734,63 @@
   ],
   "drivers": [
    {
-    "feature": "es",
-    "label": "S&P 500 futures",
-    "value": -0.52,
-    "contribution_pct": -0.239
-   },
-   {
-    "feature": "nq",
-    "label": "Nasdaq futures",
-    "value": -1.39,
-    "contribution_pct": 0.209
-   },
-   {
     "feature": "cl",
     "label": "Crude oil",
-    "value": -3.61,
-    "contribution_pct": 0.206
+    "value": -2.95,
+    "contribution_pct": 0.181
+   },
+   {
+    "feature": "es",
+    "label": "S&P 500 futures",
+    "value": -0.38,
+    "contribution_pct": -0.166
    },
    {
     "feature": "ftse",
     "label": "FTSE 100 (UK)",
     "value": -0.85,
-    "contribution_pct": -0.195
+    "contribution_pct": -0.128
+   },
+   {
+    "feature": "nq",
+    "label": "Nasdaq futures",
+    "value": -1.05,
+    "contribution_pct": 0.094
+   },
+   {
+    "feature": "dxy",
+    "label": "Dollar index",
+    "value": 0.17,
+    "contribution_pct": -0.063
    },
    {
     "feature": "inr",
     "label": "USD/INR",
     "value": -0.18,
-    "contribution_pct": 0.073
-   },
-   {
-    "feature": "gold",
-    "label": "Gold",
-    "value": 0.86,
-    "contribution_pct": -0.064
+    "contribution_pct": 0.043
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.52,
-   "gap_sign_pct": 69.7,
-   "directional_calls": 166,
-   "directional_accuracy": 69.3
+   "gap_corr": 0.66,
+   "gap_sign_pct": 72.0,
+   "directional_calls": 177,
+   "directional_accuracy": 71.2
   },
   "vix": 15.5
  },
  "global_table": {
-  "updated": "2026-11-04T00:07:58.654782+05:30",
+  "updated": "2026-11-04T05:08:21.728843+05:30",
   "rows": [
    {
     "group": "US, last close",
-    "move": "S&P 500 +0.6%, Nasdaq +1.1%, Dow -0.2%",
+    "move": "S&P 500 +0.4%, Nasdaq +0.8%, Dow -0.4%",
     "effect": "green",
     "note": "Positive lead for India"
    },
    {
     "group": "US futures now",
-    "move": "S&P -0.52%, Nasdaq -1.39%, Dow -0.45% (since Nifty's close)",
+    "move": "S&P -0.38%, Nasdaq -1.05%, Dow -0.59% (since Nifty's close)",
     "effect": "red",
     "note": "Futures point to a softer open"
    },
@@ -808,7 +808,7 @@
    },
    {
     "group": "Crude oil",
-    "move": "WTI ~$96, Brent ~$104 (-0.8%)",
+    "move": "WTI ~$97, Brent ~$104 (+0.7%)",
     "effect": "red",
     "note": "Price is high for India"
    },
@@ -820,7 +820,7 @@
    },
    {
     "group": "Dollar index",
-    "move": "101.79 (+0.04%)",
+    "move": "101.89 (+0.14%)",
     "effect": "flat",
     "note": "Steady"
    },
@@ -838,7 +838,7 @@
    },
    {
     "group": "Model: Nifty open",
-    "move": "+0.16% (\u00b10.33%)",
+    "move": "+0.10% (\u00b10.29%)",
     "effect": "flat",
     "note": "Combined forecast from all markets (preview)",
     "model": true
