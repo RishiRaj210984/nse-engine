@@ -1,29 +1,29 @@
 {
- "generated_at": "2026-11-03T02:02:05.015472+05:30",
+ "generated_at": "2026-11-03T06:42:39.141228+05:30",
  "session": "2026-11-03",
- "stage": "preview",
+ "stage": "final",
  "expected_open": {
-  "gap_pct": 0.27,
-  "error_pct": 0.32,
-  "day_pct": 0.42,
-  "snapshot": "Tue 03 Nov 02:01 IST",
-  "stage": "preview",
-  "tip": "Moderate gap up expected. Use limit orders only, and wait for 09:30.",
+  "gap_pct": 0.02,
+  "error_pct": 0.29,
+  "day_pct": 0.04,
+  "snapshot": "Tue 03 Nov 06:42 IST",
+  "stage": "final",
+  "tip": "Flat open expected. Normal entry windows apply.",
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": -0.91
+    "move_pct": -1.23
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": -1.89
+    "move_pct": -2.34
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": -0.53
+    "move_pct": -0.86
    },
    {
     "key": "dax",
@@ -48,126 +48,193 @@
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": -7.7
+    "move_pct": -7.1
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": -1.01
+    "move_pct": -0.7
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": 0.14
+    "move_pct": 0.17
    },
    {
     "key": "inr",
     "name": "USD/INR",
-    "move_pct": -0.05
+    "move_pct": -0.06
    }
   ],
   "drivers": [
    {
-    "feature": "cl",
-    "label": "Crude oil",
-    "value": -7.7,
-    "contribution_pct": 0.504
-   },
-   {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": -0.91,
-    "contribution_pct": -0.362
+    "value": -1.23,
+    "contribution_pct": -0.541
    },
    {
     "feature": "nq",
     "label": "Nasdaq futures",
-    "value": -1.89,
-    "contribution_pct": 0.242
+    "value": -2.34,
+    "contribution_pct": 0.384
+   },
+   {
+    "feature": "cl",
+    "label": "Crude oil",
+    "value": -7.1,
+    "contribution_pct": 0.25
    },
    {
     "feature": "dxy",
     "label": "Dollar index",
-    "value": 0.14,
-    "contribution_pct": -0.055
-   },
-   {
-    "feature": "gold",
-    "label": "Gold",
-    "value": -1.01,
-    "contribution_pct": 0.032
+    "value": 0.17,
+    "contribution_pct": -0.076
    },
    {
     "feature": "vix",
     "label": "India VIX level",
     "value": 15.3,
-    "contribution_pct": 0.023
+    "contribution_pct": 0.025
+   },
+   {
+    "feature": "dax",
+    "label": "DAX (Germany)",
+    "value": 0.3,
+    "contribution_pct": -0.024
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.55,
-   "gap_sign_pct": 70.7,
-   "directional_calls": 172,
-   "directional_accuracy": 69.8
+   "gap_corr": 0.7,
+   "gap_sign_pct": 70.3,
+   "directional_calls": 190,
+   "directional_accuracy": 71.6
   }
  },
- "headline": "Market bias UP \u2014 favour buying dips",
- "bias": "BULLISH",
- "score": 52,
- "bias_track_record_pct": 69.8,
+ "headline": "Market bias SIDEWAYS \u2014 favour hedged premium selling",
+ "bias": "RANGEBOUND",
+ "score": 6,
+ "bias_track_record_pct": 71.4,
  "options": [
   {
    "index": "NIFTY",
-   "strategy": "Bull Put Spread",
-   "legs": "SELL 22900 PE + BUY 22800 PE",
+   "strategy": "Iron Condor",
+   "legs": "SELL 23200 CE + BUY 23300 CE + SELL 22900 PE + BUY 22800 PE",
    "expiry": "2026-11-03",
    "lot_size": 65,
-   "entry": "Enter at 10:15 (after the first hour) only if NIFTY is above 22,900",
-   "target": "Buy back at \u20b94.6 (keep ~55% of credit), else hold to expiry Tue 03 Nov",
-   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b9663 per lot)",
-   "max_loss": 5837,
-   "max_reward": 663,
-   "reward_risk": 0.11,
+   "entry": "Enter at 10:15 (after the first hour) only if NIFTY is between 22,900 and 23,200",
+   "target": "Buy back at \u20b99.9 (keep ~55% of credit), else hold to expiry Tue 03 Nov",
+   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,424 per lot)",
+   "max_loss": 5076,
+   "max_reward": 1424,
+   "reward_risk": 0.28,
    "decision": "SKIP",
-   "decision_reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (48.9% wins, avg \u20b9-368 per lot over 190 trades). A good-looking slice is not trusted on its own.",
+   "decision_reason": "No tested structure qualifies for today. Expiry day, right after ITC results: condors broke 60% of the time in this combination (small sample).",
    "enter_at": "10:15 IST, after the first hour",
    "exit_by": "target / stop, else expiry 2026-11-03",
    "setup_stats": {
-    "trades": 190,
-    "win_pct": 48.9,
-    "avg_pnl": -368,
-    "worst": -5730,
-    "best": 2710,
-    "total": -69946,
-    "sample": "days the model called BULLISH"
+    "trades": 27,
+    "win_pct": 33.3,
+    "avg_pnl": -385,
+    "worst": -4238,
+    "best": 1038,
+    "total": -10401,
+    "sample": "days the model called SIDEWAYS, current expiry schedule",
+    "allowed": false,
+    "marginal": false,
+    "quiet_first_hour": {
+     "trades": 16,
+     "win_pct": 25.0,
+     "avg_pnl": -300,
+     "worst": -1371,
+     "best": 1038,
+     "total": -4806
+    },
+    "trending_first_hour": {
+     "trades": 11,
+     "win_pct": 45.5,
+     "avg_pnl": -508,
+     "worst": -4238,
+     "best": 965,
+     "total": -5595
+    }
    },
-   "test": null
+   "test": {
+    "wing": 150,
+    "legs": [
+     {
+      "action": "SELL",
+      "strike": 23200,
+      "type": "CE",
+      "est_premium": 16.2
+     },
+     {
+      "action": "BUY",
+      "strike": 23350,
+      "type": "CE",
+      "est_premium": 2.2
+     },
+     {
+      "action": "SELL",
+      "strike": 22900,
+      "type": "PE",
+      "est_premium": 13.8
+     },
+     {
+      "action": "BUY",
+      "strike": 22750,
+      "type": "PE",
+      "est_premium": 1.6
+     }
+    ],
+    "net_premium": 26.2,
+    "max_loss": 8047,
+    "max_reward": 1703
+   }
   },
   {
    "index": "BANKNIFTY",
-   "strategy": "Bull Put Spread",
-   "legs": "SELL 53200 PE + BUY 52400 PE",
+   "strategy": "Iron Condor",
+   "legs": "SELL 56100 CE + BUY 56900 CE + SELL 53200 PE + BUY 52400 PE",
    "expiry": "2026-11-23",
    "lot_size": 30,
-   "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is above 53,200",
-   "target": "Buy back at \u20b935.6 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
-   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b92,373 per lot)",
-   "max_loss": 21627,
-   "max_reward": 2373,
-   "reward_risk": 0.11,
-   "decision": "SKIP",
-   "decision_reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (59.1% wins, avg \u20b9-443 per lot over 198 trades). A good-looking slice is not trusted on its own.",
+   "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is between 53,200 and 56,100",
+   "target": "Buy back at \u20b993.9 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
+   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b96,258 per lot)",
+   "max_loss": 17742,
+   "max_reward": 6258,
+   "reward_risk": 0.35,
+   "decision": "TRADE",
+   "decision_reason": "2+ weeks before: this setup won 90.6% of 53 trades, avg \u20b92,933 per lot after costs (worst \u20b9-22,393). If the first hour moves more than 0.25%, the win rate drops to 85.2% (from 96.2% on quiet mornings): consider skipping.",
    "enter_at": "10:15 IST, after the first hour",
    "exit_by": "target / stop, else expiry 2026-11-23",
    "setup_stats": {
-    "trades": 198,
-    "win_pct": 59.1,
-    "avg_pnl": -443,
-    "worst": -9320,
-    "best": 7497,
-    "total": -87747,
-    "sample": "days the model called BULLISH"
+    "trades": 53,
+    "win_pct": 90.6,
+    "avg_pnl": 2933,
+    "worst": -22393,
+    "best": 9535,
+    "total": 155497,
+    "sample": "days the model called SIDEWAYS, current expiry schedule",
+    "allowed": true,
+    "marginal": false,
+    "quiet_first_hour": {
+     "trades": 26,
+     "win_pct": 96.2,
+     "avg_pnl": 4134,
+     "worst": -7115,
+     "best": 9535,
+     "total": 107495
+    },
+    "trending_first_hour": {
+     "trades": 27,
+     "win_pct": 85.2,
+     "avg_pnl": 1777,
+     "worst": -22393,
+     "best": 7837,
+     "total": 48002
+    }
    },
    "test": null
   }
