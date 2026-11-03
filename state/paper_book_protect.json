@@ -37,7 +37,7 @@
    "credit_rs": 10272,
    "iv0": 0.1406,
    "vix0": 17.040000915527344,
-   "mark": 584,
+   "mark": -1805,
    "groups": [
     {
      "legs": [
@@ -55,7 +55,7 @@
       }
      ],
      "v0": -176.948,
-     "off": -16.098141244207
+     "off": -2.8906916754455096
     },
     {
      "legs": [
@@ -73,7 +73,7 @@
       }
      ],
      "v0": -165.45,
-     "off": -33.69062182373891
+     "off": -28.322323834255805
     }
    ],
    "realized": 0.0,
@@ -201,10 +201,18 @@
     "BANKNIFTY: still open (expiry 23 Nov), worth Rs +584 now"
    ],
    "total": -218
+  },
+  {
+   "session": "2026-11-03",
+   "pnl": -2389,
+   "detail": [
+    "BANKNIFTY: still open (expiry 23 Nov), worth Rs -1,805 now"
+   ],
+   "total": -2607
   }
  ],
  "before": {
-  "session": "2026-11-02",
+  "session": "2026-11-03",
   "open": {
    "BANKNIFTY": {
     "index": "BANKNIFTY",
@@ -243,7 +251,7 @@
     "credit_rs": 10272,
     "iv0": 0.1406,
     "vix0": 17.040000915527344,
-    "mark": 1009,
+    "mark": 584,
     "groups": [
      {
       "legs": [
@@ -261,7 +269,7 @@
        }
       ],
       "v0": -176.948,
-      "off": -22.685616402687458
+      "off": -16.098141244207
      },
      {
       "legs": [
@@ -279,7 +287,7 @@
        }
       ],
       "v0": -165.45,
-      "off": -38.03722753914481
+      "off": -33.69062182373891
      }
     ],
     "realized": 0.0,
@@ -288,92 +296,8 @@
     "adjusted": null,
     "extra_cost": 0,
     "basis": "NSE"
-   },
-   "NIFTY": {
-    "index": "NIFTY",
-    "strategy": "Iron Condor",
-    "legs": [
-     {
-      "action": "SELL",
-      "strike": 23300,
-      "type": "CE",
-      "est_premium": 42.9
-     },
-     {
-      "action": "BUY",
-      "strike": 23500,
-      "type": "CE",
-      "est_premium": 16.1
-     },
-     {
-      "action": "SELL",
-      "strike": 22600,
-      "type": "PE",
-      "est_premium": 39.0
-     },
-     {
-      "action": "BUY",
-      "strike": 22400,
-      "type": "PE",
-      "est_premium": 13.7
-     }
-    ],
-    "lot": 65,
-    "expiry": "2026-11-03",
-    "entry_session": "2026-10-30",
-    "entry_spot": 22919.65,
-    "v_e": -36.0,
-    "credit_rs": 2340,
-    "iv0": 0.1512,
-    "vix0": 15.657500267028809,
-    "mark": 543,
-    "groups": [
-     {
-      "legs": [
-       {
-        "action": "SELL",
-        "strike": 23300,
-        "type": "CE",
-        "est_premium": 42.9
-       },
-       {
-        "action": "BUY",
-        "strike": 23500,
-        "type": "CE",
-        "est_premium": 16.1
-       }
-      ],
-      "v0": -11.95,
-      "off": 17.086819684571402
-     },
-     {
-      "legs": [
-       {
-        "action": "SELL",
-        "strike": 22600,
-        "type": "PE",
-        "est_premium": 39.0
-       },
-       {
-        "action": "BUY",
-        "strike": 22400,
-        "type": "PE",
-        "est_premium": 13.7
-       }
-      ],
-      "v0": -24.05,
-      "off": 2.28890309122653
-     }
-    ],
-    "realized": 0.0,
-    "credit0": 36.0,
-    "credit_all": 36.0,
-    "adjusted": null,
-    "extra_cost": 0,
-    "basis": "NSE",
-    "peak_net": 217
    }
   },
-  "n_closed": 2
+  "n_closed": 3
  }
 }
