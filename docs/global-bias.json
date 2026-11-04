@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-04T05:08:02.923103+05:30",
+ "generated_at": "2026-11-04T07:13:27.405016+05:30",
  "target_session": "2026-11-04",
  "reference_date": "2026-11-02",
  "us_session_used": "2026-11-03",
@@ -39,26 +39,26 @@
   {
    "name": "Crude Oil",
    "symbol": "CL=F",
-   "last": 96.72,
-   "change": 0.27,
+   "last": 95.97,
+   "change": -0.508,
    "change_unit": "%",
    "as_of": "2026-11-03"
   },
   {
    "name": "Dollar Index",
    "symbol": "DX-Y.NYB",
-   "last": 101.89,
-   "change": 0.138,
+   "last": 101.38,
+   "change": -0.36,
    "change_unit": "%",
    "as_of": "2026-11-03"
   },
   {
    "name": "Nikkei 225",
    "symbol": "^N225",
-   "last": 63081.86,
-   "change": -0.329,
+   "last": 61618.67,
+   "change": -2.32,
    "change_unit": "%",
-   "as_of": "2026-11-02"
+   "as_of": "2026-11-04"
   },
   {
    "name": "Hang Seng",
@@ -95,60 +95,123 @@
  ],
  "bias": {
   "label": "RANGEBOUND",
-  "score": -2,
-  "z": -0.023,
-  "model_z": -0.023,
-  "predicted_nifty_move_pct": -0.02,
-  "typical_daily_move_pct": 0.699,
+  "score": -5,
+  "z": -0.05,
+  "model_z": -0.05,
+  "predicted_nifty_move_pct": -0.03,
+  "typical_daily_move_pct": 0.694,
   "source": "pre-open global snapshot",
   "india_vix": 15.5,
   "components": [
    {
-    "feature": "cl",
-    "label": "Crude oil",
-    "value": -2.95,
-    "contribution_pct": 0.181
-   },
-   {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": -0.38,
-    "contribution_pct": -0.166
+    "value": -1.57,
+    "contribution_pct": -0.714
+   },
+   {
+    "feature": "nq",
+    "label": "Nasdaq futures",
+    "value": -3.41,
+    "contribution_pct": 0.562
+   },
+   {
+    "feature": "n225",
+    "label": "Nikkei 225",
+    "value": -2.32,
+    "contribution_pct": -0.145
+   },
+   {
+    "feature": "cl",
+    "label": "Crude oil",
+    "value": -3.71,
+    "contribution_pct": 0.145
+   },
+   {
+    "feature": "dxy",
+    "label": "Dollar index",
+    "value": -0.31,
+    "contribution_pct": 0.127
    },
    {
     "feature": "ftse",
     "label": "FTSE 100 (UK)",
     "value": -0.85,
-    "contribution_pct": -0.128
-   },
-   {
-    "feature": "nq",
-    "label": "Nasdaq futures",
-    "value": -1.05,
-    "contribution_pct": 0.094
-   },
-   {
-    "feature": "dxy",
-    "label": "Dollar index",
-    "value": 0.17,
-    "contribution_pct": -0.063
-   },
-   {
-    "feature": "inr",
-    "label": "USD/INR",
-    "value": -0.18,
-    "contribution_pct": 0.043
+    "contribution_pct": -0.1
    }
   ]
  },
  "news": {
   "summary": {
-   "score": 0.327,
-   "count": 38,
+   "score": 0.262,
+   "count": 20,
    "label": "POSITIVE"
   },
   "weight": 0.0,
   "headlines": [
+   {
+    "title": "RBI's Rs 50,000 crore VRRR faces a muted response from the market",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/rbis-rs-50000-crore-vrrr-faces-a-muted-response-from-the-market/articleshow/135517526.cms",
+    "published": "Wed, 04 Nov 2026 06:48:49 +0530",
+    "sentiment": 0.0
+   },
+   {
+    "title": "Corporate bond issuances top Rs 17,000 crore as yields ease",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/bonds/corporates-rush-to-raise-over-rs-17000-crore-as-yields-ease/articleshow/135517422.cms",
+    "published": "Wed, 04 Nov 2026 06:40:32 +0530",
+    "sentiment": 0.511
+   },
+   {
+    "title": "Global Market Today: Asian shares retreat as US futures slide on mid-term election bets",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/global-market-today-asian-shares-advance-as-us-tech-stocks-rebound-midterm-results-awaited/articleshow/135517317.cms",
+    "published": "Wed, 04 Nov 2026 06:30:42 +0530",
+    "sentiment": 0.459
+   },
+   {
+    "title": "Rupee rises as oil slips from six-month high",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/forex/rupee-rises-as-oil-slips-from-six-month-high/articleshow/135517334.cms",
+    "published": "Wed, 04 Nov 2026 06:30:08 +0530",
+    "sentiment": -0.25
+   },
+   {
+    "title": "Sensex, Nifty soar to a two-month high as FPIs ramp up buying activity",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/sensex-nifty-soar-to-a-two-month-high-as-fpis-ramp-up-buying-activity/articleshow/135517172.cms",
+    "published": "Wed, 04 Nov 2026 06:24:44 +0530",
+    "sentiment": 0.402
+   },
+   {
+    "title": "Sebi imposes Rs 40 lakh penalty on two brokers in Axis Mutual Fund front-running case",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/sebi-imposes-rs-40-lakh-penalty-on-two-brokers-in-axis-mutual-fund-front-running-case/articleshow/135516888.cms",
+    "published": "Wed, 04 Nov 2026 06:05:46 +0530",
+    "sentiment": -0.459
+   },
+   {
+    "title": "Stocks in news: NSE, BSE, SBI, Happiest Minds, MCX, IEX and Minda Corp",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/stocks-in-news-nse-bse-sbi-happiest-minds-mcx-iex-and-minda-corp/articleshow/135508071.cms",
+    "published": "Wed, 04 Nov 2026 06:00:00 +0530",
+    "sentiment": 0.637
+   },
+   {
+    "title": "Pre-market action: Here's the trade setup for today's session",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/pre-market-action-heres-the-trade-setup-for-todays-session/articleshow/135507523.cms",
+    "published": "Wed, 04 Nov 2026 06:00:00 +0530",
+    "sentiment": 0.0
+   },
+   {
+    "title": "US mid-terms may help D-Street break free from geopolitical overhang",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/us-mid-terms-may-help-d-street-break-free-from-geopolitical-overhang/articleshow/135516732.cms",
+    "published": "Wed, 04 Nov 2026 05:48:58 +0530",
+    "sentiment": 0.718
+   },
    {
     "title": "US stocks today: Nasdaq rebounds as chipmakers rally, Apple slides ahead of US midterm results",
     "source": "ET Markets",
@@ -157,91 +220,28 @@
     "sentiment": 0.382
    },
    {
-    "title": "US Treasury yields climb as strong jobs data, midterm polls weigh; 10-year yield eyes 5% again",
+    "title": "Irdai mandates four-tier structure for motor insurance from Dec 15",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/us-treasury-yields-climb-as-strong-jobs-data-and-midterm-uncertainty-weigh-on-bonds/articleshow/135511549.cms",
-    "published": "Wed, 04 Nov 2026 00:40:49 +0530",
-    "sentiment": 0.459
-   },
-   {
-    "title": "Taco Bell sales fall more than expected on cyclosporiasis outbreak hit",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/taco-bell-sales-fall-more-than-expected-on-cyclosporiasis-outbreak-hit/articleshow/135510804.cms",
-    "published": "Wed, 04 Nov 2026 00:32:54 +0530",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/irdai-mandates-four-tier-structure-for-motor-insurance-from-dec-15/articleshow/135517635.cms",
+    "published": "Wed, 04 Nov 2026 01:34:18 +0530",
     "sentiment": 0.0
    },
    {
-    "title": "Polymarket unit gets US industry organization's approval to be futures broker",
+    "title": "Lenders accept Supreme Housing's Rs 522-crore settlement offer",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/polymarket-unit-gets-us-industry-organizations-approval-to-be-futures-broker/articleshow/135510648.cms",
-    "published": "Wed, 04 Nov 2026 00:05:03 +0530",
-    "sentiment": 0.477
-   },
-   {
-    "title": "US midterms put Trump-era crypto boom and prediction markets at risk",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/us-midterms-put-trump-era-crypto-boom-and-prediction-markets-at-risk/articleshow/135509801.cms",
-    "published": "Tue, 03 Nov 2026 23:39:41 +0530",
-    "sentiment": -0.273
-   },
-   {
-    "title": "CleanMax beats Q2 EBITDA estimates, reports strong H1 growth",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/cleanmax-beats-q2-ebitda-estimates-reports-strong-h1-growth/articleshow/135507102.cms",
-    "published": "Tue, 03 Nov 2026 22:29:11 +0530",
-    "sentiment": 0.751
-   },
-   {
-    "title": "Bagmane REIT declares Rs 527cr distribution to unitholders for September quarter",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/digital-real-estate/realty-news/bagmane-reit-declares-rs-527cr-distribution-to-unitholders-for-september-quarter/articleshow/135506225.cms",
-    "published": "Tue, 03 Nov 2026 22:28:43 +0530",
-    "sentiment": 0.0
-   },
-   {
-    "title": "Binance says North Korean hackers stole $6.34 billion funds in a technical breach",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/cryptocurrency/binance-says-north-korean-hackers-stole-6-34-billion-funds-in-a-technical-breach/articleshow/135506955.cms",
-    "published": "Tue, 03 Nov 2026 22:16:58 +0530",
-    "sentiment": 0.0
-   },
-   {
-    "title": "Sebi levies Rs 40 lakh penalty on four entities in Axis MF front-running case",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/sebi-levies-rs-40-lakh-penalty-on-four-entities-in-axis-mf-front-running-case/articleshow/135506148.cms",
-    "published": "Tue, 03 Nov 2026 22:05:56 +0530",
-    "sentiment": -0.382
-   },
-   {
-    "title": "Utkarsh Small Finance Bank reports sixth consecutive quarterly loss",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/utkarsh-small-finance-bank-reports-sixth-consecutive-quarterly-loss/articleshow/135506409.cms",
-    "published": "Tue, 03 Nov 2026 21:54:16 +0530",
-    "sentiment": -0.318
-   },
-   {
-    "title": "Nexus Select Trust\u2019s Q2 NOI rises 8% to Rs 504 cr, consumption up 13%",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/nexus-select-trusts-q2-noi-rises-8-to-rs-504-cr-consumption-up-13/articleshow/135505912.cms",
-    "published": "Tue, 03 Nov 2026 21:36:11 +0530",
-    "sentiment": 0.0
-   },
-   {
-    "title": "Loan growth, fall in provisions help SBI profits in Q2",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/loan-growth-fall-in-provisions-help-sbi-profits-in-q2/articleshow/135505841.cms",
-    "published": "Tue, 03 Nov 2026 21:33:26 +0530",
-    "sentiment": 0.802
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/lenders-accept-supreme-housings-rs-522-crore-settlement-offer/articleshow/135517587.cms",
+    "published": "Wed, 04 Nov 2026 01:31:49 +0530",
+    "sentiment": 0.735
    }
   ]
  },
  "model": {
   "oos_days": 300,
-  "directional_calls": 172,
-  "directional_accuracy": 72.1,
-  "sign_accuracy_all_days": 64.0,
-  "gap_corr": 0.66,
-  "gap_sign_pct": 72.0,
+  "directional_calls": 188,
+  "directional_accuracy": 71.8,
+  "sign_accuracy_all_days": 65.0,
+  "gap_corr": 0.7,
+  "gap_sign_pct": 70.7,
   "trained_rows": 750,
   "version": 26,
   "bias_threshold": 0.2
@@ -668,28 +668,28 @@
   }
  ],
  "preopen": {
-  "snapshot_ist": "Wed 04 Nov 05:08 IST",
-  "stage": "preview",
-  "expected_gap_pct": 0.1,
+  "snapshot_ist": "Wed 04 Nov 07:13 IST",
+  "stage": "final",
+  "expected_gap_pct": -0.14,
   "gap_typical_error_pct": 0.29,
-  "expected_day_pct": -0.02,
-  "z": -0.023,
-  "typical_daily_move_pct": 0.699,
+  "expected_day_pct": -0.03,
+  "z": -0.05,
+  "typical_daily_move_pct": 0.694,
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": -0.38
+    "move_pct": -1.57
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": -1.05
+    "move_pct": -3.41
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": -0.59
+    "move_pct": -0.96
    },
    {
     "key": "dax",
@@ -709,22 +709,22 @@
    {
     "key": "n225",
     "name": "Nikkei 225",
-    "move_pct": 0.0
+    "move_pct": -2.32
    },
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": -2.95
+    "move_pct": -3.71
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": 0.86
+    "move_pct": 1.41
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": 0.17
+    "move_pct": -0.31
    },
    {
     "key": "inr",
@@ -734,53 +734,53 @@
   ],
   "drivers": [
    {
-    "feature": "cl",
-    "label": "Crude oil",
-    "value": -2.95,
-    "contribution_pct": 0.181
-   },
-   {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": -0.38,
-    "contribution_pct": -0.166
+    "value": -1.57,
+    "contribution_pct": -0.714
+   },
+   {
+    "feature": "nq",
+    "label": "Nasdaq futures",
+    "value": -3.41,
+    "contribution_pct": 0.562
+   },
+   {
+    "feature": "n225",
+    "label": "Nikkei 225",
+    "value": -2.32,
+    "contribution_pct": -0.145
+   },
+   {
+    "feature": "cl",
+    "label": "Crude oil",
+    "value": -3.71,
+    "contribution_pct": 0.145
+   },
+   {
+    "feature": "dxy",
+    "label": "Dollar index",
+    "value": -0.31,
+    "contribution_pct": 0.127
    },
    {
     "feature": "ftse",
     "label": "FTSE 100 (UK)",
     "value": -0.85,
-    "contribution_pct": -0.128
-   },
-   {
-    "feature": "nq",
-    "label": "Nasdaq futures",
-    "value": -1.05,
-    "contribution_pct": 0.094
-   },
-   {
-    "feature": "dxy",
-    "label": "Dollar index",
-    "value": 0.17,
-    "contribution_pct": -0.063
-   },
-   {
-    "feature": "inr",
-    "label": "USD/INR",
-    "value": -0.18,
-    "contribution_pct": 0.043
+    "contribution_pct": -0.1
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.66,
-   "gap_sign_pct": 72.0,
-   "directional_calls": 177,
-   "directional_accuracy": 71.2
+   "gap_corr": 0.7,
+   "gap_sign_pct": 70.7,
+   "directional_calls": 193,
+   "directional_accuracy": 71.5
   },
   "vix": 15.5
  },
  "global_table": {
-  "updated": "2026-11-04T05:08:21.728843+05:30",
+  "updated": "2026-11-04T07:13:51.183332+05:30",
   "rows": [
    {
     "group": "US, last close",
@@ -790,7 +790,7 @@
    },
    {
     "group": "US futures now",
-    "move": "S&P -0.38%, Nasdaq -1.05%, Dow -0.59% (since Nifty's close)",
+    "move": "S&P -1.57%, Nasdaq -3.41%, Dow -0.96% (since Nifty's close)",
     "effect": "red",
     "note": "Futures point to a softer open"
    },
@@ -802,13 +802,13 @@
    },
    {
     "group": "Asia today",
-    "move": "Nikkei -0.3%, Hang Seng +0.6%, Kospi -3.6%",
+    "move": "Nikkei -2.4%, Hang Seng -0.3%, Kospi -1.1%",
     "effect": "red",
-    "note": "Clearly weak (one market down over 3%)"
+    "note": "Clearly weak"
    },
    {
     "group": "Crude oil",
-    "move": "WTI ~$97, Brent ~$104 (+0.7%)",
+    "move": "WTI ~$96, Brent ~$104 (+0.0%)",
     "effect": "red",
     "note": "Price is high for India"
    },
@@ -820,13 +820,13 @@
    },
    {
     "group": "Dollar index",
-    "move": "101.89 (+0.14%)",
-    "effect": "flat",
-    "note": "Steady"
+    "move": "101.39 (-0.46%)",
+    "effect": "green",
+    "note": "Weaker dollar helps"
    },
    {
     "group": "Rupee",
-    "move": "94.73 per $ (-0.17%)",
+    "move": "94.73 per $ (+0.00%)",
     "effect": "flat",
     "note": "Steady"
    },
@@ -838,14 +838,14 @@
    },
    {
     "group": "Model: Nifty open",
-    "move": "+0.10% (\u00b10.29%)",
+    "move": "-0.14% (\u00b10.29%)",
     "effect": "flat",
-    "note": "Combined forecast from all markets (preview)",
+    "note": "Combined forecast from all markets (final)",
     "model": true
    }
   ],
   "tilt": "negative",
-  "score": -4
+  "score": -3
  },
  "notes": [
   "GIFT Nifty has no free data feed; the pre-open model reads what drives it (US/Dow futures, Europe, Asia, crude, rupee).",

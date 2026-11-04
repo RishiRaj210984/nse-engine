@@ -1,53 +1,53 @@
 {
  "bias": {
-  "generated_at": "2026-11-04T05:08:02.923103+05:30",
+  "generated_at": "2026-11-04T07:13:27.405016+05:30",
   "target_session": "2026-11-04",
   "reference_date": "2026-11-02",
   "bias": {
    "label": "RANGEBOUND",
-   "score": -2,
-   "z": -0.023,
-   "model_z": -0.023,
-   "predicted_nifty_move_pct": -0.02,
-   "typical_daily_move_pct": 0.699,
+   "score": -5,
+   "z": -0.05,
+   "model_z": -0.05,
+   "predicted_nifty_move_pct": -0.03,
+   "typical_daily_move_pct": 0.694,
    "source": "pre-open global snapshot",
    "india_vix": 15.5,
    "components": [
     {
-     "feature": "cl",
-     "label": "Crude oil",
-     "value": -2.95,
-     "contribution_pct": 0.181
-    },
-    {
      "feature": "es",
      "label": "S&P 500 futures",
-     "value": -0.38,
-     "contribution_pct": -0.166
+     "value": -1.57,
+     "contribution_pct": -0.714
+    },
+    {
+     "feature": "nq",
+     "label": "Nasdaq futures",
+     "value": -3.41,
+     "contribution_pct": 0.562
+    },
+    {
+     "feature": "n225",
+     "label": "Nikkei 225",
+     "value": -2.32,
+     "contribution_pct": -0.145
+    },
+    {
+     "feature": "cl",
+     "label": "Crude oil",
+     "value": -3.71,
+     "contribution_pct": 0.145
+    },
+    {
+     "feature": "dxy",
+     "label": "Dollar index",
+     "value": -0.31,
+     "contribution_pct": 0.127
     },
     {
      "feature": "ftse",
      "label": "FTSE 100 (UK)",
      "value": -0.85,
-     "contribution_pct": -0.128
-    },
-    {
-     "feature": "nq",
-     "label": "Nasdaq futures",
-     "value": -1.05,
-     "contribution_pct": 0.094
-    },
-    {
-     "feature": "dxy",
-     "label": "Dollar index",
-     "value": 0.17,
-     "contribution_pct": -0.063
-    },
-    {
-     "feature": "inr",
-     "label": "USD/INR",
-     "value": -0.18,
-     "contribution_pct": 0.043
+     "contribution_pct": -0.1
     }
    ]
   },
@@ -445,42 +445,42 @@
   },
   "model": {
    "oos_days": 300,
-   "directional_calls": 172,
-   "directional_accuracy": 72.1,
-   "sign_accuracy_all_days": 64.0,
-   "gap_corr": 0.66,
-   "gap_sign_pct": 72.0,
+   "directional_calls": 188,
+   "directional_accuracy": 71.8,
+   "sign_accuracy_all_days": 65.0,
+   "gap_corr": 0.7,
+   "gap_sign_pct": 70.7,
    "trained_rows": 750,
    "version": 26,
    "bias_threshold": 0.2
   }
  },
  "plan": {
-  "generated_at": "2026-11-04T05:08:31.810241+05:30",
+  "generated_at": "2026-11-04T07:15:13.432999+05:30",
   "session": "2026-11-04",
-  "stage": "preview",
+  "stage": "final",
   "expected_open": {
-   "gap_pct": 0.1,
+   "gap_pct": -0.14,
    "error_pct": 0.29,
-   "day_pct": -0.02,
-   "snapshot": "Wed 04 Nov 05:08 IST",
-   "stage": "preview",
+   "day_pct": -0.03,
+   "snapshot": "Wed 04 Nov 07:13 IST",
+   "stage": "final",
    "tip": "Flat open expected. Normal entry windows apply.",
    "markets": [
     {
      "key": "es",
      "name": "S&P 500 futures",
-     "move_pct": -0.38
+     "move_pct": -1.57
     },
     {
      "key": "nq",
      "name": "Nasdaq futures",
-     "move_pct": -1.05
+     "move_pct": -3.41
     },
     {
      "key": "ym",
      "name": "Dow futures",
-     "move_pct": -0.59
+     "move_pct": -0.96
     },
     {
      "key": "dax",
@@ -500,22 +500,22 @@
     {
      "key": "n225",
      "name": "Nikkei 225",
-     "move_pct": 0.0
+     "move_pct": -2.32
     },
     {
      "key": "cl",
      "name": "Crude oil",
-     "move_pct": -2.95
+     "move_pct": -3.71
     },
     {
      "key": "gold",
      "name": "Gold",
-     "move_pct": 0.86
+     "move_pct": 1.41
     },
     {
      "key": "dxy",
      "name": "Dollar index",
-     "move_pct": 0.17
+     "move_pct": -0.31
     },
     {
      "key": "inr",
@@ -525,54 +525,54 @@
    ],
    "drivers": [
     {
-     "feature": "cl",
-     "label": "Crude oil",
-     "value": -2.95,
-     "contribution_pct": 0.181
-    },
-    {
      "feature": "es",
      "label": "S&P 500 futures",
-     "value": -0.38,
-     "contribution_pct": -0.166
+     "value": -1.57,
+     "contribution_pct": -0.714
+    },
+    {
+     "feature": "nq",
+     "label": "Nasdaq futures",
+     "value": -3.41,
+     "contribution_pct": 0.562
+    },
+    {
+     "feature": "n225",
+     "label": "Nikkei 225",
+     "value": -2.32,
+     "contribution_pct": -0.145
+    },
+    {
+     "feature": "cl",
+     "label": "Crude oil",
+     "value": -3.71,
+     "contribution_pct": 0.145
+    },
+    {
+     "feature": "dxy",
+     "label": "Dollar index",
+     "value": -0.31,
+     "contribution_pct": 0.127
     },
     {
      "feature": "ftse",
      "label": "FTSE 100 (UK)",
      "value": -0.85,
-     "contribution_pct": -0.128
-    },
-    {
-     "feature": "nq",
-     "label": "Nasdaq futures",
-     "value": -1.05,
-     "contribution_pct": 0.094
-    },
-    {
-     "feature": "dxy",
-     "label": "Dollar index",
-     "value": 0.17,
-     "contribution_pct": -0.063
-    },
-    {
-     "feature": "inr",
-     "label": "USD/INR",
-     "value": -0.18,
-     "contribution_pct": 0.043
+     "contribution_pct": -0.1
     }
    ],
    "wf": {
     "oos_days": 300,
-    "gap_corr": 0.66,
-    "gap_sign_pct": 72.0,
-    "directional_calls": 177,
-    "directional_accuracy": 71.2
+    "gap_corr": 0.7,
+    "gap_sign_pct": 70.7,
+    "directional_calls": 193,
+    "directional_accuracy": 71.5
    }
   },
   "headline": "Market bias SIDEWAYS \u2014 favour hedged premium selling",
   "bias": "RANGEBOUND",
-  "score": -2,
-  "bias_track_record_pct": 72.1,
+  "score": -5,
+  "bias_track_record_pct": 71.8,
   "options": [
    {
     "index": "NIFTY",
@@ -707,7 +707,7 @@
     "stop": 240.8,
     "t1": 253.88,
     "t2": 262.59,
-    "win_prob": 51.9,
+    "win_prob": 57.7,
     "vol_badge": "2.1x Vol Surge"
    }
   ],
@@ -840,30 +840,6 @@
    "skip_reason": null
   },
   {
-   "symbol": "ADANIPORTS",
-   "name": "Adani Ports",
-   "grade": "B",
-   "passed": false,
-   "entry": 1854.0,
-   "stop": 1816.15,
-   "t1": 1929.7,
-   "t2": 2005.4,
-   "atr": 50.47,
-   "skip_reason": null
-  },
-  {
-   "symbol": "ETERNAL",
-   "name": "Eternal Zomato",
-   "grade": "B",
-   "passed": false,
-   "entry": 344.0,
-   "stop": 336.38,
-   "t1": 359.24,
-   "t2": 374.48,
-   "atr": 10.16,
-   "skip_reason": null
-  },
-  {
    "symbol": "TRENT",
    "name": "Trent",
    "grade": "B",
@@ -888,6 +864,18 @@
    "skip_reason": null
   },
   {
+   "symbol": "ADANIPORTS",
+   "name": "Adani Ports",
+   "grade": "B",
+   "passed": false,
+   "entry": 1854.0,
+   "stop": 1816.15,
+   "t1": 1929.7,
+   "t2": 2005.4,
+   "atr": 50.47,
+   "skip_reason": null
+  },
+  {
    "symbol": "DLF",
    "name": "DLF",
    "grade": "B",
@@ -900,16 +888,52 @@
    "skip_reason": null
   },
   {
-   "symbol": "ONGC",
-   "name": "ONGC",
+   "symbol": "ETERNAL",
+   "name": "Eternal Zomato",
+   "grade": "B",
+   "passed": false,
+   "entry": 344.0,
+   "stop": 336.38,
+   "t1": 359.24,
+   "t2": 374.48,
+   "atr": 10.16,
+   "skip_reason": null
+  },
+  {
+   "symbol": "CIPLA",
+   "name": "Cipla",
+   "grade": "B",
+   "passed": false,
+   "entry": 1387.0,
+   "stop": 1365.63,
+   "t1": 1429.74,
+   "t2": 1472.49,
+   "atr": 28.5,
+   "skip_reason": null
+  },
+  {
+   "symbol": "ULTRACEMCO",
+   "name": "UltraTech Cement",
+   "grade": "B",
+   "passed": false,
+   "entry": 11387.0,
+   "stop": 11200.25,
+   "t1": 11760.51,
+   "t2": 12134.01,
+   "atr": 249.0,
+   "skip_reason": null
+  },
+  {
+   "symbol": "RELIANCE",
+   "name": "Reliance Industries",
    "grade": "C",
    "passed": false,
-   "entry": 234.83,
-   "stop": 231.51,
-   "t1": 241.46,
-   "t2": 248.09,
-   "atr": 4.42,
-   "skip_reason": "Already up 4.19% today: reversal risk"
+   "entry": 1300.0,
+   "stop": 1274.04,
+   "t1": 1351.93,
+   "t2": 1403.86,
+   "atr": 34.62,
+   "skip_reason": "Already up 11.6% today: reversal risk"
   },
   {
    "symbol": "GAIL",
@@ -924,28 +948,16 @@
    "skip_reason": "Already up 5.41% today: reversal risk"
   },
   {
-   "symbol": "CIPLA",
-   "name": "Cipla",
+   "symbol": "ONGC",
+   "name": "ONGC",
    "grade": "C",
    "passed": false,
-   "entry": 1387.0,
-   "stop": 1365.63,
-   "t1": 1429.74,
-   "t2": 1472.49,
-   "atr": 28.5,
-   "skip_reason": null
-  },
-  {
-   "symbol": "PNB",
-   "name": "Punjab National Bank",
-   "grade": "C",
-   "passed": false,
-   "entry": 123.06,
-   "stop": 120.83,
-   "t1": 127.52,
-   "t2": 131.98,
-   "atr": 2.97,
-   "skip_reason": null
+   "entry": 234.83,
+   "stop": 231.51,
+   "t1": 241.46,
+   "t2": 248.09,
+   "atr": 4.42,
+   "skip_reason": "Already up 4.19% today: reversal risk"
   },
   {
    "symbol": "JSWSTEEL",
@@ -958,18 +970,6 @@
    "t2": 1413.12,
    "atr": 34.41,
    "skip_reason": "Already up 5.13% today: reversal risk"
-  },
-  {
-   "symbol": "ULTRACEMCO",
-   "name": "UltraTech Cement",
-   "grade": "C",
-   "passed": false,
-   "entry": 11387.0,
-   "stop": 11200.25,
-   "t1": 11760.51,
-   "t2": 12134.01,
-   "atr": 249.0,
-   "skip_reason": null
   }
  ]
 }
