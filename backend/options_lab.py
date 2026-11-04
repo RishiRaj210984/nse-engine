@@ -17,9 +17,12 @@ Bias labels come from the macro model's walk-forward (out-of-sample) calls, so
 the lab never sees a call the model could not have made at the time.
 Results are grouped by days to expiry, after costs and slippage, so the plan
 can say "this setup won X% of N times, avg ₹Y per lot" and SKIP setups that
-lost. Premiums are Black-Scholes with India VIX (BankNifty scaled by its
-realised volatility), so these are estimates, not broker fills.
+lost. Prices are NSE's real daily closing prices (nse_prices, simulate_real):
+entry at the close, exits checked at each later close. Only if fewer than
+MIN_REAL_DAYS are saved does it fall back to hourly Black-Scholes estimates with
+India VIX (simulate), which overstated credit by about 16-18% against real prices.
 """
+import bisect
 import logging
 from datetime import date, datetime, timedelta
 
@@ -225,6 +228,120 @@ def simulate(index, ih, vix_h, vix_d, iv_scale, labels, fixed_width=None):
     return pd.DataFrame(trades)
 
 
+MIN_REAL_DAYS = 250   # saved NSE days needed before the lab trusts real prices over the model
+
+
+def _intrinsic(legs, S):
+    return sum((1 if a == "B" else -1) * max(0.0, (S - k) if t == "CE" else (k - S)) for a, k, t in legs)
+
+
+def simulate_real(index, P, vix_d, iv_scale, labels, first_hr, fixed_width=None):
+    """The same setups, strikes and rules as simulate(), priced with NSE's real closing prices (nse_prices.load()).
+    Daily, so: entry at the session's close, target / stop checked at each later close, otherwise held to expiry
+    (settled on the index close). A trade opened on expiry day itself can't be replayed this way and is left out.
+    A setup is only entered when all its legs traded that day."""
+    spec = INDEX_SPECS[index]
+    step, lot = spec["step"], spec["lot"]
+    X = P[P.sym == index]
+    spot = X[X.type == "IX"].set_index("date")["close"].astype(float).to_dict()
+    O = X[X.type != "IX"]
+    px = {(date.fromisoformat(e), d, int(k), t): (float(c), int(v))
+          for e, d, k, t, c, v in zip(O.expiry, O.date, O.strike, O.type, O.close, O.vol)}
+    expiries = sorted({k[0] for k in px})
+    days = sorted(spot)
+    vix = {ts.date(): float(v) for ts, v in vix_d.dropna().items()}
+    vix_days = sorted(vix)
+
+    def val(legs, exp, t):
+        v = 0.0
+        for a, k, ty in legs:
+            p = px.get((exp, t, k, ty))
+            if p is None:
+                return None
+            v += (1 if a == "B" else -1) * p[0]
+        return v
+
+    def traded(legs, exp, t):
+        return all(px.get((exp, t, k, ty), (0, 0))[1] > 0 for a, k, ty in legs)
+
+    def credit_trade(legs, exp, d, later):
+        v0 = val(legs, exp, d)
+        if v0 is None or v0 >= 0 or not traded(legs, exp, d):
+            return None
+        credit = -v0
+        for t in later:
+            v = val(legs, exp, t)
+            if v is not None and (-v <= 0.45 * credit or (v - v0) <= -credit):   # target, or stop at loss = 1x credit
+                return v - v0, credit
+        return _intrinsic(legs, spot[exp]) - v0, credit
+
+    trades = []
+    for i in range(1, len(days)):
+        d = days[i]
+        j = bisect.bisect_left(vix_days, d)   # India VIX at the previous close, as the plan sees it
+        if j == 0:
+            continue
+        pc, S = spot[days[i - 1]], spot[d]
+        scale = float(iv_scale.asof(pd.Timestamp(d))) if len(iv_scale) else 1.0
+        iv0 = vix[vix_days[j - 1]] / 100 * (scale if np.isfinite(scale) else 1.0)
+        want = expiry_for(index, d)
+        near = [e for e in expiries if e >= d and abs((e - want).days) <= 3]
+        if not near:
+            continue
+        exp = min(near, key=lambda e: abs((e - want).days))
+        dte = (exp - d).days
+        if dte == 0 or exp not in spot:
+            continue   # expiry-day entry, or not expired yet
+        later = [t for t in days[i + 1:] if t < exp]
+        em = pc * iv0 * np.sqrt((dte + 0.75) / 365)
+        width = fixed_width or max(2 * step, round(0.5 * em / step) * step)
+        base = {"date": d.isoformat(), "dte": dte, "bucket": bucket(index, dte), "label": labels.get(d),
+                "first_hr": first_hr.get(d, np.nan)}
+
+        # --- condor
+        sc, sp = round((pc + 0.9 * em) / step) * step, round((pc - 0.9 * em) / step) * step
+        if sp < S < sc:
+            legs = [("S", sc, "CE"), ("B", sc + width, "CE"), ("S", sp, "PE"), ("B", sp - width, "PE")]
+            r = credit_trade(legs, exp, d, later)
+            if r:
+                trades.append({**base, "strategy": "condor", "pnl": round(r[0] * lot - COSTS[(index, "condor")]),
+                               "max_loss": round((width - r[1]) * lot + COSTS[(index, "condor")])})
+        if fixed_width:
+            continue
+
+        # --- credit spread on the side away from the bias (half a condor), held like the condor
+        if base["label"] in ("BULLISH", "BEARISH"):
+            bull = base["label"] == "BULLISH"
+            legs = [("S", sp, "PE"), ("B", sp - width, "PE")] if bull else [("S", sc, "CE"), ("B", sc + width, "CE")]
+            if (bull and S > sp) or (not bull and S < sc):
+                r = credit_trade(legs, exp, d, later)
+                if r:
+                    trades.append({**base, "strategy": "bull_put" if bull else "bear_call",
+                                   "pnl": round(r[0] * lot - COSTS[(index, "spread")])})
+
+            # --- directional debit spread: target 60% of max profit, stop at half the debit, else out next day
+            kind = "CE" if bull else "PE"
+            k1 = round(S / step) * step
+            legs = [("B", k1, kind), ("S", k1 + (width if bull else -width), kind)]
+            v0 = val(legs, exp, d)
+            nxt = days[i + 1] if i + 1 < len(days) else None
+            if v0 and v0 > 0 and traded(legs, exp, d) and nxt:
+                v = val(legs, exp, nxt) if nxt < exp else _intrinsic(legs, spot[exp])
+                if v is not None:
+                    trades.append({**base, "strategy": "bull_spread" if bull else "bear_spread",
+                                   "pnl": round((v - v0) * lot - COSTS[(index, "spread")]), "cost": round(v0 * lot)})
+    return pd.DataFrame(trades)
+
+
+def _first_hour(ih):
+    """% move of the first hourly bar per session (open -> close), for the quiet / trending split."""
+    out = {}
+    for d, day in ih.groupby(ih.index.date):
+        o, c = float(day["Open"].iloc[0]), float(day["Close"].iloc[0])
+        out[d] = round((c / o - 1) * 100, 3) if o else np.nan
+    return out
+
+
 def _group(R):
     if R is None or not len(R):
         return None
@@ -268,8 +385,12 @@ def _summarise(index, R):
         # spreads: too few calls per bucket, so also keep the all-days verdict
         out[strat] = {"basis": basis, "overall": _group(S_use), "by_bucket": by}
         ov = out[strat]["overall"]
+        # spreads must also still work lately (same test as the small-capital check): a fading edge is not traded
+        recent = _group(S_use[pd.to_datetime(S_use.date) >= pd.Timestamp.now() - pd.Timedelta(days=120)]) if kind == "spread" else None
+        out[strat]["recent"] = recent
         out[strat]["overall_allowed"] = bool(ov and ov["trades"] >= rule["min_trades"] and ov["win_pct"] >= rule["min_win"]
-                                             and ov["avg_pnl"] >= MIN_EDGE)
+                                             and ov["avg_pnl"] >= MIN_EDGE
+                                             and not (recent and recent["trades"] >= 10 and recent["avg_pnl"] <= 0))
     return out
 
 
@@ -325,22 +446,38 @@ def run():
     vd = hist["^INDIAVIX"]["Close"]
     n_d, b_d = hist["^NSEI"]["Close"], hist["^NSEBANK"]["Close"]
     ratio = (b_d.pct_change().rolling(20).std() / n_d.pct_change().rolling(20).std()).clip(0.8, 1.8).dropna()
+    P = None
+    try:
+        import nse_prices
+        nse_prices.update()
+        P = nse_prices.load()
+    except Exception as exc:   # NSE unreachable: fall back to the model below
+        log.warning("NSE closing prices unavailable: %s", exc)
+    real = P is not None and P.date.nunique() >= MIN_REAL_DAYS
     lab = {"generated_at": store.now_ist().isoformat(), "costs_per_lot": {f"{k[0]} {k[1]}": v for k, v in COSTS.items()},
-           "bucket_labels": BUCKET_LABELS}
+           "bucket_labels": BUCKET_LABELS, "prices": "real" if real else "model"}
+    if real:
+        lab["price_days"] = {"days": int(P.date.nunique()), "from": P.date.min().isoformat(), "to": P.date.max().isoformat()}
     small, runs = {}, {}
     for index, scale in (("NIFTY", pd.Series(dtype=float)), ("BANKNIFTY", ratio)):
         ih = _hourly(INDEX_SPECS[index]["ticker"])
         if ih is None:
             continue
-        R = simulate(index, ih, vh, vd, scale, labels)
+        if real:
+            fh = _first_hour(ih)
+            replay = lambda w=None, index=index, scale=scale, fh=fh: simulate_real(index, P, vd, scale, labels, fh, fixed_width=w)
+        else:
+            replay = lambda w=None, index=index, ih=ih, scale=scale: simulate(index, ih, vh, vd, scale, labels, fixed_width=w)
+        R = replay()
         lab[index] = _summarise(index, R)
         lab.setdefault("rule_curves", {})[index] = rule_curve(index, R, lab[index])
-        small[index] = (ih, vh, vd, scale)
+        small[index] = (float(ih["Close"].iloc[-1]), replay)
         runs[index] = R
     store._write(store.state_path("options_lab.json"), lab, indent=1)
     try:
         import learning
-        store.publish("small-capital.json", capital_check(small, labels, learning.performance().get("backtest_stocks"), runs=runs))
+        store.publish("small-capital.json", capital_check(small, learning.performance().get("backtest_stocks"), runs=runs,
+                                                          prices=lab["prices"]))
     except Exception as exc:   # never block the main lab
         log.warning("small-capital check failed: %s", exc)
     return lab
@@ -368,10 +505,11 @@ def _edge(stats, recent, worst_cap):
                 and recent and recent["trades"] >= 10 and recent["avg_pnl"] > 0 and stats["worst"] >= -worst_cap)
 
 
-def capital_check(data_by_index, labels, stock_stats=None, capital=CAPITAL, runs=None):
+def capital_check(data_by_index, stock_stats=None, capital=CAPITAL, runs=None, prices="model"):
     """Re-test, every night, the setups that fit `capital`: ICICI's margin (estimate) within it and the worst
-    loss within half of it. Condors are re-run with narrow wings; bought-only (debit) spreads come from `runs`,
-    the lab's full replay, on the days the model made that call. Published as small-capital.json."""
+    loss within half of it. data_by_index: {index: (spot now, replay(width))}. Condors are re-run with narrow
+    wings; bought-only (debit) spreads come from `runs`, the lab's full replay, on the days the model made that
+    call. Published as small-capital.json."""
     cap = 0.5 * capital
     rows = []
 
@@ -382,10 +520,9 @@ def capital_check(data_by_index, labels, stock_stats=None, capital=CAPITAL, runs
                      "recent_avg": recent["avg_pnl"] if recent else None,
                      "edge": fits and _edge(st, recent, cap), "note": extra})
 
-    for index, (ih, vh, vd, scale) in data_by_index.items():
-        spot = float(ih["Close"].iloc[-1])
+    for index, (spot, replay) in data_by_index.items():
         for w in SMALL_WIDTHS[index]:
-            R = simulate(index, ih, vh, vd, scale, labels, fixed_width=w)
+            R = replay(w)
             if R is None or not len(R):
                 continue
             R = R[R.dte >= 1]   # never on expiry day
@@ -405,7 +542,7 @@ def capital_check(data_by_index, labels, stock_stats=None, capital=CAPITAL, runs
                      "avg_r": stock_stats.get("avg_r"), "edge": bool(e)})
     best = next((r for r in sorted(rows, key=lambda r: -(r.get("avg_pnl") or 0)) if r["edge"]), None)
     return {"generated_at": store.now_ist().isoformat(), "capital": capital, "edge_found": best is not None,
-            "best": best["name"] if best else None, "setups": rows,
+            "best": best["name"] if best else None, "setups": rows, "prices": prices,
             "rule": f"fits = ICICI margin (estimate) within Rs {capital:,} and worst loss within Rs {int(cap):,}; "
                     f"edge = also 40+ past trades, 70%+ wins, avg above Rs {MIN_EDGE} per trade after costs, "
                     f"positive in the last 120 days"}
@@ -418,6 +555,15 @@ def load():
 # ------------------------------------------------------------------ morning verdict
 STRATEGY_KEY = {"Iron Condor": "condor", "Bull Call Spread": "bull_spread", "Bear Put Spread": "bear_spread",
                 "Bull Put Spread": "bull_put", "Bear Call Spread": "bear_call"}
+
+
+def _faded(node):
+    """Why a spread with a positive 2-year average is still skipped: it lost in the last 120 days."""
+    ov, rc = node.get("overall") or {}, node.get("recent")
+    if ov.get("avg_pnl", 0) >= MIN_EDGE and rc and rc["trades"] >= 10 and rc["avg_pnl"] <= 0:
+        return (f"On {node['basis']}, this spread averaged ₹{ov['avg_pnl']:,} per lot over {ov['trades']} trades, "
+                f"but ₹{rc['avg_pnl']:,} over the last {rc['trades']} (120 days): the edge has faded, so it is skipped.")
+    return None
 
 
 def setup_verdict(index, strategy_name, session, lab=None, events=None):
@@ -435,6 +581,10 @@ def setup_verdict(index, strategy_name, session, lab=None, events=None):
         return {"decision": "CAUTION", "dte": dte, "reason": "Options lab has no history for this yet.", "stats": None}
     g = node["by_bucket"].get(b)
     kind = "condor" if key == "condor" else "spread"
+    if g is None and dte == 0 and (lab or {}).get("prices") == "real":
+        return {"decision": "SKIP", "dte": dte, "stats": None,
+                "reason": "Expiry day: a trade opened today can't be tested on NSE's closing prices, "
+                          "and the earlier model test lost money on expiry-day entries."}
     if g is None or (kind == "spread" and g["trades"] < RULES["spread"]["min_trades"]):
         # spreads: few calls per bucket, fall back to all buckets for this call
         ov = node.get("overall")
@@ -444,14 +594,14 @@ def setup_verdict(index, strategy_name, session, lab=None, events=None):
                               f"avg ₹{ov['avg_pnl']:,} per lot after costs (worst ₹{ov['worst']:,})."}
         if ov:
             return {"decision": "SKIP", "dte": dte, "stats": {**ov, "sample": node["basis"]},
-                    "reason": f"On {node['basis']}, this spread lost on average: {ov['win_pct']}% wins, "
-                              f"avg ₹{ov['avg_pnl']:,} per lot over {ov['trades']} trades."}
+                    "reason": _faded(node) or f"On {node['basis']}, this spread lost on average: {ov['win_pct']}% wins, "
+                                              f"avg ₹{ov['avg_pnl']:,} per lot over {ov['trades']} trades."}
         return {"decision": "CAUTION", "dte": dte, "reason": "Too little history.", "stats": None}
     if kind == "spread" and not node.get("overall_allowed"):
         ov = node.get("overall") or {}
         return {"decision": "SKIP", "dte": dte, "stats": {**ov, "sample": node["basis"]} if ov else None,
-                "reason": f"On {node['basis']}, this spread lost overall ({ov.get('win_pct')}% wins, avg ₹{ov.get('avg_pnl', 0):,} "
-                          f"per lot over {ov.get('trades')} trades). A good-looking slice is not trusted on its own."}
+                "reason": _faded(node) or f"On {node['basis']}, this spread lost overall ({ov.get('win_pct')}% wins, avg ₹{ov.get('avg_pnl', 0):,} "
+                                          f"per lot over {ov.get('trades')} trades). A good-looking slice is not trusted on its own."}
     g = {**g, "sample": f"{node['basis']}, {g['sample']}"}
     heavy = BANK_HEAVY if index == "BANKNIFTY" else set(HEAVYWEIGHTS)
     recent = [e for e in (events or []) if e.get("affects") == session and e["symbol"] in heavy]

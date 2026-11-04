@@ -187,7 +187,7 @@ body.is-simple main{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 <script>
 const NSE_HOLIDAYS = ['2026-10-20', '2026-11-08', '2026-11-10', '2026-11-24', '2026-12-25'];   // fallback; meta.json has the live list
 const holidayList = () => (D.meta?.holidays?.length ? D.meta.holidays : NSE_HOLIDAYS);
-const APP_VERSION = 'v46';   // keep equal to CACHE in sw.js
+const APP_VERSION = 'v47';   // keep equal to CACHE in sw.js
 const TEST_FROM = '2026-11-04';   // the one real test trade (guardian LIVE_FROM)
 const FILES = ['plan', 'global-bias', 'volume-breakouts', 'performance', 'review', 'meta', 'live', 'small-capital', 'markets'];
 const D = {};
@@ -565,7 +565,7 @@ function capitalLine() {
     ${(c.setups || []).map((s) => `<div class="srow"><b>${s.edge ? '✅' : '❌'} ${esc(s.name)}</b><div class="fine">${s.trades} past trades · ${s.win_pct}% won · `
       + (s.avg_pnl != null ? `avg ₹${s.avg_pnl} · worst ₹${s.worst} · last 120 days avg ₹${s.recent_avg ?? '–'}` : `avg ${s.avg_r}R`)
       + (s.margin != null ? ` · <b class="${s.margin <= c.capital ? 'up' : 'down'}">margin ≈ ₹${Number(s.margin).toLocaleString('en-IN')}</b>` : '') + `</div></div>`).join('')}
-    <p class="fine">${esc(c.rule || '')}</p></details>`;
+    <p class="fine">${c.prices === 'real' ? 'Replayed on real NSE closing option prices. ' : ''}${esc(c.rule || '')}</p></details>`;
 }
 function vSimple() {
   const p = D.plan || {}, t = ist(), live = store.get('g_live', false);
@@ -1355,7 +1355,10 @@ function vLearning() {
       });
       h += `</section>`;
     });
-    h += `<div class="fine">Re-learned every evening from ~2 years of hourly data with the plan's own entry, target and stop rules, after costs and slippage per lot. Estimates, not broker fills. Updated ${ago(lab.generated_at)}.</div>`;
+    const pd = lab.price_days;
+    h += `<div class="fine">${lab.prices === 'real'
+      ? `Re-learned every evening on NSE's real closing option prices (${pd ? pd.days + ' days, since ' + esc(pd.from) : 'about 2 years'}): entry at the close, target and stop checked at each later close, after costs per lot. Real prices gave about 16–18% less credit than the old estimates.`
+      : `Re-learned every evening from ~2 years of hourly data with the plan's own entry, target and stop rules, after costs and slippage per lot. Estimates, not broker fills.`} Updated ${ago(lab.generated_at)}.</div>`;
   }
   h += `<section class="card"><div class="eyebrow">What it changed</div>${(p.history || []).map((x) => `<div><div class="n" style="font-size:.8rem">v${x.version} · ${esc(x.created_at.slice(0, 16).replace('T', ' '))}</div><div class="dim" style="font-size:.88rem">${esc(x.note)}</div></div>`).join('')}</section>`;
   return h;
