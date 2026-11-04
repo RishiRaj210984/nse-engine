@@ -1,7 +1,7 @@
 {
  "latest": {
   "session": "2026-11-04",
-  "as_of": "2026-11-04T16:17:23.736876+05:30",
+  "as_of": "2026-11-04T23:44:23.534337+05:30",
   "final": true,
   "plan_built": "2026-11-04T07:13:27.405016+05:30",
   "bias": {
@@ -68,7 +68,7 @@
     "open": 242.53,
     "high": 245.88,
     "low": 242.22,
-    "last": 245.29,
+    "last": 245.37,
     "tradeable": true,
     "status": "NOT TRIGGERED",
     "r": 0.0
@@ -118,13 +118,13 @@
     "open": 1860.9,
     "high": 1921.3,
     "low": 1860.9,
-    "last": 1904.0,
+    "last": 1910.0,
     "tradeable": true,
     "status": "OPEN (day 1 of 2)",
     "entry_fill": 1904.0,
     "entry_time": "09:30",
-    "r": 0.0,
-    "pnl_10k": 0,
+    "r": 0.07,
+    "pnl_10k": 6,
     "qty_10k": 1
    },
    {
@@ -136,13 +136,13 @@
     "open": 707.7,
     "high": 723.4,
     "low": 703.6,
-    "last": 719.0,
+    "last": 720.0,
     "tradeable": true,
     "status": "OPEN (day 1 of 2)",
     "entry_fill": 710.3,
     "entry_time": "09:30",
-    "r": 0.4,
-    "pnl_10k": 35,
+    "r": 0.44,
+    "pnl_10k": 39,
     "qty_10k": 4
    },
    {
@@ -205,9 +205,9 @@
    "planned_max_reward": 6342,
    "gap": -6516,
    "trades": 1,
-   "stocks_pnl_10k": 69,
+   "stocks_pnl_10k": 79,
    "stock_trades": 7,
-   "plan_pnl": -105
+   "plan_pnl": -95
   },
   "lessons": [
    "Bias RANGEBOUND: Nifty +2.22% vs prev close. Call was wrong (move bigger than the sideways band).",
@@ -225,8 +225,8 @@
    "actual_pct": 2.22,
    "options_pnl": -174,
    "trades": 1,
-   "stocks_pnl": 69,
-   "plan_pnl": -105,
+   "stocks_pnl": 79,
+   "plan_pnl": -95,
    "detail": [
     "NIFTY Iron Condor: NO ENTRY +0",
     "BANKNIFTY Iron Condor: TIME -174"
@@ -902,7 +902,7 @@
   "days": 12,
   "bias_hit_pct": 25.0,
   "options_pnl_sum": -3622,
-  "plan_pnl_sum": -3553,
+  "plan_pnl_sum": -3543,
   "plan_win_days": 4,
   "plan_loss_days": 5,
   "options_win_days": 4,

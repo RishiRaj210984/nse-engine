@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-04T16:18:22.373589+05:30",
+ "generated_at": "2026-11-04T23:45:11.157841+05:30",
  "live_stocks": {
   "trades": 6,
   "win_rate": 16.7,
@@ -323,10 +323,10 @@
    "r": -1.323
   }
  ],
- "open_signals": 41,
+ "open_signals": 51,
  "model": {
-  "version": 27,
-  "updated": "2026-11-04T16:17:55.906771+05:30",
+  "version": 28,
+  "updated": "2026-11-04T23:44:49.748554+05:30",
   "ranker_on": true,
   "samples": 2180,
   "live_samples": 59,
@@ -351,6 +351,45 @@
   "cost_pct": 0.25
  },
  "history": [
+  {
+   "version": 28,
+   "created_at": "2026-11-04T23:44:49.748554+05:30",
+   "params": {
+    "vol_mult": 2.5,
+    "rsi_lo": 55,
+    "rsi_hi": 65,
+    "near_high_pct": 2.0,
+    "sl_atr": 0.75,
+    "t1_atr": 1.5,
+    "t2_atr": 3.0,
+    "bias_threshold": 0.2,
+    "vix_high": 18.0,
+    "news_weight": 0.0,
+    "max_day_chg": 5.0,
+    "regime_gate": 1,
+    "cost_pct": 0.25
+   },
+   "metrics": {
+    "samples": 2180,
+    "live_samples": 59,
+    "rule_trades": 66,
+    "base_win_rate": 0.5049,
+    "avg_win_r": 1.238,
+    "avg_loss_r": 0.866,
+    "expectancy_r": 0.196,
+    "holdout_logloss": 0.6858,
+    "baseline_logloss": 0.6897,
+    "holdout_auc": 0.535,
+    "holdout_n": 436,
+    "bias_wf": {
+     "oos_days": 500,
+     "directional_calls": 209,
+     "directional_accuracy": 60.3,
+     "sign_accuracy_all_days": 55.6
+    }
+   },
+   "note": "vol_mult 2.0\u21922.5; rsi_lo 60\u219255; near_high_pct 3.0\u21922.0; max_day_chg 4.0\u21925.0; ranker ON (holdout AUC 0.54)"
+  },
   {
    "version": 27,
    "created_at": "2026-11-04T16:17:55.906771+05:30",
@@ -896,49 +935,10 @@
     }
    },
    "note": "ranker ON (holdout AUC 0.55)"
-  },
-  {
-   "version": 13,
-   "created_at": "2026-10-26T16:17:47.814874+05:30",
-   "params": {
-    "vol_mult": 2.0,
-    "rsi_lo": 60,
-    "rsi_hi": 65,
-    "near_high_pct": 3.0,
-    "sl_atr": 0.75,
-    "t1_atr": 1.5,
-    "t2_atr": 3.0,
-    "bias_threshold": 0.2,
-    "vix_high": 18.0,
-    "news_weight": 0.0,
-    "max_day_chg": 4.0,
-    "regime_gate": 1,
-    "cost_pct": 0.25
-   },
-   "metrics": {
-    "samples": 2138,
-    "live_samples": 17,
-    "rule_trades": 99,
-    "base_win_rate": 0.4716,
-    "avg_win_r": 1.109,
-    "avg_loss_r": 0.849,
-    "expectancy_r": 0.075,
-    "holdout_logloss": 0.6819,
-    "baseline_logloss": 0.6869,
-    "holdout_auc": 0.545,
-    "holdout_n": 428,
-    "bias_wf": {
-     "oos_days": 500,
-     "directional_calls": 207,
-     "directional_accuracy": 59.4,
-     "sign_accuracy_all_days": 54.0
-    }
-   },
-   "note": "ranker ON (holdout AUC 0.55)"
   }
  ],
  "options_lab": {
-  "generated_at": "2026-11-04T16:17:59.423431+05:30",
+  "generated_at": "2026-11-04T23:44:53.541008+05:30",
   "costs_per_lot": {
    "NIFTY condor": 400,
    "NIFTY spread": 240,
@@ -965,9 +965,9 @@
   },
   "prices": "real",
   "price_days": {
-   "days": 516,
+   "days": 517,
    "from": "2024-10-01",
-   "to": "2026-11-03"
+   "to": "2026-11-04"
   },
   "NIFTY": {
    "condor": {
