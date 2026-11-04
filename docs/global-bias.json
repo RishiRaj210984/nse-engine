@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-05T00:07:22.987858+05:30",
+ "generated_at": "2026-11-05T05:24:24.037982+05:30",
  "target_session": "2026-11-05",
  "reference_date": "2026-11-03",
  "us_session_used": "2026-11-04",
@@ -7,48 +7,48 @@
   {
    "name": "S&P 500",
    "symbol": "^GSPC",
-   "last": 7702.84,
-   "change": 1.769,
+   "last": 7688.62,
+   "change": 1.581,
    "change_unit": "%",
    "as_of": "2026-11-04"
   },
   {
    "name": "Nasdaq",
    "symbol": "^IXIC",
-   "last": 25856.76,
-   "change": 1.911,
+   "last": 25736.51,
+   "change": 1.437,
    "change_unit": "%",
    "as_of": "2026-11-04"
   },
   {
    "name": "Dow Jones",
    "symbol": "^DJI",
-   "last": 53298.33,
-   "change": 2.919,
+   "last": 53356.12,
+   "change": 3.031,
    "change_unit": "%",
    "as_of": "2026-11-04"
   },
   {
    "name": "US 10Y Yield",
    "symbol": "^TNX",
-   "last": 4.9,
-   "change": -0.048,
+   "last": 4.89,
+   "change": -0.058,
    "change_unit": "pts",
    "as_of": "2026-11-04"
   },
   {
    "name": "Crude Oil",
    "symbol": "CL=F",
-   "last": 88.84,
-   "change": -7.545,
+   "last": 88.27,
+   "change": -8.138,
    "change_unit": "%",
    "as_of": "2026-11-04"
   },
   {
    "name": "Dollar Index",
    "symbol": "DX-Y.NYB",
-   "last": 101.5,
-   "change": -0.367,
+   "last": 101.49,
+   "change": -0.371,
    "change_unit": "%",
    "as_of": "2026-11-04"
   },
@@ -95,60 +95,81 @@
  ],
  "bias": {
   "label": "BULLISH",
-  "score": 91,
-  "z": 1.511,
-  "model_z": 1.511,
-  "predicted_nifty_move_pct": 1.13,
-  "typical_daily_move_pct": 0.751,
+  "score": 97,
+  "z": 2.039,
+  "model_z": 2.039,
+  "predicted_nifty_move_pct": 1.43,
+  "typical_daily_move_pct": 0.703,
   "source": "pre-open global snapshot",
   "india_vix": 15.72,
   "components": [
    {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": 2.2,
-    "contribution_pct": 0.962
+    "value": 2.12,
+    "contribution_pct": 0.817
    },
    {
     "feature": "cl",
     "label": "Crude oil",
-    "value": -8.9,
-    "contribution_pct": 0.516
-   },
-   {
-    "feature": "gold",
-    "label": "Gold",
-    "value": 4.11,
-    "contribution_pct": -0.276
-   },
-   {
-    "feature": "nq",
-    "label": "Nasdaq futures",
-    "value": 1.66,
-    "contribution_pct": -0.271
+    "value": -9.49,
+    "contribution_pct": 0.573
    },
    {
     "feature": "ftse",
     "label": "FTSE 100 (UK)",
     "value": 1.21,
-    "contribution_pct": 0.255
+    "contribution_pct": 0.161
    },
    {
-    "feature": "ym",
-    "label": "Dow futures",
-    "value": 2.99,
-    "contribution_pct": -0.224
+    "feature": "dax",
+    "label": "DAX (Germany)",
+    "value": 2.57,
+    "contribution_pct": -0.157
+   },
+   {
+    "feature": "n225",
+    "label": "Nikkei 225",
+    "value": -1.65,
+    "contribution_pct": -0.128
+   },
+   {
+    "feature": "nq",
+    "label": "Nasdaq futures",
+    "value": 1.21,
+    "contribution_pct": -0.115
    }
   ]
  },
  "news": {
   "summary": {
-   "score": 0.426,
+   "score": 0.421,
    "count": 40,
    "label": "POSITIVE"
   },
   "weight": 0.0,
   "headlines": [
+   {
+    "title": "Alcohol stocks jump as blue wave boosts industry prospects",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/alcohol-stocks-jump-as-blue-wave-boosts-industry-prospects/articleshow/135551002.cms",
+    "published": "Thu, 05 Nov 2026 01:34:38 +0530",
+    "sentiment": 0.542
+   },
+   {
+    "title": "Musk stocks lose $120 billion as Democrats\u2019 Texas win rattles investors",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/musk-stocks-lose-120-billion-as-democrats-texas-win-rattles-investors/articleshow/135550872.cms",
+    "published": "Thu, 05 Nov 2026 01:25:59 +0530",
+    "sentiment": 0.273
+   },
+   {
+    "title": "Bitcoin rebounds with stocks despite threat to crypto agenda",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/bitcoin-rebounds-with-stocks-despite-threat-to-crypto-agenda/articleshow/135550638.cms",
+    "published": "Thu, 05 Nov 2026 01:02:16 +0530",
+    "sentiment": 0.417
+   },
    {
     "title": "AI data center stocks dip, renewables surge after Democrat sweep in US midterm elections",
     "source": "ET Markets",
@@ -211,37 +232,16 @@
     "link": "https://economictimes.indiatimes.com/markets/digital-real-estate/realty-news/property-giant-vonovia-concerned-over-berlin-lefts-housing-plans/articleshow/135543553.cms",
     "published": "Wed, 04 Nov 2026 20:40:31 +0530",
     "sentiment": 0.0
-   },
-   {
-    "title": "Sunday PropTech acquires 89-room hotel in Kolkata, marks entry into city",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/digital-real-estate/realty-news/sunday-proptech-acquires-89-room-hotel-in-kolkata-marks-entry-into-city/articleshow/135543130.cms",
-    "published": "Wed, 04 Nov 2026 20:33:46 +0530",
-    "sentiment": 0.0
-   },
-   {
-    "title": "US stocks today: US stocks rally after Democrats' midterm sweep as AI infrastructure stocks slide",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/us-stocks-today-dow-jones-soars-1000-points-at-open-as-democrats-win-congress-data-center-stocks-slide/articleshow/135542698.cms",
-    "published": "Wed, 04 Nov 2026 20:11:36 +0530",
-    "sentiment": 0.382
-   },
-   {
-    "title": "Ather Energy among 15 stocks that hit 52-week highs and rallied up to 30% in a month",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/ather-energy-among-15-stocks-that-hit-52-week-highs-and-rallied-up-to-30-in-a-month/slideshow/135541189.cms",
-    "published": "Wed, 04 Nov 2026 19:07:19 +0530",
-    "sentiment": 0.273
    }
   ]
  },
  "model": {
   "oos_days": 300,
-  "directional_calls": 157,
-  "directional_accuracy": 69.4,
-  "sign_accuracy_all_days": 62.3,
-  "gap_corr": 0.52,
-  "gap_sign_pct": 69.7,
+  "directional_calls": 170,
+  "directional_accuracy": 72.4,
+  "sign_accuracy_all_days": 63.3,
+  "gap_corr": 0.66,
+  "gap_sign_pct": 71.7,
   "trained_rows": 750,
   "version": 28,
   "bias_threshold": 0.2
@@ -584,28 +584,28 @@
   }
  ],
  "preopen": {
-  "snapshot_ist": "Thu 05 Nov 00:07 IST",
+  "snapshot_ist": "Thu 05 Nov 05:24 IST",
   "stage": "preview",
-  "expected_gap_pct": 1.3,
-  "gap_typical_error_pct": 0.33,
-  "expected_day_pct": 1.13,
-  "z": 1.511,
-  "typical_daily_move_pct": 0.751,
+  "expected_gap_pct": 1.51,
+  "gap_typical_error_pct": 0.29,
+  "expected_day_pct": 1.43,
+  "z": 2.039,
+  "typical_daily_move_pct": 0.703,
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": 2.2
+    "move_pct": 2.12
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": 1.66
+    "move_pct": 1.21
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": 2.99
+    "move_pct": 3.33
    },
    {
     "key": "dax",
@@ -630,12 +630,12 @@
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": -8.9
+    "move_pct": -9.49
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": 4.11
+    "move_pct": 4.07
    },
    {
     "key": "dxy",
@@ -652,61 +652,61 @@
    {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": 2.2,
-    "contribution_pct": 0.962
+    "value": 2.12,
+    "contribution_pct": 0.817
    },
    {
     "feature": "cl",
     "label": "Crude oil",
-    "value": -8.9,
-    "contribution_pct": 0.516
-   },
-   {
-    "feature": "gold",
-    "label": "Gold",
-    "value": 4.11,
-    "contribution_pct": -0.276
-   },
-   {
-    "feature": "nq",
-    "label": "Nasdaq futures",
-    "value": 1.66,
-    "contribution_pct": -0.271
+    "value": -9.49,
+    "contribution_pct": 0.573
    },
    {
     "feature": "ftse",
     "label": "FTSE 100 (UK)",
     "value": 1.21,
-    "contribution_pct": 0.255
+    "contribution_pct": 0.161
    },
    {
-    "feature": "ym",
-    "label": "Dow futures",
-    "value": 2.99,
-    "contribution_pct": -0.224
+    "feature": "dax",
+    "label": "DAX (Germany)",
+    "value": 2.57,
+    "contribution_pct": -0.157
+   },
+   {
+    "feature": "n225",
+    "label": "Nikkei 225",
+    "value": -1.65,
+    "contribution_pct": -0.128
+   },
+   {
+    "feature": "nq",
+    "label": "Nasdaq futures",
+    "value": 1.21,
+    "contribution_pct": -0.115
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.52,
-   "gap_sign_pct": 69.7,
-   "directional_calls": 165,
-   "directional_accuracy": 69.7
+   "gap_corr": 0.66,
+   "gap_sign_pct": 71.7,
+   "directional_calls": 175,
+   "directional_accuracy": 71.4
   },
   "vix": 15.72
  },
  "global_table": {
-  "updated": "2026-11-05T00:07:38.553782+05:30",
+  "updated": "2026-11-05T05:24:38.083721+05:30",
   "rows": [
    {
     "group": "US, last close",
-    "move": "S&P 500 +1.8%, Nasdaq +1.9%, Dow +2.9%",
+    "move": "S&P 500 +1.6%, Nasdaq +1.4%, Dow +3.0%",
     "effect": "green",
     "note": "Positive lead for India"
    },
    {
     "group": "US futures now",
-    "move": "S&P +2.20%, Nasdaq +1.66%, Dow +2.99% (since Nifty's close)",
+    "move": "S&P +2.12%, Nasdaq +1.21%, Dow +3.33% (since Nifty's close)",
     "effect": "green",
     "note": "Futures point to a firmer open"
    },
@@ -724,19 +724,19 @@
    },
    {
     "group": "Crude oil",
-    "move": "WTI ~$89, Brent ~$96 (-7.7%)",
-    "effect": "green",
-    "note": "Falling oil helps India \u00b7 Price is high for India"
-   },
-   {
-    "group": "US 10-year yield",
-    "move": "4.90% (-5 bp)",
+    "move": "WTI ~$88, Brent ~$95 (+0.2%)",
     "effect": "flat",
     "note": "Steady"
    },
    {
+    "group": "US 10-year yield",
+    "move": "4.89% (-6 bp)",
+    "effect": "green",
+    "note": "Easing yields help"
+   },
+   {
     "group": "Dollar index",
-    "move": "101.50 (-0.36%)",
+    "move": "101.49 (-0.37%)",
     "effect": "green",
     "note": "Weaker dollar helps"
    },
@@ -754,7 +754,7 @@
    },
    {
     "group": "Model: Nifty open",
-    "move": "+1.30% (\u00b10.33%)",
+    "move": "+1.51% (\u00b10.29%)",
     "effect": "green",
     "note": "Combined forecast from all markets (preview)",
     "model": true
