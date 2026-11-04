@@ -1,32 +1,32 @@
 {
  "latest": {
-  "session": "2026-11-03",
-  "as_of": "2026-11-03T23:32:57.642158+05:30",
+  "session": "2026-11-04",
+  "as_of": "2026-11-04T16:17:23.736876+05:30",
   "final": true,
-  "plan_built": "2026-11-03T07:13:29.372877+05:30",
+  "plan_built": "2026-11-04T07:13:27.405016+05:30",
   "bias": {
    "label": "RANGEBOUND",
-   "predicted_pct": 0.01,
-   "actual_pct": 3.29,
-   "band_pct": 0.34,
+   "predicted_pct": -0.03,
+   "actual_pct": 2.22,
+   "band_pct": 0.35,
    "correct": false
   },
   "options": [
    {
     "index": "NIFTY",
     "strategy": "Iron Condor",
-    "legs": "SELL 23200 CE + BUY 23300 CE + SELL 22900 PE + BUY 22800 PE",
+    "legs": "SELL 23850 CE + BUY 24100 CE + SELL 23050 PE + BUY 22800 PE",
     "lot_size": 65,
-    "planned_max_reward": 1424,
-    "planned_max_loss": 5076,
-    "day_open": 23573.05,
-    "day_high": 23810.85,
-    "day_low": 23482.95,
-    "last": 23810.85,
-    "entry_condition": "plan said SKIP: No tested structure qualifies for today. Expiry day, right after ITC results: condors broke 60% of the time in this combination (small sample).",
-    "entry_spot": 23640.95,
+    "planned_max_reward": 4154,
+    "planned_max_loss": 12096,
+    "day_open": 23734.15,
+    "day_high": 23960.6,
+    "day_low": 23700.8,
+    "last": 23960.6,
+    "entry_condition": "NIFTY between 23,050 and 23,850 at 10:15",
+    "entry_spot": 23871.4,
     "entry_time": "10:15",
-    "opening_move_pct": 0.29,
+    "opening_move_pct": 0.58,
     "status": "NO ENTRY",
     "pnl_per_lot": 0,
     "verdict": "Entry condition not met, so no trade. The plan's filter kept you out."
@@ -34,190 +34,204 @@
    {
     "index": "BANKNIFTY",
     "strategy": "Iron Condor",
-    "legs": "SELL 56100 CE + BUY 56900 CE + SELL 53200 PE + BUY 52400 PE",
+    "legs": "SELL 56400 CE + BUY 57200 CE + SELL 53600 PE + BUY 52800 PE",
     "lot_size": 30,
-    "planned_max_reward": 6258,
-    "planned_max_loss": 17742,
-    "day_open": 55432.3,
-    "day_high": 55735.75,
-    "day_low": 55181.15,
-    "last": 55540.05,
-    "entry_condition": "BANKNIFTY between 53,200 and 56,100 at 10:15",
-    "entry_spot": 55522.1,
+    "planned_max_reward": 6342,
+    "planned_max_loss": 17658,
+    "day_open": 55485.1,
+    "day_high": 55946.7,
+    "day_low": 55295.2,
+    "last": 55913.6,
+    "entry_condition": "BANKNIFTY between 53,600 and 56,400 at 10:15",
+    "entry_spot": 55645.6,
     "entry_time": "10:15",
-    "opening_move_pct": 0.16,
+    "opening_move_pct": 0.29,
     "status": "TIME",
     "exit_reason": "TIME: marked at 15:15",
     "exit_time": "15:15",
-    "exit_spot": 55454.3,
-    "entry_value": -279.3,
-    "exit_value": -267.1,
-    "pnl_per_lot": 367,
-    "capture_pct": 5.9,
+    "exit_spot": 55810.3,
+    "entry_value": -254.9,
+    "exit_value": -260.7,
+    "pnl_per_lot": -174,
+    "capture_pct": -2.7,
     "range_held": true,
-    "verdict": "Short strike 53,200 / 56,100 held (day 55,181\u201355,736). TIME: marked at 15:15."
+    "verdict": "Short strike 53,600 / 56,400 held (day 55,295\u201355,947). TIME: marked at 15:15."
    }
   ],
   "stocks": [
    {
-    "symbol": "TRENT",
-    "grade": "C",
-    "entry": 3017.3,
-    "stop": 2950.66,
-    "t1": 3150.57,
-    "open": 3040.9,
-    "high": 3047.0,
-    "low": 3014.2,
-    "last": 3036.5,
-    "tradeable": false,
-    "status": "OPEN (day 1 of 2)",
-    "entry_fill": 3035.0,
-    "entry_time": "09:30",
-    "r": 0.02,
-    "pnl_10k": 2,
-    "qty_10k": 1
-   },
-   {
-    "symbol": "COFORGE",
-    "grade": "C",
-    "entry": 2045.0,
-    "stop": 1990.99,
-    "t1": 2153.02,
-    "open": 2101.0,
-    "high": 2106.9,
-    "low": 2049.0,
-    "last": 2060.8,
-    "tradeable": false,
-    "status": "OPEN (day 1 of 2)",
-    "entry_fill": 2092.8,
-    "entry_time": "09:30",
-    "r": -0.31,
-    "pnl_10k": 0,
-    "qty_10k": 0
-   },
-   {
-    "symbol": "ADANIPORTS",
-    "grade": "C",
-    "entry": 1850.0,
-    "stop": 1811.66,
-    "t1": 1926.68,
-    "open": 1872.0,
-    "high": 1872.0,
-    "low": 1844.2,
-    "last": 1866.9,
-    "tradeable": false,
-    "status": "OPEN (day 1 of 2)",
-    "entry_fill": 1866.5,
-    "entry_time": "09:30",
-    "r": 0.01,
-    "pnl_10k": 0,
-    "qty_10k": 1
-   },
-   {
-    "symbol": "DIVISLAB",
-    "grade": "C",
-    "entry": 9780.0,
-    "stop": 9595.16,
-    "t1": 10149.68,
-    "open": 9984.0,
-    "high": 10064.0,
-    "low": 9866.0,
-    "last": 10064.0,
-    "tradeable": false,
-    "status": "OPEN (day 1 of 2)",
-    "entry_fill": 9949.5,
-    "entry_time": "09:30",
-    "r": 0.32,
-    "pnl_10k": 0,
-    "qty_10k": 0
-   },
-   {
-    "symbol": "POWERGRID",
-    "grade": "C",
-    "entry": 265.0,
-    "stop": 260.36,
-    "t1": 274.27,
-    "open": 263.1,
-    "high": 265.8,
-    "low": 257.3,
-    "last": 259.55,
-    "tradeable": false,
-    "status": "SL HIT",
-    "entry_fill": 265.35,
-    "entry_time": "09:35",
-    "r": -1.0,
-    "pnl_10k": -100,
-    "qty_10k": 20
-   },
-   {
-    "symbol": "ETERNAL",
-    "grade": "C",
-    "entry": 343.65,
-    "stop": 335.75,
-    "t1": 359.44,
-    "open": 345.55,
-    "high": 350.15,
-    "low": 344.2,
-    "last": 349.45,
-    "tradeable": false,
-    "status": "OPEN (day 1 of 2)",
-    "entry_fill": 347.5,
-    "entry_time": "09:30",
-    "r": 0.17,
-    "pnl_10k": 16,
-    "qty_10k": 8
-   },
-   {
-    "symbol": "PNB",
-    "grade": "C",
-    "entry": 122.85,
-    "stop": 120.54,
-    "t1": 127.47,
-    "open": 123.21,
-    "high": 123.21,
-    "low": 120.2,
-    "last": 120.97,
-    "tradeable": false,
+    "symbol": "BANKBARODA",
+    "grade": "B",
+    "entry": 245.16,
+    "stop": 240.8,
+    "t1": 253.88,
+    "open": 242.53,
+    "high": 245.88,
+    "low": 242.22,
+    "last": 245.29,
+    "tradeable": true,
     "status": "NOT TRIGGERED",
     "r": 0.0
    },
    {
-    "symbol": "DLF",
-    "grade": "C",
-    "entry": 691.55,
-    "stop": 678.92,
-    "t1": 716.82,
-    "open": 703.35,
-    "high": 710.5,
-    "low": 699.65,
-    "last": 709.0,
-    "tradeable": false,
+    "symbol": "TRENT",
+    "grade": "B",
+    "entry": 3046.4,
+    "stop": 2981.44,
+    "t1": 3176.31,
+    "open": 3013.2,
+    "high": 3060.0,
+    "low": 3013.2,
+    "last": 3060.0,
+    "tradeable": true,
     "status": "OPEN (day 1 of 2)",
-    "entry_fill": 703.5,
+    "entry_fill": 3049.4,
+    "entry_time": "09:50",
+    "r": 0.16,
+    "pnl_10k": 11,
+    "qty_10k": 1
+   },
+   {
+    "symbol": "IOC",
+    "grade": "B",
+    "entry": 134.59,
+    "stop": 132.37,
+    "t1": 139.03,
+    "open": 138.05,
+    "high": 142.03,
+    "low": 137.61,
+    "last": 142.03,
+    "tradeable": true,
+    "status": "T1 HIT (half booked)",
+    "entry_fill": 139.85,
+    "entry_time": "09:30",
+    "r": 0.09,
+    "pnl_10k": 9,
+    "qty_10k": 13
+   },
+   {
+    "symbol": "ADANIPORTS",
+    "grade": "B",
+    "entry": 1854.0,
+    "stop": 1816.15,
+    "t1": 1929.7,
+    "open": 1860.9,
+    "high": 1921.3,
+    "low": 1860.9,
+    "last": 1904.0,
+    "tradeable": true,
+    "status": "OPEN (day 1 of 2)",
+    "entry_fill": 1904.0,
+    "entry_time": "09:30",
+    "r": 0.0,
+    "pnl_10k": 0,
+    "qty_10k": 1
+   },
+   {
+    "symbol": "DLF",
+    "grade": "B",
+    "entry": 701.0,
+    "stop": 688.34,
+    "t1": 726.32,
+    "open": 707.7,
+    "high": 723.4,
+    "low": 703.6,
+    "last": 719.0,
+    "tradeable": true,
+    "status": "OPEN (day 1 of 2)",
+    "entry_fill": 710.3,
+    "entry_time": "09:30",
+    "r": 0.4,
+    "pnl_10k": 35,
+    "qty_10k": 4
+   },
+   {
+    "symbol": "ETERNAL",
+    "grade": "B",
+    "entry": 344.0,
+    "stop": 336.38,
+    "t1": 359.24,
+    "open": 347.6,
+    "high": 348.9,
+    "low": 340.2,
+    "last": 344.5,
+    "tradeable": true,
+    "status": "OPEN (day 1 of 2)",
+    "entry_fill": 345.0,
+    "entry_time": "09:30",
+    "r": -0.06,
+    "pnl_10k": -6,
+    "qty_10k": 11
+   },
+   {
+    "symbol": "CIPLA",
+    "grade": "B",
+    "entry": 1387.0,
+    "stop": 1365.63,
+    "t1": 1429.74,
+    "open": 1386.6,
+    "high": 1402.0,
+    "low": 1386.6,
+    "last": 1402.0,
+    "tradeable": true,
+    "status": "OPEN (day 1 of 2)",
+    "entry_fill": 1395.5,
     "entry_time": "09:30",
     "r": 0.22,
-    "pnl_10k": 22,
-    "qty_10k": 4
+    "pnl_10k": 20,
+    "qty_10k": 3
+   },
+   {
+    "symbol": "ULTRACEMCO",
+    "grade": "B",
+    "entry": 11387.0,
+    "stop": 11200.25,
+    "t1": 11760.51,
+    "open": 11614.0,
+    "high": 11830.0,
+    "low": 11614.0,
+    "last": 11816.0,
+    "tradeable": true,
+    "status": "T1 HIT (half booked)",
+    "entry_fill": 11748.0,
+    "entry_time": "09:30",
+    "r": 0.07,
+    "pnl_10k": 0,
+    "qty_10k": 0
    }
   ],
   "summary": {
-   "options_pnl_per_lot": 367,
-   "planned_max_reward": 6258,
-   "gap": -5891,
+   "options_pnl_per_lot": -174,
+   "planned_max_reward": 6342,
+   "gap": -6516,
    "trades": 1,
-   "stocks_pnl_10k": 0,
-   "stock_trades": 0,
-   "plan_pnl": 367
+   "stocks_pnl_10k": 69,
+   "stock_trades": 7,
+   "plan_pnl": -105
   },
   "lessons": [
-   "Bias RANGEBOUND: Nifty +3.29% vs prev close. Call was wrong (move bigger than the sideways band).",
+   "Bias RANGEBOUND: Nifty +2.22% vs prev close. Call was wrong (move bigger than the sideways band).",
    "NIFTY: Entry condition not met, so no trade. The plan's filter kept you out.",
-   "BANKNIFTY: Short strike 53,200 / 56,100 held (day 55,181\u201355,736). TIME: marked at 15:15.",
-   "No A/B stocks: watchlist shown for learning only (market gate closed)."
+   "BANKNIFTY: Short strike 53,600 / 56,400 held (day 55,295\u201355,947). TIME: marked at 15:15."
   ],
   "note": "Option P&L is a Black-Scholes estimate repriced with India VIX, per 1 lot, before costs. Stock results use a \u20b910,000 / 1% risk example."
  },
  "history": [
+  {
+   "session": "2026-11-04",
+   "final": true,
+   "bias": "RANGEBOUND",
+   "bias_correct": false,
+   "actual_pct": 2.22,
+   "options_pnl": -174,
+   "trades": 1,
+   "stocks_pnl": 69,
+   "plan_pnl": -105,
+   "detail": [
+    "NIFTY Iron Condor: NO ENTRY +0",
+    "BANKNIFTY Iron Condor: TIME -174"
+   ]
+  },
   {
    "session": "2026-11-03",
    "final": true,
@@ -387,6 +401,15 @@
  "paper": {
   "days": [
    {
+    "session": "2026-11-04",
+    "pnl": -2206,
+    "detail": [
+     "NIFTY: entry condition not met at 10:15, no trade",
+     "BANKNIFTY: still open (expiry 23 Nov), worth Rs -4,011 now"
+    ],
+    "total": -2665
+   },
+   {
     "session": "2026-11-03",
     "pnl": -2389,
     "detail": [
@@ -481,8 +504,8 @@
    }
   ],
   "realized": 1346,
-  "open_value": -1805,
-  "total": -459,
+  "open_value": -4011,
+  "total": -2665,
   "open": [
    {
     "index": "BANKNIFTY",
@@ -490,7 +513,7 @@
     "expiry": "2026-11-23",
     "entry_session": "2026-10-28",
     "credit_rs": 10272,
-    "mark": -1805
+    "mark": -4011
    }
   ],
   "closed": [
@@ -530,6 +553,15 @@
   "note": "Paper book: TRADE days only, 1 lot, held like the guardian holds it (target, stop, expiry-day 10:15), costs charged when a trade closes. Prices: real NSE option prices saved every 10 minutes; an estimate (Black-Scholes with India VIX) only where no real price was saved.",
   "with_adjustment": {
    "days": [
+    {
+     "session": "2026-11-04",
+     "pnl": -101,
+     "detail": [
+      "NIFTY: entry condition not met at 10:15, no trade",
+      "BANKNIFTY: still open (expiry 23 Nov), worth Rs -3,110 now"
+     ],
+     "total": -4815
+    },
     {
      "session": "2026-11-03",
      "pnl": -2754,
@@ -629,8 +661,8 @@
     }
    ],
    "realized": -1705,
-   "open_value": -3009,
-   "total": -4714,
+   "open_value": -3110,
+   "total": -4815,
    "open": [
     {
      "index": "BANKNIFTY",
@@ -638,7 +670,7 @@
      "expiry": "2026-11-23",
      "entry_session": "2026-10-28",
      "credit_rs": 7539,
-     "mark": -3009
+     "mark": -3110
     }
    ],
    "closed": [
@@ -669,6 +701,15 @@
   },
   "with_protect": {
    "days": [
+    {
+     "session": "2026-11-04",
+     "pnl": -2206,
+     "detail": [
+      "NIFTY: entry condition not met at 10:15, no trade",
+      "BANKNIFTY: still open (expiry 23 Nov), worth Rs -4,011 now"
+     ],
+     "total": -4813
+    },
     {
      "session": "2026-11-03",
      "pnl": -2389,
@@ -764,8 +805,8 @@
     }
    ],
    "realized": -802,
-   "open_value": -1805,
-   "total": -2607,
+   "open_value": -4011,
+   "total": -4813,
    "open": [
     {
      "index": "BANKNIFTY",
@@ -773,7 +814,7 @@
      "expiry": "2026-11-23",
      "entry_session": "2026-10-28",
      "credit_rs": 10272,
-     "mark": -1805
+     "mark": -4011
     }
    ],
    "closed": [
@@ -814,31 +855,57 @@
   },
   "momentum": {
    "today": {
-    "date": "2026-11-03",
-    "first_hour_pct": 0.25,
-    "status": "NO TRADE",
-    "note": "expiry day"
+    "date": "2026-11-04",
+    "first_hour_pct": 0.77,
+    "status": "CLOSED",
+    "kind": "CE",
+    "strike": 23850,
+    "expiry": "09-Nov-2026",
+    "lot": 65,
+    "day_before_expiry": false,
+    "entry_px": 195.68,
+    "entry_at": "10:20",
+    "spot": 23870.6,
+    "peak": 0.0,
+    "exit_px": 126.85,
+    "exit_at": "12:00",
+    "reason": "STOP -30%",
+    "pnl": -4624,
+    "pct": -35.2
    },
-   "trades": 0,
+   "trades": 1,
    "wins": 0,
-   "total": 0,
+   "total": -4624,
    "skip_day_before": {
-    "trades": 0,
+    "trades": 1,
     "wins": 0,
-    "total": 0
+    "total": -4624
    },
-   "recent": [],
+   "recent": [
+    {
+     "date": "2026-11-04",
+     "kind": "CE",
+     "strike": 23850,
+     "entry_px": 195.68,
+     "exit_px": 126.85,
+     "pnl": -4624,
+     "pct": -35.2,
+     "reason": "STOP -30%",
+     "first_hour_pct": 0.77,
+     "day_before_expiry": false
+    }
+   ],
    "rule": "Paper only. If NIFTY moves \u00b10.5% from 09:15 to 10:15, buy 1 lot of the ATM call/put that way at the real NSE price (not on expiry day, premium up to Rs 15,000). Stop -30%, cost after +20%, trail from +40%, book +60%, else close 15:15. Costs Rs 150 per trade."
   }
  },
  "totals": {
-  "days": 11,
-  "bias_hit_pct": 27.3,
-  "options_pnl_sum": -3448,
-  "plan_pnl_sum": -3448,
+  "days": 12,
+  "bias_hit_pct": 25.0,
+  "options_pnl_sum": -3622,
+  "plan_pnl_sum": -3553,
   "plan_win_days": 4,
-  "plan_loss_days": 4,
+  "plan_loss_days": 5,
   "options_win_days": 4,
-  "options_trade_days": 8
+  "options_trade_days": 9
  }
 }
