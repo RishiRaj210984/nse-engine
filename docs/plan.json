@@ -1,29 +1,29 @@
 {
- "generated_at": "2026-11-06T00:07:47.853019+05:30",
+ "generated_at": "2026-11-06T05:20:20.555528+05:30",
  "session": "2026-11-06",
  "stage": "preview",
  "expected_open": {
-  "gap_pct": -0.06,
-  "error_pct": 0.33,
-  "day_pct": -0.2,
-  "snapshot": "Fri 06 Nov 00:07 IST",
+  "gap_pct": -0.77,
+  "error_pct": 0.3,
+  "day_pct": -0.89,
+  "snapshot": "Fri 06 Nov 05:19 IST",
   "stage": "preview",
-  "tip": "Flat open expected. Normal entry windows apply.",
+  "tip": "Big gap down expected. Place no market orders at 09:15. Stocks that open above their T1 are skipped. Let the first hour settle before any option entry.",
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": -3.28
+    "move_pct": -4.46
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": -5.71
+    "move_pct": -7.32
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": -1.42
+    "move_pct": -2.61
    },
    {
     "key": "dax",
@@ -48,17 +48,17 @@
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": -4.65
+    "move_pct": -3.98
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": 1.38
+    "move_pct": 1.01
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": 0.03
+    "move_pct": 0.14
    },
    {
     "key": "inr",
@@ -70,52 +70,52 @@
    {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": -3.28,
-    "contribution_pct": -1.52
+    "value": -4.46,
+    "contribution_pct": -1.816
    },
    {
     "feature": "nq",
     "label": "Nasdaq futures",
-    "value": -5.71,
-    "contribution_pct": 1.009
+    "value": -7.32,
+    "contribution_pct": 0.794
    },
    {
     "feature": "cl",
     "label": "Crude oil",
-    "value": -4.65,
-    "contribution_pct": 0.277
-   },
-   {
-    "feature": "ym",
-    "label": "Dow futures",
-    "value": -1.42,
-    "contribution_pct": 0.121
+    "value": -3.98,
+    "contribution_pct": 0.248
    },
    {
     "feature": "n225",
     "label": "Nikkei 225",
     "value": -1.5,
-    "contribution_pct": -0.117
+    "contribution_pct": -0.116
    },
    {
-    "feature": "gold",
-    "label": "Gold",
-    "value": 1.38,
-    "contribution_pct": -0.091
+    "feature": "dxy",
+    "label": "Dollar index",
+    "value": 0.14,
+    "contribution_pct": -0.047
+   },
+   {
+    "feature": "inr",
+    "label": "USD/INR",
+    "value": -0.18,
+    "contribution_pct": 0.047
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.51,
-   "gap_sign_pct": 69.3,
-   "directional_calls": 164,
-   "directional_accuracy": 70.7
+   "gap_corr": 0.65,
+   "gap_sign_pct": 70.3,
+   "directional_calls": 174,
+   "directional_accuracy": 71.3
   }
  },
  "headline": "Market bias DOWN \u2014 favour selling rallies / puts",
  "bias": "BEARISH",
- "score": -26,
- "bias_track_record_pct": 70.1,
+ "score": -85,
+ "bias_track_record_pct": 72.4,
  "options": [
   {
    "index": "NIFTY",
@@ -183,7 +183,7 @@
    "stop": 391.29,
    "t1": 411.43,
    "t2": 420.38,
-   "win_prob": 76.8,
+   "win_prob": 71.4,
    "vol_badge": "2.3x Vol Surge"
   },
   {
@@ -196,7 +196,7 @@
    "stop": 3088.53,
    "t1": 3236.95,
    "t2": 3302.91,
-   "win_prob": 74.0,
+   "win_prob": 67.4,
    "vol_badge": "2.2x Vol Surge"
   },
   {
@@ -209,12 +209,22 @@
    "stop": 1674.36,
    "t1": 1766.28,
    "t2": 1807.14,
-   "win_prob": 71.7,
+   "win_prob": 65.5,
    "vol_badge": "2.6x Vol Surge"
   }
  ],
  "market_gate_open": true,
- "events": [],
+ "events": [
+  {
+   "symbol": "BHARTIARTL",
+   "name": "Bharti Airtel",
+   "when": "Thu 05 Nov",
+   "date": "2026-11-05",
+   "affects": "2026-11-06",
+   "past": true,
+   "bank": false
+  }
+ ],
  "stock_track_record": null,
  "no_trade_reason": null,
  "timeline": [
