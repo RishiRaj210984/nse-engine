@@ -1,29 +1,29 @@
 {
- "generated_at": "2026-11-05T05:24:45.857445+05:30",
+ "generated_at": "2026-11-05T07:13:50.052919+05:30",
  "session": "2026-11-05",
- "stage": "preview",
+ "stage": "final",
  "expected_open": {
-  "gap_pct": 1.51,
-  "error_pct": 0.29,
+  "gap_pct": 1.21,
+  "error_pct": 0.3,
   "day_pct": 1.43,
-  "snapshot": "Thu 05 Nov 05:24 IST",
-  "stage": "preview",
+  "snapshot": "Thu 05 Nov 07:13 IST",
+  "stage": "final",
   "tip": "Big gap up expected. Place no market orders at 09:15. Stocks that open above their T1 are skipped. Let the first hour settle before any option entry.",
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": 2.12
+    "move_pct": 1.87
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": 1.21
+    "move_pct": 0.3
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": 3.33
+    "move_pct": 3.42
    },
    {
     "key": "dax",
@@ -43,79 +43,79 @@
    {
     "key": "n225",
     "name": "Nikkei 225",
-    "move_pct": -1.65
+    "move_pct": -2.27
    },
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": -9.49
+    "move_pct": -10.2
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": 4.07
+    "move_pct": 5.23
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": -0.32
+    "move_pct": -0.46
    },
    {
     "key": "inr",
     "name": "USD/INR",
-    "move_pct": -0.12
+    "move_pct": -0.22
    }
   ],
   "drivers": [
    {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": 2.12,
-    "contribution_pct": 0.817
+    "value": 1.87,
+    "contribution_pct": 0.798
    },
    {
     "feature": "cl",
     "label": "Crude oil",
-    "value": -9.49,
-    "contribution_pct": 0.573
+    "value": -10.2,
+    "contribution_pct": 0.398
    },
    {
-    "feature": "ftse",
-    "label": "FTSE 100 (UK)",
-    "value": 1.21,
-    "contribution_pct": 0.161
+    "feature": "dxy",
+    "label": "Dollar index",
+    "value": -0.46,
+    "contribution_pct": 0.181
+   },
+   {
+    "feature": "n225",
+    "label": "Nikkei 225",
+    "value": -2.27,
+    "contribution_pct": -0.144
+   },
+   {
+    "feature": "stoxx",
+    "label": "Euro Stoxx 50",
+    "value": 2.09,
+    "contribution_pct": 0.129
    },
    {
     "feature": "dax",
     "label": "DAX (Germany)",
     "value": 2.57,
-    "contribution_pct": -0.157
-   },
-   {
-    "feature": "n225",
-    "label": "Nikkei 225",
-    "value": -1.65,
     "contribution_pct": -0.128
-   },
-   {
-    "feature": "nq",
-    "label": "Nasdaq futures",
-    "value": 1.21,
-    "contribution_pct": -0.115
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.66,
-   "gap_sign_pct": 71.7,
-   "directional_calls": 175,
-   "directional_accuracy": 71.4
+   "gap_corr": 0.69,
+   "gap_sign_pct": 70.3,
+   "directional_calls": 190,
+   "directional_accuracy": 71.1
   }
  },
  "headline": "Market bias UP \u2014 favour buying dips",
  "bias": "BULLISH",
  "score": 97,
- "bias_track_record_pct": 72.4,
+ "bias_track_record_pct": 71.4,
  "options": [
   {
    "index": "NIFTY",
