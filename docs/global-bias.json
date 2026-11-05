@@ -1,54 +1,54 @@
 {
- "generated_at": "2026-11-05T23:48:15.100918+05:30",
+ "generated_at": "2026-11-06T00:07:29.376206+05:30",
  "target_session": "2026-11-06",
- "reference_date": "2026-11-05",
+ "reference_date": "2026-11-04",
  "us_session_used": "2026-11-05",
  "tickers": [
   {
    "name": "S&P 500",
    "symbol": "^GSPC",
-   "last": 7386.09,
-   "change": -3.935,
+   "last": 7383.47,
+   "change": -3.969,
    "change_unit": "%",
    "as_of": "2026-11-05"
   },
   {
    "name": "Nasdaq",
    "symbol": "^IXIC",
-   "last": 24398.53,
-   "change": -5.199,
+   "last": 24393.95,
+   "change": -5.217,
    "change_unit": "%",
    "as_of": "2026-11-05"
   },
   {
    "name": "Dow Jones",
    "symbol": "^DJI",
-   "last": 51745.57,
-   "change": -3.018,
+   "last": 51736.54,
+   "change": -3.035,
    "change_unit": "%",
    "as_of": "2026-11-05"
   },
   {
    "name": "US 10Y Yield",
    "symbol": "^TNX",
-   "last": 4.81,
-   "change": -0.08,
+   "last": 4.83,
+   "change": -0.065,
    "change_unit": "pts",
    "as_of": "2026-11-05"
   },
   {
    "name": "Crude Oil",
    "symbol": "CL=F",
-   "last": 90.5,
-   "change": 2.701,
+   "last": 90.74,
+   "change": 2.973,
    "change_unit": "%",
    "as_of": "2026-11-05"
   },
   {
    "name": "Dollar Index",
    "symbol": "DX-Y.NYB",
-   "last": 101.4,
-   "change": -0.108,
+   "last": 101.46,
+   "change": -0.049,
    "change_unit": "%",
    "as_of": "2026-11-05"
   },
@@ -71,79 +71,79 @@
   {
    "name": "India VIX",
    "symbol": "^INDIAVIX",
-   "last": 15.58,
-   "change": 2.567,
+   "last": 15.19,
+   "change": -3.372,
    "change_unit": "%",
-   "as_of": "2026-11-05"
+   "as_of": "2026-11-04"
   },
   {
    "name": "Nifty 50",
    "symbol": "^NSEI",
-   "last": 24536.6,
-   "change": 2.404,
+   "last": 23960.6,
+   "change": 0.629,
    "change_unit": "%",
-   "as_of": "2026-11-05"
+   "as_of": "2026-11-04"
   },
   {
    "name": "Bank Nifty",
    "symbol": "^NSEBANK",
-   "last": 57773.65,
-   "change": 3.327,
+   "last": 55913.6,
+   "change": 0.673,
    "change_unit": "%",
-   "as_of": "2026-11-05"
+   "as_of": "2026-11-04"
   }
  ],
  "bias": {
   "label": "BEARISH",
-  "score": -86,
-  "z": -1.308,
-  "model_z": -1.308,
-  "predicted_nifty_move_pct": -0.98,
-  "typical_daily_move_pct": 0.753,
+  "score": -26,
+  "z": -0.27,
+  "model_z": -0.27,
+  "predicted_nifty_move_pct": -0.2,
+  "typical_daily_move_pct": 0.75,
   "source": "pre-open global snapshot",
-  "india_vix": 15.58,
+  "india_vix": 15.19,
   "components": [
    {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": -4.33,
-    "contribution_pct": -1.985
+    "value": -3.28,
+    "contribution_pct": -1.52
    },
    {
     "feature": "nq",
     "label": "Nasdaq futures",
-    "value": -5.66,
-    "contribution_pct": 1.021
-   },
-   {
-    "feature": "ftse",
-    "label": "FTSE 100 (UK)",
-    "value": -1.26,
-    "contribution_pct": -0.271
-   },
-   {
-    "feature": "ym",
-    "label": "Dow futures",
-    "value": -3.77,
-    "contribution_pct": 0.256
+    "value": -5.71,
+    "contribution_pct": 1.009
    },
    {
     "feature": "cl",
     "label": "Crude oil",
-    "value": 2.14,
-    "contribution_pct": -0.143
+    "value": -4.65,
+    "contribution_pct": 0.277
    },
    {
-    "feature": "dxy",
-    "label": "Dollar index",
-    "value": -0.13,
-    "contribution_pct": 0.055
+    "feature": "ym",
+    "label": "Dow futures",
+    "value": -1.42,
+    "contribution_pct": 0.121
+   },
+   {
+    "feature": "n225",
+    "label": "Nikkei 225",
+    "value": -1.5,
+    "contribution_pct": -0.117
+   },
+   {
+    "feature": "gold",
+    "label": "Gold",
+    "value": 1.38,
+    "contribution_pct": -0.091
    }
   ]
  },
  "news": {
   "summary": {
-   "score": 0.38,
+   "score": 0.387,
    "count": 40,
    "label": "POSITIVE"
   },
@@ -237,10 +237,10 @@
  },
  "model": {
   "oos_days": 300,
-  "directional_calls": 155,
-  "directional_accuracy": 71.6,
-  "sign_accuracy_all_days": 65.0,
-  "gap_corr": 0.54,
+  "directional_calls": 154,
+  "directional_accuracy": 70.1,
+  "sign_accuracy_all_days": 64.0,
+  "gap_corr": 0.51,
   "gap_sign_pct": 69.3,
   "trained_rows": 750,
   "version": 30,
@@ -249,25 +249,25 @@
  "options": {
   "NIFTY": {
    "index": "NIFTY",
-   "spot": 24536.6,
-   "atm": 24550,
+   "spot": 23960.6,
+   "atm": 23950,
    "lot_size": 65,
    "expiry": "2026-11-09",
    "days_to_expiry": 3.75,
-   "iv_used_pct": 15.58,
-   "expected_move": 387,
+   "iv_used_pct": 15.19,
+   "expected_move": 369,
    "levels": {
-    "prev_close": 24536.6,
-    "ema20": 23220.1,
-    "support": 24361.97,
-    "resistance": 24645.57,
-    "atr": 320.38,
+    "prev_close": 23960.6,
+    "ema20": 23081.52,
+    "support": 23784.3,
+    "resistance": 24048.75,
+    "atr": 297.39,
     "pivots": {
-     "P": 24470.93,
-     "R1": 24645.57,
-     "S1": 24361.97,
-     "R2": 24754.53,
-     "S2": 24187.33
+     "P": 23872.45,
+     "R1": 24048.75,
+     "S1": 23784.3,
+     "R2": 24136.9,
+     "S2": 23608.0
     }
    },
    "strategies": [
@@ -276,26 +276,26 @@
      "legs": [
       {
        "action": "BUY",
-       "strike": 24550,
+       "strike": 23950,
        "type": "PE",
-       "est_premium": 153.1
+       "est_premium": 134.2
       },
       {
        "action": "SELL",
-       "strike": 24350,
+       "strike": 23750,
        "type": "PE",
-       "est_premium": 73.3
+       "est_premium": 60.3
       }
      ],
-     "net_premium": -79.8,
-     "max_loss": 5187,
-     "max_reward": 7813,
-     "reward_risk": 1.51,
-     "entry": "Enter on pullbacks that fail below 24,646 (EMA20 / R1 resistance zone)",
-     "target": "Exit spread near \u20b9151.9 or NIFTY at 24,350",
-     "stop_loss": "Spread falls to \u20b939.9, or NIFTY closes above 24,755",
+     "net_premium": -73.9,
+     "max_loss": 4803,
+     "max_reward": 8196,
+     "reward_risk": 1.71,
+     "entry": "Enter on pullbacks that fail below 24,049 (EMA20 / R1 resistance zone)",
+     "target": "Exit spread near \u20b9149.6 or NIFTY at 23,750",
+     "stop_loss": "Spread falls to \u20b936.9, or NIFTY closes above 24,137",
      "breakeven": [
-      24470
+      23876
      ],
      "notes": "Defined risk. Preferred structure.",
      "verdict": {
@@ -318,26 +318,26 @@
      "legs": [
       {
        "action": "SELL",
-       "strike": 24900,
+       "strike": 24300,
        "type": "CE",
-       "est_premium": 40.0
+       "est_premium": 39.4
       },
       {
        "action": "BUY",
-       "strike": 25100,
+       "strike": 24500,
        "type": "CE",
-       "est_premium": 14.5
+       "est_premium": 13.6
       }
      ],
-     "net_premium": 25.5,
-     "max_loss": 11342,
-     "max_reward": 1658,
+     "net_premium": 25.8,
+     "max_loss": 11323,
+     "max_reward": 1677,
      "reward_risk": 0.15,
-     "entry": "Enter at 10:15 (after the first hour) only if NIFTY is below 24,900",
-     "target": "Buy back at \u20b911.5 (keep ~55% of credit), else hold to expiry Mon 09 Nov",
-     "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,658 per lot)",
+     "entry": "Enter at 10:15 (after the first hour) only if NIFTY is below 24,300",
+     "target": "Buy back at \u20b911.6 (keep ~55% of credit), else hold to expiry Mon 09 Nov",
+     "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,677 per lot)",
      "breakeven": [
-      24926
+      24326
      ],
      "notes": "Earns time decay; wins if the index does not fall (bull put) / rise (bear call) past the short strike.",
      "verdict": {
@@ -360,20 +360,20 @@
      "legs": [
       {
        "action": "BUY",
-       "strike": 24550,
+       "strike": 23950,
        "type": "PE",
-       "est_premium": 153.1
+       "est_premium": 134.2
       }
      ],
-     "net_premium": -153.1,
-     "max_loss": 9952,
-     "max_reward": 5605,
-     "reward_risk": 0.56,
-     "entry": "Enter on pullbacks that fail below 24,646 (EMA20 / R1 resistance zone)",
-     "target": "Premium \u2248 \u20b9239.3 (NIFTY near 24,362)",
-     "stop_loss": "Premium \u20b9107.2 (-30%), or NIFTY closes above 24,755",
+     "net_premium": -134.2,
+     "max_loss": 8723,
+     "max_reward": 5365,
+     "reward_risk": 0.62,
+     "entry": "Enter on pullbacks that fail below 24,049 (EMA20 / R1 resistance zone)",
+     "target": "Premium \u2248 \u20b9216.7 (NIFTY near 23,784)",
+     "stop_loss": "Premium \u20b993.9 (-30%), or NIFTY closes above 24,137",
      "breakeven": [
-      24397
+      23816
      ],
      "notes": "Max loss = full premium. Theta decay hurts if move is late.",
      "verdict": {
@@ -402,25 +402,25 @@
   },
   "BANKNIFTY": {
    "index": "BANKNIFTY",
-   "spot": 57773.65,
-   "atm": 57800,
+   "spot": 55913.6,
+   "atm": 55900,
    "lot_size": 30,
    "expiry": "2026-11-23",
    "days_to_expiry": 17.75,
-   "iv_used_pct": 15.32,
-   "expected_move": 1952,
+   "iv_used_pct": 12.15,
+   "expected_move": 1498,
    "levels": {
-    "prev_close": 57773.65,
-    "ema20": 55363.58,
-    "support": 57045.35,
-    "resistance": 58174.8,
-    "atr": 789.55,
+    "prev_close": 55913.6,
+    "ema20": 55109.88,
+    "support": 55489.78,
+    "resistance": 56142.14,
+    "atr": 701.51,
     "pivots": {
-     "P": 57446.5,
-     "R1": 58174.8,
-     "S1": 57045.35,
-     "R2": 58575.95,
-     "S2": 56317.05
+     "P": 55718.32,
+     "R1": 56142.14,
+     "S1": 55489.78,
+     "R2": 56370.67,
+     "S2": 55065.97
     }
    },
    "strategies": [
@@ -429,26 +429,26 @@
      "legs": [
       {
        "action": "BUY",
-       "strike": 57800,
+       "strike": 55900,
        "type": "PE",
-       "est_premium": 702.2
+       "est_premium": 506.5
       },
       {
        "action": "SELL",
-       "strike": 56800,
+       "strike": 55200,
        "type": "PE",
-       "est_premium": 327.8
+       "est_premium": 251.8
       }
      ],
-     "net_premium": -374.4,
-     "max_loss": 11232,
-     "max_reward": 18768,
-     "reward_risk": 1.67,
-     "entry": "Enter on pullbacks that fail below 58,175 (EMA20 / R1 resistance zone)",
-     "target": "Exit spread near \u20b9749.8 or BANKNIFTY at 56,800",
-     "stop_loss": "Spread falls to \u20b9187.2, or BANKNIFTY closes above 58,576",
+     "net_premium": -254.7,
+     "max_loss": 7641,
+     "max_reward": 13359,
+     "reward_risk": 1.75,
+     "entry": "Enter on pullbacks that fail below 56,142 (EMA20 / R1 resistance zone)",
+     "target": "Exit spread near \u20b9521.9 or BANKNIFTY at 55,200",
+     "stop_loss": "Spread falls to \u20b9127.3, or BANKNIFTY closes above 56,371",
      "breakeven": [
-      57426
+      55645
      ],
      "notes": "Defined risk. Preferred structure.",
      "verdict": {
@@ -471,26 +471,26 @@
      "legs": [
       {
        "action": "SELL",
-       "strike": 59500,
+       "strike": 57300,
        "type": "CE",
-       "est_premium": 247.2
+       "est_premium": 183.3
       },
       {
        "action": "BUY",
-       "strike": 60500,
+       "strike": 58000,
        "type": "CE",
-       "est_premium": 96.5
+       "est_premium": 77.2
       }
      ],
-     "net_premium": 150.7,
-     "max_loss": 25479,
-     "max_reward": 4521,
+     "net_premium": 106.1,
+     "max_loss": 17817,
+     "max_reward": 3183,
      "reward_risk": 0.18,
-     "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is below 59,500",
-     "target": "Buy back at \u20b967.8 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
-     "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b94,521 per lot)",
+     "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is below 57,300",
+     "target": "Buy back at \u20b947.7 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
+     "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b93,183 per lot)",
      "breakeven": [
-      59651
+      57406
      ],
      "notes": "Earns time decay; wins if the index does not fall (bull put) / rise (bear call) past the short strike.",
      "verdict": {
@@ -513,20 +513,20 @@
      "legs": [
       {
        "action": "BUY",
-       "strike": 57800,
+       "strike": 55900,
        "type": "PE",
-       "est_premium": 702.2
+       "est_premium": 506.5
       }
      ],
-     "net_premium": -702.2,
-     "max_loss": 21066,
-     "max_reward": 10081,
-     "reward_risk": 0.48,
-     "entry": "Enter on pullbacks that fail below 58,175 (EMA20 / R1 resistance zone)",
-     "target": "Premium \u2248 \u20b91038.2 (BANKNIFTY near 57,045)",
-     "stop_loss": "Premium \u20b9491.5 (-30%), or BANKNIFTY closes above 58,576",
+     "net_premium": -506.5,
+     "max_loss": 15195,
+     "max_reward": 5647,
+     "reward_risk": 0.37,
+     "entry": "Enter on pullbacks that fail below 56,142 (EMA20 / R1 resistance zone)",
+     "target": "Premium \u2248 \u20b9694.7 (BANKNIFTY near 55,490)",
+     "stop_loss": "Premium \u20b9354.5 (-30%), or BANKNIFTY closes above 56,371",
      "breakeven": [
-      57098
+      55394
      ],
      "notes": "Max loss = full premium. Theta decay hurts if move is late.",
      "verdict": {
@@ -575,119 +575,119 @@
   }
  ],
  "preopen": {
-  "snapshot_ist": "Thu 05 Nov 23:48 IST",
+  "snapshot_ist": "Fri 06 Nov 00:07 IST",
   "stage": "preview",
-  "expected_gap_pct": -1.23,
+  "expected_gap_pct": -0.06,
   "gap_typical_error_pct": 0.33,
-  "expected_day_pct": -0.98,
-  "z": -1.308,
-  "typical_daily_move_pct": 0.753,
+  "expected_day_pct": -0.2,
+  "z": -0.27,
+  "typical_daily_move_pct": 0.75,
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": -4.33
+    "move_pct": -3.28
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": -5.66
+    "move_pct": -5.71
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": -3.77
+    "move_pct": -1.42
    },
    {
     "key": "dax",
     "name": "DAX (Germany)",
-    "move_pct": -1.09
+    "move_pct": 0.31
    },
    {
     "key": "ftse",
     "name": "FTSE 100 (UK)",
-    "move_pct": -1.26
+    "move_pct": 0.14
    },
    {
     "key": "stoxx",
     "name": "Euro Stoxx 50",
-    "move_pct": -1.18
+    "move_pct": -0.45
    },
    {
     "key": "n225",
     "name": "Nikkei 225",
-    "move_pct": 0.0
+    "move_pct": -1.5
    },
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": 2.14
+    "move_pct": -4.65
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": -0.77
+    "move_pct": 1.38
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": -0.13
+    "move_pct": 0.03
    },
    {
     "key": "inr",
     "name": "USD/INR",
-    "move_pct": -0.01
+    "move_pct": -0.18
    }
   ],
   "drivers": [
    {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": -4.33,
-    "contribution_pct": -1.985
+    "value": -3.28,
+    "contribution_pct": -1.52
    },
    {
     "feature": "nq",
     "label": "Nasdaq futures",
-    "value": -5.66,
-    "contribution_pct": 1.021
-   },
-   {
-    "feature": "ftse",
-    "label": "FTSE 100 (UK)",
-    "value": -1.26,
-    "contribution_pct": -0.271
-   },
-   {
-    "feature": "ym",
-    "label": "Dow futures",
-    "value": -3.77,
-    "contribution_pct": 0.256
+    "value": -5.71,
+    "contribution_pct": 1.009
    },
    {
     "feature": "cl",
     "label": "Crude oil",
-    "value": 2.14,
-    "contribution_pct": -0.143
+    "value": -4.65,
+    "contribution_pct": 0.277
    },
    {
-    "feature": "dxy",
-    "label": "Dollar index",
-    "value": -0.13,
-    "contribution_pct": 0.055
+    "feature": "ym",
+    "label": "Dow futures",
+    "value": -1.42,
+    "contribution_pct": 0.121
+   },
+   {
+    "feature": "n225",
+    "label": "Nikkei 225",
+    "value": -1.5,
+    "contribution_pct": -0.117
+   },
+   {
+    "feature": "gold",
+    "label": "Gold",
+    "value": 1.38,
+    "contribution_pct": -0.091
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.54,
+   "gap_corr": 0.51,
    "gap_sign_pct": 69.3,
-   "directional_calls": 165,
-   "directional_accuracy": 72.1
+   "directional_calls": 164,
+   "directional_accuracy": 70.7
   },
-  "vix": 15.58
+  "vix": 15.19
  },
  "global_table": {
-  "updated": "2026-11-05T23:48:26.712047+05:30",
+  "updated": "2026-11-06T00:07:41.472878+05:30",
   "rows": [
    {
     "group": "US, last close",
@@ -697,7 +697,7 @@
    },
    {
     "group": "US futures now",
-    "move": "S&P -4.33%, Nasdaq -5.66%, Dow -3.77% (since Nifty's close)",
+    "move": "S&P -3.28%, Nasdaq -5.71%, Dow -1.42% (since Nifty's close)",
     "effect": "red",
     "note": "Futures point to a softer open"
    },
@@ -715,19 +715,19 @@
    },
    {
     "group": "Crude oil",
-    "move": "WTI ~$90, Brent ~$98 (+2.9%)",
+    "move": "WTI ~$91, Brent ~$98 (+3.3%)",
     "effect": "red",
     "note": "Rising oil hurts India \u00b7 Price is high for India"
    },
    {
     "group": "US 10-year yield",
-    "move": "4.81% (-8 bp)",
+    "move": "4.83% (-6 bp)",
     "effect": "green",
     "note": "Easing yields help"
    },
    {
     "group": "Dollar index",
-    "move": "101.40 (-0.16%)",
+    "move": "101.46 (-0.11%)",
     "effect": "flat",
     "note": "Steady"
    },
@@ -745,8 +745,8 @@
    },
    {
     "group": "Model: Nifty open",
-    "move": "-1.23% (\u00b10.33%)",
-    "effect": "red",
+    "move": "-0.06% (\u00b10.33%)",
+    "effect": "flat",
     "note": "Combined forecast from all markets (preview)",
     "model": true
    }
