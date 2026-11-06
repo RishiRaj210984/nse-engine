@@ -1,29 +1,29 @@
 {
- "generated_at": "2026-11-06T05:20:20.555528+05:30",
+ "generated_at": "2026-11-06T07:13:45.178343+05:30",
  "session": "2026-11-06",
- "stage": "preview",
+ "stage": "final",
  "expected_open": {
-  "gap_pct": -0.77,
+  "gap_pct": -0.86,
   "error_pct": 0.3,
-  "day_pct": -0.89,
-  "snapshot": "Fri 06 Nov 05:19 IST",
-  "stage": "preview",
+  "day_pct": -0.91,
+  "snapshot": "Fri 06 Nov 07:13 IST",
+  "stage": "final",
   "tip": "Big gap down expected. Place no market orders at 09:15. Stocks that open above their T1 are skipped. Let the first hour settle before any option entry.",
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": -4.46
+    "move_pct": -3.73
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": -7.32
+    "move_pct": -5.81
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": -2.61
+    "move_pct": -2.53
    },
    {
     "key": "dax",
@@ -43,22 +43,22 @@
    {
     "key": "n225",
     "name": "Nikkei 225",
-    "move_pct": -1.5
+    "move_pct": -8.14
    },
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": -3.98
+    "move_pct": -4.12
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": 1.01
+    "move_pct": 0.5
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": 0.14
+    "move_pct": 0.18
    },
    {
     "key": "inr",
@@ -70,52 +70,52 @@
    {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": -4.46,
-    "contribution_pct": -1.816
+    "value": -3.73,
+    "contribution_pct": -1.722
    },
    {
     "feature": "nq",
     "label": "Nasdaq futures",
-    "value": -7.32,
-    "contribution_pct": 0.794
-   },
-   {
-    "feature": "cl",
-    "label": "Crude oil",
-    "value": -3.98,
-    "contribution_pct": 0.248
+    "value": -5.81,
+    "contribution_pct": 1.08
    },
    {
     "feature": "n225",
     "label": "Nikkei 225",
-    "value": -1.5,
-    "contribution_pct": -0.116
+    "value": -8.14,
+    "contribution_pct": -0.489
+   },
+   {
+    "feature": "cl",
+    "label": "Crude oil",
+    "value": -4.12,
+    "contribution_pct": 0.169
    },
    {
     "feature": "dxy",
     "label": "Dollar index",
-    "value": 0.14,
-    "contribution_pct": -0.047
+    "value": 0.18,
+    "contribution_pct": -0.075
    },
    {
     "feature": "inr",
     "label": "USD/INR",
     "value": -0.18,
-    "contribution_pct": 0.047
+    "contribution_pct": 0.073
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.65,
+   "gap_corr": 0.69,
    "gap_sign_pct": 70.3,
-   "directional_calls": 174,
-   "directional_accuracy": 71.3
+   "directional_calls": 190,
+   "directional_accuracy": 72.1
   }
  },
  "headline": "Market bias DOWN \u2014 favour selling rallies / puts",
  "bias": "BEARISH",
- "score": -85,
- "bias_track_record_pct": 72.4,
+ "score": -86,
+ "bias_track_record_pct": 72.3,
  "options": [
   {
    "index": "NIFTY",
@@ -196,7 +196,7 @@
    "stop": 3088.53,
    "t1": 3236.95,
    "t2": 3302.91,
-   "win_prob": 67.4,
+   "win_prob": 69.2,
    "vol_badge": "2.2x Vol Surge"
   },
   {
@@ -209,7 +209,7 @@
    "stop": 1674.36,
    "t1": 1766.28,
    "t2": 1807.14,
-   "win_prob": 65.5,
+   "win_prob": 65.3,
    "vol_badge": "2.6x Vol Surge"
   }
  ],
