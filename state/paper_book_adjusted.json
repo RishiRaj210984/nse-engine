@@ -146,90 +146,17 @@
     "BANKNIFTY: STOP: loss reached 1x credit, trade result Rs -8,995 after costs"
    ],
    "total": -10700
+  },
+  {
+   "session": "2026-11-06",
+   "pnl": 0,
+   "detail": [],
+   "total": -10700
   }
  ],
  "before": {
-  "session": "2026-11-05",
-  "open": {
-   "BANKNIFTY": {
-    "index": "BANKNIFTY",
-    "strategy": "Iron Condor",
-    "legs": [
-     {
-      "action": "SELL",
-      "strike": 55800,
-      "type": "CE",
-      "est_premium": 274.0
-     },
-     {
-      "action": "BUY",
-      "strike": 56800,
-      "type": "CE",
-      "est_premium": 114.3
-     },
-     {
-      "action": "SELL",
-      "strike": 52100,
-      "type": "PE",
-      "est_premium": 151.2
-     },
-     {
-      "action": "BUY",
-      "strike": 51100,
-      "type": "PE",
-      "est_premium": 50.5
-     }
-    ],
-    "lot": 30,
-    "expiry": "2026-11-23",
-    "entry_session": "2026-10-28",
-    "entry_spot": 53760.9,
-    "v_e": -251.3114687815132,
-    "credit_rs": 7539,
-    "iv0": 0.1406,
-    "vix0": 17.040000915527344,
-    "mark": -3110,
-    "groups": [
-     {
-      "legs": [
-       {
-        "action": "SELL",
-        "strike": 55800,
-        "type": "CE",
-        "est_premium": 274.0
-       },
-       {
-        "action": "BUY",
-        "strike": 56800,
-        "type": "CE",
-        "est_premium": 114.3
-       }
-      ],
-      "v0": -133.09713025264045
-     },
-     {
-      "legs": [
-       {
-        "action": "SELL",
-        "strike": 55100,
-        "type": "PE"
-       },
-       {
-        "action": "BUY",
-        "strike": 54100,
-        "type": "PE"
-       }
-      ],
-      "v0": -276.4244922390717
-     }
-    ],
-    "realized": 109.75719815199409,
-    "credit0": 251.3114687815132,
-    "credit_all": 527.7359610205849,
-    "adjusted": "rolled the put spread to 55,100",
-    "extra_cost": 250
-   }
-  },
-  "n_closed": 2
+  "session": "2026-11-06",
+  "open": {},
+  "n_closed": 3
  }
 }

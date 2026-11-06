@@ -152,95 +152,17 @@
     "BANKNIFTY: STOP: loss reached 1x credit (real NSE prices, 09:20), trade result Rs -10,896 after costs"
    ],
    "total": -11698
+  },
+  {
+   "session": "2026-11-06",
+   "pnl": 0,
+   "detail": [],
+   "total": -11698
   }
  ],
  "before": {
-  "session": "2026-11-05",
-  "open": {
-   "BANKNIFTY": {
-    "index": "BANKNIFTY",
-    "strategy": "Iron Condor",
-    "legs": [
-     {
-      "action": "SELL",
-      "strike": 55800,
-      "type": "CE",
-      "est_premium": 274.0
-     },
-     {
-      "action": "BUY",
-      "strike": 56800,
-      "type": "CE",
-      "est_premium": 114.3
-     },
-     {
-      "action": "SELL",
-      "strike": 52100,
-      "type": "PE",
-      "est_premium": 151.2
-     },
-     {
-      "action": "BUY",
-      "strike": 51100,
-      "type": "PE",
-      "est_premium": 50.5
-     }
-    ],
-    "lot": 30,
-    "expiry": "2026-11-23",
-    "entry_session": "2026-10-28",
-    "entry_spot": 53761.25,
-    "v_e": -342.398,
-    "credit_rs": 10272,
-    "iv0": 0.1406,
-    "vix0": 17.040000915527344,
-    "mark": -4011,
-    "groups": [
-     {
-      "legs": [
-       {
-        "action": "SELL",
-        "strike": 55800,
-        "type": "CE",
-        "est_premium": 274.0
-       },
-       {
-        "action": "BUY",
-        "strike": 56800,
-        "type": "CE",
-        "est_premium": 114.3
-       }
-      ],
-      "v0": -176.948,
-      "off": -11.255742647891736
-     },
-     {
-      "legs": [
-       {
-        "action": "SELL",
-        "strike": 52100,
-        "type": "PE",
-        "est_premium": 151.2
-       },
-       {
-        "action": "BUY",
-        "strike": 51100,
-        "type": "PE",
-        "est_premium": 50.5
-       }
-      ],
-      "v0": -165.45,
-      "off": -17.679007145982176
-     }
-    ],
-    "realized": 0.0,
-    "credit0": 342.398,
-    "credit_all": 342.398,
-    "adjusted": null,
-    "extra_cost": 0,
-    "basis": "NSE"
-   }
-  },
-  "n_closed": 3
+  "session": "2026-11-06",
+  "open": {},
+  "n_closed": 4
  }
 }

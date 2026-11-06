@@ -1,313 +1,282 @@
 {
- "generated_at": "2026-11-06T07:13:45.178343+05:30",
- "session": "2026-11-06",
- "stage": "final",
+ "generated_at": "2026-11-06T16:18:14.132386+05:30",
+ "session": "2026-11-09",
+ "stage": "preview",
  "expected_open": {
-  "gap_pct": -0.86,
-  "error_pct": 0.3,
-  "day_pct": -0.91,
-  "snapshot": "Fri 06 Nov 07:13 IST",
-  "stage": "final",
-  "tip": "Big gap down expected. Place no market orders at 09:15. Stocks that open above their T1 are skipped. Let the first hour settle before any option entry.",
+  "gap_pct": 0.03,
+  "error_pct": 0.38,
+  "day_pct": 0.07,
+  "snapshot": "Fri 06 Nov 16:18 IST",
+  "stage": "preview",
+  "tip": "Flat open expected. Normal entry windows apply.",
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": -3.73
+    "move_pct": 0.0
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": -5.81
+    "move_pct": 0.0
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": -2.53
+    "move_pct": 0.0
    },
    {
     "key": "dax",
     "name": "DAX (Germany)",
-    "move_pct": 0.31
+    "move_pct": 0.0
    },
    {
     "key": "ftse",
     "name": "FTSE 100 (UK)",
-    "move_pct": 0.14
+    "move_pct": 0.0
    },
    {
     "key": "stoxx",
     "name": "Euro Stoxx 50",
-    "move_pct": -0.45
+    "move_pct": 0.0
    },
    {
     "key": "n225",
     "name": "Nikkei 225",
-    "move_pct": -8.14
+    "move_pct": 0.0
    },
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": -4.12
+    "move_pct": 0.0
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": 0.5
+    "move_pct": 0.0
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": 0.18
+    "move_pct": 0.0
    },
    {
     "key": "inr",
     "name": "USD/INR",
-    "move_pct": -0.18
+    "move_pct": 0.0
    }
   ],
   "drivers": [
    {
+    "feature": "vix",
+    "label": "India VIX level",
+    "value": 17.47,
+    "contribution_pct": 0.109
+   },
+   {
+    "feature": "nprev",
+    "label": "Nifty previous day",
+    "value": 2.01,
+    "contribution_pct": -0.057
+   },
+   {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": -3.73,
-    "contribution_pct": -1.722
+    "value": 0.0,
+    "contribution_pct": -0.016
    },
    {
-    "feature": "nq",
-    "label": "Nasdaq futures",
-    "value": -5.81,
-    "contribution_pct": 1.08
-   },
-   {
-    "feature": "n225",
-    "label": "Nikkei 225",
-    "value": -8.14,
-    "contribution_pct": -0.489
+    "feature": "ym",
+    "label": "Dow futures",
+    "value": 0.0,
+    "contribution_pct": 0.015
    },
    {
     "feature": "cl",
     "label": "Crude oil",
-    "value": -4.12,
-    "contribution_pct": 0.169
+    "value": 0.0,
+    "contribution_pct": 0.007
    },
    {
-    "feature": "dxy",
-    "label": "Dollar index",
-    "value": 0.18,
-    "contribution_pct": -0.075
-   },
-   {
-    "feature": "inr",
-    "label": "USD/INR",
-    "value": -0.18,
-    "contribution_pct": 0.073
+    "feature": "ftse",
+    "label": "FTSE 100 (UK)",
+    "value": 0.0,
+    "contribution_pct": -0.004
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.69,
-   "gap_sign_pct": 70.3,
-   "directional_calls": 190,
-   "directional_accuracy": 72.1
+   "gap_corr": 0.26,
+   "gap_sign_pct": 56.7,
+   "directional_calls": 75,
+   "directional_accuracy": 60.0
   }
  },
- "headline": "Market bias DOWN \u2014 favour selling rallies / puts",
- "bias": "BEARISH",
- "score": -86,
- "bias_track_record_pct": 72.3,
+ "headline": "Market bias UP \u2014 favour buying dips",
+ "bias": "BULLISH",
+ "score": 28,
+ "bias_track_record_pct": 65.7,
  "options": [
   {
    "index": "NIFTY",
-   "strategy": "Bear Put Spread",
-   "legs": "BUY 23950 PE + SELL 23750 PE",
+   "strategy": "Bull Call Spread",
+   "legs": "BUY 25050 CE + SELL 25150 CE",
    "expiry": "2026-11-09",
    "lot_size": 65,
-   "entry": "Enter on pullbacks that fail below 24,049 (EMA20 / R1 resistance zone)",
-   "target": "Exit spread near \u20b9149.6 or NIFTY at 23,750",
-   "stop_loss": "Spread falls to \u20b936.9, or NIFTY closes above 24,137",
-   "max_loss": 4803,
-   "max_reward": 8196,
+   "entry": "Enter on dips that hold above 24,602 (EMA20 / S1 support zone)",
+   "target": "Exit spread near \u20b974.8 or NIFTY at 25,150",
+   "stop_loss": "Spread falls to \u20b918.5, or NIFTY closes below 24,174",
+   "max_loss": 2399,
+   "max_reward": 4102,
    "reward_risk": 1.71,
    "decision": "SKIP",
-   "decision_reason": "No tested structure qualifies for today. On days the model called BEARISH, this spread averaged \u20b9187 per lot over 116 trades, but \u20b9-413 over the last 22 (120 days): the edge has faded, so it is skipped.",
+   "decision_reason": "No tested structure qualifies for today. Expiry day: a trade opened today can't be tested on NSE's closing prices, and the earlier model test lost money on expiry-day entries.",
    "enter_at": "09:45\u201311:00 IST",
    "exit_by": "15:00 IST same day if no target",
-   "setup_stats": {
-    "trades": 116,
-    "win_pct": 43.1,
-    "avg_pnl": 187,
-    "worst": -5196,
-    "best": 12182,
-    "total": 21767,
-    "sample": "days the model called BEARISH"
-   },
+   "setup_stats": null,
    "test": null
   },
   {
    "index": "BANKNIFTY",
-   "strategy": "Bear Put Spread",
-   "legs": "BUY 55900 PE + SELL 55200 PE",
+   "strategy": "Bull Put Spread",
+   "legs": "SELL 57100 PE + BUY 56000 PE",
    "expiry": "2026-11-23",
    "lot_size": 30,
-   "entry": "Enter on pullbacks that fail below 56,142 (EMA20 / R1 resistance zone)",
-   "target": "Exit spread near \u20b9521.9 or BANKNIFTY at 55,200",
-   "stop_loss": "Spread falls to \u20b9127.3, or BANKNIFTY closes above 56,371",
-   "max_loss": 7641,
-   "max_reward": 13359,
-   "reward_risk": 1.75,
+   "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is above 57,100",
+   "target": "Buy back at \u20b958.2 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
+   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b93,879 per lot)",
+   "max_loss": 29121,
+   "max_reward": 3879,
+   "reward_risk": 0.13,
    "decision": "SKIP",
-   "decision_reason": "No tested structure qualifies for today. On days the model called BEARISH, this spread lost overall (44.1% wins, avg \u20b9-219 per lot over 136 trades). A good-looking slice is not trusted on its own.",
-   "enter_at": "09:45\u201311:00 IST",
-   "exit_by": "15:00 IST same day if no target",
+   "decision_reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (67.7% wins, avg \u20b9-190 per lot over 155 trades). A good-looking slice is not trusted on its own.",
+   "enter_at": "10:15 IST, after the first hour",
+   "exit_by": "target / stop, else expiry 2026-11-23",
    "setup_stats": {
-    "trades": 136,
-    "win_pct": 44.1,
-    "avg_pnl": -219,
-    "worst": -15729,
-    "best": 14810,
-    "total": -29867,
-    "sample": "days the model called BEARISH"
+    "trades": 155,
+    "win_pct": 67.7,
+    "avg_pnl": -190,
+    "worst": -14563,
+    "best": 4611,
+    "total": -29464,
+    "sample": "days the model called BULLISH"
    },
    "test": null
   }
  ],
  "stocks": [
   {
-   "symbol": "BEL",
+   "symbol": "INDUSINDBK",
    "grade": "A",
-   "action": "BUY BEL near \u20b9398.00 (skip if it opens above \u20b9411.43) \u00b7 SL \u20b9391.29 \u00b7 T1 \u20b9411.43 \u00b7 T2 \u20b9420.38 \u00b7 Qty 14 for \u20b910k @1% risk",
-   "entry": 398.0,
+   "action": "BUY INDUSINDBK near \u20b9910.25 (skip if it opens above \u20b9950.27) \u00b7 SL \u20b9890.24 \u00b7 T1 \u20b9950.27 \u00b7 T2 \u20b9990.29 \u00b7 Qty 4 for \u20b910k @1% risk",
+   "entry": 910.25,
    "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
    "exit_by": "day 2, 15:15 IST",
-   "stop": 391.29,
-   "t1": 411.43,
-   "t2": 420.38,
-   "win_prob": 71.4,
-   "vol_badge": "2.3x Vol Surge"
+   "stop": 890.24,
+   "t1": 950.27,
+   "t2": 990.29,
+   "win_prob": 84.9,
+   "vol_badge": "3.1x Vol Surge"
   },
   {
-   "symbol": "GRASIM",
+   "symbol": "HINDALCO",
    "grade": "A",
-   "action": "BUY GRASIM near \u20b93,138.00 (skip if it opens above \u20b93,236.95) \u00b7 SL \u20b93,088.53 \u00b7 T1 \u20b93,236.95 \u00b7 T2 \u20b93,302.91 \u00b7 Qty 2 for \u20b910k @1% risk",
-   "entry": 3138.0,
+   "action": "BUY HINDALCO near \u20b9958.40 (skip if it opens above \u20b9995.75) \u00b7 SL \u20b9939.73 \u00b7 T1 \u20b9995.75 \u00b7 T2 \u20b91,033.10 \u00b7 Qty 5 for \u20b910k @1% risk",
+   "entry": 958.4,
    "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
    "exit_by": "day 2, 15:15 IST",
-   "stop": 3088.53,
-   "t1": 3236.95,
-   "t2": 3302.91,
-   "win_prob": 69.2,
-   "vol_badge": "2.2x Vol Surge"
-  },
-  {
-   "symbol": "AUROPHARMA",
-   "grade": "A",
-   "action": "BUY AUROPHARMA near \u20b91,705.00 (skip if it opens above \u20b91,766.28) \u00b7 SL \u20b91,674.36 \u00b7 T1 \u20b91,766.28 \u00b7 T2 \u20b91,807.14 \u00b7 Qty 3 for \u20b910k @1% risk",
-   "entry": 1705.0,
-   "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
-   "exit_by": "day 2, 15:15 IST",
-   "stop": 1674.36,
-   "t1": 1766.28,
-   "t2": 1807.14,
-   "win_prob": 65.3,
-   "vol_badge": "2.6x Vol Surge"
+   "stop": 939.73,
+   "t1": 995.75,
+   "t2": 1033.1,
+   "win_prob": 84.1,
+   "vol_badge": "3.3x Vol Surge"
   }
  ],
  "market_gate_open": true,
- "events": [
-  {
-   "symbol": "BHARTIARTL",
-   "name": "Bharti Airtel",
-   "when": "Thu 05 Nov",
-   "date": "2026-11-05",
-   "affects": "2026-11-06",
-   "past": true,
-   "bank": false
-  }
- ],
+ "events": [],
  "stock_track_record": null,
  "no_trade_reason": null,
  "timeline": [
   {
-   "date": "2026-11-06",
+   "date": "2026-11-09",
    "start": "07:45",
    "end": "09:00",
    "kind": "prep",
    "title": "Read the final plan",
    "do": "The ~07:15 run is final (US close, Dow and US futures, Europe, Asia open). Read the expected open, bias and trades. Set price alerts at each entry and stop-loss.",
-   "when": "Fri 06 Nov \u00b7 07:45\u201309:00"
+   "when": "Mon 09 Nov \u00b7 07:45\u201309:00"
   },
   {
-   "date": "2026-11-06",
+   "date": "2026-11-09",
    "start": "09:00",
    "end": "09:15",
    "kind": "wait",
    "title": "Pre-open",
    "do": "Place no market orders. Note where your stocks are indicated to open.",
-   "when": "Fri 06 Nov \u00b7 09:00\u201309:15"
+   "when": "Mon 09 Nov \u00b7 09:00\u201309:15"
   },
   {
-   "date": "2026-11-06",
+   "date": "2026-11-09",
    "start": "09:15",
    "end": "09:30",
    "kind": "wait",
    "title": "Wait",
    "do": "Opening 15 min is the most volatile. Cancel any stock that opens above its T1 or below its SL.",
-   "when": "Fri 06 Nov \u00b7 09:15\u201309:30"
+   "when": "Mon 09 Nov \u00b7 09:15\u201309:30"
   },
   {
-   "date": "2026-11-06",
+   "date": "2026-11-09",
    "start": "09:30",
    "end": "10:30",
    "kind": "act",
    "title": "Stock buy window",
    "do": "Buy only if price is holding above the entry and the 15-min opening high. Place the SL order immediately.",
-   "when": "Fri 06 Nov \u00b7 09:30\u201310:30"
+   "when": "Mon 09 Nov \u00b7 09:30\u201310:30"
   },
   {
-   "date": "2026-11-06",
+   "date": "2026-11-09",
    "start": "09:45",
    "end": "11:00",
    "kind": "act",
    "title": "Options window",
    "do": "Spreads / ATM buys only if the index respects the support/resistance shown. Iron condor / fly only after 10:00 with the index inside the range.",
-   "when": "Fri 06 Nov \u00b7 09:45\u201311:00"
+   "when": "Mon 09 Nov \u00b7 09:45\u201311:00"
   },
   {
-   "date": "2026-11-06",
+   "date": "2026-11-09",
    "start": "11:30",
    "end": "14:30",
    "kind": "manage",
    "title": "Manage only",
    "do": "No new stock entries. If it did not trigger, skip it. Keep stop-loss orders in place.",
-   "when": "Fri 06 Nov \u00b7 11:30\u201314:30"
+   "when": "Mon 09 Nov \u00b7 11:30\u201314:30"
   },
   {
-   "date": "2026-11-06",
+   "date": "2026-11-09",
    "start": "14:30",
    "end": "15:00",
    "kind": "exit",
    "title": "Option buyers exit",
    "do": "Exit option buys by 15:00 if target not hit (time decay). Spreads/condors: hold only if still inside the plan.",
-   "when": "Fri 06 Nov \u00b7 14:30\u201315:00"
+   "when": "Mon 09 Nov \u00b7 14:30\u201315:00"
   },
   {
-   "date": "2026-11-06",
+   "date": "2026-11-09",
    "start": "16:30",
    "end": "17:00",
    "kind": "review",
    "title": "Review",
    "do": "The engine grades today's plan. Check the Results tab: what worked, what the gap was.",
-   "when": "Fri 06 Nov \u00b7 16:30\u201317:00"
+   "when": "Mon 09 Nov \u00b7 16:30\u201317:00"
   },
   {
-   "date": "2026-11-09",
+   "date": "2026-11-11",
    "start": "09:15",
    "end": "15:15",
    "kind": "exit",
    "title": "Day 2: exit by 15:15",
    "do": "Book half at T1, trail SL to entry. Exit everything still open by 15:15 (this is a 1\u20132 day setup).",
-   "when": "Mon 09 Nov \u00b7 09:15\u201315:15"
+   "when": "Wed 11 Nov \u00b7 09:15\u201315:15"
   },
   {
    "date": "2026-11-09",
