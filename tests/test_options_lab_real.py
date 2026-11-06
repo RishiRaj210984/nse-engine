@@ -74,6 +74,23 @@ def spreads(recent_pnl):
 t("spread rule: allowed while it still works lately", spreads(+100))
 t("spread rule: not allowed when the last 120 days lost money", not spreads(-300))
 
+# condor stability: a bucket must make money in both the older and the newer half of its history
+def condor_bucket(older, newer):
+    days = pd.date_range("2025-10-01", periods=60, freq="4D")
+    pnl = older + newer
+    rows = [{"strategy": "condor", "date": d.date().isoformat(), "dte": 4, "bucket": "4", "label": "RANGEBOUND",
+             "pnl": p, "first_hr": 0.1} for d, p in zip(days, pnl)]
+    return L._summarise("NIFTY", pd.DataFrame(rows))["condor"]["by_bucket"]["4"]
+unsteady = condor_bucket([300] * 20 + [-1500] * 10, [800] * 30)    # avg +250, 83% wins, but older half -300
+t("condor bucket positive only in its newer half: not traded, marked unsteady",
+  not unsteady["allowed"] and unsteady["unsteady"] and unsteady["halves"] == [-300, 800])
+steady = condor_bucket([300] * 25 + [-1000] * 5, [400] * 25 + [-500] * 5)
+t("condor bucket positive in both halves: traded", steady["allowed"] and not steady["unsteady"])
+lab2 = {"prices": "real", "NIFTY": {"condor": {"basis": "days the model called SIDEWAYS", "overall": None, "overall_allowed": False,
+                                               "by_bucket": {"4": {**unsteady, "sample": "current expiry schedule"}}}}}
+v = L.setup_verdict("NIFTY", "Iron Condor", "2026-11-05", lab2)   # Thu 5 Nov -> Mon 9 Nov expiry: 4 days
+t("plan says why an unsteady setup is skipped", v["decision"] == "SKIP" and "not steady" in v["reason"] and "₹-300" in v["reason"])
+
 # daily price files: only NIFTY / BANKNIFTY index options, near expiries, strikes near the index
 raw = pd.DataFrame([
     {"TradDt": "2026-11-02", "FinInstrmTp": "IDO", "TckrSymb": "NIFTY", "XpryDt": EXP, "StrkPric": 22350.0, "OptnTp": "CE", "ClsPric": 40.0, "TtlTradgVol": 10, "UndrlygPric": 22000.0},

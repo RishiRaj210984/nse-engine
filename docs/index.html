@@ -187,7 +187,7 @@ body.is-simple main{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 <script>
 const NSE_HOLIDAYS = ['2026-10-20', '2026-11-08', '2026-11-10', '2026-11-24', '2026-12-25'];   // fallback; meta.json has the live list
 const holidayList = () => (D.meta?.holidays?.length ? D.meta.holidays : NSE_HOLIDAYS);
-const APP_VERSION = 'v47';   // keep equal to CACHE in sw.js
+const APP_VERSION = 'v48';   // keep equal to CACHE in sw.js
 const TEST_FROM = '2026-11-04';   // the one real test trade (guardian LIVE_FROM)
 const FILES = ['plan', 'global-bias', 'volume-breakouts', 'performance', 'review', 'meta', 'live', 'small-capital', 'markets'];
 const D = {};
@@ -1350,14 +1350,14 @@ function vLearning() {
         const ov = node.overall || {};
         h += `<details${st === 'condor' ? ' open' : ''}><summary class="row" style="cursor:pointer"><strong>${esc(SN[st] || st)}</strong><span class="n ${cls(ov.avg_pnl)}">${ov.trades || 0} trades · ${inr(ov.avg_pnl)}</span></summary>
           <div class="tbl"><table><thead><tr><th>Entry</th><th class="r">Trades</th><th class="r">Won</th><th class="r">Avg ₹/lot</th><th class="r">Worst</th><th>Rule</th></tr></thead><tbody>
-          ${Object.entries(node.by_bucket).map(([k, g]) => `<tr><td>${esc((lab.bucket_labels?.[ix] || {})[k] || k)}</td><td class="r n">${g.trades}</td><td class="r n">${g.win_pct}%</td><td class="r n ${cls(g.avg_pnl)}">${inr(g.avg_pnl)}</td><td class="r n down">${inr(g.worst)}</td><td class="${g.allowed ? 'up' : g.marginal ? 'warn' : 'down'}">${g.allowed ? 'Trade' : g.marginal ? 'Caution' : 'Skip'}</td></tr>`).join('')}
+          ${Object.entries(node.by_bucket).map(([k, g]) => `<tr><td>${esc((lab.bucket_labels?.[ix] || {})[k] || k)}</td><td class="r n">${g.trades}</td><td class="r n">${g.win_pct}%</td><td class="r n ${cls(g.avg_pnl)}">${inr(g.avg_pnl)}</td><td class="r n down">${inr(g.worst)}</td><td class="${g.allowed ? 'up' : g.marginal ? 'warn' : 'down'}">${g.allowed ? 'Trade' : g.marginal ? 'Caution' : g.unsteady ? 'Skip · unsteady' : 'Skip'}</td></tr>`).join('')}
           </tbody></table></div></details>`;
       });
       h += `</section>`;
     });
     const pd = lab.price_days;
     h += `<div class="fine">${lab.prices === 'real'
-      ? `Re-learned every evening on NSE's real closing option prices (${pd ? pd.days + ' days, since ' + esc(pd.from) : 'about 2 years'}): entry at the close, target and stop checked at each later close, after costs per lot. Real prices gave about 16–18% less credit than the old estimates.`
+      ? `Re-learned every evening on NSE's real closing option prices (${pd ? pd.days + ' days, since ' + esc(pd.from) : 'about 2 years'}): entry at the close, target and stop checked at each later close, after costs per lot. Real prices gave about 16–18% less credit than the old estimates. A condor is traded only if it made money in both the older and the newer half of its history ("unsteady" = only in one).`
       : `Re-learned every evening from ~2 years of hourly data with the plan's own entry, target and stop rules, after costs and slippage per lot. Estimates, not broker fills.`} Updated ${ago(lab.generated_at)}.</div>`;
   }
   h += `<section class="card"><div class="eyebrow">What it changed</div>${(p.history || []).map((x) => `<div><div class="n" style="font-size:.8rem">v${x.version} · ${esc(x.created_at.slice(0, 16).replace('T', ' '))}</div><div class="dim" style="font-size:.88rem">${esc(x.note)}</div></div>`).join('')}</section>`;

@@ -377,6 +377,14 @@ def _summarise(index, R):
                 continue
             g["sample"] = ("current expiry schedule" if use is reg_b else "full 2 years") +                 ("" if strat != "condor" or len(S_use[S_use.bucket == b]) >= rule["min_trades"] else ", all days")
             g["allowed"] = bool(g["trades"] >= rule["min_trades"] and g["win_pct"] >= rule["min_win"] and g["avg_pnl"] >= MIN_EDGE)
+            if strat == "condor":
+                # stability: the edge must show in both the older and the newer half of the sample, not just on average.
+                # Walk-forward on real prices (Jul 2025 - Oct 2026): same profit with 16 trades instead of 27,
+                # worst trade -894 instead of -8,324, and fewer Trade/Skip flips from month to month.
+                o = use.sort_values("date").pnl
+                g["halves"] = [int(o.iloc[:len(o) // 2].mean()), int(o.iloc[len(o) // 2:].mean())] if len(o) >= 2 else None
+                g["unsteady"] = bool(g["allowed"] and g["halves"] and min(g["halves"]) <= 0)
+                g["allowed"] = g["allowed"] and not g["unsteady"]
             g["marginal"] = bool(not g["allowed"] and g["trades"] >= rule["min_trades"] and 0 < g["avg_pnl"] < MIN_EDGE)
             if strat == "condor":
                 g["quiet_first_hour"] = _group(use[use.first_hr.abs() < 0.25])
@@ -613,6 +621,12 @@ def setup_verdict(index, strategy_name, session, lab=None, events=None):
         return {"decision": "CAUTION", "dte": dte, "stats": g,
                 "reason": f"{when}: barely positive historically ({g['win_pct']}% wins, avg ₹{g['avg_pnl']:,} per lot over "
                           f"{g['trades']} trades). Too thin an edge after model error; half size or skip."}
+    if g.get("unsteady"):
+        old, new = g["halves"]
+        return {"decision": "SKIP", "dte": dte, "stats": g,
+                "reason": f"{when}: positive on average (avg ₹{g['avg_pnl']:,} per lot over {g['trades']} trades) but not steady: "
+                          f"the older half of its history averaged ₹{old:,}, the newer half ₹{new:,}. "
+                          f"Only setups that made money in both halves are traded."}
     if not g["allowed"]:
         return {"decision": "SKIP", "dte": dte, "stats": g,
                 "reason": f"{when}: this setup lost money historically ({g['win_pct']}% wins, avg ₹{g['avg_pnl']:,} "
