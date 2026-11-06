@@ -1,44 +1,44 @@
 {
- "generated_at": "2026-11-06T16:18:14.132386+05:30",
+ "generated_at": "2026-11-06T23:12:42.123339+05:30",
  "session": "2026-11-09",
  "stage": "preview",
  "expected_open": {
-  "gap_pct": 0.03,
+  "gap_pct": 0.49,
   "error_pct": 0.38,
-  "day_pct": 0.07,
-  "snapshot": "Fri 06 Nov 16:18 IST",
+  "day_pct": 0.29,
+  "snapshot": "Fri 06 Nov 23:12 IST",
   "stage": "preview",
-  "tip": "Flat open expected. Normal entry windows apply.",
+  "tip": "Moderate gap up expected. Use limit orders only, and wait for 09:30.",
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": 0.0
+    "move_pct": 0.46
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": 0.0
+    "move_pct": 0.39
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": 0.0
+    "move_pct": 0.9
    },
    {
     "key": "dax",
     "name": "DAX (Germany)",
-    "move_pct": 0.0
+    "move_pct": 0.29
    },
    {
     "key": "ftse",
     "name": "FTSE 100 (UK)",
-    "move_pct": 0.0
+    "move_pct": 1.09
    },
    {
     "key": "stoxx",
     "name": "Euro Stoxx 50",
-    "move_pct": 0.0
+    "move_pct": 0.56
    },
    {
     "key": "n225",
@@ -48,25 +48,43 @@
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": 0.0
+    "move_pct": -0.49
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": 0.0
+    "move_pct": -0.08
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": 0.0
+    "move_pct": 0.16
    },
    {
     "key": "inr",
     "name": "USD/INR",
-    "move_pct": 0.0
+    "move_pct": -0.02
    }
   ],
   "drivers": [
+   {
+    "feature": "ftse",
+    "label": "FTSE 100 (UK)",
+    "value": 1.09,
+    "contribution_pct": 0.452
+   },
+   {
+    "feature": "es",
+    "label": "S&P 500 futures",
+    "value": 0.46,
+    "contribution_pct": 0.417
+   },
+   {
+    "feature": "ym",
+    "label": "Dow futures",
+    "value": 0.9,
+    "contribution_pct": -0.412
+   },
    {
     "feature": "vix",
     "label": "India VIX level",
@@ -74,92 +92,128 @@
     "contribution_pct": 0.109
    },
    {
-    "feature": "nprev",
-    "label": "Nifty previous day",
-    "value": 2.01,
-    "contribution_pct": -0.057
+    "feature": "stoxx",
+    "label": "Euro Stoxx 50",
+    "value": 0.56,
+    "contribution_pct": -0.108
    },
    {
-    "feature": "es",
-    "label": "S&P 500 futures",
-    "value": 0.0,
-    "contribution_pct": -0.016
-   },
-   {
-    "feature": "ym",
-    "label": "Dow futures",
-    "value": 0.0,
-    "contribution_pct": 0.015
-   },
-   {
-    "feature": "cl",
-    "label": "Crude oil",
-    "value": 0.0,
-    "contribution_pct": 0.007
-   },
-   {
-    "feature": "ftse",
-    "label": "FTSE 100 (UK)",
-    "value": 0.0,
-    "contribution_pct": -0.004
+    "feature": "dxy",
+    "label": "Dollar index",
+    "value": 0.16,
+    "contribution_pct": -0.107
    }
   ],
   "wf": {
    "oos_days": 300,
    "gap_corr": 0.26,
    "gap_sign_pct": 56.7,
-   "directional_calls": 75,
-   "directional_accuracy": 60.0
+   "directional_calls": 76,
+   "directional_accuracy": 59.2
   }
  },
- "headline": "Market bias UP \u2014 favour buying dips",
- "bias": "BULLISH",
- "score": 28,
+ "headline": "Market bias SIDEWAYS \u2014 favour hedged premium selling",
+ "bias": "RANGEBOUND",
+ "score": 18,
  "bias_track_record_pct": 65.7,
  "options": [
   {
    "index": "NIFTY",
-   "strategy": "Bull Call Spread",
-   "legs": "BUY 25050 CE + SELL 25150 CE",
+   "strategy": "Iron Condor",
+   "legs": "SELL 25200 CE + BUY 25300 CE + SELL 24850 PE + BUY 24750 PE",
    "expiry": "2026-11-09",
    "lot_size": 65,
-   "entry": "Enter on dips that hold above 24,602 (EMA20 / S1 support zone)",
-   "target": "Exit spread near \u20b974.8 or NIFTY at 25,150",
-   "stop_loss": "Spread falls to \u20b918.5, or NIFTY closes below 24,174",
-   "max_loss": 2399,
-   "max_reward": 4102,
-   "reward_risk": 1.71,
+   "entry": "Enter at 10:15 (after the first hour) only if NIFTY is between 24,850 and 25,200",
+   "target": "Buy back at \u20b911.8 (keep ~55% of credit), else hold to expiry Mon 09 Nov",
+   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,703 per lot)",
+   "max_loss": 4797,
+   "max_reward": 1703,
+   "reward_risk": 0.36,
    "decision": "SKIP",
    "decision_reason": "No tested structure qualifies for today. Expiry day: a trade opened today can't be tested on NSE's closing prices, and the earlier model test lost money on expiry-day entries.",
-   "enter_at": "09:45\u201311:00 IST",
-   "exit_by": "15:00 IST same day if no target",
+   "enter_at": "10:15 IST, after the first hour",
+   "exit_by": "target / stop, else expiry 2026-11-09",
    "setup_stats": null,
-   "test": null
+   "test": {
+    "wing": 150,
+    "legs": [
+     {
+      "action": "SELL",
+      "strike": 25200,
+      "type": "CE",
+      "est_premium": 22.4
+     },
+     {
+      "action": "BUY",
+      "strike": 25350,
+      "type": "CE",
+      "est_premium": 4.8
+     },
+     {
+      "action": "SELL",
+      "strike": 24850,
+      "type": "PE",
+      "est_premium": 18.8
+     },
+     {
+      "action": "BUY",
+      "strike": 24700,
+      "type": "PE",
+      "est_premium": 3.6
+     }
+    ],
+    "net_premium": 32.8,
+    "max_loss": 7618,
+    "max_reward": 2132
+   }
   },
   {
    "index": "BANKNIFTY",
-   "strategy": "Bull Put Spread",
-   "legs": "SELL 57100 PE + BUY 56000 PE",
+   "strategy": "Iron Condor",
+   "legs": "SELL 61100 CE + BUY 62200 CE + SELL 57100 PE + BUY 56000 PE",
    "expiry": "2026-11-23",
    "lot_size": 30,
-   "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is above 57,100",
-   "target": "Buy back at \u20b958.2 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
-   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b93,879 per lot)",
-   "max_loss": 29121,
-   "max_reward": 3879,
-   "reward_risk": 0.13,
+   "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is between 57,100 and 61,100",
+   "target": "Buy back at \u20b9130.4 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
+   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b98,691 per lot)",
+   "max_loss": 24309,
+   "max_reward": 8691,
+   "reward_risk": 0.36,
    "decision": "SKIP",
-   "decision_reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (67.7% wins, avg \u20b9-190 per lot over 155 trades). A good-looking slice is not trusted on its own.",
+   "decision_reason": "No tested structure qualifies for today. 2+ weeks before: positive on average (avg \u20b9868 per lot over 42 trades) but not steady: the older half of its history averaged \u20b9-558, the newer half \u20b92,295. Only setups that made money in both halves are traded.",
    "enter_at": "10:15 IST, after the first hour",
    "exit_by": "target / stop, else expiry 2026-11-23",
    "setup_stats": {
-    "trades": 155,
-    "win_pct": 67.7,
-    "avg_pnl": -190,
-    "worst": -14563,
-    "best": 4611,
-    "total": -29464,
-    "sample": "days the model called BULLISH"
+    "trades": 42,
+    "win_pct": 76.2,
+    "avg_pnl": 868,
+    "worst": -10986,
+    "best": 5286,
+    "total": 36494,
+    "sample": "days the model called SIDEWAYS, current expiry schedule",
+    "allowed": false,
+    "halves": [
+     -558,
+     2295
+    ],
+    "unsteady": true,
+    "marginal": false,
+    "quiet_first_hour": {
+     "trades": 23,
+     "win_pct": 73.9,
+     "avg_pnl": 682,
+     "worst": -10986,
+     "best": 5286,
+     "total": 15691
+    },
+    "trending_first_hour": {
+     "trades": 19,
+     "win_pct": 78.9,
+     "avg_pnl": 1094,
+     "worst": -9263,
+     "best": 4663,
+     "total": 20803
+    }
    },
    "test": null
   }
@@ -175,7 +229,7 @@
    "stop": 890.24,
    "t1": 950.27,
    "t2": 990.29,
-   "win_prob": 84.9,
+   "win_prob": 84.6,
    "vol_badge": "3.1x Vol Surge"
   },
   {
@@ -188,7 +242,7 @@
    "stop": 939.73,
    "t1": 995.75,
    "t2": 1033.1,
-   "win_prob": 84.1,
+   "win_prob": 83.9,
    "vol_badge": "3.3x Vol Surge"
   }
  ],
