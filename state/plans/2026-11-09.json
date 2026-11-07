@@ -1,47 +1,47 @@
 {
  "bias": {
-  "generated_at": "2026-11-06T23:12:23.606673+05:30",
+  "generated_at": "2026-11-07T13:16:04.284925+05:30",
   "target_session": "2026-11-09",
   "reference_date": "2026-11-06",
   "bias": {
    "label": "RANGEBOUND",
-   "score": 18,
-   "z": 0.177,
-   "model_z": 0.177,
-   "predicted_nifty_move_pct": 0.143,
+   "score": -2,
+   "z": -0.016,
+   "model_z": -0.016,
+   "predicted_nifty_move_pct": -0.013,
    "typical_daily_move_pct": 0.809,
    "source": "daily close model",
    "india_vix": 17.47,
    "components": [
     {
-     "feature": "vix_chg",
-     "label": "India VIX change",
-     "value": 1.885,
-     "contribution_pct": 0.187
-    },
-    {
      "feature": "ndx",
      "label": "Nasdaq minus S&P (tech tilt) %",
-     "value": 0.591,
-     "contribution_pct": -0.176
+     "value": 0.773,
+     "contribution_pct": -0.231
     },
     {
      "feature": "dxy",
      "label": "Dollar index %",
-     "value": 0.61,
-     "contribution_pct": -0.157
+     "value": 0.739,
+     "contribution_pct": -0.19
     },
     {
-     "feature": "spx",
-     "label": "S&P 500 overnight %",
-     "value": 0.541,
-     "contribution_pct": 0.131
+     "feature": "vix_chg",
+     "label": "India VIX change",
+     "value": 1.89,
+     "contribution_pct": 0.188
     },
     {
      "feature": "vix",
      "label": "India VIX level",
-     "value": 17.465,
+     "value": 17.47,
      "contribution_pct": 0.089
+    },
+    {
+     "feature": "spx",
+     "label": "S&P 500 overnight %",
+     "value": 0.315,
+     "contribution_pct": 0.068
     },
     {
      "feature": "nifty_ext",
@@ -52,8 +52,8 @@
     {
      "feature": "tnx",
      "label": "US 10Y yield chg (pts)",
-     "value": 0.016,
-     "contribution_pct": -0.013
+     "value": 0.022,
+     "contribution_pct": -0.018
     },
     {
      "feature": "nifty_prev",
@@ -64,8 +64,8 @@
     {
      "feature": "crude",
      "label": "Crude oil %",
-     "value": -0.387,
-     "contribution_pct": 0.001
+     "value": 0.342,
+     "contribution_pct": -0.0
     }
    ]
   },
@@ -236,7 +236,7 @@
     "lot_size": 30,
     "expiry": "2026-11-23",
     "days_to_expiry": 14.75,
-    "iv_used_pct": 19.0,
+    "iv_used_pct": 19.01,
     "expected_move": 2257,
     "levels": {
      "prev_close": 59086.0,
@@ -260,34 +260,34 @@
         "action": "SELL",
         "strike": 61100,
         "type": "CE",
-        "est_premium": 271.2
+        "est_premium": 271.4
        },
        {
         "action": "BUY",
         "strike": 62200,
         "type": "CE",
-        "est_premium": 110.8
+        "est_premium": 110.9
        },
        {
         "action": "SELL",
         "strike": 57100,
         "type": "PE",
-        "est_premium": 197.6
+        "est_premium": 197.8
        },
        {
         "action": "BUY",
         "strike": 56000,
         "type": "PE",
-        "est_premium": 68.3
+        "est_premium": 68.4
        }
       ],
-      "net_premium": 289.7,
-      "max_loss": 24309,
-      "max_reward": 8691,
+      "net_premium": 289.9,
+      "max_loss": 24303,
+      "max_reward": 8697,
       "reward_risk": 0.36,
       "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is between 57,100 and 61,100",
-      "target": "Buy back at \u20b9130.4 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
-      "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b98,691 per lot)",
+      "target": "Buy back at \u20b9130.5 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
+      "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b98,697 per lot)",
       "breakeven": [
        56810,
        61390
@@ -338,33 +338,33 @@
         "action": "SELL",
         "strike": 59100,
         "type": "CE",
-        "est_premium": 971.5
+        "est_premium": 971.7
        },
        {
         "action": "SELL",
         "strike": 59100,
         "type": "PE",
-        "est_premium": 830.4
+        "est_premium": 830.7
        },
        {
         "action": "BUY",
         "strike": 61300,
         "type": "CE",
-        "est_premium": 232.9
+        "est_premium": 233.1
        },
        {
         "action": "BUY",
         "strike": 56900,
         "type": "PE",
-        "est_premium": 165.5
+        "est_premium": 165.6
        }
       ],
-      "net_premium": 1403.5,
-      "max_loss": 23895,
-      "max_reward": 42105,
+      "net_premium": 1403.7,
+      "max_loss": 23889,
+      "max_reward": 42111,
       "reward_risk": 1.76,
       "entry": "Enter only if BANKNIFTY opens within \u00b1100 of 59,100",
-      "target": "Buy back at \u20b9982.4 (keep ~30% of credit)",
+      "target": "Buy back at \u20b9982.6 (keep ~30% of credit)",
       "stop_loss": "BANKNIFTY moves beyond 58,000 / 60,200",
       "breakeven": [
        57696,
@@ -430,31 +430,31 @@
   }
  },
  "plan": {
-  "generated_at": "2026-11-06T23:12:42.124293+05:30",
+  "generated_at": "2026-11-07T13:16:27.129858+05:30",
   "session": "2026-11-09",
   "stage": "preview",
   "expected_open": {
-   "gap_pct": 0.49,
+   "gap_pct": 0.26,
    "error_pct": 0.38,
-   "day_pct": 0.29,
-   "snapshot": "Fri 06 Nov 23:12 IST",
+   "day_pct": 0.11,
+   "snapshot": "Sat 07 Nov 13:16 IST",
    "stage": "preview",
    "tip": "Moderate gap up expected. Use limit orders only, and wait for 09:30.",
    "markets": [
     {
      "key": "es",
      "name": "S&P 500 futures",
-     "move_pct": 0.46
+     "move_pct": 0.09
     },
     {
      "key": "nq",
      "name": "Nasdaq futures",
-     "move_pct": 0.39
+     "move_pct": 0.15
     },
     {
      "key": "ym",
      "name": "Dow futures",
-     "move_pct": 0.9
+     "move_pct": 0.49
     },
     {
      "key": "dax",
@@ -479,17 +479,17 @@
     {
      "key": "cl",
      "name": "Crude oil",
-     "move_pct": -0.49
+     "move_pct": -0.32
     },
     {
      "key": "gold",
      "name": "Gold",
-     "move_pct": -0.08
+     "move_pct": 0.15
     },
     {
      "key": "dxy",
      "name": "Dollar index",
-     "move_pct": 0.16
+     "move_pct": 0.27
     },
     {
      "key": "inr",
@@ -502,19 +502,25 @@
      "feature": "ftse",
      "label": "FTSE 100 (UK)",
      "value": 1.09,
-     "contribution_pct": 0.452
-    },
-    {
-     "feature": "es",
-     "label": "S&P 500 futures",
-     "value": 0.46,
-     "contribution_pct": 0.417
+     "contribution_pct": 0.453
     },
     {
      "feature": "ym",
      "label": "Dow futures",
-     "value": 0.9,
-     "contribution_pct": -0.412
+     "value": 0.49,
+     "contribution_pct": -0.22
+    },
+    {
+     "feature": "dxy",
+     "label": "Dollar index",
+     "value": 0.27,
+     "contribution_pct": -0.176
+    },
+    {
+     "feature": "stoxx",
+     "label": "Euro Stoxx 50",
+     "value": 0.56,
+     "contribution_pct": -0.112
     },
     {
      "feature": "vix",
@@ -523,29 +529,23 @@
      "contribution_pct": 0.109
     },
     {
-     "feature": "stoxx",
-     "label": "Euro Stoxx 50",
-     "value": 0.56,
-     "contribution_pct": -0.108
-    },
-    {
-     "feature": "dxy",
-     "label": "Dollar index",
-     "value": 0.16,
-     "contribution_pct": -0.107
+     "feature": "es",
+     "label": "S&P 500 futures",
+     "value": 0.09,
+     "contribution_pct": 0.067
     }
    ],
    "wf": {
     "oos_days": 300,
     "gap_corr": 0.26,
     "gap_sign_pct": 56.7,
-    "directional_calls": 76,
-    "directional_accuracy": 59.2
+    "directional_calls": 75,
+    "directional_accuracy": 60.0
    }
   },
   "headline": "Market bias SIDEWAYS \u2014 favour hedged premium selling",
   "bias": "RANGEBOUND",
-  "score": 18,
+  "score": -2,
   "bias_track_record_pct": 65.7,
   "options": [
    {
@@ -605,10 +605,10 @@
     "expiry": "2026-11-23",
     "lot_size": 30,
     "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is between 57,100 and 61,100",
-    "target": "Buy back at \u20b9130.4 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
-    "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b98,691 per lot)",
-    "max_loss": 24309,
-    "max_reward": 8691,
+    "target": "Buy back at \u20b9130.5 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
+    "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b98,697 per lot)",
+    "max_loss": 24303,
+    "max_reward": 8697,
     "reward_risk": 0.36,
     "decision": "SKIP",
     "decision_reason": "No tested structure qualifies for today. 2+ weeks before: positive on average (avg \u20b9868 per lot over 42 trades) but not steady: the older half of its history averaged \u20b9-558, the newer half \u20b92,295. Only setups that made money in both halves are traded.",
@@ -651,30 +651,30 @@
   ],
   "stocks": [
    {
-    "symbol": "INDUSINDBK",
+    "symbol": "SBIN",
     "grade": "A",
-    "action": "BUY INDUSINDBK near \u20b9910.25 (skip if it opens above \u20b9950.27) \u00b7 SL \u20b9890.24 \u00b7 T1 \u20b9950.27 \u00b7 T2 \u20b9990.29 \u00b7 Qty 4 for \u20b910k @1% risk",
-    "entry": 910.25,
+    "action": "BUY SBIN near \u20b91,006.40 (skip if it opens above \u20b91,037.76) \u00b7 SL \u20b9990.72 \u00b7 T1 \u20b91,037.76 \u00b7 T2 \u20b91,069.12 \u00b7 Qty 6 for \u20b910k @1% risk",
+    "entry": 1006.4,
     "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
     "exit_by": "day 2, 15:15 IST",
-    "stop": 890.24,
-    "t1": 950.27,
-    "t2": 990.29,
-    "win_prob": 84.6,
-    "vol_badge": "3.1x Vol Surge"
+    "stop": 990.72,
+    "t1": 1037.76,
+    "t2": 1069.12,
+    "win_prob": 72.8,
+    "vol_badge": "2.4x Vol Surge"
    },
    {
-    "symbol": "HINDALCO",
+    "symbol": "SUNPHARMA",
     "grade": "A",
-    "action": "BUY HINDALCO near \u20b9958.40 (skip if it opens above \u20b9995.75) \u00b7 SL \u20b9939.73 \u00b7 T1 \u20b9995.75 \u00b7 T2 \u20b91,033.10 \u00b7 Qty 5 for \u20b910k @1% risk",
-    "entry": 958.4,
+    "action": "BUY SUNPHARMA near \u20b91,829.00 (skip if it opens above \u20b91,890.49) \u00b7 SL \u20b91,798.25 \u00b7 T1 \u20b91,890.49 \u00b7 T2 \u20b91,951.98 \u00b7 Qty 3 for \u20b910k @1% risk",
+    "entry": 1829.0,
     "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
     "exit_by": "day 2, 15:15 IST",
-    "stop": 939.73,
-    "t1": 995.75,
-    "t2": 1033.1,
-    "win_prob": 83.9,
-    "vol_badge": "3.3x Vol Surge"
+    "stop": 1798.25,
+    "t1": 1890.49,
+    "t2": 1951.98,
+    "win_prob": 70.0,
+    "vol_badge": "2.0x Vol Surge"
    }
   ],
   "market_gate_open": true,
@@ -784,51 +784,63 @@
  },
  "stocks": [
   {
+   "symbol": "SBIN",
+   "name": "State Bank of India",
+   "grade": "A",
+   "passed": true,
+   "entry": 1006.4,
+   "stop": 990.72,
+   "t1": 1037.76,
+   "t2": 1069.12,
+   "atr": 20.91,
+   "skip_reason": null
+  },
+  {
+   "symbol": "SUNPHARMA",
+   "name": "Sun Pharma",
+   "grade": "A",
+   "passed": true,
+   "entry": 1829.0,
+   "stop": 1798.25,
+   "t1": 1890.49,
+   "t2": 1951.98,
+   "atr": 40.99,
+   "skip_reason": null
+  },
+  {
    "symbol": "INDUSINDBK",
    "name": "IndusInd Bank",
-   "grade": "A",
-   "passed": true,
-   "entry": 910.25,
-   "stop": 890.24,
-   "t1": 950.27,
-   "t2": 990.29,
-   "atr": 26.68,
-   "skip_reason": null
-  },
-  {
-   "symbol": "HINDALCO",
-   "name": "Hindalco",
-   "grade": "A",
-   "passed": true,
-   "entry": 958.4,
-   "stop": 939.73,
-   "t1": 995.75,
-   "t2": 1033.1,
-   "atr": 24.9,
-   "skip_reason": null
-  },
-  {
-   "symbol": "HAVELLS",
-   "name": "Havells",
    "grade": "C",
    "passed": true,
-   "entry": 1128.0,
-   "stop": 1103.33,
-   "t1": 1177.34,
-   "t2": 1226.68,
-   "atr": 32.89,
-   "skip_reason": "Already up 5.61% today: reversal risk"
+   "entry": 911.45,
+   "stop": 892.62,
+   "t1": 949.12,
+   "t2": 986.79,
+   "atr": 25.11,
+   "skip_reason": "Already up 5.35% today: reversal risk"
   },
   {
    "symbol": "VEDL",
    "name": "Vedanta",
    "grade": "A",
    "passed": false,
-   "entry": 261.75,
-   "stop": 255.75,
-   "t1": 273.74,
-   "t2": 285.74,
-   "atr": 8.0,
+   "entry": 263.8,
+   "stop": 257.83,
+   "t1": 275.75,
+   "t2": 287.69,
+   "atr": 7.96,
+   "skip_reason": null
+  },
+  {
+   "symbol": "MUTHOOTFIN",
+   "name": "Muthoot Finance",
+   "grade": "A",
+   "passed": false,
+   "entry": 2839.0,
+   "stop": 2767.98,
+   "t1": 2981.04,
+   "t2": 3123.08,
+   "atr": 94.69,
    "skip_reason": null
   },
   {
@@ -836,23 +848,11 @@
    "name": "Tata Steel",
    "grade": "A",
    "passed": false,
-   "entry": 186.3,
-   "stop": 182.66,
-   "t1": 193.58,
-   "t2": 200.87,
-   "atr": 4.86,
-   "skip_reason": null
-  },
-  {
-   "symbol": "HDFCLIFE",
-   "name": "HDFC Life",
-   "grade": "A",
-   "passed": false,
-   "entry": 565.3,
-   "stop": 554.29,
-   "t1": 587.33,
-   "t2": 609.35,
-   "atr": 14.68,
+   "entry": 182.0,
+   "stop": 178.57,
+   "t1": 188.86,
+   "t2": 195.71,
+   "atr": 4.57,
    "skip_reason": null
   },
   {
@@ -860,47 +860,47 @@
    "name": "Pidilite",
    "grade": "A",
    "passed": false,
-   "entry": 1579.0,
-   "stop": 1548.79,
-   "t1": 1639.42,
-   "t2": 1699.84,
-   "atr": 40.28,
+   "entry": 1553.6,
+   "stop": 1523.85,
+   "t1": 1613.11,
+   "t2": 1672.61,
+   "atr": 39.67,
    "skip_reason": null
   },
   {
-   "symbol": "ONGC",
-   "name": "ONGC",
+   "symbol": "JIOFIN",
+   "name": "Jio Financial",
    "grade": "A",
    "passed": false,
-   "entry": 231.76,
-   "stop": 228.16,
-   "t1": 238.97,
-   "t2": 246.17,
-   "atr": 4.8,
+   "entry": 229.62,
+   "stop": 225.41,
+   "t1": 238.04,
+   "t2": 246.46,
+   "atr": 5.61,
    "skip_reason": null
   },
   {
-   "symbol": "SBIN",
-   "name": "State Bank of India",
+   "symbol": "SBILIFE",
+   "name": "SBI Life",
    "grade": "A",
    "passed": false,
-   "entry": 1018.5,
-   "stop": 1002.36,
-   "t1": 1050.78,
-   "t2": 1083.06,
-   "atr": 21.52,
+   "entry": 1735.0,
+   "stop": 1704.89,
+   "t1": 1795.22,
+   "t2": 1855.45,
+   "atr": 40.15,
    "skip_reason": null
   },
   {
-   "symbol": "NTPC",
-   "name": "NTPC",
+   "symbol": "BRITANNIA",
+   "name": "Britannia",
    "grade": "A",
    "passed": false,
-   "entry": 323.45,
-   "stop": 317.56,
-   "t1": 335.23,
-   "t2": 347.01,
-   "atr": 7.85,
+   "entry": 4980.3,
+   "stop": 4898.82,
+   "t1": 5143.27,
+   "t2": 5306.24,
+   "atr": 108.65,
    "skip_reason": null
   },
   {
@@ -908,23 +908,23 @@
    "name": "HDFC Bank",
    "grade": "A",
    "passed": false,
-   "entry": 788.25,
-   "stop": 775.12,
-   "t1": 814.52,
-   "t2": 840.78,
-   "atr": 17.51,
+   "entry": 760.0,
+   "stop": 747.83,
+   "t1": 784.34,
+   "t2": 808.68,
+   "atr": 16.23,
    "skip_reason": null
   },
   {
-   "symbol": "BAJAJ-AUTO",
-   "name": "Bajaj Auto",
+   "symbol": "TATAPOWER",
+   "name": "Tata Power",
    "grade": "A",
    "passed": false,
-   "entry": 10900.0,
-   "stop": 10702.73,
-   "t1": 11294.54,
-   "t2": 11689.08,
-   "atr": 263.03,
+   "entry": 364.55,
+   "stop": 358.28,
+   "t1": 377.1,
+   "t2": 389.64,
+   "atr": 8.36,
    "skip_reason": null
   }
  ]

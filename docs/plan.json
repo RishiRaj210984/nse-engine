@@ -1,29 +1,29 @@
 {
- "generated_at": "2026-11-06T23:12:42.123339+05:30",
+ "generated_at": "2026-11-07T13:16:27.128839+05:30",
  "session": "2026-11-09",
  "stage": "preview",
  "expected_open": {
-  "gap_pct": 0.49,
+  "gap_pct": 0.26,
   "error_pct": 0.38,
-  "day_pct": 0.29,
-  "snapshot": "Fri 06 Nov 23:12 IST",
+  "day_pct": 0.11,
+  "snapshot": "Sat 07 Nov 13:16 IST",
   "stage": "preview",
   "tip": "Moderate gap up expected. Use limit orders only, and wait for 09:30.",
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": 0.46
+    "move_pct": 0.09
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": 0.39
+    "move_pct": 0.15
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": 0.9
+    "move_pct": 0.49
    },
    {
     "key": "dax",
@@ -48,17 +48,17 @@
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": -0.49
+    "move_pct": -0.32
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": -0.08
+    "move_pct": 0.15
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": 0.16
+    "move_pct": 0.27
    },
    {
     "key": "inr",
@@ -71,19 +71,25 @@
     "feature": "ftse",
     "label": "FTSE 100 (UK)",
     "value": 1.09,
-    "contribution_pct": 0.452
-   },
-   {
-    "feature": "es",
-    "label": "S&P 500 futures",
-    "value": 0.46,
-    "contribution_pct": 0.417
+    "contribution_pct": 0.453
    },
    {
     "feature": "ym",
     "label": "Dow futures",
-    "value": 0.9,
-    "contribution_pct": -0.412
+    "value": 0.49,
+    "contribution_pct": -0.22
+   },
+   {
+    "feature": "dxy",
+    "label": "Dollar index",
+    "value": 0.27,
+    "contribution_pct": -0.176
+   },
+   {
+    "feature": "stoxx",
+    "label": "Euro Stoxx 50",
+    "value": 0.56,
+    "contribution_pct": -0.112
    },
    {
     "feature": "vix",
@@ -92,29 +98,23 @@
     "contribution_pct": 0.109
    },
    {
-    "feature": "stoxx",
-    "label": "Euro Stoxx 50",
-    "value": 0.56,
-    "contribution_pct": -0.108
-   },
-   {
-    "feature": "dxy",
-    "label": "Dollar index",
-    "value": 0.16,
-    "contribution_pct": -0.107
+    "feature": "es",
+    "label": "S&P 500 futures",
+    "value": 0.09,
+    "contribution_pct": 0.067
    }
   ],
   "wf": {
    "oos_days": 300,
    "gap_corr": 0.26,
    "gap_sign_pct": 56.7,
-   "directional_calls": 76,
-   "directional_accuracy": 59.2
+   "directional_calls": 75,
+   "directional_accuracy": 60.0
   }
  },
  "headline": "Market bias SIDEWAYS \u2014 favour hedged premium selling",
  "bias": "RANGEBOUND",
- "score": 18,
+ "score": -2,
  "bias_track_record_pct": 65.7,
  "options": [
   {
@@ -174,10 +174,10 @@
    "expiry": "2026-11-23",
    "lot_size": 30,
    "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is between 57,100 and 61,100",
-   "target": "Buy back at \u20b9130.4 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
-   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b98,691 per lot)",
-   "max_loss": 24309,
-   "max_reward": 8691,
+   "target": "Buy back at \u20b9130.5 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
+   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b98,697 per lot)",
+   "max_loss": 24303,
+   "max_reward": 8697,
    "reward_risk": 0.36,
    "decision": "SKIP",
    "decision_reason": "No tested structure qualifies for today. 2+ weeks before: positive on average (avg \u20b9868 per lot over 42 trades) but not steady: the older half of its history averaged \u20b9-558, the newer half \u20b92,295. Only setups that made money in both halves are traded.",
@@ -220,30 +220,30 @@
  ],
  "stocks": [
   {
-   "symbol": "INDUSINDBK",
+   "symbol": "SBIN",
    "grade": "A",
-   "action": "BUY INDUSINDBK near \u20b9910.25 (skip if it opens above \u20b9950.27) \u00b7 SL \u20b9890.24 \u00b7 T1 \u20b9950.27 \u00b7 T2 \u20b9990.29 \u00b7 Qty 4 for \u20b910k @1% risk",
-   "entry": 910.25,
+   "action": "BUY SBIN near \u20b91,006.40 (skip if it opens above \u20b91,037.76) \u00b7 SL \u20b9990.72 \u00b7 T1 \u20b91,037.76 \u00b7 T2 \u20b91,069.12 \u00b7 Qty 6 for \u20b910k @1% risk",
+   "entry": 1006.4,
    "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
    "exit_by": "day 2, 15:15 IST",
-   "stop": 890.24,
-   "t1": 950.27,
-   "t2": 990.29,
-   "win_prob": 84.6,
-   "vol_badge": "3.1x Vol Surge"
+   "stop": 990.72,
+   "t1": 1037.76,
+   "t2": 1069.12,
+   "win_prob": 72.8,
+   "vol_badge": "2.4x Vol Surge"
   },
   {
-   "symbol": "HINDALCO",
+   "symbol": "SUNPHARMA",
    "grade": "A",
-   "action": "BUY HINDALCO near \u20b9958.40 (skip if it opens above \u20b9995.75) \u00b7 SL \u20b9939.73 \u00b7 T1 \u20b9995.75 \u00b7 T2 \u20b91,033.10 \u00b7 Qty 5 for \u20b910k @1% risk",
-   "entry": 958.4,
+   "action": "BUY SUNPHARMA near \u20b91,829.00 (skip if it opens above \u20b91,890.49) \u00b7 SL \u20b91,798.25 \u00b7 T1 \u20b91,890.49 \u00b7 T2 \u20b91,951.98 \u00b7 Qty 3 for \u20b910k @1% risk",
+   "entry": 1829.0,
    "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
    "exit_by": "day 2, 15:15 IST",
-   "stop": 939.73,
-   "t1": 995.75,
-   "t2": 1033.1,
-   "win_prob": 83.9,
-   "vol_badge": "3.3x Vol Surge"
+   "stop": 1798.25,
+   "t1": 1890.49,
+   "t2": 1951.98,
+   "win_prob": 70.0,
+   "vol_badge": "2.0x Vol Surge"
   }
  ],
  "market_gate_open": true,
