@@ -1,15 +1,15 @@
 {
  "bias": {
-  "generated_at": "2026-11-09T00:07:24.467699+05:30",
+  "generated_at": "2026-11-09T03:55:53.266181+05:30",
   "target_session": "2026-11-09",
   "reference_date": "2026-11-08",
   "bias": {
    "label": "RANGEBOUND",
-   "score": 13,
-   "z": 0.132,
-   "model_z": 0.132,
-   "predicted_nifty_move_pct": 0.1,
-   "typical_daily_move_pct": 0.762,
+   "score": 15,
+   "z": 0.147,
+   "model_z": 0.147,
+   "predicted_nifty_move_pct": 0.11,
+   "typical_daily_move_pct": 0.731,
    "source": "pre-open global snapshot",
    "india_vix": 18.43,
    "components": [
@@ -17,37 +17,37 @@
      "feature": "vix",
      "label": "India VIX level",
      "value": 18.43,
-     "contribution_pct": 0.109
+     "contribution_pct": 0.107
     },
     {
      "feature": "inr",
      "label": "USD/INR",
      "value": 0.0,
-     "contribution_pct": -0.014
+     "contribution_pct": -0.013
     },
     {
      "feature": "es",
      "label": "S&P 500 futures",
      "value": 0.0,
-     "contribution_pct": -0.012
-    },
-    {
-     "feature": "ym",
-     "label": "Dow futures",
-     "value": 0.0,
-     "contribution_pct": 0.004
-    },
-    {
-     "feature": "ftse",
-     "label": "FTSE 100 (UK)",
-     "value": 0.0,
-     "contribution_pct": -0.004
+     "contribution_pct": -0.01
     },
     {
      "feature": "cl",
      "label": "Crude oil",
      "value": 0.0,
-     "contribution_pct": 0.004
+     "contribution_pct": 0.01
+    },
+    {
+     "feature": "nq",
+     "label": "Nasdaq futures",
+     "value": 0.0,
+     "contribution_pct": 0.005
+    },
+    {
+     "feature": "nprev",
+     "label": "Nifty previous day",
+     "value": -0.18,
+     "contribution_pct": -0.005
     }
    ]
   },
@@ -403,25 +403,25 @@
   },
   "model": {
    "oos_days": 300,
-   "directional_calls": 150,
-   "directional_accuracy": 71.3,
-   "sign_accuracy_all_days": 65.3,
-   "gap_corr": 0.53,
-   "gap_sign_pct": 69.0,
+   "directional_calls": 163,
+   "directional_accuracy": 71.8,
+   "sign_accuracy_all_days": 64.3,
+   "gap_corr": 0.6,
+   "gap_sign_pct": 72.3,
    "trained_rows": 750,
    "version": 32,
    "bias_threshold": 0.2
   }
  },
  "plan": {
-  "generated_at": "2026-11-09T00:07:46.853967+05:30",
+  "generated_at": "2026-11-09T03:56:09.603398+05:30",
   "session": "2026-11-09",
   "stage": "preview",
   "expected_open": {
    "gap_pct": -0.02,
-   "error_pct": 0.33,
-   "day_pct": 0.1,
-   "snapshot": "Mon 09 Nov 00:07 IST",
+   "error_pct": 0.31,
+   "day_pct": 0.11,
+   "snapshot": "Mon 09 Nov 03:55 IST",
    "stage": "preview",
    "tip": "Flat open expected. Normal entry windows apply.",
    "markets": [
@@ -486,51 +486,51 @@
      "feature": "vix",
      "label": "India VIX level",
      "value": 18.43,
-     "contribution_pct": 0.109
+     "contribution_pct": 0.107
     },
     {
      "feature": "inr",
      "label": "USD/INR",
      "value": 0.0,
-     "contribution_pct": -0.014
+     "contribution_pct": -0.013
     },
     {
      "feature": "es",
      "label": "S&P 500 futures",
      "value": 0.0,
-     "contribution_pct": -0.012
-    },
-    {
-     "feature": "ym",
-     "label": "Dow futures",
-     "value": 0.0,
-     "contribution_pct": 0.004
-    },
-    {
-     "feature": "ftse",
-     "label": "FTSE 100 (UK)",
-     "value": 0.0,
-     "contribution_pct": -0.004
+     "contribution_pct": -0.01
     },
     {
      "feature": "cl",
      "label": "Crude oil",
      "value": 0.0,
-     "contribution_pct": 0.004
+     "contribution_pct": 0.01
+    },
+    {
+     "feature": "nq",
+     "label": "Nasdaq futures",
+     "value": 0.0,
+     "contribution_pct": 0.005
+    },
+    {
+     "feature": "nprev",
+     "label": "Nifty previous day",
+     "value": -0.18,
+     "contribution_pct": -0.005
     }
    ],
    "wf": {
     "oos_days": 300,
-    "gap_corr": 0.53,
-    "gap_sign_pct": 69.0,
-    "directional_calls": 162,
-    "directional_accuracy": 71.6
+    "gap_corr": 0.6,
+    "gap_sign_pct": 72.3,
+    "directional_calls": 171,
+    "directional_accuracy": 71.3
    }
   },
   "headline": "Market bias SIDEWAYS \u2014 favour hedged premium selling",
   "bias": "RANGEBOUND",
-  "score": 13,
-  "bias_track_record_pct": 71.3,
+  "score": 15,
+  "bias_track_record_pct": 71.8,
   "options": [
    {
     "index": "NIFTY",
