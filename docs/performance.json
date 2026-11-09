@@ -1,26 +1,26 @@
 {
- "generated_at": "2026-11-09T07:13:52.480713+05:30",
+ "generated_at": "2026-11-09T16:18:07.894127+05:30",
  "live_stocks": {
-  "trades": 9,
-  "win_rate": 33.3,
-  "avg_r": -0.126,
-  "total_r": -1.14,
+  "trades": 10,
+  "win_rate": 30.0,
+  "avg_r": -0.195,
+  "total_r": -1.95,
   "by_result": {
    "TIME": 4,
-   "SL": 4,
+   "SL": 5,
    "T1": 1
   }
  },
  "backtest_stocks": {
-  "trades": 143,
-  "win_rate": 44.8,
-  "avg_r": -0.075,
-  "total_r": -10.79,
+  "trades": 659,
+  "win_rate": 41.4,
+  "avg_r": -0.145,
+  "total_r": -95.39,
   "by_result": {
-   "T1": 27,
-   "SL": 35,
-   "TIME": 65,
-   "T2": 16
+   "TIME": 311,
+   "T1": 141,
+   "SL": 160,
+   "T2": 47
   },
   "note": "current rules, net of costs, entry at next open"
  },
@@ -37,9 +37,15 @@
   }
  },
  "bias_live": {
-  "days": 14,
-  "accuracy": 28.6,
+  "days": 15,
+  "accuracy": 33.3,
   "recent": [
+   {
+    "date": "2026-11-09",
+    "bias": "BULLISH",
+    "actual": 0.057,
+    "correct": true
+   },
    {
     "date": "2026-11-06",
     "bias": "BEARISH",
@@ -128,9 +134,9 @@
  },
  "bias_walk_forward": {
   "oos_days": 500,
-  "directional_calls": 214,
-  "directional_accuracy": 60.3,
-  "sign_accuracy_all_days": 55.2
+  "directional_calls": 213,
+  "directional_accuracy": 60.6,
+  "sign_accuracy_all_days": 54.8
  },
  "equity_curve": [
   {
@@ -168,214 +174,257 @@
   {
    "date": "2026-11-04",
    "cum_r": -1.14
+  },
+  {
+   "date": "2026-11-05",
+   "cum_r": -1.95
   }
  ],
  "curve_source": "live",
  "recent_live": [
   {
-   "date": "2026-11-04",
-   "symbol": "HEROMOTOCO",
+   "date": "2026-11-05",
+   "symbol": "TECHM",
    "kind": "stock",
    "result": "TIME",
-   "r": 0.46
+   "r": -0.848
   },
   {
-   "date": "2026-11-04",
-   "symbol": "EICHERMOT",
-   "kind": "stock",
-   "result": "T1",
-   "r": 1.365
-  },
-  {
-   "date": "2026-11-04",
-   "symbol": "ONGC",
-   "kind": "stock",
-   "result": "SL",
-   "r": -0.263
-  },
-  {
-   "date": "2026-11-04",
-   "symbol": "NTPC",
-   "kind": "stock",
-   "result": "SL",
-   "r": -0.831
-  },
-  {
-   "date": "2026-11-04",
-   "symbol": "CHOLAFIN",
-   "kind": "stock",
-   "result": "T1",
-   "r": 1.436
-  },
-  {
-   "date": "2026-11-04",
-   "symbol": "TATASTEEL",
+   "date": "2026-11-05",
+   "symbol": "WIPRO",
    "kind": "stock",
    "result": "TIME",
-   "r": 1.156
+   "r": -0.235
   },
   {
-   "date": "2026-11-04",
-   "symbol": "TATAPOWER",
-   "kind": "stock",
-   "result": "SL",
-   "r": -1.787
-  },
-  {
-   "date": "2026-11-04",
-   "symbol": "JIOFIN",
-   "kind": "stock",
-   "result": "T1",
-   "r": 0.473
-  },
-  {
-   "date": "2026-11-04",
-   "symbol": "VEDL",
-   "kind": "stock",
-   "result": "TIME",
-   "r": 0.277
-  },
-  {
-   "date": "2026-11-04",
-   "symbol": "TITAN",
-   "kind": "stock",
-   "result": "T1",
-   "r": 1.962
-  },
-  {
-   "date": "2026-11-04",
-   "symbol": "MUTHOOTFIN",
-   "kind": "stock",
-   "result": "T1",
-   "r": -0.032
-  },
-  {
-   "date": "2026-11-04",
-   "symbol": "PERSISTENT",
-   "kind": "stock",
-   "result": "TIME",
-   "r": -0.125
-  },
-  {
-   "date": "2026-11-04",
-   "symbol": "HAL",
-   "kind": "stock",
-   "result": "SL",
-   "r": -1.428
-  },
-  {
-   "date": "2026-11-04",
-   "symbol": "CIPLA",
-   "kind": "stock",
-   "result": "TIME",
-   "r": 0.291
-  },
-  {
-   "date": "2026-11-04",
-   "symbol": "COFORGE",
-   "kind": "stock",
-   "result": "TIME",
-   "r": -0.247
-  },
-  {
-   "date": "2026-11-04",
-   "symbol": "IOC",
-   "kind": "stock",
-   "result": "T1",
-   "r": -0.517
-  },
-  {
-   "date": "2026-11-04",
-   "symbol": "TRENT",
-   "kind": "stock",
-   "result": "TIME",
-   "r": 0.131
-  },
-  {
-   "date": "2026-11-04",
-   "symbol": "AUROPHARMA",
-   "kind": "stock",
-   "result": "T1",
-   "r": 1.405
-  },
-  {
-   "date": "2026-11-04",
-   "symbol": "ICICIBANK",
-   "kind": "stock",
-   "result": "T2",
-   "r": 1.29
-  },
-  {
-   "date": "2026-11-04",
-   "symbol": "APOLLOHOSP",
-   "kind": "stock",
-   "result": "SL",
-   "r": -1.289
-  },
-  {
-   "date": "2026-11-04",
+   "date": "2026-11-05",
    "symbol": "KOTAKBANK",
    "kind": "stock",
    "result": "T1",
-   "r": 0.624
+   "r": 2.194
   },
   {
-   "date": "2026-11-04",
-   "symbol": "GAIL",
+   "date": "2026-11-05",
+   "symbol": "PERSISTENT",
    "kind": "stock",
-   "result": "TIME",
-   "r": -0.92
+   "result": "SL",
+   "r": -1.501
   },
   {
-   "date": "2026-11-04",
+   "date": "2026-11-05",
+   "symbol": "COFORGE",
+   "kind": "stock",
+   "result": "SL",
+   "r": -1.403
+  },
+  {
+   "date": "2026-11-05",
    "symbol": "ETERNAL",
    "kind": "stock",
-   "result": "T1",
-   "r": 1.519
+   "result": "TIME",
+   "r": 0.854
   },
   {
-   "date": "2026-11-04",
+   "date": "2026-11-05",
+   "symbol": "CIPLA",
+   "kind": "stock",
+   "result": "SL",
+   "r": -0.148
+  },
+  {
+   "date": "2026-11-05",
    "symbol": "ITC",
    "kind": "stock",
    "result": "TIME",
-   "r": 0.01
+   "r": 0.366
   },
   {
-   "date": "2026-11-04",
-   "symbol": "BANKBARODA",
+   "date": "2026-11-05",
+   "symbol": "HINDUNILVR",
    "kind": "stock",
    "result": "TIME",
-   "r": 0.306
+   "r": 0.751
+  },
+  {
+   "date": "2026-11-05",
+   "symbol": "TITAN",
+   "kind": "stock",
+   "result": "SL",
+   "r": -0.569
+  },
+  {
+   "date": "2026-11-05",
+   "symbol": "BAJAJFINSV",
+   "kind": "stock",
+   "result": "SL",
+   "r": -0.313
+  },
+  {
+   "date": "2026-11-05",
+   "symbol": "RELIANCE",
+   "kind": "stock",
+   "result": "TIME",
+   "r": 1.211
+  },
+  {
+   "date": "2026-11-05",
+   "symbol": "ICICIBANK",
+   "kind": "stock",
+   "result": "T2",
+   "r": 2.046
+  },
+  {
+   "date": "2026-11-05",
+   "symbol": "M&M",
+   "kind": "stock",
+   "result": "T1",
+   "r": 1.171
+  },
+  {
+   "date": "2026-11-05",
+   "symbol": "CHOLAFIN",
+   "kind": "stock",
+   "result": "TIME",
+   "r": 1.141
+  },
+  {
+   "date": "2026-11-05",
+   "symbol": "MARUTI",
+   "kind": "stock",
+   "result": "TIME",
+   "r": 1.333
+  },
+  {
+   "date": "2026-11-05",
+   "symbol": "INDIGO",
+   "kind": "stock",
+   "result": "SL",
+   "r": -0.167
+  },
+  {
+   "date": "2026-11-05",
+   "symbol": "SHRIRAMFIN",
+   "kind": "stock",
+   "result": "SL",
+   "r": -0.232
+  },
+  {
+   "date": "2026-11-05",
+   "symbol": "INFY",
+   "kind": "stock",
+   "result": "TIME",
+   "r": -0.953
+  },
+  {
+   "date": "2026-11-05",
+   "symbol": "PNB",
+   "kind": "stock",
+   "result": "T1",
+   "r": 2.348
+  },
+  {
+   "date": "2026-11-05",
+   "symbol": "LT",
+   "kind": "stock",
+   "result": "T1",
+   "r": 2.507
+  },
+  {
+   "date": "2026-11-05",
+   "symbol": "DLF",
+   "kind": "stock",
+   "result": "TIME",
+   "r": 1.134
+  },
+  {
+   "date": "2026-11-05",
+   "symbol": "ULTRACEMCO",
+   "kind": "stock",
+   "result": "TIME",
+   "r": 0.607
+  },
+  {
+   "date": "2026-11-05",
+   "symbol": "BANKBARODA",
+   "kind": "stock",
+   "result": "SL",
+   "r": -0.179
+  },
+  {
+   "date": "2026-11-05",
+   "symbol": "POWERGRID",
+   "kind": "stock",
+   "result": "SL",
+   "r": -0.209
   }
  ],
- "open_signals": 103,
+ "open_signals": 78,
  "model": {
-  "version": 32,
-  "updated": "2026-11-06T23:12:15.937643+05:30",
+  "version": 33,
+  "updated": "2026-11-09T16:17:48.726374+05:30",
   "ranker_on": true,
-  "samples": 2229,
-  "live_samples": 108,
-  "base_win_rate": 0.5701,
-  "expectancy_r": 0.33,
+  "samples": 2280,
+  "live_samples": 159,
+  "base_win_rate": 0.5584,
+  "expectancy_r": 0.247,
   "holdout_auc": 0.559,
-  "note": "rsi_hi 70\u219265; t2_atr 2.5\u21923.0; max_day_chg 7.0\u21925.0; ranker ON (holdout AUC 0.56)"
+  "note": "vol_mult 2.0\u21921.5; rsi_hi 65\u219270; sl_atr 0.75\u21921.0; t2_atr 3.0\u21922.5; max_day_chg 5.0\u21927.0; ranker ON (holdout AUC 0.56)"
  },
  "params": {
-  "vol_mult": 2.0,
+  "vol_mult": 1.5,
   "rsi_lo": 55,
-  "rsi_hi": 65,
+  "rsi_hi": 70,
   "near_high_pct": 2.0,
-  "sl_atr": 0.75,
+  "sl_atr": 1.0,
   "t1_atr": 1.5,
-  "t2_atr": 3.0,
+  "t2_atr": 2.5,
   "bias_threshold": 0.2,
   "vix_high": 18.0,
   "news_weight": 0.0,
-  "max_day_chg": 5.0,
+  "max_day_chg": 7.0,
   "regime_gate": 1,
   "cost_pct": 0.25
  },
  "history": [
+  {
+   "version": 33,
+   "created_at": "2026-11-09T16:17:48.726374+05:30",
+   "params": {
+    "vol_mult": 1.5,
+    "rsi_lo": 55,
+    "rsi_hi": 70,
+    "near_high_pct": 2.0,
+    "sl_atr": 1.0,
+    "t1_atr": 1.5,
+    "t2_atr": 2.5,
+    "bias_threshold": 0.2,
+    "vix_high": 18.0,
+    "news_weight": 0.0,
+    "max_day_chg": 7.0,
+    "regime_gate": 1,
+    "cost_pct": 0.25
+   },
+   "metrics": {
+    "samples": 2280,
+    "live_samples": 159,
+    "rule_trades": 697,
+    "base_win_rate": 0.5584,
+    "avg_win_r": 1.026,
+    "avg_loss_r": 0.74,
+    "expectancy_r": 0.247,
+    "holdout_logloss": 0.6867,
+    "baseline_logloss": 0.6948,
+    "holdout_auc": 0.559,
+    "holdout_n": 456,
+    "bias_wf": {
+     "oos_days": 500,
+     "directional_calls": 213,
+     "directional_accuracy": 60.6,
+     "sign_accuracy_all_days": 54.8
+    }
+   },
+   "note": "vol_mult 2.0\u21921.5; rsi_hi 65\u219270; sl_atr 0.75\u21921.0; t2_atr 3.0\u21922.5; max_day_chg 5.0\u21927.0; ranker ON (holdout AUC 0.56)"
+  },
   {
    "version": 32,
    "created_at": "2026-11-06T23:12:15.937643+05:30",
@@ -921,49 +970,10 @@
     }
    },
    "note": "ranker OFF: no out-of-sample edge, using rule stats only"
-  },
-  {
-   "version": 18,
-   "created_at": "2026-10-28T22:20:56.919469+05:30",
-   "params": {
-    "vol_mult": 2.0,
-    "rsi_lo": 60,
-    "rsi_hi": 65,
-    "near_high_pct": 3.0,
-    "sl_atr": 0.75,
-    "t1_atr": 1.5,
-    "t2_atr": 3.0,
-    "bias_threshold": 0.2,
-    "vix_high": 18.0,
-    "news_weight": 0.0,
-    "max_day_chg": 4.0,
-    "regime_gate": 1,
-    "cost_pct": 0.25
-   },
-   "metrics": {
-    "samples": 2143,
-    "live_samples": 22,
-    "rule_trades": 99,
-    "base_win_rate": 0.4716,
-    "avg_win_r": 1.109,
-    "avg_loss_r": 0.849,
-    "expectancy_r": 0.075,
-    "holdout_logloss": 0.6854,
-    "baseline_logloss": 0.6869,
-    "holdout_auc": 0.541,
-    "holdout_n": 429,
-    "bias_wf": {
-     "oos_days": 500,
-     "directional_calls": 212,
-     "directional_accuracy": 60.4,
-     "sign_accuracy_all_days": 54.6
-    }
-   },
-   "note": "ranker ON (holdout AUC 0.54)"
   }
  ],
  "options_lab": {
-  "generated_at": "2026-11-06T23:12:19.345387+05:30",
+  "generated_at": "2026-11-09T16:17:51.461175+05:30",
   "costs_per_lot": {
    "NIFTY condor": 400,
    "NIFTY spread": 240,
@@ -998,36 +1008,36 @@
    "condor": {
     "basis": "days the model called SIDEWAYS",
     "overall": {
-     "trades": 139,
-     "win_pct": 76.3,
-     "avg_pnl": -139,
+     "trades": 142,
+     "win_pct": 76.1,
+     "avg_pnl": -118,
      "worst": -11814,
      "best": 4852,
-     "total": -19412
+     "total": -16885
     },
     "by_bucket": {
      "1": {
-      "trades": 32,
-      "win_pct": 84.4,
-      "avg_pnl": 106,
+      "trades": 33,
+      "win_pct": 81.8,
+      "avg_pnl": -5,
       "worst": -8554,
       "best": 2350,
-      "total": 3417,
+      "total": -168,
       "sample": "full 2 years",
       "allowed": false,
       "halves": [
-       -299,
-       513
+       -571,
+       527
       ],
-      "unsteady": true,
+      "unsteady": false,
       "marginal": false,
       "quiet_first_hour": {
-       "trades": 19,
-       "win_pct": 84.2,
-       "avg_pnl": 41,
+       "trades": 20,
+       "win_pct": 80.0,
+       "avg_pnl": -139,
        "worst": -4599,
        "best": 1553,
-       "total": 788
+       "total": -2797
       },
       "trending_first_hour": {
        "trades": 13,
@@ -1167,17 +1177,17 @@
       }
      },
      "6": {
-      "trades": 41,
-      "win_pct": 63.4,
-      "avg_pnl": -1321,
+      "trades": 42,
+      "win_pct": 64.3,
+      "avg_pnl": -1227,
       "worst": -11814,
       "best": 4111,
-      "total": -54179,
+      "total": -51544,
       "sample": "full 2 years",
       "allowed": false,
       "halves": [
-       -1495,
-       -1155
+       -1723,
+       -731
       ],
       "unsteady": false,
       "marginal": false,
@@ -1190,12 +1200,12 @@
        "total": -11796
       },
       "trending_first_hour": {
-       "trades": 23,
-       "win_pct": 56.5,
-       "avg_pnl": -1842,
+       "trades": 24,
+       "win_pct": 58.3,
+       "avg_pnl": -1656,
        "worst": -11814,
-       "best": 2249,
-       "total": -42383
+       "best": 2635,
+       "total": -39748
       }
      }
     },
@@ -1205,32 +1215,32 @@
    "bull_spread": {
     "basis": "days the model called BULLISH",
     "overall": {
-     "trades": 144,
-     "win_pct": 34.7,
-     "avg_pnl": -858,
+     "trades": 140,
+     "win_pct": 35.0,
+     "avg_pnl": -840,
      "worst": -8128,
      "best": 10202,
-     "total": -123682
+     "total": -117737
     },
     "by_bucket": {
      "1": {
-      "trades": 34,
-      "win_pct": 23.5,
-      "avg_pnl": -1332,
+      "trades": 33,
+      "win_pct": 21.2,
+      "avg_pnl": -1461,
       "worst": -5385,
       "best": 6361,
-      "total": -45321,
+      "total": -48243,
       "sample": "full 2 years",
       "allowed": false,
       "marginal": false
      },
      "2": {
-      "trades": 17,
-      "win_pct": 41.2,
-      "avg_pnl": -421,
+      "trades": 15,
+      "win_pct": 40.0,
+      "avg_pnl": -281,
       "worst": -3776,
       "best": 3504,
-      "total": -7170,
+      "total": -4220,
       "sample": "full 2 years",
       "allowed": false,
       "marginal": false
@@ -1247,12 +1257,12 @@
       "marginal": false
      },
      "4": {
-      "trades": 19,
-      "win_pct": 47.4,
-      "avg_pnl": -83,
+      "trades": 18,
+      "win_pct": 50.0,
+      "avg_pnl": 86,
       "worst": -7663,
       "best": 7456,
-      "total": -1578,
+      "total": 1558,
       "sample": "full 2 years",
       "allowed": false,
       "marginal": false
@@ -1260,45 +1270,45 @@
      "5": {
       "trades": 20,
       "win_pct": 40.0,
-      "avg_pnl": -551,
+      "avg_pnl": -837,
       "worst": -8128,
-      "best": 6198,
-      "total": -11031,
-      "sample": "full 2 years",
+      "best": 4440,
+      "total": -16748,
+      "sample": "current expiry schedule",
       "allowed": false,
       "marginal": false
      },
      "6": {
-      "trades": 31,
-      "win_pct": 32.3,
-      "avg_pnl": -902,
+      "trades": 30,
+      "win_pct": 33.3,
+      "avg_pnl": -856,
       "worst": -6951,
       "best": 10202,
-      "total": -27991,
+      "total": -25691,
       "sample": "full 2 years",
       "allowed": false,
       "marginal": false
      }
     },
     "recent": {
-     "trades": 12,
-     "win_pct": 25.0,
-     "avg_pnl": -1150,
+     "trades": 11,
+     "win_pct": 36.4,
+     "avg_pnl": -960,
      "worst": -5225,
      "best": 3884,
-     "total": -13808
+     "total": -10563
     },
     "overall_allowed": false
    },
    "bear_spread": {
     "basis": "days the model called BEARISH",
     "overall": {
-     "trades": 115,
-     "win_pct": 42.6,
-     "avg_pnl": 145,
+     "trades": 116,
+     "win_pct": 43.1,
+     "avg_pnl": 195,
      "worst": -5196,
      "best": 12182,
-     "total": 16696
+     "total": 22700
     },
     "by_bucket": {
      "1": {
@@ -1313,34 +1323,34 @@
       "marginal": false
      },
      "2": {
-      "trades": 11,
-      "win_pct": 18.2,
-      "avg_pnl": -713,
+      "trades": 10,
+      "win_pct": 20.0,
+      "avg_pnl": -559,
       "worst": -3266,
       "best": 7196,
-      "total": -7844,
+      "total": -5599,
       "sample": "full 2 years",
       "allowed": false,
       "marginal": false
      },
      "3": {
-      "trades": 12,
-      "win_pct": 33.3,
-      "avg_pnl": 1021,
+      "trades": 13,
+      "win_pct": 30.8,
+      "avg_pnl": 841,
       "worst": -3201,
       "best": 12182,
-      "total": 12257,
+      "total": 10945,
       "sample": "full 2 years",
       "allowed": false,
       "marginal": false
      },
      "4": {
-      "trades": 21,
-      "win_pct": 33.3,
-      "avg_pnl": -729,
+      "trades": 22,
+      "win_pct": 36.4,
+      "avg_pnl": -465,
       "worst": -4640,
       "best": 7534,
-      "total": -15318,
+      "total": -10247,
       "sample": "current expiry schedule",
       "allowed": false,
       "marginal": false
@@ -1381,32 +1391,32 @@
    "bull_put": {
     "basis": "days the model called BULLISH",
     "overall": {
-     "trades": 140,
-     "win_pct": 57.9,
-     "avg_pnl": -320,
+     "trades": 136,
+     "win_pct": 58.1,
+     "avg_pnl": -260,
      "worst": -9210,
      "best": 3650,
-     "total": -44809
+     "total": -35467
     },
     "by_bucket": {
      "1": {
-      "trades": 33,
-      "win_pct": 39.4,
-      "avg_pnl": -289,
+      "trades": 32,
+      "win_pct": 37.5,
+      "avg_pnl": -315,
       "worst": -5931,
       "best": 1369,
-      "total": -9544,
+      "total": -10103,
       "sample": "full 2 years",
       "allowed": false,
       "marginal": false
      },
      "2": {
-      "trades": 16,
-      "win_pct": 62.5,
-      "avg_pnl": -261,
+      "trades": 14,
+      "win_pct": 64.3,
+      "avg_pnl": 34,
       "worst": -5554,
       "best": 2360,
-      "total": -4178,
+      "total": 481,
       "sample": "full 2 years",
       "allowed": false,
       "marginal": false
@@ -1423,12 +1433,12 @@
       "marginal": true
      },
      "4": {
-      "trades": 18,
-      "win_pct": 38.9,
-      "avg_pnl": -699,
-      "worst": -7462,
+      "trades": 17,
+      "win_pct": 41.2,
+      "avg_pnl": -301,
+      "worst": -4400,
       "best": 966,
-      "total": -12594,
+      "total": -5132,
       "sample": "full 2 years",
       "allowed": false,
       "marginal": false
@@ -1436,45 +1446,45 @@
      "5": {
       "trades": 20,
       "win_pct": 60.0,
-      "avg_pnl": -425,
+      "avg_pnl": -514,
       "worst": -8069,
-      "best": 1863,
-      "total": -8514,
-      "sample": "full 2 years",
+      "best": 1125,
+      "total": -10289,
+      "sample": "current expiry schedule",
       "allowed": false,
       "marginal": false
      },
      "6": {
-      "trades": 31,
-      "win_pct": 71.0,
-      "avg_pnl": -379,
+      "trades": 30,
+      "win_pct": 70.0,
+      "avg_pnl": -468,
       "worst": -9210,
       "best": 3650,
-      "total": -11751,
+      "total": -14059,
       "sample": "full 2 years",
       "allowed": false,
       "marginal": false
      }
     },
     "recent": {
-     "trades": 12,
-     "win_pct": 58.3,
-     "avg_pnl": 293,
+     "trades": 11,
+     "win_pct": 63.6,
+     "avg_pnl": 121,
      "worst": -191,
-     "best": 2308,
-     "total": 3523
+     "best": 823,
+     "total": 1338
     },
     "overall_allowed": false
    },
    "bear_call": {
     "basis": "days the model called BEARISH",
     "overall": {
-     "trades": 111,
-     "win_pct": 66.7,
-     "avg_pnl": -120,
+     "trades": 112,
+     "win_pct": 67.0,
+     "avg_pnl": -105,
      "worst": -8804,
      "best": 2513,
-     "total": -13360
+     "total": -11799
     },
     "by_bucket": {
      "1": {
@@ -1489,34 +1499,34 @@
       "marginal": false
      },
      "2": {
-      "trades": 11,
-      "win_pct": 63.6,
-      "avg_pnl": -411,
+      "trades": 10,
+      "win_pct": 60.0,
+      "avg_pnl": -483,
       "worst": -8066,
       "best": 2513,
-      "total": -4522,
+      "total": -4834,
       "sample": "full 2 years",
       "allowed": false,
       "marginal": false
      },
      "3": {
-      "trades": 12,
-      "win_pct": 50.0,
-      "avg_pnl": -507,
+      "trades": 13,
+      "win_pct": 53.8,
+      "avg_pnl": -442,
       "worst": -6285,
       "best": 1138,
-      "total": -6085,
+      "total": -5756,
       "sample": "full 2 years",
       "allowed": false,
       "marginal": false
      },
      "4": {
-      "trades": 20,
-      "win_pct": 70.0,
-      "avg_pnl": 166,
+      "trades": 21,
+      "win_pct": 71.4,
+      "avg_pnl": 232,
       "worst": -3640,
       "best": 2282,
-      "total": 3328,
+      "total": 4872,
       "sample": "current expiry schedule",
       "allowed": true,
       "marginal": false
@@ -1559,8 +1569,8 @@
    "NIFTY": {
     "trades": 17,
     "win_pct": 88.2,
-    "total": 15551,
-    "per_month": 1205,
+    "total": 15099,
+    "per_month": 1170,
     "max_drawdown": -5977,
     "worst_trade": -5977,
     "from": "2025-08-29",
@@ -1583,182 +1593,77 @@
       "cum": -4974
      },
      {
-      "date": "2025-12-05",
-      "cum": -3824
-     },
-     {
       "date": "2025-12-26",
-      "cum": -3382
+      "cum": -4532
      },
      {
       "date": "2026-01-02",
-      "cum": -2251
+      "cum": -3401
+     },
+     {
+      "date": "2026-01-16",
+      "cum": -2703
      },
      {
       "date": "2026-01-23",
-      "cum": 30
+      "cum": -422
      },
      {
       "date": "2026-01-30",
-      "cum": 3956
+      "cum": 3504
      },
      {
       "date": "2026-04-09",
-      "cum": 7193
+      "cum": 6741
      },
      {
       "date": "2026-04-17",
-      "cum": 9731
+      "cum": 9279
      },
      {
       "date": "2026-04-24",
-      "cum": 12734
+      "cum": 12282
      },
      {
       "date": "2026-06-05",
-      "cum": 14466
+      "cum": 14014
      },
      {
       "date": "2026-08-14",
-      "cum": 14524
+      "cum": 14072
      },
      {
       "date": "2026-08-28",
-      "cum": 15509
+      "cum": 15057
      },
      {
       "date": "2026-09-18",
-      "cum": 16445
+      "cum": 15993
      },
      {
       "date": "2026-09-25",
-      "cum": 15551
+      "cum": 15099
      },
      {
       "date": "2026-09-25",
-      "cum": 15551
+      "cum": 15099
      }
     ],
     "max_open": 1,
     "note": "One lot, one position at a time (a new condor only after the previous one expired). In-sample: the rules were chosen using this same history, so expect live results to be lower."
    },
-   "BANKNIFTY": {
-    "trades": 22,
-    "win_pct": 77.3,
-    "total": 14919,
-    "per_month": 627,
-    "max_drawdown": -10087,
-    "worst_trade": -10087,
-    "from": "2024-10-21",
-    "to": "2026-10-14",
-    "points": [
-     {
-      "date": "2024-10-21",
-      "cum": -4260
-     },
-     {
-      "date": "2024-12-12",
-      "cum": -10672
-     },
-     {
-      "date": "2025-01-17",
-      "cum": -6426
-     },
-     {
-      "date": "2025-02-17",
-      "cum": -2753
-     },
-     {
-      "date": "2025-03-19",
-      "cum": -12840
-     },
-     {
-      "date": "2025-05-19",
-      "cum": -8543
-     },
-     {
-      "date": "2025-06-16",
-      "cum": -4911
-     },
-     {
-      "date": "2025-07-21",
-      "cum": -2579
-     },
-     {
-      "date": "2025-08-19",
-      "cum": -7918
-     },
-     {
-      "date": "2025-09-17",
-      "cum": -5630
-     },
-     {
-      "date": "2025-10-16",
-      "cum": -10126
-     },
-     {
-      "date": "2025-11-13",
-      "cum": -8145
-     },
-     {
-      "date": "2025-12-23",
-      "cum": -7132
-     },
-     {
-      "date": "2026-01-14",
-      "cum": -5002
-     },
-     {
-      "date": "2026-02-11",
-      "cum": -3672
-     },
-     {
-      "date": "2026-04-17",
-      "cum": 290
-     },
-     {
-      "date": "2026-05-13",
-      "cum": 5532
-     },
-     {
-      "date": "2026-06-17",
-      "cum": 7819
-     },
-     {
-      "date": "2026-07-16",
-      "cum": 10107
-     },
-     {
-      "date": "2026-08-13",
-      "cum": 12304
-     },
-     {
-      "date": "2026-09-18",
-      "cum": 13919
-     },
-     {
-      "date": "2026-10-14",
-      "cum": 14919
-     },
-     {
-      "date": "2026-10-14",
-      "cum": 14919
-     }
-    ],
-    "max_open": 1,
-    "note": "One lot, one position at a time (a new condor only after the previous one expired). In-sample: the rules were chosen using this same history, so expect live results to be lower."
-   }
+   "BANKNIFTY": null
   },
   "BANKNIFTY": {
    "condor": {
     "basis": "days the model called SIDEWAYS",
     "overall": {
-     "trades": 165,
-     "win_pct": 74.5,
-     "avg_pnl": 397,
+     "trades": 170,
+     "win_pct": 74.1,
+     "avg_pnl": 343,
      "worst": -16019,
      "best": 6058,
-     "total": 65590
+     "total": 58477
     },
     "by_bucket": {
      "1-2": {
@@ -1826,19 +1731,19 @@
       }
      },
      "7-13": {
-      "trades": 28,
-      "win_pct": 75.0,
-      "avg_pnl": 260,
+      "trades": 29,
+      "win_pct": 75.9,
+      "avg_pnl": 355,
       "worst": -12185,
       "best": 5242,
-      "total": 7282,
+      "total": 10309,
       "sample": "current expiry schedule",
-      "allowed": true,
+      "allowed": false,
       "halves": [
-       30,
-       490
+       -84,
+       766
       ],
-      "unsteady": false,
+      "unsteady": true,
       "marginal": false,
       "quiet_first_hour": {
        "trades": 15,
@@ -1849,26 +1754,26 @@
        "total": 2675
       },
       "trending_first_hour": {
-       "trades": 13,
-       "win_pct": 69.2,
-       "avg_pnl": 354,
+       "trades": 14,
+       "win_pct": 71.4,
+       "avg_pnl": 545,
        "worst": -6228,
        "best": 5242,
-       "total": 4607
+       "total": 7634
       }
      },
      "14+": {
       "trades": 42,
       "win_pct": 76.2,
-      "avg_pnl": 868,
+      "avg_pnl": 913,
       "worst": -10986,
       "best": 5286,
-      "total": 36494,
+      "total": 38387,
       "sample": "current expiry schedule",
       "allowed": false,
       "halves": [
-       -558,
-       2295
+       -504,
+       2332
       ],
       "unsteady": true,
       "marginal": false,
@@ -1883,10 +1788,10 @@
       "trending_first_hour": {
        "trades": 19,
        "win_pct": 78.9,
-       "avg_pnl": 1094,
+       "avg_pnl": 1194,
        "worst": -9263,
-       "best": 4663,
-       "total": 20803
+       "best": 5126,
+       "total": 22696
       }
      }
     },
@@ -1896,12 +1801,12 @@
    "bull_spread": {
     "basis": "days the model called BULLISH",
     "overall": {
-     "trades": 165,
-     "win_pct": 41.2,
-     "avg_pnl": -850,
+     "trades": 162,
+     "win_pct": 42.6,
+     "avg_pnl": -625,
      "worst": -11570,
-     "best": 11404,
-     "total": -140326
+     "best": 21828,
+     "total": -101370
     },
     "by_bucket": {
      "1-2": {
@@ -1916,58 +1821,58 @@
       "marginal": false
      },
      "3-6": {
-      "trades": 19,
-      "win_pct": 47.4,
-      "avg_pnl": -43,
+      "trades": 18,
+      "win_pct": 50.0,
+      "avg_pnl": 217,
       "worst": -11120,
       "best": 11404,
-      "total": -831,
+      "total": 3918,
       "sample": "full 2 years",
       "allowed": false,
       "marginal": false
      },
      "7-13": {
-      "trades": 38,
-      "win_pct": 50.0,
-      "avg_pnl": -309,
+      "trades": 37,
+      "win_pct": 51.4,
+      "avg_pnl": -251,
       "worst": -11570,
       "best": 8416,
-      "total": -11757,
+      "total": -9321,
       "sample": "full 2 years",
       "allowed": false,
       "marginal": false
      },
      "14+": {
-      "trades": 48,
-      "win_pct": 50.0,
-      "avg_pnl": -681,
+      "trades": 49,
+      "win_pct": 51.0,
+      "avg_pnl": -221,
       "worst": -10791,
-      "best": 10676,
-      "total": -32703,
+      "best": 21828,
+      "total": -10875,
       "sample": "current expiry schedule",
       "allowed": false,
       "marginal": false
      }
     },
     "recent": {
-     "trades": 13,
-     "win_pct": 38.5,
-     "avg_pnl": -1268,
+     "trades": 11,
+     "win_pct": 36.4,
+     "avg_pnl": -1129,
      "worst": -4904,
      "best": 2667,
-     "total": -16494
+     "total": -12425
     },
     "overall_allowed": false
    },
    "bear_spread": {
     "basis": "days the model called BEARISH",
     "overall": {
-     "trades": 134,
-     "win_pct": 44.0,
-     "avg_pnl": -190,
+     "trades": 135,
+     "win_pct": 43.0,
+     "avg_pnl": -252,
      "worst": -15729,
      "best": 14810,
-     "total": -25559
+     "total": -34070
     },
     "by_bucket": {
      "1-2": {
@@ -1982,12 +1887,12 @@
       "marginal": false
      },
      "3-6": {
-      "trades": 22,
-      "win_pct": 45.5,
-      "avg_pnl": 861,
+      "trades": 23,
+      "win_pct": 43.5,
+      "avg_pnl": 720,
       "worst": -4378,
       "best": 14810,
-      "total": 18947,
+      "total": 16570,
       "sample": "full 2 years",
       "allowed": true,
       "marginal": false
@@ -2006,34 +1911,34 @@
      "14+": {
       "trades": 52,
       "win_pct": 46.2,
-      "avg_pnl": -458,
+      "avg_pnl": -435,
       "worst": -15729,
       "best": 8877,
-      "total": -23833,
+      "total": -22631,
       "sample": "current expiry schedule",
       "allowed": false,
       "marginal": false
      }
     },
     "recent": {
-     "trades": 27,
-     "win_pct": 55.6,
-     "avg_pnl": 154,
+     "trades": 26,
+     "win_pct": 53.8,
+     "avg_pnl": 106,
      "worst": -4259,
      "best": 7901,
-     "total": 4174
+     "total": 2781
     },
     "overall_allowed": false
    },
    "bull_put": {
     "basis": "days the model called BULLISH",
     "overall": {
-     "trades": 156,
-     "win_pct": 67.9,
-     "avg_pnl": -181,
+     "trades": 152,
+     "win_pct": 69.1,
+     "avg_pnl": -122,
      "worst": -14563,
      "best": 4611,
-     "total": -28331
+     "total": -18619
     },
     "by_bucket": {
      "1-2": {
@@ -2048,23 +1953,23 @@
       "marginal": false
      },
      "3-6": {
-      "trades": 18,
-      "win_pct": 50.0,
-      "avg_pnl": -977,
+      "trades": 17,
+      "win_pct": 47.1,
+      "avg_pnl": -1212,
       "worst": -14563,
       "best": 4611,
-      "total": -17595,
+      "total": -20611,
       "sample": "full 2 years",
       "allowed": false,
       "marginal": false
      },
      "7-13": {
-      "trades": 36,
-      "win_pct": 77.8,
-      "avg_pnl": 196,
+      "trades": 35,
+      "win_pct": 80.0,
+      "avg_pnl": 298,
       "worst": -5766,
       "best": 3013,
-      "total": 7070,
+      "total": 10444,
       "sample": "full 2 years",
       "allowed": true,
       "marginal": false
@@ -2082,24 +1987,24 @@
      }
     },
     "recent": {
-     "trades": 13,
-     "win_pct": 61.5,
-     "avg_pnl": 176,
+     "trades": 11,
+     "win_pct": 54.5,
+     "avg_pnl": -118,
      "worst": -3049,
-     "best": 3016,
-     "total": 2299
+     "best": 1300,
+     "total": -1306
     },
     "overall_allowed": false
    },
    "bear_call": {
     "basis": "days the model called BEARISH",
     "overall": {
-     "trades": 128,
-     "win_pct": 67.2,
-     "avg_pnl": -571,
+     "trades": 127,
+     "win_pct": 66.9,
+     "avg_pnl": -613,
      "worst": -15131,
-     "best": 5048,
-     "total": -73205
+     "best": 4021,
+     "total": -77876
     },
     "by_bucket": {
      "1-2": {
@@ -2138,22 +2043,22 @@
      "14+": {
       "trades": 47,
       "win_pct": 66.0,
-      "avg_pnl": -1151,
+      "avg_pnl": -1195,
       "worst": -15131,
-      "best": 5048,
-      "total": -54109,
+      "best": 4021,
+      "total": -56186,
       "sample": "current expiry schedule",
       "allowed": false,
       "marginal": false
      }
     },
     "recent": {
-     "trades": 23,
-     "win_pct": 87.0,
-     "avg_pnl": 1359,
+     "trades": 22,
+     "win_pct": 86.4,
+     "avg_pnl": 1191,
      "worst": -1873,
-     "best": 5048,
-     "total": 31260
+     "best": 3828,
+     "total": 26212
     },
     "overall_allowed": false
    }
