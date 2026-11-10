@@ -67,9 +67,20 @@ def build_dataset(hist):
     v = _vix(hist, n.index)
     nd["vix"] = v.shift(1)
     nd["vix_chg"] = v.diff().shift(1)
-    frame = pd.merge_asof(nd.sort_index(), _us_frame(hist), left_index=True, right_index=True,
-                          allow_exact_matches=False)
-    return frame.dropna()
+    nd = nd.sort_index()
+    return nd.join(us_since_close(_us_frame(hist), nd.index)).dropna()
+
+
+def us_since_close(us, nse_dates):
+    """US moves added up over every US session after the previous NSE close and before each NSE session.
+    After an NSE holiday that is two or more sessions (10 Nov 2026: Monday +2.35% and Tuesday -0.7%);
+    after a US holiday it is none, so a move is never counted twice. A US session dated the same day as
+    an NSE session trades after Indian hours, so it belongs to the next NSE session.
+    Walk-forward over 560 days: forecast/actual correlation 0.24 -> 0.28; days after an NSE holiday 0.26 -> 0.66."""
+    pos = np.searchsorted(nse_dates.values, us.index.values, side="right")
+    ok = pos < len(nse_dates)
+    agg = us[ok].groupby(nse_dates[pos[ok]]).sum()
+    return agg.reindex(nse_dates).fillna(0.0)
 
 
 def fit_ridge(X, y, lam=5.0):
@@ -127,12 +138,14 @@ def wf_metrics(wf, params):
 def _latest_features(hist, target_date):
     ts = pd.Timestamp(target_date)
     us = _us_frame(hist)
-    us = us[us.index < ts].dropna()          # skip a half-filled row for a day still in progress
+    us = us[us.index < ts].dropna()
     n = hist["^NSEI"]
     prior = n[n.index < ts].dropna(subset=["Close"])
     c = prior["Close"]
     v = _vix(hist, prior.index)
-    row = {**us.iloc[-1].to_dict(),
+    # every US session since the last NSE close (two or more after an NSE holiday), as in training
+    since = us[us.index >= prior.index[-1]]
+    row = {**(since.sum() if len(since) else us.iloc[-1] * 0).to_dict(),
            "nifty_prev": float(c.pct_change().iloc[-1] * 100),
            "nifty_ext": float((c.iloc[-1] / ema(c, 20).iloc[-1] - 1) * 100),
            "vix": float(v.iloc[-1]), "vix_chg": float(v.diff().iloc[-1])}
