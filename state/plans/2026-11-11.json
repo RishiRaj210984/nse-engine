@@ -1,14 +1,14 @@
 {
  "bias": {
-  "generated_at": "2026-11-10T23:47:00.201698+05:30",
+  "generated_at": "2026-11-11T00:07:27.711685+05:30",
   "target_session": "2026-11-11",
   "reference_date": "2026-11-09",
   "bias": {
    "label": "BULLISH",
-   "score": 67,
-   "z": 0.818,
-   "model_z": 0.818,
-   "predicted_nifty_move_pct": 0.62,
+   "score": 69,
+   "z": 0.843,
+   "model_z": 0.843,
+   "predicted_nifty_move_pct": 0.64,
    "typical_daily_move_pct": 0.762,
    "source": "pre-open global snapshot",
    "india_vix": 17.42,
@@ -16,14 +16,14 @@
     {
      "feature": "es",
      "label": "S&P 500 futures",
-     "value": 0.94,
-     "contribution_pct": 0.389
+     "value": 0.87,
+     "contribution_pct": 0.357
     },
     {
      "feature": "nq",
      "label": "Nasdaq futures",
-     "value": 1.79,
-     "contribution_pct": -0.358
+     "value": 1.68,
+     "contribution_pct": -0.337
     },
     {
      "feature": "n225",
@@ -34,20 +34,20 @@
     {
      "feature": "cl",
      "label": "Crude oil",
-     "value": -3.25,
-     "contribution_pct": 0.223
+     "value": -3.63,
+     "contribution_pct": 0.249
     },
     {
      "feature": "dxy",
      "label": "Dollar index",
      "value": 0.46,
-     "contribution_pct": -0.197
+     "contribution_pct": -0.194
     },
     {
      "feature": "gold",
      "label": "Gold",
-     "value": -1.99,
-     "contribution_pct": 0.111
+     "value": -1.91,
+     "contribution_pct": 0.106
     }
    ]
   },
@@ -372,31 +372,31 @@
   }
  },
  "plan": {
-  "generated_at": "2026-11-10T23:47:18.627407+05:30",
+  "generated_at": "2026-11-11T00:07:52.305975+05:30",
   "session": "2026-11-11",
   "stage": "preview",
   "expected_open": {
-   "gap_pct": 0.12,
+   "gap_pct": 0.13,
    "error_pct": 0.33,
-   "day_pct": 0.62,
-   "snapshot": "Tue 10 Nov 23:47 IST",
+   "day_pct": 0.64,
+   "snapshot": "Wed 11 Nov 00:07 IST",
    "stage": "preview",
    "tip": "Flat open expected. Normal entry windows apply.",
    "markets": [
     {
      "key": "es",
      "name": "S&P 500 futures",
-     "move_pct": 0.94
+     "move_pct": 0.87
     },
     {
      "key": "nq",
      "name": "Nasdaq futures",
-     "move_pct": 1.79
+     "move_pct": 1.68
     },
     {
      "key": "ym",
      "name": "Dow futures",
-     "move_pct": 0.64
+     "move_pct": 0.58
     },
     {
      "key": "dax",
@@ -421,12 +421,12 @@
     {
      "key": "cl",
      "name": "Crude oil",
-     "move_pct": -3.25
+     "move_pct": -3.63
     },
     {
      "key": "gold",
      "name": "Gold",
-     "move_pct": -1.99
+     "move_pct": -1.91
     },
     {
      "key": "dxy",
@@ -443,14 +443,14 @@
     {
      "feature": "es",
      "label": "S&P 500 futures",
-     "value": 0.94,
-     "contribution_pct": 0.389
+     "value": 0.87,
+     "contribution_pct": 0.357
     },
     {
      "feature": "nq",
      "label": "Nasdaq futures",
-     "value": 1.79,
-     "contribution_pct": -0.358
+     "value": 1.68,
+     "contribution_pct": -0.337
     },
     {
      "feature": "n225",
@@ -461,20 +461,20 @@
     {
      "feature": "cl",
      "label": "Crude oil",
-     "value": -3.25,
-     "contribution_pct": 0.223
+     "value": -3.63,
+     "contribution_pct": 0.249
     },
     {
      "feature": "dxy",
      "label": "Dollar index",
      "value": 0.46,
-     "contribution_pct": -0.197
+     "contribution_pct": -0.194
     },
     {
      "feature": "gold",
      "label": "Gold",
-     "value": -1.99,
-     "contribution_pct": 0.111
+     "value": -1.91,
+     "contribution_pct": 0.106
     }
    ],
    "wf": {
@@ -487,7 +487,7 @@
   },
   "headline": "Market bias UP \u2014 favour buying dips",
   "bias": "BULLISH",
-  "score": 67,
+  "score": 69,
   "bias_track_record_pct": 72.0,
   "options": [
    {
@@ -556,7 +556,7 @@
     "stop": 1117.69,
     "t1": 1209.67,
     "t2": 1243.11,
-    "win_prob": 72.5,
+    "win_prob": 72.7,
     "vol_badge": "2.0x Vol Surge"
    },
    {
@@ -569,7 +569,7 @@
     "stop": 926.78,
     "t1": 999.87,
     "t2": 1026.44,
-    "win_prob": 70.3,
+    "win_prob": 70.5,
     "vol_badge": "2.0x Vol Surge"
    },
    {
@@ -582,7 +582,7 @@
     "stop": 227.48,
     "t1": 240.73,
     "t2": 245.55,
-    "win_prob": 70.1,
+    "win_prob": 70.2,
     "vol_badge": "1.9x Vol Surge"
    },
    {
@@ -595,7 +595,7 @@
     "stop": 1014.33,
     "t1": 1075.2,
     "t2": 1097.34,
-    "win_prob": 67.6,
+    "win_prob": 68.9,
     "vol_badge": "2.1x Vol Surge"
    },
    {
@@ -608,7 +608,7 @@
     "stop": 3084.79,
     "t1": 3271.59,
     "t2": 3339.52,
-    "win_prob": 64.2,
+    "win_prob": 65.2,
     "vol_badge": "2.5x Vol Surge"
    }
   ],
@@ -815,18 +815,6 @@
    "skip_reason": null
   },
   {
-   "symbol": "MUTHOOTFIN",
-   "name": "Muthoot Finance",
-   "grade": "A",
-   "passed": false,
-   "entry": 2917.6,
-   "stop": 2800.27,
-   "t1": 3058.4,
-   "t2": 3152.27,
-   "atr": 93.87,
-   "skip_reason": null
-  },
-  {
    "symbol": "AXISBANK",
    "name": "Axis Bank",
    "grade": "A",
@@ -836,6 +824,18 @@
    "t1": 1354.3,
    "t2": 1383.36,
    "atr": 29.06,
+   "skip_reason": null
+  },
+  {
+   "symbol": "MUTHOOTFIN",
+   "name": "Muthoot Finance",
+   "grade": "A",
+   "passed": false,
+   "entry": 2917.6,
+   "stop": 2800.27,
+   "t1": 3058.4,
+   "t2": 3152.27,
+   "atr": 93.87,
    "skip_reason": null
   },
   {
@@ -851,15 +851,15 @@
    "skip_reason": null
   },
   {
-   "symbol": "PIDILITIND",
-   "name": "Pidilite",
+   "symbol": "CHOLAFIN",
+   "name": "Cholamandalam Finance",
    "grade": "A",
    "passed": false,
-   "entry": 1587.5,
-   "stop": 1538.61,
-   "t1": 1646.17,
-   "t2": 1685.28,
-   "atr": 39.11,
+   "entry": 1790.8,
+   "stop": 1722.66,
+   "t1": 1872.57,
+   "t2": 1927.08,
+   "atr": 54.51,
    "skip_reason": null
   }
  ]

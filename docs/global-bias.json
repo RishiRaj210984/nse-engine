@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-10T23:47:00.201698+05:30",
+ "generated_at": "2026-11-11T00:07:27.711685+05:30",
  "target_session": "2026-11-11",
  "reference_date": "2026-11-09",
  "us_session_used": "2026-11-10",
@@ -7,24 +7,24 @@
   {
    "name": "S&P 500",
    "symbol": "^GSPC",
-   "last": 7486.47,
-   "change": -0.841,
+   "last": 7496.74,
+   "change": -0.705,
    "change_unit": "%",
    "as_of": "2026-11-10"
   },
   {
    "name": "Nasdaq",
    "symbol": "^IXIC",
-   "last": 24906.51,
-   "change": -1.373,
+   "last": 24952.81,
+   "change": -1.189,
    "change_unit": "%",
    "as_of": "2026-11-10"
   },
   {
    "name": "Dow Jones",
    "symbol": "^DJI",
-   "last": 52085.71,
-   "change": -0.58,
+   "last": 52118.42,
+   "change": -0.518,
    "change_unit": "%",
    "as_of": "2026-11-10"
   },
@@ -39,16 +39,16 @@
   {
    "name": "Crude Oil",
    "symbol": "CL=F",
-   "last": 86.55,
-   "change": -0.345,
+   "last": 86.18,
+   "change": -0.771,
    "change_unit": "%",
    "as_of": "2026-11-10"
   },
   {
    "name": "Dollar Index",
    "symbol": "DX-Y.NYB",
-   "last": 102.32,
-   "change": 0.654,
+   "last": 102.31,
+   "change": 0.649,
    "change_unit": "%",
    "as_of": "2026-11-10"
   },
@@ -95,10 +95,10 @@
  ],
  "bias": {
   "label": "BULLISH",
-  "score": 67,
-  "z": 0.818,
-  "model_z": 0.818,
-  "predicted_nifty_move_pct": 0.62,
+  "score": 69,
+  "z": 0.843,
+  "model_z": 0.843,
+  "predicted_nifty_move_pct": 0.64,
   "typical_daily_move_pct": 0.762,
   "source": "pre-open global snapshot",
   "india_vix": 17.42,
@@ -106,14 +106,14 @@
    {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": 0.94,
-    "contribution_pct": 0.389
+    "value": 0.87,
+    "contribution_pct": 0.357
    },
    {
     "feature": "nq",
     "label": "Nasdaq futures",
-    "value": 1.79,
-    "contribution_pct": -0.358
+    "value": 1.68,
+    "contribution_pct": -0.337
    },
    {
     "feature": "n225",
@@ -124,31 +124,38 @@
    {
     "feature": "cl",
     "label": "Crude oil",
-    "value": -3.25,
-    "contribution_pct": 0.223
+    "value": -3.63,
+    "contribution_pct": 0.249
    },
    {
     "feature": "dxy",
     "label": "Dollar index",
     "value": 0.46,
-    "contribution_pct": -0.197
+    "contribution_pct": -0.194
    },
    {
     "feature": "gold",
     "label": "Gold",
-    "value": -1.99,
-    "contribution_pct": 0.111
+    "value": -1.91,
+    "contribution_pct": 0.106
    }
   ]
  },
  "news": {
   "summary": {
-   "score": 0.194,
+   "score": 0.178,
    "count": 40,
    "label": "POSITIVE"
   },
   "weight": 0.0,
   "headlines": [
+   {
+    "title": "US Fed's Logan calls for two more rate hikes, possibly rapidly",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/us-feds-logan-calls-for-two-more-rate-hikes-possibly-rapidly/articleshow/135718142.cms",
+    "published": "Tue, 10 Nov 2026 23:35:16 +0530",
+    "sentiment": 0.0
+   },
    {
     "title": "Traders raise odds of 50 bps Fed rate hike as CPI rise exceeds expectations",
     "source": "ET Markets",
@@ -185,7 +192,7 @@
     "sentiment": 0.0
    },
    {
-    "title": "Microsoft overtakes Nvidia in m-cap for first time since June '25, Nasdaq drops over 1%: Stock Market Live Updates",
+    "title": "Nasdaq drops over 1% amid tech-led rout; Nvidia drops 6%: Stock Market Live Updates",
     "source": "ET Markets",
     "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/stock-market-live-updates-dow-jones-nasdaq-sp-500-anthropic-ipo-nvidia-intel-marvell-tech-ai-chip-stocks-inflation-fed-rate-hike-treasury-bond-yield-news-10th-november-2026/liveblog/135712173.cms",
     "published": "Tue, 10 Nov 2026 18:33:22 +0530",
@@ -225,13 +232,6 @@
     "link": "https://economictimes.indiatimes.com/markets/stocks/news/fpis-turn-net-buyers-pour-rs-53739-crore-in-d-street-in-nov-so-far/articleshow/135708381.cms",
     "published": "Tue, 10 Nov 2026 16:19:34 +0530",
     "sentiment": 0.0
-   },
-   {
-    "title": "Eurozone bond yields fall as lower energy prices ease inflation concerns",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/eurozone-bond-yields-fall-as-lower-energy-prices-ease-inflation-concerns/articleshow/135707370.cms",
-    "published": "Tue, 10 Nov 2026 15:46:43 +0530",
-    "sentiment": 0.34
    }
   ]
  },
@@ -556,28 +556,28 @@
  },
  "events": [],
  "preopen": {
-  "snapshot_ist": "Tue 10 Nov 23:47 IST",
+  "snapshot_ist": "Wed 11 Nov 00:07 IST",
   "stage": "preview",
-  "expected_gap_pct": 0.12,
+  "expected_gap_pct": 0.13,
   "gap_typical_error_pct": 0.33,
-  "expected_day_pct": 0.62,
-  "z": 0.818,
+  "expected_day_pct": 0.64,
+  "z": 0.843,
   "typical_daily_move_pct": 0.762,
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": 0.94
+    "move_pct": 0.87
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": 1.79
+    "move_pct": 1.68
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": 0.64
+    "move_pct": 0.58
    },
    {
     "key": "dax",
@@ -602,12 +602,12 @@
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": -3.25
+    "move_pct": -3.63
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": -1.99
+    "move_pct": -1.91
    },
    {
     "key": "dxy",
@@ -624,14 +624,14 @@
    {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": 0.94,
-    "contribution_pct": 0.389
+    "value": 0.87,
+    "contribution_pct": 0.357
    },
    {
     "feature": "nq",
     "label": "Nasdaq futures",
-    "value": 1.79,
-    "contribution_pct": -0.358
+    "value": 1.68,
+    "contribution_pct": -0.337
    },
    {
     "feature": "n225",
@@ -642,20 +642,20 @@
    {
     "feature": "cl",
     "label": "Crude oil",
-    "value": -3.25,
-    "contribution_pct": 0.223
+    "value": -3.63,
+    "contribution_pct": 0.249
    },
    {
     "feature": "dxy",
     "label": "Dollar index",
     "value": 0.46,
-    "contribution_pct": -0.197
+    "contribution_pct": -0.194
    },
    {
     "feature": "gold",
     "label": "Gold",
-    "value": -1.99,
-    "contribution_pct": 0.111
+    "value": -1.91,
+    "contribution_pct": 0.106
    }
   ],
   "wf": {
@@ -668,17 +668,17 @@
   "vix": 17.42
  },
  "global_table": {
-  "updated": "2026-11-10T23:47:12.243885+05:30",
+  "updated": "2026-11-11T00:07:43.469072+05:30",
   "rows": [
    {
     "group": "US, last close",
-    "move": "S&P 500 -0.8%, Nasdaq -1.4%, Dow -0.6%",
+    "move": "S&P 500 -0.7%, Nasdaq -1.2%, Dow -0.5%",
     "effect": "red",
     "note": "Negative lead for India"
    },
    {
     "group": "US futures now",
-    "move": "S&P +0.94%, Nasdaq +1.79%, Dow +0.64% (since Nifty's close)",
+    "move": "S&P +0.87%, Nasdaq +1.68%, Dow +0.58% (since Nifty's close)",
     "effect": "green",
     "note": "Futures point to a firmer open"
    },
@@ -696,7 +696,7 @@
    },
    {
     "group": "Crude oil",
-    "move": "WTI ~$87, Brent ~$92 (-0.4%)",
+    "move": "WTI ~$86, Brent ~$92 (-0.8%)",
     "effect": "flat",
     "note": "Steady"
    },
@@ -726,7 +726,7 @@
    },
    {
     "group": "Model: Nifty open",
-    "move": "+0.12% (\u00b10.33%)",
+    "move": "+0.13% (\u00b10.33%)",
     "effect": "flat",
     "note": "Combined forecast from all markets (preview)",
     "model": true
