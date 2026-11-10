@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-11-10T16:17:44.164269+05:30",
+ "generated_at": "2026-11-10T23:47:15.195958+05:30",
  "market_open": false,
  "volume_projected": false,
  "bias": {
-  "label": "RANGEBOUND",
-  "score": 17
+  "label": "BULLISH",
+  "score": 67
  },
  "rules": {
   "vol_mult": 1.5,
@@ -19,15 +19,15 @@
  },
  "market_gate_open": true,
  "model": {
-  "version": 35,
-  "updated": "2026-11-10T16:17:24.604700+05:30",
+  "version": 36,
+  "updated": "2026-11-10T23:46:50.327204+05:30",
   "ranker_on": true,
   "samples": 2280,
   "live_samples": 159,
   "base_win_rate": 0.5742,
   "expectancy_r": 0.209,
   "holdout_auc": 0.559,
-  "note": "sl_atr 1.0\u21921.25; max_day_chg 7.0\u219299.0; ranker ON (holdout AUC 0.56)"
+  "note": "sl_atr 1.0\u21921.25; bias_threshold 0.2\u21920.3; max_day_chg 7.0\u219299.0; ranker ON (holdout AUC 0.56)"
  },
  "candidates": [
   {
@@ -70,20 +70,20 @@
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
     "log_vol_ratio": 0.6762113159995008,
-    "rsi": 66.53098541386939,
+    "rsi": 66.53098541386646,
     "dist_high_pct": 0.1463960767617516,
     "ext_ema20": 8.149308281125123,
-    "atr_pct": 2.8843736065618195,
+    "atr_pct": 2.8843736065615437,
     "day_chg": 2.7925531914893664,
     "ret5": 12.726038063484868,
     "rs20": 0.12132777333448974,
-    "bias_score": 17.0,
-    "news_sent": 0.224,
+    "bias_score": 67.0,
+    "news_sent": 0.258,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.208484996708723
    },
-   "r1_a": 0.42159562437382536,
-   "r2_a": 0.8431912487476507,
+   "r1_a": 0.42159562437386566,
+   "r2_a": 0.8431912487477313,
    "news": [
     {
      "title": "Raja Venkatraman recommends three stocks for 9 November",
@@ -93,13 +93,6 @@
      "sentiment": 0.226
     },
     {
-     "title": "Havells India Q2 Results: Profit Rises 11% To Rs 353 Crore",
-     "source": "NDTV Profit",
-     "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNc2FDWkpSVkY1V1ZpY2YtS3AtRlJPZ0NQY1JiVlo5T1FDdGp0blozU3FJUlNUTmZvQ1R2QkJfUGFZYkZvbVdvNVVHZF9wSlNkcUk2T2dhaTd1UWJ1NkQ0eXQtLVd2TXdFQV9RTVk0TERwMXl6RGhHd09kOHBaQkRBbGFnY3ZBV3N3SEhBcTlNM1J6Nk1uNmp0cmFXT0FQYUV2ZnfSAaoBQVVfeXFMT2RnX3dNejNjUjVyZVU2eV9rdU5GbUNVRGYzb0lhci01Q2EzeU5KN1BhVnpfN3N2VjlRdzNUemd1eDYtcS1uRUU4Zmg1bTc4Uzl5MVczUWdXYnRlTDJwUWdJbFJKclhSZzFqbWlpU3o3bkNHSHNHRjlOOWoxMm1sVDJNWmpvbFBCZ2NPNHNseGhzbjVCY0lXQVE5LW5hUmpfZE5ST1VVUTVId3c?oc=5",
-     "published": "Sat, 07 Nov 2026 14:02:49 GMT",
-     "sentiment": 0.25
-    },
-    {
      "title": "PRIZOR VIZTECH LIMITED Share Price",
      "source": "Upstox",
      "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9wZjJRUTZDVGxyVk5abUlybGJaQXhFb2VKUWN2M1FIRVFiNm4xNEgwdmhZLUh5cjVES3pHRElMd1pWUEdyOWRtbEt4TGZfNGFNU3RoWXZkUmpibkRkU2txYmdUMk5tazdyRFlhX1F3?oc=5",
@@ -107,27 +100,34 @@
      "sentiment": -0.111
     },
     {
-     "title": "Movers & Shakers: Stocks that will see action this week",
-     "source": "BusinessLine",
-     "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPbFBnMlNvbHB5RllPbENPWWFwc1RoeDBVZHAtY2FsN1M0VjBoVl94TmJBNGMxbDFWNnVBSnFYVGhaRzB1N2M4SE9ZV0hCbUtrM29hRTg0cGdyek13UHlOd0VVWU5wSzRpczBvTWlvamU5Q3hEUThtVjdBVlZlTVhGdEl4d194V0pEWlJBbWo5VDFjODcyYmRaMGxnbmFPN0hkMHhybEtsdGkyWTRVT0hrQmN2aUJ2VGhVSHBlR2M5ZC1iaXdXaW00VkxLcGE5N2YzdHhOQdIB2wFBVV95cUxNTDBERlo0aHVqRE41VEo5TEhrUFZvUjRGaHM4MDJyS0lrZjFzV0x1Q203YUhWWkxoV0FsNTZFVmdwTzRlOEVsV3VqYWwxOWZ0LW1hQWFWYzJ4TGJTRmhYMzBZSlZjOXY5b1VmNVJQcHZ3UUxyQV9LLXR4Y0JYalhjcFdrRTRTU1RFWVZLRDhHaExjUko5ejRSeEVhOHk4cTlDV2YzU3hMUFpwdkV2dUtIWGJRS2d5SWJSY0ozb2xyLWlzaVBVQVhSdWFnU2FFQTh0N2lNSjRSSW9NcWc?oc=5",
-     "published": "Sat, 07 Nov 2026 16:38:42 GMT",
-     "sentiment": 0.077
-    },
-    {
      "title": "IKIO Share Price Today - IKIO Technologies on NSE/BSE",
      "source": "scanx.trade",
      "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBiWEUzb3ZGOS1qMnhYdjdqNFN0aTNiOVd5U05WeEVxNlhSTmVMN2NVU1RreXZhc2hzeFdkNVBlbGZvY19qM1N5UXJVRC1EVEpNLVREaUNid2Y?oc=5",
      "published": "Sun, 08 Nov 2026 06:08:49 GMT",
      "sentiment": 0.296
+    },
+    {
+     "title": "I looked beyond heating speed: 7 things I\u2019d check before buying an instant geyser for my kitchen",
+     "source": "Livemint",
+     "link": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxORDJiOVI0MWtGMXZ5d2pwM2FOX1U5TGRsWnI0N3dBTHp2UGV5Q2RsVFk3S01TUEU2ZVNvNzN1U2tsX1V0YThWajAyVjF6NHdNRDVtcndqaXZrbnZfY0ZtR2xaR0JtUzZyaGNKOXpXcDBGYVhiX19Yc2xwdVJxWmdKMElDX1JKWDRpS2xEMVpLdFUwVzZnU1dIQ2pfUk5OTjVScW8yNWZrdWxZQXdyTUNaX3lKdTRLbGNKT0dDZmI0bjhCMEhHVlVwR0RnOE9pRy1vNFdfd3ZkSmdUeEMzcE1Gc2J0UTZZMkZZdDRQZVI3OHJrX2NQQmfSAfsBQVVfeXFMUFpxT054UEkweEtxOHloSjc1V0dLLTFkOW9WNFNJb0VKZHpQQmpPNmEzcGZOVGpueExJaVJHa2ljc0hYb2Z4LVdKdW5kNnZoWlBFRm8zTDNfbWlvQ3E1Z21NakMxRXlnY3k4SmQ2VWJvU2F6amtWOVFLcktVdXo4WHdaWlcwUUtPYXl4MDVfaVhhVmh0ZklzLVhjTkJ0TVRueXJLR192Z20wWUdWWWNSMzI5R0UyMlU0S3RZck1fRnFYQ2h1QmhXMlUwOXkwUEZmTjR4blgtbWUwYXphX0hTZUtBMkVlaG9MOWV5WEl3eEhPeUxiRlVEZGx5dk0?oc=5",
+     "published": "Tue, 10 Nov 2026 14:53:17 GMT",
+     "sentiment": 0.0
+    },
+    {
+     "title": "Consumer goods cos turn to cost cutting amid higher input prices to protect demand, revive volume growth",
+     "source": "The Economic Times",
+     "link": "https://news.google.com/rss/articles/CBMimAJBVV95cUxNb3RReHkxR3VCZEQwN0dhWmRYUVljOHlaS0xTREJ2bkZkTDJrcUVlSHp6T3d0cXBUSk9oOW1FYmM5Y3k0cVphVF9DVThuM2g0UnlCXzdKaUxrVTNNQjBHYzl6NS16RjFzd3c0SFR6RXgzTEtTVHBETDVQUzBTMGFZcVV2MnNjSDFiMUctcVpPMUFWREc4cmhtamlfdHVYeXQ1TnEyTklYOVhGVlpscU5kaURvSHBmSVl4c0FKZG1HWXA4MFR5Q0xqcUFjY0xvVUF1OHBXNjZfZFJNdXdjUWpMdFJ6TXY5cmZwYjFhd284cHRCX3NJbjMyUTh0SVRqVTdCMnUyT3d1MWotREtEUVRWUlNMcDVXZ1F00gGYAkFVX3lxTE1vdFF4eTFHdUJkRDA3R2FaZFhRWWM4eVpLTFNEQnZuRmRMMmtxRWVIenpPd3RxcFRKT2g5bUViYzljeTRxWmFUX0NVOG4zaDRSeUJfN0ppTGtVM01CMEdjOXo1LXpGMXN3dzRIVHpFeDNMS1NUcERMNVBTMFMwYVlxVXYyc2NIMWIxRy1xWk8xQVZERzhyaG1qaV90dVh5dDVOcTJOSVg5WEZWWmxxTmRpRG9IcGZJWXhzQUpkbUdZcDgwVHlDTGpxQWNjTG9VQXU4cFc2Nl9kUk11d2NRakx0UnpNdjlyZnBiMWF3bzhwdEJfc0luMzJROHRJVGpVN0IydTJPd3Uxai1ES0RRVFZSU0xwNVdnUXQ?oc=5",
+     "published": "Mon, 09 Nov 2026 01:23:00 GMT",
+     "sentiment": 0.681
     }
    ],
    "news_sentiment": {
-    "score": 0.224,
-    "count": 8,
+    "score": 0.258,
+    "count": 7,
     "label": "POSITIVE"
    },
-   "win_prob": 67.3,
-   "expected_r": 0.35,
+   "win_prob": 72.5,
+   "expected_r": 0.42,
    "model_used": true,
    "grade": "A",
    "skip_reason": null,
@@ -180,7 +180,7 @@
     "day_chg": 0.1669423565505035,
     "ret5": 5.332452741284754,
     "rs20": -4.583280794837896,
-    "bias_score": 17.0,
+    "bias_score": 67.0,
     "news_sent": 0.261,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.208484996708723
@@ -219,7 +219,7 @@
     {
      "title": "Tata Steel, Hindalco, Power Grid shares upgraded to 'Buy'; brokerage raises target prices",
      "source": "Business Today",
-     "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxPVFY5SkRwVExpbU5rMzFtSGNPM0p0WDhVVHBHck52cXlhU3gwQVFTTnQzSzFlOHJZX1JxVDVOMGF4VlRYRk5tcW8zRzI1NHBOMG9CT01qZHFmODhPOVZVa1c4SHhjSEhVT3ZXam5vM0dmbWNURWlKdlRXVXN1TzQxZTJoZ1dXcFF1ZTVTcGg1aDBJRXc1SnEzRWVQOXY5VTZCM3I5Q0VJQ04xMnhkY010Q0poak1kREQ2UXN4ZEp6OS1KMVJZanozM3dtR1V2WTROUkRqQ01nZDkyRTBKZEtKSVpvMVZSVGs?oc=5",
+     "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxPVFY5SkRwVExpbU5rMzFtSGNPM0p0WDhVVHBHck52cXlhU3gwQVFTTnQzSzFlOHJZX1JxVDVOMGF4VlRYRk5tcW8zRzI1NHBOMG9CT01qZHFmODhPOVZVa1c4SHhjSEhVT3ZXam5vM0dmbWNURWlKdlRXVXN1TzQxZTJoZ1dXcFF1ZTVTcGg1aDBJRXc1SnEzRWVQOXY5VTZCM3I5Q0VJQ04xMnhkY010Q0poak1kREQ2UXN4ZEp6OS1KMVJZanozM3dtR1V2WTROUkRqQ01nZDkyRTBKZEtKSVpvMVZSVGvSAewBQVVfeXFMT19XV0JOcGxTVWZXNUUzYTJpekdFTHF1ZUtmemtDbUMxRDQzd0lhTndUMWs4SFQwSXYtNjRlU1BWb3lsUHRvWmFQVFN3S3Izc1VxM3duSE5BVjAtbnNmc2ljMG9mNzVVbFFKaWg2X1NWZGJhSUlxR3lSLW1yODBoS1JLY0xUYktCUGc1bXZ1NHh1bl9YOTU1TzdqNk9WU2FHR2QyNVBfUks5dFZWeER4TTdBZUFaX1ZDVzFTT2x2am9wWW4tRlNqdUpaMXRFUUlWYW5JcXU2VmNjc3NUX3k1Y0FmaGd6U2t4N241NUs?oc=5",
      "published": "Sun, 08 Nov 2026 07:48:30 GMT",
      "sentiment": 0.637
     }
@@ -229,10 +229,10 @@
     "count": 8,
     "label": "POSITIVE"
    },
-   "win_prob": 65.2,
-   "expected_r": 0.32,
+   "win_prob": 70.3,
+   "expected_r": 0.39,
    "model_used": true,
-   "grade": "B",
+   "grade": "A",
    "skip_reason": null,
    "action": "BUY HINDALCO near \u20b9960.00 (skip if it opens above \u20b9999.87) \u00b7 SL \u20b9926.78 \u00b7 T1 \u20b9999.87 \u00b7 T2 \u20b91,026.44 \u00b7 Qty 3 for \u20b910k @1% risk"
   },
@@ -276,20 +276,20 @@
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
     "log_vol_ratio": 0.6294558752678933,
-    "rsi": 56.502997933679545,
+    "rsi": 56.502997933687496,
     "dist_high_pct": 1.3852516243798823,
     "ext_ema20": 1.8403270403302807,
-    "atr_pct": 2.064163321207945,
+    "atr_pct": 2.0641633212079378,
     "day_chg": 0.7507790535060455,
     "ret5": -0.5663679345416561,
     "rs20": -5.681303050944564,
-    "bias_score": 17.0,
-    "news_sent": 0.317,
+    "bias_score": 67.0,
+    "news_sent": 0.339,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.208484996708723
    },
-   "r1_a": 0.4882613578779033,
-   "r2_a": 0.9765227157558066,
+   "r1_a": 0.4882613578779049,
+   "r2_a": 0.9765227157558098,
    "news": [
     {
      "title": "Oil and Natural Gas (ONGC) Share Price Today (NSE), Market News",
@@ -299,10 +299,17 @@
      "sentiment": 0.572
     },
     {
+     "title": "Attractive valuations could translate to gains in ONGC despite challenges",
+     "source": "Business Standard",
+     "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxPdlRfai04cTI3Q2xidzdXang0cUZXU1NRWVp0WDBONU1Fc0ZnXzZvOWlnbEtrZ195VjJHTWxfdUpUUXFTbmh0T0ZKOFZ1dmRCQ3ZCZ1Nod1JPVG9SVFZoLUM4eW1KUmU1Ti1mdmlEQk05bHlKR0VwWW1TMWkwbnVqMjJ3dTY0TWprNnFNTTdQcmZFRGFpT3NOd2hzWGMyNm5BTnM1anF1Q011cWNIQzdUUl8zN09ONXA0bkMza2RDUHFCbWZGUjJyaExLQk5laW43OFZ4SWtyVER1QdIB3wFBVV95cUxPYUt3MTNFRmxrT0VpLW5xcHVjNWVJbFlseWdkZm9xSFVyd2hUbGo1YkZMeTlvNkZ0b1hkVklORW1UcnVYS1dId2tGbHZCOXhyN3JmcUdHTGpVWVQxUEYyVlkxTkVaMFV3Q2ZsSmxrN2pKRmtRN0VaWHJ1VlFrUGVPYnpZRUtkT2ZKS1pCaUk0Z0tPTDJOSUt0cUtCOU1kS25VQ082WHNuTjRjYWFGYUlGdFUzS3hfcWk3V1padFZxcWdqWi14bUxpV05tb3kwb2RkTGVoOFZXM2FtNFQ4ZTVr?oc=5",
+     "published": "Tue, 10 Nov 2026 16:12:50 GMT",
+     "sentiment": 0.596
+    },
+    {
      "title": "ONGC Share Price",
      "source": "Upstox",
      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9BZndBbkF4cmU5QWRoemVsNXU2dlh6bW5yZXd6bTYyUkNFVUdTWUs1ZkV0ekhaUzl1dlpqRi1PZWlXY0VmNnV5eFUyVDlXWEFNSGNXR256NjVCZ3Zlakt5c2RVTzVBS2RfZE9Sa1Z5SC0?oc=5",
-     "published": "Mon, 09 Nov 2026 04:00:48 GMT",
+     "published": "Mon, 09 Nov 2026 11:44:20 GMT",
      "sentiment": 0.296
     },
     {
@@ -318,24 +325,17 @@
      "link": "https://news.google.com/rss/articles/CBMiigJBVV95cUxOVUlGMk51TDlPX0w4bFlFRVF4Z2FHb2hldmhfeVU4dFBtMnVBdy1HTmZBRzUyeXo3a1NNd18tbkJOQlM0RkJnOE1FWVJlYmp1WGk0cmxRVGF4M0hNSHZFUGVWSnpEWlFkYXlmZGs4bXVaLURHSHBoNVA4cU13TjhuZzI1czV6bkptUkZaR3p5WW9zZ2VXUVFkLWRPNkpXa1Y3UUNHc3ZPZ3BGN3BobUswVWJqNGs1NzhzX2lMSngtRnpxZHFWQ3otRGVDbUViZmpHQnhvZXRQc1dmMjBuVjdEcUQ2MG1OV0haRU1EVTNma2o5RHJ0T3NLWXRUdWktRENPTVVKemE0aEVEUdIBjwJBVV95cUxQRXZTVGItZHF1Yi1OVUlvQWRDZTVIU0Q2blRWN04wWEt6eUlLT2dkcjc1aXBrazY1MVhpdE40eklCbTAtNHh1MVlyUWtpUkZ1dGVocG1KUVZFOFBiRmdSdTRBMzZMdE53LS1SZnR1RzBuejYxUmpmRFJFVmhfaW9hekhRc3BMSlZDTHYzSWEzQXhJcW8zSEpqOG42c1l1TzZUbGJlUTJhVzNWV2xhQkF5OUxEUUh5QlRvUlJOZlh1VEkwai1mdzBOU0g2eXJIT0t6OUpQZ1BQd1RxdHNtOG9FTTBvb2Q5dzZ4cWdDYk9Ea2tGZGpnaVdyR2stSnk1dk43UXJKcGhwcDMwdFUzSWhN?oc=5",
      "published": "Tue, 10 Nov 2026 07:52:52 GMT",
      "sentiment": 0.612
-    },
-    {
-     "title": "Gas Hunt: RIL, ONGC, BP may share $1-billion infra facility",
-     "source": "ET EnergyWorld",
-     "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOTE5NSTVvQlB2NTVNZW03Q0NTR2phWXFQQlNHMDRTRFkwMmRRdXVVQVVWR0c5X2pQa1czaGtwZzhPYThObmM5SkZjNkVGVEFNUnZfdS05Z3duSWpsTDROVTNISmpPRFZNNXdOX3pQa3hlQlQxVklrVkQ3TEltY0cxcW1XMUIzX1BjRlN1VWdMVTFJSUdQZEcxZTRfMlduVmJaS2gxRFF6ZV9DTnRoVEhLOE03V0k1X1pQdUprXy1kdXoxUTEy0gHKAUFVX3lxTFBaYlFzMmVGd192U2c1RWNJOUpPcG8xN0pnUlZEaFFRM0pJODJMMjNyYk9NTVRnaEY5YWo4dUZaNmdqTXNxVDRvcWtzUUNPRXU3TEE0SVYwelp1c0dla01Yc3E2aWVjc2I0cnhIREtpLWM2SnRHXzYtWFMxQ2J6NEtJNHFwOWFJdk5WbnVpelQ3dTFVT0lvb2ZqMHNFcFZURlBMaGt1V0tMclJBaWhDTUpUd1k1Qkc4QTVEdVJEOG1DbGxHSmoycFZsN2c?oc=5",
-     "published": "Mon, 09 Nov 2026 03:04:08 GMT",
-     "sentiment": 0.296
     }
    ],
    "news_sentiment": {
-    "score": 0.317,
+    "score": 0.339,
     "count": 8,
     "label": "POSITIVE"
    },
-   "win_prob": 64.7,
-   "expected_r": 0.31,
+   "win_prob": 70.1,
+   "expected_r": 0.38,
    "model_used": true,
-   "grade": "B",
+   "grade": "A",
    "skip_reason": null,
    "action": "BUY ONGC near \u20b9233.50 (skip if it opens above \u20b9240.73) \u00b7 SL \u20b9227.48 \u00b7 T1 \u20b9240.73 \u00b7 T2 \u20b9245.55 \u00b7 Qty 16 for \u20b910k @1% risk"
   },
@@ -386,8 +386,8 @@
     "day_chg": 2.307314678448691,
     "ret5": 5.572441742654499,
     "rs20": -2.5649622645329773,
-    "bias_score": 17.0,
-    "news_sent": 0.13,
+    "bias_score": 67.0,
+    "news_sent": 0.073,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.208484996708723
    },
@@ -398,8 +398,15 @@
      "title": "SBI Share Price - Live NSE: SBIN Stock Price & Chart",
      "source": "Upstox",
      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBPa0lHTFVCTVBxWVRmVXR6cE5FMDhDc25ublZmbVllcFgyMU0wZF9NZmdZQWVjQmJrd0tPSFN2OUdVRnpfVVBWdDFCMmRPSkZFc1R4cFIyOGdMSmdtNThoam1zNGN6WnFKbGc?oc=5",
-     "published": "Mon, 09 Nov 2026 17:43:53 GMT",
+     "published": "Mon, 09 Nov 2026 21:03:05 GMT",
      "sentiment": 0.296
+    },
+    {
+     "title": "Nifty PSU Bank Index Performance: Bank of India, UCO Bank among 7 stocks rebound 15\u201356% from 1-yr lows - here\u2019s why",
+     "source": "Livemint",
+     "link": "https://news.google.com/rss/articles/CBMijAJBVV95cUxOcW1GcjdqWVdRem5kVHNxbWpnTWpZUjkyZlcxMTZwUm9EWWNjRzlWVWRkbF9iRU5ueDVjb2xIV01oZmZRanNCVXpjeEJ0UVBzTFF1eEsyYy1BaS1CMTZ2cEZ1YW5IVGZqU3BvUXRPblFmWHBwZ0R0MUFGUjlDVTlrNkhtanRYYXVTa2VNMW9RY0ZvRk8wWXk1bEVUMGZhdktnbkU0emZ0SDZDeVhfby1GR3VGT2JYVUJzN25sTVV1UEp1djROcWh0QUM5eWxuOTJueE1UcVlBTG5kMUN2V3ZTWkpmY3g4RUlwcFhyMWotVGtOdWQ1dGhoUEhYS3AyUGlKOWFlODdhVF9RN1lM0gGSAkFVX3lxTFB6cXhfTzhEYi13WV9vZGRRNE13RWR4T1RnSWxPUHJWT05lUzBwZWZEVDJPLVdzcFI3dGRBcjlwZWo0RHB3Y3l5NzNpMEx3ODd4cFA1em9PN2d5ZEl1SVJQMklER2kwaWtqck1ZVWVCMTBNRW1sTDZpSnhQeUQ2MEhKdW1CZ2o5ZVVEQ1p2VDQ4N0VtWndoeUhMcy1mSEljazdRbzNGVGpyeEFNRE1GZjlicERMMjhZRDFUMlBCRlRzejZiUkJnbVFITDcyX21lUlQyLVh2dkZLSHVveWpkQ2FlR2VkSnF3S0ZlNUduX19IbHc1MzdxRTNnRGRScFJGUEdWVm5rU2w1bTNLNThHVGlaeGc?oc=5",
+     "published": "Tue, 10 Nov 2026 15:46:36 GMT",
+     "sentiment": 0.226
     },
     {
      "title": "SBIN Share Price Today - State Bank of India on NSE/BSE",
@@ -409,18 +416,11 @@
      "sentiment": 0.296
     },
     {
-     "title": "Top Gainers & Losers Today, 9 November 2026 at 12:00 PM IST: State Bank of India Leads Gainers",
+     "title": "Top Gainers & Losers Today, 9 November 2026 at 3:30 PM IST: State Bank of India Leads Gainers",
      "source": "HDFC Sky",
-     "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5YM2V3OTNrbzNtd3J6WE51U1NyZXEzRlZHYTlvOVYwNUNDSVZ6V1JyVmVla0NpQldZQ1o5ZjZnc1Y5d1BkaHAyTzhORGdfMlF2aEdFSjFqYkdlQXF4QjF4cTNyVVJZWmQxTTNuaXhnWWVzN0FmdFJPSzdNV3cxNG8?oc=5",
-     "published": "Mon, 09 Nov 2026 06:41:51 GMT",
+     "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNcmFnZHVzN1J6LWJ4SWhzWEcwYmx1ellRYnY2WmVINXhfYjJKN3NhR0Z5b0hlM2l5SmN3Rm1zeDQ2WEdEeTRablJyeGhOdkVfTjJvb3oxd0RZY2ZmMWZRUTlFNDdaV2JnWUc5c2t0VW8ySXJ2TGVBMFpKQlRTbGZTTTF3?oc=5",
+     "published": "Mon, 09 Nov 2026 10:16:16 GMT",
      "sentiment": -0.382
-    },
-    {
-     "title": "Stock recommendations for 11 November from MarketSmith India",
-     "source": "Livemint",
-     "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNcmt4Y1hlZDl6bmhBQTdYSGhOYzV4aWkyc0piMktPX1FzWGZ3TTZEdUYzZ1BoRF9yWkx5Y19LMEc2U05pTXFNczdJU0k3UmYyRmgzcXVYaDlHTUx4Z285cll2R2V0YW5ld0dCcE9vMTc0Y0ZEcFYwbUczRzJoMmFVak1uQ2pHWlNsZEtfQlAtcE00ZXFneDFwNEk3SUFhd0p5TEdsV2VoWDl2YUNGU3dRNFZxeGVrQWs4a0ZBY21BVUhsTG9rX2dNU19n0gHPAUFVX3lxTE1QRUdISlZSMnY0aHhyYm5ueFJyV3o1VzAwRUtwaWtqNmdlWGpkWVk1d3N2QVlIMUtaZ05YajF6NkhWZlI0b240YV9zUVYzbnVQd1VtSWRRejIxeEJDZThLMXdkSzF1eVkzUFhxTm11T2pMam1GNWZzQlNrSi1qNl9OM3IzZVBmcXZKdTQ4WFAyN3NHUV8zUlFZOE5zUWpTYmtLTDZFZWFEZXdXSFNtelFMcWM3S1ZxMFdhSWJlSlRPOTV4dDFSLUZvZjdGSmprYw?oc=5",
-     "published": "Tue, 10 Nov 2026 00:30:57 GMT",
-     "sentiment": 0.0
     },
     {
      "title": "PSBs integrate ESG parameters into companies' credit risk assessment",
@@ -431,14 +431,14 @@
     }
    ],
    "news_sentiment": {
-    "score": 0.13,
+    "score": 0.073,
     "count": 8,
-    "label": "POSITIVE"
+    "label": "NEUTRAL"
    },
-   "win_prob": 62.9,
-   "expected_r": 0.28,
+   "win_prob": 67.6,
+   "expected_r": 0.35,
    "model_used": true,
-   "grade": "B",
+   "grade": "A",
    "skip_reason": null,
    "action": "BUY SBIN near \u20b91,042.00 (skip if it opens above \u20b91,075.20) \u00b7 SL \u20b91,014.33 \u00b7 T1 \u20b91,075.20 \u00b7 T2 \u20b91,097.34 \u00b7 Qty 3 for \u20b910k @1% risk"
   },
@@ -489,14 +489,21 @@
     "day_chg": -1.7756445251975506,
     "ret5": 3.683224294878351,
     "rs20": -1.5302859942216918,
-    "bias_score": 17.0,
-    "news_sent": 0.281,
+    "bias_score": 67.0,
+    "news_sent": 0.115,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.208484996708723
    },
    "r1_a": 0.679163513447967,
    "r2_a": 1.3583270268959406,
    "news": [
+    {
+     "title": "Bihar DA hike ahead of Chhath Puja: State govt employees' allowance rises from 60% to 63% \u2014 check details",
+     "source": "Livemint",
+     "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxPdExvUU1GMUcxc01zMGp3bWk5clBydjZzQV9FMFNXeUk1dmdXaDZNVXY5Q0VvVFB4Vmk1dVBBWDZmMlZpNGhoc0NRTVBoREpSUDJDNE02Y0V5QmtSaG5ubUVxYVZ6Wmc5U2dpNVBGQVVJRDFkU2ljZXRsSVRJdFExSnlSM05rS3QyVTZpNFd2bG9GdlJFcVNneHJyRXdEakZJWVZFaHI1Sm9pZk82UlFPeUtaVG81djVnTVVsQ0RmRE5uTGJTTC1YYjAxOVJrSUkwREMwbnVJU0hObnhTY0UwcGtSb1rSAeoBQVVfeXFMTWZlSi1tWnQ4X1lTYS11WDV1N1FiWGNDU3dHMW5nMDJWZVRJMThzUmdOUldCa2NSb0R0cjI5anpLanJQS0JvRkF0YjFsZjlGeHlxbzR4TTFKZGticklMaTd1T094ci1VaUk2MXktNXlheUllTFk4OXN4NVNDWlUyN2FOczBRSXNYSTM3Y0dUMDl0UVNiWTBZWkZYWmNERlYyTVhtcWlTMzh2dUFlM01wSm9NMFpwaEVORnFSSGFXRXdhVGRqZHNLRGNkWUtPWjJSNHR0VUFtQm4yWmNkaTEyZDZZcjhnc1I1d1JR?oc=5",
+     "published": "Tue, 10 Nov 2026 16:06:00 GMT",
+     "sentiment": -0.103
+    },
     {
      "title": "Half Yearly Results, Half yearly Earnings for Timken India",
      "source": "The Economic Times",
@@ -524,22 +531,15 @@
      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOTEE4U29oNUx3WFQzNkl1VUtDUlhpVzc3YmllYXpWSl95NkdSaFBPQmNQRXZVOEJ0R01wcnhpOGNsSlJ0dEIxc3RTd29FWlpSN0VFVGJnR1F0WWVPU01US1otSS1zVE9FSlBsMXdMQnoxendkc2pHVm1SRUczYjNUQkt0ek5wc0NYWnhEYkt0WGZLZXFmeGNN?oc=5",
      "published": "Mon, 09 Nov 2026 22:03:24 GMT",
      "sentiment": 0.527
-    },
-    {
-     "title": "AMFI Rejig: Reliance's Jio Platforms, NSE, Lenskart, LG among 7 stocks set for large cap upgrade - Vedanta in mid cap?",
-     "source": "Livemint",
-     "link": "https://news.google.com/rss/articles/CBMijAJBVV95cUxPMlA3Q1RRajh3LTJmZDZmXzh6VFVteG8zY3ROOERiTXQ3Y0VhWUdUT0JMSVZIOEhPZG5mQ1ktRGF1b2JtYWljT0NIcE5BbllZQnNwVkdwQjhHY1RlLUdiZkFQQVNVRUpib2RtS0JHWl9wc3g4SENfR0FBRU9zTW5kWWIzVUVLWHpPWVFsYzhEN1lSNWlWWGNzTU12S3NOUkpIcnFma1l5M1pnbExVdzZsWUlBVFpmY1VJTFB4cEFUWG1QcmIyLS1tS0daYVcxdmFsRGZYWGh5X2RuOWhBQXRRYU9NTWo0SUtSdnhuekhnSVhLaEM1Y2RKSDZNT01rMS1SdEMtZkp1S1pzSGJY0gGSAkFVX3lxTE5qMjViLVhCT25leGM1T2xES25oVzlKbjRXT2lJVmE5Sk5HbUJ2UnVLQlBBUEhrdVJMeW16TU9aOTlZaGFsV3ZLN0lpa1hLc0t3cGVMQVVuekl5S0ZfVTFLQWdkZmpka01DVG40QjN6RDMySkVZQ2dCVHh6WE9tUTN3aGljVXFCbTB6WW4yZktwTlViV1BFYzR6c2dkMGtBdVNiVVgtYmVCNmo5b2lsNFNBb21UdnFVbl83N2ZiazlmaTlmQk1jMllEd3p0d1ZVMDhqTFl3STh5azIzR0JoOXpKX1RTUE5GTHRscWt6QzAtUkgxaTd2MmlwdkVzcE1GekdLNkFRUTR2UWw4eVUtR2Iycnc?oc=5",
-     "published": "Tue, 10 Nov 2026 05:15:52 GMT",
-     "sentiment": 0.459
     }
    ],
    "news_sentiment": {
-    "score": 0.281,
+    "score": 0.115,
     "count": 8,
     "label": "POSITIVE"
    },
-   "win_prob": 60.5,
-   "expected_r": 0.25,
+   "win_prob": 64.2,
+   "expected_r": 0.3,
    "model_used": true,
    "grade": "B",
    "skip_reason": null,
@@ -594,7 +594,7 @@
     "day_chg": 0.09551098376312517,
     "ret5": 6.5040650406503975,
     "rs20": -9.99148285452276,
-    "bias_score": 17.0,
+    "bias_score": 67.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.208484996708723
@@ -603,8 +603,8 @@
    "r2_a": 0.6497750011807091,
    "news": [],
    "news_sentiment": null,
-   "win_prob": 69.7,
-   "expected_r": 0.38,
+   "win_prob": 74.4,
+   "expected_r": 0.44,
    "model_used": true,
    "grade": "A",
    "skip_reason": null,
@@ -650,24 +650,24 @@
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
     "log_vol_ratio": -0.18230876695822673,
-    "rsi": 59.019349601435636,
+    "rsi": 59.01934959797551,
     "dist_high_pct": 1.817750613524831,
-    "ext_ema20": 5.961039409458668,
-    "atr_pct": 3.462219235299216,
+    "ext_ema20": 5.961039409337521,
+    "atr_pct": 3.462219236989332,
     "day_chg": 0.40055927671485136,
     "ret5": 11.773907139462736,
     "rs20": -7.790616055409205,
-    "bias_score": 17.0,
+    "bias_score": 67.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.208484996708723
    },
-   "r1_a": 0.24194052013948086,
-   "r2_a": 0.4838810402789651,
+   "r1_a": 0.24194052002137523,
+   "r2_a": 0.48388104004275384,
    "news": [],
    "news_sentiment": null,
-   "win_prob": 69.3,
-   "expected_r": 0.37,
+   "win_prob": 74.0,
+   "expected_r": 0.44,
    "model_used": true,
    "grade": "A",
    "skip_reason": null,
@@ -720,7 +720,7 @@
     "day_chg": 0.0176962008232584,
     "ret5": 8.262331146780767,
     "rs20": -9.63658171525097,
-    "bias_score": 17.0,
+    "bias_score": 67.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.208484996708723
@@ -729,8 +729,8 @@
    "r2_a": 0.8119874053283709,
    "news": [],
    "news_sentiment": null,
-   "win_prob": 67.9,
-   "expected_r": 0.35,
+   "win_prob": 72.7,
+   "expected_r": 0.42,
    "model_used": true,
    "grade": "A",
    "skip_reason": null,
@@ -783,7 +783,7 @@
     "day_chg": 1.6939734282415575,
     "ret5": 16.021798000060382,
     "rs20": -0.04910861337770189,
-    "bias_score": 17.0,
+    "bias_score": 67.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.208484996708723
@@ -792,75 +792,12 @@
    "r2_a": 0.699568687297378,
    "news": [],
    "news_sentiment": null,
-   "win_prob": 67.0,
-   "expected_r": 0.34,
+   "win_prob": 71.9,
+   "expected_r": 0.41,
    "model_used": true,
-   "grade": "B",
+   "grade": "A",
    "skip_reason": null,
    "action": "BUY MUTHOOTFIN near \u20b92,917.60 (skip if it opens above \u20b93,058.40) \u00b7 SL \u20b92,800.27 \u00b7 T1 \u20b93,058.40 \u00b7 T2 \u20b93,152.27"
-  },
-  {
-   "symbol": "CANBK",
-   "name": "Canara Bank",
-   "bar_date": "2026-11-09",
-   "cmp": 128.1,
-   "day_chg": 4.21,
-   "vol_ratio": 1.46,
-   "vol_badge": "1.5x Vol Surge",
-   "volume_projected": false,
-   "rsi": 63.9,
-   "ema20": 120.63,
-   "ema50": 121.93,
-   "high20": 128.2,
-   "dist_high_pct": 0.08,
-   "atr": 3.24,
-   "checks": {
-    "volume": false,
-    "momentum": true,
-    "trend": true,
-    "breakout": true
-   },
-   "checks_passed": 3,
-   "passed": false,
-   "entry": 128.1,
-   "stop": 124.05,
-   "t1": 132.96,
-   "t2": 136.2,
-   "pivots": {
-    "P": 126.46,
-    "R1": 129.84,
-    "S1": 124.71,
-    "R2": 131.59,
-    "S2": 121.33
-   },
-   "risk_per_share": 4.05,
-   "rr_t1": 1.2,
-   "rr_t2": 2.0,
-   "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
-   "features": {
-    "log_vol_ratio": 0.38015572372266593,
-    "rsi": 63.93757546381589,
-    "dist_high_pct": 0.07799598058253583,
-    "ext_ema20": 6.192850404044936,
-    "atr_pct": 2.530059890828141,
-    "day_chg": 4.205650195644051,
-    "ret5": 7.520569716106351,
-    "rs20": -4.092497015924157,
-    "bias_score": 17.0,
-    "news_sent": 0.0,
-    "mkt_above50": 1.0,
-    "mkt_ret20": 11.208484996708723
-   },
-   "r1_a": 0.537897460114961,
-   "r2_a": 1.075794920229922,
-   "news": [],
-   "news_sentiment": null,
-   "win_prob": 66.6,
-   "expected_r": 0.34,
-   "model_used": true,
-   "grade": "B",
-   "skip_reason": null,
-   "action": "BUY CANBK near \u20b9128.10 (skip if it opens above \u20b9132.96) \u00b7 SL \u20b9124.05 \u00b7 T1 \u20b9132.96 \u00b7 T2 \u20b9136.20 \u00b7 Qty 24 for \u20b910k @1% risk"
   },
   {
    "symbol": "AXISBANK",
@@ -909,7 +846,7 @@
     "day_chg": -0.9222218623505696,
     "ret5": 8.411906631255173,
     "rs20": -7.1103215000471565,
-    "bias_score": 17.0,
+    "bias_score": 67.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.208484996708723
@@ -918,12 +855,75 @@
    "r2_a": 0.9840546236225622,
    "news": [],
    "news_sentiment": null,
-   "win_prob": 67.3,
-   "expected_r": 0.34,
+   "win_prob": 72.2,
+   "expected_r": 0.41,
    "model_used": true,
-   "grade": "B",
+   "grade": "A",
    "skip_reason": null,
    "action": "BUY AXISBANK near \u20b91,310.70 (skip if it opens above \u20b91,354.30) \u00b7 SL \u20b91,274.37 \u00b7 T1 \u20b91,354.30 \u00b7 T2 \u20b91,383.36 \u00b7 Qty 2 for \u20b910k @1% risk"
+  },
+  {
+   "symbol": "CANBK",
+   "name": "Canara Bank",
+   "bar_date": "2026-11-09",
+   "cmp": 128.1,
+   "day_chg": 4.21,
+   "vol_ratio": 1.46,
+   "vol_badge": "1.5x Vol Surge",
+   "volume_projected": false,
+   "rsi": 63.9,
+   "ema20": 120.63,
+   "ema50": 121.93,
+   "high20": 128.2,
+   "dist_high_pct": 0.08,
+   "atr": 3.24,
+   "checks": {
+    "volume": false,
+    "momentum": true,
+    "trend": true,
+    "breakout": true
+   },
+   "checks_passed": 3,
+   "passed": false,
+   "entry": 128.1,
+   "stop": 124.05,
+   "t1": 132.96,
+   "t2": 136.2,
+   "pivots": {
+    "P": 126.46,
+    "R1": 129.84,
+    "S1": 124.71,
+    "R2": 131.59,
+    "S2": 121.33
+   },
+   "risk_per_share": 4.05,
+   "rr_t1": 1.2,
+   "rr_t2": 2.0,
+   "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
+   "features": {
+    "log_vol_ratio": 0.38015572372266593,
+    "rsi": 63.93757546381589,
+    "dist_high_pct": 0.07799598058253583,
+    "ext_ema20": 6.192850404044936,
+    "atr_pct": 2.530059890828141,
+    "day_chg": 4.205650195644051,
+    "ret5": 7.520569716106351,
+    "rs20": -4.092497015924157,
+    "bias_score": 67.0,
+    "news_sent": 0.0,
+    "mkt_above50": 1.0,
+    "mkt_ret20": 11.208484996708723
+   },
+   "r1_a": 0.537897460114961,
+   "r2_a": 1.075794920229922,
+   "news": [],
+   "news_sentiment": null,
+   "win_prob": 71.6,
+   "expected_r": 0.4,
+   "model_used": true,
+   "grade": "A",
+   "skip_reason": null,
+   "action": "BUY CANBK near \u20b9128.10 (skip if it opens above \u20b9132.96) \u00b7 SL \u20b9124.05 \u00b7 T1 \u20b9132.96 \u00b7 T2 \u20b9136.20 \u00b7 Qty 24 for \u20b910k @1% risk"
   },
   {
    "symbol": "PIDILITIND",
@@ -972,7 +972,7 @@
     "day_chg": 0.5383153894870096,
     "ret5": 6.68682795698925,
     "rs20": -4.0897265621608225,
-    "bias_score": 17.0,
+    "bias_score": 67.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.208484996708723
@@ -981,10 +981,10 @@
    "r2_a": 0.4073966428592484,
    "news": [],
    "news_sentiment": null,
-   "win_prob": 66.4,
-   "expected_r": 0.33,
+   "win_prob": 71.3,
+   "expected_r": 0.4,
    "model_used": true,
-   "grade": "B",
+   "grade": "A",
    "skip_reason": null,
    "action": "BUY PIDILITIND near \u20b91,587.50 (skip if it opens above \u20b91,646.17) \u00b7 SL \u20b91,538.61 \u00b7 T1 \u20b91,646.17 \u00b7 T2 \u20b91,685.28 \u00b7 Qty 2 for \u20b910k @1% risk"
   },
@@ -1035,7 +1035,7 @@
     "day_chg": -0.5190298287550688,
     "ret5": 7.85463071512309,
     "rs20": -4.042328425689012,
-    "bias_score": 17.0,
+    "bias_score": 67.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.208484996708723
@@ -1044,10 +1044,10 @@
    "r2_a": 0.47078243737986314,
    "news": [],
    "news_sentiment": null,
-   "win_prob": 66.3,
-   "expected_r": 0.33,
+   "win_prob": 71.2,
+   "expected_r": 0.4,
    "model_used": true,
-   "grade": "B",
+   "grade": "A",
    "skip_reason": null,
    "action": "BUY JIOFIN near \u20b9230.00 (skip if it opens above \u20b9238.28) \u00b7 SL \u20b9223.10 \u00b7 T1 \u20b9238.28 \u00b7 T2 \u20b9243.81 \u00b7 Qty 14 for \u20b910k @1% risk"
   },
@@ -1091,26 +1091,26 @@
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
     "log_vol_ratio": -0.3269227467249406,
-    "rsi": 57.295465536065144,
+    "rsi": 57.29546554171086,
     "dist_high_pct": 1.9528534369455404,
-    "ext_ema20": 3.524773945211157,
-    "atr_pct": 2.6679193127879244,
+    "ext_ema20": 3.524773946067361,
+    "atr_pct": 2.667919302512714,
     "day_chg": 2.8653295718475746,
     "ret5": 6.361101564395555,
     "rs20": -8.275321339015541,
-    "bias_score": 17.0,
+    "bias_score": 67.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.208484996708723
    },
-   "r1_a": 0.366450092470791,
-   "r2_a": 0.732900184941575,
+   "r1_a": 0.36645009388213495,
+   "r2_a": 0.7329001877642629,
    "news": [],
    "news_sentiment": null,
-   "win_prob": 66.3,
-   "expected_r": 0.33,
+   "win_prob": 71.3,
+   "expected_r": 0.4,
    "model_used": true,
-   "grade": "B",
+   "grade": "A",
    "skip_reason": null,
    "action": "BUY RECLTD near \u20b9305.15 (skip if it opens above \u20b9317.36) \u00b7 SL \u20b9294.97 \u00b7 T1 \u20b9317.36 \u00b7 T2 \u20b9325.50 \u00b7 Qty 9 for \u20b910k @1% risk"
   },
@@ -1161,7 +1161,7 @@
     "day_chg": 0.3249327074579922,
     "ret5": 10.24378366862464,
     "rs20": 1.5907135650821358,
-    "bias_score": 17.0,
+    "bias_score": 67.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.208484996708723
@@ -1170,10 +1170,10 @@
    "r2_a": 0.4781647440909214,
    "news": [],
    "news_sentiment": null,
-   "win_prob": 66.5,
-   "expected_r": 0.33,
+   "win_prob": 71.4,
+   "expected_r": 0.4,
    "model_used": true,
-   "grade": "B",
+   "grade": "A",
    "skip_reason": null,
    "action": "BUY CHOLAFIN near \u20b91,790.80 (skip if it opens above \u20b91,872.57) \u00b7 SL \u20b91,722.66 \u00b7 T1 \u20b91,872.57 \u00b7 T2 \u20b91,927.08 \u00b7 Qty 1 for \u20b910k @1% risk"
   },
@@ -1224,7 +1224,7 @@
     "day_chg": -1.4908525492448033,
     "ret5": 8.595922223710462,
     "rs20": -5.316971990488462,
-    "bias_score": 17.0,
+    "bias_score": 67.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.208484996708723
@@ -1233,10 +1233,10 @@
    "r2_a": 1.1807602230736187,
    "news": [],
    "news_sentiment": null,
-   "win_prob": 65.7,
-   "expected_r": 0.32,
+   "win_prob": 70.7,
+   "expected_r": 0.39,
    "model_used": true,
-   "grade": "B",
+   "grade": "A",
    "skip_reason": null,
    "action": "BUY BAJAJFINSV near \u20b91,836.90 (skip if it opens above \u20b91,905.42) \u00b7 SL \u20b91,779.80 \u00b7 T1 \u20b91,905.42 \u00b7 T2 \u20b91,951.09 \u00b7 Qty 1 for \u20b910k @1% risk"
   },
@@ -1287,8 +1287,8 @@
     "day_chg": 3.0722249348958286,
     "ret5": 10.185294870335637,
     "rs20": -1.6219493305465793,
-    "bias_score": 17.0,
-    "news_sent": 0.119,
+    "bias_score": 67.0,
+    "news_sent": 0.087,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.208484996708723
    },
@@ -1303,18 +1303,11 @@
      "sentiment": -0.226
     },
     {
-     "title": "AUROPHARMA Share Price Today - Aurobindo Pharma on NSE/BSE",
+     "title": "Aurobindo Pharma to host investor meets on Nov 16 and 17 in Mumbai",
      "source": "scanx.trade",
-     "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBiQnJ4d2RVNERQTFY5NU9XS2dVZkkzQnl4SzFoNmQ0d2dXTUJDZHpPU2VNQWNEbHVUeFBQcUJsZktLQWxnQjdvZ1g5MVBCbWp6cnZlb2RtR2JQUkRv?oc=5",
-     "published": "Sat, 07 Nov 2026 13:20:22 GMT",
-     "sentiment": 0.296
-    },
-    {
-     "title": "Aurobindo Pharma - Uno Minda among 7 stocks hitting 52-week highs; rally up to 26% in a month",
-     "source": "The Economic Times",
-     "link": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxOSVJRenk4SWsxajNKRzJXZ0JVWjZ5bnJuUTV6MEItQjJGcl9WTTM2MVR2RmFWdFhPM3JFQ1p1NGZWdVRoZ3hCY3F6YmdsSlY1Rm5yeVdjNndFckk3NHdudDhPX1NfZFNNV0NRc2UyNmlCMDRGM3g1UUZZbkRLZW1fWWZ1cVppQjNPRHVZTFZqeGtCRDgtVnNOVEcxSjNkWkJUeVdkNzB0S2ZtcFcwd0JIaXEySEZ1N2dtUHBsQmhYMkZsRGRzLVFWbEkxM1VOci1BTmJHYTdjN0djMTBYZXdhSDVMX1hEZlptdVBjdlA1bTVJdXM?oc=5",
-     "published": "Mon, 09 Nov 2026 12:22:34 GMT",
-     "sentiment": 0.382
+     "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPNDRZS2hHbW1BcnFJTWN5Q2V5bS1IZnpaRXJrUVVlQURLUXVWeDQtX3Rmc3MxZ1pCNXE4MHJlMTdjTkdTQXZaWHdaMWxScEQ1clpPWmdwUVpjMkswdWxQNjhMODZMYlJDdExRN1ZQeFJQMTVvSGtPeUZzcFJSNkFMb1hjb2doX0JXTGxMWEE3M0s3ZzctWGV4NHpCeFZ6aW5YT1Q2eHpLQkxybHlWTlE?oc=5",
+     "published": "Mon, 09 Nov 2026 12:59:07 GMT",
+     "sentiment": 0.0
     },
     {
      "title": "Top 14 Pharma Stocks To Buy In India November 2026",
@@ -1329,82 +1322,26 @@
      "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE0tdFYzdXFCMXZJVVdQU3J3WHk3ZV90UDVkLWNkd0J4bU5iekJheWR4U01TRTZyZHV2d1g5Wk8wYjF4Uk1HTzdZbWJmcHlZMGZ3d0xYX1VOU3NVelBMQ3c4enpaUGllcV9ZT1Q1OTF3?oc=5",
      "published": "Mon, 09 Nov 2026 11:39:20 GMT",
      "sentiment": 0.296
+    },
+    {
+     "title": "Corporate Actions This Week: HUL, Dabur, Balrampur Chini, Aurobindo Pharma, ONGC, Jyothy Labs, And Many More In Focus",
+     "source": "NDTV Profit",
+     "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxPMVIzc3FVS1JlSEdNS2lUNXZlSmN2YmpXTHR3YzN3NlJGLUxvdUkzS2MxQWduUm1vOGR6T0NGYm04cFJyLUs3cnEwNFRNaUpobk4zVmY2Z2NyU3Y1YkVfSXJrQzdFTF9IQWJ0SXZNYWF0ZmJxajg5NTVMN1l0OTJuYXJack5LZy1nT1BpaFJ5bUVLM2NxblNDN3FtdG8yWi04d0RHNjd5Mk9HOGx4VDdaSWJ1YVVYVmpkT2xtRFZyWm5kakxMS05lMjl5TnpQWHg3V0NUUTdyUktraU1QWGlBLUg3dzhDSzNwa3fSAfIBQVVfeXFMUF9kOWxROS1Ma2FpNW5LOUdaMDNael8ycllSR05zYmdmWllHdUVTdGtxS244a1RJN2FwQ2owdTZjemZCNnhkMHZka1lmbzRXRnpvSVJZU0dqZC1kVFdUNG1TT2tWQVBwVm5PY01GYVpCcjdUR2JBRHg4OFVmamQ3UlFWUnhqMlg0OV9SYi03dTBLMnkwTHltdElab0dCWnpVUjJMYldHSWdQaERmSVZqd0hDQ0RlS292YXNGeHBEYlRjV05rWnV5YlpyOE5pdHg3NlZTbkZDbnZUdGR6aVdMbEpJQTJHS29zZWF6Nzk3bEROTGc?oc=5",
+     "published": "Sun, 08 Nov 2026 01:41:37 GMT",
+     "sentiment": 0.0
     }
    ],
    "news_sentiment": {
-    "score": 0.119,
+    "score": 0.087,
     "count": 8,
-    "label": "POSITIVE"
+    "label": "NEUTRAL"
    },
-   "win_prob": 64.9,
-   "expected_r": 0.31,
+   "win_prob": 69.7,
+   "expected_r": 0.38,
    "model_used": true,
-   "grade": "B",
+   "grade": "A",
    "skip_reason": null,
    "action": "BUY AUROPHARMA near \u20b91,855.30 (skip if it opens above \u20b91,922.57) \u00b7 SL \u20b91,799.24 \u00b7 T1 \u20b91,922.57 \u00b7 T2 \u20b91,967.42 \u00b7 Qty 1 for \u20b910k @1% risk"
-  },
-  {
-   "symbol": "NTPC",
-   "name": "NTPC",
-   "bar_date": "2026-11-09",
-   "cmp": 328.75,
-   "day_chg": 1.64,
-   "vol_ratio": 1.01,
-   "vol_badge": "1.0x Vol Surge",
-   "volume_projected": false,
-   "rsi": 64.6,
-   "ema20": 313.91,
-   "ema50": 318.17,
-   "high20": 328.75,
-   "dist_high_pct": 0.0,
-   "atr": 7.77,
-   "checks": {
-    "volume": false,
-    "momentum": true,
-    "trend": true,
-    "breakout": true
-   },
-   "checks_passed": 3,
-   "passed": false,
-   "entry": 328.75,
-   "stop": 319.04,
-   "t1": 340.4,
-   "t2": 348.16,
-   "pivots": {
-    "P": 326.53,
-    "R1": 330.97,
-    "S1": 324.32,
-    "R2": 333.18,
-    "S2": 319.88
-   },
-   "risk_per_share": 9.71,
-   "rr_t1": 1.2,
-   "rr_t2": 2.0,
-   "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
-   "features": {
-    "log_vol_ratio": 0.006999328514281462,
-    "rsi": 64.58416066651037,
-    "dist_high_pct": 0.0,
-    "ext_ema20": 4.729056621141758,
-    "atr_pct": 2.362259910589857,
-    "day_chg": 1.6385801802277777,
-    "ret5": 2.7535327106904317,
-    "rs20": -4.832227451238413,
-    "bias_score": 17.0,
-    "news_sent": 0.0,
-    "mkt_above50": 1.0,
-    "mkt_ret20": 11.208484996708723
-   },
-   "r1_a": 0.2854345567652017,
-   "r2_a": 0.570869113530396,
-   "news": [],
-   "news_sentiment": null,
-   "win_prob": 64.8,
-   "expected_r": 0.31,
-   "model_used": true,
-   "grade": "B",
-   "skip_reason": null,
-   "action": "BUY NTPC near \u20b9328.75 (skip if it opens above \u20b9340.40) \u00b7 SL \u20b9319.04 \u00b7 T1 \u20b9340.40 \u00b7 T2 \u20b9348.16 \u00b7 Qty 10 for \u20b910k @1% risk"
   },
   {
    "symbol": "HDFCBANK",
@@ -1453,8 +1390,8 @@
     "day_chg": 1.2559498146606396,
     "ret5": 14.021432059151785,
     "rs20": 1.6441165464602392,
-    "bias_score": 17.0,
-    "news_sent": 0.133,
+    "bias_score": 67.0,
+    "news_sent": 0.245,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.208484996708723
    },
@@ -1463,9 +1400,9 @@
    "news": [
     {
      "title": "Retail investors shed stocks, but crowd into Reliance, HDFC Bank",
-     "source": "Livemint",
-     "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNakE1NmZKQ0o5U1g2RzVZdlZrYk9nTDBkbEFCOG82OG9OQlZpSV9ZQW00aE14cXlUc2FVWE9RRHkwcTFaVHRjRURkNVFSdXdjT3Q5NTlrdFhmNUJfU0RvaElab1d4dzBMYS1ZZXRBMUhVd3hIb21tc1lLUGhYSkVZLVNVZkpQRUJKTUpwNDhpWndTWU9zenVsMGdjVFY1ZEFDRkVTT0YtRmo4TG9wdDk2Z2JXVFQxQ2hyLUpYLXAwLTdpZmx4REV3dWdn0gHPAUFVX3lxTFBZUi1maVhQUVBWdEYxN2l1dWM0YXZRQWlqOEl6NUVJT3VWODBwOW9VUTBRVDVfNy1NdnlMMThoQjFrbE0waGgwaF9veTFjUFdUZTJmVFVsaXotWktkeHBVN3cyRmdCRTVhY2tjYnpSRWptd29FQlN4bFVHYm5NZkhLYkgteVZoLVNaVVRJUThOT2hoWUFFQ3pmeE8xZHlPYl9BMWdocnF3RDBBVmhoRWRLZENIX2dPZVc5UWY0VHRWR2NCdndxUVJzOEVsbFo3Zw?oc=5",
-     "published": "Tue, 10 Nov 2026 07:21:45 GMT",
+     "source": "TradingView",
+     "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPZDBKUmxMN2pMTVVSSktQQ1RZaS1jRnBmSUZVZ2NGSFhaUmF3YVpBMDhGb1BVVGVVanU5T1BKbWliS1NVTkV5c0pxb3RQOWNnVjB3MWt6bm45aUxocHZzWXBKM2dybjhQU2Z0MVdWazh4RGk0UWp0eDR1c1dfcHR4d3JDMWJSMUQ3YTMtZXMxVEVaNmJzRm9LR21oRGVEZTRETVQxaTFSbzQyU0dPcFZKeHRHcG1ZY0dMaDU4?oc=5",
+     "published": "Tue, 10 Nov 2026 10:35:11 GMT",
      "sentiment": 0.0
     },
     {
@@ -1476,141 +1413,164 @@
      "sentiment": -0.226
     },
     {
-     "title": "Jefferies sees large caps benefiting from FPI revival; Reliance, HDFC Bank, Axis Bank among potential bene",
+     "title": "Retail investors shed stocks, but crowd into Reliance, HDFC Bank",
+     "source": "Livemint",
+     "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNakE1NmZKQ0o5U1g2RzVZdlZrYk9nTDBkbEFCOG82OG9OQlZpSV9ZQW00aE14cXlUc2FVWE9RRHkwcTFaVHRjRURkNVFSdXdjT3Q5NTlrdFhmNUJfU0RvaElab1d4dzBMYS1ZZXRBMUhVd3hIb21tc1lLUGhYSkVZLVNVZkpQRUJKTUpwNDhpWndTWU9zenVsMGdjVFY1ZEFDRkVTT0YtRmo4TG9wdDk2Z2JXVFQxQ2hyLUpYLXAwLTdpZmx4REV3dWdn0gHPAUFVX3lxTFBZUi1maVhQUVBWdEYxN2l1dWM0YXZRQWlqOEl6NUVJT3VWODBwOW9VUTBRVDVfNy1NdnlMMThoQjFrbE0waGgwaF9veTFjUFdUZTJmVFVsaXotWktkeHBVN3cyRmdCRTVhY2tjYnpSRWptd29FQlN4bFVHYm5NZkhLYkgteVZoLVNaVVRJUThOT2hoWUFFQ3pmeE8xZHlPYl9BMWdocnF3RDBBVmhoRWRLZENIX2dPZVc5UWY0VHRWR2NCdndxUVJzOEVsbFo3Zw?oc=5",
+     "published": "Tue, 10 Nov 2026 07:21:45 GMT",
+     "sentiment": 0.0
+    },
+    {
+     "title": "Jefferies sees largecaps benefiting from FPI revival; Reliance, HDFC Bank, Axis Bank among potential benef",
      "source": "The Economic Times",
      "link": "https://news.google.com/rss/articles/CBMilAJBVV95cUxONE9VNy0xb1NvZGE4Q0phQ0hrODF3U2E3a2FMY3JlZklCck5yUlNEdlRPNmVhd25TREYtdjRWeVpBbXJ3amVXY0JtZGVYVDN1bG5uTU1IMlFvN0ZsdF9DSmZaeWJXT2Y1UDc3YUk2ZE02Y0NnTV82dlM4YktCbWl4SmVBLVRiWWRjLVdGRl93NTNiLTBXeVVEbVBDLThsd0VKdjRrVjk5XzY0d1VMcmhTV0NVem9fZEtqdzNLVVN4aHk1cjBOUWhGVkNMNUNjWEs4R3dqQWxIakN6T2VydTd2MWR2aXFMSGJJTFJRUm1NWHpScENVZkxGR2hmcm81YmVhbzZrUDlLLWJ3Z3pLOTE0b0w0MFXSAZoCQVVfeXFMT1l4T0NNVzRYTGt3Q0FLT3N6ZzVQekRfZUJ0X2VZdnZoektSQjh1TmNkbGNhbkRmNVpCYVZMd0duSWx2dHhuaVFibHVtZUZ6eDJ2clFGSml5RnZFWU55Q2d6TDdDOEJSOXlFRW5IT0ZSNEVIWno3S0MwS3BtWGdoNGxyWUwzRTQzVThmU3oxa3dsaGtxQWg1TERuWXFoNjktUV9FM25sZU15VGpITmR0SVJxWkQzUWVkYTdlcERkanN0NVRJTTFvQ3RKVlZRaTNuRjFWTk40ekx5U1JSdUVjNUhLclFPR0M1ejlrdms0dkRRcVVBanB4dUpFcVp1bFdObTF1U29WcWZIQnRmN0dmT19oc0w4cE1vQTBR?oc=5",
      "published": "Tue, 10 Nov 2026 09:50:59 GMT",
      "sentiment": 0.0
     },
     {
-     "title": "HDFC Bank, ICICI Bank, SBI, Kotak Bank, Axis Bank, PNB, IndusInd Bank: Check fresh targets post Q2",
-     "source": "Business Today",
-     "link": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxNXzR5cnp3M2dvUG5fMUxoREctOVlfZkdJaWh6Z3VaQmJ0Z25UUlo1R1d2VnF6UXdGUG03cjF2cHp6QTR0NDBHLTQ2Q0dDb0RnZ1BwUjNaWTlGUFJXTXItZGxUOHdETm1qQlpzMWhXaHh3RllOSlZpQVJkRGtJLTQwTkRWUy1vQzR1WnRrSmpRblZXR3c2bmF0OGNhZ1NNazZkQkREbE1PdEl2aXF0RjBWUjZkcDJGTHF3XzZ4SDNidjVFaWRGTFlGa3MwVHUyQld3ckZlbF9rZzhzMlQtSGZFQWVSb1J6Nmc5TTZ5Tm5TcjU3a0xIY2JNN2JBcVTSAYICQVVfeXFMTlRQd2pONXAyclNQTTRNQ1RmLV9ZcGsybVFwZW9GNGIwX2F2WnhFdHphRjV4Q25TTEkzQ0EzN2pSRzUzVzJSWUgwVDdhbzdibDRHU2h5a2lGX3pQTEQ3SVZkN2FlT2ozNzhDWWpwYllNZzd4d0VDdnh5VUd0dzJDWEtxRS05SmREQUZrWVhBU1Z6WTBZdHpMaFhjc0lYY3hmeWJNOEhYeW5DU1dzQnJveFZmVDNZWXlSMTZ2WHJHajJkaXJuZVU0cjg4NUY0dGZCRmdSektVOUxGWWdVQmczY25obHNnU25NUGF2VS1sdTJoclljaWFfb2ZlclZ3eXZfb3ZR?oc=5",
-     "published": "Tue, 10 Nov 2026 09:36:30 GMT",
-     "sentiment": 0.318
-    },
-    {
-     "title": "Sensex, Nifty rebound in early trade led by IT firms, HDFC Bank",
-     "source": "DD News",
-     "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxORGZ0QmdtUnpuUUhmd2x0LUhJamdwZVZqU3hxMnRPUGVBM2ZrNHJfY3pWcmd1N0dHVzlzMzlnQ0UtR0xGb0ZUbGc2SUFXbEpLalBpVzNfTy1VcTFZQTVRYkx6RTNiaHZDelJNYklKLWdheUFwSl9PMXppZS1aWnJwMkRhLU5mYkV3TlUzWG1vZmo?oc=5",
-     "published": "Mon, 09 Nov 2026 18:45:32 GMT",
-     "sentiment": 0.402
+     "title": "RIL, HDFC Bank, Axis, Kotak Bank, VBL and Sona BLW shares among plays on FPI reversal -",
+     "source": "IndiaIPO",
+     "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQRTgtVFE0bHd0Q2ZpQ2U2cUVxdi1zMnVrMVAwUE1NWFpheFFPc0ZMa3kySUs3UEtjN3VFa2VfUGtZWE1CUE93UEtQTW1oWjBqdjVWUVgxck9URlV0Vl9PWk9DSFk1VFFDWUtOb1lXbDlRU1lBVHRpdENPQXlGWS1CbWhxOVhHbFJYaTRFNXBndmtwa1NfN1NjaDJVYVlpb1JSbzVTQzFhVGxwY3lJajl4S3FRWUsyR0ls?oc=5",
+     "published": "Tue, 10 Nov 2026 14:34:45 GMT",
+     "sentiment": 0.494
     }
    ],
    "news_sentiment": {
-    "score": 0.133,
+    "score": 0.245,
     "count": 8,
     "label": "POSITIVE"
    },
-   "win_prob": 63.8,
-   "expected_r": 0.3,
+   "win_prob": 70.0,
+   "expected_r": 0.38,
    "model_used": true,
-   "grade": "B",
+   "grade": "A",
    "skip_reason": null,
    "action": "BUY HDFCBANK near \u20b9798.15 (skip if it opens above \u20b9824.25) \u00b7 SL \u20b9776.40 \u00b7 T1 \u20b9824.25 \u00b7 T2 \u20b9841.65 \u00b7 Qty 4 for \u20b910k @1% risk"
   },
   {
-   "symbol": "PNB",
-   "name": "Punjab National Bank",
+   "symbol": "NTPC",
+   "name": "NTPC",
    "bar_date": "2026-11-09",
-   "cmp": 132.17,
-   "day_chg": 4.44,
-   "vol_ratio": 2.2,
-   "vol_badge": "2.2x Vol Surge",
+   "cmp": 328.75,
+   "day_chg": 1.64,
+   "vol_ratio": 1.01,
+   "vol_badge": "1.0x Vol Surge",
    "volume_projected": false,
-   "rsi": 73.0,
-   "ema20": 122.21,
-   "ema50": 118.63,
-   "high20": 132.48,
-   "dist_high_pct": 0.23,
-   "atr": 3.32,
+   "rsi": 64.6,
+   "ema20": 313.91,
+   "ema50": 318.17,
+   "high20": 328.75,
+   "dist_high_pct": 0.0,
+   "atr": 7.77,
    "checks": {
-    "volume": true,
-    "momentum": false,
+    "volume": false,
+    "momentum": true,
     "trend": true,
     "breakout": true
    },
    "checks_passed": 3,
    "passed": false,
-   "entry": 132.17,
-   "stop": 128.02,
-   "t1": 137.15,
-   "t2": 140.47,
+   "entry": 328.75,
+   "stop": 319.04,
+   "t1": 340.4,
+   "t2": 348.16,
    "pivots": {
-    "P": 130.19,
-    "R1": 134.46,
-    "S1": 127.9,
-    "R2": 136.75,
-    "S2": 123.63
+    "P": 326.53,
+    "R1": 330.97,
+    "S1": 324.32,
+    "R2": 333.18,
+    "S2": 319.88
    },
-   "risk_per_share": 4.15,
+   "risk_per_share": 9.71,
    "rr_t1": 1.2,
    "rr_t2": 2.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 0.7880427253025535,
-    "rsi": 73.03824638368698,
-    "dist_high_pct": 0.23399574923847147,
-    "ext_ema20": 8.151989502283197,
-    "atr_pct": 2.512721600618862,
-    "day_chg": 4.440928472272709,
-    "ret5": 7.402893540619426,
-    "rs20": 1.7766358582321562,
-    "bias_score": 17.0,
-    "news_sent": 0.48,
+    "log_vol_ratio": 0.006999328514281462,
+    "rsi": 64.5841606664793,
+    "dist_high_pct": 0.0,
+    "ext_ema20": 4.729056621141758,
+    "atr_pct": 2.3622599105903848,
+    "day_chg": 1.6385801802277777,
+    "ret5": 2.7535327106904317,
+    "rs20": -4.832227451238413,
+    "bias_score": 67.0,
+    "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.208484996708723
    },
-   "r1_a": 0.6895375421564606,
-   "r2_a": 1.3790750843129298,
-   "news": [
-    {
-     "title": "NIFTY PSU Bank Share Price | NIFTY PSU Bank Index | NIFTY PSU Bank Today",
-     "source": "Livemint",
-     "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9RSFVXUTBPanFDdXFpODBLclY5LWxXV2o0RWVHMzJjQVVGTUs2UmhndGczRUZVdlUzOVpuTTBIbDB2UnJLZ25wUi1oSkx5T1VoSXhQS3c2RDdkQ3puUGl6LWN4N0RoRHhaN3hGanFDQzVQNnVfdjdKM2h6WC0?oc=5",
-     "published": "Tue, 10 Nov 2026 09:23:05 GMT",
-     "sentiment": 0.91
-    },
-    {
-     "title": "SBI, PNB, Bank of Baroda: NIFTY PSU Bank index rallies up to 3.7% amid weak market; what\u2019s powering PSU bank stocks?",
-     "source": "Upstox",
-     "link": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxQRkNzTldJRWsxNzZycHJHaHhnbGJzLTZneVhLOXFDcmlzd0hNUEZLZU10YzhNQ3E2UnFBc3dKR0pOZzh1UU1QcUtfZng3eUxLVjFkV0lTT05oQjk5U1lLOGd5UHRkRmZQUUFoQkVDY1MxeWdOZVlwN19jRzV0R0t3Yk1Ea2tRX0ZRTVZvUGhyblFpekZwd0RaMnZHYWFpY0VRNDlQc2d6Q3F6eHhubXprQUhYYlhJTXRFbEd1X2l1VnIycFhVRWxXRmVZcE5JMjZGTTVSNWJzMUtKa28wRmlENUMzMVBsWmJJbjRvY3dtbEZ0Vi1sR2pGaFBZR3NyUQ?oc=5",
-     "published": "Mon, 09 Nov 2026 06:48:47 GMT",
-     "sentiment": 0.59
-    },
-    {
-     "title": "Top Traded by Volume Today 09-Nov-2026: PC Jeweller Leads",
-     "source": "Multibagg AI",
-     "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPVzJ2UGgtYXdRaXVNNXZwUEJxZ1ZuZ3pTS2pQc1lsRXZkNm4wVHE1MHJaSEhTMlZJSmtKNllWTTNhUlJna18ycVZQQmc5QXBMRVB3dDlWMEZBbjBaMVJQUEJ1NUJ6TGstY0J0ZFV6UUlzd3JIM2FHTlZna21JN1VBTXZ0cWV1YkpOZ1AxdW95akVGMEhZdEdVVDVKOA?oc=5",
-     "published": "Mon, 09 Nov 2026 11:03:45 GMT",
-     "sentiment": 0.202
-    },
-    {
-     "title": "PSU Banks in focus; SBI, BOI, PNB, Indian Bank, Canara, UBI gain up to 3%",
-     "source": "Business Standard",
-     "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPX1JISDM4X2w4X3RzRENNc2tONmtZOXVNcUItWi1ZMng4REhmb2VCSFNsN0x0Tm85ZXZCcFJrN0xWZVdvazZ6Q0N4R2ZPUmhObUVmUlA5MHY1bkpRanZzTnctMGl5eUZhSlRJX0RaQ09JdTR1VE9CZGdtZVhuQUpZeVo5Q2E0Y05GZ2hyVWVpZ2ZvM1YtbWhsZjN1em9taXhGN3BNNmx6cDVESHdmSGpGRFh1UUdwaTNJb00tTWRzeTk1RFYxdEpXZjlBazFOd9IB0wFBVV95cUxQRlg2Qlp0QnJERG85bHVZSHpFaGQ3M2hFUnJLWEZ4YkRVc3k4b2pEdXpFTlZzaG9raEU0S2tpSjQ2NnJkblpSM29jOHktNnl0S3ItSGYtNUw0bWlfVHoyb2NWVmNIRjhabERqTWlqU3hUSF9KWDVOUlJtNUdYWGw4ZkxKZkRtSUs1STYzQzZzREpaUjlWTTZzTy1ucWZlQnl2X256ZjhlaEtVRFRkMDk5Q3VlRDRzLXpZTWU2eTBudGVTb290SFAzT1dreUs3UV80bmpn?oc=5",
-     "published": "Mon, 09 Nov 2026 05:32:22 GMT",
-     "sentiment": 0.527
-    },
-    {
-     "title": "NIFTY Bank Share Price | NIFTY Bank Index | NIFTY Bank Today",
-     "source": "Livemint",
-     "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBPWW9MdEVGeVlnMDdPaERiSGVOZDFmRHZUckItOXhPQjR2c1EwTEVlTVZ1WVl4dE00MVlSNHhKb25DdW5uaHBRZDFZV2tqbl9RRlhLa2RoQ0JhRlQwTFlOeThGRjN0aXpudldkTHpndjVpSWdhdEkw?oc=5",
-     "published": "Tue, 10 Nov 2026 09:22:16 GMT",
-     "sentiment": 0.91
-    }
-   ],
-   "news_sentiment": {
-    "score": 0.48,
-    "count": 8,
-    "label": "POSITIVE"
-   },
-   "win_prob": 63.1,
-   "expected_r": 0.29,
+   "r1_a": 0.28543455676513796,
+   "r2_a": 0.5708691135302686,
+   "news": [],
+   "news_sentiment": null,
+   "win_prob": 69.9,
+   "expected_r": 0.38,
    "model_used": true,
-   "grade": "B",
+   "grade": "A",
    "skip_reason": null,
-   "action": "BUY PNB near \u20b9132.17 (skip if it opens above \u20b9137.15) \u00b7 SL \u20b9128.02 \u00b7 T1 \u20b9137.15 \u00b7 T2 \u20b9140.47 \u00b7 Qty 24 for \u20b910k @1% risk"
+   "action": "BUY NTPC near \u20b9328.75 (skip if it opens above \u20b9340.40) \u00b7 SL \u20b9319.04 \u00b7 T1 \u20b9340.40 \u00b7 T2 \u20b9348.16 \u00b7 Qty 10 for \u20b910k @1% risk"
+  },
+  {
+   "symbol": "TRENT",
+   "name": "Trent",
+   "bar_date": "2026-11-09",
+   "cmp": 3119.2,
+   "day_chg": 1.31,
+   "vol_ratio": 0.98,
+   "vol_badge": "1.0x Vol Surge",
+   "volume_projected": false,
+   "rsi": 67.0,
+   "ema20": 2951.34,
+   "ema50": 2897.77,
+   "high20": 3133.5,
+   "dist_high_pct": 0.46,
+   "atr": 82.81,
+   "checks": {
+    "volume": false,
+    "momentum": true,
+    "trend": true,
+    "breakout": true
+   },
+   "checks_passed": 3,
+   "passed": false,
+   "entry": 3119.2,
+   "stop": 3015.69,
+   "t1": 3243.41,
+   "t2": 3326.22,
+   "pivots": {
+    "P": 3092.93,
+    "R1": 3159.77,
+    "S1": 3052.37,
+    "R2": 3200.33,
+    "S2": 2985.53
+   },
+   "risk_per_share": 103.51,
+   "rr_t1": 1.2,
+   "rr_t2": 2.0,
+   "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
+   "features": {
+    "log_vol_ratio": -0.01708577546283789,
+    "rsi": 67.04757174382755,
+    "dist_high_pct": 0.4563602625857667,
+    "ext_ema20": 5.687425420451486,
+    "atr_pct": 2.654752863133541,
+    "day_chg": 1.3056171215289014,
+    "ret5": 2.3897075617720587,
+    "rs20": -4.320677328859102,
+    "bias_score": 67.0,
+    "news_sent": 0.0,
+    "mkt_above50": 1.0,
+    "mkt_ret20": 11.208484996708723
+   },
+   "r1_a": 0.4898936791666217,
+   "r2_a": 0.9797873583332434,
+   "news": [],
+   "news_sentiment": null,
+   "win_prob": 68.1,
+   "expected_r": 0.36,
+   "model_used": true,
+   "grade": "A",
+   "skip_reason": null,
+   "action": "BUY TRENT near \u20b93,119.20 (skip if it opens above \u20b93,243.41) \u00b7 SL \u20b93,015.69 \u00b7 T1 \u20b93,243.41 \u00b7 T2 \u20b93,326.22"
   }
  ],
  "scanned": 82,
