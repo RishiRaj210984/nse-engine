@@ -98,6 +98,12 @@ def build_plan(bias, scan):
                     "enter_at": "09:30–10:30 IST, only above the 15-min opening high", "exit_by": "day 2, 15:15 IST",
                     "stop": c["stop"], "t1": c["t1"], "t2": c["t2"], "win_prob": c["win_prob"],
                     "vol_badge": c["vol_badge"]} for c in picks],
+        # 4th trade (paper): 1 lot of the ATM call for each BUY pick, the ATM put for each SELL pick
+        "stock_options": [{"symbol": c["symbol"], "kind": "CE", "side": "BUY", "grade": c["grade"], "trigger": c["entry"],
+                           "stop": c["stop"], "t1": c["t1"]} for c in picks]
+                         + [{"symbol": c["symbol"], "kind": "PE", "side": "SELL", "grade": "-", "trigger": c["entry"],
+                             "stop": c["stop"], "t1": c["t1"]} for c in scan.get("put_candidates") or []],
+        "put_gate_open": scan.get("put_gate_open"),
         "market_gate_open": scan.get("market_gate_open"),
         "events": [e for e in bias.get("events", []) if not e.get("past") or e.get("affects") == bias["target_session"]],
         "stock_track_record": None,

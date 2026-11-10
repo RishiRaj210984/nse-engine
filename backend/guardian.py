@@ -55,8 +55,11 @@ EXPIRY_EXIT = "10:15"
 # Every other entry is paper. Exits of real positions stay live and automatic.
 LIVE_DEFAULTS = {"CAPITAL": "15000", "LIVE_INDEX": "NIFTY", "LIVE_FROM": "2026-11-04", "LIVE_WING": "150", "LIVE_MAX_TRADES": "1",
                  # the NIFTY first-hour momentum buy (3rd trade): paper unless this is 1 AND the guardian is live
-                 "LIVE_MOMENTUM": "0"}
+                 "LIVE_MOMENTUM": "0",
+                 # stock calls and puts on the plan's stock picks (4th trade): paper unless this is 1 AND the guardian is live
+                 "LIVE_STOCKOPT": "0"}
 MOMENTUM_MAX_PREMIUM = 15000   # same limit as the engine's paper tracker (backend/momentum.py)
+STOCKOPT_MAX_PREMIUM = 15000   # same limit as backend/stockopt.py
 
 
 def _expiry_date(exp):
@@ -566,6 +569,74 @@ def enter_momentum(breeze, env, state, live, now, demo=False, signal=None):
                   "(stop -30%, cost after +20%, trail from +40%, book +60%, close 15:15).")
 
 
+def fetch_stockopt():
+    """Today's stock option records, as the engine's live run published them."""
+    lv = requests.get(f"{PLAN_URL}/live.json", params={"t": int(time.time())}, timeout=15).json()
+    return lv.get("stock_options") or {}
+
+
+def breeze_stock_code(breeze, symbol):
+    """ICICI's own code for an NSE symbol (e.g. RELIANCE -> RELIND), from Breeze's security master."""
+    try:
+        r = breeze.get_names(exchange_code="NSE", stock_code=symbol) or {}
+        return r.get("isec_stock_code") or symbol
+    except Exception as exc:
+        log.info("get_names %s failed: %s", symbol, exc)
+        return symbol
+
+
+def enter_stockopt(breeze, env, state, symbol, live, now, demo=False, signal=None):
+    """The 4th trade: buy 1 lot of the stock's ATM call (BUY pick) or put (SELL pick) that the engine's paper
+    tracker bought when the share crossed its entry (09:30-10:30). The guardian then exits it like any bought
+    option (stop -30%, cost after +20%, trail from +40%, book +60%, close 15:15). Returns (ok, message)."""
+    day, hm = now.date().isoformat(), now.strftime("%H:%M")
+    so = signal if signal is not None else fetch_stockopt()
+    t = next((r for r in so.get("today") or [] if r.get("symbol") == symbol and so.get("date") == day), None)
+    if not t or t.get("status") not in ("OPEN", "CLOSED") or not t.get("strike"):
+        why = (t.get("note") or t.get("status", "").lower()) if t else "not one of today's stock picks, or not triggered yet"
+        if not demo:
+            return False, f"no {symbol} option buy today ({why}). Nothing placed."
+    if not demo and not ("09:30" <= hm <= "11:30"):
+        return False, f"stock option entry window is 09:30-11:30 IST (now {hm})"
+    if not t or not t.get("strike"):
+        return False, f"demo: no {symbol} option bought by the paper tracker today, so there is nothing to show"
+    if t.get("status") == "CLOSED" and not demo:
+        return False, f"the paper tracker already closed {symbol} today ({t.get('reason')}). Not placed."
+    strike, kind, lot = float(t["strike"]), t["kind"], int(t["lot"])
+    expiry_iso, right = iso_expiry(t["expiry"]), "call" if t["kind"] == "CE" else "put"
+    code = breeze_stock_code(breeze, symbol)
+    line = f"BUY {symbol} {strike:g} {kind} exp {t['expiry']} x{lot} (ICICI code {code})"
+    if not live:
+        q = _opt_quote(breeze, code, right, strike, expiry_iso)
+        ask = float(q.get("best_offer_price") or q.get("ltp") or 0)
+        return True, (f"{'DEMO' if demo else 'PAPER'}: would place {line}" + (f" @ {_tick(ask):.2f}" if ask else "")
+                      + f". The paper tracker bought it at {t['entry_px']} ({t['entry_at']}) and follows it on real NSE prices.")
+    done = state.setdefault("stockopt_done", {})
+    if symbol in done.get(day, []):
+        return False, f"today's {symbol} option buy was already placed. One a day per stock."
+    try:
+        held = [l for l in legs_from_positions(breeze.get_portfolio_positions())
+                if l["stock_code"] == code and _expiry_date(l["expiry"]) == datetime.strptime(expiry_iso[:10], "%Y-%m-%d").date()]
+    except Exception as exc:
+        return False, f"could not read your positions ({str(exc)[:80]}). Not placed."
+    if held:
+        return False, f"you already hold a {symbol} option on the same expiry; the exits could not tell them apart. Not placed."
+    q = _opt_quote(breeze, code, right, strike, expiry_iso)
+    ask = float(q.get("best_offer_price") or q.get("ltp") or 0)
+    if not ask:
+        return False, f"no live price for {line}. Not placed."
+    if ask * lot > STOCKOPT_MAX_PREMIUM:
+        return False, f"premium Rs {ask * lot:,.0f} is above Rs {STOCKOPT_MAX_PREMIUM:,}. Not placed."
+    ok, px, err = fill_leg(breeze, code, right, strike, expiry_iso, lot, "buy", now)
+    if not ok:
+        return False, f"could not fill {line} ({err}). Nothing was placed."
+    done[day] = done.get(day, []) + [symbol]
+    for d in [d for d in done if d < day]:
+        done.pop(d)
+    return True, (f"REAL stock option buy placed: {line} @ {px:.2f}. The guardian exits it by itself "
+                  "(stop -30%, cost after +20%, trail from +40%, book +60%, close 15:15).")
+
+
 def enter_trade(breeze, env, state, index, lots, live, now, plan=None, demo=False, test=False):
     """Place today's plan trade for `index`: BUY legs first, then SELL legs, limit orders at the touch.
     Refuses unless the plan is for today, marks the index TRADE, and the entry window/condition holds."""
@@ -673,6 +744,17 @@ def momentum_line(m, day):
                f"{sk.get('wins', 0)} won)." if sk else ""))
 
 
+def stockopt_line(m, day):
+    """The paper-only fourth trade (stock calls and puts), one line for the evening alert."""
+    if not m or m.get("error"):
+        return ""
+    today = [r for r in m.get("today") or [] if r.get("date") == day]
+    done = [f"{r['symbol']} {r['kind']} {'+' if r['pnl'] >= 0 else '-'}Rs {abs(r['pnl']):,} ({r['reason']})"
+            for r in today if r.get("status") == "CLOSED"]
+    return (f"\nStock calls/puts (4th trade): {'; '.join(done) if done else 'no trade today'}. "
+            f"Total Rs {m.get('total', 0):+,} ({m.get('trades', 0)} trades, {m.get('wins', 0)} won).")
+
+
 def evening_report(env, state, now):
     """Once each evening: today's paper result and the running total, as one phone alert."""
     day = now.date().isoformat()
@@ -695,7 +777,7 @@ def evening_report(env, state, now):
         notify(env, f"Paper result today: {'+' if pnl >= 0 else '-'}Rs {abs(pnl):,}",
                "\n".join(d0.get("detail") or ["No trade today."]) + f"\nTotal: Rs {pb.get('total', 0):+,} "
                f"({pb.get('trades', 0)} closed trades, {pb.get('wins', 0)} won; open now Rs {pb.get('open_value', 0):+,}). Paper only, 1 lot."
-               + momentum_line(pb.get("momentum"), day))
+               + momentum_line(pb.get("momentum"), day) + stockopt_line(pb.get("stock_options"), day))
         return
     h0 = next((x for x in r.get("history") or [] if x.get("session") == day), {})
     pnl = h0.get("plan_pnl", 0)
@@ -801,6 +883,14 @@ def handle_command(cmd, breeze_box, env, state, live, now):
         if live and not demo and not real:
             msg = "Paper, not real: the momentum buy is paper only (LIVE_MOMENTUM=0 on the server). " + msg
         notify(env, f"Guardian ENTER MOMENTUM: {'OK' if ok else 'NOT DONE'}", msg, urgent=not ok)
+    elif name == "ENTER" and len(cmd) >= 2 and cmd[1].upper().startswith("STOCK_"):
+        demo = any(c.upper() == "DEMO" for c in cmd[2:])
+        sym = cmd[1][len("STOCK_"):].upper()
+        real = live and not demo and env["LIVE_STOCKOPT"] == "1"
+        ok, msg = enter_stockopt(breeze_box[0], env, state, sym, real, now, demo=demo)
+        if live and not demo and not real:
+            msg = "Paper, not real: stock calls/puts are paper only (LIVE_STOCKOPT=0 on the server). " + msg
+        notify(env, f"Guardian ENTER {cmd[1].upper()}: {'OK' if ok else 'NOT DONE'}", msg, urgent=not ok)
     elif name == "ENTER" and len(cmd) >= 2 and cmd[1].upper() in BREEZE_CODE:
         demo = any(c.upper() == "DEMO" for c in cmd[2:])   # a demo never places orders, in either mode
         lots = next((c for c in cmd[2:] if c.isdigit()), 1)

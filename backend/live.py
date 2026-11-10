@@ -19,6 +19,7 @@ from datetime import datetime
 import requests
 
 import momentum
+import stockopt
 import store
 from config import BOOK_COSTS, INDEX_SPECS, IST, PROTECT_AT, PROTECT_INDEX, PUBLIC_DIR
 from options import bs_price
@@ -77,9 +78,9 @@ class NSEClient:
     def expiries(self, symbol):
         return self.get("option-chain-contract-info", symbol=symbol)["expiryDates"]
 
-    def chain(self, symbol, expiry):
-        """expiry as DD-Mon-YYYY (NSE format)."""
-        return self.get("option-chain-v3", type="Indices", symbol=symbol, expiry=expiry)["records"]
+    def chain(self, symbol, expiry, kind="Indices"):
+        """expiry as DD-Mon-YYYY (NSE format). kind 'Equity' for stock options."""
+        return self.get("option-chain-v3", type=kind, symbol=symbol, expiry=expiry)["records"]
 
 
 def nse_date(iso):
@@ -396,6 +397,26 @@ def stock_status(scan, quotes, now, session=None):
     return out
 
 
+def stock_chain(nse):
+    """chain_for(symbol, expiry=None) for the stock option trade: NSE's live chain for one stock, using the
+    first monthly expiry at least 7 days away unless an expiry is given. None when NSE does not answer."""
+    def chain_for(symbol, expiry=None):
+        try:
+            if not nse.ok:
+                nse.warm()
+            exp = expiry or stockopt.pick_expiry(nse.expiries(symbol), datetime.now(IST).date())
+            return stockopt.parse_chain(nse.chain(symbol, exp, "Equity"), exp) if exp else None
+        except Exception as exc:
+            log.info("stock chain %s failed: %s", symbol, exc)
+            return None
+    return chain_for
+
+
+def nse_prices_lots():
+    import nse_prices
+    return nse_prices.lots()
+
+
 def run(force=False):
     now = datetime.now(IST)
     from nse_calendar import is_trading_day
@@ -403,7 +424,9 @@ def run(force=False):
         return {"skipped": "outside market hours"}
     bias = store._read(os.path.join(PUBLIC_DIR, "global-bias.json"), {})
     scan = store._read(os.path.join(PUBLIC_DIR, "volume-breakouts.json"), {})
+    plan = store._read(os.path.join(PUBLIC_DIR, "plan.json"), {}) or {}
     syms = ["^NSEI", "^NSEBANK", "^INDIAVIX"] + [c["symbol"] + ".NS" for c in (scan.get("candidates", []) + scan.get("near_misses", []))[:12]]
+    syms += [s for s in dict.fromkeys(p["symbol"] + ".NS" for p in plan.get("stock_options") or []) if s not in syms]
     quotes = yahoo_quotes(syms)
     chains, chain_src, err, nearest = {}, "NSE", None, {}
     nse = NSEClient()
@@ -455,6 +478,10 @@ def run(force=False):
         out["momentum"] = momentum.step(now, quotes.get("^NSEI"), chains.get("NIFTY"), nearest.get("NIFTY"))
     except Exception as exc:
         log.warning("momentum step failed: %s", exc)
+    try:   # paper-only fourth trade: stock calls and puts on the plan's stock picks
+        out["stock_options"] = stockopt.step(now, plan, quotes, stock_chain(nse), nse_prices_lots())
+    except Exception as exc:
+        log.warning("stock option step failed: %s", exc)
     store.publish("live.json", out)
     try:
         import markets

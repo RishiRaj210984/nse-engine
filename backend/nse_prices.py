@@ -52,6 +52,28 @@ def compact(raw):
     return pd.concat(out, ignore_index=True) if out else None
 
 
+def lots_path():
+    return store.state_path("nse_lots.json")
+
+
+def save_lots(raw, d):
+    """Lot size of every F&O stock (from its futures rows), for the stock option trade. Newer days win."""
+    if "FinInstrmTp" not in raw or "NewBrdLotQty" not in raw:
+        return
+    f = raw[raw["FinInstrmTp"] == "STF"]
+    if not len(f):
+        return
+    cur = store._read(lots_path(), {}) or {}
+    if cur.get("as_of", "") > d.isoformat():
+        return
+    lots = {s: int(v) for s, v in f.groupby("TckrSymb")["NewBrdLotQty"].first().items()}
+    store._write(lots_path(), {"as_of": d.isoformat(), "lots": lots})
+
+
+def lots():
+    return (store._read(lots_path(), {}) or {}).get("lots") or {}
+
+
 def fetch_day(d):
     """Download and save one day's file. True if saved, False if NSE has none (holiday / not published yet)."""
     r = requests.get(URL.format(d), headers={"User-Agent": UA}, timeout=30)
@@ -59,7 +81,12 @@ def fetch_day(d):
         return False
     r.raise_for_status()
     z = zipfile.ZipFile(io.BytesIO(r.content))
-    rows = compact(pd.read_csv(z.open(z.namelist()[0])))
+    raw = pd.read_csv(z.open(z.namelist()[0]))
+    try:
+        save_lots(raw, d)
+    except Exception as exc:   # lot sizes are a side product: never block the prices
+        log.warning("lot sizes not saved: %s", exc)
+    rows = compact(raw)
     if rows is None or not len(rows):
         return False
     os.makedirs(folder(), exist_ok=True)

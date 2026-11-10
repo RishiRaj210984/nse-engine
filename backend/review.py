@@ -650,5 +650,10 @@ def run(session=None, archived=None):
                 paper["momentum"] = momentum.summary(day=session.isoformat())
             except Exception as exc:
                 paper["momentum"] = {"error": str(exc)[:200]}
+            try:   # paper-only fourth trade: stock calls and puts, tracked by the live runs on real NSE prices
+                import stockopt
+                paper["stock_options"] = stockopt.summary(day=session.isoformat())
+            except Exception as exc:
+                paper["stock_options"] = {"error": str(exc)[:200]}
         save_review(rv, paper)
     return rv

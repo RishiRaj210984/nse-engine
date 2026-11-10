@@ -187,7 +187,7 @@ body.is-simple main{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 <script>
 const NSE_HOLIDAYS = ['2026-10-20', '2026-11-08', '2026-11-10', '2026-11-24', '2026-12-25'];   // fallback; meta.json has the live list
 const holidayList = () => (D.meta?.holidays?.length ? D.meta.holidays : NSE_HOLIDAYS);
-const APP_VERSION = 'v48';   // keep equal to CACHE in sw.js
+const APP_VERSION = 'v49';   // keep equal to CACHE in sw.js
 const TEST_FROM = '2026-11-04';   // the one real test trade (guardian LIVE_FROM)
 const FILES = ['plan', 'global-bias', 'volume-breakouts', 'performance', 'review', 'meta', 'live', 'small-capital', 'markets'];
 const D = {};
@@ -527,7 +527,17 @@ function paperResults(open = false) {
       <div class="fine">Total ${rs(mo.total)} (${mo.trades} trades, ${mo.wins} won). ${esc(mo.rule || '')}</div>
       ${sk ? `<div class="fine">📅 Comparison, without day-before-expiry trades: ${rs(sk.total)} (${sk.trades} trades, ${sk.wins} won). Those lost in the 3-year replay, so both are tracked.</div>` : ''}
       ${(mo.recent || []).slice(0, 3).map((x) => `<div class="fine">${x.pnl > 0 ? '✅' : '❌'} ${esc(day(x.date))}: ${x.strike} ${esc(x.kind)} ₹${x.entry_px} → ₹${x.exit_px}, ${esc(x.reason)}: ${rs(x.pnl)}${x.day_before_expiry ? ' · 📅 day before expiry' : ''}</div>`).join('')}</div>`;
-  return `<details class="sreply" ${open ? 'open' : ''}><summary><b>📒 Paper results</b> · ${head}${mt && mt.status === 'OPEN' ? ` · 🚀 ${rs(mt.value_now)}` : mt && mt.status === 'CLOSED' ? ` · 🚀 ${rs(mt.pnl)}` : ''}</summary>${todayRows}${moRow}
+  // paper-only fourth trade: stock calls and puts on the plan's stock picks
+  const so = (liveNewer && D.live?.stock_options) || pb.stock_options;
+  const sot = so && so.date === ist().date ? (so.today || []) : [];
+  const soRow = !so || so.error ? '' : `<div class="srow">📈 <b>Stock calls &amp; puts (4th trade, paper)</b>: ${sot.length ? sot.map((r) => `${esc(r.symbol)} ${r.kind === 'CE' ? 'call' : 'put'}: ${
+      r.status === 'OPEN' ? `bought ${r.strike} ${esc(r.kind)} at ₹${r.entry_px} (${esc(r.entry_at)}) · <b>worth ${rs(r.value_now)} now</b> (${r.pct_now > 0 ? '+' : ''}${r.pct_now}%, live ${esc(r.at)})`
+      : r.status === 'CLOSED' ? `₹${r.entry_px} → ₹${r.exit_px} (${esc(r.exit_at)}), ${esc(r.reason)}: <b>${rs(r.pnl)}</b>` : esc(r.note || r.status)}`).join(' · ') : 'no trade today'}
+      <div class="fine">Total ${rs(so.total)} (${so.trades} trades, ${so.wins} won). ${esc(so.rule || '')}</div>
+      <div class="fine">⚠️ ${esc(so.research || '')}</div>
+      ${(so.recent || []).slice(0, 3).map((x) => `<div class="fine">${x.pnl > 0 ? '✅' : '❌'} ${esc(day(x.date))}: ${esc(x.symbol)} ${x.strike} ${esc(x.kind)} ₹${x.entry_px} → ₹${x.exit_px}, ${esc(x.reason)}: ${rs(x.pnl)}</div>`).join('')}</div>`;
+  const soOpen = sot.filter((r) => r.status === 'OPEN').reduce((a, r) => a + r.value_now, 0), soDone = sot.filter((r) => r.status === 'CLOSED').reduce((a, r) => a + r.pnl, 0);
+  return `<details class="sreply" ${open ? 'open' : ''}><summary><b>📒 Paper results</b> · ${head}${mt && mt.status === 'OPEN' ? ` · 🚀 ${rs(mt.value_now)}` : mt && mt.status === 'CLOSED' ? ` · 🚀 ${rs(mt.pnl)}` : ''}${sot.some((r) => r.status === 'OPEN' || r.status === 'CLOSED') ? ` · 📈 ${rs(soOpen + soDone)}` : ''}</summary>${todayRows}${moRow}${soRow}
     ${(pb.open || []).map((o) => `<div class="srow">${lv.find((y) => y.index === o.index)?.reached_at ? '🏁 <b>Closed (paper):' : '🟡 <b>Holding'} ${esc(o.index)} ${esc(o.strategy)}</b> since ${esc(day(o.entry_session))}, expiry ${esc(day(o.expiry))}<div class="fine">Premium collected ₹${Number(o.credit_rs).toLocaleString('en-IN')} · ${(() => { const x = lv.find((y) => y.index === o.index);
         return x?.reached_at ? booked(x)
           : x ? `<b>worth ${rs(x.value_now)} now</b> (live ${esc(x.at)}, ${esc(o.index)} ${Number(x.spot).toLocaleString('en-IN')}) · last evening ${rs(o.mark)}${x.status !== 'HOLD' ? ' · ⚠️ ' + esc(x.status) : ''} (before costs)`
@@ -583,10 +593,23 @@ function vSimple() {
     max_reward: Math.round(0.6 * mo.entry_px * moLot), max_loss: Math.round(mo.entry_px * moLot),
     target: 'Book at +60%', stop_loss: 'Stop −30% (about −₹' + Math.round(0.3 * mo.entry_px * moLot).toLocaleString('en-IN') + '); cost after +20%; trail from +40%; else close 15:15 the same day',
     decision_reason: '2-year replay: 77 trades, 52% won, avg +₹1,117 after costs. Paper until it proves itself on real prices.' } : null;
-  const trades = [...(p.options || []).filter((o) => o.decision === 'TRADE'), ...(moTrade ? [moTrade] : [])], trade = trades[0];
+  // 4th trade: stock calls/puts on the plan's stock picks, once the live run has bought them (paper unless switched on at the server)
+  const so = D.live?.stock_options, soToday = so && so.date === t.date ? so.today || [] : [];
+  const soTrades = soToday.filter((r) => r.strike && r.entry_px).map((r) => ({ index: 'STOCK_' + r.symbol,
+    title: `📈 ${r.symbol} ${r.kind === 'CE' ? 'call' : 'put'} · 1 lot (${r.lot} qty)`, short: `${r.symbol} ${r.kind === 'CE' ? 'call' : 'put'}`,
+    legs: `BUY ${r.strike} ${r.kind}`, entry: `09:30–11:30 · ${r.symbol} crossed ₹${r.trigger}; the paper tracker bought at ₹${r.entry_px} (${r.entry_at}), expiry ${r.expiry}`,
+    max_reward: Math.round(0.6 * r.entry_px * r.lot), max_loss: Math.round(r.entry_px * r.lot),
+    target: 'Book at +60%', stop_loss: 'Stop −30% (about −₹' + Math.round(0.3 * r.entry_px * r.lot).toLocaleString('en-IN') + '); cost after +20%; trail from +40%; else close 15:15 the same day',
+    decision_reason: so.research || '' }));
+  const soPicks = (p.stock_options || []).filter((x) => !soTrades.some((y) => y.index === 'STOCK_' + x.symbol));
+  const soLine = !p.stock_options ? '' : `<p class="fine">📈 Stock calls/puts (paper): ${soPicks.length ? soPicks.map((x) => {
+      const r = soToday.find((y) => y.symbol === x.symbol);
+      return `${esc(x.symbol)} ${x.kind === 'CE' ? 'call' : 'put'} ${r ? '· ' + esc(r.note || r.status) : `if it ${x.kind === 'CE' ? 'rises above' : 'falls below'} ₹${x.trigger}`}`; }).join(' · ') + ' (bought by the tracker between 09:30 and 10:30)'
+      : soTrades.length ? 'all bought, see the cards above' : 'no stock pick today'}${p.put_gate_open === false ? '. Puts only when NIFTY is in a downtrend (below its 50-day average and down over 20 days).' : ''}</p>`;
+  const trades = [...(p.options || []).filter((o) => o.decision === 'TRADE'), ...(moTrade ? [moTrade] : []), ...soTrades], trade = trades[0];
   const heldOf = (o) => !live && (D.review?.paper?.open || []).find((x) => x.index === o.index);
   const todo = trades.filter((o) => !heldOf(o));
-  const today = p.session === t.date, inWindow = today && t.hm >= '10:10' && t.hm <= '11:30';
+  const today = p.session === t.date, inWindow = today && t.hm >= (soTrades.length ? '09:30' : '10:10') && t.hm <= '11:30';
   const sess = p.session ? new Date(p.session + 'T12:00:00+05:30').toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'short', timeZone: 'Asia/Kolkata' }) : '';
   const setup = !(store.get('g_key', '') && store.get('g_topic', '') && store.get('g_pin', '') && store.get('g_alerts', ''));
   const BIG = (label, attrs, tone = '') => `<button class="sbtn ${tone}" ${attrs}><span class="slab" style="text-align:center">${label}</span></button>`;
@@ -648,7 +671,7 @@ function vSimple() {
     const held = trades.map((o) => heldOf(o)).filter(Boolean);
     const wix = w.wait?.ix || 'NIFTY';
     if (!trades.length) {
-      h += `<h2>Step 3 · No trade today</h2><div class="wwait">😴</div><p>Today's plan says <b>do not trade</b>. Nothing to buy or sell. You are done.</p>`
+      h += `<h2>Step 3 · No trade today</h2><div class="wwait">😴</div><p>Today's plan says <b>do not trade</b>. Nothing to buy or sell. You are done.</p>${soLine}`
         + BIG('OK, finish', 'data-act="wz-go" data-s="4"', 'go');
     } else if (w.wait && !ans) {
       const s = Math.round(Date.now() / 1000 - w.wait.at), last = gReplies[0];
@@ -679,14 +702,15 @@ function vSimple() {
           <dt>Worst case</dt><dd class="down">−₹${Number(x.max_loss || 0).toLocaleString('en-IN')} per lot${real ? ' (estimate)' : ''}</dd>
           <dt>Exit</dt><dd>${esc(o.target)}. ${esc(o.stop_loss)}.</dd>
           <dt>History</dt><dd class="fine">${esc(o.decision_reason || '')}</dd></dl>`
-          + (inWindow ? BIG(real ? `Place ${esc(o.short || o.index)} (real money)` : `Practice ${esc(o.short || o.index)}: what would it place?`, `data-act="wz-enter" data-ix="${esc(o.index)}" data-real="${real ? 1 : ''}"`, 'go')
+          + (inWindow && (o.index.startsWith('STOCK_') || t.hm >= '10:10') ? BIG(real ? `Place ${esc(o.short || o.index)} (real money)` : `Practice ${esc(o.short || o.index)}: what would it place?`, `data-act="wz-enter" data-ix="${esc(o.index)}" data-real="${real ? 1 : ''}"`, 'go')
                       : BIG(`Practice ${esc(o.short || o.index)} now (demo, nothing bought)`, `data-act="wz-demo" data-ix="${esc(o.index)}"`))
           + `</div>`;
       });
+      h += soLine;
       if (!moTrade) h += `<p class="fine">🚀 Momentum buy: ${!mo || mo.date !== t.date ? (t.hm < '10:15' ? 'decided at 10:15 from NIFTY’s first-hour move (±0.5% needed)' : 'no signal yet') : 'no trade today · ' + esc(mo.note || mo.status)}</p>`;
       if (!left.length) h += BIG('OK, finish', 'data-act="wz-go" data-s="4"', 'go');
       else if (inWindow) h += `<p class="fine">${live ? `One real test trade only: NIFTY from ${+TEST_FROM.slice(8)} Nov, 1 lot, after ICICI's margin check. The guardian buys and sells all 4 legs and exits by itself. Everything else, and every trade after it, is paper.` : 'Paper mode: nothing is bought. The guardian only tells you what it would place. The paper book tracks every trade above.'}</p>`;
-      else h += `<div class="banner">⏰ Come back between <b>10:10 and 11:30</b>${today ? '' : ' on ' + esc(sess)}. The buttons to place the trades appear then.</div>`;
+      else h += `<div class="banner">⏰ Come back between <b>${soTrades.length ? '09:30' : '10:10'} and 11:30</b>${today ? '' : ' on ' + esc(sess)}. The buttons to place the trades appear then.</div>`;
     }
   } else {
     h += `<h2>All done</h2><div class="wwait">🎉</div>

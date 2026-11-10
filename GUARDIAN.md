@@ -70,3 +70,14 @@ Tapping it sends `ENTER MOMENTUM`: in paper mode the guardian answers with what 
 only with `LIVE_MOMENTUM=1` in guardian.env **and** the guardian in live mode. Real exits are automatic:
 stop −30%, cost after +20%, trail from +40%, book +60%, close 15:15. It is refused if you already hold a NIFTY
 position on the same expiry, because the exits treat one expiry as one structure.
+
+## 4th trade: stock calls and puts
+Every stock the plan recommends gets 1 lot of its ATM option: a call for a BUY pick, a put for a SELL pick
+(SELL picks are the mirror of the BUY rules and appear only while NIFTY is below its 50-day average and down
+over 20 days). The paper tracker buys it at the real NSE price when the share crosses its entry between
+09:30 and 10:30 (monthly expiry at least 7 days away, premium up to ₹15,000). In the app (step 3) each one
+gets its own card and button until 11:30. Tapping sends `ENTER STOCK_<SYMBOL>`: in paper mode the guardian
+answers with what it would buy; real orders only with `LIVE_STOCKOPT=1` **and** live mode. Exits are the same
+as every bought option: stop −30%, cost after +20%, trail from +40%, book +60%, close 15:15.
+In a 2-year test on NSE's real prices these lost on average (calls −₹616 a trade, puts −₹463), so it is
+tracked on paper to see its live record, not because it has an edge.

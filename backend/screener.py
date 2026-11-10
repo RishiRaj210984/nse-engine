@@ -9,7 +9,7 @@ import macro
 import news
 import store
 from config import IST, JOURNAL_GATE, UNIVERSE
-from indicators import enrich, feature_vector, regime_ok, trade_levels
+from indicators import ema, enrich, feature_vector, regime_ok, trade_levels
 
 
 def checks_for(close, ema20, ema50, rsi, dist, vol_ratio, p):
@@ -24,6 +24,22 @@ def checks_for(close, ema20, ema50, rsi, dist, vol_ratio, p):
 def in_journal_gate(close, ema20, ema50, rsi, dist, vol_ratio, g=JOURNAL_GATE):
     return (close > ema20 and close > ema50 and vol_ratio >= g["vol_mult"]
             and g["rsi_lo"] <= rsi <= g["rsi_hi"] and dist <= g["near_high_pct"])
+
+
+def put_check(e, vol_ratio, p):
+    """SELL pick (for the stock put trade): the mirror of the BUY rules. Below EMA20 and EMA50, volume surge,
+    RSI between 100-rsi_hi and 100-rsi_lo (30-45), within near_high_pct of the 20-day low. None if it fails."""
+    r = e.iloc[-1]
+    c = float(r["Close"])
+    low20 = float(e["Low"].rolling(20).min().iloc[-1])
+    dist = (c - low20) / low20 * 100 if low20 else 99
+    if not (c < r["ema20"] and c < r["ema50"] and vol_ratio >= p["vol_mult"]
+            and 100 - p["rsi_hi"] <= r["rsi"] <= 100 - p["rsi_lo"] and dist <= p["near_high_pct"]):
+        return None
+    lv = trade_levels(r, p, direction=-1)
+    return {"cmp": round(c, 2), "vol_ratio": round(float(vol_ratio), 2), "rsi": round(float(r["rsi"]), 1),
+            "dist_low_pct": round(dist, 2), "entry": round(lv["entry"], 2), "stop": round(lv["stop"], 2),
+            "t1": round(lv["t1"], 2), "t2": round(lv["t2"], 2)}
 
 
 def grade(win_prob, expected_r, model_used):
@@ -56,7 +72,7 @@ def scan_full(with_news=True, news_top=10):
     now = datetime.now(IST)
     live = data.market_open(now)
     frac = data.session_fraction(now)
-    rows = []
+    rows, puts = [], []
     for sym, name in UNIVERSE.items():
         df = hist.get(sym + ".NS")
         if df is None or len(df) < 60:
@@ -71,6 +87,9 @@ def scan_full(with_news=True, news_top=10):
         args = (float(r["Close"]), float(r["ema20"]), float(r["ema50"]), float(r["rsi"]), float(r["dist_high_pct"]), vr)
         chk = checks_for(*args, p)
         n = sum(chk.values())
+        pc = put_check(e, vr, p)
+        if pc:
+            puts.append({"symbol": sym, "name": name, **pc})
         if n < 3 and not in_journal_gate(*args):
             continue
         lv = trade_levels(r, p)
@@ -128,7 +147,13 @@ def scan_full(with_news=True, news_top=10):
         "candidates": [x for x in rows if x["passed"]],
         "near_misses": [x for x in rows if not x["passed"] and x["checks_passed"] == 3][:15],
         "scanned": len(UNIVERSE),
+        # SELL picks for the stock put trade: the mirror of the BUY rules, only while NIFTY is in a downtrend
+        "put_gate_open": bool(nclose is not None and len(nclose) > 50 and nclose.iloc[-1] < ema(nclose, 50).iloc[-1]
+                              and nclose.pct_change(20).iloc[-1] < 0),
+        "put_candidates": sorted(puts, key=lambda x: -x["vol_ratio"])[:5],
     }
+    if not public["put_gate_open"]:
+        public["put_candidates"] = []
     return public, rows
 
 
