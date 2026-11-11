@@ -1,53 +1,53 @@
 {
  "bias": {
-  "generated_at": "2026-11-11T16:18:07.910718+05:30",
+  "generated_at": "2026-11-11T23:37:00.149546+05:30",
   "target_session": "2026-11-12",
   "reference_date": "2026-11-11",
   "bias": {
    "label": "RANGEBOUND",
-   "score": 13,
-   "z": 0.132,
-   "model_z": 0.132,
-   "predicted_nifty_move_pct": 0.1,
-   "typical_daily_move_pct": 0.785,
+   "score": 18,
+   "z": 0.184,
+   "model_z": 0.184,
+   "predicted_nifty_move_pct": 0.14,
+   "typical_daily_move_pct": 0.762,
    "source": "pre-open global snapshot",
    "india_vix": 17.56,
    "components": [
     {
+     "feature": "es",
+     "label": "S&P 500 futures",
+     "value": 0.75,
+     "contribution_pct": 0.297
+    },
+    {
+     "feature": "nq",
+     "label": "Nasdaq futures",
+     "value": 1.14,
+     "contribution_pct": -0.218
+    },
+    {
+     "feature": "dxy",
+     "label": "Dollar index",
+     "value": 0.42,
+     "contribution_pct": -0.175
+    },
+    {
      "feature": "vix",
      "label": "India VIX level",
      "value": 17.56,
-     "contribution_pct": 0.111
+     "contribution_pct": 0.088
     },
     {
-     "feature": "nprev",
-     "label": "Nifty previous day",
-     "value": 0.84,
-     "contribution_pct": -0.024
-    },
-    {
-     "feature": "es",
-     "label": "S&P 500 futures",
-     "value": 0.0,
-     "contribution_pct": -0.021
-    },
-    {
-     "feature": "ym",
-     "label": "Dow futures",
-     "value": 0.0,
-     "contribution_pct": 0.017
+     "feature": "gold",
+     "label": "Gold",
+     "value": -1.39,
+     "contribution_pct": 0.077
     },
     {
      "feature": "ftse",
      "label": "FTSE 100 (UK)",
-     "value": 0.0,
-     "contribution_pct": -0.006
-    },
-    {
-     "feature": "cl",
-     "label": "Crude oil",
-     "value": 0.0,
-     "contribution_pct": 0.006
+     "value": 0.28,
+     "contribution_pct": 0.043
     }
    ]
   },
@@ -341,38 +341,38 @@
        "decision": "TRADE",
        "dte": 11,
        "stats": {
-        "trades": 44,
-        "win_pct": 79.5,
-        "avg_pnl": 730,
+        "trades": 43,
+        "win_pct": 79.1,
+        "avg_pnl": 681,
         "worst": -12185,
         "best": 5242,
-        "total": 32126,
+        "total": 29292,
         "sample": "days the model called SIDEWAYS, current expiry schedule",
         "allowed": true,
         "halves": [
-         1039,
-         421
+         839,
+         530
         ],
         "unsteady": false,
         "marginal": false,
         "quiet_first_hour": {
-         "trades": 27,
-         "win_pct": 81.5,
-         "avg_pnl": 607,
+         "trades": 26,
+         "win_pct": 80.8,
+         "avg_pnl": 546,
          "worst": -12185,
          "best": 3962,
-         "total": 16415
+         "total": 14218
         },
         "trending_first_hour": {
-         "trades": 16,
-         "win_pct": 75.0,
-         "avg_pnl": 804,
+         "trades": 17,
+         "win_pct": 76.5,
+         "avg_pnl": 886,
          "worst": -6228,
          "best": 5242,
-         "total": 12877
+         "total": 15074
         }
        },
-       "reason": "1-2 weeks before: this setup won 79.5% of 44 trades, avg \u20b9730 per lot after costs (worst \u20b9-12,185)."
+       "reason": "1-2 weeks before: this setup won 79.1% of 43 trades, avg \u20b9681 per lot after costs (worst \u20b9-12,185)."
       }
      },
      {
@@ -428,94 +428,94 @@
      "decision": "TRADE",
      "dte": 11,
      "stats": {
-      "trades": 44,
-      "win_pct": 79.5,
-      "avg_pnl": 730,
+      "trades": 43,
+      "win_pct": 79.1,
+      "avg_pnl": 681,
       "worst": -12185,
       "best": 5242,
-      "total": 32126,
+      "total": 29292,
       "sample": "days the model called SIDEWAYS, current expiry schedule",
       "allowed": true,
       "halves": [
-       1039,
-       421
+       839,
+       530
       ],
       "unsteady": false,
       "marginal": false,
       "quiet_first_hour": {
-       "trades": 27,
-       "win_pct": 81.5,
-       "avg_pnl": 607,
+       "trades": 26,
+       "win_pct": 80.8,
+       "avg_pnl": 546,
        "worst": -12185,
        "best": 3962,
-       "total": 16415
+       "total": 14218
       },
       "trending_first_hour": {
-       "trades": 16,
-       "win_pct": 75.0,
-       "avg_pnl": 804,
+       "trades": 17,
+       "win_pct": 76.5,
+       "avg_pnl": 886,
        "worst": -6228,
        "best": 5242,
-       "total": 12877
+       "total": 15074
       }
      },
-     "reason": "1-2 weeks before: this setup won 79.5% of 44 trades, avg \u20b9730 per lot after costs (worst \u20b9-12,185)."
+     "reason": "1-2 weeks before: this setup won 79.1% of 43 trades, avg \u20b9681 per lot after costs (worst \u20b9-12,185)."
     }
    }
   },
   "model": {
    "oos_days": 300,
-   "directional_calls": 35,
-   "directional_accuracy": 80.0,
-   "sign_accuracy_all_days": 52.0,
-   "gap_corr": 0.25,
-   "gap_sign_pct": 57.3,
+   "directional_calls": 99,
+   "directional_accuracy": 72.7,
+   "sign_accuracy_all_days": 65.0,
+   "gap_corr": 0.53,
+   "gap_sign_pct": 68.3,
    "trained_rows": 750,
-   "version": 37,
+   "version": 38,
    "bias_threshold": 0.3
   }
  },
  "plan": {
-  "generated_at": "2026-11-11T16:18:24.756891+05:30",
+  "generated_at": "2026-11-11T23:37:15.471194+05:30",
   "session": "2026-11-12",
   "stage": "preview",
   "expected_open": {
-   "gap_pct": 0.04,
-   "error_pct": 0.38,
-   "day_pct": 0.1,
-   "snapshot": "Wed 11 Nov 16:18 IST",
+   "gap_pct": 0.26,
+   "error_pct": 0.33,
+   "day_pct": 0.14,
+   "snapshot": "Wed 11 Nov 23:37 IST",
    "stage": "preview",
-   "tip": "Flat open expected. Normal entry windows apply.",
+   "tip": "Moderate gap up expected. Use limit orders only, and wait for 09:30.",
    "markets": [
     {
      "key": "es",
      "name": "S&P 500 futures",
-     "move_pct": 0.0
+     "move_pct": 0.75
     },
     {
      "key": "nq",
      "name": "Nasdaq futures",
-     "move_pct": 0.0
+     "move_pct": 1.14
     },
     {
      "key": "ym",
      "name": "Dow futures",
-     "move_pct": 0.0
+     "move_pct": 0.32
     },
     {
      "key": "dax",
      "name": "DAX (Germany)",
-     "move_pct": 0.0
+     "move_pct": 0.46
     },
     {
      "key": "ftse",
      "name": "FTSE 100 (UK)",
-     "move_pct": 0.0
+     "move_pct": 0.28
     },
     {
      "key": "stoxx",
      "name": "Euro Stoxx 50",
-     "move_pct": 0.0
+     "move_pct": 0.34
     },
     {
      "key": "n225",
@@ -525,17 +525,17 @@
     {
      "key": "cl",
      "name": "Crude oil",
-     "move_pct": 0.0
+     "move_pct": 0.07
     },
     {
      "key": "gold",
      "name": "Gold",
-     "move_pct": 0.0
+     "move_pct": -1.39
     },
     {
      "key": "dxy",
      "name": "Dollar index",
-     "move_pct": 0.0
+     "move_pct": 0.42
     },
     {
      "key": "inr",
@@ -545,54 +545,54 @@
    ],
    "drivers": [
     {
+     "feature": "es",
+     "label": "S&P 500 futures",
+     "value": 0.75,
+     "contribution_pct": 0.297
+    },
+    {
+     "feature": "nq",
+     "label": "Nasdaq futures",
+     "value": 1.14,
+     "contribution_pct": -0.218
+    },
+    {
+     "feature": "dxy",
+     "label": "Dollar index",
+     "value": 0.42,
+     "contribution_pct": -0.175
+    },
+    {
      "feature": "vix",
      "label": "India VIX level",
      "value": 17.56,
-     "contribution_pct": 0.111
+     "contribution_pct": 0.088
     },
     {
-     "feature": "nprev",
-     "label": "Nifty previous day",
-     "value": 0.84,
-     "contribution_pct": -0.024
-    },
-    {
-     "feature": "es",
-     "label": "S&P 500 futures",
-     "value": 0.0,
-     "contribution_pct": -0.021
-    },
-    {
-     "feature": "ym",
-     "label": "Dow futures",
-     "value": 0.0,
-     "contribution_pct": 0.017
+     "feature": "gold",
+     "label": "Gold",
+     "value": -1.39,
+     "contribution_pct": 0.077
     },
     {
      "feature": "ftse",
      "label": "FTSE 100 (UK)",
-     "value": 0.0,
-     "contribution_pct": -0.006
-    },
-    {
-     "feature": "cl",
-     "label": "Crude oil",
-     "value": 0.0,
-     "contribution_pct": 0.006
+     "value": 0.28,
+     "contribution_pct": 0.043
     }
    ],
    "wf": {
     "oos_days": 300,
-    "gap_corr": 0.25,
-    "gap_sign_pct": 57.3,
-    "directional_calls": 46,
-    "directional_accuracy": 82.6
+    "gap_corr": 0.53,
+    "gap_sign_pct": 68.3,
+    "directional_calls": 111,
+    "directional_accuracy": 72.1
    }
   },
   "headline": "Market bias SIDEWAYS \u2014 favour hedged premium selling",
   "bias": "RANGEBOUND",
-  "score": 13,
-  "bias_track_record_pct": 80.0,
+  "score": 18,
+  "bias_track_record_pct": 72.7,
   "options": [
    {
     "index": "NIFTY",
@@ -673,7 +673,9 @@
      "net_premium": 45.5,
      "max_loss": 6792,
      "max_reward": 2958
-    }
+    },
+    "money_needed": 92963,
+    "money_basis": "margin for the sold options (estimate)"
    },
    {
     "index": "BANKNIFTY",
@@ -688,42 +690,44 @@
     "max_reward": 8235,
     "reward_risk": 0.33,
     "decision": "TRADE",
-    "decision_reason": "1-2 weeks before: this setup won 79.5% of 44 trades, avg \u20b9730 per lot after costs (worst \u20b9-12,185).",
+    "decision_reason": "1-2 weeks before: this setup won 79.1% of 43 trades, avg \u20b9681 per lot after costs (worst \u20b9-12,185).",
     "enter_at": "10:15 IST, after the first hour",
     "exit_by": "target / stop, else expiry 2026-11-23",
     "setup_stats": {
-     "trades": 44,
-     "win_pct": 79.5,
-     "avg_pnl": 730,
+     "trades": 43,
+     "win_pct": 79.1,
+     "avg_pnl": 681,
      "worst": -12185,
      "best": 5242,
-     "total": 32126,
+     "total": 29292,
      "sample": "days the model called SIDEWAYS, current expiry schedule",
      "allowed": true,
      "halves": [
-      1039,
-      421
+      839,
+      530
      ],
      "unsteady": false,
      "marginal": false,
      "quiet_first_hour": {
-      "trades": 27,
-      "win_pct": 81.5,
-      "avg_pnl": 607,
+      "trades": 26,
+      "win_pct": 80.8,
+      "avg_pnl": 546,
       "worst": -12185,
       "best": 3962,
-      "total": 16415
+      "total": 14218
      },
      "trending_first_hour": {
-      "trades": 16,
-      "win_pct": 75.0,
-      "avg_pnl": 804,
+      "trades": 17,
+      "win_pct": 76.5,
+      "avg_pnl": 886,
       "worst": -6228,
       "best": 5242,
-      "total": 12877
+      "total": 15074
      }
     },
-    "test": null
+    "test": null,
+    "money_needed": 119151,
+    "money_basis": "margin for the sold options (estimate)"
    }
   ],
   "stocks": [
@@ -737,7 +741,7 @@
     "stop": 77.09,
     "t1": 83.37,
     "t2": 85.46,
-    "win_prob": 67.1,
+    "win_prob": 67.5,
     "vol_badge": "2.0x Vol Surge"
    },
    {
@@ -750,7 +754,7 @@
     "stop": 3505.66,
     "t1": 3874.34,
     "t2": 3997.24,
-    "win_prob": 64.0,
+    "win_prob": 64.7,
     "vol_badge": "2.0x Vol Surge"
    },
    {
@@ -763,7 +767,7 @@
     "stop": 166.49,
     "t1": 184.47,
     "t2": 190.46,
-    "win_prob": 61.0,
+    "win_prob": 61.4,
     "vol_badge": "1.8x Vol Surge"
    },
    {
@@ -780,17 +784,17 @@
     "vol_badge": "3.0x Vol Surge"
    },
    {
-    "symbol": "AXISBANK",
+    "symbol": "ONGC",
     "grade": "B",
-    "action": "BUY AXISBANK near \u20b91,336.40 (skip if it opens above \u20b91,382.21) \u00b7 SL \u20b91,290.59 \u00b7 T1 \u20b91,382.21 \u00b7 T2 \u20b91,412.74 \u00b7 Qty 2 for \u20b910k @1% risk",
-    "entry": 1336.4,
+    "action": "BUY ONGC near \u20b9234.80 (skip if it opens above \u20b9241.78) \u00b7 SL \u20b9227.82 \u00b7 T1 \u20b9241.78 \u00b7 T2 \u20b9246.44 \u00b7 Qty 14 for \u20b910k @1% risk",
+    "entry": 234.8,
     "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
     "exit_by": "day 2, 15:15 IST",
-    "stop": 1290.59,
-    "t1": 1382.21,
-    "t2": 1412.74,
-    "win_prob": 57.7,
-    "vol_badge": "1.8x Vol Surge"
+    "stop": 227.82,
+    "t1": 241.78,
+    "t2": 246.44,
+    "win_prob": 58.0,
+    "vol_badge": "2.4x Vol Surge"
    }
   ],
   "stock_options": [
@@ -801,7 +805,10 @@
     "grade": "B",
     "trigger": 80.23,
     "stop": 77.09,
-    "t1": 83.37
+    "t1": 83.37,
+    "lot": 9275,
+    "strike": 80.0,
+    "premium": 19014
    },
    {
     "symbol": "SIEMENS",
@@ -810,7 +817,10 @@
     "grade": "B",
     "trigger": 3690.0,
     "stop": 3505.66,
-    "t1": 3874.34
+    "t1": 3874.34,
+    "lot": 175,
+    "strike": 3700.0,
+    "premium": 15668
    },
    {
     "symbol": "SAIL",
@@ -819,7 +829,10 @@
     "grade": "B",
     "trigger": 175.48,
     "stop": 166.49,
-    "t1": 184.47
+    "t1": 184.47,
+    "lot": 4700,
+    "strike": 175.0,
+    "premium": 30315
    },
    {
     "symbol": "CANBK",
@@ -828,18 +841,26 @@
     "grade": "B",
     "trigger": 132.3,
     "stop": 127.23,
-    "t1": 137.37
+    "t1": 137.37,
+    "lot": 6750,
+    "strike": 132.0,
+    "premium": 23085
    },
    {
-    "symbol": "AXISBANK",
+    "symbol": "ONGC",
     "kind": "CE",
     "side": "BUY",
     "grade": "B",
-    "trigger": 1336.4,
-    "stop": 1290.59,
-    "t1": 1382.21
+    "trigger": 234.8,
+    "stop": 227.82,
+    "t1": 241.78,
+    "lot": 2250,
+    "strike": 235.0,
+    "premium": 7110
    }
   ],
+  "capital": 15000,
+  "momentum_money": 14447,
   "put_gate_open": false,
   "market_gate_open": true,
   "events": [],
@@ -996,18 +1017,6 @@
    "skip_reason": null
   },
   {
-   "symbol": "AXISBANK",
-   "name": "Axis Bank",
-   "grade": "B",
-   "passed": true,
-   "entry": 1336.4,
-   "stop": 1290.59,
-   "t1": 1382.21,
-   "t2": 1412.74,
-   "atr": 30.54,
-   "skip_reason": null
-  },
-  {
    "symbol": "ONGC",
    "name": "ONGC",
    "grade": "B",
@@ -1017,6 +1026,18 @@
    "t1": 241.78,
    "t2": 246.44,
    "atr": 4.65,
+   "skip_reason": null
+  },
+  {
+   "symbol": "AXISBANK",
+   "name": "Axis Bank",
+   "grade": "B",
+   "passed": true,
+   "entry": 1336.4,
+   "stop": 1290.59,
+   "t1": 1382.21,
+   "t2": 1412.74,
+   "atr": 30.54,
    "skip_reason": null
   },
   {
@@ -1041,6 +1062,18 @@
    "t1": 1895.4,
    "t2": 1940.67,
    "atr": 45.27,
+   "skip_reason": null
+  },
+  {
+   "symbol": "TATAPOWER",
+   "name": "Tata Power",
+   "grade": "B",
+   "passed": true,
+   "entry": 360.0,
+   "stop": 346.19,
+   "t1": 373.81,
+   "t2": 383.01,
+   "atr": 9.21,
    "skip_reason": null
   },
   {
@@ -1077,18 +1110,6 @@
    "t1": 338.68,
    "t2": 346.47,
    "atr": 7.79,
-   "skip_reason": null
-  },
-  {
-   "symbol": "HINDALCO",
-   "name": "Hindalco",
-   "grade": "B",
-   "passed": true,
-   "entry": 962.3,
-   "stop": 923.22,
-   "t1": 1001.38,
-   "t2": 1027.44,
-   "atr": 26.05,
    "skip_reason": null
   }
  ]
