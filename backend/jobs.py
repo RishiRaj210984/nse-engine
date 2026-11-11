@@ -64,13 +64,50 @@ def _expected_open(bias):
             "markets": pre.get("markets", []), "drivers": pre.get("drivers", []), "wf": pre.get("wf", {})}
 
 
-def build_plan(bias, scan):
+def stock_picks(scan, picks=None):
+    """The 4th trade's picks: the ATM call for each BUY pick, the ATM put for each SELL pick."""
+    picks = picks if picks is not None else [c for c in scan["candidates"] if c["grade"] in ("A", "B")][:5]
+    return ([{"symbol": c["symbol"], "kind": "CE", "side": "BUY", "grade": c["grade"], "trigger": c["entry"],
+              "stop": c["stop"], "t1": c["t1"]} for c in picks]
+            + [{"symbol": c["symbol"], "kind": "PE", "side": "SELL", "grade": "-", "trigger": c["entry"],
+                "stop": c["stop"], "t1": c["t1"]} for c in scan.get("put_candidates") or []])
+
+
+def money_needed(name, o, s):
+    """Money ICICI blocks for 1 lot of a plan structure (estimate): every sold option carries NSE's 2% exposure
+    margin plus the hedged SPAN margin (calibrated to ICICI's own calculator, see options_lab.sold_margin);
+    a net debit is paid in full on top. Bought-only structures need just the premium."""
+    from options_lab import sold_margin
+    lot = o["lot_size"]
+    sold = [l for l in s["legs"] if l["action"] == "SELL"]
+    debit = max(0.0, -s["net_premium"]) * lot
+    if not sold:
+        return round(debit), "premium paid"
+    bought = [l["strike"] for l in s["legs"] if l["action"] == "BUY"]
+    wing = max(min(abs(l["strike"] - b) for b in bought) if bought else 0 for l in sold)
+    return round(sold_margin(name, o["spot"], wing, len(sold)) + debit), "margin for the sold options (estimate)"
+
+
+def momentum_money(bias):
+    """1 lot of NIFTY's ATM option (average of call and put), the momentum buy's cost (estimate)."""
+    from options import bs_price
+    o = (bias.get("options") or {}).get("NIFTY")
+    if not o:
+        return None
+    T, iv = max(o["days_to_expiry"], 0.75) / 365, o["iv_used_pct"] / 100
+    px = (bs_price(o["spot"], o["atm"], T, iv, "CE") + bs_price(o["spot"], o["atm"], T, iv, "PE")) / 2
+    return round(px * o["lot_size"])
+
+
+def build_plan(bias, scan, stock_est=None):
     """One-screen decision summary for the app's home tab."""
+    from config import CAPITAL
     label = bias["bias"]["label"]
     opts = []
     for name, o in bias["options"].items():
         s = o["strategies"][0]
         legs = " + ".join(f"{l['action']} {l['strike']} {l['type']}" for l in s["legs"])
+        money, basis = money_needed(name, o, s)
         opts.append({
             "index": name, "strategy": s["name"], "legs": legs, "expiry": o["expiry"],
             "lot_size": o["lot_size"], "entry": s["entry"], "target": s["target"], "stop_loss": s["stop_loss"],
@@ -80,6 +117,7 @@ def build_plan(bias, scan):
             "exit_by": f"target / stop, else expiry {o['expiry']}" if s["net_premium"] > 0 else "15:00 IST same day if no target",
             "setup_stats": o.get("setup", {}).get("stats"),
             "test": s.get("test"),
+            "money_needed": money, "money_basis": basis,
         })
     picks = [c for c in scan["candidates"] if c["grade"] in ("A", "B")][:5]
     conf = bias["model"].get("directional_accuracy")
@@ -99,10 +137,9 @@ def build_plan(bias, scan):
                     "stop": c["stop"], "t1": c["t1"], "t2": c["t2"], "win_prob": c["win_prob"],
                     "vol_badge": c["vol_badge"]} for c in picks],
         # 4th trade (paper): 1 lot of the ATM call for each BUY pick, the ATM put for each SELL pick
-        "stock_options": [{"symbol": c["symbol"], "kind": "CE", "side": "BUY", "grade": c["grade"], "trigger": c["entry"],
-                           "stop": c["stop"], "t1": c["t1"]} for c in picks]
-                         + [{"symbol": c["symbol"], "kind": "PE", "side": "SELL", "grade": "-", "trigger": c["entry"],
-                             "stop": c["stop"], "t1": c["t1"]} for c in scan.get("put_candidates") or []],
+        "stock_options": [{**x, **((stock_est or {}).get(x["symbol"]) or {})} for x in stock_picks(scan, picks)],
+        "capital": CAPITAL,
+        "momentum_money": momentum_money(bias),
         "put_gate_open": scan.get("put_gate_open"),
         "market_gate_open": scan.get("market_gate_open"),
         "events": [e for e in bias.get("events", []) if not e.get("past") or e.get("affects") == bias["target_session"]],
@@ -150,10 +187,16 @@ def publish_all(bias=None, scan=None, task="manual"):
     store.publish("global-bias.json", bias)
     store.publish("volume-breakouts.json", scan)
     store.publish("performance.json", learning.performance())
-    store.publish("plan.json", build_plan(bias, scan))
+    try:   # what 1 lot of each stock pick's option costs, from NSE's chain (never blocks the plan)
+        import stockopt
+        stock_est = stockopt.estimate_premiums(stock_picks(scan))
+    except Exception as exc:
+        log.warning("stock option estimates failed: %s", exc)
+        stock_est = {}
+    plan = build_plan(bias, scan, stock_est)
+    store.publish("plan.json", plan)
     if store._read(os.path.join(store.PUBLIC_DIR, "review.json"), None) is None:
         store.publish("review.json", {"latest": None, "history": [], "totals": {}})
-    plan = build_plan(bias, scan)
     import nse_calendar
     store.publish("meta.json", {"updated": store.now_ist().isoformat(), "session": plan["session"], "task": task,
                                 "stage": plan.get("stage"), "next_run": next_run(),

@@ -184,3 +184,24 @@ def summary(now=None, day=None):
                      f"the share crosses its entry between {ENTRY_FROM} and {ENTRY_TO}, premium up to Rs {MAX_PREMIUM:,}. Stop -30%, cost "
                      f"after +20%, trail from +40%, book +60%, else close {EXIT_AT}. Costs Rs {COST} + {SLIP * 100:.1f}% each way."),
             "research": RESEARCH}
+
+
+def estimate_premiums(picks, today=None):
+    """Money for 1 lot of each pick's ATM option, from NSE's chain (last traded prices before the open).
+    {symbol: {"lot", "strike", "premium"}}; empty when NSE does not answer. Cached 30 minutes."""
+    import live   # here, not at the top: live imports this module
+    import nse_prices
+    cached = store.cache_get("stockopt:est")
+    want = sorted({p["symbol"] for p in picks})
+    if cached is not None and cached.get("syms") == want:
+        return cached["est"]
+    lots, nse, est = nse_prices.lots(), live.NSEClient(), {}
+    chain_for = live.stock_chain(nse)
+    for p in picks:
+        lot = lots.get(p["symbol"])
+        ch = chain_for(p["symbol"]) if lot else None
+        px = price(ch, ch["atm"], p["kind"]) if ch else None
+        if px:
+            est[p["symbol"]] = {"lot": lot, "strike": ch["atm"], "premium": round(px * lot)}
+    store.cache_set("stockopt:est", {"syms": want, "est": est}, 1800)
+    return est

@@ -156,6 +156,7 @@ a{color:var(--info)}
 .tchip.down{color:var(--down);border-color:color-mix(in srgb,var(--down) 45%,transparent)}
 .tchip.warn{color:var(--warn);border-color:color-mix(in srgb,var(--warn) 45%,transparent)}
 .tbody{display:grid;gap:8px;margin-top:8px}.tbody p{margin:0}
+.tmoney{flex-basis:100%;font-size:.8rem;font-weight:600}.tmoney.up{color:var(--up)}.tmoney.down{color:var(--down)}
 .sbtn.go .slab{color:var(--ink)}
 .mk td,.mk th{padding:5px 4px;font-size:.85rem}.mkg{font-weight:800;padding-top:10px!important;color:var(--accent)}
 .smore{background:none;border:0;color:var(--accent);font:inherit;font-weight:700;padding:10px;cursor:pointer}
@@ -196,7 +197,7 @@ body.is-simple main{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 <script>
 const NSE_HOLIDAYS = ['2026-10-20', '2026-11-08', '2026-11-10', '2026-11-24', '2026-12-25'];   // fallback; meta.json has the live list
 const holidayList = () => (D.meta?.holidays?.length ? D.meta.holidays : NSE_HOLIDAYS);
-const APP_VERSION = 'v50';   // keep equal to CACHE in sw.js
+const APP_VERSION = 'v51';   // keep equal to CACHE in sw.js
 const TEST_FROM = '2026-11-04';   // the one real test trade (guardian LIVE_FROM)
 const FILES = ['plan', 'global-bias', 'volume-breakouts', 'performance', 'review', 'meta', 'live', 'small-capital', 'markets'];
 const D = {};
@@ -604,6 +605,8 @@ function capitalLine() {
 }
 const nameOf = (ix) => ix === 'MOMENTUM' ? 'momentum buy' : String(ix).startsWith('STOCK_') ? String(ix).slice(6) + ' option' : ix;
 const signed = (v) => (v >= 0 ? '+₹' : '−₹') + Math.abs(Math.round(v || 0)).toLocaleString('en-IN');
+// money one lot needs, against the budget: ✅ fits / ❌ above
+const moneyTag = (v, cap, what = '') => v == null ? '' : `<span class="tmoney ${v <= cap ? 'up' : 'down'}">💰 ${what}${inr(v)} ${v <= cap ? '✅ fits' : '❌ above'} ${inr(cap)}</span>`;
 // one trade card with its button (the same card for every trade type)
 function tradeCard(o, { t, live, done, inWindow, BIG }) {
   if (done.includes(o.index)) return `<div class="sreply">✅ <b>${esc(o.title || o.index)}</b>: sent to the guardian today. It exits by itself; you get a phone alert.</div>`;
@@ -625,13 +628,16 @@ function tradeCard(o, { t, live, done, inWindow, BIG }) {
 }
 // Step 3: four sections, one per trade. The summary line says what is advised; the section holds the card and results.
 function tradeSections(c) {
-  const { p, t, mo, so, soToday, heldOf, done } = c;
-  const sec = (id, title, chip, tone, body, open) => {
+  const { p, t, so, heldOf, done } = c;
+  // in the evening the plan is already for the next session: show its advice, not today's trades
+  const sessToday = p.session === t.date, soToday = sessToday ? c.soToday : [], mo = sessToday ? c.mo : null;
+  const cap = p.capital || 15000;
+  const sec = (id, title, chip, tone, body, open, money = '') => {
     const isOpen = secOpen[id] ?? open;
-    return `<details class="sreply tsec" data-sec="${id}" ${isOpen ? 'open' : ''}><summary><b>${title}</b><span class="tchip ${tone}">${chip}</span></summary><div class="tbody">${body}</div></details>`;
+    return `<details class="sreply tsec" data-sec="${id}" ${isOpen ? 'open' : ''}><summary><b>${title}</b><span class="tchip ${tone}">${chip}</span>${money}</summary><div class="tbody">${body}</div></details>`;
   };
   const dd = (d) => new Date(d + 'T12:00:00+05:30').toDateString().slice(0, 10);
-  let h = '';
+  let h = `<p class="fine">💰 Your budget: <b>${inr(cap)}</b>. Each section shows the money 1 lot needs: ✅ fits your budget, ❌ does not. Paper trades are tracked either way.</p>`;
   // 1, 2: the index option trades (condor or spread), from the plan
   ['NIFTY', 'BANKNIFTY'].forEach((ix, i) => {
     const o = (p.options || []).find((x) => x.index === ix);
@@ -650,14 +656,15 @@ function tradeSections(c) {
       chip = '⏸ no trade today';
       body = `<p><b>Not advised today.</b> ${esc(o.decision_reason || '')}</p><p class="fine">It would have been: ${esc(o.legs)} (expiry ${esc(o.expiry)}).</p>`;
     }
-    h += sec(ix, title, chip, tone, body, open);
+    if (o && o.money_needed != null) body += `<p class="fine">💰 Money needed: about <b>${inr(o.money_needed)}</b> for 1 lot (${esc(o.money_basis || '')}). ${o.money_needed <= cap ? 'Fits' : 'Above'} your ${inr(cap)} budget.${o.max_loss ? ` Worst loss: ${inr(o.max_loss)} per lot.` : ''}</p>`;
+    h += sec(ix, title, chip, tone, body, open, o ? moneyTag(o.money_needed, cap, 'margin ≈ ') : '');
   });
   // 3: NIFTY first-hour momentum buy
   {
     const m = D.live?.momentum, r = mo && mo.date === t.date ? mo : null;
     let chip, tone = '', body, open = false;
     if (!r) {
-      chip = t.hm < '10:15' ? '⏳ decided at 10:15' : '⏳ waiting for the 10:15 check';
+      chip = !sessToday || t.hm < '10:15' ? '⏳ decided at 10:15' : '⏳ waiting for the 10:15 check';
       body = '<p>If NIFTY moves 0.5% or more between 09:15 and 10:15, the app buys 1 lot of the at-the-money call (up) or put (down) on paper.</p>';
     } else if (r.status === 'OPEN') {
       const card = c.trades.find((x) => x.index === 'MOMENTUM');
@@ -671,13 +678,16 @@ function tradeSections(c) {
       body = `<p><b>Not advised today:</b> ${esc(r.note || r.status)}.</p>`;
     }
     if (m) body += `<p class="fine">So far: ${signed(m.total)} (${m.trades} trade${m.trades === 1 ? '' : 's'}, ${m.wins} won). Paper only.</p>`;
-    h += sec('MOMENTUM', '3 · NIFTY momentum buy', chip, tone, body, open);
+    const mm = r && r.entry_px && r.lot ? r.entry_px * r.lot : p.momentum_money;
+    body += `<p class="fine">💰 Money needed: ${r && r.entry_px ? `${inr(mm)} (bought at ₹${r.entry_px} × ${r.lot})` : `about ${inr(mm)} for 1 lot of the at-the-money option (estimate)`}. The app never buys above ${inr(15000)}; ${mm <= cap ? 'fits' : 'above'} your ${inr(cap)} budget. The most you can lose is what you pay.</p>`;
+    h += sec('MOMENTUM', '3 · NIFTY momentum buy', chip, tone, body, open, moneyTag(mm, cap, r && r.entry_px ? '' : '≈ '));
   }
   // 4: stock calls and puts on the plan's stock picks
   {
     const picks = p.stock_options || [];
     const rows = picks.map((x) => {
-      const r = soToday.find((y) => y.symbol === x.symbol), what = `${esc(x.symbol)} ${x.kind === 'CE' ? 'call' : 'put'}`;
+      const r = soToday.find((y) => y.symbol === x.symbol), cost = r && r.premium != null ? r.premium : x.premium;
+      const what = `${esc(x.symbol)} ${x.kind === 'CE' ? 'call' : 'put'}${cost != null ? ` <span class="${cost <= cap ? 'up' : 'down'}">(1 lot ${r && r.premium != null ? '' : '≈ '}${inr(cost)} ${cost <= cap ? '✅' : '❌'})</span>` : ''}`;
       if (!r) return `<div class="srow">⏳ <b>${what}</b>: bought by the app if ${esc(x.symbol)} ${x.kind === 'CE' ? 'rises above' : 'falls below'} ₹${x.trigger} between 09:30 and 10:30.</div>`;
       if (r.status === 'OPEN') {
         const card = c.trades.find((y) => y.index === 'STOCK_' + x.symbol);
@@ -691,12 +701,16 @@ function tradeSections(c) {
     const today = open_.reduce((a, r) => a + (r.value_now || 0), 0) + closed.reduce((a, r) => a + r.pnl, 0);
     const chip = !picks.length ? '⏸ no stock pick today' : open_.length || closed.length
       ? `${open_.length ? `🟢 ${open_.length} open` : ''}${open_.length && closed.length ? ' · ' : ''}${closed.length ? `${closed.length} closed` : ''} · today ${signed(today)}`
-      : t.hm < '10:30' ? `⏳ ${picks.length} pick${picks.length > 1 ? 's' : ''}, waiting` : '⏸ none bought today';
+      : !sessToday || t.hm < '10:30' ? `⏳ ${picks.length} pick${picks.length > 1 ? 's' : ''}, waiting` : '⏸ none bought today';
+    const costs = picks.map((x) => { const r = soToday.find((y) => y.symbol === x.symbol); return r && r.premium != null ? r.premium : x.premium; }).filter((v) => v != null);
+    const fit = costs.filter((v) => v <= cap).length;
+    const money = costs.length ? `<span class="tmoney ${fit ? 'up' : 'down'}">💰 ${inr(Math.min(...costs))}–${inr(Math.max(...costs))} a lot · ${fit} of ${costs.length} fit ${inr(cap)}</span>` : '';
     const body = (rows || '<p>No stock passed the rules today.</p>')
+      + (costs.length ? `<p class="fine">💰 Money needed: 1 lot of each option, ${inr(Math.min(...costs))} to ${inr(Math.max(...costs))} (premium paid; the most you can lose). The app never buys one above ${inr(15000)}. With your ${inr(cap)} budget you could hold ${(() => { let n = 0, left = cap; costs.slice().sort((x, y) => x - y).forEach((v) => { if (v <= left) { n++; left -= v; } }); return n ? `at most ${n} at the same time` : 'none of them'; })()}.</p>` : '')
       + (p.put_gate_open === false ? '<p class="fine">Puts appear only when NIFTY is in a downtrend (below its 50-day average and down over 20 days). Not today.</p>' : '')
       + (so ? `<p class="fine">So far: ${signed(so.total)} (${so.trades} trade${so.trades === 1 ? '' : 's'}, ${so.wins} won). Paper only. ⚠️ ${esc(so.research || '')}</p>` : '');
     h += sec('STOCKS', '4 · Stock calls &amp; puts', chip, open_.length || closed.length ? (today >= 0 ? 'up' : 'down') : '', body,
-             open_.some((r) => !done.includes('STOCK_' + r.symbol)));
+             open_.some((r) => !done.includes('STOCK_' + r.symbol)), money);
   }
   return h;
 }
