@@ -147,6 +147,15 @@ a{color:var(--info)}
 .wlist{margin:0;padding-left:1.3rem;display:grid;gap:6px}
 .wwait{font-size:3rem;text-align:center}
 .wtrade{display:grid;gap:6px}.wt-h{font-weight:800}
+.tsec summary{display:flex;flex-wrap:wrap;align-items:center;gap:6px;cursor:pointer;list-style:none;font-size:1rem}
+.tsec summary::-webkit-details-marker{display:none}
+.tsec summary::after{content:'›';font-size:1.3rem;color:var(--dim);transition:transform .15s}
+.tsec[open] summary::after{transform:rotate(90deg)}
+.tchip{font-size:.8rem;border:1px solid var(--line);border-radius:999px;padding:2px 9px;color:var(--dim);margin-left:auto}
+.tchip.up{color:var(--up);border-color:color-mix(in srgb,var(--up) 45%,transparent)}
+.tchip.down{color:var(--down);border-color:color-mix(in srgb,var(--down) 45%,transparent)}
+.tchip.warn{color:var(--warn);border-color:color-mix(in srgb,var(--warn) 45%,transparent)}
+.tbody{display:grid;gap:8px;margin-top:8px}.tbody p{margin:0}
 .sbtn.go .slab{color:var(--ink)}
 .mk td,.mk th{padding:5px 4px;font-size:.85rem}.mkg{font-weight:800;padding-top:10px!important;color:var(--accent)}
 .smore{background:none;border:0;color:var(--accent);font:inherit;font-weight:700;padding:10px;cursor:pointer}
@@ -187,7 +196,7 @@ body.is-simple main{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 <script>
 const NSE_HOLIDAYS = ['2026-10-20', '2026-11-08', '2026-11-10', '2026-11-24', '2026-12-25'];   // fallback; meta.json has the live list
 const holidayList = () => (D.meta?.holidays?.length ? D.meta.holidays : NSE_HOLIDAYS);
-const APP_VERSION = 'v49';   // keep equal to CACHE in sw.js
+const APP_VERSION = 'v50';   // keep equal to CACHE in sw.js
 const TEST_FROM = '2026-11-04';   // the one real test trade (guardian LIVE_FROM)
 const FILES = ['plan', 'global-bias', 'volume-breakouts', 'performance', 'review', 'meta', 'live', 'small-capital', 'markets'];
 const D = {};
@@ -404,22 +413,38 @@ function stepsCard() {
 }
 
 /* ---------------- SIMPLE SCREEN: one step at a time ---------------- */
-let gReplies = [], gSeen = { n: null, err: null };   // n = alerts this app can read (last 12 h)
+// gReplies = every guardian alert since midnight IST, newest first (a busy day has dozens: the morning login must not drop out)
+let gReplies = [], gSeen = { n: null, err: null };   // n = alerts this app can read (today)
 async function pollReplies() {
   const topic = store.get('g_alerts', '');
   if (!topic || document.hidden) return;
   try {
-    const txt = await fetch(`https://ntfy.sh/${encodeURIComponent(topic)}/json?poll=1&since=12h`, { cache: 'no-store' }).then((r) => r.text());
+    const since = Math.floor(new Date(ist().date + 'T00:00:00+05:30').getTime() / 1000);
+    const txt = await fetch(`https://ntfy.sh/${encodeURIComponent(topic)}/json?poll=1&since=${since}`, { cache: 'no-store' }).then((r) => r.text());
     const msgs = txt.split(/\r?\n/).filter(Boolean).map((l) => JSON.parse(l)).filter((m) => m.event === 'message');
-    const latest = msgs.slice(-10).reverse(), changed = gSeen.n !== msgs.length || gSeen.err;
+    const latest = msgs.slice().reverse(), changed = gSeen.n !== msgs.length || gSeen.err;
     gSeen = { n: msgs.length, err: null };
     if (changed || JSON.stringify(latest.map((m) => m.id)) !== JSON.stringify(gReplies.map((m) => m.id))) { gReplies = latest; if (store.get('ui', 'simple') === 'simple') render(); }
   } catch (e) { gSeen = { n: gSeen.n, err: e.message }; }
 }
+// Is the guardian logged in to ICICI today? The newest alert about it decides. A restart that reuses today's
+// login says "Guardian started" without "Waiting for today's SESSION code".
+function loginState() {
+  const m = gReplies.find((x) => /^Guardian: (logged in|login failed|not logged in|cannot read positions)|^Guardian started/i.test(x.title || ''));
+  if (!m) return null;
+  return /^Guardian: logged in/i.test(m.title) || (/^Guardian started/i.test(m.title) && !/Waiting for today/i.test(m.message || ''));
+}
+// trades you already sent to the guardian today: kept apart from the step, so moving between steps never brings them back
+const doneKey = () => 'wizdone:' + ist().date;
+const doneList = () => store.get(doneKey(), []);
+const doneAdd = (ix) => { const d = doneList(); if (!d.includes(ix)) store.set(doneKey(), [...d, ix]); };
+// which trade sections are open (kept while the screen refreshes)
+const secOpen = {};
+document.addEventListener('toggle', (e) => { if (e.target.dataset && e.target.dataset.sec) secOpen[e.target.dataset.sec] = e.target.open; }, true);
 function answersCheck() {
   const topic = store.get('g_alerts', ''), bad = gSeen.n === 0 || gSeen.err;
   return `<details class="sreply" ${bad ? 'open' : ''}><summary><b>📡 Guardian answers:</b> ${gSeen.err ? '<span class="down">cannot read alerts (' + esc(gSeen.err) + ')</span>'
-      : gSeen.n == null ? 'checking…' : gSeen.n ? `this app sees ${gSeen.n} alert${gSeen.n > 1 ? 's' : ''} from the last 12 hours ✅` : '<span class="down">this app sees no alerts ⚠️</span>'}</summary>
+      : gSeen.n == null ? 'checking…' : gSeen.n ? `this app sees ${gSeen.n} alert${gSeen.n > 1 ? 's' : ''} from today ✅` : '<span class="down">this app sees no alerts ⚠️</span>'}</summary>
     <p class="fine">${bad ? 'If your phone gets guardian alerts but this app sees none, the topic below is wrong. ' : ''}It must be exactly the <b>NTFY_TOPIC</b> line in guardian.env (also the subscription name in the ntfy app).</p>
     <label class="f">Alerts topic<input data-g="g_alerts" value="${esc(topic)}" autocomplete="off" autocapitalize="off" spellcheck="false"></label></details>`;
 }
@@ -577,6 +602,104 @@ function capitalLine() {
       + (s.margin != null ? ` · <b class="${s.margin <= c.capital ? 'up' : 'down'}">margin ≈ ₹${Number(s.margin).toLocaleString('en-IN')}</b>` : '') + `</div></div>`).join('')}
     <p class="fine">${c.prices === 'real' ? 'Replayed on real NSE closing option prices. ' : ''}${esc(c.rule || '')}</p></details>`;
 }
+const nameOf = (ix) => ix === 'MOMENTUM' ? 'momentum buy' : String(ix).startsWith('STOCK_') ? String(ix).slice(6) + ' option' : ix;
+const signed = (v) => (v >= 0 ? '+₹' : '−₹') + Math.abs(Math.round(v || 0)).toLocaleString('en-IN');
+// one trade card with its button (the same card for every trade type)
+function tradeCard(o, { t, live, done, inWindow, BIG }) {
+  if (done.includes(o.index)) return `<div class="sreply">✅ <b>${esc(o.title || o.index)}</b>: sent to the guardian today. It exits by itself; you get a phone alert.</div>`;
+  const real = live && o.test && t.date >= TEST_FROM;
+  const x = real ? { ...o, legs: o.test.legs.map((l) => `${l.action} ${l.strike} ${l.type}`).join(' + '), max_reward: o.test.max_reward, max_loss: o.test.max_loss } : o;
+  const legs = String(x.legs || '').split('+').map((v) => v.trim()).filter(Boolean);
+  const tag = real ? ` · <span class="up">REAL TEST, ${o.test.wing}-point wings</span>` : live ? ' · <span class="warn">paper</span>' : '';
+  const canPlace = inWindow && (String(o.index).startsWith('STOCK_') || t.hm >= '10:10');
+  return `<div class="wtrade"><div class="wt-h">${o.title ? esc(o.title) : `${esc(o.index)} · ${esc(o.strategy)} · 1 lot (${esc(o.lot_size)} qty)`}${tag}</div>
+    ${legs.map((l) => `<div class="leg ${l.startsWith('BUY') ? 'BUY' : 'SELL'}">${esc(l)}</div>`).join('')}
+    <dl class="kv"><dt>When</dt><dd>${esc(o.entry || o.enter_at)}</dd>
+    <dt>Best case</dt><dd class="up">+₹${Number(x.max_reward || 0).toLocaleString('en-IN')} per lot${real ? ' (estimate)' : ''}</dd>
+    <dt>Worst case</dt><dd class="down">−₹${Number(x.max_loss || 0).toLocaleString('en-IN')} per lot${real ? ' (estimate)' : ''}</dd>
+    <dt>Exit</dt><dd>${esc(o.target)}. ${esc(o.stop_loss)}.</dd>
+    <dt>History</dt><dd class="fine">${esc(o.decision_reason || '')}</dd></dl>`
+    + (canPlace ? BIG(real ? `Place ${esc(o.short || o.index)} (real money)` : `Practice ${esc(o.short || o.index)}: what would it place?`, `data-act="wz-enter" data-ix="${esc(o.index)}" data-real="${real ? 1 : ''}"`, 'go')
+                : BIG(`Practice ${esc(o.short || o.index)} now (demo, nothing bought)`, `data-act="wz-demo" data-ix="${esc(o.index)}"`))
+    + `</div>`;
+}
+// Step 3: four sections, one per trade. The summary line says what is advised; the section holds the card and results.
+function tradeSections(c) {
+  const { p, t, mo, so, soToday, heldOf, done } = c;
+  const sec = (id, title, chip, tone, body, open) => {
+    const isOpen = secOpen[id] ?? open;
+    return `<details class="sreply tsec" data-sec="${id}" ${isOpen ? 'open' : ''}><summary><b>${title}</b><span class="tchip ${tone}">${chip}</span></summary><div class="tbody">${body}</div></details>`;
+  };
+  const dd = (d) => new Date(d + 'T12:00:00+05:30').toDateString().slice(0, 10);
+  let h = '';
+  // 1, 2: the index option trades (condor or spread), from the plan
+  ['NIFTY', 'BANKNIFTY'].forEach((ix, i) => {
+    const o = (p.options || []).find((x) => x.index === ix);
+    const held = o && heldOf(o), pv = (D.live?.paper_open || []).find((x) => x.index === ix), pt = (D.live?.paper_today || []).find((x) => x.index === ix);
+    const title = `${i + 1} · ${ix === 'NIFTY' ? 'NIFTY' : 'Bank Nifty'} ${o ? esc(o.strategy) : 'options'}`;
+    let chip, tone = '', body, open = false;
+    if (!o) { chip = 'no plan yet'; body = '<p class="fine">The plan has not been published for today yet.</p>'; }
+    else if (held) {
+      chip = '🟡 holding (paper)'; tone = 'warn';
+      body = `<p>The paper book holds the ${esc(held.strategy)} from ${esc(dd(held.entry_session))} (expiry ${esc(dd(held.expiry))}). One trade per index at a time, so no new one today. It closes by itself.</p>`
+        + (pv ? `<p><b>Worth ${signed(pv.value_now)} now</b> <span class="fine">(live ${esc(pv.at)})</span></p>` : '');
+    } else if (o.decision === 'TRADE') {
+      chip = done.includes(ix) ? '✅ sent today' : '✅ trade advised'; tone = 'up'; open = !done.includes(ix);
+      body = tradeCard(o, c) + (pt && pt.credit_rs != null ? `<p class="fine">Paper: entered ${esc(pt.entered_at)}, worth ${signed(pt.value_now)} now.</p>` : '');
+    } else {
+      chip = '⏸ no trade today';
+      body = `<p><b>Not advised today.</b> ${esc(o.decision_reason || '')}</p><p class="fine">It would have been: ${esc(o.legs)} (expiry ${esc(o.expiry)}).</p>`;
+    }
+    h += sec(ix, title, chip, tone, body, open);
+  });
+  // 3: NIFTY first-hour momentum buy
+  {
+    const m = D.live?.momentum, r = mo && mo.date === t.date ? mo : null;
+    let chip, tone = '', body, open = false;
+    if (!r) {
+      chip = t.hm < '10:15' ? '⏳ decided at 10:15' : '⏳ waiting for the 10:15 check';
+      body = '<p>If NIFTY moves 0.5% or more between 09:15 and 10:15, the app buys 1 lot of the at-the-money call (up) or put (down) on paper.</p>';
+    } else if (r.status === 'OPEN') {
+      const card = c.trades.find((x) => x.index === 'MOMENTUM');
+      chip = `🟢 bought ${r.strike} ${esc(r.kind)}`; tone = 'up'; open = !done.includes('MOMENTUM');
+      body = (card ? tradeCard(card, c) : '') + `<p><b>Worth ${signed(r.value_now)} now</b> (${r.pct_now > 0 ? '+' : ''}${r.pct_now ?? 0}%, live ${esc(r.at || '')}).</p>`;
+    } else if (r.status === 'CLOSED') {
+      chip = `${r.pnl > 0 ? '✅' : '❌'} closed ${signed(r.pnl)}`; tone = r.pnl > 0 ? 'up' : 'down';
+      body = `<p>${r.strike} ${esc(r.kind)} ₹${r.entry_px} → ₹${r.exit_px} (${esc(r.entry_at)}–${esc(r.exit_at)}), ${esc(r.reason)}: <b>${signed(r.pnl)}</b></p>`;
+    } else {
+      chip = '⏸ no trade today';
+      body = `<p><b>Not advised today:</b> ${esc(r.note || r.status)}.</p>`;
+    }
+    if (m) body += `<p class="fine">So far: ${signed(m.total)} (${m.trades} trade${m.trades === 1 ? '' : 's'}, ${m.wins} won). Paper only.</p>`;
+    h += sec('MOMENTUM', '3 · NIFTY momentum buy', chip, tone, body, open);
+  }
+  // 4: stock calls and puts on the plan's stock picks
+  {
+    const picks = p.stock_options || [];
+    const rows = picks.map((x) => {
+      const r = soToday.find((y) => y.symbol === x.symbol), what = `${esc(x.symbol)} ${x.kind === 'CE' ? 'call' : 'put'}`;
+      if (!r) return `<div class="srow">⏳ <b>${what}</b>: bought by the app if ${esc(x.symbol)} ${x.kind === 'CE' ? 'rises above' : 'falls below'} ₹${x.trigger} between 09:30 and 10:30.</div>`;
+      if (r.status === 'OPEN') {
+        const card = c.trades.find((y) => y.index === 'STOCK_' + x.symbol);
+        return (card ? tradeCard(card, c) : '')
+          + `<div class="srow">🟢 <b>${what}</b>: bought ${r.strike} ${esc(r.kind)} at ₹${r.entry_px} (${esc(r.entry_at)}) · <b>worth ${signed(r.value_now)} now</b> (${r.pct_now > 0 ? '+' : ''}${r.pct_now}%, live ${esc(r.at)})</div>`;
+      }
+      if (r.status === 'CLOSED') return `<div class="srow">${r.pnl > 0 ? '✅' : '❌'} <b>${what}</b>: ${r.strike} ${esc(r.kind)} ₹${r.entry_px} → ₹${r.exit_px} (${esc(r.exit_at)}), ${esc(r.reason)}: <b>${signed(r.pnl)}</b></div>`;
+      return `<div class="srow">⏸ <b>${what}</b>: ${esc(r.note || r.status)}</div>`;
+    }).join('');
+    const open_ = soToday.filter((r) => r.status === 'OPEN'), closed = soToday.filter((r) => r.status === 'CLOSED');
+    const today = open_.reduce((a, r) => a + (r.value_now || 0), 0) + closed.reduce((a, r) => a + r.pnl, 0);
+    const chip = !picks.length ? '⏸ no stock pick today' : open_.length || closed.length
+      ? `${open_.length ? `🟢 ${open_.length} open` : ''}${open_.length && closed.length ? ' · ' : ''}${closed.length ? `${closed.length} closed` : ''} · today ${signed(today)}`
+      : t.hm < '10:30' ? `⏳ ${picks.length} pick${picks.length > 1 ? 's' : ''}, waiting` : '⏸ none bought today';
+    const body = (rows || '<p>No stock passed the rules today.</p>')
+      + (p.put_gate_open === false ? '<p class="fine">Puts appear only when NIFTY is in a downtrend (below its 50-day average and down over 20 days). Not today.</p>' : '')
+      + (so ? `<p class="fine">So far: ${signed(so.total)} (${so.trades} trade${so.trades === 1 ? '' : 's'}, ${so.wins} won). Paper only. ⚠️ ${esc(so.research || '')}</p>` : '');
+    h += sec('STOCKS', '4 · Stock calls &amp; puts', chip, open_.length || closed.length ? (today >= 0 ? 'up' : 'down') : '', body,
+             open_.some((r) => !done.includes('STOCK_' + r.symbol)));
+  }
+  return h;
+}
 function vSimple() {
   const p = D.plan || {}, t = ist(), live = store.get('g_live', false);
   let w = wizGet(), ans = wizAnswer(w);
@@ -584,31 +707,26 @@ function vSimple() {
   if (w.step === 3 && ans && /not logged in/i.test(ans.title)) {
     w = { step: 1, err: 'The guardian is not logged in to ICICI today. Do steps 1 and 2 first, then the trade.' }; store.set(wizKey(), w); ans = null;
   } else if (w.step === 3 && w.wait && !ans && Date.now() / 1000 - w.wait.at > 60) {
-    w = { step: 3, done: w.done, err: 'No answer from the guardian in a minute. Check your phone alerts, then try again.' }; store.set(wizKey(), w);
+    w = { step: 3, err: 'No answer from the guardian in a minute. Check your phone alerts, then try again.' }; store.set(wizKey(), w);
   }
   // 3rd trade: the NIFTY first-hour momentum buy, once the 10:15 live run has marked it (paper unless switched on at the server)
   const mo = D.live?.momentum?.today, moLot = (p.options || []).find((o) => o.index === 'NIFTY')?.lot_size || 65;
-  const moTrade = mo && mo.date === t.date && mo.strike ? { index: 'MOMENTUM', title: `🚀 NIFTY momentum buy · 1 lot (${moLot} qty)`, short: 'momentum buy',
+  const moTrade = mo && mo.date === t.date && mo.status === 'OPEN' ? { index: 'MOMENTUM', title: `🚀 NIFTY momentum buy · 1 lot (${moLot} qty)`, short: 'momentum buy',
     legs: `BUY ${mo.strike} ${mo.kind}`, entry: `10:15–11:30 · NIFTY moved ${mo.first_hour_pct > 0 ? '+' : ''}${mo.first_hour_pct}% in the first hour; the paper tracker bought at ₹${mo.entry_px} (${mo.entry_at})`,
     max_reward: Math.round(0.6 * mo.entry_px * moLot), max_loss: Math.round(mo.entry_px * moLot),
     target: 'Book at +60%', stop_loss: 'Stop −30% (about −₹' + Math.round(0.3 * mo.entry_px * moLot).toLocaleString('en-IN') + '); cost after +20%; trail from +40%; else close 15:15 the same day',
     decision_reason: '2-year replay: 77 trades, 52% won, avg +₹1,117 after costs. Paper until it proves itself on real prices.' } : null;
   // 4th trade: stock calls/puts on the plan's stock picks, once the live run has bought them (paper unless switched on at the server)
   const so = D.live?.stock_options, soToday = so && so.date === t.date ? so.today || [] : [];
-  const soTrades = soToday.filter((r) => r.strike && r.entry_px).map((r) => ({ index: 'STOCK_' + r.symbol,
+  const soTrades = soToday.filter((r) => r.status === 'OPEN').map((r) => ({ index: 'STOCK_' + r.symbol,
     title: `📈 ${r.symbol} ${r.kind === 'CE' ? 'call' : 'put'} · 1 lot (${r.lot} qty)`, short: `${r.symbol} ${r.kind === 'CE' ? 'call' : 'put'}`,
     legs: `BUY ${r.strike} ${r.kind}`, entry: `09:30–11:30 · ${r.symbol} crossed ₹${r.trigger}; the paper tracker bought at ₹${r.entry_px} (${r.entry_at}), expiry ${r.expiry}`,
     max_reward: Math.round(0.6 * r.entry_px * r.lot), max_loss: Math.round(r.entry_px * r.lot),
     target: 'Book at +60%', stop_loss: 'Stop −30% (about −₹' + Math.round(0.3 * r.entry_px * r.lot).toLocaleString('en-IN') + '); cost after +20%; trail from +40%; else close 15:15 the same day',
     decision_reason: so.research || '' }));
-  const soPicks = (p.stock_options || []).filter((x) => !soTrades.some((y) => y.index === 'STOCK_' + x.symbol));
-  const soLine = !p.stock_options ? '' : `<p class="fine">📈 Stock calls/puts (paper): ${soPicks.length ? soPicks.map((x) => {
-      const r = soToday.find((y) => y.symbol === x.symbol);
-      return `${esc(x.symbol)} ${x.kind === 'CE' ? 'call' : 'put'} ${r ? '· ' + esc(r.note || r.status) : `if it ${x.kind === 'CE' ? 'rises above' : 'falls below'} ₹${x.trigger}`}`; }).join(' · ') + ' (bought by the tracker between 09:30 and 10:30)'
-      : soTrades.length ? 'all bought, see the cards above' : 'no stock pick today'}${p.put_gate_open === false ? '. Puts only when NIFTY is in a downtrend (below its 50-day average and down over 20 days).' : ''}</p>`;
   const trades = [...(p.options || []).filter((o) => o.decision === 'TRADE'), ...(moTrade ? [moTrade] : []), ...soTrades], trade = trades[0];
   const heldOf = (o) => !live && (D.review?.paper?.open || []).find((x) => x.index === o.index);
-  const todo = trades.filter((o) => !heldOf(o));
+  const todo = trades.filter((o) => !heldOf(o)), done = doneList();
   const today = p.session === t.date, inWindow = today && t.hm >= (soTrades.length ? '09:30' : '10:10') && t.hm <= '11:30';
   const sess = p.session ? new Date(p.session + 'T12:00:00+05:30').toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'short', timeZone: 'Asia/Kolkata' }) : '';
   const setup = !(store.get('g_key', '') && store.get('g_topic', '') && store.get('g_pin', '') && store.get('g_alerts', ''));
@@ -622,9 +740,7 @@ function vSimple() {
   if (w.err) h += `<div class="banner err">${esc(w.err)}</div>`;
   if (step === 3 && todo.length) {
     // is the guardian logged in today? (from its alerts since midnight)
-    const midnight = new Date(t.date + 'T00:00:00+05:30').getTime() / 1000;
-    const login = gReplies.find((m) => m.time >= midnight && /^Guardian: (logged in|login failed|not logged in)/i.test(m.title || ''));
-    h += login && /^Guardian: logged in/i.test(login.title)
+    h += loginState()
       ? `<div class="sreply">✅ Guardian logged in to ICICI today.</div>`
       : `<div class="banner">🔑 Guardian not logged in today. ${BIG('Log in now (step 1)', 'data-act="wz-go" data-s="1"', 'go')}</div>`;
   }
@@ -667,49 +783,23 @@ function vSimple() {
         <button class="smore" data-act="wz-go" data-s="1">‹ Back to step 1</button>`;
     }
   } else if (step === 3) {
-    // every index the plan marks TRADE is shown, one card each, in the plan's order
-    const held = trades.map((o) => heldOf(o)).filter(Boolean);
     const wix = w.wait?.ix || 'NIFTY';
-    if (!trades.length) {
-      h += `<h2>Step 3 · No trade today</h2><div class="wwait">😴</div><p>Today's plan says <b>do not trade</b>. Nothing to buy or sell. You are done.</p>${soLine}`
-        + BIG('OK, finish', 'data-act="wz-go" data-s="4"', 'go');
-    } else if (w.wait && !ans) {
-      const s = Math.round(Date.now() / 1000 - w.wait.at), last = gReplies[0];
-      h += `<h2>Step 3 · Asking the guardian about ${esc(wix)}…</h2><div class="wwait">⏳</div><p>It checks the plan, the time and the ${esc(wix)} price, then answers in 15–30 seconds.</p>
-        <p class="fine">Waiting ${s} s…${last ? ` Last alert: <b>${esc(last.title || '')}</b>` : ''}</p>`;
+    if (w.wait && !ans) {
+      const sec = Math.round(Date.now() / 1000 - w.wait.at), last = gReplies[0];
+      h += `<h2>Step 3 · Asking the guardian about ${esc(nameOf(wix))}…</h2><div class="wwait">⏳</div><p>It checks the plan, the time and the price, then answers in 15–30 seconds.</p>
+        <p class="fine">Waiting ${sec} s…${last ? ` Last alert: <b>${esc(last.title || '')}</b>` : ''}</p>`;
     } else if (ans) {
-      const ok = /: OK/i.test(ans.title), done = [...(w.done || []), wix];
-      const more = todo.some((o) => !done.includes(o.index));
-      h += `<h2>Step 3 · ${esc(wix)} ${ok ? 'done' : 'not placed'}</h2><div class="wwait">${ok ? '✅' : '⚠️'}</div><p>${esc(ans.message || ans.title)}</p>`
-        + (ok ? (more ? BIG('Next trade ›', `data-act="wz-next" data-ix="${esc(wix)}"`, 'go') : BIG('Next ›', 'data-act="wz-go" data-s="4"', 'go'))
-              : BIG('Back', 'data-act="wz-go" data-s="3"'));
+      const ok = /: OK/i.test(ans.title), more = todo.some((o) => o.index !== wix && !done.includes(o.index));
+      h += `<h2>Step 3 · ${esc(nameOf(wix))} ${ok ? 'done' : 'not placed'}</h2><div class="wwait">${ok ? '✅' : '⚠️'}</div><p>${esc(ans.message || ans.title)}</p>`
+        + (ok ? BIG(more ? 'Next trade ›' : 'Next ›', `data-act="wz-next" data-ix="${esc(wix)}" data-s="${more ? 3 : 4}"`, 'go')
+              : BIG('Try again', 'data-act="wz-go" data-s="3"') + BIG(more ? 'Skip this one › next trade' : 'Skip this one › finish', `data-act="wz-next" data-ix="${esc(wix)}" data-s="${more ? 3 : 4}"`));
     } else {
-      const left = todo.filter((o) => !(w.done || []).includes(o.index));
-      h += `<h2>Step 3 · Today's ${trades.length > 1 ? trades.length + ' trades' : 'trade'}</h2>`;
-      held.forEach((x) => {
-        h += `<div class="sreply">🟡 <b>${esc(x.index)}</b>: the paper book still holds the ${esc(x.strategy)} from ${esc(new Date(x.entry_session + 'T12:00:00+05:30').toDateString().slice(0, 10))} (expiry ${esc(new Date(x.expiry + 'T12:00:00+05:30').toDateString().slice(0, 10))}). One trade per index at a time, so no new ${esc(x.index)} trade today. It closes by itself; see 📒 Paper results.</div>`;
-      });
-      left.forEach((o) => {
-        // LIVE: only the one real test trade uses money (the plan's condor with narrower wings); the rest is paper
-        const real = live && o.test && t.date >= TEST_FROM;
-        const x = real ? { ...o, legs: o.test.legs.map((l) => `${l.action} ${l.strike} ${l.type}`).join(' + '), max_reward: o.test.max_reward, max_loss: o.test.max_loss } : o;
-        const legs = String(x.legs || '').split('+').map((s) => s.trim()).filter(Boolean);
-        const tag = real ? ` · <span class="up">REAL TEST, ${o.test.wing}-point wings</span>` : live ? ' · <span class="warn">paper</span>' : '';
-        h += `<div class="wtrade"><div class="wt-h">${o.title ? esc(o.title) : `${esc(o.index)} · ${esc(o.strategy)} · 1 lot (${esc(o.lot_size)} qty)`}${tag}</div>
-          ${legs.map((l) => `<div class="leg ${l.startsWith('BUY') ? 'BUY' : 'SELL'}">${esc(l)}</div>`).join('')}
-          <dl class="kv"><dt>When</dt><dd>${esc(o.entry || o.enter_at)}</dd>
-          <dt>Best case</dt><dd class="up">+₹${Number(x.max_reward || 0).toLocaleString('en-IN')} per lot${real ? ' (estimate)' : ''}</dd>
-          <dt>Worst case</dt><dd class="down">−₹${Number(x.max_loss || 0).toLocaleString('en-IN')} per lot${real ? ' (estimate)' : ''}</dd>
-          <dt>Exit</dt><dd>${esc(o.target)}. ${esc(o.stop_loss)}.</dd>
-          <dt>History</dt><dd class="fine">${esc(o.decision_reason || '')}</dd></dl>`
-          + (inWindow && (o.index.startsWith('STOCK_') || t.hm >= '10:10') ? BIG(real ? `Place ${esc(o.short || o.index)} (real money)` : `Practice ${esc(o.short || o.index)}: what would it place?`, `data-act="wz-enter" data-ix="${esc(o.index)}" data-real="${real ? 1 : ''}"`, 'go')
-                      : BIG(`Practice ${esc(o.short || o.index)} now (demo, nothing bought)`, `data-act="wz-demo" data-ix="${esc(o.index)}"`))
-          + `</div>`;
-      });
-      h += soLine;
-      if (!moTrade) h += `<p class="fine">🚀 Momentum buy: ${!mo || mo.date !== t.date ? (t.hm < '10:15' ? 'decided at 10:15 from NIFTY’s first-hour move (±0.5% needed)' : 'no signal yet') : 'no trade today · ' + esc(mo.note || mo.status)}</p>`;
-      if (!left.length) h += BIG('OK, finish', 'data-act="wz-go" data-s="4"', 'go');
-      else if (inWindow) h += `<p class="fine">${live ? `One real test trade only: NIFTY from ${+TEST_FROM.slice(8)} Nov, 1 lot, after ICICI's margin check. The guardian buys and sells all 4 legs and exits by itself. Everything else, and every trade after it, is paper.` : 'Paper mode: nothing is bought. The guardian only tells you what it would place. The paper book tracks every trade above.'}</p>`;
+      const left = todo.filter((o) => !done.includes(o.index));
+      h += `<h2>Step 3 · Today's trades</h2><p class="fine">Four trades, one section each. Tap a section to see what is advised today.</p>`;
+      h += tradeSections({ p, t, live, mo, so, soToday, heldOf, done, inWindow, BIG, trades });
+      if (!left.length) h += `<p>${trades.length ? 'Nothing left to place.' : 'No trade to place right now.'}</p>` + BIG('OK, finish', 'data-act="wz-go" data-s="4"', 'go');
+      else if (inWindow) h += `<p class="fine">${live ? `One real test trade only: NIFTY from ${+TEST_FROM.slice(8)} Nov, 1 lot, after ICICI's margin check. Everything else is paper.` : 'Paper mode: nothing is bought. The guardian only tells you what it would place. The paper book tracks every trade.'}</p>`;
+      else if (today && t.hm > '11:30') h += `<p class="fine">The entry window (09:30–11:30) is over for today. Open trades are watched and closed by the app itself.</p>` + BIG('OK, finish', 'data-act="wz-go" data-s="4"', 'go');
       else h += `<div class="banner">⏰ Come back between <b>${soTrades.length ? '09:30' : '10:10'} and 11:30</b>${today ? '' : ' on ' + esc(sess)}. The buttons to place the trades appear then.</div>`;
     }
   } else {
@@ -1440,12 +1530,12 @@ $('#view').addEventListener('click', (e) => {
       }
     }
     if (a.dataset.act === 'markets') { showMarkets = !showMarkets; render(); window.scrollTo(0, 0); }
-    if (a.dataset.act === 'wz-go') wizSet({ step: +a.dataset.s, done: +a.dataset.s === 3 ? wizGet().done : undefined });
+    if (a.dataset.act === 'wz-go') wizSet({ step: +a.dataset.s });
     if (a.dataset.act === 'wz-login') setTimeout(() => wizSet({ step: 2 }), 300);
     if (a.dataset.act === 'wz-paste') wizPaste();
     if (a.dataset.act === 'wz-enter') { if (confirm(a.dataset.real ? 'REAL MONEY: place the one test trade (' + a.dataset.ix + ', 1 lot)? ICICI margin is checked first.' : 'Ask the guardian what it would place (paper, nothing bought)?')) wizSend('ENTER ' + a.dataset.ix + ' 1', wizGet()); }
     if (a.dataset.act === 'wz-demo') wizSend('ENTER ' + (a.dataset.ix || 'NIFTY') + ' 1 DEMO', wizGet());
-    if (a.dataset.act === 'wz-next') { const w = wizGet(); wizSet({ step: 3, done: [...(w.done || []), a.dataset.ix] }); }
+    if (a.dataset.act === 'wz-next') { doneAdd(a.dataset.ix); wizSet({ step: +(a.dataset.s || 3) }); }
     if (a.dataset.act === 'sm-done') { doneSet(a.dataset.k); render(); }
     if (a.dataset.act === 'sm-plan') { doneSet('plan'); render(); [...document.querySelectorAll('.box h3 span')].find((x) => x.textContent.startsWith('Quick view'))?.scrollIntoView({ behavior: 'smooth' }); }
     if (a.dataset.act === 'sm-results') { doneSet('review'); render(); [...document.querySelectorAll('.box h3 span')].find((x) => x.textContent.startsWith('Profit'))?.scrollIntoView({ behavior: 'smooth' }); }
