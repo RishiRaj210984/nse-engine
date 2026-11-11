@@ -18,8 +18,9 @@ SO = {"date": "2026-11-12", "today": [
     {"date": "2026-11-12", "symbol": "ONGC", "kind": "PE", "status": "NO ENTRY", "note": "did not cross 233.5 between 09:30 and 10:30"}]}
 
 class FB:
-    def __init__(self, ask=21, held=None):
-        self.ask, self.held, self.orders = ask, held or [], []
+    def __init__(self, ask=21, held=None, blocked=0):
+        self.ask, self.held, self.orders, self.blocked = ask, held or [], [], blocked
+    def get_funds(self): return {"Success": {"allocated_fno": "50000", "block_by_trade_fno": str(self.blocked)}, "Status": 200}
     def get_names(self, exchange_code="", stock_code=""): return {"isec_stock_code": "HAVIND"}
     def get_quotes(self, stock_code="", exchange_code="", strike_price="", **k):
         return {"Success": [{"ltp": self.ask - 0.5, "best_bid_price": self.ask - 1, "best_offer_price": self.ask}], "Status": 200}
@@ -48,9 +49,17 @@ fb, st = FB(), {}
 title, msg = cmd(fb, env, st)
 t("LIVE_STOCKOPT=1: one real BUY of the HAVELLS 1160 call, 500 qty, ICICI code, at the offer",
   msg.startswith("REAL stock option buy") and fb.orders == [("HAVIND", "buy", "1160", "call", "500", "21.00")])
+t("real buy: alert says the money in trades against the limit", "Rs 10,500 of your Rs 15,000 limit" in msg)
 t("a second tap the same day is refused", "already placed" in cmd(FB(), env, st)[1])
 fb = FB(ask=31); title, msg = cmd(fb, env, {})
 t("premium 31 x 500 = Rs 15,500 above Rs 15,000: not placed", "NOT DONE" in title and "above Rs 15,000" in msg and not fb.orders)
+fb = FB(blocked=5000); title, msg = cmd(fb, env, {})
+t("limit: Rs 5,000 margin held + Rs 10,500 = Rs 15,500 > Rs 15,000: not placed",
+  "NOT DONE" in title and "total-money limit" in msg and "Rs 15,500" in msg and not fb.orders)
+other = [{"product_type": "Options", "stock_code": "SBIN", "quantity": "750", "action": "Buy", "expiry_date": "24-Nov-2026",
+          "strike_price": "960", "right": "Call", "average_price": "8", "ltp": "9"}]
+fb = FB(held=other); title, msg = cmd(fb, env, {})
+t("limit: another stock option held (Rs 6,000 paid) + Rs 10,500: not placed", "NOT DONE" in title and "total-money limit" in msg and not fb.orders)
 fb = FB(); title, msg = cmd(fb, env, {}, sym="ONGC")
 t("a pick that did not trigger: nothing placed, says why", "NOT DONE" in title and "did not cross" in msg and not fb.orders)
 fb = FB(); title, msg = cmd(fb, env, {}, now=datetime(2026, 11, 12, 11, 45, tzinfo=IST))

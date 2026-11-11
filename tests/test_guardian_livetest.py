@@ -22,8 +22,8 @@ def plan(session="2026-11-04", name="Iron Condor", legs=LEGS):
             {"session": session, "options": [{"index": "NIFTY", "decision": "TRADE"}, {"index": "BANKNIFTY", "decision": "TRADE"}]})
 
 class FB:
-    def __init__(self, margin=9800, free=15000, margin_resp=None, spot=22900):
-        self.margin, self.free, self.margin_resp, self.spot = margin, free, margin_resp, spot
+    def __init__(self, margin=9800, free=15000, margin_resp=None, spot=22900, blocked=1000):
+        self.margin, self.free, self.margin_resp, self.spot, self.blocked = margin, free, margin_resp, spot, blocked
         self.orders, self.margin_calls = [], []
     def get_quotes(self, stock_code="", exchange_code="", product_type="", strike_price="", **k):
         if exchange_code == "NSE": return {"Success": [{"ltp": self.spot if stock_code == "NIFTY" else 54000}], "Status": 200}
@@ -34,7 +34,7 @@ class FB:
         if self.margin_resp is not None: return self.margin_resp
         return {"Success": {"span_margin_required": str(self.margin * 0.8), "non_span_margin_required": str(self.margin * 0.2),
                             "order_margin": "0", "trade_margin": "0"}, "Status": 200, "Error": None}
-    def get_funds(self): return {"Success": {"allocated_fno": str(self.free + 1000), "block_by_trade_fno": "1000"}, "Status": 200}
+    def get_funds(self): return {"Success": {"allocated_fno": str(self.free + self.blocked), "block_by_trade_fno": str(self.blocked)}, "Status": 200}
     def place_order(self, **kw):
         self.orders.append((kw["action"], kw["strike_price"], kw["right"], kw["quantity"], kw["price"]))
         return {"Success": {"order_id": "O%d" % len(self.orders)}, "Status": 200}
@@ -72,6 +72,12 @@ for name, kw, word in (("margin above free F&O money", {"margin": 14000, "free":
     title, msg = enter("NIFTY", fb, st)
     t(f"{name}: not placed, nothing bought", "NOT DONE" in title and word in msg and not fb.orders and not st.get("live_trades"))
 
+# total-money limit: Rs 6,000 already held by open trades + Rs 9,800 margin = Rs 15,800 > Rs 15,000
+fb, st = FB(blocked=6000), {}
+title, msg = enter("NIFTY", fb, st)
+t("limit: money in open trades + condor margin above Rs 15,000: not placed",
+  "NOT DONE" in title and "total-money limit" in msg and "Rs 15,800" in msg and not fb.orders and not st.get("live_trades"))
+
 # the real test trade
 fb, st = FB(), {}
 title, msg = enter("NIFTY", fb, st)
@@ -80,7 +86,7 @@ t("real test: 4 orders, 1 lot (65) even when 2 lots asked, BUYs first",
 t("real test: bought strikes are 23450 CE and 22350 PE (150-point wings)", sorted(o[1] for o in fb.orders if o[0] == "buy") == ["22350", "23450"])
 t("real test: ICICI margin asked for all 4 legs first, qty 65", len(fb.margin_calls) == 1 and len(fb.margin_calls[0]) == 4
   and all(r["quantity"] == "65" for r in fb.margin_calls[0]))
-t("real test: alert says REAL TEST, margin and 'paper again'", msg.startswith("REAL TEST TRADE placed") and "ICICI margin Rs 9,800" in msg and "paper again" in msg)
+t("real test: alert says REAL TEST, margin and 'paper again'", msg.startswith("REAL TEST TRADE placed") and "ICICI margin Rs 9,800" in msg and "Rs 10,800 of your Rs 15,000 limit" in msg and "paper again" in msg)
 t("real test: recorded once", len(st["live_trades"]) == 1 and st["live_trades"][0]["index"] == "NIFTY")
 
 # after it: paper again

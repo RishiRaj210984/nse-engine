@@ -509,6 +509,37 @@ def margin_check(breeze, index, legs, expiry, qty, capital):
     return True, need, free, f"ICICI margin Rs {need:,.0f}, free F&O money Rs {free:,.0f}"
 
 
+def money_in_use(breeze):
+    """Money your open F&O trades hold right now: the margin ICICI blocks for them plus the premium paid for
+    bought options still held. Counted on the safe side: if ICICI's blocked figure already includes some of that
+    premium, it is counted twice. Returns (rupees, note), or (None, why) when it cannot be read."""
+    try:
+        legs = legs_from_positions(breeze.get_portfolio_positions())
+        f = breeze.get_funds() or {}
+    except Exception as exc:
+        return None, f"could not read your positions and funds ({str(exc)[:80]})"
+    fd = f.get("Success") or {}
+    fd = (fd[0] if fd else {}) if isinstance(fd, list) else fd
+    blocked = _num(fd.get("block_by_trade_fno"))
+    if blocked is None:
+        return None, f"could not read the margin ICICI holds for your trades ({str(f.get('Error') or '')[:80]})"
+    paid = sum(l["avg"] * l["qty"] for l in legs if l["side"] == "buy")
+    return blocked + paid, f"margin held Rs {blocked:,.0f} + premium paid Rs {paid:,.0f}"
+
+
+def budget_check(breeze, env, new, what):
+    """The total-money limit, for every real entry: money already in open trades + this trade <= CAPITAL.
+    Anything unreadable counts as NOT ok: no real order on a guess. Returns (ok, message)."""
+    cap = int(env["CAPITAL"])
+    used, note = money_in_use(breeze)
+    if used is None:
+        return False, f"{note}, so the total-money limit cannot be checked. Not placed."
+    if used + new > cap:
+        return False, (f"total-money limit: Rs {used:,.0f} is already in open trades ({note}); {what} needs Rs {new:,.0f} more, "
+                       f"Rs {used + new:,.0f} in all, above your Rs {cap:,} limit. Not placed.")
+    return True, f"money in trades after this one: Rs {used + new:,.0f} of your Rs {cap:,} limit"
+
+
 def fetch_momentum():
     """Today's NIFTY first-hour momentum signal, as the engine's live run published it."""
     lv = requests.get(f"{PLAN_URL}/live.json", params={"t": int(time.time())}, timeout=15).json()
@@ -556,6 +587,9 @@ def enter_momentum(breeze, env, state, live, now, demo=False, signal=None):
             return False, "no live price for the option. Not placed."
         if ask * lot > MOMENTUM_MAX_PREMIUM:
             return False, f"premium Rs {ask * lot:,.0f} is above Rs {MOMENTUM_MAX_PREMIUM:,}. Not placed."
+        fits, budget = budget_check(breeze, env, ask * lot, "this momentum buy")
+        if not fits:
+            return False, budget
     ok, lines, placed, err = _place_legs(breeze, "NIFTY", [{"action": "BUY", "strike": strike, "type": kind, "est_premium": 0}],
                                          expiry_iso, lot, now, live)
     if not ok:
@@ -565,7 +599,7 @@ def enter_momentum(breeze, env, state, live, now, demo=False, signal=None):
                       + (f" (first hour {t.get('first_hour_pct'):+.2f}%)" if has and t.get("first_hour_pct") is not None else "")
                       + ". The paper tracker follows it on real NSE prices.")
     state["momentum_day"] = day
-    return True, ("REAL momentum buy placed: " + "; ".join(placed) + ". The guardian exits it by itself "
+    return True, ("REAL momentum buy placed: " + "; ".join(placed) + f". {budget[0].upper()}{budget[1:]}. The guardian exits it by itself "
                   "(stop -30%, cost after +20%, trail from +40%, book +60%, close 15:15).")
 
 
@@ -627,13 +661,16 @@ def enter_stockopt(breeze, env, state, symbol, live, now, demo=False, signal=Non
         return False, f"no live price for {line}. Not placed."
     if ask * lot > STOCKOPT_MAX_PREMIUM:
         return False, f"premium Rs {ask * lot:,.0f} is above Rs {STOCKOPT_MAX_PREMIUM:,}. Not placed."
+    fits, budget = budget_check(breeze, env, ask * lot, f"this {symbol} option")
+    if not fits:
+        return False, budget
     ok, px, err = fill_leg(breeze, code, right, strike, expiry_iso, lot, "buy", now)
     if not ok:
         return False, f"could not fill {line} ({err}). Nothing was placed."
     done[day] = done.get(day, []) + [symbol]
     for d in [d for d in done if d < day]:
         done.pop(d)
-    return True, (f"REAL stock option buy placed: {line} @ {px:.2f}. The guardian exits it by itself "
+    return True, (f"REAL stock option buy placed: {line} @ {px:.2f}. {budget[0].upper()}{budget[1:]}. The guardian exits it by itself "
                   "(stop -30%, cost after +20%, trail from +40%, book +60%, close 15:15).")
 
 
@@ -683,6 +720,10 @@ def enter_trade(breeze, env, state, index, lots, live, now, plan=None, demo=Fals
         ok, need, free, margin_note = margin_check(breeze, index, legs, full["expiry"], full["lot_size"], int(env["CAPITAL"]))
         if not ok:
             return False, f"{margin_note}. Not placed (nothing bought)."
+        fits, budget = budget_check(breeze, env, need, f"this {index} condor")
+        if not fits:
+            return False, budget
+        margin_note += f"; {budget}"
     qty = full["lot_size"] * lots
     legs = sorted(legs, key=lambda l: 0 if l["action"] == "BUY" else 1)
     ok, plan_lines, placed, err = _place_legs(breeze, index, legs, expiry_iso, qty, now, live)

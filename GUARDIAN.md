@@ -81,3 +81,14 @@ answers with what it would buy; real orders only with `LIVE_STOCKOPT=1` **and** 
 as every bought option: stop −30%, cost after +20%, trail from +40%, book +60%, close 15:15.
 In a 2-year test on NSE's real prices these lost on average (calls −₹616 a trade, puts −₹463), so it is
 tracked on paper to see its live record, not because it has an edge.
+
+## Total-money limit (every real entry)
+Each trade has its own limit (premium or margin up to ₹15,000), and on top of that the guardian checks the
+total before **every real order** (condor, momentum buy, stock option): the money already in your open F&O
+trades plus the new trade must stay within `CAPITAL` (₹15,000 by default). "Already in trades" is read from
+ICICI each time: the margin ICICI holds for your trades (`block_by_trade_fno`) plus the premium paid for every
+bought option you still hold, including trades you placed yourself. It is counted on the safe side: if ICICI's
+blocked figure already includes some of that premium, it counts twice, so the guardian may refuse a little early,
+never late. If ICICI's positions or funds cannot be read, nothing is placed. The alert for a real entry says
+how much is in trades after it, e.g. "Rs 10,500 of your Rs 15,000 limit". Paper trades are never limited:
+the paper book tracks every trade so their records can be judged.
