@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-12T06:27:59.829300+05:30",
+ "generated_at": "2026-11-12T07:13:24.463230+05:30",
  "target_session": "2026-11-12",
  "reference_date": "2026-11-09",
  "us_session_used": "2026-11-11",
@@ -39,24 +39,16 @@
   {
    "name": "Crude Oil",
    "symbol": "CL=F",
-   "last": 86.06,
-   "change": 0.023,
-   "change_unit": "%",
-   "as_of": "2026-11-11"
-  },
-  {
-   "name": "Dollar Index",
-   "symbol": "DX-Y.NYB",
-   "last": 102.88,
-   "change": 0.632,
+   "last": 85.65,
+   "change": -0.453,
    "change_unit": "%",
    "as_of": "2026-11-11"
   },
   {
    "name": "Nikkei 225",
    "symbol": "^N225",
-   "last": 61452.58,
-   "change": 1.642,
+   "last": 61437.64,
+   "change": 1.618,
    "change_unit": "%",
    "as_of": "2026-11-12"
   },
@@ -95,60 +87,88 @@
  ],
  "bias": {
   "label": "BULLISH",
-  "score": 60,
-  "z": 0.687,
-  "model_z": 0.687,
-  "predicted_nifty_move_pct": 0.49,
-  "typical_daily_move_pct": 0.714,
+  "score": 61,
+  "z": 0.714,
+  "model_z": 0.714,
+  "predicted_nifty_move_pct": 0.51,
+  "typical_daily_move_pct": 0.72,
   "source": "pre-open global snapshot",
   "india_vix": 17.42,
   "components": [
    {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": 2.26,
-    "contribution_pct": 1.085
+    "value": 2.29,
+    "contribution_pct": 0.977
    },
    {
     "feature": "nq",
     "label": "Nasdaq futures",
-    "value": 3.97,
-    "contribution_pct": -0.912
+    "value": 4.14,
+    "contribution_pct": -0.823
    },
    {
     "feature": "dxy",
     "label": "Dollar index",
     "value": 1.02,
-    "contribution_pct": -0.427
+    "contribution_pct": -0.411
    },
    {
     "feature": "n225",
     "label": "Nikkei 225",
     "value": 4.6,
-    "contribution_pct": 0.329
+    "contribution_pct": 0.24
    },
    {
     "feature": "cl",
     "label": "Crude oil",
-    "value": -3.79,
-    "contribution_pct": 0.216
+    "value": -4.28,
+    "contribution_pct": 0.192
    },
    {
-    "feature": "dax",
-    "label": "DAX (Germany)",
-    "value": 2.33,
-    "contribution_pct": 0.084
+    "feature": "inr",
+    "label": "USD/INR",
+    "value": -0.26,
+    "contribution_pct": 0.147
    }
   ]
  },
  "news": {
   "summary": {
-   "score": 0.289,
+   "score": 0.287,
    "count": 40,
    "label": "POSITIVE"
   },
   "weight": 0.0,
   "headlines": [
+   {
+    "title": "Global Market Today: Asian stocks mixed as Nvidia turmoil hits AI-linked shares",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/global-market-today-us-stock-futures-fall-as-nvidia-turmoil-deepens/articleshow/135751953.cms",
+    "published": "Thu, 12 Nov 2026 07:03:51 +0530",
+    "sentiment": -0.077
+   },
+   {
+    "title": "Bajaj Finance unveils share sale to raise up to $1.25 billion",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/bajaj-finance-unveils-share-sale-to-raise-up-to-1-25-billion/articleshow/135751856.cms",
+    "published": "Thu, 12 Nov 2026 06:51:48 +0530",
+    "sentiment": 0.296
+   },
+   {
+    "title": "Gold slips as strong US inflation data bolsters dollar, Fed hike expectations",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/commodities/news/gold-slips-as-strong-us-inflation-data-bolsters-dollar-fed-hike-expectations/articleshow/135751745.cms",
+    "published": "Thu, 12 Nov 2026 06:26:46 +0530",
+    "sentiment": -0.052
+   },
+   {
+    "title": "Dollar near one-month high as yen edges toward 160",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/forex/forex-news/dollar-near-one-month-high-as-yen-edges-toward-160/articleshow/135751707.cms",
+    "published": "Thu, 12 Nov 2026 06:19:16 +0530",
+    "sentiment": 0.0
+   },
    {
     "title": "Yes Bank bondholders press for compliance with Supreme Court's AT-1 order",
     "source": "ET Markets",
@@ -204,44 +224,16 @@
     "link": "https://economictimes.indiatimes.com/markets/forex/forex-news/dollar-firms-as-hot-inflation-hawkish-fed-talk-lift-rate-hike-bets/articleshow/135739033.cms",
     "published": "Wed, 11 Nov 2026 18:47:36 +0530",
     "sentiment": 0.0
-   },
-   {
-    "title": "Nasdaq futures rise nearly 2% as CoreWeave earnings calm AI spending fears",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/nasdaq-futures-rise-nearly-2-as-coreweave-earnings-calm-ai-spending-fears/articleshow/135738901.cms",
-    "published": "Wed, 11 Nov 2026 18:43:58 +0530",
-    "sentiment": -0.128
-   },
-   {
-    "title": "US stocks end higher as CoreWeave results ease AI spending worries: Stock Market Highlights",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/stock-market-live-updates-dow-jones-nasdaq-sp-500-fed-anthropic-ipo-coreweave-nvidia-marvell-ai-chip-fed-rate-inflation-treasury-yield-news-11th-november-2026/liveblog/135739245.cms",
-    "published": "Wed, 11 Nov 2026 18:42:11 +0530",
-    "sentiment": -0.077
-   },
-   {
-    "title": "Fairfax Financial likely to exit IIFL Finance, sources say",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/fairfax-financial-likely-to-exit-iifl-finance-sources-say/articleshow/135738516.cms",
-    "published": "Wed, 11 Nov 2026 18:39:37 +0530",
-    "sentiment": 0.0
-   },
-   {
-    "title": "Sterling drops against firmer dollar as markets price in a hawkish Fed",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/forex/forex-news/sterling-drops-against-firmer-dollar-as-markets-price-in-a-hawkish-fed/articleshow/135738659.cms",
-    "published": "Wed, 11 Nov 2026 18:38:01 +0530",
-    "sentiment": 0.0
    }
   ]
  },
  "model": {
   "oos_days": 300,
-  "directional_calls": 145,
-  "directional_accuracy": 73.1,
-  "sign_accuracy_all_days": 64.7,
-  "gap_corr": 0.66,
-  "gap_sign_pct": 72.3,
+  "directional_calls": 142,
+  "directional_accuracy": 73.9,
+  "sign_accuracy_all_days": 65.7,
+  "gap_corr": 0.67,
+  "gap_sign_pct": 70.0,
   "trained_rows": 750,
   "version": 38,
   "bias_threshold": 0.3
@@ -556,23 +548,23 @@
  },
  "events": [],
  "preopen": {
-  "snapshot_ist": "Thu 12 Nov 06:27 IST",
-  "stage": "preview",
-  "expected_gap_pct": 0.72,
-  "gap_typical_error_pct": 0.29,
-  "expected_day_pct": 0.49,
-  "z": 0.687,
-  "typical_daily_move_pct": 0.714,
+  "snapshot_ist": "Thu 12 Nov 07:13 IST",
+  "stage": "final",
+  "expected_gap_pct": 0.73,
+  "gap_typical_error_pct": 0.31,
+  "expected_day_pct": 0.51,
+  "z": 0.714,
+  "typical_daily_move_pct": 0.72,
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": 2.26
+    "move_pct": 2.29
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": 3.97
+    "move_pct": 4.14
    },
    {
     "key": "ym",
@@ -602,12 +594,12 @@
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": -3.79
+    "move_pct": -4.28
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": -2.76
+    "move_pct": -2.67
    },
    {
     "key": "dxy",
@@ -624,51 +616,51 @@
    {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": 2.26,
-    "contribution_pct": 1.085
+    "value": 2.29,
+    "contribution_pct": 0.977
    },
    {
     "feature": "nq",
     "label": "Nasdaq futures",
-    "value": 3.97,
-    "contribution_pct": -0.912
+    "value": 4.14,
+    "contribution_pct": -0.823
    },
    {
     "feature": "dxy",
     "label": "Dollar index",
     "value": 1.02,
-    "contribution_pct": -0.427
+    "contribution_pct": -0.411
    },
    {
     "feature": "n225",
     "label": "Nikkei 225",
     "value": 4.6,
-    "contribution_pct": 0.329
+    "contribution_pct": 0.24
    },
    {
     "feature": "cl",
     "label": "Crude oil",
-    "value": -3.79,
-    "contribution_pct": 0.216
+    "value": -4.28,
+    "contribution_pct": 0.192
    },
    {
-    "feature": "dax",
-    "label": "DAX (Germany)",
-    "value": 2.33,
-    "contribution_pct": 0.084
+    "feature": "inr",
+    "label": "USD/INR",
+    "value": -0.26,
+    "contribution_pct": 0.147
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.66,
-   "gap_sign_pct": 72.3,
-   "directional_calls": 155,
-   "directional_accuracy": 72.3
+   "gap_corr": 0.67,
+   "gap_sign_pct": 70.0,
+   "directional_calls": 153,
+   "directional_accuracy": 74.5
   },
   "vix": 17.42
  },
  "global_table": {
-  "updated": "2026-11-12T06:28:13.447558+05:30",
+  "updated": "2026-11-12T07:13:40.827814+05:30",
   "rows": [
    {
     "group": "US, last close",
@@ -678,7 +670,7 @@
    },
    {
     "group": "US futures now",
-    "move": "S&P +2.26%, Nasdaq +3.97%, Dow +1.42% (since Nifty's close)",
+    "move": "S&P +2.29%, Nasdaq +4.14%, Dow +1.42% (since Nifty's close)",
     "effect": "green",
     "note": "Futures point to a firmer open"
    },
@@ -690,15 +682,15 @@
    },
    {
     "group": "Asia today",
-    "move": "Nikkei +0.4%, Hang Seng -0.5%, Kospi +0.7%",
+    "move": "Nikkei +0.3%, Hang Seng -0.8%, Kospi -0.5%",
     "effect": "flat",
     "note": "Mixed / flat"
    },
    {
     "group": "Crude oil",
-    "move": "WTI ~$86, Brent ~$92 (-0.5%)",
-    "effect": "flat",
-    "note": "Steady"
+    "move": "WTI ~$86, Brent ~$92 (-1.0%)",
+    "effect": "green",
+    "note": "Falling oil helps India"
    },
    {
     "group": "US 10-year yield",
@@ -726,14 +718,14 @@
    },
    {
     "group": "Model: Nifty open",
-    "move": "+0.72% (\u00b10.29%)",
+    "move": "+0.73% (\u00b10.31%)",
     "effect": "green",
-    "note": "Combined forecast from all markets (preview)",
+    "note": "Combined forecast from all markets (final)",
     "model": true
    }
   ],
   "tilt": "positive",
-  "score": 2
+  "score": 3
  },
  "notes": [
   "GIFT Nifty has no free data feed; the pre-open model reads what drives it (US/Dow futures, Europe, Asia, crude, rupee).",
