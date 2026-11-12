@@ -155,6 +155,22 @@ a{color:var(--info)}
 .tchip.up{color:var(--up);border-color:color-mix(in srgb,var(--up) 45%,transparent)}
 .tchip.down{color:var(--down);border-color:color-mix(in srgb,var(--down) 45%,transparent)}
 .tchip.warn{color:var(--warn);border-color:color-mix(in srgb,var(--warn) 45%,transparent)}
+.tchip.todo{color:var(--info);border-color:var(--info);font-weight:750}
+.tchip.open{color:var(--warn);border-color:var(--warn);font-weight:750}
+.tsec.st-todo{border-color:var(--info);border-left:6px solid var(--info);background:color-mix(in srgb,var(--info) 8%,var(--panel))}
+.tsec.st-open{border-color:var(--warn);border-left:6px solid var(--warn);background:color-mix(in srgb,var(--warn) 12%,var(--panel))}
+.tsec.st-closed{border-left:6px solid var(--dim)}
+.srow.st-todo,.srow.st-open,.srow.st-closed{border:0;border-left:4px solid;border-radius:8px;padding:8px 10px;margin-top:4px}
+.srow.st-todo{border-left-color:var(--info);background:color-mix(in srgb,var(--info) 10%,transparent)}
+.srow.st-open{border-left-color:var(--warn);background:color-mix(in srgb,var(--warn) 16%,transparent)}
+.srow.st-closed{border-left-color:var(--dim);background:var(--panel2)}
+.srow.st-todo .wtrade{margin-top:8px}
+.sreply.placed{border-color:var(--warn);border-left:6px solid var(--warn);background:color-mix(in srgb,var(--warn) 10%,var(--panel))}
+.tlegend{display:flex;flex-wrap:wrap;gap:6px;margin:0;font-size:.78rem}
+.tlegend .lg{border:1px solid var(--line);border-radius:999px;padding:2px 8px;color:var(--dim)}
+.tlegend .lg.todo{color:var(--info);border-color:var(--info);border-left-width:4px}
+.tlegend .lg.open{color:var(--warn);border-color:var(--warn);border-left-width:4px}
+.tlegend .lg.closed{border-left:4px solid var(--dim)}
 .tbody{display:grid;gap:8px;margin-top:8px}.tbody p{margin:0}
 .tmoney{flex-basis:100%;font-size:.8rem;font-weight:600}.tmoney.up{color:var(--up)}.tmoney.down{color:var(--down)}
 .sbtn.go .slab{color:var(--ink)}
@@ -197,7 +213,7 @@ body.is-simple main{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 <script>
 const NSE_HOLIDAYS = ['2026-10-20', '2026-11-08', '2026-11-10', '2026-11-24', '2026-12-25'];   // fallback; meta.json has the live list
 const holidayList = () => (D.meta?.holidays?.length ? D.meta.holidays : NSE_HOLIDAYS);
-const APP_VERSION = 'v51';   // keep equal to CACHE in sw.js
+const APP_VERSION = 'v52';   // keep equal to CACHE in sw.js
 const TEST_FROM = '2026-11-04';   // the one real test trade (guardian LIVE_FROM)
 const FILES = ['plan', 'global-bias', 'volume-breakouts', 'performance', 'review', 'meta', 'live', 'small-capital', 'markets'];
 const D = {};
@@ -605,11 +621,16 @@ function capitalLine() {
 }
 const nameOf = (ix) => ix === 'MOMENTUM' ? 'momentum buy' : String(ix).startsWith('STOCK_') ? String(ix).slice(6) + ' option' : ix;
 const signed = (v) => (v >= 0 ? '+₹' : '−₹') + Math.abs(Math.round(v || 0)).toLocaleString('en-IN');
-// money one lot needs, against the budget: ✅ fits / ❌ above
-const moneyTag = (v, cap, what = '') => v == null ? '' : `<span class="tmoney ${v <= cap ? 'up' : 'down'}">💰 ${what}${inr(v)} ${v <= cap ? '✅ fits' : '❌ above'} ${inr(cap)}</span>`;
+// money one lot needs, against the budget (words, not ticks: a tick here was confused with "trade done")
+const moneyTag = (v, cap, what = '') => v == null ? '' : `<span class="tmoney ${v <= cap ? 'up' : 'down'}">💰 ${what}${inr(v)} · ${v <= cap ? 'fits' : 'above'} ${inr(cap)}</span>`;
+// one look per trade state, the same in every section:
+//   todo   👉 blue   advised and still to place (your tap)
+//   open   📌 amber  you placed it today (or the paper book holds it) and it is still open: nothing to do, it exits by itself
+//   closed 🏁 grey   finished, with its result
+const STATE_LEGEND = `<p class="tlegend"><span class="lg todo">👉 To place</span><span class="lg open">📌 Placed, still open</span><span class="lg closed">🏁 Closed</span><span class="lg">⏳ Waiting</span><span class="lg">⏸ Not today</span></p>`;
 // one trade card with its button (the same card for every trade type)
 function tradeCard(o, { t, live, done, inWindow, BIG }) {
-  if (done.includes(o.index)) return `<div class="sreply">✅ <b>${esc(o.title || o.index)}</b>: sent to the guardian today. It exits by itself; you get a phone alert.</div>`;
+  if (done.includes(o.index)) return `<div class="sreply placed">📌 <b>${esc(o.title || o.index)}</b>: <b>placed today, still open.</b> Nothing more to do: the guardian exits it by itself and your phone gets an alert.</div>`;
   const real = live && o.test && t.date >= TEST_FROM;
   const x = real ? { ...o, legs: o.test.legs.map((l) => `${l.action} ${l.strike} ${l.type}`).join(' + '), max_reward: o.test.max_reward, max_loss: o.test.max_loss } : o;
   const legs = String(x.legs || '').split('+').map((v) => v.trim()).filter(Boolean);
@@ -631,48 +652,57 @@ function tradeSections(c) {
   const { p, t, so, heldOf, done } = c;
   // in the evening the plan is already for the next session: show its advice, not today's trades
   const sessToday = p.session === t.date, soToday = sessToday ? c.soToday : [], mo = sessToday ? c.mo : null;
+  const still = !sessToday || t.hm <= '11:30';   // can a trade still be placed today (or tomorrow, for the evening plan)?
   const cap = p.capital || 15000;
-  const sec = (id, title, chip, tone, body, open, money = '') => {
+  const sec = (id, title, chip, tone, body, open, money = '', st = '') => {
     const isOpen = secOpen[id] ?? open;
-    return `<details class="sreply tsec" data-sec="${id}" ${isOpen ? 'open' : ''}><summary><b>${title}</b><span class="tchip ${tone}">${chip}</span>${money}</summary><div class="tbody">${body}</div></details>`;
+    return `<details class="sreply tsec${st ? ' st-' + st : ''}" data-sec="${id}" ${isOpen ? 'open' : ''}><summary><b>${title}</b><span class="tchip ${tone}">${chip}</span>${money}</summary><div class="tbody">${body}</div></details>`;
   };
   const dd = (d) => new Date(d + 'T12:00:00+05:30').toDateString().slice(0, 10);
-  let h = `<p class="fine">💰 Your budget: <b>${inr(cap)}</b>. Each section shows the money 1 lot needs: ✅ fits your budget, ❌ does not. Paper trades are tracked either way.</p>`;
+  let h = STATE_LEGEND + `<p class="fine">💰 Your budget: <b>${inr(cap)}</b>. Each section shows the money 1 lot needs and whether it fits. Paper trades are tracked either way.</p>`;
   // 1, 2: the index option trades (condor or spread), from the plan
   ['NIFTY', 'BANKNIFTY'].forEach((ix, i) => {
     const o = (p.options || []).find((x) => x.index === ix);
     const held = o && heldOf(o), pv = (D.live?.paper_open || []).find((x) => x.index === ix), pt = (D.live?.paper_today || []).find((x) => x.index === ix);
     const title = `${i + 1} · ${ix === 'NIFTY' ? 'NIFTY' : 'Bank Nifty'} ${o ? esc(o.strategy) : 'options'}`;
-    let chip, tone = '', body, open = false;
+    let chip, tone = '', body, open = false, st = '';
     if (!o) { chip = 'no plan yet'; body = '<p class="fine">The plan has not been published for today yet.</p>'; }
     else if (held) {
-      chip = '🟡 holding (paper)'; tone = 'warn';
-      body = `<p>The paper book holds the ${esc(held.strategy)} from ${esc(dd(held.entry_session))} (expiry ${esc(dd(held.expiry))}). One trade per index at a time, so no new one today. It closes by itself.</p>`
+      chip = `📌 open since ${esc(dd(held.entry_session))}${pv ? ` · ${signed(pv.value_now)}` : ''}`; tone = 'open'; st = 'open';
+      body = `<p><b>Still open (paper book).</b> The ${esc(held.strategy)} from ${esc(dd(held.entry_session))} (expiry ${esc(dd(held.expiry))}). One trade per index at a time, so no new one today. It closes by itself.</p>`
         + (pv ? `<p><b>Worth ${signed(pv.value_now)} now</b> <span class="fine">(live ${esc(pv.at)})</span></p>` : '');
-    } else if (o.decision === 'TRADE') {
-      chip = done.includes(ix) ? '✅ sent today' : '✅ trade advised'; tone = 'up'; open = !done.includes(ix);
+    } else if (o.decision === 'TRADE' && done.includes(ix)) {
+      chip = `📌 placed · open${pt && pt.value_now != null ? ` · ${signed(pt.value_now)}` : ''}`; tone = 'open'; st = 'open';
       body = tradeCard(o, c) + (pt && pt.credit_rs != null ? `<p class="fine">Paper: entered ${esc(pt.entered_at)}, worth ${signed(pt.value_now)} now.</p>` : '');
+    } else if (o.decision === 'TRADE' && still) {
+      chip = sessToday && t.hm >= '10:10' ? '👉 to place now (till 11:30)' : '👉 to place 10:10–11:30'; tone = 'todo'; st = 'todo'; open = true;
+      body = tradeCard(o, c) + (pt && pt.credit_rs != null ? `<p class="fine">Paper: entered ${esc(pt.entered_at)}, worth ${signed(pt.value_now)} now.</p>` : '');
+    } else if (o.decision === 'TRADE') {
+      chip = '⏸ not placed (window over)';
+      body = `<p>Advised today, but not placed by 11:30.</p>` + (pt && pt.credit_rs != null ? `<p class="fine">The paper book still tracks it: entered ${esc(pt.entered_at)}, worth ${signed(pt.value_now)} now.</p>` : '');
     } else {
       chip = '⏸ no trade today';
       body = `<p><b>Not advised today.</b> ${esc(o.decision_reason || '')}</p><p class="fine">It would have been: ${esc(o.legs)} (expiry ${esc(o.expiry)}).</p>`;
     }
     if (o && o.money_needed != null) body += `<p class="fine">💰 Money needed: about <b>${inr(o.money_needed)}</b> for 1 lot (${esc(o.money_basis || '')}). ${o.money_needed <= cap ? 'Fits' : 'Above'} your ${inr(cap)} budget.${o.max_loss ? ` Worst loss: ${inr(o.max_loss)} per lot.` : ''}</p>`;
-    h += sec(ix, title, chip, tone, body, open, o ? moneyTag(o.money_needed, cap, 'margin ≈ ') : '');
+    h += sec(ix, title, chip, tone, body, open, o ? moneyTag(o.money_needed, cap, 'margin ≈ ') : '', st);
   });
   // 3: NIFTY first-hour momentum buy
   {
-    const m = D.live?.momentum, r = mo && mo.date === t.date ? mo : null;
-    let chip, tone = '', body, open = false;
+    const m = D.live?.momentum, r = mo && mo.date === t.date ? mo : null, sent = done.includes('MOMENTUM');
+    let chip, tone = '', body, open = false, st = '';
     if (!r) {
       chip = !sessToday || t.hm < '10:15' ? '⏳ decided at 10:15' : '⏳ waiting for the 10:15 check';
       body = '<p>If NIFTY moves 0.5% or more between 09:15 and 10:15, the app buys 1 lot of the at-the-money call (up) or put (down) on paper.</p>';
     } else if (r.status === 'OPEN') {
-      const card = c.trades.find((x) => x.index === 'MOMENTUM');
-      chip = `🟢 bought ${r.strike} ${esc(r.kind)}`; tone = 'up'; open = !done.includes('MOMENTUM');
-      body = (card ? tradeCard(card, c) : '') + `<p><b>Worth ${signed(r.value_now)} now</b> (${r.pct_now > 0 ? '+' : ''}${r.pct_now ?? 0}%, live ${esc(r.at || '')}).</p>`;
+      const card = c.trades.find((x) => x.index === 'MOMENTUM'), worth = `<p><b>Worth ${signed(r.value_now)} now</b> (${r.pct_now > 0 ? '+' : ''}${r.pct_now ?? 0}%, live ${esc(r.at || '')}).</p>`;
+      if (sent) { chip = `📌 placed · open · ${signed(r.value_now)}`; tone = 'open'; st = 'open'; }
+      else if (still) { chip = `👉 to place: ${r.strike} ${esc(r.kind)} (till 11:30)`; tone = 'todo'; st = 'todo'; open = true; }
+      else chip = `⏸ not placed · paper ${signed(r.value_now)}`;
+      body = (card && (sent || still) ? tradeCard(card, c) : '') + worth;
     } else if (r.status === 'CLOSED') {
-      chip = `${r.pnl > 0 ? '✅' : '❌'} closed ${signed(r.pnl)}`; tone = r.pnl > 0 ? 'up' : 'down';
-      body = `<p>${r.strike} ${esc(r.kind)} ₹${r.entry_px} → ₹${r.exit_px} (${esc(r.entry_at)}–${esc(r.exit_at)}), ${esc(r.reason)}: <b>${signed(r.pnl)}</b></p>`;
+      chip = `🏁 closed ${signed(r.pnl)}`; tone = r.pnl > 0 ? 'up' : 'down'; st = 'closed';
+      body = `<p>${sent ? '<b>You placed it.</b> ' : ''}${r.strike} ${esc(r.kind)} ₹${r.entry_px} → ₹${r.exit_px} (${esc(r.entry_at)}–${esc(r.exit_at)}), ${esc(r.reason)}: <b>${signed(r.pnl)}</b></p>`;
     } else {
       chip = '⏸ no trade today';
       body = `<p><b>Not advised today:</b> ${esc(r.note || r.status)}.</p>`;
@@ -680,37 +710,41 @@ function tradeSections(c) {
     if (m) body += `<p class="fine">So far: ${signed(m.total)} (${m.trades} trade${m.trades === 1 ? '' : 's'}, ${m.wins} won). Paper only.</p>`;
     const mm = r && r.entry_px && r.lot ? r.entry_px * r.lot : p.momentum_money;
     body += `<p class="fine">💰 Money needed: ${r && r.entry_px ? `${inr(mm)} (bought at ₹${r.entry_px} × ${r.lot})` : `about ${inr(mm)} for 1 lot of the at-the-money option (estimate)`}. The app never buys above ${inr(15000)}; ${mm <= cap ? 'fits' : 'above'} your ${inr(cap)} budget. The most you can lose is what you pay.</p>`;
-    h += sec('MOMENTUM', '3 · NIFTY momentum buy', chip, tone, body, open, moneyTag(mm, cap, r && r.entry_px ? '' : '≈ '));
+    h += sec('MOMENTUM', '3 · NIFTY momentum buy', chip, tone, body, open, moneyTag(mm, cap, r && r.entry_px ? '' : '≈ '), st);
   }
-  // 4: stock calls and puts on the plan's stock picks
+  // 4: stock calls and puts on the plan's stock picks (a new same-day trade each day, even when a stock repeats)
   {
-    const picks = p.stock_options || [];
+    const picks = p.stock_options || [], n = { todo: 0, open: 0, closed: 0 };
     const rows = picks.map((x) => {
-      const r = soToday.find((y) => y.symbol === x.symbol), cost = r && r.premium != null ? r.premium : x.premium;
-      const what = `${esc(x.symbol)} ${x.kind === 'CE' ? 'call' : 'put'}${cost != null ? ` <span class="${cost <= cap ? 'up' : 'down'}">(1 lot ${r && r.premium != null ? '' : '≈ '}${inr(cost)} ${cost <= cap ? '✅' : '❌'})</span>` : ''}`;
+      const r = soToday.find((y) => y.symbol === x.symbol), cost = r && r.premium != null ? r.premium : x.premium, sent = done.includes('STOCK_' + x.symbol);
+      const what = `${esc(x.symbol)} ${x.kind === 'CE' ? 'call' : 'put'}${cost != null ? ` <span class="${cost <= cap ? 'up' : 'down'}">(1 lot ${r && r.premium != null ? '' : '≈ '}${inr(cost)})</span>` : ''}`;
       if (!r) return `<div class="srow">⏳ <b>${what}</b>: bought by the app if ${esc(x.symbol)} ${x.kind === 'CE' ? 'rises above' : 'falls below'} ₹${x.trigger} between 09:30 and 10:30.</div>`;
       if (r.status === 'OPEN') {
         const card = c.trades.find((y) => y.index === 'STOCK_' + x.symbol);
-        return (card ? tradeCard(card, c) : '')
-          + `<div class="srow">🟢 <b>${what}</b>: bought ${r.strike} ${esc(r.kind)} at ₹${r.entry_px} (${esc(r.entry_at)}) · <b>worth ${signed(r.value_now)} now</b> (${r.pct_now > 0 ? '+' : ''}${r.pct_now}%, live ${esc(r.at)})</div>`;
+        const line = `bought ${r.strike} ${esc(r.kind)} at ₹${r.entry_px} (${esc(r.entry_at)}) · <b>worth ${signed(r.value_now)} now</b> (${r.pct_now > 0 ? '+' : ''}${r.pct_now}%, live ${esc(r.at)})`;
+        if (sent) { n.open++; return `<div class="srow st-open">📌 <b>${what}</b> · <b>placed, still open</b>: ${line}</div>`; }
+        if (still) { n.todo++; return `<div class="srow st-todo">👉 <b>${what}</b> · <b>to place (till 11:30)</b>: ${line}${card ? tradeCard(card, c) : ''}</div>`; }
+        return `<div class="srow">⏸ <b>${what}</b> · not placed; paper only: ${line}</div>`;
       }
-      if (r.status === 'CLOSED') return `<div class="srow">${r.pnl > 0 ? '✅' : '❌'} <b>${what}</b>: ${r.strike} ${esc(r.kind)} ₹${r.entry_px} → ₹${r.exit_px} (${esc(r.exit_at)}), ${esc(r.reason)}: <b>${signed(r.pnl)}</b></div>`;
+      if (r.status === 'CLOSED') { n.closed++; return `<div class="srow st-closed">🏁 <b>${what}</b>${sent ? ' · <b>you placed it</b>' : ''}: ${r.strike} ${esc(r.kind)} ₹${r.entry_px} → ₹${r.exit_px} (${esc(r.exit_at)}), ${esc(r.reason)}: <b class="${r.pnl > 0 ? 'up' : 'down'}">${signed(r.pnl)}</b></div>`; }
       return `<div class="srow">⏸ <b>${what}</b>: ${esc(r.note || r.status)}</div>`;
     }).join('');
     const open_ = soToday.filter((r) => r.status === 'OPEN'), closed = soToday.filter((r) => r.status === 'CLOSED');
     const today = open_.reduce((a, r) => a + (r.value_now || 0), 0) + closed.reduce((a, r) => a + r.pnl, 0);
+    const parts = [n.todo && `👉 ${n.todo} to place`, n.open && `📌 ${n.open} placed`, n.closed && `🏁 ${n.closed} closed`].filter(Boolean);
     const chip = !picks.length ? '⏸ no stock pick today' : open_.length || closed.length
-      ? `${open_.length ? `🟢 ${open_.length} open` : ''}${open_.length && closed.length ? ' · ' : ''}${closed.length ? `${closed.length} closed` : ''} · today ${signed(today)}`
+      ? `${parts.length ? parts.join(' · ') : `⏸ ${open_.length} open, not placed`} · today ${signed(today)}`
       : !sessToday || t.hm < '10:30' ? `⏳ ${picks.length} pick${picks.length > 1 ? 's' : ''}, waiting` : '⏸ none bought today';
+    const st = n.todo ? 'todo' : n.open ? 'open' : n.closed ? 'closed' : '';
     const costs = picks.map((x) => { const r = soToday.find((y) => y.symbol === x.symbol); return r && r.premium != null ? r.premium : x.premium; }).filter((v) => v != null);
     const fit = costs.filter((v) => v <= cap).length;
     const money = costs.length ? `<span class="tmoney ${fit ? 'up' : 'down'}">💰 ${inr(Math.min(...costs))}–${inr(Math.max(...costs))} a lot · ${fit} of ${costs.length} fit ${inr(cap)}</span>` : '';
     const body = (rows || '<p>No stock passed the rules today.</p>')
-      + (costs.length ? `<p class="fine">💰 Money needed: 1 lot of each option, ${inr(Math.min(...costs))} to ${inr(Math.max(...costs))} (premium paid; the most you can lose). The app never buys one above ${inr(15000)}. With your ${inr(cap)} budget you could hold ${(() => { let n = 0, left = cap; costs.slice().sort((x, y) => x - y).forEach((v) => { if (v <= left) { n++; left -= v; } }); return n ? `at most ${n} at the same time` : 'none of them'; })()}.</p>` : '')
+      + '<p class="fine">Each one is a same-day trade: bought 09:30–10:30, closed by 15:15 at the latest. A stock that still passes the rules is picked again the next day as a new trade.</p>'
+      + (costs.length ? `<p class="fine">💰 Money needed: 1 lot of each option, ${inr(Math.min(...costs))} to ${inr(Math.max(...costs))} (premium paid; the most you can lose). The app never buys one above ${inr(15000)}. With your ${inr(cap)} budget you could hold ${(() => { let k = 0, left = cap; costs.slice().sort((a, b) => a - b).forEach((v) => { if (v <= left) { k++; left -= v; } }); return k ? `at most ${k} at the same time` : 'none of them'; })()}.</p>` : '')
       + (p.put_gate_open === false ? '<p class="fine">Puts appear only when NIFTY is in a downtrend (below its 50-day average and down over 20 days). Not today.</p>' : '')
       + (so ? `<p class="fine">So far: ${signed(so.total)} (${so.trades} trade${so.trades === 1 ? '' : 's'}, ${so.wins} won). Paper only. ⚠️ ${esc(so.research || '')}</p>` : '');
-    h += sec('STOCKS', '4 · Stock calls &amp; puts', chip, open_.length || closed.length ? (today >= 0 ? 'up' : 'down') : '', body,
-             open_.some((r) => !done.includes('STOCK_' + r.symbol)), money);
+    h += sec('STOCKS', '4 · Stock calls &amp; puts', chip, st === 'todo' ? 'todo' : st === 'open' ? 'open' : closed.length ? (today >= 0 ? 'up' : 'down') : '', body, n.todo > 0, money, st);
   }
   return h;
 }
