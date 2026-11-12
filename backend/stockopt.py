@@ -1,9 +1,11 @@
-"""Paper-only fourth trade: stock calls and puts on the app's stock picks.
+"""Paper-only fourth trade: stock calls and puts on the app's stock picks, in three budgets.
 
-Rule: each stock the plan recommends gets 1 lot of its at-the-money option at the real NSE price: a CALL for a
-BUY pick (breakout), a PUT for a SELL pick (breakdown, only while NIFTY is in a downtrend). It is bought when the
-share crosses its entry level between 09:30 and 10:30, using the monthly expiry at least 7 days away, and only
-if 1 lot costs at most Rs 15,000. Exits are the same as the momentum buy and every bought option: stop -30%;
+Rule: each stock the plan recommends gets a CALL for a BUY pick (breakout) or a PUT for a SELL pick (breakdown,
+only while NIFTY is in a downtrend), bought when the share crosses its entry level between 09:30 and 10:30, using
+the monthly expiry at least 7 days away. One paper lot is bought in EACH budget: the strike nearest the money
+whose 1 lot costs up to Rs 5,000, Rs 5,000-10,000 and Rs 10,000-15,000 (cheaper = further out of the money,
+dearer = in the money), at the real NSE mid price with a two-sided quote. Each budget keeps its own record, so
+you can see which one works before going live. Exits are the same as the momentum buy and every bought option: stop -30%;
 once up 20% the stop moves to cost; once up 40% it trails 25 points below the peak; book at +60%; otherwise
 close at 15:15 the same day. The guardian places it only on your tap (real money only with LIVE_STOCKOPT=1).
 
@@ -12,6 +14,13 @@ buying the ATM option at the next open and selling at that day's close LOST on a
 breakout calls (premium up to Rs 15,000) 427 trades, 33% won, avg -Rs 616; breakdown puts 444 trades, 38% won,
 avg -Rs 463. The shares themselves moved about 0% after the signals, and option buyers pay time decay and wide
 spreads. It is tracked on paper, on real prices, so its live record can be judged, not because it has an edge.
+
+Budget research (12 Nov 2026, same data, same-day trades, the app's 82 stocks, calls and puts, the strike nearest
+the money that fits each budget, strike chosen from the share's open): every budget LOST on average.
+Up to Rs 5k: 348 trades, 30% won, -Rs 232 a trade; Rs 5-10k: 954 trades, 35% won, -Rs 312; Rs 10-15k: 1,163 trades,
+36% won, -Rs 412. Booking early at +Rs 1,000 or +Rs 2,000 (stop -30%) was worse: small wins, larger losses.
+Also tested: stocks that won in year 1 (lost in year 2), results-day gaps (about break-even, not reliable),
+straddles before results (-Rs 3,588 a trade), big news-like gaps (about break-even). None is used as a rule.
 """
 from datetime import date, datetime
 
@@ -20,16 +29,52 @@ from momentum import BOOK, stop_level
 
 ENTRY_FROM, ENTRY_TO, EXIT_AT = "09:30", "10:30", "15:15"
 MAX_PREMIUM = 15000
+# (code, low, high, label): one paper lot per budget, the strike nearest the money whose lot costs low < cost <= high
+TIERS = [("5K", 0, 5000, "up to Rs 5,000"), ("10K", 5000, 10000, "Rs 5,000-10,000"), ("15K", 10000, 15000, "Rs 10,000-15,000")]
+MAX_SPREAD = 0.15     # a strike counts only with a two-sided quote no wider than 15% of its mid price
 MIN_DAYS = 7          # expiry at least this many days away (as in the research)
 COST = 100            # brokerage and charges for 1 lot, in and out
 SLIP = 0.015          # stock option spreads are wide: 1.5% of the premium each way, as in the research
 PATH = "stockopt.json"
-RESEARCH = ("2-year test on NSE's real prices (218 stocks): bought at the open, sold the same day, these LOST on average "
-            "(calls -Rs 616 a trade, 33% won; puts -Rs 463, 38% won). Paper only, to see how they do from here.")
+RESEARCH = ("2-year test on NSE's real prices, same-day trades: every budget LOST on average (up to Rs 5k: -Rs 232 a trade, "
+            "30% won; Rs 5-10k: -Rs 312, 35% won; Rs 10-15k: -Rs 412, 36% won). Booking early at +Rs 1-2k was worse, and "
+            "past winning stocks, results days and news gaps did not hold up either. Paper only, to see how each budget does.")
 
 
-def key(p):
-    return f"STOCK_{p['symbol']}"
+def key(p, tier=None):
+    return f"STOCK_{p['symbol']}" + (f"_{tier}" if tier else "")
+
+
+def tier_of(premium):
+    """Budget code for a lot cost (records from before the budgets had no tier)."""
+    return next((c for c, lo, hi, _ in TIERS if lo < (premium or 0) <= hi), None)
+
+
+def pick_tier(chain, kind, lot, lo, hi, quoted=True):
+    """The strike nearest the money whose 1 lot costs lo < cost <= hi: {"strike", "px", "premium"} or None.
+    quoted=True needs a two-sided quote no wider than MAX_SPREAD (live entries); False also takes the last
+    traded price (estimates before the open, when there are no quotes)."""
+    if not chain or not lot:
+        return None
+    k, atm, best = kind.lower(), chain["atm"], None
+    for r in chain.get("strikes") or []:
+        b, a = r.get(f"{k}_bid"), r.get(f"{k}_ask")
+        if b and a and a >= b > 0:
+            px = (b + a) / 2
+            if quoted and (a - b) / px > MAX_SPREAD:
+                continue
+        elif quoted:
+            continue
+        else:
+            px = r.get(f"{k}_ltp")
+            if not px:
+                continue
+        px = round(float(px), 2)
+        cost = px * lot
+        if lo < cost <= hi:
+            cand = (abs(r["strike"] - atm), cost, r["strike"], px)
+            best = cand if best is None or cand < best else best
+    return {"strike": best[2], "px": best[3], "premium": round(best[1])} if best else None
 
 
 def parse_chain(rec, expiry):
@@ -103,50 +148,67 @@ def step(now, plan, quotes, chain_for, lots):
         for r in recs.values():
             if d < day and r.get("status") == "OPEN":
                 _close(r, r["marks"][-1][1], r["marks"][-1][0], "closed at its last price that day (runs were missed)")
+    chains = {}
+
+    def chain(sym, exp=None):
+        if (sym, exp) not in chains:
+            ch = chains[(sym, exp)] = chain_for(sym, exp) if exp else chain_for(sym)
+            if ch and not exp:
+                chains.setdefault((sym, ch["expiry"]), ch)
+        return chains[(sym, exp)]
+
     if plan.get("session") == day:
         recs = days.setdefault(day, {})
         for p in plan.get("stock_options") or []:
-            k, r = key(p), recs.get(key(p))
+            if key(p) in recs:      # bought before the budgets existed: its exits run below, nothing new
+                continue
+            todo = [t for t in TIERS if key(p, t[0]) not in recs]
+            if not todo:
+                continue
             base = {"date": day, "symbol": p["symbol"], "kind": p["kind"], "trigger": p["trigger"]}
-            q = quotes.get(p["symbol"] + ".NS") or {}
-            if r is None:
-                ok, why = triggered(p, q, hm)
-                if why:
-                    recs[k] = {**base, "status": "NO ENTRY", "note": why}
-                elif ok and hm <= ENTRY_TO:
-                    if k not in tried.setdefault(day, []):
-                        tried[day].append(k)
-                    ch = chain_for(p["symbol"])
-                    lot = lots.get(p["symbol"])
-                    px = price(ch, ch["atm"], p["kind"]) if ch else None
-                    if px and lot and px * lot > MAX_PREMIUM:
-                        recs[k] = {**base, "status": "SKIPPED", "note": f"1 lot costs Rs {px * lot:,.0f}, above Rs {MAX_PREMIUM:,}",
-                                   "strike": ch["atm"], "lot": lot, "premium": round(px * lot)}
-                    elif px and lot:
-                        recs[k] = {**base, "status": "OPEN", "strike": ch["atm"], "expiry": ch["expiry"], "lot": lot,
-                                   "entry_px": px, "entry_at": hm, "spot": round(ch["spot"], 2), "premium": round(px * lot),
-                                   "peak": 0.0, "marks": [[hm, px]]}
-                if k not in recs and hm > ENTRY_TO:
-                    recs[k] = {**base, "status": "NO ENTRY",
-                               "note": f"no live option price or lot size between {ENTRY_FROM} and {ENTRY_TO}"
-                               if k in tried.get(day, []) else f"did not cross {p['trigger']} between {ENTRY_FROM} and {ENTRY_TO}"}
-            elif r.get("status") == "OPEN":
-                ch = chain_for(p["symbol"], r["expiry"])
-                px = price(ch, r["strike"], r["kind"]) if ch else None
-                if px and r["marks"][-1][0] != hm:
-                    r["marks"].append([hm, px])
-                    pct = (px / r["entry_px"] - 1) * 100
-                    r["peak"] = round(max(r["peak"], pct), 1)
-                    stop = stop_level(r["peak"])
-                    if pct <= stop:
-                        _close(r, px, hm, "STOP -30%" if stop < 0 else "back to cost after being up 20%" if stop == 0
-                               else f"TRAIL: gave back from +{r['peak']:.0f}%")
-                    elif pct >= BOOK:
-                        _close(r, px, hm, f"BOOKED at +{pct:.0f}%")
-                    elif hm >= EXIT_AT:
-                        _close(r, px, hm, "15:15 time exit")
-                elif hm > EXIT_AT and r.get("marks"):   # no price at the close: use the last one seen
-                    _close(r, r["marks"][-1][1], r["marks"][-1][0], "15:15 time exit (last price seen)")
+            ok, why = triggered(p, quotes.get(p["symbol"] + ".NS") or {}, hm)
+            if why:
+                for c, *_ in todo:
+                    recs[key(p, c)] = {**base, "tier": c, "status": "NO ENTRY", "note": why}
+                continue
+            if ok and hm <= ENTRY_TO:
+                if key(p) not in tried.setdefault(day, []):
+                    tried[day].append(key(p))
+                ch, lot = chain(p["symbol"]), lots.get(p["symbol"])
+                if ch and lot:
+                    for c, lo, hi, label in todo:
+                        x = pick_tier(ch, p["kind"], lot, lo, hi)
+                        recs[key(p, c)] = ({**base, "tier": c, "status": "OPEN", "strike": x["strike"], "expiry": ch["expiry"],
+                                            "lot": lot, "entry_px": x["px"], "entry_at": hm, "spot": round(ch["spot"], 2),
+                                            "premium": x["premium"], "atm": ch["atm"], "peak": 0.0, "marks": [[hm, x["px"]]]}
+                                           if x else
+                                           {**base, "tier": c, "status": "SKIPPED", "lot": lot,
+                                            "note": f"no {p['kind']} strike with a live two-sided price costs {label} for 1 lot ({lot} qty)"})
+            if hm > ENTRY_TO:
+                for c, *_ in todo:
+                    if key(p, c) not in recs:
+                        recs[key(p, c)] = {**base, "tier": c, "status": "NO ENTRY",
+                                           "note": f"no live option price or lot size between {ENTRY_FROM} and {ENTRY_TO}"
+                                           if key(p) in tried.get(day, []) else f"did not cross {p['trigger']} between {ENTRY_FROM} and {ENTRY_TO}"}
+        for r in recs.values():
+            if r.get("status") != "OPEN":
+                continue
+            ch = chain(r["symbol"], r["expiry"])
+            px = price(ch, r["strike"], r["kind"]) if ch else None
+            if px and r["marks"][-1][0] != hm:
+                r["marks"].append([hm, px])
+                pct = (px / r["entry_px"] - 1) * 100
+                r["peak"] = round(max(r["peak"], pct), 1)
+                stop = stop_level(r["peak"])
+                if pct <= stop:
+                    _close(r, px, hm, "STOP -30%" if stop < 0 else "back to cost after being up 20%" if stop == 0
+                           else f"TRAIL: gave back from +{r['peak']:.0f}%")
+                elif pct >= BOOK:
+                    _close(r, px, hm, f"BOOKED at +{pct:.0f}%")
+                elif hm >= EXIT_AT:
+                    _close(r, px, hm, "15:15 time exit")
+            elif hm > EXIT_AT and r.get("marks") and r["marks"][-1][0] != hm:   # no price at the close: the last one seen
+                _close(r, r["marks"][-1][1], r["marks"][-1][0], "15:15 time exit (last price seen)")
     for d in sorted(days)[:-300]:
         days.pop(d)
     for d in [d for d in tried if d < day]:
@@ -158,7 +220,7 @@ def step(now, plan, quotes, chain_for, lots):
 def open_keys(now):
     """(symbol, expiry) of today's open trades, so the live run fetches their prices."""
     recs = ((store._read(store.state_path(PATH), {}) or {}).get("days") or {}).get(now.date().isoformat()) or {}
-    return [(r["symbol"], r["expiry"]) for r in recs.values() if r.get("status") == "OPEN"]
+    return list(dict.fromkeys((r["symbol"], r["expiry"]) for r in recs.values() if r.get("status") == "OPEN"))
 
 
 def summary(now=None, day=None):
@@ -166,10 +228,12 @@ def summary(now=None, day=None):
     book = store._read(store.state_path(PATH), {}) or {}
     days = book.get("days") or {}
     day = day or (now.date().isoformat() if now else max(days, default=None))
-    closed = [r for d in sorted(days) for r in days[d].values() if r.get("status") == "CLOSED"]
+    closed = [{**r, "tier": r.get("tier") or tier_of(r.get("premium"))}
+              for d in sorted(days) for r in days[d].values() if r.get("status") == "CLOSED"]
     today = []
     for r in (days.get(day) or {}).values():
         t = dict(r)
+        t["tier"] = t.get("tier") or tier_of(t.get("premium"))
         if t.get("status") == "OPEN":
             last = t["marks"][-1]
             t.update(value_now=round((last[1] - t["entry_px"]) * t["lot"]), pct_now=round((last[1] / t["entry_px"] - 1) * 100, 1),
@@ -178,17 +242,21 @@ def summary(now=None, day=None):
         today.append(t)
     return {"date": day, "today": today, "trades": len(closed), "wins": sum(r["pnl"] > 0 for r in closed),
             "total": sum(r["pnl"] for r in closed),
-            "recent": [{k: r.get(k) for k in ("date", "symbol", "kind", "strike", "entry_px", "exit_px", "pnl", "pct", "reason")}
+            "tiers": {c: {"label": label, "trades": len(x), "wins": sum(r["pnl"] > 0 for r in x), "total": sum(r["pnl"] for r in x)}
+                      for c, _, _, label in TIERS for x in [[r for r in closed if r["tier"] == c]]},
+            "recent": [{k: r.get(k) for k in ("date", "symbol", "kind", "tier", "strike", "entry_px", "exit_px", "pnl", "pct", "reason")}
                        for r in closed[::-1][:8]],
-            "rule": (f"Paper only. Each stock pick gets 1 lot of its ATM option (call for a BUY pick, put for a SELL pick), bought when "
-                     f"the share crosses its entry between {ENTRY_FROM} and {ENTRY_TO}, premium up to Rs {MAX_PREMIUM:,}. Stop -30%, cost "
-                     f"after +20%, trail from +40%, book +60%, else close {EXIT_AT}. Costs Rs {COST} + {SLIP * 100:.1f}% each way."),
+            "rule": (f"Paper only. Each stock pick (call for a BUY pick, put for a SELL pick) is bought when the share crosses its entry "
+                     f"between {ENTRY_FROM} and {ENTRY_TO}: 1 lot in each budget, the strike nearest the money costing up to Rs 5,000, "
+                     f"Rs 5,000-10,000 and Rs 10,000-15,000. Stop -30%, cost after +20%, trail from +40%, book +60%, else close "
+                     f"{EXIT_AT}. Costs Rs {COST} + {SLIP * 100:.1f}% each way."),
             "research": RESEARCH}
 
 
 def estimate_premiums(picks, today=None):
-    """Money for 1 lot of each pick's ATM option, from NSE's chain (last traded prices before the open).
-    {symbol: {"lot", "strike", "premium"}}; empty when NSE does not answer. Cached 30 minutes."""
+    """Money for 1 lot of each pick's ATM option and the strike each budget would buy, from NSE's chain (last traded
+    prices before the open). {symbol: {"lot", "strike", "premium", "tiers": {code: {"strike", "premium"} | None}}};
+    empty when NSE does not answer. Cached 30 minutes."""
     import live   # here, not at the top: live imports this module
     import nse_prices
     cached = store.cache_get("stockopt:est")
@@ -202,6 +270,8 @@ def estimate_premiums(picks, today=None):
         ch = chain_for(p["symbol"]) if lot else None
         px = price(ch, ch["atm"], p["kind"]) if ch else None
         if px:
-            est[p["symbol"]] = {"lot": lot, "strike": ch["atm"], "premium": round(px * lot)}
+            tiers = {c: pick_tier(ch, p["kind"], lot, lo, hi, quoted=False) for c, lo, hi, _ in TIERS}
+            est[p["symbol"]] = {"lot": lot, "strike": ch["atm"], "premium": round(px * lot),
+                                "tiers": {c: x and {"strike": x["strike"], "premium": x["premium"]} for c, x in tiers.items()}}
     store.cache_set("stockopt:est", {"syms": want, "est": est}, 1800)
     return est

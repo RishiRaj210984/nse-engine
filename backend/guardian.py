@@ -60,6 +60,7 @@ LIVE_DEFAULTS = {"CAPITAL": "15000", "LIVE_INDEX": "NIFTY", "LIVE_FROM": "2026-1
                  "LIVE_STOCKOPT": "0"}
 MOMENTUM_MAX_PREMIUM = 15000   # same limit as the engine's paper tracker (backend/momentum.py)
 STOCKOPT_MAX_PREMIUM = 15000   # same limit as backend/stockopt.py
+STOCKOPT_TIERS = {"5K": "up to Rs 5,000", "10K": "Rs 5,000-10,000", "15K": "Rs 10,000-15,000"}   # as backend/stockopt.py
 
 
 def _expiry_date(exp):
@@ -619,27 +620,38 @@ def breeze_stock_code(breeze, symbol):
         return symbol
 
 
-def enter_stockopt(breeze, env, state, symbol, live, now, demo=False, signal=None):
-    """The 4th trade: buy 1 lot of the stock's ATM call (BUY pick) or put (SELL pick) that the engine's paper
-    tracker bought when the share crossed its entry (09:30-10:30). The guardian then exits it like any bought
-    option (stop -30%, cost after +20%, trail from +40%, book +60%, close 15:15). Returns (ok, message)."""
+def split_stock(name):
+    """'SBIN_5K' -> ('SBIN', '5K'); 'SBIN' -> ('SBIN', None) (from before the budgets)."""
+    sym, _, tier = name.upper().rpartition("_")
+    return (sym, tier) if sym and tier in STOCKOPT_TIERS else (name.upper(), None)
+
+
+def enter_stockopt(breeze, env, state, symbol, live, now, demo=False, signal=None, tier=None):
+    """The 4th trade: buy 1 lot of the call (BUY pick) or put (SELL pick) that the engine's paper tracker bought
+    in the chosen budget (tier 5K, 10K or 15K) when the share crossed its entry (09:30-10:30). The guardian then
+    exits it like any bought option (stop -30%, cost after +20%, trail from +40%, book +60%, close 15:15).
+    One real buy per stock a day: every budget uses the same expiry. Returns (ok, message)."""
     day, hm = now.date().isoformat(), now.strftime("%H:%M")
     so = signal if signal is not None else fetch_stockopt()
-    t = next((r for r in so.get("today") or [] if r.get("symbol") == symbol and so.get("date") == day), None)
+    mine = [r for r in so.get("today") or [] if r.get("symbol") == symbol and so.get("date") == day
+            and (tier is None or r.get("tier") == tier)]
+    t = next((r for r in mine if r.get("status") == "OPEN"), mine[0] if mine else None)
+    what = f"{symbol}" + (f" ({STOCKOPT_TIERS[tier]} budget)" if tier else "")
     if not t or t.get("status") not in ("OPEN", "CLOSED") or not t.get("strike"):
         why = (t.get("note") or t.get("status", "").lower()) if t else "not one of today's stock picks, or not triggered yet"
         if not demo:
-            return False, f"no {symbol} option buy today ({why}). Nothing placed."
+            return False, f"no {what} option buy today ({why}). Nothing placed."
     if not demo and not ("09:30" <= hm <= "11:30"):
         return False, f"stock option entry window is 09:30-11:30 IST (now {hm})"
     if not t or not t.get("strike"):
-        return False, f"demo: no {symbol} option bought by the paper tracker today, so there is nothing to show"
+        return False, f"demo: no {what} option bought by the paper tracker today, so there is nothing to show"
     if t.get("status") == "CLOSED" and not demo:
-        return False, f"the paper tracker already closed {symbol} today ({t.get('reason')}). Not placed."
+        return False, f"the paper tracker already closed {what} today ({t.get('reason')}). Not placed."
     strike, kind, lot = float(t["strike"]), t["kind"], int(t["lot"])
     expiry_iso, right = iso_expiry(t["expiry"]), "call" if t["kind"] == "CE" else "put"
     code = breeze_stock_code(breeze, symbol)
-    line = f"BUY {symbol} {strike:g} {kind} exp {t['expiry']} x{lot} (ICICI code {code})"
+    line = (f"BUY {symbol} {strike:g} {kind} exp {t['expiry']} x{lot} (ICICI code {code})"
+            + (f", {STOCKOPT_TIERS[t['tier']]} budget" if t.get("tier") in STOCKOPT_TIERS else ""))
     if not live:
         q = _opt_quote(breeze, code, right, strike, expiry_iso)
         ask = float(q.get("best_offer_price") or q.get("ltp") or 0)
@@ -647,7 +659,8 @@ def enter_stockopt(breeze, env, state, symbol, live, now, demo=False, signal=Non
                       + f". The paper tracker bought it at {t['entry_px']} ({t['entry_at']}) and follows it on real NSE prices.")
     done = state.setdefault("stockopt_done", {})
     if symbol in done.get(day, []):
-        return False, f"today's {symbol} option buy was already placed. One a day per stock."
+        return False, (f"today's {symbol} option buy was already placed. One a day per stock: every budget uses the same "
+                       "expiry, so the exits could not tell two of them apart. Not placed.")
     try:
         held = [l for l in legs_from_positions(breeze.get_portfolio_positions())
                 if l["stock_code"] == code and _expiry_date(l["expiry"]) == datetime.strptime(expiry_iso[:10], "%Y-%m-%d").date()]
@@ -790,10 +803,13 @@ def stockopt_line(m, day):
     if not m or m.get("error"):
         return ""
     today = [r for r in m.get("today") or [] if r.get("date") == day]
-    done = [f"{r['symbol']} {r['kind']} {'+' if r['pnl'] >= 0 else '-'}Rs {abs(r['pnl']):,} ({r['reason']})"
+    done = [f"{r['symbol']} {r['kind']}{' ' + r['tier'] if r.get('tier') else ''} {'+' if r['pnl'] >= 0 else '-'}Rs {abs(r['pnl']):,} ({r['reason']})"
             for r in today if r.get("status") == "CLOSED"]
+    tiers = m.get("tiers") or {}
+    by = " By budget: " + ", ".join(f"{c} Rs {x.get('total', 0):+,} ({x.get('trades', 0)}, {x.get('wins', 0)} won)"
+                                    for c, x in tiers.items()) + "." if tiers else ""
     return (f"\nStock calls/puts (4th trade): {'; '.join(done) if done else 'no trade today'}. "
-            f"Total Rs {m.get('total', 0):+,} ({m.get('trades', 0)} trades, {m.get('wins', 0)} won).")
+            f"Total Rs {m.get('total', 0):+,} ({m.get('trades', 0)} trades, {m.get('wins', 0)} won).{by}")
 
 
 def evening_report(env, state, now):
@@ -926,9 +942,9 @@ def handle_command(cmd, breeze_box, env, state, live, now):
         notify(env, f"Guardian ENTER MOMENTUM: {'OK' if ok else 'NOT DONE'}", msg, urgent=not ok)
     elif name == "ENTER" and len(cmd) >= 2 and cmd[1].upper().startswith("STOCK_"):
         demo = any(c.upper() == "DEMO" for c in cmd[2:])
-        sym = cmd[1][len("STOCK_"):].upper()
+        sym, tier = split_stock(cmd[1][len("STOCK_"):])
         real = live and not demo and env["LIVE_STOCKOPT"] == "1"
-        ok, msg = enter_stockopt(breeze_box[0], env, state, sym, real, now, demo=demo)
+        ok, msg = enter_stockopt(breeze_box[0], env, state, sym, real, now, demo=demo, tier=tier)
         if live and not demo and not real:
             msg = "Paper, not real: stock calls/puts are paper only (LIVE_STOCKOPT=0 on the server). " + msg
         notify(env, f"Guardian ENTER {cmd[1].upper()}: {'OK' if ok else 'NOT DONE'}", msg, urgent=not ok)

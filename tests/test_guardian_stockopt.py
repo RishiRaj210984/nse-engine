@@ -68,6 +68,34 @@ held = [{"product_type": "Options", "stock_code": "HAVIND", "quantity": "500", "
          "strike_price": "1180", "right": "Call", "average_price": "12", "ltp": "13"}]
 fb = FB(held=held); title, msg = cmd(fb, env, {})
 t("already holds a HAVELLS option on that expiry: refused", "NOT DONE" in title and "same expiry" in msg and not fb.orders)
+# budgets (v53): the button sends ENTER STOCK_<SYMBOL>_<5K|10K|15K>
+SO_T = {"date": "2026-11-12", "today": [
+    {"date": "2026-11-12", "symbol": "HAVELLS", "kind": "CE", "tier": "5K", "status": "OPEN", "strike": 1200.0, "expiry": "24-Nov-2026",
+     "lot": 500, "entry_px": 5.0, "entry_at": "09:40", "trigger": 1159.5},
+    {"date": "2026-11-12", "symbol": "HAVELLS", "kind": "CE", "tier": "10K", "status": "OPEN", "strike": 1160.0, "expiry": "24-Nov-2026",
+     "lot": 500, "entry_px": 20.0, "entry_at": "09:40", "trigger": 1159.5},
+    {"date": "2026-11-12", "symbol": "HAVELLS", "kind": "CE", "tier": "15K", "status": "SKIPPED", "lot": 500,
+     "note": "no CE strike with a live two-sided price costs Rs 10,000-15,000 for 1 lot (500 qty)"}]}
+def cmd_t(fb, env, st, name, live=True):
+    guardian.fetch_stockopt = lambda: SO_T
+    sent.clear(); guardian.handle_command(["ENTER", name, "1"], [fb], env, st, live, NOW)
+    return sent[-1]
+t("split_stock reads the budget, and old names still work",
+  guardian.split_stock("HAVELLS_5K") == ("HAVELLS", "5K") and guardian.split_stock("havells") == ("HAVELLS", None)
+  and guardian.split_stock("BAJAJ-AUTO_15K") == ("BAJAJ-AUTO", "15K"))
+fb = FB(ask=5.2); title, msg = cmd_t(fb, base_env, {}, "STOCK_HAVELLS_5K", live=False)
+t("paper: the 5K tap would place the 1200 call (the 5K budget's strike), and names the budget",
+  "would place BUY HAVELLS 1200 CE" in msg and "up to Rs 5,000 budget" in msg and not fb.orders)
+fb, st = FB(ask=5.2), {}
+title, msg = cmd_t(fb, env, st, "STOCK_HAVELLS_5K")
+t("LIVE_STOCKOPT=1: the 5K tap buys the 1200 call", msg.startswith("REAL") and fb.orders == [("HAVIND", "buy", "1200", "call", "500", "5.20")])
+title, msg = cmd_t(FB(), env, st, "STOCK_HAVELLS_10K")
+t("then the 10K tap the same day is refused: one a day per stock (same expiry)", "NOT DONE" in title and "One a day per stock" in msg)
+title, msg = cmd_t(FB(), env, {}, "STOCK_HAVELLS_15K")
+t("a budget the tracker skipped: nothing placed, says why", "NOT DONE" in title and "Rs 10,000-15,000 budget" in msg and "two-sided" in msg)
+t("evening line shows each budget's total", "By budget: 5K Rs +300 (1, 1 won)" in guardian.stockopt_line(
+    {"today": [], "total": 300, "trades": 1, "wins": 1,
+     "tiers": {"5K": {"total": 300, "trades": 1, "wins": 1}, "10K": {"total": 0, "trades": 0, "wins": 0}}}, "2026-11-12"))
 t("evening alert line", "HAVELLS CE +Rs 1,200" in guardian.stockopt_line(
     {"today": [{"date": "2026-11-12", "symbol": "HAVELLS", "kind": "CE", "status": "CLOSED", "pnl": 1200, "reason": "BOOKED at +61%"}],
      "total": 1200, "trades": 1, "wins": 1}, "2026-11-12"))
