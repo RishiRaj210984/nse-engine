@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-12T00:07:22.359253+05:30",
+ "generated_at": "2026-11-12T06:27:59.829300+05:30",
  "target_session": "2026-11-12",
  "reference_date": "2026-11-09",
  "us_session_used": "2026-11-11",
@@ -7,24 +7,24 @@
   {
    "name": "S&P 500",
    "symbol": "^GSPC",
-   "last": 7642.22,
-   "change": 1.613,
+   "last": 7619.38,
+   "change": 1.309,
    "change_unit": "%",
    "as_of": "2026-11-11"
   },
   {
    "name": "Nasdaq",
    "symbol": "^IXIC",
-   "last": 25624.91,
-   "change": 2.23,
+   "last": 25466.19,
+   "change": 1.597,
    "change_unit": "%",
    "as_of": "2026-11-11"
   },
   {
    "name": "Dow Jones",
    "symbol": "^DJI",
-   "last": 52483.58,
-   "change": 0.482,
+   "last": 52486.49,
+   "change": 0.487,
    "change_unit": "%",
    "as_of": "2026-11-11"
   },
@@ -39,26 +39,26 @@
   {
    "name": "Crude Oil",
    "symbol": "CL=F",
-   "last": 87.08,
-   "change": 1.209,
+   "last": 86.06,
+   "change": 0.023,
    "change_unit": "%",
    "as_of": "2026-11-11"
   },
   {
    "name": "Dollar Index",
    "symbol": "DX-Y.NYB",
-   "last": 102.91,
-   "change": 0.667,
+   "last": 102.88,
+   "change": 0.632,
    "change_unit": "%",
    "as_of": "2026-11-11"
   },
   {
    "name": "Nikkei 225",
    "symbol": "^N225",
-   "last": 60459.58,
-   "change": 2.865,
+   "last": 61452.58,
+   "change": 1.642,
    "change_unit": "%",
-   "as_of": "2026-11-10"
+   "as_of": "2026-11-12"
   },
   {
    "name": "Hang Seng",
@@ -95,55 +95,55 @@
  ],
  "bias": {
   "label": "BULLISH",
-  "score": 80,
-  "z": 1.101,
-  "model_z": 1.101,
-  "predicted_nifty_move_pct": 0.84,
-  "typical_daily_move_pct": 0.762,
+  "score": 60,
+  "z": 0.687,
+  "model_z": 0.687,
+  "predicted_nifty_move_pct": 0.49,
+  "typical_daily_move_pct": 0.714,
   "source": "pre-open global snapshot",
   "india_vix": 17.42,
   "components": [
    {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": 3.06,
-    "contribution_pct": 1.287
+    "value": 2.26,
+    "contribution_pct": 1.085
    },
    {
     "feature": "nq",
     "label": "Nasdaq futures",
-    "value": 5.69,
-    "contribution_pct": -1.144
+    "value": 3.97,
+    "contribution_pct": -0.912
    },
    {
     "feature": "dxy",
     "label": "Dollar index",
-    "value": 1.05,
-    "contribution_pct": -0.446
+    "value": 1.02,
+    "contribution_pct": -0.427
    },
    {
     "feature": "n225",
     "label": "Nikkei 225",
-    "value": 4.31,
-    "contribution_pct": 0.434
+    "value": 4.6,
+    "contribution_pct": 0.329
    },
    {
     "feature": "cl",
     "label": "Crude oil",
-    "value": -2.65,
-    "contribution_pct": 0.183
+    "value": -3.79,
+    "contribution_pct": 0.216
    },
    {
-    "feature": "gold",
-    "label": "Gold",
-    "value": -2.61,
-    "contribution_pct": 0.146
+    "feature": "dax",
+    "label": "DAX (Germany)",
+    "value": 2.33,
+    "contribution_pct": 0.084
    }
   ]
  },
  "news": {
   "summary": {
-   "score": 0.288,
+   "score": 0.289,
    "count": 40,
    "label": "POSITIVE"
   },
@@ -213,11 +213,11 @@
     "sentiment": -0.128
    },
    {
-    "title": "Nasdaq surges 2% as rebounding AI stocks lift Wall Street: Stock Market Live Updates",
+    "title": "US stocks end higher as CoreWeave results ease AI spending worries: Stock Market Highlights",
     "source": "ET Markets",
     "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/stock-market-live-updates-dow-jones-nasdaq-sp-500-fed-anthropic-ipo-coreweave-nvidia-marvell-ai-chip-fed-rate-inflation-treasury-yield-news-11th-november-2026/liveblog/135739245.cms",
     "published": "Wed, 11 Nov 2026 18:42:11 +0530",
-    "sentiment": 0.421
+    "sentiment": -0.077
    },
    {
     "title": "Fairfax Financial likely to exit IIFL Finance, sources say",
@@ -237,11 +237,11 @@
  },
  "model": {
   "oos_days": 300,
-  "directional_calls": 99,
-  "directional_accuracy": 71.7,
-  "sign_accuracy_all_days": 65.7,
-  "gap_corr": 0.53,
-  "gap_sign_pct": 68.7,
+  "directional_calls": 145,
+  "directional_accuracy": 73.1,
+  "sign_accuracy_all_days": 64.7,
+  "gap_corr": 0.66,
+  "gap_sign_pct": 72.3,
   "trained_rows": 750,
   "version": 38,
   "bias_threshold": 0.3
@@ -556,28 +556,28 @@
  },
  "events": [],
  "preopen": {
-  "snapshot_ist": "Thu 12 Nov 00:07 IST",
+  "snapshot_ist": "Thu 12 Nov 06:27 IST",
   "stage": "preview",
-  "expected_gap_pct": 0.75,
-  "gap_typical_error_pct": 0.33,
-  "expected_day_pct": 0.84,
-  "z": 1.101,
-  "typical_daily_move_pct": 0.762,
+  "expected_gap_pct": 0.72,
+  "gap_typical_error_pct": 0.29,
+  "expected_day_pct": 0.49,
+  "z": 0.687,
+  "typical_daily_move_pct": 0.714,
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": 3.06
+    "move_pct": 2.26
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": 5.69
+    "move_pct": 3.97
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": 1.39
+    "move_pct": 1.42
    },
    {
     "key": "dax",
@@ -597,22 +597,22 @@
    {
     "key": "n225",
     "name": "Nikkei 225",
-    "move_pct": 4.31
+    "move_pct": 4.6
    },
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": -2.65
+    "move_pct": -3.79
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": -2.61
+    "move_pct": -2.76
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": 1.05
+    "move_pct": 1.02
    },
    {
     "key": "inr",
@@ -624,61 +624,61 @@
    {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": 3.06,
-    "contribution_pct": 1.287
+    "value": 2.26,
+    "contribution_pct": 1.085
    },
    {
     "feature": "nq",
     "label": "Nasdaq futures",
-    "value": 5.69,
-    "contribution_pct": -1.144
+    "value": 3.97,
+    "contribution_pct": -0.912
    },
    {
     "feature": "dxy",
     "label": "Dollar index",
-    "value": 1.05,
-    "contribution_pct": -0.446
+    "value": 1.02,
+    "contribution_pct": -0.427
    },
    {
     "feature": "n225",
     "label": "Nikkei 225",
-    "value": 4.31,
-    "contribution_pct": 0.434
+    "value": 4.6,
+    "contribution_pct": 0.329
    },
    {
     "feature": "cl",
     "label": "Crude oil",
-    "value": -2.65,
-    "contribution_pct": 0.183
+    "value": -3.79,
+    "contribution_pct": 0.216
    },
    {
-    "feature": "gold",
-    "label": "Gold",
-    "value": -2.61,
-    "contribution_pct": 0.146
+    "feature": "dax",
+    "label": "DAX (Germany)",
+    "value": 2.33,
+    "contribution_pct": 0.084
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.53,
-   "gap_sign_pct": 68.7,
-   "directional_calls": 112,
-   "directional_accuracy": 71.4
+   "gap_corr": 0.66,
+   "gap_sign_pct": 72.3,
+   "directional_calls": 155,
+   "directional_accuracy": 72.3
   },
   "vix": 17.42
  },
  "global_table": {
-  "updated": "2026-11-12T00:07:38.477238+05:30",
+  "updated": "2026-11-12T06:28:13.447558+05:30",
   "rows": [
    {
     "group": "US, last close",
-    "move": "S&P 500 +1.6%, Nasdaq +2.2%, Dow +0.5%",
+    "move": "S&P 500 +1.3%, Nasdaq +1.6%, Dow +0.5%",
     "effect": "green",
     "note": "Positive lead for India"
    },
    {
     "group": "US futures now",
-    "move": "S&P +3.06%, Nasdaq +5.69%, Dow +1.39% (since Nifty's close)",
+    "move": "S&P +2.26%, Nasdaq +3.97%, Dow +1.42% (since Nifty's close)",
     "effect": "green",
     "note": "Futures point to a firmer open"
    },
@@ -690,15 +690,15 @@
    },
    {
     "group": "Asia today",
-    "move": "Nikkei +1.3%, Hang Seng -0.5%, Kospi +2.6%",
-    "effect": "green",
-    "note": "Strong"
+    "move": "Nikkei +0.4%, Hang Seng -0.5%, Kospi +0.7%",
+    "effect": "flat",
+    "note": "Mixed / flat"
    },
    {
     "group": "Crude oil",
-    "move": "WTI ~$87, Brent ~$93 (+1.6%)",
-    "effect": "red",
-    "note": "Rising oil hurts India"
+    "move": "WTI ~$86, Brent ~$92 (-0.5%)",
+    "effect": "flat",
+    "note": "Steady"
    },
    {
     "group": "US 10-year yield",
@@ -708,15 +708,15 @@
    },
    {
     "group": "Dollar index",
-    "move": "102.91 (+0.67%)",
-    "effect": "red",
-    "note": "Strong dollar weighs on India"
+    "move": "102.88 (-0.03%)",
+    "effect": "flat",
+    "note": "Steady"
    },
    {
     "group": "Rupee",
-    "move": "93.68 per $ (-0.25%)",
-    "effect": "green",
-    "note": "Rupee strengthening"
+    "move": "93.68 per $ (+0.00%)",
+    "effect": "flat",
+    "note": "Steady"
    },
    {
     "group": "India VIX (fear)",
@@ -726,7 +726,7 @@
    },
    {
     "group": "Model: Nifty open",
-    "move": "+0.75% (\u00b10.33%)",
+    "move": "+0.72% (\u00b10.29%)",
     "effect": "green",
     "note": "Combined forecast from all markets (preview)",
     "model": true
