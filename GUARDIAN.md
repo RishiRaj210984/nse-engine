@@ -77,6 +77,9 @@ mirror of the BUY rules and appear only while NIFTY is below its 50-day average 
 When the share crosses its entry between 09:30 and 10:30, the paper tracker buys 1 lot in **each of three
 budgets** (app v53): the strike nearest the money whose lot costs up to ₹5,000, ₹5,000–10,000 and
 ₹10,000–15,000, at the real NSE mid price with a two-sided quote (monthly expiry at least 7 days away).
+Since v54: strikes priced under ₹2 are skipped (one tick moved them 2.5%+, so the stop rules fired on noise),
+and a share already more than 1% past its entry level at a check is not chased (it can still be bought later
+in the window if it comes back within 1%).
 Each budget keeps its own record. In the app (step 3, section 4) each budget is a subsection, and each open
 trade has its own card and button until 11:30. Tapping sends `ENTER STOCK_<SYMBOL>_<5K|10K|15K>`: in paper
 mode the guardian answers with what it would buy; real orders only with `LIVE_STOCKOPT=1` **and** live mode.

@@ -32,6 +32,10 @@ MAX_PREMIUM = 15000
 # (code, low, high, label): one paper lot per budget, the strike nearest the money whose lot costs low < cost <= high
 TIERS = [("5K", 0, 5000, "up to Rs 5,000"), ("10K", 5000, 10000, "Rs 5,000-10,000"), ("15K", 10000, 15000, "Rs 10,000-15,000")]
 MAX_SPREAD = 0.15     # a strike counts only with a two-sided quote no wider than 15% of its mid price
+MIN_PX = 2.0          # a strike counts only at Rs 2 or more: below that one 5-paise tick is 2.5%+ and the -30%/+20% rules
+                      # fire on noise (13 Nov: SAIL 200 CE at Rs 0.70 was "up 20%" on a 20-paise move, then closed at cost)
+MAX_CHASE = 1.0       # buy only while the share is within 1% past its entry level: the entry is yesterday's close, so a
+                      # gap open counted as "crossed" at 09:30 (13 Nov: SBILIFE entry 1,767, bought at 1,815, near T1 1,833)
 MIN_DAYS = 7          # expiry at least this many days away (as in the research)
 COST = 100            # brokerage and charges for 1 lot, in and out
 SLIP = 0.015          # stock option spreads are wide: 1.5% of the premium each way, as in the research
@@ -70,6 +74,8 @@ def pick_tier(chain, kind, lot, lo, hi, quoted=True):
             if not px:
                 continue
         px = round(float(px), 2)
+        if px < MIN_PX:
+            continue
         cost = px * lot
         if lo < cost <= hi:
             cand = (abs(r["strike"] - atm), cost, r["strike"], px)
@@ -112,8 +118,17 @@ def price(chain, strike, kind):
     return float(last) if last else None
 
 
+def chased(p, q):
+    """Is the share more than MAX_CHASE % past its entry level (too late to buy at this check)?"""
+    last, trig = q.get("last"), p["trigger"]
+    if last is None:
+        return False
+    return last > trig * (1 + MAX_CHASE / 100) if p["kind"] == "CE" else last < trig * (1 - MAX_CHASE / 100)
+
+
 def triggered(p, q, hm):
-    """Has the share crossed its entry level in the window, without first going through its stop or T1?"""
+    """Has the share crossed its entry level in the window (and is it still within MAX_CHASE % of it), without
+    first going through its stop or T1?"""
     last, lo, hi, op = q.get("last"), q.get("low"), q.get("high"), q.get("open")
     if last is None or hm < ENTRY_FROM:
         return None, None
@@ -122,12 +137,12 @@ def triggered(p, q, hm):
             return False, f"opened at {op} above T1 {p['t1']}: skipped"
         if lo is not None and lo <= p["stop"]:
             return False, f"fell to its stop {p['stop']} before entry: skipped"
-        return last >= p["trigger"], None
+        return last >= p["trigger"] and not chased(p, q), None
     if op is not None and op <= p["t1"]:
         return False, f"opened at {op} below T1 {p['t1']}: skipped"
     if hi is not None and hi >= p["stop"]:
         return False, f"rose to its stop {p['stop']} before entry: skipped"
-    return last <= p["trigger"], None
+    return last <= p["trigger"] and not chased(p, q), None
 
 
 def _close(r, px, at, why):
@@ -143,6 +158,7 @@ def step(now, plan, quotes, chain_for, lots):
     book = store._read(path, {}) or {}
     days = book.setdefault("days", {})
     tried = book.setdefault("tried", {})   # crossed its entry in the window but had no option price yet
+    late = book.setdefault("late", {})     # was more than MAX_CHASE % past its entry at a check in the window
     day, hm = now.date().isoformat(), now.strftime("%H:%M")
     for d, recs in days.items():   # left open by missed runs: close at the last real price seen that day
         for r in recs.values():
@@ -166,7 +182,10 @@ def step(now, plan, quotes, chain_for, lots):
             if not todo:
                 continue
             base = {"date": day, "symbol": p["symbol"], "kind": p["kind"], "trigger": p["trigger"]}
-            ok, why = triggered(p, quotes.get(p["symbol"] + ".NS") or {}, hm)
+            q = quotes.get(p["symbol"] + ".NS") or {}
+            ok, why = triggered(p, q, hm)
+            if not ok and not why and ENTRY_FROM <= hm <= ENTRY_TO and chased(p, q):
+                late.setdefault(day, {})[key(p)] = [hm, q["last"]]
             if why:
                 for c, *_ in todo:
                     recs[key(p, c)] = {**base, "tier": c, "status": "NO ENTRY", "note": why}
@@ -183,13 +202,18 @@ def step(now, plan, quotes, chain_for, lots):
                                             "premium": x["premium"], "atm": ch["atm"], "peak": 0.0, "marks": [[hm, x["px"]]]}
                                            if x else
                                            {**base, "tier": c, "status": "SKIPPED", "lot": lot,
-                                            "note": f"no {p['kind']} strike with a live two-sided price costs {label} for 1 lot ({lot} qty)"})
+                                            "note": f"no {p['kind']} strike at Rs {MIN_PX:g} or more with a live two-sided price "
+                                                    f"costs {label} for 1 lot ({lot} qty)"})
             if hm > ENTRY_TO:
+                lt = late.get(day, {}).get(key(p))
                 for c, *_ in todo:
                     if key(p, c) not in recs:
                         recs[key(p, c)] = {**base, "tier": c, "status": "NO ENTRY",
                                            "note": f"no live option price or lot size between {ENTRY_FROM} and {ENTRY_TO}"
-                                           if key(p) in tried.get(day, []) else f"did not cross {p['trigger']} between {ENTRY_FROM} and {ENTRY_TO}"}
+                                           if key(p) in tried.get(day, []) else
+                                           f"already more than {MAX_CHASE:g}% past its entry {p['trigger']} when checked "
+                                           f"(last seen {lt[1]} at {lt[0]}): too late to buy, skipped" if lt else
+                                           f"did not cross {p['trigger']} between {ENTRY_FROM} and {ENTRY_TO}"}
         for r in recs.values():
             if r.get("status") != "OPEN":
                 continue
@@ -213,6 +237,8 @@ def step(now, plan, quotes, chain_for, lots):
         days.pop(d)
     for d in [d for d in tried if d < day]:
         tried.pop(d)
+    for d in [d for d in late if d < day]:
+        late.pop(d)
     store._write(path, book)
     return summary(now)
 
@@ -247,8 +273,8 @@ def summary(now=None, day=None):
             "recent": [{k: r.get(k) for k in ("date", "symbol", "kind", "tier", "strike", "entry_px", "exit_px", "pnl", "pct", "reason")}
                        for r in closed[::-1][:8]],
             "rule": (f"Paper only. Each stock pick (call for a BUY pick, put for a SELL pick) is bought when the share crosses its entry "
-                     f"between {ENTRY_FROM} and {ENTRY_TO}: 1 lot in each budget, the strike nearest the money costing up to Rs 5,000, "
-                     f"Rs 5,000-10,000 and Rs 10,000-15,000. Stop -30%, cost after +20%, trail from +40%, book +60%, else close "
+                     f"between {ENTRY_FROM} and {ENTRY_TO}, while still within {MAX_CHASE:g}% of it: 1 lot in each budget, the strike "
+                     f"nearest the money (priced Rs {MIN_PX:g} or more) costing up to Rs 5,000, Rs 5,000-10,000 and Rs 10,000-15,000. Stop -30%, cost after +20%, trail from +40%, book +60%, else close "
                      f"{EXIT_AT}. Costs Rs {COST} + {SLIP * 100:.1f}% each way."),
             "research": RESEARCH}
 

@@ -61,8 +61,10 @@ t("IDEA: no strike with a usable quote fits any budget (lot Rs 28,590; the cheap
   all(R[("IDEA", c)]["status"] == "SKIPPED" for c in ("5K", "10K", "15K")) and "two-sided" in R[("IDEA", "5K")]["note"])
 CALLS.clear()
 s, R = run(D1, "10:00", {"HAVELLS.NS": q(1170, 1150, 1172, 1152), "ONGC.NS": q(233.0, 232.9, 236, 235)})
-t("put bought in each budget when the share falls below its entry: 227.5, 232.5, 235",
-  [R[("ONGC", c)]["strike"] for c in ("5K", "10K", "15K")] == [227.5, 232.5, 235.0])
+t("put bought in the budgets when the share falls below its entry: 232.5 (Rs 9,000), 235 (Rs 12,600)",
+  [R[("ONGC", c)]["strike"] for c in ("10K", "15K")] == [232.5, 235.0])
+t("no strike under Rs 2: ONGC's Rs 5,000 budget had only the 227.5 put at Rs 1.60, so it is skipped and says why",
+  R[("ONGC", "5K")]["status"] == "SKIPPED" and "Rs 2 or more" in R[("ONGC", "5K")]["note"])
 t("one chain read per stock per run, not one per budget (3 HAVELLS trades + 3 ONGC buys = 2 reads)", sorted(CALLS) == ["HAVELLS", "ONGC"])
 
 mult["HAVELLS"] = 1.3     # +30%: the stop moves to cost
@@ -75,10 +77,10 @@ t("closed back at cost after being up 20%; costs Rs 100 + 1.5% each way",
 t("every budget follows its own option", R[("HAVELLS", "5K")]["status"] == "CLOSED" and R[("HAVELLS", "5K")]["exit_px"] == round(5.0 * 0.995, 2))
 mult["ONGC"] = 0.675      # -32.5%
 s, R = run(D1, "11:10", {"ONGC.NS": q(236, 231, 236.5, 235)})
-t("stop at -30%", all(R[("ONGC", c)]["reason"] == "STOP -30%" for c in ("5K", "10K", "15K")))
+t("stop at -30%", all(R[("ONGC", c)]["reason"] == "STOP -30%" for c in ("10K", "15K")))
 t("summary totals count closed trades, overall and per budget",
-  s["trades"] == 6 and s["total"] == sum(r["pnl"] for r in s["today"] if r["status"] == "CLOSED")
-  and s["tiers"]["10K"]["trades"] == 2 and s["tiers"]["5K"]["total"] == R[("HAVELLS", "5K")]["pnl"] + R[("ONGC", "5K")]["pnl"])
+  s["trades"] == 5 and s["total"] == sum(r["pnl"] for r in s["today"] if r["status"] == "CLOSED")
+  and s["tiers"]["10K"]["trades"] == 2 and s["tiers"]["5K"]["total"] == R[("HAVELLS", "5K")]["pnl"])
 
 # a new day: book at +60%, no trigger by 10:30
 D2 = "2026-11-13"
@@ -113,8 +115,24 @@ old = [r for r in s["today"] if r["symbol"] == "HAVELLS"]
 t("old untiered trade: no new budget trades for that stock, and it still exits (booked)",
   len(old) == 1 and old[0]["status"] == "CLOSED" and old[0]["reason"].startswith("BOOKED") and old[0]["tier"] == "10K")
 
+# too late: buy only while the share is within 1% past its entry level
+mult["HAVELLS"] = 1.0
+s, R = run("2026-11-19", "09:30", {"HAVELLS.NS": q(1175, 1160, 1176, 1162)})
+t("1.3% past its entry at 09:30: not bought yet", ("HAVELLS", "10K") not in R)
+s, R = run("2026-11-19", "09:40", {"HAVELLS.NS": q(1165, 1160, 1176, 1162)})
+t("back within 1% at 09:40: bought then", R[("HAVELLS", "10K")]["status"] == "OPEN" and R[("HAVELLS", "10K")]["entry_at"] == "09:40")
+run("2026-11-20", "09:30", {"HAVELLS.NS": q(1180, 1170, 1181, 1172)})
+run("2026-11-20", "10:20", {"HAVELLS.NS": q(1178, 1170, 1185, 1172)})
+s, R = run("2026-11-20", "10:31", {"HAVELLS.NS": q(1179, 1170, 1185, 1172)})
+t("more than 1% past its entry at every check: no entry, and says it was too late",
+  all(R[("HAVELLS", c)]["status"] == "NO ENTRY" for c in ("5K", "10K", "15K")) and "too late" in R[("HAVELLS", "10K")]["note"]
+  and "1178" in R[("HAVELLS", "10K")]["note"])
+t("puts: 1% below the entry is the limit",
+  S.chased({"kind": "PE", "trigger": 100.0}, {"last": 98.9}) and not S.chased({"kind": "PE", "trigger": 100.0}, {"last": 99.2}))
+
 t("pick_tier estimates fall back to the last price (no quotes before the open)",
   S.pick_tier({"atm": 100.0, "strikes": [{"strike": 100.0, "ce_ltp": 8.0}]}, "CE", 500, 0, 5000, quoted=False)["premium"] == 4000
+  and S.pick_tier({"atm": 100.0, "strikes": [{"strike": 100.0, "ce_ltp": 1.9}]}, "CE", 500, 0, 5000, quoted=False) is None
   and S.pick_tier({"atm": 100.0, "strikes": [{"strike": 100.0, "ce_ltp": 8.0}]}, "CE", 500, 0, 5000) is None)
 t("expiry at least 7 days away", S.pick_expiry(["24-Nov-2026", "29-Dec-2026"], date(2026, 11, 18)) == "29-Dec-2026"
   and S.pick_expiry(["24-Nov-2026", "29-Dec-2026"], date(2026, 11, 17)) == "24-Nov-2026")
