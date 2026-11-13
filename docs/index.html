@@ -214,7 +214,7 @@ body.is-simple main{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 <script>
 const NSE_HOLIDAYS = ['2026-10-20', '2026-11-08', '2026-11-10', '2026-11-24', '2026-12-25'];   // fallback; meta.json has the live list
 const holidayList = () => (D.meta?.holidays?.length ? D.meta.holidays : NSE_HOLIDAYS);
-const APP_VERSION = 'v54';   // keep equal to CACHE in sw.js
+const APP_VERSION = 'v55';   // keep equal to CACHE in sw.js
 const TEST_FROM = '2026-11-04';   // the one real test trade (guardian LIVE_FROM)
 const FILES = ['plan', 'global-bias', 'volume-breakouts', 'performance', 'review', 'meta', 'live', 'small-capital', 'markets'];
 const D = {};
@@ -727,12 +727,15 @@ function tradeSections(c) {
   {
     const picks = p.stock_options || [], all = { todo: 0, open: 0, closed: 0 };
     const sentSym = (sym) => done.some((d) => d === 'STOCK_' + sym || d.startsWith('STOCK_' + sym + '_'));
+    // after the 09:30–10:30 buying window only the trades actually bought are listed; the rest are counted in one line
+    const shut = sessToday && t.hm > '10:30';
     let subs = '', dayAll = 0, recs = 0;
     for (const [tk, label] of SO_TIERS) {
       const n = { todo: 0, open: 0, closed: 0 };
-      let dayT = 0, here = 0;
+      let dayT = 0, here = 0, hid = 0;
       const rows = picks.map((x) => {
         const r = soToday.find((y) => y.symbol === x.symbol && soTier(y) === tk);
+        if (shut && !(r && (r.status === 'OPEN' || r.status === 'CLOSED'))) { hid++; return ''; }
         const ix = r && !r.tier ? 'STOCK_' + x.symbol : 'STOCK_' + x.symbol + '_' + tk;   // (records from before v53 have no tier)
         const sent = done.includes(ix), other = !sent && sentSym(x.symbol);
         const est = (x.tiers || {})[tk];
@@ -768,8 +771,9 @@ function tradeSections(c) {
         : !sessToday || t.hm < '10:30' ? '⏳ waiting' : '⏸ none bought';
       const st = n.todo ? 'todo' : n.open ? 'open' : n.closed ? 'closed' : '';
       const m = so && so.tiers ? so.tiers[tk] : null;
-      const body = (rows || '<p>No stock passed the rules today.</p>')
-        + (m ? `<p class="fine">This budget so far: ${signed(m.total)} (${m.trades} trade${m.trades === 1 ? '' : 's'}, ${m.wins} won). Paper only.</p>` : '');
+      const body = (rows || (shut && picks.length ? '<p>Nothing bought in this budget today.</p>' : '<p>No stock passed the rules today.</p>'))
+        + (hid ? `<p class="fine">${hid} pick${hid > 1 ? 's' : ''} not bought between 09:30 and 10:30 (level not crossed, already more than 1% past it, or no strike fitted): not shown.</p>` : '')
+        + (m ?`<p class="fine">This budget so far: ${signed(m.total)} (${m.trades} trade${m.trades === 1 ? '' : 's'}, ${m.wins} won). Paper only.</p>` : '');
       subs += sec('STOCKS_' + tk, label, chip, st === 'todo' ? 'todo' : st === 'open' ? 'open' : n.closed && !opens ? (dayT >= 0 ? 'up' : 'down') : '', body, n.todo > 0, '', st);
       all.todo += n.todo; all.open += n.open; all.closed += n.closed; dayAll += dayT; recs += here;
     }
