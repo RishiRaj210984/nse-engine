@@ -1,53 +1,53 @@
 {
  "bias": {
-  "generated_at": "2026-11-13T16:17:49.176284+05:30",
+  "generated_at": "2026-11-13T23:34:52.221837+05:30",
   "target_session": "2026-11-16",
   "reference_date": "2026-11-13",
   "bias": {
    "label": "RANGEBOUND",
-   "score": 10,
-   "z": 0.1,
-   "model_z": 0.1,
-   "predicted_nifty_move_pct": 0.08,
+   "score": -23,
+   "z": -0.238,
+   "model_z": -0.238,
+   "predicted_nifty_move_pct": -0.19,
    "typical_daily_move_pct": 0.785,
    "source": "pre-open global snapshot",
    "india_vix": 15.49,
    "components": [
     {
-     "feature": "vix",
-     "label": "India VIX level",
-     "value": 15.49,
-     "contribution_pct": 0.045
-    },
-    {
      "feature": "es",
      "label": "S&P 500 futures",
-     "value": 0.0,
-     "contribution_pct": -0.021
+     "value": -0.86,
+     "contribution_pct": -0.833
     },
     {
-     "feature": "nprev",
-     "label": "Nifty previous day",
-     "value": -0.61,
-     "contribution_pct": 0.018
+     "feature": "nq",
+     "label": "Nasdaq futures",
+     "value": -1.6,
+     "contribution_pct": 0.417
     },
     {
      "feature": "ym",
      "label": "Dow futures",
-     "value": 0.0,
-     "contribution_pct": 0.017
+     "value": -0.26,
+     "contribution_pct": 0.143
+    },
+    {
+     "feature": "dxy",
+     "label": "Dollar index",
+     "value": 0.15,
+     "contribution_pct": -0.096
+    },
+    {
+     "feature": "stoxx",
+     "label": "Euro Stoxx 50",
+     "value": -0.38,
+     "contribution_pct": 0.076
     },
     {
      "feature": "ftse",
      "label": "FTSE 100 (UK)",
-     "value": 0.0,
-     "contribution_pct": -0.006
-    },
-    {
-     "feature": "cl",
-     "label": "Crude oil",
-     "value": 0.0,
-     "contribution_pct": 0.006
+     "value": 0.17,
+     "contribution_pct": 0.064
     }
    ]
   },
@@ -64,15 +64,15 @@
     "levels": {
      "prev_close": 25144.3,
      "ema20": 23985.39,
-     "support": 25050.48,
-     "resistance": 25242.23,
-     "atr": 326.23,
+     "support": 25050.35,
+     "resistance": 25242.3,
+     "atr": 326.24,
      "pivots": {
-      "P": 25148.42,
-      "R1": 25242.23,
-      "S1": 25050.48,
-      "R2": 25340.17,
-      "S2": 24956.67
+      "P": 25148.35,
+      "R1": 25242.3,
+      "S1": 25050.35,
+      "R2": 25340.3,
+      "S2": 24956.4
      }
     },
     "strategies": [
@@ -152,17 +152,17 @@
        "decision": "SKIP",
        "dte": 1,
        "stats": {
-        "trades": 44,
-        "win_pct": 75.0,
-        "avg_pnl": -345,
+        "trades": 45,
+        "win_pct": 75.6,
+        "avg_pnl": -318,
         "worst": -8554,
         "best": 2350,
-        "total": -15199,
+        "total": -14328,
         "sample": "days the model called SIDEWAYS, full 2 years",
         "allowed": false,
         "halves": [
          -1036,
-         345
+         368
         ],
         "unsteady": false,
         "marginal": false,
@@ -183,7 +183,7 @@
          "total": 25
         }
        },
-       "reason": "1 day before: this setup lost money historically (75.0% wins, avg \u20b9-345 per lot over 44 trades)."
+       "reason": "1 day before: this setup lost money historically (75.6% wins, avg \u20b9-318 per lot over 45 trades)."
       }
      },
      {
@@ -239,17 +239,17 @@
      "decision": "SKIP",
      "dte": 1,
      "stats": {
-      "trades": 44,
-      "win_pct": 75.0,
-      "avg_pnl": -345,
+      "trades": 45,
+      "win_pct": 75.6,
+      "avg_pnl": -318,
       "worst": -8554,
       "best": 2350,
-      "total": -15199,
+      "total": -14328,
       "sample": "days the model called SIDEWAYS, full 2 years",
       "allowed": false,
       "halves": [
        -1036,
-       345
+       368
       ],
       "unsteady": false,
       "marginal": false,
@@ -270,7 +270,7 @@
        "total": 25
       }
      },
-     "reason": "No tested structure qualifies for today. 1 day before: this setup lost money historically (75.0% wins, avg \u20b9-345 per lot over 44 trades)."
+     "reason": "No tested structure qualifies for today. 1 day before: this setup lost money historically (75.6% wins, avg \u20b9-318 per lot over 45 trades)."
     }
    },
    "BANKNIFTY": {
@@ -341,38 +341,38 @@
        "decision": "TRADE",
        "dte": 7,
        "stats": {
-        "trades": 44,
-        "win_pct": 77.3,
-        "avg_pnl": 426,
+        "trades": 45,
+        "win_pct": 77.8,
+        "avg_pnl": 479,
         "worst": -12185,
         "best": 5242,
-        "total": 18751,
+        "total": 21585,
         "sample": "days the model called SIDEWAYS, current expiry schedule",
         "allowed": true,
         "halves": [
          321,
-         530
+         630
         ],
         "unsteady": false,
         "marginal": false,
         "quiet_first_hour": {
-         "trades": 26,
-         "win_pct": 80.8,
-         "avg_pnl": 546,
+         "trades": 27,
+         "win_pct": 81.5,
+         "avg_pnl": 607,
          "worst": -12185,
          "best": 3962,
-         "total": 14218
+         "total": 16415
         },
         "trending_first_hour": {
-         "trades": 18,
-         "win_pct": 72.2,
-         "avg_pnl": 251,
+         "trades": 17,
+         "win_pct": 70.6,
+         "avg_pnl": 137,
          "worst": -10541,
          "best": 5242,
-         "total": 4533
+         "total": 2336
         }
        },
-       "reason": "1-2 weeks before: this setup won 77.3% of 44 trades, avg \u20b9426 per lot after costs (worst \u20b9-12,185). If the first hour moves more than 0.25%, the win rate drops to 72.2% (from 80.8% on quiet mornings): consider skipping."
+       "reason": "1-2 weeks before: this setup won 77.8% of 45 trades, avg \u20b9479 per lot after costs (worst \u20b9-12,185). If the first hour moves more than 0.25%, the win rate drops to 70.6% (from 81.5% on quiet mornings): consider skipping."
       }
      },
      {
@@ -428,38 +428,38 @@
      "decision": "TRADE",
      "dte": 7,
      "stats": {
-      "trades": 44,
-      "win_pct": 77.3,
-      "avg_pnl": 426,
+      "trades": 45,
+      "win_pct": 77.8,
+      "avg_pnl": 479,
       "worst": -12185,
       "best": 5242,
-      "total": 18751,
+      "total": 21585,
       "sample": "days the model called SIDEWAYS, current expiry schedule",
       "allowed": true,
       "halves": [
        321,
-       530
+       630
       ],
       "unsteady": false,
       "marginal": false,
       "quiet_first_hour": {
-       "trades": 26,
-       "win_pct": 80.8,
-       "avg_pnl": 546,
+       "trades": 27,
+       "win_pct": 81.5,
+       "avg_pnl": 607,
        "worst": -12185,
        "best": 3962,
-       "total": 14218
+       "total": 16415
       },
       "trending_first_hour": {
-       "trades": 18,
-       "win_pct": 72.2,
-       "avg_pnl": 251,
+       "trades": 17,
+       "win_pct": 70.6,
+       "avg_pnl": 137,
        "worst": -10541,
        "best": 5242,
-       "total": 4533
+       "total": 2336
       }
      },
-     "reason": "1-2 weeks before: this setup won 77.3% of 44 trades, avg \u20b9426 per lot after costs (worst \u20b9-12,185). If the first hour moves more than 0.25%, the win rate drops to 72.2% (from 80.8% on quiet mornings): consider skipping."
+     "reason": "1-2 weeks before: this setup won 77.8% of 45 trades, avg \u20b9479 per lot after costs (worst \u20b9-12,185). If the first hour moves more than 0.25%, the win rate drops to 70.6% (from 81.5% on quiet mornings): consider skipping."
     }
    }
   },
@@ -467,55 +467,55 @@
    "oos_days": 300,
    "directional_calls": 35,
    "directional_accuracy": 77.1,
-   "sign_accuracy_all_days": 52.0,
+   "sign_accuracy_all_days": 51.7,
    "gap_corr": 0.24,
-   "gap_sign_pct": 56.0,
+   "gap_sign_pct": 56.3,
    "trained_rows": 750,
-   "version": 41,
+   "version": 42,
    "bias_threshold": 0.3
   }
  },
  "plan": {
-  "generated_at": "2026-11-13T16:18:01.811265+05:30",
+  "generated_at": "2026-11-13T23:35:18.210313+05:30",
   "session": "2026-11-16",
   "stage": "preview",
   "expected_open": {
-   "gap_pct": 0.02,
+   "gap_pct": 0.03,
    "error_pct": 0.38,
-   "day_pct": 0.08,
-   "snapshot": "Fri 13 Nov 16:17 IST",
+   "day_pct": -0.19,
+   "snapshot": "Fri 13 Nov 23:34 IST",
    "stage": "preview",
    "tip": "Flat open expected. Normal entry windows apply.",
    "markets": [
     {
      "key": "es",
      "name": "S&P 500 futures",
-     "move_pct": 0.0
+     "move_pct": -0.86
     },
     {
      "key": "nq",
      "name": "Nasdaq futures",
-     "move_pct": 0.0
+     "move_pct": -1.6
     },
     {
      "key": "ym",
      "name": "Dow futures",
-     "move_pct": 0.0
+     "move_pct": -0.26
     },
     {
      "key": "dax",
      "name": "DAX (Germany)",
-     "move_pct": 0.0
+     "move_pct": -0.2
     },
     {
      "key": "ftse",
      "name": "FTSE 100 (UK)",
-     "move_pct": 0.0
+     "move_pct": 0.17
     },
     {
      "key": "stoxx",
      "name": "Euro Stoxx 50",
-     "move_pct": 0.0
+     "move_pct": -0.38
     },
     {
      "key": "n225",
@@ -525,17 +525,17 @@
     {
      "key": "cl",
      "name": "Crude oil",
-     "move_pct": 0.0
+     "move_pct": 0.28
     },
     {
      "key": "gold",
      "name": "Gold",
-     "move_pct": 0.0
+     "move_pct": -0.08
     },
     {
      "key": "dxy",
      "name": "Dollar index",
-     "move_pct": 0.0
+     "move_pct": 0.15
     },
     {
      "key": "inr",
@@ -545,53 +545,53 @@
    ],
    "drivers": [
     {
-     "feature": "vix",
-     "label": "India VIX level",
-     "value": 15.49,
-     "contribution_pct": 0.045
-    },
-    {
      "feature": "es",
      "label": "S&P 500 futures",
-     "value": 0.0,
-     "contribution_pct": -0.021
+     "value": -0.86,
+     "contribution_pct": -0.833
     },
     {
-     "feature": "nprev",
-     "label": "Nifty previous day",
-     "value": -0.61,
-     "contribution_pct": 0.018
+     "feature": "nq",
+     "label": "Nasdaq futures",
+     "value": -1.6,
+     "contribution_pct": 0.417
     },
     {
      "feature": "ym",
      "label": "Dow futures",
-     "value": 0.0,
-     "contribution_pct": 0.017
+     "value": -0.26,
+     "contribution_pct": 0.143
+    },
+    {
+     "feature": "dxy",
+     "label": "Dollar index",
+     "value": 0.15,
+     "contribution_pct": -0.096
+    },
+    {
+     "feature": "stoxx",
+     "label": "Euro Stoxx 50",
+     "value": -0.38,
+     "contribution_pct": 0.076
     },
     {
      "feature": "ftse",
      "label": "FTSE 100 (UK)",
-     "value": 0.0,
-     "contribution_pct": -0.006
-    },
-    {
-     "feature": "cl",
-     "label": "Crude oil",
-     "value": 0.0,
-     "contribution_pct": 0.006
+     "value": 0.17,
+     "contribution_pct": 0.064
     }
    ],
    "wf": {
     "oos_days": 300,
     "gap_corr": 0.24,
-    "gap_sign_pct": 56.0,
+    "gap_sign_pct": 56.3,
     "directional_calls": 42,
     "directional_accuracy": 78.6
    }
   },
   "headline": "Market bias SIDEWAYS \u2014 favour hedged premium selling",
   "bias": "RANGEBOUND",
-  "score": 10,
+  "score": -23,
   "bias_track_record_pct": 77.1,
   "options": [
    {
@@ -607,21 +607,21 @@
     "max_reward": 2282,
     "reward_risk": 0.31,
     "decision": "SKIP",
-    "decision_reason": "No tested structure qualifies for today. 1 day before: this setup lost money historically (75.0% wins, avg \u20b9-345 per lot over 44 trades).",
+    "decision_reason": "No tested structure qualifies for today. 1 day before: this setup lost money historically (75.6% wins, avg \u20b9-318 per lot over 45 trades).",
     "enter_at": "10:15 IST, after the first hour",
     "exit_by": "target / stop, else expiry 2026-11-17",
     "setup_stats": {
-     "trades": 44,
-     "win_pct": 75.0,
-     "avg_pnl": -345,
+     "trades": 45,
+     "win_pct": 75.6,
+     "avg_pnl": -318,
      "worst": -8554,
      "best": 2350,
-     "total": -15199,
+     "total": -14328,
      "sample": "days the model called SIDEWAYS, full 2 years",
      "allowed": false,
      "halves": [
       -1036,
-      345
+      368
      ],
      "unsteady": false,
      "marginal": false,
@@ -690,39 +690,39 @@
     "max_reward": 6339,
     "reward_risk": 0.36,
     "decision": "TRADE",
-    "decision_reason": "1-2 weeks before: this setup won 77.3% of 44 trades, avg \u20b9426 per lot after costs (worst \u20b9-12,185). If the first hour moves more than 0.25%, the win rate drops to 72.2% (from 80.8% on quiet mornings): consider skipping.",
+    "decision_reason": "1-2 weeks before: this setup won 77.8% of 45 trades, avg \u20b9479 per lot after costs (worst \u20b9-12,185). If the first hour moves more than 0.25%, the win rate drops to 70.6% (from 81.5% on quiet mornings): consider skipping.",
     "enter_at": "10:15 IST, after the first hour",
     "exit_by": "target / stop, else expiry 2026-11-23",
     "setup_stats": {
-     "trades": 44,
-     "win_pct": 77.3,
-     "avg_pnl": 426,
+     "trades": 45,
+     "win_pct": 77.8,
+     "avg_pnl": 479,
      "worst": -12185,
      "best": 5242,
-     "total": 18751,
+     "total": 21585,
      "sample": "days the model called SIDEWAYS, current expiry schedule",
      "allowed": true,
      "halves": [
       321,
-      530
+      630
      ],
      "unsteady": false,
      "marginal": false,
      "quiet_first_hour": {
-      "trades": 26,
-      "win_pct": 80.8,
-      "avg_pnl": 546,
+      "trades": 27,
+      "win_pct": 81.5,
+      "avg_pnl": 607,
       "worst": -12185,
       "best": 3962,
-      "total": 14218
+      "total": 16415
      },
      "trending_first_hour": {
-      "trades": 18,
-      "win_pct": 72.2,
-      "avg_pnl": 251,
+      "trades": 17,
+      "win_pct": 70.6,
+      "avg_pnl": 137,
       "worst": -10541,
       "best": 5242,
-      "total": 4533
+      "total": 2336
      }
     },
     "test": null,

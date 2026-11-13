@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-11-13T16:17:58.673719+05:30",
+ "generated_at": "2026-11-13T23:35:15.325758+05:30",
  "market_open": false,
  "volume_projected": false,
  "bias": {
   "label": "RANGEBOUND",
-  "score": 10
+  "score": -23
  },
  "rules": {
   "vol_mult": 1.5,
@@ -19,8 +19,8 @@
  },
  "market_gate_open": true,
  "model": {
-  "version": 41,
-  "updated": "2026-11-13T16:17:44.252886+05:30",
+  "version": 42,
+  "updated": "2026-11-13T23:34:36.463148+05:30",
   "ranker_on": false,
   "samples": 2410,
   "live_samples": 289,
@@ -70,61 +70,61 @@
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
     "log_vol_ratio": 0.5090385795612912,
-    "rsi": 58.43405904230619,
+    "rsi": 58.43405904189079,
     "dist_high_pct": 0.919943820224719,
-    "ext_ema20": 4.1267536408937655,
-    "atr_pct": 3.2160607066130833,
+    "ext_ema20": 4.126753640890879,
+    "atr_pct": 3.216060706653223,
     "day_chg": 1.8994655496172186,
     "ret5": 6.434821967410986,
     "rs20": -10.353363344747235,
-    "bias_score": 10.0,
-    "news_sent": 0.0,
+    "bias_score": -23.0,
+    "news_sent": 0.218,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.146333769093575
    },
-   "r1_a": 0.38714075180336294,
-   "r2_a": 0.7742815036067219,
+   "r1_a": 0.387140751798531,
+   "r2_a": 0.774281503597058,
    "news": [
     {
-     "title": "Q2 Results, Nov 13: Grasim, Eicher Motors, ABB India, Tata Motors PV, Manipal Health, Indo-MIM, RVNL, Godrej Industries, others to post earnings",
+     "title": "ABB India Q3 CY26 profit surges 8% YoY to \u20b9443 crore, order growth led by electrification business",
      "source": "Upstox",
-     "link": "https://news.google.com/rss/articles/CBMioAJBVV95cUxQR21QbTdmTnZZTmpKN3FBRXNMU3QtWEtHclhDMUxpZm9ERC0zcWhRc3BuYlh4WW5ESHpJRDZTNk5xeXR5RE0zQUtHSVlaaXYzZlNhUTNSYkdtNHZ4WXRJR25OdTU0c2tCQUZmcllRcTd2Nmx5TFkzcXpmUGpOTGNfTzZBdFNWZE95VFhOdU1Ba0pSRkdHd1JIX191MkxqRm4zUkEweTZCcmpyZEh3b0VpYndyMmZwMHFrY3lxZ2NuM0ZJSlk4X2xFWHQ0Q2FfSDZsU0ZSeXp5RVRtcm1kQ2paRWlReXQ4RjF2ZmM3THRiTjVGbDBscGJtdnVrY0dELTBQdzZUbDVJdThmRmMwbkpoalpwbXV0NFdzdG5kTkl2WHk?oc=5",
-     "published": "Fri, 13 Nov 2026 02:52:50 GMT",
+     "link": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxOU0V3VlE3Skp6M3hKUFVQT0JyM3ZZbXp2RUZCQzJIVGtEWUxPS2NCTWl5YzJWQ0pNcTlaSmF2WWFraWdlZUJwOVdUX0ZHbmc4UC0xaWJUUHc3TUZJTUtwN09xcTVNczlnRjVjejRFQXg3a05EUVh0V1NzMkZlWU5SRlpFY2djOXdiNWIxQzRfX0kzczN3ekZ1bHFNaWo0NFVJbEVyMk85SVBQcjZLeFdya1prMUYtdmYzV1lDVXYxb2IwbnZLR3Q2MXFtMjFMYjlsOTdxQllLYjFjQnNOeTFvS3pDSG5NX2k4a2M0ekczVQ?oc=5",
+     "published": "Fri, 13 Nov 2026 13:52:36 GMT",
+     "sentiment": 0.778
+    },
+    {
+     "title": "ABB India Q3CY26 results: Net profit rises 11% to \u20b9440 cr, revenue up 19.4%",
+     "source": "Business Standard",
+     "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxQclB0TzBHcG9XdmRTS1ZiWTJrblhUQ0ctSjBVcFlNTzRGUmx6OFd6M3YxTV83UzI5blhRV2VjR1liWHIzcjlwWktGRWdhR3BwZ1JFM0h5UzlIMGJ0WE1KZ3l6NXJmSzdpVzFITThDN0NMVzJNTGZLRE9NSmxLanlTWXV5QzNtMHh1N2oza1NSVWZVRGQ3U3N0LU1ISjl5Y2dJR0NDT250ZU8xWHlCUkpaLTJzcHkzc1N6WUhodUZjMzhUNldaUG1hQXFyd01NU0J2MkZkeFdOQm1XMWdBM09vdTRlLUtZS1nSAewBQVVfeXFMT2VXSTVpckVMa2N5ZGdTV3FWV1pxemZ5SlJqR0pxbGM2Zzk5bmt1eC1rMFRxa1k2Zmg3R2Jfc3EzR3lMR1M2bk9pd3NRSEEwdWVYZ2xnX2dHQkUxVkkzelpjZ0o0V3JBTDQ0UzE3LUZsZ2JWdjMtXzluUzQxNzdhenQzbDJtRF9MdHlFdHFibGFSeGNmRWJDeUcxdWIxU3U5dGVIUzdiRUhUVnBWd0p3V2tYNWo3cjFMYXd0Y3JqN05kanZiRW5sd3kwbnZibndQd1dVVEt0R2VmNVFjaXpndFZJSVlEUmI4YzdwVE8?oc=5",
+     "published": "Fri, 13 Nov 2026 14:01:05 GMT",
+     "sentiment": 0.25
+    },
+    {
+     "title": "ABB India Limited Reports Earnings Results for the Third Quarter and Nine Months Ended September 30, 2026",
+     "source": "www.marketscreener.com",
+     "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxQVXBLZVdlSUxvZ2dyM1B2NnhKcXM1elJDVmpUcFRCZWYyNjBtanVYbE95Y3d5U0pfU2czOWlYZTIxUzl3Y3p4S1gwWkM3eUZDV2FkTW9zb3hoOTNzZGszem1oLXVmTm1pN2xBckI1LW91eHR1UXFWMklYWW5XM3p1aTU4RC11UTJPSUZXZXFmXzRJT1V3WUo0VGRtOEVHeC14QTRUc3dVT1FRT3N3djhqV193LWROVDhsN1N5RTZDa3d1SEtKV09UWGxZeFpwT19qd19fd25paVZvMzJfeGFBSWV3RTQzZ3c?oc=5",
+     "published": "Fri, 13 Nov 2026 15:35:51 GMT",
+     "sentiment": -0.226
+    },
+    {
+     "title": "ABB India Posts Q2 EBITDA of \u20b95.52 Billion Versus \u20b94.86 Billion YoY",
+     "source": "Sahi",
+     "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQQ2xucVFqdTNNaGUtMERTMlRyUFkxenMxNjgtMXpPWlRmbVhkYm9BVElndFo3bGRZMExxOUNHbWpHYjJYSXFpRk1QNU1hR2d1aElFLWl0TkpJSExERmNZNFdDN3RJQ1UxQ3kyd0NBZDhOV1kzb2FiNjUwZTFST19PcDYwUEYwWGQ2UUpMa1JURW5CWnVidEE?oc=5",
+     "published": "Fri, 13 Nov 2026 12:49:17 GMT",
      "sentiment": 0.0
     },
     {
-     "title": "Stocks to watch, Nov 13: ABB India, ZEEL, Eicher Motors, Ola Electric, Religare Enterprises, TMPV, Vi",
-     "source": "Upstox",
-     "link": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxPendKcE9kVVVCR1JlVjVQbTFUaUZSTjNhbWtlYmdJSXhRaWFXa1RFOG82Ri1fWTdsVHR6UENZMm1WczNBLWlXY0RUVHpIS3IySGNXR1U3QVpUdzVrXzY0dUZINGZielBLR1BaaGtXQnBrVmF1d3hpb25xTlVtMEwxUjBaSGtXeXhTSXZ6ZWpHZjN5YUFyNmZKLUFjOUdiUFFqR1BSSk1PR2R1RzZmNXlfRmRLb0VEQkZidVdRcWZPNERqTF9tdmtzM2JkT3o0SU1rY2FTM2JESTVHNWdfTEQ0NTk4YW5VM3NWZkd3ZElMaTRMVlhG?oc=5",
-     "published": "Fri, 13 Nov 2026 02:47:22 GMT",
-     "sentiment": 0.0
-    },
-    {
-     "title": "ABB India stock faces margin test as September results approach",
-     "source": "ad-hoc-news.de",
-     "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNTFFKb2VjVUZMZW1WWUcxcUUtdmdnY2NtRTYxamdqd0p6X0tyeVEtVm5rUnRnWm9ieHlzSUV2cTFxVXF4OEFBczdBOFRVQ3U3cE5zMWFrSk16bXdoSXhpM0ZnWElLX1o2aDNOSWxRWUN5UmxxeTJTdEh0c2ZPOEZDNFMweDRhd0NkcjFhaXVycVluUWdDUXZWMUt6U0JDdnk5Z0RFckpSQi01Y3dOZGVlajlwVXFoQklBMC0wdFk1WQ?oc=5",
-     "published": "Fri, 13 Nov 2026 00:54:21 GMT",
-     "sentiment": 0.0
-    },
-    {
-     "title": "Grasim Industries, Eicher Motors, and 10 Other Stocks Announcing September Quarter Results Today",
-     "source": "Trade Brains",
-     "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQOW04cF9laTZDY1VXdmdGeVlkdjNMYWluOFAxSTc3NFd6aTAwWG9seVBySFE4MzZyVGNiUlFreEVIQWtCWUVYZ0xGSDB4ZkV6em9mR2xzcTZSQ2RQcHlLOUdmUWRKcGl6Mmp1N0lveWFXc1JvQUNPMUVMLWozVmRoOXRfdDVtNHNPaU5fRXhaNmZubTAyZkloQUQ2ajNnVlVQM0JLR0tjOW52b1B4MjR5ZnJWOFV2Tms2MEdkWnI4SkZPaFd2TjNCcmwzTjlLWXpBX0xBejRWVFM?oc=5",
-     "published": "Fri, 13 Nov 2026 01:30:37 GMT",
-     "sentiment": 0.0
-    },
-    {
-     "title": "Q2 results today, November 13: Grasim Industries, Eicher Motors, ABB India, Tata Motors PV, Godrej Industries among companies to announce earnings",
-     "source": "Business Upturn",
-     "link": "https://news.google.com/rss/articles/CBMisAJBVV95cUxQTTRMS0RZTWx5TkdyRXhvb2Rtak5ONnd6cURocEY4U2pJS3k4VDhONWszcHBOSDBDUzdBbXB1SHV0M2FWdlRZTU5hQnpOcWxjNFpHYnotWWRRRlhPUHVVN3ZlM2ZlRjlCSTFBakxMWDd2d0kzZDNnQVA1RGdvaUdaMTFiVzEteTFyYS1zclAtVG83dEFfWHAtTlE2TEJPdmRVTHc1RkJLWjlTZlJTa1g4MGY2ZlUyZ3EtLXhEYk1PeTVqSy1OTzRBU2E1cWlldlVvbFVKUUNGSUktZG1teFo0Z0J0bGVoQndqSTFvd3lmQkRFZnV2blRzcjVINWstdWJUMzJOX3ZPQUd0TlBxUDNpckJnVHNQbXBoLXplc3VCRzNpMTdxc3gwZHlVUVJpR2Vl?oc=5",
-     "published": "Fri, 13 Nov 2026 01:51:59 GMT",
-     "sentiment": 0.0
+     "title": "ABB India Q3 orders jump 56% to record \u20b94,733 crore",
+     "source": "scanx.trade",
+     "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQNjZKYjhpMmp3Zk1RZlI1VFlNM3AxWVNqUjRqTDh2eDVBdEhjVExSb2hPRXNjRWQ0c2hEdWUtUDZIS1FRczRkZXYwWEpSenI1dzVQZ01xUGw5cW43bUhQbENGb0hSaVBramZpMUE0RmJMalhlb2pteXpmcGptWlljR3M3NTdLZTNwUFlRMGw1cHZseTR4NzhlTVhTd1JSSGQyeFBBY0RB?oc=5",
+     "published": "Fri, 13 Nov 2026 14:10:59 GMT",
+     "sentiment": 0.25
     }
    ],
    "news_sentiment": {
-    "score": 0.0,
-    "count": 5,
-    "label": "NEUTRAL"
+    "score": 0.218,
+    "count": 8,
+    "label": "POSITIVE"
    },
    "win_prob": 55.3,
    "expected_r": 0.16,
@@ -182,8 +182,8 @@
     "day_chg": 0.7193767689956498,
     "ret5": 13.251387221786493,
     "rs20": 9.368432103137447,
-    "bias_score": 10.0,
-    "news_sent": 0.129,
+    "bias_score": -23.0,
+    "news_sent": 0.245,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.146333769093575
    },
@@ -227,7 +227,7 @@
     }
    ],
    "news_sentiment": {
-    "score": 0.129,
+    "score": 0.245,
     "count": 8,
     "label": "POSITIVE"
    },
@@ -278,20 +278,20 @@
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
     "log_vol_ratio": 0.07952047959218056,
-    "rsi": 57.85029914290009,
+    "rsi": 57.850299142901136,
     "dist_high_pct": 1.954921803127875,
     "ext_ema20": 2.4450823269933863,
-    "atr_pct": 2.359686941112448,
+    "atr_pct": 2.3596869411117343,
     "day_chg": 0.12918379330593144,
     "ret5": 1.8516306295544238,
     "rs20": -2.173941131056756,
-    "bias_score": 10.0,
-    "news_sent": 0.063,
+    "bias_score": -23.0,
+    "news_sent": 0.111,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.146333769093575
    },
-   "r1_a": 0.43740420593315504,
-   "r2_a": 0.8748084118663101,
+   "r1_a": 0.4374042059332873,
+   "r2_a": 0.8748084118665747,
    "news": [
     {
      "title": "APOLLOHOSP Share Price Today - Apollo Hospitals on NSE/BSE",
@@ -322,17 +322,17 @@
      "sentiment": 0.0
     },
     {
-     "title": "TD Power Systems share price jumps over 3% after strong Q2 earnings; stock rallies 93% in 2026 so far",
-     "source": "Upstox",
-     "link": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxQRkw4LTNBUkxsS2RDa253TjRIeEdrRFkyR0NzV1gzSmY1UW5lNHFDN2p6QjdDbGJwend6T0NPUHhBbUgzTzRGX2t3Nmhpd1FsMnJlQ2tYaVBuVHhSVUhKRWczZk8wYjNTOUR4N2doSGNvU0kwSVpQM21Yd0VPVU4wSjM5Y2ZtbFgxaEtYOTZHaTk1dkNUTkhSYVJvNjEyN3lHYVpBQlZrX2RfRFdRaVNVcnZpck8wZW1lVnF6X096TGlEVTlPSHQ4Z0cwX3BCTk5jelI1VHFKVEZ4LXgzYnJZdXVKTUloUkFHdmI5N2NR?oc=5",
-     "published": "Fri, 13 Nov 2026 04:12:19 GMT",
-     "sentiment": 0.818
+     "title": "Indian stocks slip as oil, inflation cap weekly rally",
+     "source": "Reuters",
+     "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOX1E4QjJWZklPblVub0xweU1jNXRDdDlBdDFpbDFlZDl1d21idHhkbnAtTkZOcGEzZ3dSRnh0dWhQOFRPQXRuQVR2QkE0RFVvbnVSM2N3MmtWZjhsa0FhSGRLTlVtZUxXeTVGQUlUWTQyTjlwNm9HT2pvek1nZ0JXWkVWd0FVdEdvMFpZbkxuU2VlcHFUbDMtNzlzc09oeVB1eVVLaE12MHE1QXh6eEFIZ3lyUlUyRks0eU8tbA?oc=5",
+     "published": "Fri, 13 Nov 2026 02:42:00 GMT",
+     "sentiment": 0.382
     }
    ],
    "news_sentiment": {
-    "score": 0.063,
+    "score": 0.111,
     "count": 8,
-    "label": "NEUTRAL"
+    "label": "POSITIVE"
    },
    "win_prob": 55.3,
    "expected_r": 0.16,
@@ -388,8 +388,8 @@
     "day_chg": -1.3713750110974865,
     "ret5": 1.818302143184125,
     "rs20": 2.6263416280376095,
-    "bias_score": 10.0,
-    "news_sent": 0.111,
+    "bias_score": -23.0,
+    "news_sent": 0.161,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.146333769093575
    },
@@ -404,20 +404,6 @@
      "sentiment": 0.421
     },
     {
-     "title": "DLF to invest INR 3,750 crore in Everstone JV to buy into IREO\u2019s India business",
-     "source": "Prop News Time",
-     "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPY3prWV9lV0xuMTlkVjhUODY2WHRzcDJMeks3Y3FIWVFBb0NORzdvS0FhWm54YzlhWE9jd3Y5aVpJTmJyWkJubUl5SkdZN0dULVl4amY4SS1PYzY0ZzJXcTAwM183Q3dxaUNRNk1mbndCcWI4dHlWNlpQeV83VE9wZG0ycHl2TG9LQTFOaERHdmp1MGFMeHpHdGFYWWVudG1JeUhwQkZWLVdMMnNGWTRyRXlkYjZoei1Ya0c4d01GeW5pOGticzZBcDVqVQ?oc=5",
-     "published": "Tue, 10 Nov 2026 15:03:28 GMT",
-     "sentiment": 0.0
-    },
-    {
-     "title": "DLF-GIC JV DCCDL Rental Income Jumps 9% to Rs 1,481 Cr",
-     "source": "Rediff MoneyWiz",
-     "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPalEzWjdOck1iMHBfRUR5WGFVaS1EUFRKRmtrNXd3b2Fsb0NiMzZVZk0wWFc4SjZDTXB3a21IbVNXRUdiZFpxcUdFeElqVEdES3lfVE1fVUpIaVdfak1mUVdFMUxMeEpBb2ttUm9MOHZhVmpiQXlZU2N0Q3ZoeDVEdzFNbkJ4REtUVjRIczU1ZDlLelFRWTJXSzZBOTVjR0xOT1BiVlFjc1d6djh4UHc?oc=5",
-     "published": "Tue, 10 Nov 2026 11:31:29 GMT",
-     "sentiment": 0.361
-    },
-    {
      "title": "DTCP seals four buildings in DLF-2, resumes crackdown on illegal commercial use",
      "source": "The Times of India",
      "link": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxNdDNEdmhmTlJWLVNrX1ZwSnE2SDBsZzJ6NkxpNHh5NXg5eDByeWI5bllqUUFJa2x1bFdPU0owSnMxU0JKWGlfQThFVkliS2RjYUE0cnE3cGFlYlB6R1FWWWw3Z0EySnUtNFN4dXRlQlB6WGo4ZEFGMzAwMHNxWFNVQ0JuWDFZNU82c3J4allRVUpqREhSa3NlelJuYWRXQ0FBSUh1R182MUhhUXV3ZlBvbDlqTzNQaVEtVE1RRWRLX3pta0UyNTltQXFkTWFjZE5BeU5YVWZtNE9kc295QnVvakZTSzJTMkJydXF2UXhn0gHuAUFVX3lxTE10M0R2aGZOUlYtU2tfVnBKcTZIMGxnMno2TGk0eHk1eDl4MHJ5YjluWWpRQUlrbHVsV09TSjBKczFTQkpYaV9BOEVWSWJLZGNhQTRycTdwYWViUHpHUVZZbDdnQTJKdS00U3h1dGVCUHpYajhkQUYzMDAwc3FYU1VDQm5YMVk1TzZzcnhqWVFVSmpESFJrc2V6Um5hZFdDQUFJSHVHXzYxSGFRdXdmUG9sOWpPM1BpUS1UTVFFZEtfem1rRTI1OW1BcWRNYWNkTkF5TlhVZm00T2Rzb3lCdW9qRlNLMlMyQnJ1cXZReGc?oc=5",
@@ -430,10 +416,24 @@
      "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPdTNjS2l3Nm4wUlAyN0VIMkZ5TDA5RWNSWlo1dVdFVG1idVdhY19FXzRGRURKWE1hRTBSRDh1ODI3WFRBdnBDbzRiY2ljYjA1MW1JQjQxS2tRTkZxanpJeTBUU3Z6YmdOQTFZUmZtU05nOFdVbU5LckJNTFR0UkYwWHBYcTdsWHdsQmgyWUZHV1hNSDMwS3RNdFBQX2s3enU0M2FMQ1A1d2F3al9oeG1pOXZCaFJKSERBRmlfdjdET2wtcDVIbWlxRGN3Ym14Mk9LWWl1QtIB2gFBVV95cUxOUENoaFBUVVVFWk53TldNWDVyTjdxZnBnNnJ0ZzFHUHdkaEJzNmZCVXhHaHVXa211Z2c3aWhSWG5Kcmo3V21HTmxDLTZKTmx5dEpvekMxdWhiY2pXRVF6U1dWeGd1RHUxSmwtRTlnRU1CalJCN0RoT3hjUV9wczE1VWx1QkRuSnBGYmdXQ2hTek1hYzlmRVUtSUtZUmJvZ0lxSUM2OHRwcGcyQlMyajRCNnhVa1BaU0FnaC1TMjhNYzZvVDVIRlhESW5sTFh6V2M2OTY5dlIxdVNZQQ?oc=5",
      "published": "Fri, 13 Nov 2026 08:03:12 GMT",
      "sentiment": 0.296
+    },
+    {
+     "title": "Stock under \u20b9100: Turtlemint hits 5% upper circuit as Q2 loss narrows 67%",
+     "source": "Business Standard",
+     "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNWTZ0M21CTFN0bjIxUzNFVEpDNUtCcndac0o4d2tmRUtpaENsVFp1YmJCYVl1bDJ3UGhub2hHQTJ2dXc1Q3pJYnhQcEttbXlPQl9tbDJVdF9FMVM3THVKNXV4anllcUJWeXpJWEIxS1dkUFBSMV9BeGZoMjB0NG16aGdkdnI5MHBPUF9tanRvTlRlUVFWMkt4UmpFY1ViaV9qZTRqWnVhRkpBaUtWeExwalYxMER2cHd3Y0pTNWtHM3VvcEZndnlzSWt0T3ZmUzYzcVHSAdcBQVVfeXFMUHpzc2dzdTlWRndyRlIzRmJfaVBIU3BBUS1COXA2UDJNLUZVTm1EUG5sZHl1SHh1MGE0cElGY3pWVnU4REZRVWFFNkxwMk1jZjduRWUxQy1RQWhwTzNrS2Fsa2E5Nm96Y3FRVGhkOGdkQy03UUhQSnZydXA1NHF2UlhidGFmMERzU2phRS1ESWZCa2xoVkxUbnozcnBZVzA3M2lZZ2ZCWlhuMVNyWW94SXZZMklERWdENEZxdDNxQi1NUmNCc2pGamNFMVhGZDFDS0FaaFZsSFU?oc=5",
+     "published": "Fri, 13 Nov 2026 08:10:38 GMT",
+     "sentiment": -0.318
+    },
+    {
+     "title": "Veegaland Developers Ltd (VEEGALAND) Share Price",
+     "source": "Business Today",
+     "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOTFpoNUpTVlpCclgwLVB3dElneDlHUGR5eFRqVmllckJVMVRnLWNPWkxGUlVwQ1lIVVZ2U2NEY29RM0VJU3pySmhmeDBCdHhxamlIb0tHelZWbzJ2eVBreVBYa3B0OG01eEhvaVZrSjFJczNhbVRBa1IwdF9vMnUxOVdEcWFpbGgzbkpaWjNGMjdjblE?oc=5",
+     "published": "Fri, 13 Nov 2026 06:59:00 GMT",
+     "sentiment": 0.296
     }
    ],
    "news_sentiment": {
-    "score": 0.111,
+    "score": 0.161,
     "count": 8,
     "label": "POSITIVE"
    },
@@ -484,20 +484,20 @@
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
     "log_vol_ratio": -0.08253074473524563,
-    "rsi": 64.69893226224036,
+    "rsi": 64.69893226223087,
     "dist_high_pct": 1.7184498424649253,
     "ext_ema20": 5.80981615255618,
-    "atr_pct": 2.6506339998635933,
+    "atr_pct": 2.6506339998633845,
     "day_chg": -1.0398867780116117,
     "ret5": 8.697689966999533,
     "rs20": -7.476365496038029,
-    "bias_score": 10.0,
-    "news_sent": 0.336,
+    "bias_score": -23.0,
+    "news_sent": 0.481,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.146333769093575
    },
-   "r1_a": 0.3617791594622963,
-   "r2_a": 0.7235583189245999,
+   "r1_a": 0.36177915946232475,
+   "r2_a": 0.7235583189246568,
    "news": [
     {
      "title": "Trade Spotlight: How should you trade Canara Bank, Mankind Pharma, Amara Raja Energy, Bharat Dynamics,...",
@@ -507,6 +507,13 @@
      "sentiment": 0.494
     },
     {
+     "title": "BAIKAKAJI Share Price Today - Bai Kakaji Polymers on NSE/BSE",
+     "source": "scanx.trade",
+     "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1IWWFZQVFqYnBqNFhvQ3JoSUFHSmMybldzbUhUQzF1LUpGVkQzQmR2blhNeWx6RFRLemV1SElqeXViOTZobWZkT0tOM2pzWVVGLTNVTGF1eV9aWFF6aGI0?oc=5",
+     "published": "Fri, 13 Nov 2026 08:19:13 GMT",
+     "sentiment": 0.296
+    },
+    {
      "title": "Top stock picks: Analysts recommend buying Hyundai Motor, MCX, HCLTech, TCS, BDL and Havells",
      "source": "CNBC TV18",
      "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOb3piV2ZycllsajVfU0JubFFBMms1SmlhaDVSZWlYdEQxS3k1MHFUQTBhak95d29MR29xcGFwQ0dzSjRJeWFSSldHcGVKYU80cG84X2FYb1VZU0pSTFd0UUxlU0lLRXdqSTA3Unh1VmZWOGVoWEpqa3lSanI2S0JLdGhWdFVoWEhLN2lYN3pWanpPdXRlX2FrTWRoaDVFVExvSWtiYllteDZHaVN6UENZSV9na1pyVXFUR1ZPR3dac1IxSWlUWThHNVA3OW5BNS1la0HSAdcBQVVfeXFMUDhDUDN4YmpzUnJKaU9wb0lic250c3Y4RjRBa3NJdndDZ1JlVUNCenRsdkVuYnRPc2o2Tk9TQmxCLUxSWE1OUGxDeUhYT2dSQ0hZb2FscFZsaWZ4SHJSS09scHplSC1aNkRFMHhJak5NTXp5STJyS1FNekdfM1E1MTNjdDd0RWlFUFFvQnBKVVk5Q3VqcXhKaDdLNTU1SjU3QTJlbkJBODNNbXIySWFGUDVLTFVwTzU3VDFPWXgtbGsyd3JNRDM2Q1NXUE9XemxJWEplMXZzNzg?oc=5",
@@ -514,18 +521,11 @@
      "sentiment": 0.511
     },
     {
-     "title": "PRIZOR VIZTECH LIMITED Share Price",
-     "source": "Upstox",
-     "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9wZjJRUTZDVGxyVk5abUlybGJaQXhFb2VKUWN2M1FIRVFiNm4xNEgwdmhZLUh5cjVES3pHRElMd1pWUEdyOWRtbEt4TGZfNGFNU3RoWXZkUmpibkRkU2txYmdUMk5tazdyRFlhX1F3?oc=5",
-     "published": "Wed, 11 Nov 2026 20:46:23 GMT",
-     "sentiment": -0.111
-    },
-    {
-     "title": "I looked beyond heating speed: 7 things I\u2019d check before buying an instant geyser for my kitchen",
-     "source": "Livemint",
-     "link": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxORDJiOVI0MWtGMXZ5d2pwM2FOX1U5TGRsWnI0N3dBTHp2UGV5Q2RsVFk3S01TUEU2ZVNvNzN1U2tsX1V0YThWajAyVjF6NHdNRDVtcndqaXZrbnZfY0ZtR2xaR0JtUzZyaGNKOXpXcDBGYVhiX19Yc2xwdVJxWmdKMElDX1JKWDRpS2xEMVpLdFUwVzZnU1dIQ2pfUk5OTjVScW8yNWZrdWxZQXdyTUNaX3lKdTRLbGNKT0dDZmI0bjhCMEhHVlVwR0RnOE9pRy1vNFdfd3ZkSmdUeEMzcE1Gc2J0UTZZMkZZdDRQZVI3OHJrX2NQQmfSAfsBQVVfeXFMUFpxT054UEkweEtxOHloSjc1V0dLLTFkOW9WNFNJb0VKZHpQQmpPNmEzcGZOVGpueExJaVJHa2ljc0hYb2Z4LVdKdW5kNnZoWlBFRm8zTDNfbWlvQ3E1Z21NakMxRXlnY3k4SmQ2VWJvU2F6amtWOVFLcktVdXo4WHdaWlcwUUtPYXl4MDVfaVhhVmh0ZklzLVhjTkJ0TVRueXJLR192Z20wWUdWWWNSMzI5R0UyMlU0S3RZck1fRnFYQ2h1QmhXMlUwOXkwUEZmTjR4blgtbWUwYXphX0hTZUtBMkVlaG9MOWV5WEl3eEhPeUxiRlVEZGx5dk0?oc=5",
-     "published": "Tue, 10 Nov 2026 14:53:17 GMT",
-     "sentiment": 0.0
+     "title": "RVNL, IRFC, BEML, IRCON, Texmaco shares zoom; what's driving the surge in railway stocks?",
+     "source": "Business Today",
+     "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxQMXlrcG1DOGNqVWZfQ3lDbU9tdUJ3djhGQTFsOWU5U3RGV3pxRTNtak9xbl85amFEY3VERVk1M1hWUWNSaVJZTDN1NnlGbDVZeXItOVVyWXZYSHZDZjFnLU5QZmkyT29iOXhqd1o1YkNXVkpfa0FFaG43djZLem9rbndxSjFxdUNEOFlibmk1cDdnUHhaU2poaTFBV0FKTTFWRDY5cXdHcG9WS0VmMDhXN3JaRU52ZkRLMjhpdk9YSmF1UkFKbjBvT0FPVVhwMUhyQi1UREVGVGFpelBKMDVWbjlQSVnSAeoBQVVfeXFMT3RvYTFGQ3pQbjd1YnRhZ0JLVjYwbTYtMXFVdGQ3ODYxZ2xfM25FS0stcDJwV0VYWXFmQkpRSTVQSnIta0dlMEI4V0VQT0ZiQVdfTGdnUGl5MFVaN3B2RHljbTYzWmhyTkNKcGJiRmJQNWx3QkJ6aUt5eWJ6QlRYZ054cE45V0wzRFA3R3NMS3pqdG9wN3g2eEYxWngySHY1WHZRYlRoRS1wUXotbEVXV0FfRnhfZ2VOcElyQl9GRTVLV3k0Q2lBd1lLSV9WNzBmN2g1dTViRHVpUVRGMUpQNHpYaGZGOF9LNjB3?oc=5",
+     "published": "Wed, 11 Nov 2026 06:43:23 GMT",
+     "sentiment": 0.612
     },
     {
      "title": "Havells India shares see bullish breakout; where is stock headed?",
@@ -536,7 +536,7 @@
     }
    ],
    "news_sentiment": {
-    "score": 0.336,
+    "score": 0.481,
     "count": 7,
     "label": "POSITIVE"
    },
@@ -594,8 +594,8 @@
     "day_chg": 0.8853475228142171,
     "ret5": 2.526883554673476,
     "rs20": -1.0913197245223216,
-    "bias_score": 10.0,
-    "news_sent": 0.004,
+    "bias_score": -23.0,
+    "news_sent": 0.032,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.146333769093575
    },
@@ -603,10 +603,10 @@
    "r2_a": 0.6269232936378202,
    "news": [
     {
-     "title": "Aurobindo Pharma Limited (AUROPHARMA.NS) Stock Price, News, Quote & History",
-     "source": "Yahoo! Finance Canada",
-     "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9QOThCWno3YUNOUlFwTHBmLTNMMTc1SFhGcG41SEV4VDU2UmE3eWxWaVhuNUxTRmUxVEg2Q1pKUDhTNVNKSWFPd3ZLQnktb3ZhMnpHbjlKekdwdGNybFE?oc=5",
-     "published": "Wed, 11 Nov 2026 21:14:06 GMT",
+     "title": "Aurobindo Pharma Limited (AUROPHARMA.NS) stock price, news, quote and history",
+     "source": "Yahoo Finance Singapore",
+     "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1fS1Q4TWhNOUFkR2Q1VkFYbUd3RlpGLTRacFZDMlJNNE1rYlZJaXk0bXFXbnZuT2lhemh4OEllSmxMU2Nxbkx1c0JoNjVXSXhXdUxhMmF0dnpoT1hkUXc?oc=5",
+     "published": "Tue, 10 Nov 2026 18:26:03 GMT",
      "sentiment": -0.226
     },
     {
@@ -624,22 +624,22 @@
      "sentiment": 0.0
     },
     {
+     "title": "Top 14 Pharma Stocks To Buy In India November 2026",
+     "source": "Samco",
+     "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNSmxaNUxpT2wtdzdBOEMwZ18tbzhmM3NVOXN1RXlaTy1wR1N2SmZRb0RKSlZPSUpvRnhxaTlHQnBpYXV5X2RhNHNlYnEtYjctblphSkpUbWJHRDRoRWZwY3ZXMmMwRlBYZWR2TFhMcUhHU0lOd19VVmY4a0pxYUF2djNyOWp0TE9Rc0E?oc=5",
+     "published": "Thu, 12 Nov 2026 06:50:53 GMT",
+     "sentiment": 0.202
+    },
+    {
      "title": "Aurobindo Pharma shares extend losses after USFDA's OAI classification for subsidiary's plant",
      "source": "CNBC TV18",
      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQdDk0OGYxMWlYNlV2a3JZSW1LMVd2Y1RzSW9aRklZNkF4Ql9OU1VCSWxVa21fTTA1MEFTYzZYOVNBYkN5dFhNSlVOU1gzclBodDJkZjlKZmI2TXVZRThnSXlYMzY3S1lMYzdpc3NobkVVMlpKZWZZNlFmM2VkbnVYRmh5YmVJU3B3RHNURkQtVEJsNVphUjhfb2NMcHlkUTk0b2xrd3JTUDZ6S2xVczdCS3ZUN3AwYUFSQlVlTWY4SdIBvwFBVV95cUxQdDk0OGYxMWlYNlV2a3JZSW1LMVd2Y1RzSW9aRklZNkF4Ql9OU1VCSWxVa21fTTA1MEFTYzZYOVNBYkN5dFhNSlVOU1gzclBodDJkZjlKZmI2TXVZRThnSXlYMzY3S1lMYzdpc3NobkVVMlpKZWZZNlFmM2VkbnVYRmh5YmVJU3B3RHNURkQtVEJsNVphUjhfb2NMcHlkUTk0b2xrd3JTUDZ6S2xVczdCS3ZUN3AwYUFSQlVlTWY4SQ?oc=5",
      "published": "Thu, 12 Nov 2026 07:07:52 GMT",
      "sentiment": 0.153
-    },
-    {
-     "title": "Aurobindo Pharma Limited (AUROPHARMA.NS) stock price, news, quote and history",
-     "source": "Yahoo Finance Singapore",
-     "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1fS1Q4TWhNOUFkR2Q1VkFYbUd3RlpGLTRacFZDMlJNNE1rYlZJaXk0bXFXbnZuT2lhemh4OEllSmxMU2Nxbkx1c0JoNjVXSXhXdUxhMmF0dnpoT1hkUXc?oc=5",
-     "published": "Tue, 10 Nov 2026 18:26:03 GMT",
-     "sentiment": -0.226
     }
    ],
    "news_sentiment": {
-    "score": 0.004,
+    "score": 0.032,
     "count": 8,
     "label": "NEUTRAL"
    },
@@ -697,8 +697,8 @@
     "day_chg": -1.5714258179628793,
     "ret5": 6.517495554744812,
     "rs20": -6.21686805846986,
-    "bias_score": 10.0,
-    "news_sent": 0.215,
+    "bias_score": -23.0,
+    "news_sent": 0.139,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.146333769093575
    },
@@ -742,7 +742,7 @@
     }
    ],
    "news_sentiment": {
-    "score": 0.215,
+    "score": 0.139,
     "count": 8,
     "label": "POSITIVE"
    },
@@ -800,8 +800,8 @@
     "day_chg": -1.8199336034997238,
     "ret5": 0.32366143699837924,
     "rs20": -5.557416400264192,
-    "bias_score": 10.0,
-    "news_sent": 0.198,
+    "bias_score": -23.0,
+    "news_sent": 0.107,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.146333769093575
    },
@@ -845,7 +845,7 @@
     }
    ],
    "news_sentiment": {
-    "score": 0.198,
+    "score": 0.107,
     "count": 8,
     "label": "POSITIVE"
    },
@@ -896,27 +896,34 @@
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
     "log_vol_ratio": -0.2962018959553201,
-    "rsi": 65.29506269021678,
+    "rsi": 65.29506266439033,
     "dist_high_pct": 0.904974958620464,
-    "ext_ema20": 3.9045628970019175,
-    "atr_pct": 2.107369159277643,
+    "ext_ema20": 3.9045628971494217,
+    "atr_pct": 2.1073691615841854,
     "day_chg": 0.9574480452919198,
     "ret5": 1.5035558618640144,
     "rs20": -5.010729651178258,
-    "bias_score": 10.0,
-    "news_sent": 0.053,
+    "bias_score": -23.0,
+    "news_sent": 0.104,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.146333769093575
    },
-   "r1_a": 0.27858608948535973,
-   "r2_a": 0.5571721789707248,
+   "r1_a": 0.2785860891804437,
+   "r2_a": 0.5571721783608928,
    "news": [
     {
      "title": "Hindustan Unilever Share Price - Live NSE: HINDUNILVR Stock Price & Chart",
      "source": "Upstox",
      "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE00bURGcnlweERKTnRINldLZmR6b09TWm9SMDUzTkdvUlh3VDVoVGEtdkdFb1JYc2NtWEc1aExJUXJWZmZNc3NCVVhDNHJBNUxLdmVsMTJwZ1NLZWtZR3ZSd0Nhd2h6ZEk2UnJnMXFn?oc=5",
-     "published": "Thu, 12 Nov 2026 07:09:17 GMT",
+     "published": "Thu, 12 Nov 2026 16:05:48 GMT",
      "sentiment": 0.296
+    },
+    {
+     "title": "Top Gainers & Losers Today, 13 November 2026 at 3:30 PM IST: Eicher Motors Ltd Leads Gainers",
+     "source": "HDFC Sky",
+     "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQaDRhbG52bG93eEJZamUwT2p0QnE2LXFOdUxuYndWcFhoWXFpSms3YXJLem5zY09KQkVaaVNCSkVZeU4tWkxRSUdEdHNSNE5zTUhMUG8wZmtIRjBnSW9IV0NQTDVzaWNnQm9uM3p5OUJqOTE2cVpVNnhNVC0xT1Jubkh2bw?oc=5",
+     "published": "Fri, 13 Nov 2026 10:59:53 GMT",
+     "sentiment": -0.382
     },
     {
      "title": "HINDUNILVR Share Price Today - Hindustan Unilever on NSE/BSE",
@@ -926,31 +933,24 @@
      "sentiment": 0.296
     },
     {
-     "title": "Markets fall in early trade after 3-day rally; Sensex tumbles 460 points",
-     "source": "The New Indian Express",
-     "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQUmNVZDI4MTRjLW91amhMTUxKaDYyV1Q2MktXRi1DeUlGNHpWZ0ZqekJCTTZVMnJRVkl1Z0doNlVfUi1lNmVVWmNoUWxFZWNJQVgybHRnaDlFWU5Nb3FqN081emtrdThtQy1od0tUOWg5bFRTRXBCODZLdXNPVjlaQXFtYXY3M3JfdlA2aDF0SU82UGJXZlpneGhzUVVnVHZGX1p3dWU1RVlNRU5KX3dDV1RuYWJiQWtPYjZSMHphTlVaZGvSAdABQVVfeXFMTTR6TUloaGhNcF9RWlM4Y0NwSFRXTFdSYllvYjRkbjFQUWJlOGFxb25RX1NzTWl6ZFRZYUowdm9VbzVuSzFnbkFhcTRIX0pfM09UalduR1RYYTlxYllvb0REbEFVVjQ1VXFvZlBLeWpzNk9MbVkyQ1Z3VkNycW5TanNnSkc4UU5DYXptNDFETmRUQ2Flck0yNVZGWk44RlotNXNRUVUwOVNmY3FQclIxOW5VUy1JbG81SzZNSnQ3WHEtNEYyeFNtSDdRN0t6UjZsNQ?oc=5",
-     "published": "Fri, 13 Nov 2026 04:42:06 GMT",
-     "sentiment": -0.103
+     "title": "Hindustan Unilever HINDUNILVR Postal Ballot Non-Executive Director Commission",
+     "source": "Kalkine India",
+     "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNRGd4SVl3aE1fNi1zUERvUTYxMlpKMEVTR2g3SXliVmc2ZG9DR0lVZU15eDNGSWptYVduUFBZcTJKd1dJX1kxSWxoR0JQaVExNnJyZDBsdVdIM2xLQWM1TWJGQUZBbHVwLVJCU3FtQ3NPOF81TXMtVWtQMnRfNEFyRkpSM0tWRDcxd1lxS0JsQ2psZy0wY1ZMWHpLTnBXdGtENVRsVWl4V1cxRDdyTlU5VHJaTTM4ekNwRUlaWXJ2bW9kajl1TUhHWFFR?oc=5",
+     "published": "Fri, 13 Nov 2026 15:03:00 GMT",
+     "sentiment": 0.0
     },
     {
-     "title": "Stock markets climb in early trade led by foreign fund inflows, lower crude oil prices",
-     "source": "DD News",
-     "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNZGVSOVI4VlNMdFVobUwxNHV4alZqdU5YWFlCV3EzZHhWS1RwSEtQN2pkTnA5MndITXN5QzF1RHhyLUFEU3Q2SHBOV0h5UjlaaHlrdHJLcnpLSGc1Z1JjaGN4UE1RN0Q2MlY1Mm5jMmF5VWZBTjZ0dDV2cDVHNEQ3UWNtVWkzOG9NWnVRMkQzT2YwT3lNcnJuVHd5anZ1WEdsRURaZTFfXzI4SzRybWJCcg?oc=5",
-     "published": "Thu, 12 Nov 2026 06:08:37 GMT",
-     "sentiment": -0.599
-    },
-    {
-     "title": "Share Market Today: Nifty 50, Bank Nifty | Nov 12, 2026",
-     "source": "Liquide Blog",
-     "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQRkFOVkg2Yjh2eS1ZUFptWFlnWnhMMnc1ZnBfNWIxcDJXSURxTklMSF9QeThDSEhlMjNkRnB6UEhhR3FMQUNkYVNXM1hqMzh2a3JxTUh6SVZjVy10ckJMUFBOYnd0cUNHdTN2TDZUMW8wRGFwUk16YVVfOTkwU0I4d2NWRWdwWVYyT0phQ0RIUjJibnZ2b0l3OV9DOWNZVTBSWTIyTXdQRldnaURiSnhHVWRjcVlLNWVJM2FGVmVHX2RKRXczZFZMMWZfQQ?oc=5",
-     "published": "Thu, 12 Nov 2026 12:05:39 GMT",
-     "sentiment": 0.765
+     "title": "Most Active Stocks Today, 13 November 2026 at 3:30 PM IST",
+     "source": "HDFC Sky",
+     "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQekI4Rl9aX3JmRV9KbmI1eG84OV9NcEtSamhEMERqTlhaZnJUS1pmd09fSm1XLWRBMk1JSFYyS3BoaGttaTdoSUU0MWtxYzNxVjBBcjVsblU3Ym40dVBGUkZLdHlmeFlSWlV3YWhIcE1udktKajA3UldkcDRodGdEYll5Yw?oc=5",
+     "published": "Fri, 13 Nov 2026 11:05:28 GMT",
+     "sentiment": 0.458
     }
    ],
    "news_sentiment": {
-    "score": 0.053,
+    "score": 0.104,
     "count": 8,
-    "label": "NEUTRAL"
+    "label": "POSITIVE"
    },
    "win_prob": 55.3,
    "expected_r": 0.16,
@@ -1006,7 +1006,7 @@
     "day_chg": -0.9757860199030688,
     "ret5": 1.4553277426408107,
     "rs20": -6.307835088648561,
-    "bias_score": 10.0,
+    "bias_score": -23.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.146333769093575
@@ -1069,7 +1069,7 @@
     "day_chg": 0.4770992366412319,
     "ret5": 2.387092225552756,
     "rs20": 6.205723995890522,
-    "bias_score": 10.0,
+    "bias_score": -23.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.146333769093575
@@ -1125,20 +1125,20 @@
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
     "log_vol_ratio": -0.572622623151667,
-    "rsi": 65.58641597648611,
+    "rsi": 65.58641599178803,
     "dist_high_pct": 1.1627906976744187,
-    "ext_ema20": 4.713752613272049,
-    "atr_pct": 2.552100597905196,
+    "ext_ema20": 4.713752613290967,
+    "atr_pct": 2.5521005970602704,
     "day_chg": 0.5322294500295754,
     "ret5": 1.038115170179199,
     "rs20": -2.133292762601613,
-    "bias_score": 10.0,
+    "bias_score": -23.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.146333769093575
    },
-   "r1_a": 0.5880074767738913,
-   "r2_a": 1.1760149535477897,
+   "r1_a": 0.5880074769685634,
+   "r2_a": 1.1760149539371336,
    "news": [],
    "news_sentiment": null,
    "win_prob": 55.3,
@@ -1195,7 +1195,7 @@
     "day_chg": 0.3344524724020248,
     "ret5": 2.205484583780626,
     "rs20": -2.1597180903172752,
-    "bias_score": 10.0,
+    "bias_score": -23.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.146333769093575
@@ -1258,7 +1258,7 @@
     "day_chg": -0.42758283943965525,
     "ret5": 6.63220449247599,
     "rs20": -1.767542191205318,
-    "bias_score": 10.0,
+    "bias_score": -23.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.146333769093575
@@ -1321,7 +1321,7 @@
     "day_chg": -1.6268192132969261,
     "ret5": 3.164266536833571,
     "rs20": -2.6675444106655455,
-    "bias_score": 10.0,
+    "bias_score": -23.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.146333769093575
@@ -1384,7 +1384,7 @@
     "day_chg": -0.303230209301697,
     "ret5": -0.5606355652708284,
     "rs20": 3.460030451288909,
-    "bias_score": 10.0,
+    "bias_score": -23.0,
     "news_sent": -0.258,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.146333769093575
@@ -1392,13 +1392,6 @@
    "r1_a": 0.2909294434475921,
    "r2_a": 0.5818588868951766,
    "news": [
-    {
-     "title": "JSW Steel Share Price - Live NSE: JSWSTEEL Stock Price & Chart",
-     "source": "Upstox",
-     "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9KdjIxb1BCYWcxUFFoS2lDRXZBUGgta2Fwc252dml6QVRMSk5MSFVDQ0NMbXBfb0ZiemRvMExqWS00bDNpZ0RUZGdWSDlWYnBMS2VUSGhYaGxIcFRrR1RCQWlEV0RwSDg?oc=5",
-     "published": "Thu, 12 Nov 2026 19:26:08 GMT",
-     "sentiment": 0.296
-    },
     {
      "title": "JSW Steel Reports 19% Rise in Crude Steel Production in October; Shares Up 0.9%",
      "source": "HDFC Sky",
@@ -1412,6 +1405,13 @@
      "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQR0tfS01tNHYycjVhWVVkdVFvbUdzMFE3cF90cS1tWUFLczRLSGJ4b3g1VUNKb1piU182R08zbS1pTTJBb05vSDVialZnSTRPMjB3UkpsTERjVHpJRHY5Q2lOQlhhYV9RY0xiOUlkeDI2MnBTZ2RrUEJBV3pCbkpTWkQ1SWtHb2hpM0g5TlJNM2pKVFlkd01SZG1IMHlmcnowemVfNDNsaDc1SkxEZjBWQjIyV2xXb3haSFhpYXk2UnViUHM?oc=5",
      "published": "Thu, 12 Nov 2026 07:41:04 GMT",
      "sentiment": 0.0
+    },
+    {
+     "title": "Jindal Steel & Power Share Price - Live NSE: JINDALSTEL Stock Price & Chart",
+     "source": "Upstox",
+     "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9UT1BLMWg2UWpGWHFTNWpYUDJxSTZrV2p5UVhSVXVTT2xHSGpPZXJuX1dDZUVXQWtCUUZsWC02eE1vV0FPS2xPM2laaUdjeW95Y3RUZXNPVDJxU0w1UWZiY09XMmRWZlV4aC1V?oc=5",
+     "published": "Tue, 10 Nov 2026 22:42:40 GMT",
+     "sentiment": 0.296
     },
     {
      "title": "JSW Steel Crude Steel Output Jumps 19% in October",
