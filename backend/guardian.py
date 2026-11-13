@@ -346,6 +346,45 @@ def connect(env):
     return b
 
 
+# Reading positions: ICICI's server sometimes drops a connection ("104 connection reset"). That is brief, so a read
+# is tried POS_TRIES times POS_WAIT seconds apart, and the phone is told only after POS_ALERT_AFTER passes in a row
+# failed (about 2 minutes), with words that match the cause, and again when it works.
+POS_TRIES, POS_WAIT, POS_ALERT_AFTER = 3, 5, 2
+
+
+def read_positions(breeze, tries=POS_TRIES, wait=POS_WAIT):
+    """get_portfolio_positions() with retries. An error reply counts as a failure, never as 'no positions'
+    (except ICICI's 'No Data Found', which is how it says you hold nothing). Raises the last error."""
+    last = None
+    for i in range(tries):
+        try:
+            r = breeze.get_portfolio_positions()
+            if not isinstance(r, dict):
+                raise RuntimeError(f"unexpected reply from ICICI: {str(r)[:120]}")
+            err, status = str(r.get("Error") or ""), r.get("Status")
+            if any(w in err.lower() for w in ("no data", "not found", "no record")):
+                return {"Success": []}
+            if (status is not None and str(status) != "200") or (err and not r.get("Success")):
+                raise RuntimeError(f"ICICI replied with an error ({status}): {err[:150]}")
+            return r
+        except Exception as exc:
+            last = exc
+            if i < tries - 1:
+                time.sleep(wait)
+    raise last
+
+
+def positions_error_text(exc, fails):
+    """Phone text for a positions read that keeps failing: a login problem or a network drop."""
+    msg = str(exc)
+    mins = round(fails * (POS_TRIES * POS_WAIT + 60) / 60)
+    if any(w in msg.lower() for w in ("session", "token", "unauthor", "401", "403", "login", "expired")):
+        return f"{msg[:150]}. ICICI says the login is no longer valid: send a new SESSION code (step 1 in the app)."
+    return (f"ICICI has not answered for about {mins} minutes ({msg[:120]}). Usually a short network drop on ICICI's side, "
+            "not your login. The guardian keeps trying every minute and tells you when it works again. "
+            "Until then exits are not watched: if you hold a real position, check it in the ICICI app.")
+
+
 def market_window(now):
     import nse_calendar
     return nse_calendar.is_trading_day(now.date()) and "09:20" <= now.strftime("%H:%M") <= "15:25"
@@ -1017,13 +1056,20 @@ def run(live_flag=False, breeze=None, once=False, clock=None):
             continue
         breeze = box[0]
         try:
-            trades = group_trades(legs_from_positions(breeze.get_portfolio_positions()))
+            trades = group_trades(legs_from_positions(read_positions(breeze)))
         except Exception as exc:
-            notify(env, "Guardian: cannot read positions", f"{exc}. Session may have expired: send a new SESSION code.", urgent=True)
+            fails = state["pos_fails"] = state.get("pos_fails", 0) + 1
+            log.warning("positions read failed (%d in a row): %s", fails, exc)
+            if fails == POS_ALERT_AFTER or (fails > POS_ALERT_AFTER and fails % 15 == 0):   # then about every 20 minutes
+                notify(env, "Guardian: cannot read positions", positions_error_text(exc, fails), urgent=True)
+            save_state(state)
             if once:
                 return state
             time.sleep(60)
             continue
+        if state.get("pos_fails", 0) >= POS_ALERT_AFTER:
+            notify(env, "Guardian: reading positions again", "ICICI answers again. Exits are watched as usual.")
+        state["pos_fails"] = 0
         alerted = state.setdefault("alerted", {})
         for t in trades:
             status, note, pnl, pct = evaluate(t, state, now.strftime("%H:%M"), int(env["TRAIL_PCT"]), now.date())
