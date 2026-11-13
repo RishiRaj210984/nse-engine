@@ -1,29 +1,29 @@
 {
- "generated_at": "2026-11-13T05:21:22.744111+05:30",
+ "generated_at": "2026-11-13T07:13:59.304211+05:30",
  "session": "2026-11-13",
- "stage": "preview",
+ "stage": "final",
  "expected_open": {
-  "gap_pct": -0.38,
-  "error_pct": 0.3,
-  "day_pct": -0.36,
-  "snapshot": "Fri 13 Nov 05:21 IST",
-  "stage": "preview",
+  "gap_pct": -0.43,
+  "error_pct": 0.31,
+  "day_pct": -0.3,
+  "snapshot": "Fri 13 Nov 07:13 IST",
+  "stage": "final",
   "tip": "Moderate gap down expected. Use limit orders only, and wait for 09:30.",
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": 0.5
+    "move_pct": 0.55
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": 0.79
+    "move_pct": 0.82
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": 0.3
+    "move_pct": 0.33
    },
    {
     "key": "dax",
@@ -43,22 +43,22 @@
    {
     "key": "n225",
     "name": "Nikkei 225",
-    "move_pct": -0.79
+    "move_pct": 0.73
    },
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": 2.17
+    "move_pct": 1.68
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": -4.37
+    "move_pct": -3.54
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": 0.67
+    "move_pct": 0.65
    },
    {
     "key": "inr",
@@ -70,52 +70,52 @@
    {
     "feature": "dxy",
     "label": "Dollar index",
-    "value": 0.67,
-    "contribution_pct": -0.203
+    "value": 0.65,
+    "contribution_pct": -0.256
    },
    {
     "feature": "inr",
     "label": "USD/INR",
     "value": 0.38,
-    "contribution_pct": -0.193
+    "contribution_pct": -0.239
    },
    {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": 0.5,
-    "contribution_pct": 0.184
-   },
-   {
-    "feature": "cl",
-    "label": "Crude oil",
-    "value": 2.17,
-    "contribution_pct": -0.131
+    "value": 0.55,
+    "contribution_pct": 0.212
    },
    {
     "feature": "nq",
     "label": "Nasdaq futures",
-    "value": 0.79,
-    "contribution_pct": -0.109
+    "value": 0.82,
+    "contribution_pct": -0.146
    },
    {
     "feature": "vix",
     "label": "India VIX level",
     "value": 17.56,
-    "contribution_pct": 0.084
+    "contribution_pct": 0.083
+   },
+   {
+    "feature": "cl",
+    "label": "Crude oil",
+    "value": 1.68,
+    "contribution_pct": -0.066
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.65,
-   "gap_sign_pct": 70.3,
-   "directional_calls": 142,
-   "directional_accuracy": 73.9
+   "gap_corr": 0.68,
+   "gap_sign_pct": 71.0,
+   "directional_calls": 156,
+   "directional_accuracy": 74.4
   }
  },
  "headline": "Market bias DOWN \u2014 favour selling rallies / puts",
  "bias": "BEARISH",
- "score": -46,
- "bias_track_record_pct": 73.1,
+ "score": -39,
+ "bias_track_record_pct": 73.6,
  "options": [
   {
    "index": "NIFTY",
@@ -187,7 +187,7 @@
    "stop": 77.61,
    "t1": 83.37,
    "t2": 86.51,
-   "win_prob": 62.5,
+   "win_prob": 62.9,
    "vol_badge": "2.0x Vol Surge"
   },
   {
@@ -200,7 +200,7 @@
    "stop": 128.07,
    "t1": 137.37,
    "t2": 142.44,
-   "win_prob": 55.9,
+   "win_prob": 56.4,
    "vol_badge": "3.0x Vol Surge"
   },
   {
@@ -213,7 +213,7 @@
    "stop": 167.99,
    "t1": 184.47,
    "t2": 193.45,
-   "win_prob": 54.7,
+   "win_prob": 53.9,
    "vol_badge": "1.8x Vol Surge"
   },
   {
@@ -226,21 +226,21 @@
    "stop": 1711.65,
    "t1": 1833.41,
    "t2": 1899.83,
-   "win_prob": 53.6,
+   "win_prob": 53.4,
    "vol_badge": "2.1x Vol Surge"
   },
   {
-   "symbol": "AXISBANK",
+   "symbol": "ONGC",
    "grade": "B",
-   "action": "BUY AXISBANK near \u20b91,336.40 (skip if it opens above \u20b91,382.21) \u00b7 SL \u20b91,298.23 \u00b7 T1 \u20b91,382.21 \u00b7 T2 \u20b91,428.01 \u00b7 Qty 2 for \u20b910k @1% risk",
-   "entry": 1336.4,
+   "action": "BUY ONGC near \u20b9226.80 (skip if it opens above \u20b9233.54) \u00b7 SL \u20b9221.18 \u00b7 T1 \u20b9233.54 \u00b7 T2 \u20b9240.29 \u00b7 Qty 17 for \u20b910k @1% risk",
+   "entry": 226.8,
    "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
    "exit_by": "day 2, 15:15 IST",
-   "stop": 1298.23,
-   "t1": 1382.21,
-   "t2": 1428.01,
+   "stop": 221.18,
+   "t1": 233.54,
+   "t2": 240.29,
    "win_prob": 51.0,
-   "vol_badge": "1.8x Vol Surge"
+   "vol_badge": "2.4x Vol Surge"
   }
  ],
  "stock_options": [
@@ -349,28 +349,28 @@
    }
   },
   {
-   "symbol": "AXISBANK",
+   "symbol": "ONGC",
    "kind": "CE",
    "side": "BUY",
    "grade": "B",
-   "trigger": 1336.4,
-   "stop": 1298.23,
-   "t1": 1382.21,
-   "lot": 625,
-   "strike": 1340.0,
-   "premium": 12719,
+   "trigger": 226.8,
+   "stop": 221.18,
+   "t1": 233.54,
+   "lot": 2250,
+   "strike": 224.5,
+   "premium": 7312,
    "tiers": {
     "5K": {
-     "strike": 1380.0,
-     "premium": 4656
+     "strike": 227.0,
+     "premium": 4882
     },
     "10K": {
-     "strike": 1360.0,
-     "premium": 7794
+     "strike": 224.5,
+     "premium": 7312
     },
     "15K": {
-     "strike": 1340.0,
-     "premium": 12719
+     "strike": 222.0,
+     "premium": 10485
     }
    }
   }
