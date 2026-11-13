@@ -3088,5 +3088,45 @@
    }
   },
   "note": "sl_atr 1.5\u21921.25; ranker ON (holdout AUC 0.56)"
+ },
+ {
+  "version": 41,
+  "created_at": "2026-11-13T16:17:44.252886+05:30",
+  "params": {
+   "vol_mult": 1.5,
+   "rsi_lo": 55,
+   "rsi_hi": 70,
+   "near_high_pct": 2.0,
+   "sl_atr": 1.25,
+   "t1_atr": 1.5,
+   "t2_atr": 3.0,
+   "bias_threshold": 0.3,
+   "vix_high": 18.0,
+   "news_weight": 0.0,
+   "max_day_chg": 99.0,
+   "regime_gate": 1,
+   "cost_pct": 0.25
+  },
+  "weights": null,
+  "metrics": {
+   "samples": 2410,
+   "live_samples": 289,
+   "rule_trades": 723,
+   "base_win_rate": 0.5527,
+   "avg_win_r": 0.738,
+   "avg_loss_r": 0.562,
+   "expectancy_r": 0.157,
+   "holdout_logloss": 0.6915,
+   "baseline_logloss": 0.6908,
+   "holdout_auc": 0.538,
+   "holdout_n": 482,
+   "bias_wf": {
+    "oos_days": 500,
+    "directional_calls": 131,
+    "directional_accuracy": 63.4,
+    "sign_accuracy_all_days": 56.8
+   }
+  },
+  "note": "rsi_hi 75\u219270; sl_atr 1.5\u21921.25; ranker OFF: no out-of-sample edge, using rule stats only"
  }
 ]
