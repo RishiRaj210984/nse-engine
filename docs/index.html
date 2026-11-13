@@ -214,7 +214,7 @@ body.is-simple main{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 <script>
 const NSE_HOLIDAYS = ['2026-10-20', '2026-11-08', '2026-11-10', '2026-11-24', '2026-12-25'];   // fallback; meta.json has the live list
 const holidayList = () => (D.meta?.holidays?.length ? D.meta.holidays : NSE_HOLIDAYS);
-const APP_VERSION = 'v55';   // keep equal to CACHE in sw.js
+const APP_VERSION = 'v57';   // keep equal to CACHE in sw.js
 const TEST_FROM = '2026-11-04';   // the one real test trade (guardian LIVE_FROM)
 const FILES = ['plan', 'global-bias', 'volume-breakouts', 'performance', 'review', 'meta', 'live', 'small-capital', 'markets'];
 const D = {};
@@ -580,8 +580,14 @@ function paperResults(open = false) {
       ${so.tiers ? `<div class="fine">By budget: ${SO_TIERS.map(([k, lab]) => { const x = so.tiers[k] || {}; return `${lab} ${rs(x.total || 0)} (${x.trades || 0} trades, ${x.wins || 0} won)`; }).join(' · ')}</div>` : ''}
       <div class="fine">⚠️ ${esc(so.research || '')}</div>
       ${(so.recent || []).slice(0, 3).map((x) => `<div class="fine">${x.pnl > 0 ? '✅' : '❌'} ${esc(day(x.date))}: ${esc(x.symbol)}${soTier(x) ? ' ' + SO_SHORT[soTier(x)] : ''} ${x.strike} ${esc(x.kind)} ₹${x.entry_px} → ₹${x.exit_px}, ${esc(x.reason)}: ${rs(x.pnl)}</div>`).join('')}</div>`;
+  // paper-only fifth trade: overnight stock option on a trending share with a cheap option
+  const on = D.live?.overnight;
+  const onRow = !on ? '' : `<div class="srow">🌙 <b>Overnight stock option (5th trade, paper)</b>: ${(on.now || []).length ? (on.now || []).map((r) => `${esc(r.symbol)} ${r.kind === 'CE' ? 'call' : 'put'} ${r.strike}: ${
+      r.status === 'OPEN' ? `bought ${esc(day(r.date))} at ₹${r.entry_px}, worth ${rs(r.value_now)} now` : `₹${r.entry_px} → ₹${r.exit_px}: <b>${rs(r.pnl)}</b>`}`).join(' · ') : 'nothing held'}
+      <div class="fine">Total ${rs(on.total)} (${on.trades} trades, ${on.wins} won) · one a day (each day's cheapest): ${rs(on.one_a_day.total)} (${on.one_a_day.trades} trades, ${on.one_a_day.wins} won)</div>
+      ${(on.recent || []).slice(0, 3).map((x) => `<div class="fine">${x.pnl > 0 ? '✅' : '❌'} ${esc(day(x.date))}: ${esc(x.symbol)} ${x.strike} ${esc(x.kind)} ₹${x.entry_px} → ₹${x.exit_px}: ${rs(x.pnl)}</div>`).join('')}</div>`;
   const soOpen = sot.filter((r) => r.status === 'OPEN').reduce((a, r) => a + r.value_now, 0), soDone = sot.filter((r) => r.status === 'CLOSED').reduce((a, r) => a + r.pnl, 0);
-  return `<details class="sreply" ${open ? 'open' : ''}><summary><b>📒 Paper results</b> · ${head}${mt && mt.status === 'OPEN' ? ` · 🚀 ${rs(mt.value_now)}` : mt && mt.status === 'CLOSED' ? ` · 🚀 ${rs(mt.pnl)}` : ''}${sot.some((r) => r.status === 'OPEN' || r.status === 'CLOSED') ? ` · 📈 ${rs(soOpen + soDone)}` : ''}</summary>${todayRows}${moRow}${soRow}
+  return `<details class="sreply" ${open ? 'open' : ''}><summary><b>📒 Paper results</b> · ${head}${mt && mt.status === 'OPEN' ? ` · 🚀 ${rs(mt.value_now)}` : mt && mt.status === 'CLOSED' ? ` · 🚀 ${rs(mt.pnl)}` : ''}${sot.some((r) => r.status === 'OPEN' || r.status === 'CLOSED') ? ` · 📈 ${rs(soOpen + soDone)}` : ''}</summary>${todayRows}${moRow}${soRow}${onRow}
     ${(pb.open || []).map((o) => `<div class="srow">${lv.find((y) => y.index === o.index)?.reached_at ? '🏁 <b>Closed (paper):' : '🟡 <b>Holding'} ${esc(o.index)} ${esc(o.strategy)}</b> since ${esc(day(o.entry_session))}, expiry ${esc(day(o.expiry))}<div class="fine">Premium collected ₹${Number(o.credit_rs).toLocaleString('en-IN')} · ${(() => { const x = lv.find((y) => y.index === o.index);
         return x?.reached_at ? booked(x)
           : x ? `<b>worth ${rs(x.value_now)} now</b> (live ${esc(x.at)}, ${esc(o.index)} ${Number(x.spot).toLocaleString('en-IN')}) · last evening ${rs(o.mark)}${x.status !== 'HOLD' ? ' · ⚠️ ' + esc(x.status) : ''} (before costs)`
@@ -671,6 +677,7 @@ function tradeSections(c) {
   };
   const dd = (d) => new Date(d + 'T12:00:00+05:30').toDateString().slice(0, 10);
   let h = STATE_LEGEND + `<p class="fine">💰 Your budget: <b>${inr(cap)}</b>. Each section shows the money 1 lot needs and whether it fits. Paper trades are tracked either way.</p>`;
+  const skipped = [];   // trades whose time is over without being entered: one line at the end instead of a section
   // 1, 2: the index option trades (condor or spread), from the plan
   ['NIFTY', 'BANKNIFTY'].forEach((ix, i) => {
     const o = (p.options || []).find((x) => x.index === ix);
@@ -696,6 +703,12 @@ function tradeSections(c) {
       body = `<p><b>Not advised today.</b> ${esc(o.decision_reason || '')}</p><p class="fine">It would have been: ${esc(o.legs)} (expiry ${esc(o.expiry)}).</p>`;
     }
     if (o && o.money_needed != null) body += `<p class="fine">💰 Money needed: about <b>${inr(o.money_needed)}</b> for 1 lot (${esc(o.money_basis || '')}). ${o.money_needed <= cap ? 'Fits' : 'Above'} your ${inr(cap)} budget.${o.max_loss ? ` Worst loss: ${inr(o.max_loss)} per lot.` : ''}</p>`;
+    // after its 10:10–11:30 window, a trade that was not entered (by you or on paper) is not listed
+    const entered = held || (o && o.decision === 'TRADE' && (done.includes(ix) || (pt && pt.credit_rs != null)));
+    if (o && sessToday && t.hm > '11:30' && !entered) {
+      skipped.push(`${ix === 'NIFTY' ? 'NIFTY' : 'Bank Nifty'} ${esc(o.strategy || 'options')}: ${o.decision === 'TRADE' ? 'not entered by 11:30' : 'not advised'}`);
+      return;
+    }
     h += sec(ix, title, chip, tone, body, open, o ? moneyTag(o.money_needed, cap, 'margin ≈ ') : '', st);
   });
   // 3: NIFTY first-hour momentum buy
@@ -721,7 +734,10 @@ function tradeSections(c) {
     if (m) body += `<p class="fine">So far: ${signed(m.total)} (${m.trades} trade${m.trades === 1 ? '' : 's'}, ${m.wins} won). Paper only.</p>`;
     const mm = r && r.entry_px && r.lot ? r.entry_px * r.lot : p.momentum_money;
     body += `<p class="fine">💰 Money needed: ${r && r.entry_px ? `${inr(mm)} (bought at ₹${r.entry_px} × ${r.lot})` : `about ${inr(mm)} for 1 lot of the at-the-money option (estimate)`}. The app never buys above ${inr(15000)}; ${mm <= cap ? 'fits' : 'above'} your ${inr(cap)} budget. The most you can lose is what you pay.</p>`;
-    h += sec('MOMENTUM', '3 · NIFTY momentum buy', chip, tone, body, open, moneyTag(mm, cap, r && r.entry_px ? '' : '≈ '), st);
+    // decided by the 10:15 run: after 10:30 it is listed only if it was bought
+    if (sessToday && t.hm > '10:30' && !(r && (r.status === 'OPEN' || r.status === 'CLOSED')))
+      skipped.push(`NIFTY momentum buy: ${r ? esc(r.note || r.status) : 'no buy signal'}`);
+    else h += sec('MOMENTUM', '3 · NIFTY momentum buy', chip, tone, body, open, moneyTag(mm, cap, r && r.entry_px ? '' : '≈ '), st);
   }
   // 4: stock calls and puts on the plan's stock picks, one paper lot in EACH budget (a new same-day trade each day)
   {
@@ -789,8 +805,30 @@ function tradeSections(c) {
       + '<p class="fine">Each one is a same-day trade: bought 09:30–10:30, closed by 15:15 at the latest. A stock that still passes the rules is picked again the next day as a new trade. You can place one real buy per stock a day (all three budgets use the same expiry).</p>'
       + (p.put_gate_open === false ? '<p class="fine">Puts appear only when NIFTY is in a downtrend (below its 50-day average and down over 20 days). Not today.</p>' : '')
       + (so ? `<p class="fine">All budgets so far: ${signed(so.total)} (${so.trades} trade${so.trades === 1 ? '' : 's'}, ${so.wins} won). Paper only. ⚠️ ${esc(so.research || '')}</p>` : '');
-    h += sec('STOCKS', '4 · Stock calls &amp; puts', chip, st === 'todo' ? 'todo' : st === 'open' ? 'open' : all.closed && !opensAll ? (dayAll >= 0 ? 'up' : 'down') : '', body, all.todo > 0, money, st);
+    if (shut && !soToday.some((r) => r.status === 'OPEN' || r.status === 'CLOSED'))
+      skipped.push(picks.length ? 'Stock calls &amp; puts: none bought between 09:30 and 10:30' : 'Stock calls &amp; puts: no stock pick today');
+    else h += sec('STOCKS', '4 · Stock calls &amp; puts', chip, st === 'todo' ? 'todo' : st === 'open' ? 'open' : all.closed && !opensAll ? (dayAll >= 0 ? 'up' : 'down') : '', body, all.todo > 0, money, st);
   }
+  // 5: overnight stock option (paper): bought 15:00–15:30 when a trending share's option is cheap, sold the next day's close
+  {
+    const on = D.live?.overnight, rows = on ? on.now || [] : [], liveToday = on && on.date === t.date;
+    const bought = rows.filter((r) => r.status === 'OPEN' && r.date === t.date), held = rows.filter((r) => r.status === 'OPEN' && r.date !== t.date);
+    const sold = rows.filter((r) => r.status === 'CLOSED');
+    const best = bought.reduce((a, r) => (!a || r.iv_rv < a.iv_rv ? r : a), null);
+    const line = (r) => `<b>${esc(r.symbol)} ${r.kind === 'CE' ? 'call' : 'put'} ${r.strike}</b> <span class="fine">(1 lot ${inr(r.premium)}, option priced at ${Math.round(r.iv_rv * 100)}% of the share's movement)</span>`;
+    const body = (on ? '' : '<p class="fine">Starts with the first live run after this update.</p>')
+      + held.map((r) => `<div class="srow st-open">📌 ${line(r)}: bought ${esc(dd(r.date))} at ₹${r.entry_px} · <b>worth ${signed(r.value_now)} now</b> (${r.pct_now > 0 ? '+' : ''}${r.pct_now}%, ${esc(r.at)}) · sold today 15:00–15:30</div>`).join('')
+      + bought.map((r) => `<div class="srow st-open">🌙 ${line(r)}: bought today ${esc(r.entry_at)} at ₹${r.entry_px}, sold tomorrow 15:00–15:30${r === best ? ' · ⭐ cheapest today: the one a ₹15,000 account could hold' : ''}</div>`).join('')
+      + sold.map((r) => `<div class="srow st-closed">🏁 ${line(r)}: ₹${r.entry_px} → ₹${r.exit_px} (${esc(r.exit_at.slice(11))}), ${esc(r.reason)}: <b class="${r.pnl > 0 ? 'up' : 'down'}">${signed(r.pnl)}</b></div>`).join('')
+      + (on ? `<p class="fine">${esc(on.rule)}</p><p class="fine">So far: ${signed(on.total)} (${on.trades} trade${on.trades === 1 ? '' : 's'}, ${on.wins} won); one a day (each day's cheapest): ${signed(on.one_a_day.total)} (${on.one_a_day.trades} trades, ${on.one_a_day.wins} won). Paper only. ⚠️ ${esc(on.research)}</p>` : '');
+    const n = held.length + bought.length + sold.length;
+    const chip = n ? [held.length && `📌 ${held.length} to sell today`, bought.length && `🌙 ${bought.length} bought today`, sold.length && `🏁 ${sold.length} sold · ${signed(sold.reduce((a, r) => a + r.pnl, 0))}`].filter(Boolean).join(' · ')
+      : t.hm < '15:00' ? '⏳ checked 15:00–15:30' : '⏳ checking now';
+    if (!n && liveToday && t.hm > '15:30')
+      skipped.push(`Overnight stock option: no trending share had a cheap option${on.last_scan && on.last_scan.date === t.date ? ` (${on.last_scan.checked} of ${on.last_scan.trend} trending shares checked)` : ''}`);
+    else h += sec('OVERNIGHT', '5 · Overnight stock option (paper)', chip, held.length || bought.length ? 'open' : sold.length ? (sold.reduce((a, r) => a + r.pnl, 0) >= 0 ? 'up' : 'down') : '', body, false, '', held.length || bought.length ? 'open' : sold.length ? 'closed' : '');
+  }
+  if (skipped.length) h += `<p class="fine">⏸ <b>Not traded today</b> (their time is over): ${skipped.join(' · ')}.</p>`;
   return h;
 }
 function vSimple() {

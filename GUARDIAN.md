@@ -89,6 +89,15 @@ In a 2-year test on NSE's real prices every budget lost on average (up to ₹5k 
 ₹10–15k −₹412), and booking early at +₹1–2k was worse. Past winning stocks, results days and news-like gaps
 did not hold up either. It is tracked on paper to see each budget's live record, not because it has an edge.
 
+## 5th trade: overnight stock option (paper only, app v57)
+Between 15:00 and 15:30 the engine checks every F&O stock in a trend that matches NIFTY's (call: above its 20-day
+average, the 20-day above the 50-day, NIFTY above its 50-day; put: the mirror). It buys 1 lot of the strike one step in
+the money (monthly expiry at least 7 days away, up to ₹15,000) only when the option is cheap: implied volatility under
+0.8× the share's own movement over the last 20 days. It sells at the next trading day's close, with no stop. In a
+2-year test on NSE's real closing prices it was the only rule of 194 that made money in both years (+₹478, then +₹404 a
+trade, 45% won). It is weak, though: calls won only in year 1 and puts only in year 2, and one trade a day fell up to
+₹92,779 from its best point. The guardian never places it; it is tracked on paper only.
+
 ## Total-money limit (every real entry)
 Each trade has its own limit (premium or margin up to ₹15,000), and on top of that the guardian checks the
 total before **every real order** (condor, momentum buy, stock option): the money already in your open F&O

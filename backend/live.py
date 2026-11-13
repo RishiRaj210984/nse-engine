@@ -482,6 +482,14 @@ def run(force=False):
         out["stock_options"] = stockopt.step(now, plan, quotes, stock_chain(nse), nse_prices_lots())
     except Exception as exc:
         log.warning("stock option step failed: %s", exc)
+    try:   # paper-only fifth trade: overnight stock option, trending share with a cheap option (bought 15:00-15:30)
+        import overnight
+        hm = now.strftime("%H:%M")
+        watched = list(((store._read(store.state_path(overnight.WATCH), {}) or {}).get("stocks") or {}))
+        prices = overnight.live_prices(watched) if watched and overnight.BUY_FROM <= hm <= overnight.BUY_TO else {}
+        out["overnight"] = overnight.step(now, stock_chain(nse), nse_prices_lots(), prices, (quotes.get("^NSEI") or {}).get("last"))
+    except Exception as exc:
+        log.warning("overnight step failed: %s", exc)
     store.publish("live.json", out)
     try:
         import markets

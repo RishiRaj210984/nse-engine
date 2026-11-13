@@ -257,6 +257,11 @@ def postclose():
         out["options_lab"] = "updated"
     except Exception as exc:
         out["options_lab"] = f"failed: {exc}"
+    try:   # tomorrow's 15:00-15:30 overnight stock option check needs today's closing averages
+        import overnight
+        out["overnight_watch"] = overnight.refresh_watch()
+    except Exception as exc:
+        out["overnight_watch"] = f"failed: {exc}"
     store._cache.clear()  # new params -> fresh scan & bias
     bias = macro.global_bias(force=True)
     publish_all(bias=bias, scan=screener.scan(), task="after-close learning")
