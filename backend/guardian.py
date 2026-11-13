@@ -20,6 +20,7 @@ Credentials live only in guardian.env on your computer (never committed, never s
 import json
 import logging
 import os
+import re
 import sys
 import time
 from datetime import datetime
@@ -336,13 +337,139 @@ def _breeze_class():
     return BreezeConnect
 
 
-def connect(env):
+# Logging in. Breeze's generate_session() hides ICICI's reason for refusing a code behind "Unable to retrieve customer
+# details at the moment. Please try again later." (reads like "ICICI is down"), and every restart spent the morning's
+# code again. So: a brief failure is retried, a refused code is explained in ICICI's own words, and once logged in the
+# session itself is kept in the state file, so a restart (the 06:45 update, a crash) resumes it without the code.
+LOGIN_TRIES, LOGIN_WAIT, LOGIN_RETRY_MIN = 3, 10, 5
+CUST_URL = "https://api.icicidirect.com/breezeapi/api/v1/customerdetails"
+_TEMPORARY = ("invalid json", "unexpected format", "connection", "timed out",
+              "timeout", "max retries", "temporarily", "remote end closed", "502", "503", "504")
+
+
+def clean_session_code(code):
+    """The login code from what was sent: the number itself, or the whole address with apisession=... in it."""
+    s = str(code or "").strip()
+    m = re.search(r"apisession=([A-Za-z0-9]+)", s, re.I)
+    return m.group(1) if m else re.sub(r"[^A-Za-z0-9]", "", s)
+
+
+def icici_login_reason(env):
+    """Ask ICICI directly what it says about this login code (the call Breeze makes, without hiding the answer).
+    Returns (kind, text): kind is ok / refused / network / notjson."""
+    body = json.dumps({"SessionToken": env.get("BREEZE_SESSION_TOKEN", ""), "AppKey": env.get("BREEZE_API_KEY", "")},
+                      separators=(",", ":"))
+    try:
+        r = requests.get(CUST_URL, data=body, headers={"Content-Type": "application/json"}, timeout=15)
+    except Exception as exc:
+        return "network", type(exc).__name__
+    try:
+        j = r.json()
+    except Exception:
+        return "notjson", f"HTTP {r.status_code}"
+    if isinstance(j, dict) and j.get("Success"):
+        return "ok", ""
+    err = str((j or {}).get("Error") if isinstance(j, dict) else j or f"HTTP {r.status_code}")
+    return "refused", err.replace(env.get("BREEZE_SESSION_TOKEN") or "\0", "<code>")[:150]
+
+
+def login_error_text(kind, reason):
+    """Phone text for a failed login, in words that match ICICI's actual answer."""
+    low = reason.lower()
+    if kind == "network":
+        return (f"The server could not reach ICICI's API ({reason}). The ICICI app and website use other ICICI servers, "
+                f"so they can work while this fails. No new code needed: the guardian tries again every {LOGIN_RETRY_MIN} minutes "
+                "and tells you when it is logged in.")
+    if kind == "notjson":
+        return (f"ICICI's API answered with a web page instead of data ({reason}), usually maintenance on the API side only. "
+                f"No new code needed: the guardian tries again every {LOGIN_RETRY_MIN} minutes and tells you when it is logged in.")
+    if kind == "ok":
+        return (f"ICICI accepts the code, but the login step after it failed ({reason}). No new code needed: the guardian "
+                f"tries again every {LOGIN_RETRY_MIN} minutes and tells you when it is logged in.")
+    if "public key" in low or "appkey" in low or "app key" in low:
+        return f'ICICI says: "{reason}". The API key in guardian.env is not recognised: check it on the Breeze API portal.'
+    if re.search(r"\bip\b|ip address|whitelist|static", low):
+        return (f'ICICI says: "{reason}". ICICI refused the server\'s address: check that the server\'s static IP is '
+                "registered for your app on the Breeze API portal.")
+    if "resource not available" in low or "expired" in low:
+        return (f'ICICI says: "{reason}". This code has expired. Open the ICICI login link again (step 1 in the app) '
+                "and send the new code.")
+    if "invalid session" in low or "session" in low or "token" in low:
+        return (f'ICICI says: "{reason}". ICICI does not accept this code: it is from an earlier login, mistyped, or '
+                "already replaced by a newer login. Open the ICICI login link again (step 1 in the app) and send the new code. "
+                "Logging in to the ICICI app or website is separate and does not give this code.")
+    return (f'ICICI says: "{reason}". Open the ICICI login link again (step 1 in the app) and send the new code. '
+            "If the same answer comes back, the problem is on ICICI's API side even though the app and website work.")
+
+
+class LoginError(RuntimeError):
+    def __init__(self, text, temporary):
+        super().__init__(text)
+        self.temporary = temporary
+
+
+def connect(env, tries=LOGIN_TRIES, wait=LOGIN_WAIT):
+    """Log in with today's code. A brief failure is retried; a refusal raises LoginError with ICICI's own reason."""
     BreezeConnect = _breeze_class()
     for k in ("BREEZE_API_KEY", "BREEZE_API_SECRET", "BREEZE_SESSION_TOKEN"):
         if not env.get(k):
             raise SystemExit(f"{k} is missing in guardian.env. Run: python guardian.py login")
-    b = BreezeConnect(api_key=env["BREEZE_API_KEY"])
-    b.generate_session(api_secret=env["BREEZE_API_SECRET"], session_token=env["BREEZE_SESSION_TOKEN"])
+    env["BREEZE_SESSION_TOKEN"] = clean_session_code(env["BREEZE_SESSION_TOKEN"])
+    last = None
+    for i in range(tries):
+        try:
+            b = BreezeConnect(api_key=env["BREEZE_API_KEY"])
+            b.generate_session(api_secret=env["BREEZE_API_SECRET"], session_token=env["BREEZE_SESSION_TOKEN"])
+            return b
+        except Exception as exc:
+            last = exc
+            if not any(w in str(exc).lower() for w in _TEMPORARY):
+                break               # a clear refusal: asking again gives the same answer
+            if i < tries - 1:
+                time.sleep(wait)
+    kind, reason = icici_login_reason(env)
+    if kind == "ok":
+        reason = str(last).replace(env["BREEZE_SESSION_TOKEN"], "<code>")[:120]
+    log.warning("login failed: %s / ICICI: %s %s", str(last)[:150], kind, reason)
+    raise LoginError(login_error_text(kind, reason), temporary=kind in ("network", "notjson", "ok"))
+
+
+def keep_session(state, b, day):
+    """Save the session ICICI handed out (not the code), so a restart today resumes it."""
+    uid, key = getattr(b, "user_id", None), getattr(b, "session_key", None)
+    if isinstance(uid, str) and isinstance(key, str) and uid and key:
+        state["breeze_session"] = {"day": day, "user_id": uid, "key": key}
+
+
+def resume_session(env, state, day):
+    """Rebuild today's logged-in Breeze from the saved session without spending the login code again.
+    Returns None when there is none for today or ICICI no longer accepts it."""
+    s = state.get("breeze_session") or {}
+    if s.get("day") != day or not env.get("BREEZE_API_KEY") or not env.get("BREEZE_API_SECRET"):
+        return None
+    try:
+        BreezeConnect = _breeze_class()
+        mod = sys.modules["breeze_connect.breeze_connect"]
+        b = BreezeConnect(api_key=env["BREEZE_API_KEY"])
+        b.secret_key, b.user_id, b.session_key = env["BREEZE_API_SECRET"], s["user_id"], s["key"]
+        b.get_stock_script_list()
+        b.api_handler = mod.ApificationBreeze(b)
+        r = b.get_funds()
+        if isinstance(r, dict) and r.get("Success") and str(r.get("Status", 200)) == "200":
+            return b
+        log.warning("saved session not accepted: %s", str((r or {}).get("Error") if isinstance(r, dict) else r)[:120])
+    except Exception as exc:
+        log.warning("could not resume the saved session: %s", str(exc)[:150])
+    return None
+
+
+def login(env, state, day):
+    """Startup / automatic retry: today's saved session first, else today's code. Raises LoginError or SystemExit."""
+    b = resume_session(env, state, day)
+    if b is not None:
+        return b
+    b = connect(env)
+    keep_session(state, b, day)
     return b
 
 
@@ -945,14 +1072,25 @@ def handle_command(cmd, breeze_box, env, state, live, now):
     _sent.clear()   # a command you sent always gets its answer, even a repeated one
     name = cmd[0]
     if name == "SESSION" and len(cmd) >= 2:
-        env["BREEZE_SESSION_TOKEN"] = cmd[1]
+        code = clean_session_code(cmd[1])
+        env["BREEZE_SESSION_TOKEN"] = code
         state["session_day"] = now.date().isoformat()
+        state["session_token"] = code    # kept even if ICICI is briefly unreachable: the guardian retries with it
+        state["login_tried"] = time.time()
         try:
             breeze_box[0] = connect(env)
-            state["session_token"] = cmd[1]
+            keep_session(state, breeze_box[0], now.date().isoformat())
+            state.pop("login_alerted", None)
             notify(env, "Guardian: logged in", "Session accepted for today.")
+        except LoginError as exc:
+            if not exc.temporary:
+                state.pop("session_token", None)   # a refused code is not retried
+            state["login_alerted"] = True
+            notify(env, "Guardian: login failed", str(exc), urgent=True)
         except BaseException as exc:
-            notify(env, "Guardian: login failed", f"{str(exc)[:150]}. Get a fresh code and send SESSION again.", urgent=True)
+            state["login_alerted"] = True
+            notify(env, "Guardian: login failed", f"{str(exc)[:200]}. The guardian tries again every {LOGIN_RETRY_MIN} minutes.",
+                   urgent=True)
     elif name == "STOP":
         open(STOP_FILE, "w").write(now.isoformat())
         notify(env, "Guardian paused", "No automatic entries or exits until RESUME.", urgent=True)
@@ -1010,19 +1148,54 @@ def handle_command(cmd, breeze_box, env, state, live, now):
         notify(env, f"Guardian {'EXIT ALL' if name == 'EXIT' else name}", "\n".join(lines) or "No open option positions.", urgent=name == "EXIT")
 
 
+def retry_login(box, env, state, now):
+    """Not logged in but holding today's code or session: try again every LOGIN_RETRY_MIN minutes, quietly, and
+    tell the phone once it works (only if a failure had been alerted, or a SESSION had been sent)."""
+    day = now.date().isoformat()
+    has_code = state.get("session_day") == day and state.get("session_token")
+    if box[0] is not None or not (has_code or (state.get("breeze_session") or {}).get("day") == day):
+        return
+    if time.time() - state.get("login_tried", 0) < LOGIN_RETRY_MIN * 60:
+        return
+    state["login_tried"] = time.time()
+    if has_code:
+        env["BREEZE_SESSION_TOKEN"] = state["session_token"]
+    try:
+        box[0] = login(env, state, day)
+    except LoginError as exc:
+        if not exc.temporary:
+            state.pop("session_token", None)
+            if not state.get("login_alerted"):
+                state["login_alerted"] = True
+                notify(env, "Guardian: login failed", str(exc), urgent=True)
+        log.warning("login retry failed: %s", str(exc)[:200])
+        return
+    except (Exception, SystemExit) as exc:
+        log.warning("login retry failed: %s", str(exc)[:200])
+        return
+    if state.pop("login_alerted", None):
+        notify(env, "Guardian: logged in", "ICICI accepted the login. Exits are watched as usual.")
+    log.warning("logged in on retry")
+
+
 def run(live_flag=False, breeze=None, once=False, clock=None):
     env = load_env()
     live = live_flag and env["MODE"].lower() == "live"
     box = [breeze]
     state = load_state()
-    if state.get("session_day") == datetime.now(IST).date().isoformat() and state.get("session_token"):
+    today = datetime.now(IST).date().isoformat()
+    if state.get("session_day") == today and state.get("session_token"):
         env["BREEZE_SESSION_TOKEN"] = state["session_token"]   # today's login from the phone survives a restart
-    if box[0] is None and env.get("BREEZE_SESSION_TOKEN"):
+    start_err = None
+    if box[0] is None and (env.get("BREEZE_SESSION_TOKEN") or (state.get("breeze_session") or {}).get("day") == today):
+        state["login_tried"] = time.time()
         try:
-            box[0] = connect(env)
+            box[0] = login(env, state, today)
             log.warning("logged in with today's saved session")
         except BaseException as exc:
-            log.warning("startup login failed (%s); waiting for a SESSION command", exc)
+            start_err = exc
+            log.warning("startup login failed (%s); retrying every %d minutes or waiting for a SESSION command",
+                        exc, LOGIN_RETRY_MIN)
     # a restart within 30 minutes (crash, update) stays quiet
     if time.time() - state.get("started_at", 0) > 30 * 60:
         used = len(state.get("live_trades") or [])
@@ -1030,7 +1203,8 @@ def run(live_flag=False, breeze=None, once=False, clock=None):
                                           f"from {env['LIVE_FROM']}, {env['LIVE_WING']}-point wings, limit Rs {int(env['CAPITAL']):,}. "
                                           "Other entries are paper. Real positions are exited automatically")
                                          if live else 'Mode: PAPER (alerts only, no orders)')
-                                        + ('' if box[0] else '. Waiting for today’s SESSION code.'))
+                                        + ('' if box[0] else '. Waiting for today’s SESSION code.')
+                                        + (f' Login with the saved code failed: {str(start_err)[:300]}' if start_err else ''))
     state["started_at"] = time.time()
     save_state(state)
     while True:
@@ -1041,6 +1215,7 @@ def run(live_flag=False, breeze=None, once=False, clock=None):
             emergency_watch(env, state, now)
         cmds = poll_commands(env, state)
         save_state(state)   # mark commands as read first, so a crash never replays them
+        retry_login(box, env, state, now)
         for cmd in cmds:
             try:
                 handle_command(cmd, box, env, state, live, now)
