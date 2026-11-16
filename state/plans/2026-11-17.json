@@ -1,78 +1,78 @@
 {
  "bias": {
-  "generated_at": "2026-11-16T16:18:12.629715+05:30",
+  "generated_at": "2026-11-17T00:07:24.147837+05:30",
   "target_session": "2026-11-17",
-  "reference_date": "2026-11-16",
+  "reference_date": "2026-11-13",
   "bias": {
    "label": "RANGEBOUND",
-   "score": 7,
-   "z": 0.068,
-   "model_z": 0.068,
-   "predicted_nifty_move_pct": 0.05,
-   "typical_daily_move_pct": 0.784,
+   "score": -14,
+   "z": -0.144,
+   "model_z": -0.144,
+   "predicted_nifty_move_pct": -0.11,
+   "typical_daily_move_pct": 0.761,
    "source": "pre-open global snapshot",
-   "india_vix": 15.68,
+   "india_vix": 15.5,
    "components": [
-    {
-     "feature": "vix",
-     "label": "India VIX level",
-     "value": 15.68,
-     "contribution_pct": 0.052
-    },
     {
      "feature": "es",
      "label": "S&P 500 futures",
-     "value": 0.0,
-     "contribution_pct": -0.027
+     "value": -2.32,
+     "contribution_pct": -1.001
     },
     {
-     "feature": "ym",
-     "label": "Dow futures",
-     "value": 0.0,
-     "contribution_pct": 0.02
+     "feature": "nq",
+     "label": "Nasdaq futures",
+     "value": -3.74,
+     "contribution_pct": 0.737
     },
     {
-     "feature": "nprev",
-     "label": "Nifty previous day",
-     "value": 0.58,
-     "contribution_pct": -0.016
-    },
-    {
-     "feature": "ftse",
-     "label": "FTSE 100 (UK)",
-     "value": 0.0,
-     "contribution_pct": -0.007
+     "feature": "n225",
+     "label": "Nikkei 225",
+     "value": -2.38,
+     "contribution_pct": -0.238
     },
     {
      "feature": "cl",
      "label": "Crude oil",
-     "value": 0.0,
-     "contribution_pct": 0.007
+     "value": -2.81,
+     "contribution_pct": 0.196
+    },
+    {
+     "feature": "inr",
+     "label": "USD/INR",
+     "value": -0.34,
+     "contribution_pct": 0.168
+    },
+    {
+     "feature": "dxy",
+     "label": "Dollar index",
+     "value": 0.35,
+     "contribution_pct": -0.148
     }
    ]
   },
   "options": {
    "NIFTY": {
     "index": "NIFTY",
-    "spot": 25291.1,
-    "atm": 25300,
+    "spot": 25144.3,
+    "atm": 25150,
     "lot_size": 65,
     "expiry": "2026-11-17",
     "days_to_expiry": 0.75,
-    "iv_used_pct": 15.68,
-    "expected_move": 180,
+    "iv_used_pct": 15.5,
+    "expected_move": 177,
     "levels": {
-     "prev_close": 25291.1,
-     "ema20": 24109.75,
-     "support": 25196.27,
-     "resistance": 25361.77,
-     "atr": 316.74,
+     "prev_close": 25144.3,
+     "ema20": 23985.39,
+     "support": 25050.35,
+     "resistance": 25242.3,
+     "atr": 326.24,
      "pivots": {
-      "P": 25266.93,
-      "R1": 25361.77,
-      "S1": 25196.27,
-      "R2": 25432.43,
-      "S2": 25101.43
+      "P": 25148.35,
+      "R1": 25242.3,
+      "S1": 25050.35,
+      "R2": 25340.3,
+      "S2": 24956.4
      }
     },
     "strategies": [
@@ -81,39 +81,39 @@
       "legs": [
        {
         "action": "SELL",
-        "strike": 25450,
+        "strike": 25300,
         "type": "CE",
-        "est_premium": 19.4
+        "est_premium": 19.2
        },
        {
         "action": "BUY",
-        "strike": 25550,
+        "strike": 25400,
         "type": "CE",
-        "est_premium": 6.4
+        "est_premium": 6.2
        },
        {
         "action": "SELL",
-        "strike": 25150,
+        "strike": 25000,
         "type": "PE",
-        "est_premium": 21.3
+        "est_premium": 19.8
        },
        {
         "action": "BUY",
-        "strike": 25050,
+        "strike": 24900,
         "type": "PE",
-        "est_premium": 7.1
+        "est_premium": 6.3
        }
       ],
-      "net_premium": 27.2,
-      "max_loss": 4732,
-      "max_reward": 1768,
-      "reward_risk": 0.37,
-      "entry": "Enter at 10:15 (after the first hour) only if NIFTY is between 25,150 and 25,450",
-      "target": "Buy back at \u20b912.2 (keep ~55% of credit), else hold to expiry Tue 17 Nov",
-      "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,768 per lot)",
+      "net_premium": 26.5,
+      "max_loss": 4778,
+      "max_reward": 1722,
+      "reward_risk": 0.36,
+      "entry": "Enter at 10:15 (after the first hour) only if NIFTY is between 25,000 and 25,300",
+      "target": "Buy back at \u20b911.9 (keep ~55% of credit), else hold to expiry Tue 17 Nov",
+      "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,722 per lot)",
       "breakeven": [
-       25123,
-       25477
+       24974,
+       25326
       ],
       "notes": "Hedged premium selling. Check SPAN margin with your broker.",
       "test": {
@@ -121,32 +121,32 @@
        "legs": [
         {
          "action": "SELL",
-         "strike": 25450,
+         "strike": 25300,
          "type": "CE",
-         "est_premium": 19.4
+         "est_premium": 19.2
         },
         {
          "action": "BUY",
-         "strike": 25600,
+         "strike": 25450,
          "type": "CE",
-         "est_premium": 3.4
+         "est_premium": 3.2
         },
         {
          "action": "SELL",
-         "strike": 25150,
+         "strike": 25000,
          "type": "PE",
-         "est_premium": 21.3
+         "est_premium": 19.8
         },
         {
          "action": "BUY",
-         "strike": 25000,
+         "strike": 24850,
          "type": "PE",
-         "est_premium": 3.7
+         "est_premium": 3.3
         }
        ],
-       "net_premium": 33.6,
-       "max_loss": 7566,
-       "max_reward": 2184
+       "net_premium": 32.5,
+       "max_loss": 7638,
+       "max_reward": 2112
       },
       "verdict": {
        "decision": "SKIP",
@@ -160,39 +160,39 @@
       "legs": [
        {
         "action": "SELL",
-        "strike": 25300,
+        "strike": 25150,
         "type": "CE",
-        "est_premium": 69.0
+        "est_premium": 69.3
        },
        {
         "action": "SELL",
-        "strike": 25300,
+        "strike": 25150,
         "type": "PE",
-        "est_premium": 74.5
+        "est_premium": 71.7
        },
        {
         "action": "BUY",
-        "strike": 25500,
+        "strike": 25350,
         "type": "CE",
-        "est_premium": 11.5
+        "est_premium": 11.2
        },
        {
         "action": "BUY",
-        "strike": 25100,
+        "strike": 24950,
         "type": "PE",
-        "est_premium": 12.6
+        "est_premium": 11.5
        }
       ],
-      "net_premium": 119.4,
-      "max_loss": 5239,
-      "max_reward": 7761,
-      "reward_risk": 1.48,
-      "entry": "Enter only if NIFTY opens within \u00b150 of 25,300",
-      "target": "Buy back at \u20b983.6 (keep ~30% of credit)",
-      "stop_loss": "NIFTY moves beyond 25,200 / 25,400",
+      "net_premium": 118.3,
+      "max_loss": 5310,
+      "max_reward": 7690,
+      "reward_risk": 1.45,
+      "entry": "Enter only if NIFTY opens within \u00b150 of 25,150",
+      "target": "Buy back at \u20b982.8 (keep ~30% of credit)",
+      "stop_loss": "NIFTY moves beyond 25,050 / 25,250",
       "breakeven": [
-       25181,
-       25419
+       25032,
+       25268
       ],
       "notes": "Higher reward, tighter range. Never run an unhedged straddle.",
       "verdict": {
@@ -213,25 +213,25 @@
    },
    "BANKNIFTY": {
     "index": "BANKNIFTY",
-    "spot": 61575.9,
-    "atm": 61600,
+    "spot": 61034.1,
+    "atm": 61000,
     "lot_size": 30,
     "expiry": "2026-11-23",
     "days_to_expiry": 6.75,
-    "iv_used_pct": 19.39,
-    "expected_move": 1623,
+    "iv_used_pct": 18.45,
+    "expected_move": 1531,
     "levels": {
-     "prev_close": 61575.9,
-     "ema20": 57800.93,
-     "support": 61288.46,
-     "resistance": 61788.07,
-     "atr": 881.67,
+     "prev_close": 61034.1,
+     "ema20": 57403.57,
+     "support": 60776.25,
+     "resistance": 61296.25,
+     "atr": 897.28,
      "pivots": {
-      "P": 61500.63,
-      "R1": 61788.07,
-      "S1": 61288.46,
-      "R2": 62000.23,
-      "S2": 61001.03
+      "P": 61038.4,
+      "R1": 61296.25,
+      "S1": 60776.25,
+      "R2": 61558.4,
+      "S2": 60518.4
      }
     },
     "strategies": [
@@ -240,39 +240,39 @@
       "legs": [
        {
         "action": "SELL",
-        "strike": 63000,
+        "strike": 62400,
         "type": "CE",
-        "est_premium": 189.8
+        "est_premium": 175.0
        },
        {
         "action": "BUY",
-        "strike": 63800,
+        "strike": 63200,
         "type": "CE",
-        "est_premium": 75.1
+        "est_premium": 64.8
        },
        {
         "action": "SELL",
-        "strike": 60100,
+        "strike": 59700,
         "type": "PE",
-        "est_premium": 142.4
+        "est_premium": 144.1
        },
        {
         "action": "BUY",
-        "strike": 59300,
+        "strike": 58900,
         "type": "PE",
-        "est_premium": 49.5
+        "est_premium": 47.5
        }
       ],
-      "net_premium": 207.6,
-      "max_loss": 17772,
-      "max_reward": 6228,
+      "net_premium": 206.8,
+      "max_loss": 17796,
+      "max_reward": 6204,
       "reward_risk": 0.35,
-      "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is between 60,100 and 63,000",
-      "target": "Buy back at \u20b993.4 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
-      "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b96,228 per lot)",
+      "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is between 59,700 and 62,400",
+      "target": "Buy back at \u20b993.1 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
+      "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b96,204 per lot)",
       "breakeven": [
-       59892,
-       63208
+       59493,
+       62607
       ],
       "notes": "Hedged premium selling. Check SPAN margin with your broker.",
       "verdict": {
@@ -318,39 +318,39 @@
       "legs": [
        {
         "action": "SELL",
-        "strike": 61600,
+        "strike": 61000,
         "type": "CE",
-        "est_premium": 672.6
+        "est_premium": 665.4
        },
        {
         "action": "SELL",
-        "strike": 61600,
+        "strike": 61000,
         "type": "PE",
-        "est_premium": 622.7
+        "est_premium": 558.0
        },
        {
         "action": "BUY",
-        "strike": 63200,
+        "strike": 62600,
         "type": "CE",
-        "est_premium": 152.8
+        "est_premium": 138.7
        },
        {
         "action": "BUY",
-        "strike": 60000,
+        "strike": 59400,
         "type": "PE",
-        "est_premium": 126.2
+        "est_premium": 97.6
        }
       ],
-      "net_premium": 1016.3,
-      "max_loss": 17511,
-      "max_reward": 30489,
-      "reward_risk": 1.74,
-      "entry": "Enter only if BANKNIFTY opens within \u00b1100 of 61,600",
-      "target": "Buy back at \u20b9711.4 (keep ~30% of credit)",
-      "stop_loss": "BANKNIFTY moves beyond 60,800 / 62,400",
+      "net_premium": 987.1,
+      "max_loss": 18387,
+      "max_reward": 29613,
+      "reward_risk": 1.61,
+      "entry": "Enter only if BANKNIFTY opens within \u00b1100 of 61,000",
+      "target": "Buy back at \u20b9691.0 (keep ~30% of credit)",
+      "stop_loss": "BANKNIFTY moves beyond 60,200 / 61,800",
       "breakeven": [
-       60584,
-       62616
+       60013,
+       61987
       ],
       "notes": "Higher reward, tighter range. Never run an unhedged straddle.",
       "verdict": {
@@ -403,147 +403,147 @@
   },
   "model": {
    "oos_days": 300,
-   "directional_calls": 34,
-   "directional_accuracy": 76.5,
-   "sign_accuracy_all_days": 50.3,
-   "gap_corr": 0.25,
-   "gap_sign_pct": 56.7,
+   "directional_calls": 98,
+   "directional_accuracy": 72.4,
+   "sign_accuracy_all_days": 64.3,
+   "gap_corr": 0.53,
+   "gap_sign_pct": 67.3,
    "trained_rows": 750,
    "version": 43,
    "bias_threshold": 0.3
   }
  },
  "plan": {
-  "generated_at": "2026-11-16T16:18:32.823977+05:30",
+  "generated_at": "2026-11-17T00:07:47.595037+05:30",
   "session": "2026-11-17",
   "stage": "preview",
   "expected_open": {
-   "gap_pct": 0.01,
-   "error_pct": 0.38,
-   "day_pct": 0.05,
-   "snapshot": "Mon 16 Nov 16:18 IST",
+   "gap_pct": 0.31,
+   "error_pct": 0.33,
+   "day_pct": -0.11,
+   "snapshot": "Tue 17 Nov 00:07 IST",
    "stage": "preview",
-   "tip": "Flat open expected. Normal entry windows apply.",
+   "tip": "Moderate gap up expected. Use limit orders only, and wait for 09:30.",
    "markets": [
     {
      "key": "es",
      "name": "S&P 500 futures",
-     "move_pct": 0.0
+     "move_pct": -2.32
     },
     {
      "key": "nq",
      "name": "Nasdaq futures",
-     "move_pct": 0.0
+     "move_pct": -3.74
     },
     {
      "key": "ym",
      "name": "Dow futures",
-     "move_pct": 0.0
+     "move_pct": -1.26
     },
     {
      "key": "dax",
      "name": "DAX (Germany)",
-     "move_pct": 0.0
+     "move_pct": -0.68
     },
     {
      "key": "ftse",
      "name": "FTSE 100 (UK)",
-     "move_pct": 0.0
+     "move_pct": 0.03
     },
     {
      "key": "stoxx",
      "name": "Euro Stoxx 50",
-     "move_pct": 0.0
+     "move_pct": -0.88
     },
     {
      "key": "n225",
      "name": "Nikkei 225",
-     "move_pct": 0.0
+     "move_pct": -2.38
     },
     {
      "key": "cl",
      "name": "Crude oil",
-     "move_pct": 0.0
+     "move_pct": -2.81
     },
     {
      "key": "gold",
      "name": "Gold",
-     "move_pct": 0.0
+     "move_pct": -1.13
     },
     {
      "key": "dxy",
      "name": "Dollar index",
-     "move_pct": 0.0
+     "move_pct": 0.35
     },
     {
      "key": "inr",
      "name": "USD/INR",
-     "move_pct": 0.0
+     "move_pct": -0.34
     }
    ],
    "drivers": [
     {
-     "feature": "vix",
-     "label": "India VIX level",
-     "value": 15.68,
-     "contribution_pct": 0.052
-    },
-    {
      "feature": "es",
      "label": "S&P 500 futures",
-     "value": 0.0,
-     "contribution_pct": -0.027
+     "value": -2.32,
+     "contribution_pct": -1.001
     },
     {
-     "feature": "ym",
-     "label": "Dow futures",
-     "value": 0.0,
-     "contribution_pct": 0.02
+     "feature": "nq",
+     "label": "Nasdaq futures",
+     "value": -3.74,
+     "contribution_pct": 0.737
     },
     {
-     "feature": "nprev",
-     "label": "Nifty previous day",
-     "value": 0.58,
-     "contribution_pct": -0.016
-    },
-    {
-     "feature": "ftse",
-     "label": "FTSE 100 (UK)",
-     "value": 0.0,
-     "contribution_pct": -0.007
+     "feature": "n225",
+     "label": "Nikkei 225",
+     "value": -2.38,
+     "contribution_pct": -0.238
     },
     {
      "feature": "cl",
      "label": "Crude oil",
-     "value": 0.0,
-     "contribution_pct": 0.007
+     "value": -2.81,
+     "contribution_pct": 0.196
+    },
+    {
+     "feature": "inr",
+     "label": "USD/INR",
+     "value": -0.34,
+     "contribution_pct": 0.168
+    },
+    {
+     "feature": "dxy",
+     "label": "Dollar index",
+     "value": 0.35,
+     "contribution_pct": -0.148
     }
    ],
    "wf": {
     "oos_days": 300,
-    "gap_corr": 0.25,
-    "gap_sign_pct": 56.7,
-    "directional_calls": 41,
-    "directional_accuracy": 78.0
+    "gap_corr": 0.53,
+    "gap_sign_pct": 67.3,
+    "directional_calls": 108,
+    "directional_accuracy": 72.2
    }
   },
   "headline": "Market bias SIDEWAYS \u2014 favour hedged premium selling",
   "bias": "RANGEBOUND",
-  "score": 7,
-  "bias_track_record_pct": 76.5,
+  "score": -14,
+  "bias_track_record_pct": 72.4,
   "options": [
    {
     "index": "NIFTY",
     "strategy": "Iron Condor",
-    "legs": "SELL 25450 CE + BUY 25550 CE + SELL 25150 PE + BUY 25050 PE",
+    "legs": "SELL 25300 CE + BUY 25400 CE + SELL 25000 PE + BUY 24900 PE",
     "expiry": "2026-11-17",
     "lot_size": 65,
-    "entry": "Enter at 10:15 (after the first hour) only if NIFTY is between 25,150 and 25,450",
-    "target": "Buy back at \u20b912.2 (keep ~55% of credit), else hold to expiry Tue 17 Nov",
-    "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,768 per lot)",
-    "max_loss": 4732,
-    "max_reward": 1768,
-    "reward_risk": 0.37,
+    "entry": "Enter at 10:15 (after the first hour) only if NIFTY is between 25,000 and 25,300",
+    "target": "Buy back at \u20b911.9 (keep ~55% of credit), else hold to expiry Tue 17 Nov",
+    "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,722 per lot)",
+    "max_loss": 4778,
+    "max_reward": 1722,
+    "reward_risk": 0.36,
     "decision": "SKIP",
     "decision_reason": "No tested structure qualifies for today. Expiry day: a trade opened today can't be tested on NSE's closing prices, and the earlier model test lost money on expiry-day entries.",
     "enter_at": "10:15 IST, after the first hour",
@@ -554,47 +554,47 @@
      "legs": [
       {
        "action": "SELL",
-       "strike": 25450,
+       "strike": 25300,
        "type": "CE",
-       "est_premium": 19.4
+       "est_premium": 19.2
       },
       {
        "action": "BUY",
-       "strike": 25600,
+       "strike": 25450,
        "type": "CE",
-       "est_premium": 3.4
+       "est_premium": 3.2
       },
       {
        "action": "SELL",
-       "strike": 25150,
+       "strike": 25000,
        "type": "PE",
-       "est_premium": 21.3
+       "est_premium": 19.8
       },
       {
        "action": "BUY",
-       "strike": 25000,
+       "strike": 24850,
        "type": "PE",
-       "est_premium": 3.7
+       "est_premium": 3.3
       }
      ],
-     "net_premium": 33.6,
-     "max_loss": 7566,
-     "max_reward": 2184
+     "net_premium": 32.5,
+     "max_loss": 7638,
+     "max_reward": 2112
     },
-    "money_needed": 74857,
+    "money_needed": 74475,
     "money_basis": "margin for the sold options (estimate)"
    },
    {
     "index": "BANKNIFTY",
     "strategy": "Iron Condor",
-    "legs": "SELL 63000 CE + BUY 63800 CE + SELL 60100 PE + BUY 59300 PE",
+    "legs": "SELL 62400 CE + BUY 63200 CE + SELL 59700 PE + BUY 58900 PE",
     "expiry": "2026-11-23",
     "lot_size": 30,
-    "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is between 60,100 and 63,000",
-    "target": "Buy back at \u20b993.4 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
-    "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b96,228 per lot)",
-    "max_loss": 17772,
-    "max_reward": 6228,
+    "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is between 59,700 and 62,400",
+    "target": "Buy back at \u20b993.1 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
+    "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b96,204 per lot)",
+    "max_loss": 17796,
+    "max_reward": 6204,
     "reward_risk": 0.35,
     "decision": "SKIP",
     "decision_reason": "No tested structure qualifies for today. 3-6 days before: this setup lost money historically (57.7% wins, avg \u20b9-1,123 per lot over 26 trades).",
@@ -633,19 +633,60 @@
      }
     },
     "test": null,
-    "money_needed": 107491,
+    "money_needed": 106841,
     "money_basis": "margin for the sold options (estimate)"
    }
   ],
-  "stocks": [],
-  "stock_options": [],
+  "stocks": [
+   {
+    "symbol": "ABB",
+    "grade": "B",
+    "action": "BUY ABB near \u20b97,054.50 (skip if it opens above \u20b97,394.82) \u00b7 SL \u20b96,827.62 \u00b7 T1 \u20b97,394.82 \u00b7 T2 \u20b97,621.69",
+    "entry": 7054.5,
+    "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
+    "exit_by": "day 2, 15:15 IST",
+    "stop": 6827.62,
+    "t1": 7394.82,
+    "t2": 7621.69,
+    "win_prob": 53.0,
+    "vol_badge": "1.7x Vol Surge"
+   }
+  ],
+  "stock_options": [
+   {
+    "symbol": "ABB",
+    "kind": "CE",
+    "side": "BUY",
+    "grade": "B",
+    "trigger": 7054.5,
+    "stop": 6827.62,
+    "t1": 7394.82,
+    "lot": 125,
+    "strike": 6900.0,
+    "premium": 42212,
+    "tiers": {
+     "5K": {
+      "strike": 8400.0,
+      "premium": 4302
+     },
+     "10K": {
+      "strike": 7800.0,
+      "premium": 9996
+     },
+     "15K": {
+      "strike": 7600.0,
+      "premium": 14675
+     }
+    }
+   }
+  ],
   "capital": 15000,
-  "momentum_money": 4664,
+  "momentum_money": 4582,
   "put_gate_open": false,
   "market_gate_open": true,
   "events": [],
   "stock_track_record": null,
-  "no_trade_reason": "No stock passed all 4 rules with a positive expected value. Sitting out is a valid decision.",
+  "no_trade_reason": null,
   "timeline": [
    {
     "date": "2026-11-17",
@@ -749,39 +790,27 @@
  },
  "stocks": [
   {
-   "symbol": "EICHERMOT",
-   "name": "Eicher Motors",
+   "symbol": "ABB",
+   "name": "ABB India",
    "grade": "B",
-   "passed": false,
-   "entry": 7599.0,
-   "stop": 7397.03,
-   "t1": 7901.96,
-   "t2": 8106.33,
-   "atr": 201.97,
+   "passed": true,
+   "entry": 7054.5,
+   "stop": 6827.62,
+   "t1": 7394.82,
+   "t2": 7621.69,
+   "atr": 226.88,
    "skip_reason": null
   },
   {
-   "symbol": "ITC",
-   "name": "ITC",
+   "symbol": "PNB",
+   "name": "Punjab National Bank",
    "grade": "B",
    "passed": false,
-   "entry": 295.1,
-   "stop": 288.32,
-   "t1": 305.27,
-   "t2": 312.05,
-   "atr": 6.78,
-   "skip_reason": null
-  },
-  {
-   "symbol": "HDFCLIFE",
-   "name": "HDFC Life",
-   "grade": "B",
-   "passed": false,
-   "entry": 604.5,
-   "stop": 589.0,
-   "t1": 627.75,
-   "t2": 643.25,
-   "atr": 15.5,
+   "entry": 142.81,
+   "stop": 139.06,
+   "t1": 148.43,
+   "t2": 152.18,
+   "atr": 3.75,
    "skip_reason": null
   },
   {
@@ -789,23 +818,23 @@
    "name": "Apollo Hospitals",
    "grade": "B",
    "passed": false,
-   "entry": 8771.0,
-   "stop": 8565.58,
-   "t1": 9079.14,
-   "t2": 9284.56,
-   "atr": 205.42,
+   "entry": 8526.0,
+   "stop": 8324.81,
+   "t1": 8827.78,
+   "t2": 9028.97,
+   "atr": 201.19,
    "skip_reason": null
   },
   {
-   "symbol": "ASIANPAINT",
-   "name": "Asian Paints",
+   "symbol": "DLF",
+   "name": "DLF",
    "grade": "B",
    "passed": false,
-   "entry": 2572.9,
-   "stop": 2507.51,
-   "t1": 2670.98,
-   "t2": 2736.37,
-   "atr": 65.39,
+   "entry": 758.75,
+   "stop": 739.84,
+   "t1": 787.11,
+   "t2": 806.02,
+   "atr": 18.91,
    "skip_reason": null
   },
   {
@@ -813,83 +842,95 @@
    "name": "Havells",
    "grade": "B",
    "passed": false,
-   "entry": 1172.0,
-   "stop": 1141.68,
-   "t1": 1217.48,
-   "t2": 1247.8,
-   "atr": 30.32,
-   "skip_reason": null
-  },
-  {
-   "symbol": "CIPLA",
-   "name": "Cipla",
-   "grade": "B",
-   "passed": false,
-   "entry": 1394.5,
-   "stop": 1369.44,
-   "t1": 1432.09,
-   "t2": 1457.15,
-   "atr": 25.06,
-   "skip_reason": null
-  },
-  {
-   "symbol": "BAJFINANCE",
-   "name": "Bajaj Finance",
-   "grade": "B",
-   "passed": false,
-   "entry": 1110.0,
-   "stop": 1079.23,
-   "t1": 1156.15,
-   "t2": 1186.92,
+   "entry": 1161.0,
+   "stop": 1130.23,
+   "t1": 1207.16,
+   "t2": 1237.93,
    "atr": 30.77,
    "skip_reason": null
   },
   {
-   "symbol": "ONGC",
-   "name": "ONGC",
+   "symbol": "AUROPHARMA",
+   "name": "Aurobindo Pharma",
    "grade": "B",
    "passed": false,
-   "entry": 226.99,
-   "stop": 222.72,
-   "t1": 233.39,
-   "t2": 237.66,
-   "atr": 4.27,
+   "entry": 1823.2,
+   "stop": 1779.07,
+   "t1": 1889.4,
+   "t2": 1933.53,
+   "atr": 44.13,
    "skip_reason": null
   },
   {
-   "symbol": "GAIL",
-   "name": "GAIL",
+   "symbol": "CANBK",
+   "name": "Canara Bank",
    "grade": "B",
    "passed": false,
-   "entry": 187.0,
-   "stop": 183.0,
-   "t1": 193.0,
-   "t2": 197.0,
-   "atr": 4.0,
+   "entry": 130.91,
+   "stop": 127.64,
+   "t1": 135.82,
+   "t2": 139.09,
+   "atr": 3.27,
    "skip_reason": null
   },
   {
-   "symbol": "AXISBANK",
-   "name": "Axis Bank",
+   "symbol": "INDUSINDBK",
+   "name": "IndusInd Bank",
    "grade": "B",
    "passed": false,
-   "entry": 1342.4,
-   "stop": 1314.1,
-   "t1": 1384.85,
-   "t2": 1413.15,
-   "atr": 28.3,
+   "entry": 914.4,
+   "stop": 888.23,
+   "t1": 953.66,
+   "t2": 979.84,
+   "atr": 26.18,
    "skip_reason": null
   },
   {
-   "symbol": "IDFCFIRSTB",
-   "name": "IDFC First Bank",
+   "symbol": "HINDUNILVR",
+   "name": "Hindustan Unilever",
    "grade": "B",
    "passed": false,
-   "entry": 81.3,
-   "stop": 79.24,
-   "t1": 84.4,
-   "t2": 86.46,
-   "atr": 2.06,
+   "entry": 1992.9,
+   "stop": 1950.9,
+   "t1": 2055.9,
+   "t2": 2097.89,
+   "atr": 42.0,
+   "skip_reason": null
+  },
+  {
+   "symbol": "JSWSTEEL",
+   "name": "JSW Steel",
+   "grade": "B",
+   "passed": false,
+   "entry": 1348.0,
+   "stop": 1317.75,
+   "t1": 1393.37,
+   "t2": 1423.62,
+   "atr": 30.25,
+   "skip_reason": null
+  },
+  {
+   "symbol": "BEL",
+   "name": "Bharat Electronics",
+   "grade": "B",
+   "passed": false,
+   "entry": 400.85,
+   "stop": 391.99,
+   "t1": 414.14,
+   "t2": 422.99,
+   "atr": 8.86,
+   "skip_reason": null
+  },
+  {
+   "symbol": "BHARTIARTL",
+   "name": "Bharti Airtel",
+   "grade": "B",
+   "passed": false,
+   "entry": 2106.0,
+   "stop": 2060.37,
+   "t1": 2174.44,
+   "t2": 2220.07,
+   "atr": 45.63,
    "skip_reason": null
   }
  ]

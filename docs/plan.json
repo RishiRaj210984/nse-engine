@@ -1,134 +1,134 @@
 {
- "generated_at": "2026-11-16T16:18:32.823977+05:30",
+ "generated_at": "2026-11-17T00:07:47.595037+05:30",
  "session": "2026-11-17",
  "stage": "preview",
  "expected_open": {
-  "gap_pct": 0.01,
-  "error_pct": 0.38,
-  "day_pct": 0.05,
-  "snapshot": "Mon 16 Nov 16:18 IST",
+  "gap_pct": 0.31,
+  "error_pct": 0.33,
+  "day_pct": -0.11,
+  "snapshot": "Tue 17 Nov 00:07 IST",
   "stage": "preview",
-  "tip": "Flat open expected. Normal entry windows apply.",
+  "tip": "Moderate gap up expected. Use limit orders only, and wait for 09:30.",
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": 0.0
+    "move_pct": -2.32
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": 0.0
+    "move_pct": -3.74
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": 0.0
+    "move_pct": -1.26
    },
    {
     "key": "dax",
     "name": "DAX (Germany)",
-    "move_pct": 0.0
+    "move_pct": -0.68
    },
    {
     "key": "ftse",
     "name": "FTSE 100 (UK)",
-    "move_pct": 0.0
+    "move_pct": 0.03
    },
    {
     "key": "stoxx",
     "name": "Euro Stoxx 50",
-    "move_pct": 0.0
+    "move_pct": -0.88
    },
    {
     "key": "n225",
     "name": "Nikkei 225",
-    "move_pct": 0.0
+    "move_pct": -2.38
    },
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": 0.0
+    "move_pct": -2.81
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": 0.0
+    "move_pct": -1.13
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": 0.0
+    "move_pct": 0.35
    },
    {
     "key": "inr",
     "name": "USD/INR",
-    "move_pct": 0.0
+    "move_pct": -0.34
    }
   ],
   "drivers": [
    {
-    "feature": "vix",
-    "label": "India VIX level",
-    "value": 15.68,
-    "contribution_pct": 0.052
-   },
-   {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": 0.0,
-    "contribution_pct": -0.027
+    "value": -2.32,
+    "contribution_pct": -1.001
    },
    {
-    "feature": "ym",
-    "label": "Dow futures",
-    "value": 0.0,
-    "contribution_pct": 0.02
+    "feature": "nq",
+    "label": "Nasdaq futures",
+    "value": -3.74,
+    "contribution_pct": 0.737
    },
    {
-    "feature": "nprev",
-    "label": "Nifty previous day",
-    "value": 0.58,
-    "contribution_pct": -0.016
-   },
-   {
-    "feature": "ftse",
-    "label": "FTSE 100 (UK)",
-    "value": 0.0,
-    "contribution_pct": -0.007
+    "feature": "n225",
+    "label": "Nikkei 225",
+    "value": -2.38,
+    "contribution_pct": -0.238
    },
    {
     "feature": "cl",
     "label": "Crude oil",
-    "value": 0.0,
-    "contribution_pct": 0.007
+    "value": -2.81,
+    "contribution_pct": 0.196
+   },
+   {
+    "feature": "inr",
+    "label": "USD/INR",
+    "value": -0.34,
+    "contribution_pct": 0.168
+   },
+   {
+    "feature": "dxy",
+    "label": "Dollar index",
+    "value": 0.35,
+    "contribution_pct": -0.148
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.25,
-   "gap_sign_pct": 56.7,
-   "directional_calls": 41,
-   "directional_accuracy": 78.0
+   "gap_corr": 0.53,
+   "gap_sign_pct": 67.3,
+   "directional_calls": 108,
+   "directional_accuracy": 72.2
   }
  },
  "headline": "Market bias SIDEWAYS \u2014 favour hedged premium selling",
  "bias": "RANGEBOUND",
- "score": 7,
- "bias_track_record_pct": 76.5,
+ "score": -14,
+ "bias_track_record_pct": 72.4,
  "options": [
   {
    "index": "NIFTY",
    "strategy": "Iron Condor",
-   "legs": "SELL 25450 CE + BUY 25550 CE + SELL 25150 PE + BUY 25050 PE",
+   "legs": "SELL 25300 CE + BUY 25400 CE + SELL 25000 PE + BUY 24900 PE",
    "expiry": "2026-11-17",
    "lot_size": 65,
-   "entry": "Enter at 10:15 (after the first hour) only if NIFTY is between 25,150 and 25,450",
-   "target": "Buy back at \u20b912.2 (keep ~55% of credit), else hold to expiry Tue 17 Nov",
-   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,768 per lot)",
-   "max_loss": 4732,
-   "max_reward": 1768,
-   "reward_risk": 0.37,
+   "entry": "Enter at 10:15 (after the first hour) only if NIFTY is between 25,000 and 25,300",
+   "target": "Buy back at \u20b911.9 (keep ~55% of credit), else hold to expiry Tue 17 Nov",
+   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,722 per lot)",
+   "max_loss": 4778,
+   "max_reward": 1722,
+   "reward_risk": 0.36,
    "decision": "SKIP",
    "decision_reason": "No tested structure qualifies for today. Expiry day: a trade opened today can't be tested on NSE's closing prices, and the earlier model test lost money on expiry-day entries.",
    "enter_at": "10:15 IST, after the first hour",
@@ -139,47 +139,47 @@
     "legs": [
      {
       "action": "SELL",
-      "strike": 25450,
+      "strike": 25300,
       "type": "CE",
-      "est_premium": 19.4
+      "est_premium": 19.2
      },
      {
       "action": "BUY",
-      "strike": 25600,
+      "strike": 25450,
       "type": "CE",
-      "est_premium": 3.4
+      "est_premium": 3.2
      },
      {
       "action": "SELL",
-      "strike": 25150,
+      "strike": 25000,
       "type": "PE",
-      "est_premium": 21.3
+      "est_premium": 19.8
      },
      {
       "action": "BUY",
-      "strike": 25000,
+      "strike": 24850,
       "type": "PE",
-      "est_premium": 3.7
+      "est_premium": 3.3
      }
     ],
-    "net_premium": 33.6,
-    "max_loss": 7566,
-    "max_reward": 2184
+    "net_premium": 32.5,
+    "max_loss": 7638,
+    "max_reward": 2112
    },
-   "money_needed": 74857,
+   "money_needed": 74475,
    "money_basis": "margin for the sold options (estimate)"
   },
   {
    "index": "BANKNIFTY",
    "strategy": "Iron Condor",
-   "legs": "SELL 63000 CE + BUY 63800 CE + SELL 60100 PE + BUY 59300 PE",
+   "legs": "SELL 62400 CE + BUY 63200 CE + SELL 59700 PE + BUY 58900 PE",
    "expiry": "2026-11-23",
    "lot_size": 30,
-   "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is between 60,100 and 63,000",
-   "target": "Buy back at \u20b993.4 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
-   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b96,228 per lot)",
-   "max_loss": 17772,
-   "max_reward": 6228,
+   "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is between 59,700 and 62,400",
+   "target": "Buy back at \u20b993.1 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
+   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b96,204 per lot)",
+   "max_loss": 17796,
+   "max_reward": 6204,
    "reward_risk": 0.35,
    "decision": "SKIP",
    "decision_reason": "No tested structure qualifies for today. 3-6 days before: this setup lost money historically (57.7% wins, avg \u20b9-1,123 per lot over 26 trades).",
@@ -218,19 +218,60 @@
     }
    },
    "test": null,
-   "money_needed": 107491,
+   "money_needed": 106841,
    "money_basis": "margin for the sold options (estimate)"
   }
  ],
- "stocks": [],
- "stock_options": [],
+ "stocks": [
+  {
+   "symbol": "ABB",
+   "grade": "B",
+   "action": "BUY ABB near \u20b97,054.50 (skip if it opens above \u20b97,394.82) \u00b7 SL \u20b96,827.62 \u00b7 T1 \u20b97,394.82 \u00b7 T2 \u20b97,621.69",
+   "entry": 7054.5,
+   "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
+   "exit_by": "day 2, 15:15 IST",
+   "stop": 6827.62,
+   "t1": 7394.82,
+   "t2": 7621.69,
+   "win_prob": 53.0,
+   "vol_badge": "1.7x Vol Surge"
+  }
+ ],
+ "stock_options": [
+  {
+   "symbol": "ABB",
+   "kind": "CE",
+   "side": "BUY",
+   "grade": "B",
+   "trigger": 7054.5,
+   "stop": 6827.62,
+   "t1": 7394.82,
+   "lot": 125,
+   "strike": 6900.0,
+   "premium": 42212,
+   "tiers": {
+    "5K": {
+     "strike": 8400.0,
+     "premium": 4302
+    },
+    "10K": {
+     "strike": 7800.0,
+     "premium": 9996
+    },
+    "15K": {
+     "strike": 7600.0,
+     "premium": 14675
+    }
+   }
+  }
+ ],
  "capital": 15000,
- "momentum_money": 4664,
+ "momentum_money": 4582,
  "put_gate_open": false,
  "market_gate_open": true,
  "events": [],
  "stock_track_record": null,
- "no_trade_reason": "No stock passed all 4 rules with a positive expected value. Sitting out is a valid decision.",
+ "no_trade_reason": null,
  "timeline": [
   {
    "date": "2026-11-17",
