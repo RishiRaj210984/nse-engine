@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-11-17T00:07:40.846690+05:30",
+ "generated_at": "2026-11-17T02:11:25.770115+05:30",
  "market_open": false,
  "volume_projected": false,
  "bias": {
   "label": "RANGEBOUND",
-  "score": -14
+  "score": -20
  },
  "rules": {
   "vol_mult": 1.5,
@@ -19,15 +19,15 @@
  },
  "market_gate_open": true,
  "model": {
-  "version": 43,
-  "updated": "2026-11-16T16:17:57.923399+05:30",
+  "version": 44,
+  "updated": "2026-11-17T02:10:48.525192+05:30",
   "ranker_on": false,
   "samples": 2452,
   "live_samples": 331,
   "base_win_rate": 0.5298,
   "expectancy_r": 0.173,
   "holdout_auc": 0.525,
-  "note": "sl_atr 1.25\u21921.0; t2_atr 3.0\u21922.5; ranker OFF: no out-of-sample edge, using rule stats only"
+  "note": "ranker OFF: no out-of-sample edge, using rule stats only"
  },
  "candidates": [
   {
@@ -77,7 +77,7 @@
     "day_chg": 1.8994655496172186,
     "ret5": 6.434821967410986,
     "rs20": -10.353363344747235,
-    "bias_score": -14.0,
+    "bias_score": -20.0,
     "news_sent": 0.244,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.146333769093575
@@ -182,54 +182,18 @@
     "day_chg": 0.7193767689956498,
     "ret5": 13.251387221786493,
     "rs20": 9.368432103137447,
-    "bias_score": -14.0,
-    "news_sent": 0.281,
+    "bias_score": -20.0,
+    "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.146333769093575
    },
    "r1_a": 0.5422833413184103,
    "r2_a": 1.084566682636813,
-   "news": [
-    {
-     "title": "Punjab National Bank Share Price Today: 52-Week High Update",
-     "source": "Univest",
-     "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOVmV1cUVTb3RlLVo3MzhxekkxNVl0OHlnb09uSVBtOGJza09HemE5b1lXTlljVTZGVjRDNS1UZHJsei1JMUFpRU5LTUNhWFE4TDdEOEEwSGQ5MzJPUmIxZHl2RXdzR2I3MlBBeUVtTkZWWXFJdlVuWnA2MzE5RDYxS1NleXN2N29nb2lOVTZB?oc=5",
-     "published": "Mon, 16 Nov 2026 05:59:00 GMT",
-     "sentiment": 0.296
-    },
-    {
-     "title": "Punjab National Bank (NSE:PNB): What Did It Disclose at the Avendus Spark INDX 2026 Investor Meet?",
-     "source": "Kalkine India",
-     "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxPOW1RRG9keFdQbDJZdm9VRjhVMXZUdmJyS2EwVEwzeGMySkhTTjNIalE0VTA4T1gzZ2twdUxOZER0cHhkRnhWSWtZUUFfS2FaeDNHREJKMlo3LUxOTS1yWkkwdktQV05zMEJVUnVKUmwwRVYxMUFvM2VSOU53bWhxVnpLeGRlcG1NVWRfRXB1Ui1Vdy11OWlPTkJpM01fNjJnN1dEbzc1bV9wX3ljRXpKWVc1RVU3aUJTT0xfVDJqbjAyeDZaRnJwVE1PWjdnUVU2N3c0azVBYUQ?oc=5",
-     "published": "Mon, 16 Nov 2026 12:48:00 GMT",
-     "sentiment": 0.226
-    },
-    {
-     "title": "Better PSU Bank: Bank of Maharashtra vs Punjab National Bank",
-     "source": "Equitymaster",
-     "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQY3cxczlnVHdidnR2bXBaU0ttRFl3b2RyNDNaRjBzYXNaOWRSZmE5c3NjVUpHRkwtYnVBdUVnTEdmVHZ1TG96ZnY2QWE0Q0xiM3ZDVXBmRUU0UUVwaUFYV05aeHFjeDRlcGdrenp4WTF0anY3RWtpN25KQWRjbmxuekgzUTNlUTVxaDFrLWE2LXl2M3ZkNWNmRDFYa2g5QmF2SUVLWW5SdXQxakZudUtfSlY1ZFRpYzQ5UVU5UFhnLWNZaXB1QnBtUw?oc=5",
-     "published": "Sun, 15 Nov 2026 02:51:00 GMT",
-     "sentiment": 0.44
-    },
-    {
-     "title": "PNB targets \u20b9200 crore quarterly profit each from cards, cash services",
-     "source": "Business Standard",
-     "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxQSGVPaEZ1eno4YmZ6UEtpNWxQcnF1MGVVYlpEQnJOdDlnMkF1LUZkR2Z0TFY1b2pLZE5NQnNXNzRPYVA3VDF3WGxwOFp6eDExZ1dkaENtRlBPckZLY2xvVTg0VXpkcVZ4b3VoU3g0clJPT3JDLU9ub3c4dkx5ZDBpT05kT25oR1RPaXNHSkxnVDNCUUY0bkZaOGJybDhXanAzUHpzTkVBR2hudE9kZGQtYzc1eldjWGlONEp5MWRpV2h3MkRJMElWSWpHUG5ZZFBmV1NKN0JR0gHbAUFVX3lxTE0yUU9wMDg3RmVxQUJiOWd1dHhObFk1ZTBlbGtkbS1mZEhvSHJOMDQxTjhIYW9sV0NZamNqYm0xTFRnRzhycnN2R01jS1luaXphQTdzOUkySEI1cWhZWlFPRGRNUHZOS1Bndks0a1BGWERXOUtUR1Y3UWdDTTFRbjM3SzdLbndRNjFZc0E4ZmNIdGp3RHloZVY0TWhmZ0U3QnF0X3BKaW9PY0R3UW9IQjQ2VW51UTlnbG1VU2ZmNmRmR2xDdkNyQlYtRE51QWlWUTJkNjhmc1pQd0djZw?oc=5",
-     "published": "Sun, 15 Nov 2026 05:44:58 GMT",
-     "sentiment": 0.25
-    },
-    {
-     "title": "Top 12 Bank Stocks To Buy In India November 2026",
-     "source": "Samco",
-     "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQVTJGTjNBTndCWnlCMVF4am9OclFTVEN0clJWVXBKc3BWX0E4bDhwTUxlVWFKd0xReUJWSVl6T0M3UnExVHowUHZHdkExQ016S1MtX1lJdjNKYUNoRzBpM19fbTZYeTNOVGpNY0NPMTQydUdvWDZWMGFveE12Umh4eVRkVC02b1FMYVJhZQ?oc=5",
-     "published": "Sun, 15 Nov 2026 06:50:57 GMT",
-     "sentiment": 0.202
-    }
-   ],
+   "news": [],
    "news_sentiment": {
-    "score": 0.281,
-    "count": 8,
-    "label": "POSITIVE"
+    "score": 0.0,
+    "count": 0,
+    "label": "NO NEWS"
    },
    "win_prob": 53.0,
    "expected_r": 0.17,
@@ -285,8 +249,8 @@
     "day_chg": 0.12918379330593144,
     "ret5": 1.8516306295544238,
     "rs20": -2.173941131056756,
-    "bias_score": -14.0,
-    "news_sent": 0.085,
+    "bias_score": -20.0,
+    "news_sent": -0.05,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.146333769093575
    },
@@ -301,11 +265,11 @@
      "sentiment": 0.0
     },
     {
-     "title": "Motor insurance rules from December 15: Your car policy may not cover your spouse, children or parents",
-     "source": "Livemint",
-     "link": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxOc0ZYa0U1djlkZ210UjU1VGhhTTlmSnkzS2V4OFBLcUZSTm5VcURvQ0hobGgxN0s1OXNUajFKOEJFQkEzT21YUkdXdWpCVGtSS0VwWjFieFlQdG5ycjJMa1NOSTZ2cC14NGo2RlFiTUlCT1V3aHd6UDh3Y1NkOW9xYWU1WjhJRk14djhZSDlNZDBsQzFBeEVLNG9xanQ0bGdybWVRRjBOMS1GRXBuZ1FwSEVMMHNadXROLXlUTE1wdnFIaEtIZ2NVcmhDRlMxTkxka0dXSVhiWVRiT0dLTkZkQ1ZSTFdySkxScy1PV2xQOW56YWJlb193YVdEME_SAYICQVVfeXFMTzhCQnVha1NBS2ZkTnQ2N0VZek9jNnVwaF83T0RUaTVmWlBxVWpTVW1WWEk1WHpWN2ZBbFQtTjkwd0dOMVZSbGF2OTYyWlpGVURWS29CeVIzU0tJRU9JVHh5cDJHbjVWUkt4NUFNSk0zVEFzNVBoamgwaFAzU0dERExzTHRhWkFYdmppd0lFaW03bXd5SGM0TklRdUJ5dFpFM2N3Rm9Za2NxQ043Z0RYX3QtR2NjRkhoNTNoUzMtWkFfNjU2dnZmZTRlcHFLcFJEUDN1VzN5VkFMOHdyalBaS29SM0lRaWU1bk1nY0pzZkQxWno0VzhxMmpEUmoyMjlqekpB?oc=5",
-     "published": "Mon, 16 Nov 2026 17:56:06 GMT",
-     "sentiment": 0.0
+     "title": "Top Gainers & Losers Today, 16 November 2026 at 3:30 PM IST: Max Healthcare Institute Ltd Leads Gainers",
+     "source": "HDFC Sky",
+     "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPamxQcnVTTXhVdHZseTdNQUFoa1o2YUp6Nmc2UXdsZEVkUUdrY19PUFh4YmlzeDFDeG5rNUlGNEFXTFBnYndRYjZNallRVkVTakMyX3A5cEI3bUFoNUxPVThUc3dnRFVjNmJmU2Y1SlBPSFdYMmFrVmFjOFN3MlNjb3FQNA?oc=5",
+     "published": "Mon, 16 Nov 2026 10:38:55 GMT",
+     "sentiment": -0.382
     },
     {
      "title": "Apollo Micro Systems lists 1.4 crore shares at \u20b9114 following warrant conversion",
@@ -315,11 +279,11 @@
      "sentiment": 0.296
     },
     {
-     "title": "National Savings Certificate (NSC) nomination rules: Who inherits your investment and gets the money after your death?",
+     "title": "ITR update: Extended deadline tax audit report filings this week \u2014 Check due date, which taxpayers are eligible, details",
      "source": "Livemint",
-     "link": "https://news.google.com/rss/articles/CBMijwJBVV95cUxPT0tNam1td3VYOTFHbWtSYU1sU1VkOXU4Rk9PNzdYVDNELXFXeHVHTWVsR3Ryb3pIeG5jeU1yTWp0bVZmemdWX01JMmFCRmVKRXQ5RmpyeVY4R2VPaEV5SFRad3k3OG1DY0VMNXU1a1VGQXVNcU5PaTRhZ0cxTGdLYmRweC1VN3VlaHpEaFV0ZUtBS1RUVVd0ZkgxRl9GOFgwUVNhRmdPaVJQdVdHTEttUmlEWVdXb0lmZFpmc0hibnlhaU8ybUktLVpHdnk1T1BTa2szSXN0dG1FMmJjcEVnRDFqSlY2NjNhNm1mOF8xZ1l0QmU4ZGpJeUVqMWYzNXoybXV2N3NPNTY1Z25NVzhj0gGUAkFVX3lxTFA5SERzQ3Nuc1lkRzMxLXA0cFVOY0pobXlEOXhrbXdLcFVqNHJyS3A0VjBkRkxvalpTeGFZdF9KX1VuWFVCa2o3MXhXM0hyelByb1pkOG9ueGVfRHZ2cnh4aGltM0hOTEotamtuWHF1Y0Z2U3IwZk15MWlYa09pNmxfRnRlbkZWLXozcXU4MEktMDRPLWJJWldyVkkxYV9wWjVfWnMtUUE3X2hBVXA0V0hiN09oZlVzVS1sMjlaMXdBQWZwS0Z2WUhMM050OHJ4V2RGeGhWcmNlSEJ5bm1QTXlHdi1lcXY0dmpPZkxxLVlwekFtWWNWSVZEcmJWSUg5b0M3dUk1a19hY0t6U1M1UVVBb0V5Ug?oc=5",
-     "published": "Mon, 16 Nov 2026 10:06:30 GMT",
-     "sentiment": -0.599
+     "link": "https://news.google.com/rss/articles/CBMilAJBVV95cUxObFpON19hSFRXcmZaUWgwT1FJRnZVTjZHa3FUWFRZSU8wck04eU5VY3E3aXhyS21FdFg4QU5xS1ljaXMxUnRaeXN0ZGFDdGkzLUcyN2I4Ti1ScDRZSi15YTFIb25qYm1TU0NTd093cmdtOXl0d2NQdm9HU2xDdkRlMWZLYnB4SEhtLXE0UF9EQTJwYV9EM2Y0NDJQUUQ0TmtYY2d6VnF5YmEydExYV3N3aERqUnlCNlluTzlpa25CNEJiYXJjUTZ1ajBVQWtxTERrOWpRb0dXUm9lZHl4dnNQeXVURXVmYlo3anFhRVFjOWZOSF85dW02SU9ndFZRQl9tcmFzS1h0cnFxdm0zbVRlQkpENjLSAZoCQVVfeXFMTm9CSVlPNFlqS19HMi0zUlVfcTQ4QTRPU004WmZBSDlGeDlKSHVRYjNXZUo5ajRvX0J5NDYwZzMybUV6RkZOZTRWbnNkaWRhcS0wY2JGX0ktcXdPS2VJUVlJUkx6NHgtcG5WLUNNNFZFOWpBeDFyLTJNcWVQQVF0dnZYanJGblJ0dFZPWHVpM2tfYUFFTE9qOVFmM01WM0FYd255cG5JNEZDLW1rWjlYUUpkcEozSkh0cHdaRHNncFE4NVc1Y0s4aV84SDZXTmVTMTdzNWR1blZmRlJTTTcwTkVNcXJ6UW51d0VnSkNlQ3FXdmJvOEt2d1lJMEd2Sm5MUmc3MVlrQVZiYUgxTl8zSDd2WEtZaDZsQlhR?oc=5",
+     "published": "Mon, 16 Nov 2026 05:14:26 GMT",
+     "sentiment": 0.0
     },
     {
      "title": "Apollo Micro Systems to acquire 26% stake in Premier Explosives at \u20b9698 per share",
@@ -330,7 +294,7 @@
     }
    ],
    "news_sentiment": {
-    "score": 0.085,
+    "score": -0.05,
     "count": 8,
     "label": "NEUTRAL"
    },
@@ -388,54 +352,18 @@
     "day_chg": -1.3713750110974865,
     "ret5": 1.818302143184125,
     "rs20": 2.6263416280376095,
-    "bias_score": -14.0,
-    "news_sent": -0.008,
+    "bias_score": -20.0,
+    "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.146333769093575
    },
    "r1_a": 0.5006536785668574,
    "r2_a": 1.0013073571337086,
-   "news": [
-    {
-     "title": "Clinics, guesthouses among 37 buildings sealed in 3 days for running from Gurgaon\u2019s DLF-2 housing units:",
-     "source": "The Times of India",
-     "link": "https://news.google.com/rss/articles/CBMi-AJBVV95cUxPNUVSVjUwejJMM1h0MGh4bFRENFphUThjc1JjN3hlVldhQXY0bUQtM3F4S0N3T1ZlVHdjVW5nclVoOHljZ1NTWHZzQjQ5aUYxX0hYYVNZWlpQTXlrdHR2QTlMaUpDOXRDSTR0Y1RweEpmNm9qaGxSWUJIUW9BQkpVb1RzZHFIZDg5bVpxTzJSU2FXd3JfdTBJNFVua3dsRVFNRnFETDFkWndHc3RsZjAzc1I0cGxfS09vV1VrR0NiVXNyblJsWEV0Ty1BMlNPOGhIZ2RKVkxVa1ozWlhvd1dacEJXWkpwRTBxWGc4aFJQdnREaGc4am01aGYzTEJSV1dsOHpZWWdOVHpQYXNGSWM5aVEwd2N6NFpvQVdtbzRyTUZEMl9UdGxsNkNiNWlZWDl3RkdRNjQ5TGZLZXd0cWNDR25IUF9MTG1ZM2w0c2hFb2F6LUxCdlhQWFd1QllENFo1VGRLLUVHb2pqMUhZYXRCTlhHN09IUkdG0gH4AkFVX3lxTE81RVJWNTB6MkwzWHQwaHhsVEQ0WmFROGNzUmM3eGVWV2FBdjRtRC0zcXhLQ3dPVmVUd2NVbmdyVWg4eWNnU1NYdnNCNDlpRjFfSFhhU1laWlBNeWt0dHZBOUxpSkM5dENJNHRjVHB4SmY2b2pobFJZQkhRb0FCSlVvVHNkcUhkODltWnFPMlJTYVd3cl91MEk0VW5rd2xFUU1GcURMMWRad0dzdGxmMDNzUjRwbF9LT29XVWtHQ2JVc3JuUmxYRXRPLUEyU084aEhnZEpWTFVrWjNaWG93V1pwQldaSnBFMHFYZzhoUlB2dERoZzhqbTVoZjNMQlJXV2w4ellZZ05UelBhc0ZJYzlpUTB3Y3o0Wm9BV21vNHJNRkQyX1R0bGw2Q2I1aVlYOXdGR1E2NDlMZktld3RxY0NHbkhQX0xMbVkzbDRzaEVvYXotTEJ2WFBYV3VCWUQ0WjVUZEstRUdvamoxSFlhdEJOWEc3T0hSR0Y?oc=5",
-     "published": "Sun, 15 Nov 2026 18:54:00 GMT",
-     "sentiment": 0.0
-    },
-    {
-     "title": "Punjab And Haryana High Court Refuses To Cancel Ex-DLF CFO Ramesh Sanka\u2019s Bail In Extortion Case",
-     "source": "LawChakra",
-     "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOWkJlT09vMHU0a0oyUkRFaXlnTHBleld5MFVoc3dVSjUzWV9PTVV6MTBmMVJOY1VWaW1wTFJpcnl4RWNuMXBGMndPeUVjWWxtNHhQaDctVTkzLWd1ZkNCTnBKeFVqWHBDbmhlTXFLSGdMTkRGeko4TTlBWGRQLThQdEFTNFJCMFJQUzBXV3ZnSkw?oc=5",
-     "published": "Sat, 14 Nov 2026 06:54:07 GMT",
-     "sentiment": -0.25
-    },
-    {
-     "title": "BLACK OPAL CONSULTANTS LIMITED Share Price",
-     "source": "Upstox",
-     "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5DU0J6Z19WQzRzc0tTRUxGMnBZbmZYd0czdkFlbGtGRFZGaTNEZ3gzNFVob04wVWtMeFo2VHJVVUw1YVM2M05Id2h4N0JaeE1hTGJxM19Zc0l1N3JITHZFUDVmb3g0XzF1ejBWV2ZIVXNOaEhKRVQtZQ?oc=5",
-     "published": "Mon, 16 Nov 2026 16:25:38 GMT",
-     "sentiment": -0.111
-    },
-    {
-     "title": "Catch Rajat Sood Live On Nov 22: Insider Survival Guide",
-     "source": "theoptimist.news",
-     "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBsdVZnNW5XaTZna2xaTjAzYUViUXMyN3N2T1dicVMyd01TOGVIMURRb2MzY2Z4eXdRMXRiNzRyQzZ5NXYzVUFBREpaaHc0SjZYNHFvUUJHdmpqM0Jwa1JYUGdR?oc=5",
-     "published": "Mon, 16 Nov 2026 07:30:00 GMT",
-     "sentiment": 0.0
-    },
-    {
-     "title": "Anant Raj Share Price - Live NSE: ANANTRAJ Stock Price & Chart",
-     "source": "Upstox",
-     "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9SRjhPcU1nWGJiSVdlekJjckt0blUyQUx5QVQ0UVA2UnJ6MDkxRTdYUE5SQ2F2cjhJS3lHb185TGRkRmZYZ0NZd1Q2VHI2MXNaemVCLTFYNUNTMG5aeDNXVWotek9objA?oc=5",
-     "published": "Sat, 14 Nov 2026 15:15:11 GMT",
-     "sentiment": 0.296
-    }
-   ],
+   "news": [],
    "news_sentiment": {
-    "score": -0.008,
-    "count": 8,
-    "label": "NEUTRAL"
+    "score": 0.0,
+    "count": 0,
+    "label": "NO NEWS"
    },
    "win_prob": 53.0,
    "expected_r": 0.17,
@@ -491,8 +419,8 @@
     "day_chg": -1.0398867780116117,
     "ret5": 8.697689966999533,
     "rs20": -7.476365496038029,
-    "bias_score": -14.0,
-    "news_sent": 0.239,
+    "bias_score": -20.0,
+    "news_sent": 0.248,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.146333769093575
    },
@@ -536,8 +464,8 @@
     }
    ],
    "news_sentiment": {
-    "score": 0.239,
-    "count": 5,
+    "score": 0.248,
+    "count": 6,
     "label": "POSITIVE"
    },
    "win_prob": 53.0,
@@ -594,8 +522,8 @@
     "day_chg": 0.8853475228142171,
     "ret5": 2.526883554673476,
     "rs20": -1.0913197245223216,
-    "bias_score": -14.0,
-    "news_sent": 0.155,
+    "bias_score": -20.0,
+    "news_sent": 0.056,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.146333769093575
    },
@@ -617,31 +545,31 @@
      "sentiment": 0.0
     },
     {
+     "title": "Aurobindo Pharma to host investor meets on Nov 16 and 17 in Mumbai",
+     "source": "scanx.trade",
+     "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPNDRZS2hHbW1BcnFJTWN5Q2V5bS1IZnpaRXJrUVVlQURLUXVWeDQtX3Rmc3MxZ1pCNXE4MHJlMTdjTkdTQXZaWHdaMWxScEQ1clpPWmdwUVpjMkswdWxQNjhMODZMYlJDdExRN1ZQeFJQMTVvSGtPeUZzcFJSNkFMb1hjb2doX0JXTGxMWEE3M0s3ZzctWGV4NHpCeFZ6aW5YT1Q2eHpLQkxybHlWTlE?oc=5",
+     "published": "Mon, 16 Nov 2026 02:30:34 GMT",
+     "sentiment": 0.0
+    },
+    {
+     "title": "Aurobindo Pharma Limited (AUROPHARMA.NS) Stock Price, News, Quote & History",
+     "source": "Yahoo! Finance Canada",
+     "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9QOThCWno3YUNOUlFwTHBmLTNMMTc1SFhGcG41SEV4VDU2UmE3eWxWaVhuNUxTRmUxVEg2Q1pKUDhTNVNKSWFPd3ZLQnktb3ZhMnpHbjlKekdwdGNybFE?oc=5",
+     "published": "Sun, 15 Nov 2026 17:54:58 GMT",
+     "sentiment": -0.226
+    },
+    {
      "title": "Top 14 Pharma Stocks To Buy In India November 2026",
      "source": "Samco",
      "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNSmxaNUxpT2wtdzdBOEMwZ18tbzhmM3NVOXN1RXlaTy1wR1N2SmZRb0RKSlZPSUpvRnhxaTlHQnBpYXV5X2RhNHNlYnEtYjctblphSkpUbWJHRDRoRWZwY3ZXMmMwRlBYZWR2TFhMcUhHU0lOd19VVmY4a0pxYUF2djNyOWp0TE9Rc0E?oc=5",
      "published": "Sun, 15 Nov 2026 06:50:56 GMT",
      "sentiment": 0.202
-    },
-    {
-     "title": "Aurobindo Pharma to host investor meets on Nov 16 and 17 in Mumbai",
-     "source": "scanx.trade",
-     "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPNDRZS2hHbW1BcnFJTWN5Q2V5bS1IZnpaRXJrUVVlQURLUXVWeDQtX3Rmc3MxZ1pCNXE4MHJlMTdjTkdTQXZaWHdaMWxScEQ1clpPWmdwUVpjMkswdWxQNjhMODZMYlJDdExRN1ZQeFJQMTVvSGtPeUZzcFJSNkFMb1hjb2doX0JXTGxMWEE3M0s3ZzctWGV4NHpCeFZ6aW5YT1Q2eHpLQkxybHlWTlE?oc=5",
-     "published": "Sat, 14 Nov 2026 15:15:53 GMT",
-     "sentiment": 0.0
-    },
-    {
-     "title": "Missed Aurobindo Pharma's Rally? What Early Buyers Saw",
-     "source": "Yahoo Finance",
-     "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNbjRkaTN0elBNLVZuNk0wUEcyY3MzN3Rqd0dYTTVVenVIaUdUblRUdDhydXJWNEdkM1k4LWJnX2gtLWdBTG5nRWhuMVZ1SmJLamtvZ3VPdHZDMGloam43MmhIQkh6aGxFZ09uRkFDQUF3RGFkMkFwemVkbnk1NGwxY2pQY082X2tUdi1XSlplcVlvUko0UFNnU2xRYjdrQQ?oc=5",
-     "published": "Sun, 15 Nov 2026 00:16:00 GMT",
-     "sentiment": 0.103
     }
    ],
    "news_sentiment": {
-    "score": 0.155,
+    "score": 0.056,
     "count": 8,
-    "label": "POSITIVE"
+    "label": "NEUTRAL"
    },
    "win_prob": 53.0,
    "expected_r": 0.17,
@@ -697,8 +625,8 @@
     "day_chg": -1.5714258179628793,
     "ret5": 6.517495554744812,
     "rs20": -6.21686805846986,
-    "bias_score": -14.0,
-    "news_sent": 0.126,
+    "bias_score": -20.0,
+    "news_sent": 0.14,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.146333769093575
    },
@@ -742,7 +670,7 @@
     }
    ],
    "news_sentiment": {
-    "score": 0.126,
+    "score": 0.14,
     "count": 8,
     "label": "POSITIVE"
    },
@@ -800,54 +728,18 @@
     "day_chg": -1.8199336034997238,
     "ret5": 0.32366143699837924,
     "rs20": -5.557416400264192,
-    "bias_score": -14.0,
-    "news_sent": 0.086,
+    "bias_score": -20.0,
+    "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.146333769093575
    },
    "r1_a": 0.43616675185616793,
    "r2_a": 0.8723335037123315,
-   "news": [
-    {
-     "title": "IndusInd Bank seeks member approval for Priyanka Sinha as independent director",
-     "source": "scanx.trade",
-     "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOZVhVOVN3WWl2czAwZzZzUEIzSFpfcUVMam5ndFhXcUljWGVSMkFfSElHSWRuTEZkVHFoV3BBekdydmRfal9EVlF5Z2ZVU2hoWWZvU1Z6X08zdWR5dElGUU9TanJ1VjBYLWVUMlBFeno4Q3dGWTNIckhQRXpGZnQ3LU1NQUJ4dmZRTXhvWEhvMVo1VWU3TWRTemoxZG9mYWhSakNxdzh1NXpXV2Vra1hCdFk3dGVzOXZ6LWhJ?oc=5",
-     "published": "Mon, 16 Nov 2026 11:50:33 GMT",
-     "sentiment": 0.477
-    },
-    {
-     "title": "SPARSH pensioners: How NRIs and defence family pensioners can submit life certificates without visiting India",
-     "source": "Livemint",
-     "link": "https://news.google.com/rss/articles/CBMihwJBVV95cUxNelVJWjFuVTVfSTNqNmlwRElIT25faU1wYzVUQkF0TDdDY0pPQ2pHdExzeHdzV0VoWmhSRjR6elc1YXc1TnZQVmQ0MkZYVncyY1hYRkhaeFFjazd0U3QwS1ZGRXBlc21BNUVNYzdJaU84Z0xTYnhZR0lQV3JoSXdIbnpVdlpIb3ZjRFBoQTVqYUtxZl92MzI3Rm8zT3NCM2lINnhHQkZ4RHNVRUQtdkJ6a2RZZ0cyUnp0LWlsMHhSeWNjQUttRHhfUTlRd2hQak1kUzBkd1ZvZG13X0pablpfeXJVS3AzaUJUVjZBOHJlMlNtb3pUUThxWkhjQ3ZvNTd1YzM1T2ctRdIBjAJBVV95cUxNWFpKTTNCTHpnLWRTbE5yaWdlWnV5b3Bod1hScm00eFZUd3EtU1RjblNRRVcwZXU4Ul82QmJFbEJnYnhZTjNzcFduQ0hCNGdKaXUzZ2EtTnNxTjdyQkIyNjVvTXkyM2FHV3ZvYWVPdUw2dE0yWGhYX0IwUHJuQkhrRWxDNnYxWU9vb013OEJDa0luakxHSVZhQ2w2YmZmdWZsM0t2cWdKTlBlQ09RYzJGMzlIeDFQbHQzUFY0QkVCam1qRDkxMzY3MlFweHptbm1RYjB4YUdqc2prVndFQ2VhOEJjbTFocGdkbXFJRDlJWlhneDMtTjQ5dnc5dm45TzRyNnRDTTU0MHhrVFpP?oc=5",
-     "published": "Mon, 16 Nov 2026 10:45:23 GMT",
-     "sentiment": 0.103
-    },
-    {
-     "title": "Top 12 Bank Stocks To Buy In India November 2026",
-     "source": "Samco",
-     "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQVTJGTjNBTndCWnlCMVF4am9OclFTVEN0clJWVXBKc3BWX0E4bDhwTUxlVWFKd0xReUJWSVl6T0M3UnExVHowUHZHdkExQ016S1MtX1lJdjNKYUNoRzBpM19fbTZYeTNOVGpNY0NPMTQydUdvWDZWMGFveE12Umh4eVRkVC02b1FMYVJhZQ?oc=5",
-     "published": "Sun, 15 Nov 2026 06:50:57 GMT",
-     "sentiment": 0.202
-    },
-    {
-     "title": "ITR update: Extended deadline tax audit report filings this week \u2014 Check due date, which taxpayers are eligible, details",
-     "source": "Livemint",
-     "link": "https://news.google.com/rss/articles/CBMilAJBVV95cUxObFpON19hSFRXcmZaUWgwT1FJRnZVTjZHa3FUWFRZSU8wck04eU5VY3E3aXhyS21FdFg4QU5xS1ljaXMxUnRaeXN0ZGFDdGkzLUcyN2I4Ti1ScDRZSi15YTFIb25qYm1TU0NTd093cmdtOXl0d2NQdm9HU2xDdkRlMWZLYnB4SEhtLXE0UF9EQTJwYV9EM2Y0NDJQUUQ0TmtYY2d6VnF5YmEydExYV3N3aERqUnlCNlluTzlpa25CNEJiYXJjUTZ1ajBVQWtxTERrOWpRb0dXUm9lZHl4dnNQeXVURXVmYlo3anFhRVFjOWZOSF85dW02SU9ndFZRQl9tcmFzS1h0cnFxdm0zbVRlQkpENjLSAZoCQVVfeXFMTm9CSVlPNFlqS19HMi0zUlVfcTQ4QTRPU004WmZBSDlGeDlKSHVRYjNXZUo5ajRvX0J5NDYwZzMybUV6RkZOZTRWbnNkaWRhcS0wY2JGX0ktcXdPS2VJUVlJUkx6NHgtcG5WLUNNNFZFOWpBeDFyLTJNcWVQQVF0dnZYanJGblJ0dFZPWHVpM2tfYUFFTE9qOVFmM01WM0FYd255cG5JNEZDLW1rWjlYUUpkcEozSkh0cHdaRHNncFE4NVc1Y0s4aV84SDZXTmVTMTdzNWR1blZmRlJTTTcwTkVNcXJ6UW51d0VnSkNlQ3FXdmJvOEt2d1lJMEd2Sm5MUmc3MVlrQVZiYUgxTl8zSDd2WEtZaDZsQlhR?oc=5",
-     "published": "Mon, 16 Nov 2026 05:14:26 GMT",
-     "sentiment": 0.0
-    },
-    {
-     "title": "Gold, silver prices today, 16 November: Check retail rates of 24K, 22K gold, 999 silver in Delhi, Mumbai and Kolkata",
-     "source": "Livemint",
-     "link": "https://news.google.com/rss/articles/CBMiigJBVV95cUxPR0FpSXpybkthNG4ycDVXMXBPMG53NFFuV1lEdUlrbVpscnU3UEg5ZnhiSnY0QmVHYmJtbFNkaUZ2UFNlQnFidXkyb29yYngybU16T2xNeDFWTFc0WFFfUTZRdFZkUGF3T0JITHBkUWVBWDhYNDZoS25lSENaRE5VQ2NTM0N4cUxHQlZQTzNRbDNUeFdlQUVwSEhZcUMxYTNSazR3S1VscGVOVDU2b2MydVZBQWZuQTNmQzhTbURSZmc1akdGOXItejgtRnVWQ0wyWFEwc2xIcE5qV0F1SFM1Wi1GcHAzYmNYa3l0aHBqcHh3M0p6emtoUzBEWGthWXlCT0pxZmdMbWQwQdIBjwJBVV95cUxQME5xZ2VlTk1EbEVGazZvZFFFRm1Hb19CaUJzZW1iTVdLVlhOblR6NUd0eFdRN1lEN2N6UW9Nb0UxTnFGVVRzcXpfNVFYcjlFRVhnOTBBajZWbjdhZ2tuZlhyUHVvanRselZHQ0d0U0I1VVJESU9NUnlidVNRUGlfdmtrVVFLQ3dJeFZYZU96bDhTd28wdEM4WXNLdFI1NXN0dENtYXctaHI0OTZWdGE4SU1ySi1YZ1hBX21lYnJHbTNzZkNhaWhZYVZoSmtJZHRJVFhrX0t5WkJvaWZMTjV2ZFBtY1JWWmNOclhOZV93Ty1ZR1pWaENGclJGQTRUTW93dThjQ0ZrUjgyZzdYcVlF?oc=5",
-     "published": "Mon, 16 Nov 2026 04:08:08 GMT",
-     "sentiment": 0.0
-    }
-   ],
+   "news": [],
    "news_sentiment": {
-    "score": 0.086,
-    "count": 8,
-    "label": "NEUTRAL"
+    "score": 0.0,
+    "count": 0,
+    "label": "NO NEWS"
    },
    "win_prob": 53.0,
    "expected_r": 0.17,
@@ -903,8 +795,8 @@
     "day_chg": 0.9574480452919198,
     "ret5": 1.5035558618640144,
     "rs20": -5.010729651178258,
-    "bias_score": -14.0,
-    "news_sent": -0.013,
+    "bias_score": -20.0,
+    "news_sent": 0.059,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.146333769093575
    },
@@ -926,18 +818,11 @@
      "sentiment": 0.296
     },
     {
-     "title": "National Savings Certificate (NSC) nomination rules: Who inherits your investment and gets the money after your death?",
-     "source": "Livemint",
-     "link": "https://news.google.com/rss/articles/CBMijwJBVV95cUxPT0tNam1td3VYOTFHbWtSYU1sU1VkOXU4Rk9PNzdYVDNELXFXeHVHTWVsR3Ryb3pIeG5jeU1yTWp0bVZmemdWX01JMmFCRmVKRXQ5RmpyeVY4R2VPaEV5SFRad3k3OG1DY0VMNXU1a1VGQXVNcU5PaTRhZ0cxTGdLYmRweC1VN3VlaHpEaFV0ZUtBS1RUVVd0ZkgxRl9GOFgwUVNhRmdPaVJQdVdHTEttUmlEWVdXb0lmZFpmc0hibnlhaU8ybUktLVpHdnk1T1BTa2szSXN0dG1FMmJjcEVnRDFqSlY2NjNhNm1mOF8xZ1l0QmU4ZGpJeUVqMWYzNXoybXV2N3NPNTY1Z25NVzhj0gGUAkFVX3lxTFA5SERzQ3Nuc1lkRzMxLXA0cFVOY0pobXlEOXhrbXdLcFVqNHJyS3A0VjBkRkxvalpTeGFZdF9KX1VuWFVCa2o3MXhXM0hyelByb1pkOG9ueGVfRHZ2cnh4aGltM0hOTEotamtuWHF1Y0Z2U3IwZk15MWlYa09pNmxfRnRlbkZWLXozcXU4MEktMDRPLWJJWldyVkkxYV9wWjVfWnMtUUE3X2hBVXA0V0hiN09oZlVzVS1sMjlaMXdBQWZwS0Z2WUhMM050OHJ4V2RGeGhWcmNlSEJ5bm1QTXlHdi1lcXY0dmpPZkxxLVlwekFtWWNWSVZEcmJWSUg5b0M3dUk1a19hY0t6U1M1UVVBb0V5Ug?oc=5",
-     "published": "Mon, 16 Nov 2026 10:06:30 GMT",
-     "sentiment": -0.599
-    },
-    {
-     "title": "SPARSH pensioners: How NRIs and defence family pensioners can submit life certificates without visiting India",
-     "source": "Livemint",
-     "link": "https://news.google.com/rss/articles/CBMihwJBVV95cUxNelVJWjFuVTVfSTNqNmlwRElIT25faU1wYzVUQkF0TDdDY0pPQ2pHdExzeHdzV0VoWmhSRjR6elc1YXc1TnZQVmQ0MkZYVncyY1hYRkhaeFFjazd0U3QwS1ZGRXBlc21BNUVNYzdJaU84Z0xTYnhZR0lQV3JoSXdIbnpVdlpIb3ZjRFBoQTVqYUtxZl92MzI3Rm8zT3NCM2lINnhHQkZ4RHNVRUQtdkJ6a2RZZ0cyUnp0LWlsMHhSeWNjQUttRHhfUTlRd2hQak1kUzBkd1ZvZG13X0pablpfeXJVS3AzaUJUVjZBOHJlMlNtb3pUUThxWkhjQ3ZvNTd1YzM1T2ctRdIBjAJBVV95cUxNWFpKTTNCTHpnLWRTbE5yaWdlWnV5b3Bod1hScm00eFZUd3EtU1RjblNRRVcwZXU4Ul82QmJFbEJnYnhZTjNzcFduQ0hCNGdKaXUzZ2EtTnNxTjdyQkIyNjVvTXkyM2FHV3ZvYWVPdUw2dE0yWGhYX0IwUHJuQkhrRWxDNnYxWU9vb013OEJDa0luakxHSVZhQ2w2YmZmdWZsM0t2cWdKTlBlQ09RYzJGMzlIeDFQbHQzUFY0QkVCam1qRDkxMzY3MlFweHptbm1RYjB4YUdqc2prVndFQ2VhOEJjbTFocGdkbXFJRDlJWlhneDMtTjQ5dnc5dm45TzRyNnRDTTU0MHhrVFpP?oc=5",
-     "published": "Mon, 16 Nov 2026 10:45:23 GMT",
-     "sentiment": 0.103
+     "title": "Hindustan Unilever climbs Monday, outperforms competitors",
+     "source": "MarketWatch",
+     "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNMi00X0JWUTBfamMxbFA5VlZwbzJUc1I5T3NSTkxMcnNWeUNUSUpSTjAwQXNCU2t0VXZTUTJmSHA5NkQzcnNQZ09VZkRqRmdsV2kxR3RmcjFMdzZLZ0prdnhkYnVRUS1qdTVJTnRncUMwajBfNlF6cy1LUzhkM2k0bVdEYzRMV2t1YzFVLUdwbjhLQkFzaDZSVkF4Z3h6aFBicjBSdklyWk56eDMySkJBcEZFNFU3djNyTzdMdmVocENuQmUtUXc2SkRvbHFOQ0k?oc=5",
+     "published": "Mon, 16 Nov 2026 10:32:00 GMT",
+     "sentiment": 0.0
     },
     {
      "title": "How credit card rewards can help you save lakhs on your next holiday",
@@ -945,10 +830,17 @@
      "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQdXhIblQtVVNvTXRIalJlNlRxcWczY2pmaG1xNGhld0RsLW5GTWlJOXg0dGhhU090UE96N3FQWVZ3Z1ROVlZybHN6UENON0lMR2NqVV90U3VJeFo4MXFpZl9jSXRzWnlEUlNkcFotMUVKbHBscjM3bGg2czA0QWtVWVF3dVdidWNMQm1QSzVqWFdMekpLTmtpNXpWdkJfS3lQdFdRMFBPYkxMbjVrWHBlSjVRUWp1emR1Vm0zYWJ0Wm54LVE4c3pPVFN1Y2fSAdIBQVVfeXFMTlI0MXcwQV9xOG5LMUhmZy1VQ0RBLVJiNVpOWWdNbGZ0anlfRnVLVnZwR2wtV1ZLVnl3N0hqTGlBUlhjTDNCODlOQlBpWTYxMkktQV9xQ1JrRVc5bmhkQ1BHYjRDUk1EaWtrNFVLdTBqeE1wdTVaZUhEQU5uMmFYZEtvRWFEd0xNYWk4anhlLUVTZkVGVFQwRzBkLXNjMmpMTTU5WE9HSUJ4R3NjWEJoeVZ0NFdCODdWbk5vSUZzTDRRVFlROFVkWnlVSTNvaUt6X19n?oc=5",
      "published": "Mon, 16 Nov 2026 07:53:11 GMT",
      "sentiment": 0.923
+    },
+    {
+     "title": "ITR update: Extended deadline tax audit report filings this week \u2014 Check due date, which taxpayers are eligible, details",
+     "source": "Livemint",
+     "link": "https://news.google.com/rss/articles/CBMilAJBVV95cUxObFpON19hSFRXcmZaUWgwT1FJRnZVTjZHa3FUWFRZSU8wck04eU5VY3E3aXhyS21FdFg4QU5xS1ljaXMxUnRaeXN0ZGFDdGkzLUcyN2I4Ti1ScDRZSi15YTFIb25qYm1TU0NTd093cmdtOXl0d2NQdm9HU2xDdkRlMWZLYnB4SEhtLXE0UF9EQTJwYV9EM2Y0NDJQUUQ0TmtYY2d6VnF5YmEydExYV3N3aERqUnlCNlluTzlpa25CNEJiYXJjUTZ1ajBVQWtxTERrOWpRb0dXUm9lZHl4dnNQeXVURXVmYlo3anFhRVFjOWZOSF85dW02SU9ndFZRQl9tcmFzS1h0cnFxdm0zbVRlQkpENjLSAZoCQVVfeXFMTm9CSVlPNFlqS19HMi0zUlVfcTQ4QTRPU004WmZBSDlGeDlKSHVRYjNXZUo5ajRvX0J5NDYwZzMybUV6RkZOZTRWbnNkaWRhcS0wY2JGX0ktcXdPS2VJUVlJUkx6NHgtcG5WLUNNNFZFOWpBeDFyLTJNcWVQQVF0dnZYanJGblJ0dFZPWHVpM2tfYUFFTE9qOVFmM01WM0FYd255cG5JNEZDLW1rWjlYUUpkcEozSkh0cHdaRHNncFE4NVc1Y0s4aV84SDZXTmVTMTdzNWR1blZmRlJTTTcwTkVNcXJ6UW51d0VnSkNlQ3FXdmJvOEt2d1lJMEd2Sm5MUmc3MVlrQVZiYUgxTl8zSDd2WEtZaDZsQlhR?oc=5",
+     "published": "Mon, 16 Nov 2026 05:14:26 GMT",
+     "sentiment": 0.0
     }
    ],
    "news_sentiment": {
-    "score": -0.013,
+    "score": 0.059,
     "count": 8,
     "label": "NEUTRAL"
    },
@@ -1006,54 +898,18 @@
     "day_chg": -0.303230209301697,
     "ret5": -0.5606355652708284,
     "rs20": 3.460030451288909,
-    "bias_score": -14.0,
-    "news_sent": 0.125,
+    "bias_score": -20.0,
+    "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.146333769093575
    },
    "r1_a": 0.2909294445909548,
    "r2_a": 0.5818588891819022,
-   "news": [
-    {
-     "title": "JSW Steel Share Price - Live NSE: JSWSTEEL Stock Price & Chart",
-     "source": "Upstox",
-     "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9KdjIxb1BCYWcxUFFoS2lDRXZBUGgta2Fwc252dml6QVRMSk5MSFVDQ0NMbXBfb0ZiemRvMExqWS00bDNpZ0RUZGdWSDlWYnBMS2VUSGhYaGxIcFRrR1RCQWlEV0RwSDg?oc=5",
-     "published": "Sat, 14 Nov 2026 08:57:41 GMT",
-     "sentiment": 0.296
-    },
-    {
-     "title": "Tata Steel, JSW Steel, Jindal Steel remain Nomura's top picks; brokerage stays positive on sector",
-     "source": "Moneycontrol.com",
-     "link": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxNTlp6MVh0eUg4ZXhYN1J1Y1RHVDZ1dExMSUtCX25hcEdRQzJNUFFpYVpYYlNIcW90WWgxZjJuVWdLemZzdHZVZHptcmdoUDA5UWdVZ2t1NUktTnZwWFRDb2lmLTVjaTdvQ0VxTFU2VHVKNDcybjhNbElESEdkMTh4SGxaNktTZjhINzlPU2JqRFlZTTV3RFZ3bVlFV0tybHltM2p4ay1QX3phQXEteVI0dDBZbXlZYVhxbms0Rl9iNVNSX3FfekZWa2FPTmhKUjUtNmcxckYzM1RNc01WWktfRE1fSjItMkwta3VKR1QxWdIB9AFBVV95cUxNSG9NTGFJbk00aUczcXBVd0xtTEJ1aFVOdmFCSzdpOVlRam8yVVZHX0dtQWNIY2lRWHEtQXo1anMtQlNadkVVNFo5UG93R1p2Yzdwcm8tak0xSXBCVEFKeDhpM2pjOGZJVExLb3dPQ2JJR0JoZ1BGaTU1SlRsUnRYTjVsNDNGZzRIYXh1OUh2VThfSjRtQzdGdUVPNy0welhnUHNUMTFoRVBWTUlwbjJfb3lBbWRBYjlJSHpJZmtyUUpMRVRMT3ZWMGJWTXJFaTJuWUp3LWZCblBHeW8waVg2UURZcUhlTlNhMUR4Sy1jX0xtVXBD?oc=5",
-     "published": "Mon, 16 Nov 2026 04:43:43 GMT",
-     "sentiment": 0.66
-    },
-    {
-     "title": "JSW Steel (NSE: JSWSTEEL): Sambalpur Joint Venture Expansion and October Output Growth",
-     "source": "Kalkine India",
-     "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOYU1Ub2RxdHFCRUJzNzY3Q3V1d2xDdzhjbERsNl9lbzFwd283Y180YzVBT05WM0RNaUdFWHZINnd0ODRKWjI0dS1aVXpXb0RVWWZuYkNLcWsyWjYwVnQzS1FrOGVIRkZFeHMtS203cHlYZGIzZjNnY0NBa1pGckFyOGZydTEzVlRzcHNMSkY0cEdYZFlGcnlidUhNVHFRUElTSlhQZTA4Zzh3elRRa2tvWHdVRUtPQWZoMW5WWEpvNlM?oc=5",
-     "published": "Mon, 16 Nov 2026 12:46:00 GMT",
-     "sentiment": 0.382
-    },
-    {
-     "title": "Under Rs 1443 Stocks to Buy in Nov 2026: Top 5 Picks",
-     "source": "Univest",
-     "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1JY3N2WklwbUpwcUlvdWhPT19vbWU2STFITk1OaFpZeUE2V3lVeG8yT2ZHQkRxWGF3NUN4Z2hKSUtPR1FkVHR6RHZSQWNTb3FiX0lJTUoyNm9ZQ0EzTU5LX05n?oc=5",
-     "published": "Mon, 16 Nov 2026 09:26:00 GMT",
-     "sentiment": 0.202
-    },
-    {
-     "title": "Bengal govt plans to get back 4000 acres of land from JSW steel plant at Salboni to set up industrial park",
-     "source": "The New Indian Express",
-     "link": "https://news.google.com/rss/articles/CBMi_wFBVV95cUxOenZtb21WN0RJWm42NVpOZER0NmkxUlpSTWdJWnRXSmJBc2tiY01OaDJfTDNjYUQxdFl2cktjUjg5NkxMNnVpRmJCN0lQdVBIT096Y1J5NEJGM0xzel9VZlR6RHNGc3AxQl9iMVlxaGtLUWlQblBVZUc0dkhMWF9MOFMyWVZNN3hrZFN6QVJqZVVYOEFrMUxZb1ExdWdvdThzeUZ2emVic0ZGSG9udHBCbFg4ZDFkTkd6Z1lQTkFEUmZLd0Q4UnhiaWJqR1JZandhdXFzc3pqU0pYRGMxeUIxNnZnR29NQnplbU5tTnd3dVYwSGNyMDBNdHhERE42TkXSAYwCQVVfeXFMUGFvQWd0WXprRG5EMnB0Vk9vVGVtbGxMT3g0ZGxyRDJnR1VVcFFPYi0tcmgxQm5MSWZ2bk5laU9UQmotRmRQdllLN0JMMmZYTGJsNnQ1Q2xybk11TXpGM1NIYjV5MmZfNFBYRERHdFJpVTNLQ3ZPeFVIVWpDbVpuY2dqeFpfcmlyUlZxY2J1TUZ1eUtycWpHWDl2a1owcWpBaXZyM3BIVzVzRzRZd0Z4NXczY21uQ09uMm5JWktxTWhJWTlHMTZPXy1kMEJxM1hXSnZvb3lZMzQ1YTh2ckhQS3lqRWt4TDNIQ1hSWnpkeDZ1ME5aSXlZSzZoYk1qNmJNSFV0OEM1eE9TUTFpWg?oc=5",
-     "published": "Sun, 15 Nov 2026 11:02:49 GMT",
-     "sentiment": 0.0
-    }
-   ],
+   "news": [],
    "news_sentiment": {
-    "score": 0.125,
-    "count": 8,
-    "label": "POSITIVE"
+    "score": 0.0,
+    "count": 0,
+    "label": "NO NEWS"
    },
    "win_prob": 53.0,
    "expected_r": 0.17,
@@ -1109,7 +965,7 @@
     "day_chg": -0.9757860199030688,
     "ret5": 1.4553277426408107,
     "rs20": -6.307835088648561,
-    "bias_score": -14.0,
+    "bias_score": -20.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.146333769093575
@@ -1172,7 +1028,7 @@
     "day_chg": 0.4770992366412319,
     "ret5": 2.387092225552756,
     "rs20": 6.205723995890522,
-    "bias_score": -14.0,
+    "bias_score": -20.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.146333769093575
@@ -1235,7 +1091,7 @@
     "day_chg": 0.5322294500295754,
     "ret5": 1.038115170179199,
     "rs20": -2.133292762601613,
-    "bias_score": -14.0,
+    "bias_score": -20.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.146333769093575
@@ -1291,20 +1147,20 @@
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
     "log_vol_ratio": -0.8903767117031733,
-    "rsi": 66.46840689938236,
+    "rsi": 66.46840689939192,
     "dist_high_pct": 1.8087855297157622,
-    "ext_ema20": 4.312532068919839,
-    "atr_pct": 2.2295610031576674,
+    "ext_ema20": 4.3125320689198166,
+    "atr_pct": 2.2295610031572006,
     "day_chg": 0.3344524724020248,
     "ret5": 2.205484583780626,
     "rs20": -2.1597180903172752,
-    "bias_score": -14.0,
+    "bias_score": -20.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.146333769093575
    },
-   "r1_a": 0.18360258152123216,
-   "r2_a": 0.3672051630424643,
+   "r1_a": 0.18360258152127062,
+   "r2_a": 0.36720516304254125,
    "news": [],
    "news_sentiment": null,
    "win_prob": 53.0,
@@ -1361,7 +1217,7 @@
     "day_chg": -0.42758283943965525,
     "ret5": 6.63220449247599,
     "rs20": -1.767542191205318,
-    "bias_score": -14.0,
+    "bias_score": -20.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.146333769093575
@@ -1424,7 +1280,7 @@
     "day_chg": -1.6268192132969261,
     "ret5": 3.164266536833571,
     "rs20": -2.6675444106655455,
-    "bias_score": -14.0,
+    "bias_score": -20.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 11.146333769093575
