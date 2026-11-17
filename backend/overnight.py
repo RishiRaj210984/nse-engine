@@ -44,21 +44,21 @@ def ema_series(c, n):
 def make_watch(hist, symbols):
     """hist: {ticker: daily DataFrame} -> the evening watch list: each stock's last close, 20/50-day averages and
     last 20 closes, plus NIFTY's close and 50-day average."""
-    stocks, as_of = {}, None
-    for sym in symbols:
-        df = hist.get(sym + ".NS")
-        if df is None or len(df) < 60:
-            continue
-        c = df["Close"].astype(float)
-        stocks[sym] = {"close": round(float(c.iloc[-1]), 2), "ema20": round(float(ema_series(c, 20).iloc[-1]), 4),
-                       "ema50": round(float(ema_series(c, 50).iloc[-1]), 4), "closes": [round(float(x), 2) for x in c.iloc[-20:]]}
-        as_of = max(as_of or "", c.index[-1].date().isoformat())
     n = hist.get("^NSEI")
-    nifty = None
+    nifty, as_of = None, None
     if n is not None and len(n) >= 60:
         c = n["Close"].astype(float)
         nifty = {"close": round(float(c.iloc[-1]), 2), "ema50": round(float(ema_series(c, 50).iloc[-1]), 4)}
-    return {"as_of": as_of, "nifty": nifty, "stocks": stocks}
+        as_of = c.index[-1].date().isoformat()   # the list is dated by NIFTY's last session
+    stocks = {}
+    for sym in symbols:
+        df = hist.get(sym + ".NS")
+        if df is None or len(df) < 60 or (as_of and df.index[-1].date().isoformat() != as_of):
+            continue   # too little history, or its last bar is not NIFTY's session (stale): left out
+        c = df["Close"].astype(float)
+        stocks[sym] = {"close": round(float(c.iloc[-1]), 2), "ema20": round(float(ema_series(c, 20).iloc[-1]), 4),
+                       "ema50": round(float(ema_series(c, 50).iloc[-1]), 4), "closes": [round(float(x), 2) for x in c.iloc[-20:]]}
+    return {"as_of": as_of if stocks else None, "nifty": nifty, "stocks": stocks}
 
 
 def refresh_watch():
@@ -69,6 +69,9 @@ def refresh_watch():
     if not syms:
         return "no F&O list yet"
     w = make_watch(data.history([s + ".NS" for s in syms] + ["^NSEI"], period="1y"), syms)
+    old = store._read(store.state_path(WATCH), {}) or {}
+    if not w["as_of"] or (old.get("as_of") or "") > w["as_of"]:   # never replace a newer list with older prices
+        return f"kept the list as of {old.get('as_of')} (new data only to {w['as_of']})"
     store._write(store.state_path(WATCH), w)
     return f"{len(w['stocks'])} stocks as of {w['as_of']}"
 

@@ -236,6 +236,13 @@ def premarket():
 
 def postclose():
     """Close of day: journal today's scan, grade older signals, retrain, publish tomorrow's view."""
+    # GitHub's backup copy of the 16:17 run sometimes starts hours late (16 Nov 2026: at 02:11 the next morning,
+    # after the server's run). By then Yahoo can lack the day's bars, and it rewrote the overnight watch list with
+    # older prices. The evening job belongs to the evening: before 15:30 it is skipped (POSTCLOSE_ANYTIME=1 forces).
+    now = store.now_ist()
+    if now.time() < data.SESSION_CLOSE and not os.getenv("POSTCLOSE_ANYTIME"):
+        log.warning("evening run started at %s: skipped (late copy; the evening job runs after 15:30)", now.strftime("%H:%M"))
+        return {"skipped": f"late evening run at {now.strftime('%H:%M')}: skipped"}
     out = {}
     try:
         rv = review.run()
