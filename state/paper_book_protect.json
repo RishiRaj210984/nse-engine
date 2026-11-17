@@ -37,7 +37,7 @@
    "credit_rs": 5366,
    "iv0": 0.1845,
    "vix0": 15.762499809265137,
-   "mark": 731,
+   "mark": -2232,
    "groups": [
     {
      "legs": [
@@ -55,7 +55,7 @@
       }
      ],
      "v0": -137.475,
-     "off": 65.70288463211618
+     "off": 37.0085478135552
     },
     {
      "legs": [
@@ -73,7 +73,7 @@
       }
      ],
      "v0": -41.4,
-     "off": -1.9217860660253763
+     "off": -0.5872417912090899
     }
    ],
    "realized": 0.0,
@@ -275,11 +275,103 @@
     "BANKNIFTY: still open (expiry 23 Nov), worth Rs +731 now"
    ],
    "total": -10967
+  },
+  {
+   "session": "2026-11-17",
+   "pnl": -2963,
+   "detail": [
+    "BANKNIFTY: still open (expiry 23 Nov), worth Rs -2,232 now"
+   ],
+   "total": -13930
   }
  ],
  "before": {
-  "session": "2026-11-16",
-  "open": {},
+  "session": "2026-11-17",
+  "open": {
+   "BANKNIFTY": {
+    "index": "BANKNIFTY",
+    "strategy": "Iron Condor",
+    "legs": [
+     {
+      "action": "SELL",
+      "strike": 62500,
+      "type": "CE",
+      "est_premium": 188.5
+     },
+     {
+      "action": "BUY",
+      "strike": 63300,
+      "type": "CE",
+      "est_premium": 75.2
+     },
+     {
+      "action": "SELL",
+      "strike": 59600,
+      "type": "PE",
+      "est_premium": 152.2
+     },
+     {
+      "action": "BUY",
+      "strike": 58800,
+      "type": "PE",
+      "est_premium": 54.1
+     }
+    ],
+    "lot": 30,
+    "expiry": "2026-11-23",
+    "entry_session": "2026-11-16",
+    "entry_spot": 61669.0,
+    "v_e": -178.875,
+    "credit_rs": 5366,
+    "iv0": 0.1845,
+    "vix0": 15.762499809265137,
+    "mark": 731,
+    "groups": [
+     {
+      "legs": [
+       {
+        "action": "SELL",
+        "strike": 62500,
+        "type": "CE",
+        "est_premium": 188.5
+       },
+       {
+        "action": "BUY",
+        "strike": 63300,
+        "type": "CE",
+        "est_premium": 75.2
+       }
+      ],
+      "v0": -137.475,
+      "off": 65.70288463211618
+     },
+     {
+      "legs": [
+       {
+        "action": "SELL",
+        "strike": 59600,
+        "type": "PE",
+        "est_premium": 152.2
+       },
+       {
+        "action": "BUY",
+        "strike": 58800,
+        "type": "PE",
+        "est_premium": 54.1
+       }
+      ],
+      "v0": -41.4,
+      "off": -1.9217860660253763
+     }
+    ],
+    "realized": 0.0,
+    "credit0": 178.875,
+    "credit_all": 178.875,
+    "adjusted": null,
+    "extra_cost": 0,
+    "basis": "NSE"
+   }
+  },
   "n_closed": 4
  }
 }
