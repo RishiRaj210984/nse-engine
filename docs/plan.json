@@ -1,29 +1,29 @@
 {
- "generated_at": "2026-11-19T00:07:54.317927+05:30",
+ "generated_at": "2026-11-19T06:13:22.502187+05:30",
  "session": "2026-11-19",
  "stage": "preview",
  "expected_open": {
-  "gap_pct": -0.23,
-  "error_pct": 0.33,
-  "day_pct": -0.17,
-  "snapshot": "Thu 19 Nov 00:07 IST",
+  "gap_pct": -0.25,
+  "error_pct": 0.3,
+  "day_pct": -0.37,
+  "snapshot": "Thu 19 Nov 06:12 IST",
   "stage": "preview",
   "tip": "Moderate gap down expected. Use limit orders only, and wait for 09:30.",
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": -0.77
+    "move_pct": -0.37
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": -0.01
+    "move_pct": 1.16
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": -2.05
+    "move_pct": -1.86
    },
    {
     "key": "dax",
@@ -43,213 +43,136 @@
    {
     "key": "n225",
     "name": "Nikkei 225",
-    "move_pct": 0.34
+    "move_pct": 0.42
    },
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": -4.93
+    "move_pct": -4.82
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": -2.95
+    "move_pct": -2.82
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": 0.14
+    "move_pct": 0.2
    },
    {
     "key": "inr",
     "name": "USD/INR",
-    "move_pct": -0.01
+    "move_pct": 0.0
    }
   ],
   "drivers": [
    {
-    "feature": "ftse",
-    "label": "FTSE 100 (UK)",
-    "value": -2.31,
-    "contribution_pct": -0.397
-   },
-   {
     "feature": "cl",
     "label": "Crude oil",
-    "value": -4.93,
-    "contribution_pct": 0.34
+    "value": -4.82,
+    "contribution_pct": 0.277
+   },
+   {
+    "feature": "nq",
+    "label": "Nasdaq futures",
+    "value": 1.16,
+    "contribution_pct": -0.258
    },
    {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": -0.77,
-    "contribution_pct": -0.339
+    "value": -0.37,
+    "contribution_pct": -0.202
+   },
+   {
+    "feature": "ftse",
+    "label": "FTSE 100 (UK)",
+    "value": -2.31,
+    "contribution_pct": -0.18
    },
    {
     "feature": "dax",
     "label": "DAX (Germany)",
     "value": -2.37,
-    "contribution_pct": -0.186
+    "contribution_pct": -0.1
    },
    {
     "feature": "ym",
     "label": "Dow futures",
-    "value": -2.05,
-    "contribution_pct": 0.18
-   },
-   {
-    "feature": "gold",
-    "label": "Gold",
-    "value": -2.95,
-    "contribution_pct": 0.153
+    "value": -1.86,
+    "contribution_pct": 0.09
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.52,
-   "gap_sign_pct": 68.0,
-   "directional_calls": 109,
-   "directional_accuracy": 71.6
+   "gap_corr": 0.66,
+   "gap_sign_pct": 70.7,
+   "directional_calls": 150,
+   "directional_accuracy": 71.3
   }
  },
- "headline": "Market bias SIDEWAYS \u2014 favour hedged premium selling",
- "bias": "RANGEBOUND",
- "score": -3,
- "bias_track_record_pct": 70.4,
+ "headline": "Market bias DOWN \u2014 favour selling rallies / puts",
+ "bias": "BEARISH",
+ "score": -31,
+ "bias_track_record_pct": 71.9,
  "options": [
   {
    "index": "NIFTY",
-   "strategy": "Iron Condor",
-   "legs": "SELL 25650 CE + BUY 25850 CE + SELL 24800 PE + BUY 24600 PE",
+   "strategy": "Bear Put Spread",
+   "legs": "BUY 25250 PE + SELL 25050 PE",
    "expiry": "2026-11-23",
    "lot_size": 65,
-   "entry": "Enter at 10:15 (after the first hour) only if NIFTY is between 24,800 and 25,650",
-   "target": "Buy back at \u20b922.1 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
-   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b93,192 per lot)",
-   "max_loss": 9808,
-   "max_reward": 3192,
-   "reward_risk": 0.33,
-   "decision": "TRADE",
-   "decision_reason": "4 days before: this setup won 85.2% of 27 trades, avg \u20b9756 per lot after costs (worst \u20b9-5,977).",
-   "enter_at": "10:15 IST, after the first hour",
-   "exit_by": "target / stop, else expiry 2026-11-23",
+   "entry": "Enter on pullbacks that fail below 25,365 (EMA20 / R1 resistance zone)",
+   "target": "Exit spread near \u20b9153.3 or NIFTY at 25,050",
+   "stop_loss": "Spread falls to \u20b941.6, or NIFTY closes above 25,503",
+   "max_loss": 5408,
+   "max_reward": 7592,
+   "reward_risk": 1.4,
+   "decision": "SKIP",
+   "decision_reason": "No tested structure qualifies for today. On days the model called BEARISH, this spread averaged \u20b9178 per lot over 85 trades, but \u20b9-623 over the last 12 (120 days): the edge has faded, so it is skipped.",
+   "enter_at": "09:45\u201311:00 IST",
+   "exit_by": "15:00 IST same day if no target",
    "setup_stats": {
-    "trades": 27,
-    "win_pct": 85.2,
-    "avg_pnl": 756,
-    "worst": -5977,
-    "best": 4150,
-    "total": 20423,
-    "sample": "days the model called SIDEWAYS, current expiry schedule",
-    "allowed": true,
-    "halves": [
-     255,
-     1221
-    ],
-    "unsteady": false,
-    "marginal": false,
-    "quiet_first_hour": {
-     "trades": 15,
-     "win_pct": 80.0,
-     "avg_pnl": 57,
-     "worst": -5977,
-     "best": 3926,
-     "total": 868
-    },
-    "trending_first_hour": {
-     "trades": 12,
-     "win_pct": 91.7,
-     "avg_pnl": 1629,
-     "worst": -894,
-     "best": 4150,
-     "total": 19555
-    }
+    "trades": 85,
+    "win_pct": 41.2,
+    "avg_pnl": 178,
+    "worst": -5937,
+    "best": 12182,
+    "total": 15167,
+    "sample": "days the model called BEARISH"
    },
-   "test": {
-    "wing": 150,
-    "legs": [
-     {
-      "action": "SELL",
-      "strike": 25650,
-      "type": "CE",
-      "est_premium": 46.4
-     },
-     {
-      "action": "BUY",
-      "strike": 25800,
-      "type": "CE",
-      "est_premium": 24.6
-     },
-     {
-      "action": "SELL",
-      "strike": 24800,
-      "type": "PE",
-      "est_premium": 36.2
-     },
-     {
-      "action": "BUY",
-      "strike": 24650,
-      "type": "PE",
-      "est_premium": 18.0
-     }
-    ],
-    "net_premium": 40.0,
-    "max_loss": 7150,
-    "max_reward": 2600
-   },
-   "money_needed": 83793,
+   "test": null,
+   "money_needed": 56404,
    "money_basis": "margin for the sold options (estimate)"
   },
   {
    "index": "BANKNIFTY",
-   "strategy": "Iron Condor",
-   "legs": "SELL 63300 CE + BUY 64000 CE + SELL 60800 PE + BUY 60100 PE",
+   "strategy": "Bear Put Spread",
+   "legs": "BUY 62000 PE + SELL 61300 PE",
    "expiry": "2026-11-23",
    "lot_size": 30,
-   "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is between 60,800 and 63,300",
-   "target": "Buy back at \u20b982.2 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
-   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b95,478 per lot)",
-   "max_loss": 15522,
-   "max_reward": 5478,
-   "reward_risk": 0.35,
+   "entry": "Enter on pullbacks that fail below 62,346 (EMA20 / R1 resistance zone)",
+   "target": "Exit spread near \u20b9526.9 or BANKNIFTY at 61,300",
+   "stop_loss": "Spread falls to \u20b9133.7, or BANKNIFTY closes above 62,654",
+   "max_loss": 8019,
+   "max_reward": 12981,
+   "reward_risk": 1.62,
    "decision": "SKIP",
-   "decision_reason": "No tested structure qualifies for today. 3-6 days before: this setup lost money historically (57.7% wins, avg \u20b9-1,123 per lot over 26 trades).",
-   "enter_at": "10:15 IST, after the first hour",
-   "exit_by": "target / stop, else expiry 2026-11-23",
+   "decision_reason": "No tested structure qualifies for today. On days the model called BEARISH, this spread lost on average: 43.3% wins, avg \u20b990 per lot over 97 trades.",
+   "enter_at": "09:45\u201311:00 IST",
+   "exit_by": "15:00 IST same day if no target",
    "setup_stats": {
-    "trades": 26,
-    "win_pct": 57.7,
-    "avg_pnl": -1123,
-    "worst": -10786,
-    "best": 3700,
-    "total": -29199,
-    "sample": "days the model called SIDEWAYS, full 2 years",
-    "allowed": false,
-    "halves": [
-     -2179,
-     -66
-    ],
-    "unsteady": false,
-    "marginal": false,
-    "quiet_first_hour": {
-     "trades": 9,
-     "win_pct": 55.6,
-     "avg_pnl": -967,
-     "worst": -9110,
-     "best": 2851,
-     "total": -8707
-    },
-    "trending_first_hour": {
-     "trades": 17,
-     "win_pct": 58.8,
-     "avg_pnl": -1205,
-     "worst": -10786,
-     "best": 3700,
-     "total": -20492
-    }
+    "trades": 97,
+    "win_pct": 43.3,
+    "avg_pnl": 90,
+    "worst": -9826,
+    "best": 14810,
+    "total": 8816,
+    "sample": "days the model called BEARISH"
    },
    "test": null,
-   "money_needed": 103846,
+   "money_needed": 74642,
    "money_basis": "margin for the sold options (estimate)"
   }
  ],
