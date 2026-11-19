@@ -1,0 +1,954 @@
+{
+ "bias": {
+  "generated_at": "2026-11-19T16:17:52.556058+05:30",
+  "target_session": "2026-11-20",
+  "reference_date": "2026-11-19",
+  "bias": {
+   "label": "BULLISH",
+   "score": 49,
+   "z": 0.538,
+   "model_z": 0.072,
+   "predicted_nifty_move_pct": 0.06,
+   "typical_daily_move_pct": 0.783,
+   "source": "pre-open global snapshot",
+   "india_vix": 16.11,
+   "components": [
+    {
+     "feature": "vix",
+     "label": "India VIX level",
+     "value": 16.11,
+     "contribution_pct": 0.065
+    },
+    {
+     "feature": "nprev",
+     "label": "Nifty previous day",
+     "value": 1.14,
+     "contribution_pct": -0.033
+    },
+    {
+     "feature": "es",
+     "label": "S&P 500 futures",
+     "value": 0.0,
+     "contribution_pct": -0.026
+    },
+    {
+     "feature": "ym",
+     "label": "Dow futures",
+     "value": 0.0,
+     "contribution_pct": 0.02
+    },
+    {
+     "feature": "ftse",
+     "label": "FTSE 100 (UK)",
+     "value": 0.0,
+     "contribution_pct": -0.007
+    },
+    {
+     "feature": "cl",
+     "label": "Crude oil",
+     "value": 0.0,
+     "contribution_pct": 0.006
+    }
+   ]
+  },
+  "options": {
+   "NIFTY": {
+    "index": "NIFTY",
+    "spot": 25514.3,
+    "atm": 25500,
+    "lot_size": 65,
+    "expiry": "2026-11-23",
+    "days_to_expiry": 3.75,
+    "iv_used_pct": 16.11,
+    "expected_move": 417,
+    "levels": {
+     "prev_close": 25514.3,
+     "ema20": 24439.48,
+     "support": 25241.3,
+     "resistance": 25650.8,
+     "atr": 313.78,
+     "pivots": {
+      "P": 25377.8,
+      "R1": 25650.8,
+      "S1": 25241.3,
+      "R2": 25787.3,
+      "S2": 24968.3
+     }
+    },
+    "strategies": [
+     {
+      "name": "Bull Put Spread",
+      "legs": [
+       {
+        "action": "SELL",
+        "strike": 25150,
+        "type": "PE",
+        "est_premium": 39.9
+       },
+       {
+        "action": "BUY",
+        "strike": 24950,
+        "type": "PE",
+        "est_premium": 14.8
+       }
+      ],
+      "net_premium": 25.1,
+      "max_loss": 11368,
+      "max_reward": 1631,
+      "reward_risk": 0.14,
+      "entry": "Enter at 10:15 (after the first hour) only if NIFTY is above 25,150",
+      "target": "Buy back at \u20b911.3 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
+      "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,631 per lot)",
+      "breakeven": [
+       25125
+      ],
+      "notes": "Earns time decay; wins if the index does not fall (bull put) / rise (bear call) past the short strike.",
+      "verdict": {
+       "decision": "SKIP",
+       "dte": 3,
+       "stats": {
+        "trades": 112,
+        "win_pct": 58.9,
+        "avg_pnl": -202,
+        "worst": -9210,
+        "best": 3650,
+        "total": -22640,
+        "sample": "days the model called BULLISH"
+       },
+       "reason": "On days the model called BULLISH, this spread lost on average: 58.9% wins, avg \u20b9-202 per lot over 112 trades."
+      }
+     },
+     {
+      "name": "Bull Call Spread",
+      "legs": [
+       {
+        "action": "BUY",
+        "strike": 25500,
+        "type": "CE",
+        "est_premium": 182.2
+       },
+       {
+        "action": "SELL",
+        "strike": 25700,
+        "type": "CE",
+        "est_premium": 95.9
+       }
+      ],
+      "net_premium": -86.3,
+      "max_loss": 5609,
+      "max_reward": 7391,
+      "reward_risk": 1.32,
+      "entry": "Enter on dips that hold above 25,241 (EMA20 / S1 support zone)",
+      "target": "Exit spread near \u20b9154.5 or NIFTY at 25,700",
+      "stop_loss": "Spread falls to \u20b943.1, or NIFTY closes below 24,968",
+      "breakeven": [
+       25586
+      ],
+      "notes": "Defined risk. Preferred structure.",
+      "verdict": {
+       "decision": "SKIP",
+       "dte": 3,
+       "stats": {
+        "trades": 113,
+        "win_pct": 37.2,
+        "avg_pnl": -672,
+        "worst": -8128,
+        "best": 10202,
+        "total": -75981,
+        "sample": "days the model called BULLISH"
+       },
+       "reason": "On days the model called BULLISH, this spread lost on average: 37.2% wins, avg \u20b9-672 per lot over 113 trades."
+      }
+     },
+     {
+      "name": "ATM Call Buy",
+      "legs": [
+       {
+        "action": "BUY",
+        "strike": 25500,
+        "type": "CE",
+        "est_premium": 182.2
+       }
+      ],
+      "net_premium": -182.2,
+      "max_loss": 11843,
+      "max_reward": 4731,
+      "reward_risk": 0.4,
+      "entry": "Enter on dips that hold above 25,241 (EMA20 / S1 support zone)",
+      "target": "Premium \u2248 \u20b9255.0 (NIFTY near 25,651)",
+      "stop_loss": "Premium \u20b9127.5 (-30%), or NIFTY closes below 24,968",
+      "breakeven": [
+       25682
+      ],
+      "notes": "Max loss = full premium. Theta decay hurts if move is late.",
+      "verdict": {
+       "decision": "CAUTION",
+       "dte": 3,
+       "reason": "ATM Call Buy is not tested by the options lab.",
+       "stats": null
+      }
+     }
+    ],
+    "premium_note": "Premiums are Black-Scholes estimates from India VIX, not live quotes.",
+    "setup": {
+     "decision": "SKIP",
+     "dte": 3,
+     "stats": {
+      "trades": 112,
+      "win_pct": 58.9,
+      "avg_pnl": -202,
+      "worst": -9210,
+      "best": 3650,
+      "total": -22640,
+      "sample": "days the model called BULLISH"
+     },
+     "reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost on average: 58.9% wins, avg \u20b9-202 per lot over 112 trades."
+    }
+   },
+   "BANKNIFTY": {
+    "index": "BANKNIFTY",
+    "spot": 63063.0,
+    "atm": 63100,
+    "lot_size": 30,
+    "expiry": "2026-11-23",
+    "days_to_expiry": 3.75,
+    "iv_used_pct": 20.29,
+    "expected_move": 1297,
+    "levels": {
+     "prev_close": 63063.0,
+     "ema20": 59015.9,
+     "support": 62321.73,
+     "resistance": 63433.63,
+     "atr": 883.79,
+     "pivots": {
+      "P": 62692.37,
+      "R1": 63433.63,
+      "S1": 62321.73,
+      "R2": 63804.27,
+      "S2": 61580.47
+     }
+    },
+    "strategies": [
+     {
+      "name": "Bull Put Spread",
+      "legs": [
+       {
+        "action": "SELL",
+        "strike": 61900,
+        "type": "PE",
+        "est_premium": 120.4
+       },
+       {
+        "action": "BUY",
+        "strike": 61300,
+        "type": "PE",
+        "est_premium": 45.7
+       }
+      ],
+      "net_premium": 74.7,
+      "max_loss": 15759,
+      "max_reward": 2241,
+      "reward_risk": 0.14,
+      "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is above 61,900",
+      "target": "Buy back at \u20b933.6 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
+      "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b92,241 per lot)",
+      "breakeven": [
+       61825
+      ],
+      "notes": "Earns time decay; wins if the index does not fall (bull put) / rise (bear call) past the short strike.",
+      "verdict": {
+       "decision": "SKIP",
+       "dte": 3,
+       "stats": {
+        "trades": 123,
+        "win_pct": 69.1,
+        "avg_pnl": 3,
+        "worst": -14563,
+        "best": 4611,
+        "total": 486,
+        "sample": "days the model called BULLISH"
+       },
+       "reason": "On days the model called BULLISH, this spread lost on average: 69.1% wins, avg \u20b93 per lot over 123 trades."
+      }
+     },
+     {
+      "name": "Bull Call Spread",
+      "legs": [
+       {
+        "action": "BUY",
+        "strike": 63100,
+        "type": "CE",
+        "est_premium": 520.0
+       },
+       {
+        "action": "SELL",
+        "strike": 63700,
+        "type": "CE",
+        "est_premium": 275.8
+       }
+      ],
+      "net_premium": -244.2,
+      "max_loss": 7326,
+      "max_reward": 10674,
+      "reward_risk": 1.46,
+      "entry": "Enter on dips that hold above 62,322 (EMA20 / S1 support zone)",
+      "target": "Exit spread near \u20b9457.7 or BANKNIFTY at 63,700",
+      "stop_loss": "Spread falls to \u20b9122.1, or BANKNIFTY closes below 61,580",
+      "breakeven": [
+       63344
+      ],
+      "notes": "Defined risk. Preferred structure.",
+      "verdict": {
+       "decision": "SKIP",
+       "dte": 3,
+       "stats": {
+        "trades": 132,
+        "win_pct": 43.2,
+        "avg_pnl": -672,
+        "worst": -11570,
+        "best": 11404,
+        "total": -88734,
+        "sample": "days the model called BULLISH"
+       },
+       "reason": "On days the model called BULLISH, this spread lost on average: 43.2% wins, avg \u20b9-672 per lot over 132 trades."
+      }
+     },
+     {
+      "name": "ATM Call Buy",
+      "legs": [
+       {
+        "action": "BUY",
+        "strike": 63100,
+        "type": "CE",
+        "est_premium": 520.0
+       }
+      ],
+      "net_premium": -520.0,
+      "max_loss": 15600,
+      "max_reward": 5623,
+      "reward_risk": 0.36,
+      "entry": "Enter on dips that hold above 62,322 (EMA20 / S1 support zone)",
+      "target": "Premium \u2248 \u20b9707.4 (BANKNIFTY near 63,434)",
+      "stop_loss": "Premium \u20b9364.0 (-30%), or BANKNIFTY closes below 61,580",
+      "breakeven": [
+       63620
+      ],
+      "notes": "Max loss = full premium. Theta decay hurts if move is late.",
+      "verdict": {
+       "decision": "CAUTION",
+       "dte": 3,
+       "reason": "ATM Call Buy is not tested by the options lab.",
+       "stats": null
+      }
+     }
+    ],
+    "premium_note": "Premiums are Black-Scholes estimates from India VIX, not live quotes.",
+    "setup": {
+     "decision": "SKIP",
+     "dte": 3,
+     "stats": {
+      "trades": 123,
+      "win_pct": 69.1,
+      "avg_pnl": 3,
+      "worst": -14563,
+      "best": 4611,
+      "total": 486,
+      "sample": "days the model called BULLISH"
+     },
+     "reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost on average: 69.1% wins, avg \u20b93 per lot over 123 trades."
+    }
+   }
+  },
+  "model": {
+   "oos_days": 300,
+   "directional_calls": 35,
+   "directional_accuracy": 77.1,
+   "sign_accuracy_all_days": 52.3,
+   "gap_corr": 0.25,
+   "gap_sign_pct": 56.0,
+   "trained_rows": 750,
+   "version": 47,
+   "bias_threshold": 0.3
+  }
+ },
+ "plan": {
+  "generated_at": "2026-11-19T16:18:09.777636+05:30",
+  "session": "2026-11-20",
+  "stage": "preview",
+  "expected_open": {
+   "gap_pct": 0.02,
+   "error_pct": 0.38,
+   "day_pct": 0.06,
+   "snapshot": "Thu 19 Nov 16:17 IST",
+   "stage": "preview",
+   "tip": "Flat open expected. Normal entry windows apply.",
+   "markets": [
+    {
+     "key": "es",
+     "name": "S&P 500 futures",
+     "move_pct": 0.0
+    },
+    {
+     "key": "nq",
+     "name": "Nasdaq futures",
+     "move_pct": 0.0
+    },
+    {
+     "key": "ym",
+     "name": "Dow futures",
+     "move_pct": 0.0
+    },
+    {
+     "key": "dax",
+     "name": "DAX (Germany)",
+     "move_pct": 0.0
+    },
+    {
+     "key": "ftse",
+     "name": "FTSE 100 (UK)",
+     "move_pct": 0.0
+    },
+    {
+     "key": "stoxx",
+     "name": "Euro Stoxx 50",
+     "move_pct": 0.0
+    },
+    {
+     "key": "n225",
+     "name": "Nikkei 225",
+     "move_pct": 0.0
+    },
+    {
+     "key": "cl",
+     "name": "Crude oil",
+     "move_pct": 0.0
+    },
+    {
+     "key": "gold",
+     "name": "Gold",
+     "move_pct": 0.0
+    },
+    {
+     "key": "dxy",
+     "name": "Dollar index",
+     "move_pct": 0.0
+    },
+    {
+     "key": "inr",
+     "name": "USD/INR",
+     "move_pct": 0.0
+    }
+   ],
+   "drivers": [
+    {
+     "feature": "vix",
+     "label": "India VIX level",
+     "value": 16.11,
+     "contribution_pct": 0.065
+    },
+    {
+     "feature": "nprev",
+     "label": "Nifty previous day",
+     "value": 1.14,
+     "contribution_pct": -0.033
+    },
+    {
+     "feature": "es",
+     "label": "S&P 500 futures",
+     "value": 0.0,
+     "contribution_pct": -0.026
+    },
+    {
+     "feature": "ym",
+     "label": "Dow futures",
+     "value": 0.0,
+     "contribution_pct": 0.02
+    },
+    {
+     "feature": "ftse",
+     "label": "FTSE 100 (UK)",
+     "value": 0.0,
+     "contribution_pct": -0.007
+    },
+    {
+     "feature": "cl",
+     "label": "Crude oil",
+     "value": 0.0,
+     "contribution_pct": 0.006
+    }
+   ],
+   "wf": {
+    "oos_days": 300,
+    "gap_corr": 0.25,
+    "gap_sign_pct": 56.0,
+    "directional_calls": 43,
+    "directional_accuracy": 79.1
+   }
+  },
+  "headline": "Market bias UP \u2014 favour buying dips",
+  "bias": "BULLISH",
+  "score": 49,
+  "bias_track_record_pct": 77.1,
+  "options": [
+   {
+    "index": "NIFTY",
+    "strategy": "Bull Put Spread",
+    "legs": "SELL 25150 PE + BUY 24950 PE",
+    "expiry": "2026-11-23",
+    "lot_size": 65,
+    "entry": "Enter at 10:15 (after the first hour) only if NIFTY is above 25,150",
+    "target": "Buy back at \u20b911.3 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
+    "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,631 per lot)",
+    "max_loss": 11368,
+    "max_reward": 1631,
+    "reward_risk": 0.14,
+    "decision": "SKIP",
+    "decision_reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost on average: 58.9% wins, avg \u20b9-202 per lot over 112 trades.",
+    "enter_at": "10:15 IST, after the first hour",
+    "exit_by": "target / stop, else expiry 2026-11-23",
+    "setup_stats": {
+     "trades": 112,
+     "win_pct": 58.9,
+     "avg_pnl": -202,
+     "worst": -9210,
+     "best": 3650,
+     "total": -22640,
+     "sample": "days the model called BULLISH"
+    },
+    "test": null,
+    "money_needed": 51369,
+    "money_basis": "margin for the sold options (estimate)"
+   },
+   {
+    "index": "BANKNIFTY",
+    "strategy": "Bull Put Spread",
+    "legs": "SELL 61900 PE + BUY 61300 PE",
+    "expiry": "2026-11-23",
+    "lot_size": 30,
+    "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is above 61,900",
+    "target": "Buy back at \u20b933.6 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
+    "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b92,241 per lot)",
+    "max_loss": 15759,
+    "max_reward": 2241,
+    "reward_risk": 0.14,
+    "decision": "SKIP",
+    "decision_reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost on average: 69.1% wins, avg \u20b93 per lot over 123 trades.",
+    "enter_at": "10:15 IST, after the first hour",
+    "exit_by": "target / stop, else expiry 2026-11-23",
+    "setup_stats": {
+     "trades": 123,
+     "win_pct": 69.1,
+     "avg_pnl": 3,
+     "worst": -14563,
+     "best": 4611,
+     "total": 486,
+     "sample": "days the model called BULLISH"
+    },
+    "test": null,
+    "money_needed": 63038,
+    "money_basis": "margin for the sold options (estimate)"
+   }
+  ],
+  "stocks": [
+   {
+    "symbol": "HEROMOTOCO",
+    "grade": "B",
+    "action": "BUY HEROMOTOCO near \u20b95,556.00 (skip if it opens above \u20b95,779.79) \u00b7 SL \u20b95,369.51 \u00b7 T1 \u20b95,779.79 \u00b7 T2 \u20b95,928.99",
+    "entry": 5556.0,
+    "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
+    "exit_by": "day 2, 15:15 IST",
+    "stop": 5369.51,
+    "t1": 5779.79,
+    "t2": 5928.99,
+    "win_prob": 53.8,
+    "vol_badge": "2.4x Vol Surge"
+   },
+   {
+    "symbol": "IDFCFIRSTB",
+    "grade": "B",
+    "action": "BUY IDFCFIRSTB near \u20b986.05 (skip if it opens above \u20b989.40) \u00b7 SL \u20b983.26 \u00b7 T1 \u20b989.40 \u00b7 T2 \u20b991.63 \u00b7 Qty 35 for \u20b910k @1% risk",
+    "entry": 86.05,
+    "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
+    "exit_by": "day 2, 15:15 IST",
+    "stop": 83.26,
+    "t1": 89.4,
+    "t2": 91.63,
+    "win_prob": 53.8,
+    "vol_badge": "2.3x Vol Surge"
+   },
+   {
+    "symbol": "TVSMOTOR",
+    "grade": "B",
+    "action": "BUY TVSMOTOR near \u20b94,601.40 (skip if it opens above \u20b94,786.22) \u00b7 SL \u20b94,447.38 \u00b7 T1 \u20b94,786.22 \u00b7 T2 \u20b94,909.44",
+    "entry": 4601.4,
+    "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
+    "exit_by": "day 2, 15:15 IST",
+    "stop": 4447.38,
+    "t1": 4786.22,
+    "t2": 4909.44,
+    "win_prob": 53.8,
+    "vol_badge": "2.0x Vol Surge"
+   },
+   {
+    "symbol": "EICHERMOT",
+    "grade": "B",
+    "action": "BUY EICHERMOT near \u20b98,058.50 (skip if it opens above \u20b98,382.38) \u00b7 SL \u20b97,788.60 \u00b7 T1 \u20b98,382.38 \u00b7 T2 \u20b98,598.30",
+    "entry": 8058.5,
+    "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
+    "exit_by": "day 2, 15:15 IST",
+    "stop": 7788.6,
+    "t1": 8382.38,
+    "t2": 8598.3,
+    "win_prob": 53.8,
+    "vol_badge": "1.6x Vol Surge"
+   }
+  ],
+  "stock_options": [
+   {
+    "symbol": "HEROMOTOCO",
+    "kind": "CE",
+    "side": "BUY",
+    "grade": "B",
+    "trigger": 5556.0,
+    "stop": 5369.51,
+    "t1": 5779.79,
+    "lot": 150,
+    "strike": 5550.0,
+    "premium": 33615,
+    "tiers": {
+     "5K": {
+      "strike": 6250.0,
+      "premium": 4995
+     },
+     "10K": {
+      "strike": 6050.0,
+      "premium": 9525
+     },
+     "15K": {
+      "strike": 5900.0,
+      "premium": 13752
+     }
+    }
+   },
+   {
+    "symbol": "IDFCFIRSTB",
+    "kind": "CE",
+    "side": "BUY",
+    "grade": "B",
+    "trigger": 86.05,
+    "stop": 83.26,
+    "t1": 89.4,
+    "lot": 9275,
+    "strike": 86.0,
+    "premium": 34688,
+    "tiers": {
+     "5K": null,
+     "10K": null,
+     "15K": null
+    }
+   },
+   {
+    "symbol": "TVSMOTOR",
+    "kind": "CE",
+    "side": "BUY",
+    "grade": "B",
+    "trigger": 4601.4,
+    "stop": 4447.38,
+    "t1": 4786.22,
+    "lot": 175,
+    "strike": 4600.0,
+    "premium": 29904,
+    "tiers": {
+     "5K": {
+      "strike": 5200.0,
+      "premium": 3644
+     },
+     "10K": {
+      "strike": 5000.0,
+      "premium": 7691
+     },
+     "15K": {
+      "strike": 4850.0,
+      "premium": 14476
+     }
+    }
+   },
+   {
+    "symbol": "EICHERMOT",
+    "kind": "CE",
+    "side": "BUY",
+    "grade": "B",
+    "trigger": 8058.5,
+    "stop": 7788.6,
+    "t1": 8382.38,
+    "lot": 100,
+    "strike": 8100.0,
+    "premium": 28910,
+    "tiers": {
+     "5K": null,
+     "10K": {
+      "strike": 8800.0,
+      "premium": 7720
+     },
+     "15K": {
+      "strike": 8500.0,
+      "premium": 13680
+     }
+    }
+   }
+  ],
+  "capital": 15000,
+  "momentum_money": 10827,
+  "put_gate_open": false,
+  "market_gate_open": true,
+  "events": [],
+  "stock_track_record": null,
+  "no_trade_reason": null,
+  "timeline": [
+   {
+    "date": "2026-11-20",
+    "start": "07:45",
+    "end": "09:00",
+    "kind": "prep",
+    "title": "Read the final plan",
+    "do": "The ~07:15 run is final (US close, Dow and US futures, Europe, Asia open). Read the expected open, bias and trades. Set price alerts at each entry and stop-loss.",
+    "when": "Fri 20 Nov \u00b7 07:45\u201309:00"
+   },
+   {
+    "date": "2026-11-20",
+    "start": "09:00",
+    "end": "09:15",
+    "kind": "wait",
+    "title": "Pre-open",
+    "do": "Place no market orders. Note where your stocks are indicated to open.",
+    "when": "Fri 20 Nov \u00b7 09:00\u201309:15"
+   },
+   {
+    "date": "2026-11-20",
+    "start": "09:15",
+    "end": "09:30",
+    "kind": "wait",
+    "title": "Wait",
+    "do": "Opening 15 min is the most volatile. Cancel any stock that opens above its T1 or below its SL.",
+    "when": "Fri 20 Nov \u00b7 09:15\u201309:30"
+   },
+   {
+    "date": "2026-11-20",
+    "start": "09:30",
+    "end": "10:30",
+    "kind": "act",
+    "title": "Stock buy window",
+    "do": "Buy only if price is holding above the entry and the 15-min opening high. Place the SL order immediately.",
+    "when": "Fri 20 Nov \u00b7 09:30\u201310:30"
+   },
+   {
+    "date": "2026-11-20",
+    "start": "09:45",
+    "end": "11:00",
+    "kind": "act",
+    "title": "Options window",
+    "do": "Spreads / ATM buys only if the index respects the support/resistance shown. Iron condor / fly only after 10:00 with the index inside the range.",
+    "when": "Fri 20 Nov \u00b7 09:45\u201311:00"
+   },
+   {
+    "date": "2026-11-20",
+    "start": "11:30",
+    "end": "14:30",
+    "kind": "manage",
+    "title": "Manage only",
+    "do": "No new stock entries. If it did not trigger, skip it. Keep stop-loss orders in place.",
+    "when": "Fri 20 Nov \u00b7 11:30\u201314:30"
+   },
+   {
+    "date": "2026-11-20",
+    "start": "14:30",
+    "end": "15:00",
+    "kind": "exit",
+    "title": "Option buyers exit",
+    "do": "Exit option buys by 15:00 if target not hit (time decay). Spreads/condors: hold only if still inside the plan.",
+    "when": "Fri 20 Nov \u00b7 14:30\u201315:00"
+   },
+   {
+    "date": "2026-11-20",
+    "start": "16:30",
+    "end": "17:00",
+    "kind": "review",
+    "title": "Review",
+    "do": "The engine grades today's plan. Check the Results tab: what worked, what the gap was.",
+    "when": "Fri 20 Nov \u00b7 16:30\u201317:00"
+   },
+   {
+    "date": "2026-11-23",
+    "start": "09:15",
+    "end": "15:15",
+    "kind": "exit",
+    "title": "Day 2: exit by 15:15",
+    "do": "Book half at T1, trail SL to entry. Exit everything still open by 15:15 (this is a 1\u20132 day setup).",
+    "when": "Mon 23 Nov \u00b7 09:15\u201315:15"
+   },
+   {
+    "date": "2026-11-23",
+    "start": "14:30",
+    "end": "15:30",
+    "kind": "exit",
+    "title": "Expiry day",
+    "do": "Do not hold short options into the last hour of expiry day.",
+    "when": "Expiry 2026-11-23"
+   }
+  ],
+  "golden_rules": [
+   "Only grade A/B stocks. C = watch, don't trade.",
+   "Stop-loss order goes in the moment you buy. Never move it down.",
+   "Risk max 1% of capital per trade, max 3 open trades.",
+   "No trigger in the buy window = no trade. Missing a trade costs nothing.",
+   "If the app's live hit-rate (Learning tab) drops below its backtest, cut size in half."
+  ],
+  "disclaimer": "Algorithmic research output based on technical rules and statistics. Not investment advice. Not a SEBI-registered investment adviser or research analyst. No returns are guaranteed; options can lose 100% of premium and more for sellers. Verify every level with your broker and consult a SEBI-registered adviser before trading."
+ },
+ "stocks": [
+  {
+   "symbol": "HEROMOTOCO",
+   "name": "Hero MotoCorp",
+   "grade": "B",
+   "passed": true,
+   "entry": 5556.0,
+   "stop": 5369.51,
+   "t1": 5779.79,
+   "t2": 5928.99,
+   "atr": 149.19,
+   "skip_reason": null
+  },
+  {
+   "symbol": "IDFCFIRSTB",
+   "name": "IDFC First Bank",
+   "grade": "B",
+   "passed": true,
+   "entry": 86.05,
+   "stop": 83.26,
+   "t1": 89.4,
+   "t2": 91.63,
+   "atr": 2.23,
+   "skip_reason": null
+  },
+  {
+   "symbol": "TVSMOTOR",
+   "name": "TVS Motor",
+   "grade": "B",
+   "passed": true,
+   "entry": 4601.4,
+   "stop": 4447.38,
+   "t1": 4786.22,
+   "t2": 4909.44,
+   "atr": 123.21,
+   "skip_reason": null
+  },
+  {
+   "symbol": "EICHERMOT",
+   "name": "Eicher Motors",
+   "grade": "B",
+   "passed": true,
+   "entry": 8058.5,
+   "stop": 7788.6,
+   "t1": 8382.38,
+   "t2": 8598.3,
+   "atr": 215.92,
+   "skip_reason": null
+  },
+  {
+   "symbol": "MARUTI",
+   "name": "Maruti Suzuki",
+   "grade": "B",
+   "passed": false,
+   "entry": 13589.0,
+   "stop": 13161.98,
+   "t1": 14101.42,
+   "t2": 14443.03,
+   "atr": 341.61,
+   "skip_reason": null
+  },
+  {
+   "symbol": "PNB",
+   "name": "Punjab National Bank",
+   "grade": "B",
+   "passed": false,
+   "entry": 154.85,
+   "stop": 149.55,
+   "t1": 161.21,
+   "t2": 165.45,
+   "atr": 4.24,
+   "skip_reason": null
+  },
+  {
+   "symbol": "BANKBARODA",
+   "name": "Bank of Baroda",
+   "grade": "B",
+   "passed": false,
+   "entry": 285.9,
+   "stop": 277.49,
+   "t1": 295.99,
+   "t2": 302.71,
+   "atr": 6.72,
+   "skip_reason": null
+  },
+  {
+   "symbol": "INDIGO",
+   "name": "InterGlobe Aviation",
+   "grade": "B",
+   "passed": false,
+   "entry": 5475.0,
+   "stop": 5296.04,
+   "t1": 5689.75,
+   "t2": 5832.91,
+   "atr": 143.16,
+   "skip_reason": null
+  },
+  {
+   "symbol": "HINDUNILVR",
+   "name": "Hindustan Unilever",
+   "grade": "B",
+   "passed": false,
+   "entry": 2074.2,
+   "stop": 2020.74,
+   "t1": 2138.35,
+   "t2": 2181.12,
+   "atr": 42.77,
+   "skip_reason": null
+  },
+  {
+   "symbol": "BRITANNIA",
+   "name": "Britannia",
+   "grade": "B",
+   "passed": false,
+   "entry": 4868.0,
+   "stop": 4720.17,
+   "t1": 5045.39,
+   "t2": 5163.66,
+   "atr": 118.26,
+   "skip_reason": null
+  },
+  {
+   "symbol": "SBIN",
+   "name": "State Bank of India",
+   "grade": "B",
+   "passed": false,
+   "entry": 1156.0,
+   "stop": 1125.98,
+   "t1": 1192.03,
+   "t2": 1216.04,
+   "atr": 24.02,
+   "skip_reason": null
+  },
+  {
+   "symbol": "M&M",
+   "name": "Mahindra & Mahindra",
+   "grade": "B",
+   "passed": false,
+   "entry": 3509.0,
+   "stop": 3395.51,
+   "t1": 3645.19,
+   "t2": 3735.98,
+   "atr": 90.79,
+   "skip_reason": null
+  }
+ ]
+}
