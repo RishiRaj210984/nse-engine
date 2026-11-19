@@ -1,8 +1,8 @@
 {
- "updated": "2026-11-19T11:50:29.035003+05:30",
+ "updated": "2026-11-19T12:00:17.737951+05:30",
  "session": "2026-11-19",
  "global_table": {
-  "updated": "2026-11-19T11:50:31.252008+05:30",
+  "updated": "2026-11-19T12:00:23.015353+05:30",
   "rows": [
    {
     "group": "US, last close",
@@ -24,13 +24,13 @@
    },
    {
     "group": "Asia today",
-    "move": "Nikkei +0.7%, Hang Seng -3.0%, Kospi +0.4%",
+    "move": "Nikkei +0.8%, Hang Seng -3.0%, Kospi +0.5%",
     "effect": "red",
     "note": "Weak"
    },
    {
     "group": "Crude oil",
-    "move": "WTI ~$82, Brent ~$89 (+0.1%)",
+    "move": "WTI ~$82, Brent ~$89 (+0.0%)",
     "effect": "flat",
     "note": "Steady"
    },
@@ -42,19 +42,19 @@
    },
    {
     "group": "Dollar index",
-    "move": "103.90 (+0.04%)",
+    "move": "103.86 (-0.00%)",
     "effect": "flat",
     "note": "Steady"
    },
    {
     "group": "Rupee",
-    "move": "93.31 per $ (-0.16%)",
+    "move": "93.32 per $ (-0.15%)",
     "effect": "flat",
     "note": "Steady"
    },
    {
     "group": "India VIX (fear)",
-    "move": "16.00 (+3.1%)",
+    "move": "16.07 (+3.6%)",
     "effect": "flat",
     "note": "Normal"
    },
@@ -71,110 +71,1033 @@
  },
  "sources": {
   "quotes": "Yahoo (1-min, may lag 1\u201315 min)",
-  "option_chain": "unavailable",
-  "error": "403 Client Error: Forbidden for url: https://www.nseindia.com/api/option-chain-contract-info?symbol=NIFTY"
+  "option_chain": "NSE",
+  "error": null
  },
  "indices": {
   "NIFTY": {
-   "last": 25342.7,
+   "last": 25370.4,
    "prev_close": 25227.95,
-   "chg_pct": 0.45,
-   "high": 25353.1,
+   "chg_pct": 0.56,
+   "high": 25370.4,
    "low": 25104.8,
-   "as_of": "11:50",
+   "as_of": "12:00",
    "open": 25186.8,
    "at_1015": 25280.25
   },
   "BANKNIFTY": {
-   "last": 62487.95,
+   "last": 62544.85,
    "prev_close": 62038.65,
-   "chg_pct": 0.72,
+   "chg_pct": 0.82,
    "high": 62624.0,
    "low": 61960.85,
-   "as_of": "11:50",
+   "as_of": "12:00",
    "open": 62060.75,
    "at_1015": 62480.2
   },
   "INDIAVIX": {
-   "last": 16.0,
+   "last": 16.07,
    "prev_close": 15.52,
-   "chg_pct": 3.11,
+   "chg_pct": 3.56,
    "high": 16.5,
    "low": 15.52,
-   "as_of": "11:50",
+   "as_of": "12:00",
    "open": 15.56,
    "at_1015": 16.29
   }
  },
- "chains": {},
+ "chains": {
+  "NIFTY": {
+   "spot": 25360.1,
+   "atm": 25350,
+   "pcr_oi": 1.21,
+   "max_pain": 25200,
+   "straddle": 280.9,
+   "implied_move_pct": 1.11,
+   "call_walls": [
+    {
+     "strike": 26000,
+     "oi": 230766,
+     "chg_oi": 2051
+    },
+    {
+     "strike": 25500,
+     "oi": 172376,
+     "chg_oi": -25557
+    },
+    {
+     "strike": 26500,
+     "oi": 154788,
+     "chg_oi": -3385
+    }
+   ],
+   "put_walls": [
+    {
+     "strike": 25000,
+     "oi": 235416,
+     "chg_oi": 72394
+    },
+    {
+     "strike": 25200,
+     "oi": 210403,
+     "chg_oi": 115649
+    },
+    {
+     "strike": 24000,
+     "oi": 191394,
+     "chg_oi": 16445
+    }
+   ],
+   "fresh_call_writing": [
+    {
+     "strike": 25700,
+     "chg_oi": 20798
+    },
+    {
+     "strike": 26400,
+     "chg_oi": 18277
+    }
+   ],
+   "fresh_put_writing": [
+    {
+     "strike": 25300,
+     "chg_oi": 117078
+    },
+    {
+     "strike": 25200,
+     "chg_oi": 115649
+    }
+   ],
+   "view": [
+    "Call writers are heaviest at 26,000 (resistance) and put writers at 25,000 (support).",
+    "Put-call ratio 1.21: puts dominate, writers lean bullish.",
+    "ATM straddle \u2248 \u20b9281: the market is pricing about \u00b1281 points to expiry."
+   ],
+   "note": "Context only: in 200 days of NSE data, OI walls, PCR and max pain did not predict moves better than chance.",
+   "strikes": [
+    {
+     "strike": 24750,
+     "ce_ltp": 645,
+     "ce_oi": 1191,
+     "ce_chg_oi": 73,
+     "ce_iv": 17.13,
+     "ce_bid": 645.7,
+     "ce_ask": 649.15,
+     "pe_ltp": 12.75,
+     "pe_oi": 34385,
+     "pe_chg_oi": 15359,
+     "pe_iv": 16.1,
+     "pe_bid": 12.7,
+     "pe_ask": 12.75
+    },
+    {
+     "strike": 24800,
+     "ce_ltp": 600,
+     "ce_oi": 8785,
+     "ce_chg_oi": 837,
+     "ce_iv": 16.82,
+     "ce_bid": 598.6,
+     "ce_ask": 600.4,
+     "pe_ltp": 15.05,
+     "pe_oi": 79596,
+     "pe_chg_oi": 18595,
+     "pe_iv": 15.69,
+     "pe_bid": 15.05,
+     "pe_ask": 15.1
+    },
+    {
+     "strike": 24850,
+     "ce_ltp": 550,
+     "ce_oi": 2605,
+     "ce_chg_oi": 313,
+     "ce_iv": 16.29,
+     "ce_bid": 552.45,
+     "ce_ask": 553.95,
+     "pe_ltp": 17.8,
+     "pe_oi": 34894,
+     "pe_chg_oi": 14521,
+     "pe_iv": 15.3,
+     "pe_bid": 17.75,
+     "pe_ask": 17.8
+    },
+    {
+     "strike": 24900,
+     "ce_ltp": 505.5,
+     "ce_oi": 14043,
+     "ce_chg_oi": -802,
+     "ce_iv": 15.92,
+     "ce_bid": 505.35,
+     "ce_ask": 506.8,
+     "pe_ltp": 21.15,
+     "pe_oi": 87219,
+     "pe_chg_oi": 23293,
+     "pe_iv": 14.9,
+     "pe_bid": 21.15,
+     "pe_ask": 21.2
+    },
+    {
+     "strike": 24950,
+     "ce_ltp": 460,
+     "ce_oi": 2054,
+     "ce_chg_oi": 437,
+     "ce_iv": 15.4,
+     "ce_bid": 460.4,
+     "ce_ask": 461.55,
+     "pe_ltp": 25.6,
+     "pe_oi": 35635,
+     "pe_chg_oi": 15131,
+     "pe_iv": 14.57,
+     "pe_bid": 25.6,
+     "pe_ask": 25.7
+    },
+    {
+     "strike": 25000,
+     "ce_ltp": 416.35,
+     "ce_oi": 52253,
+     "ce_chg_oi": -493,
+     "ce_iv": 14.95,
+     "ce_bid": 415.5,
+     "ce_ask": 416.3,
+     "pe_ltp": 31.35,
+     "pe_oi": 235416,
+     "pe_chg_oi": 72394,
+     "pe_iv": 14.31,
+     "pe_bid": 31.35,
+     "pe_ask": 31.5
+    },
+    {
+     "strike": 25050,
+     "ce_ltp": 374,
+     "ce_oi": 6029,
+     "ce_chg_oi": 2411,
+     "ce_iv": 14.59,
+     "ce_bid": 373.2,
+     "ce_ask": 373.8,
+     "pe_ltp": 38.1,
+     "pe_oi": 42891,
+     "pe_chg_oi": 23498,
+     "pe_iv": 13.99,
+     "pe_bid": 38.05,
+     "pe_ask": 38.15
+    },
+    {
+     "strike": 25100,
+     "ce_ltp": 332,
+     "ce_oi": 27752,
+     "ce_chg_oi": 3032,
+     "ce_iv": 14.43,
+     "ce_bid": 332.05,
+     "ce_ask": 332.5,
+     "pe_ltp": 46.6,
+     "pe_oi": 123961,
+     "pe_chg_oi": 65549,
+     "pe_iv": 13.74,
+     "pe_bid": 46.45,
+     "pe_ask": 46.6
+    },
+    {
+     "strike": 25150,
+     "ce_ltp": 292.1,
+     "ce_oi": 18258,
+     "ce_chg_oi": 3167,
+     "ce_iv": 14.1,
+     "ce_bid": 291.7,
+     "ce_ask": 292.5,
+     "pe_ltp": 57,
+     "pe_oi": 79305,
+     "pe_chg_oi": 53520,
+     "pe_iv": 13.5,
+     "pe_bid": 56.8,
+     "pe_ask": 57
+    },
+    {
+     "strike": 25200,
+     "ce_ltp": 255.2,
+     "ce_oi": 79772,
+     "ce_chg_oi": -8604,
+     "ce_iv": 14.01,
+     "ce_bid": 254.85,
+     "ce_ask": 255.2,
+     "pe_ltp": 69.25,
+     "pe_oi": 210403,
+     "pe_chg_oi": 115649,
+     "pe_iv": 13.31,
+     "pe_bid": 69.25,
+     "pe_ask": 69.45
+    },
+    {
+     "strike": 25250,
+     "ce_ltp": 220.5,
+     "ce_oi": 48925,
+     "ce_chg_oi": -6632,
+     "ce_iv": 13.74,
+     "ce_bid": 220,
+     "ce_ask": 220.5,
+     "pe_ltp": 84.6,
+     "pe_oi": 97484,
+     "pe_chg_oi": 59272,
+     "pe_iv": 13.12,
+     "pe_bid": 84.45,
+     "pe_ask": 84.6
+    },
+    {
+     "strike": 25300,
+     "ce_ltp": 187.6,
+     "ce_oi": 124005,
+     "ce_chg_oi": 15845,
+     "ce_iv": 13.59,
+     "ce_bid": 187.55,
+     "ce_ask": 187.95,
+     "pe_ltp": 102.3,
+     "pe_oi": 182338,
+     "pe_chg_oi": 117078,
+     "pe_iv": 12.96,
+     "pe_bid": 102.25,
+     "pe_ask": 102.35
+    },
+    {
+     "strike": 25350,
+     "ce_ltp": 158.4,
+     "ce_oi": 68893,
+     "ce_chg_oi": 16678,
+     "ce_iv": 13.45,
+     "ce_bid": 158.4,
+     "ce_ask": 158.8,
+     "pe_ltp": 122.5,
+     "pe_oi": 62124,
+     "pe_chg_oi": 44937,
+     "pe_iv": 12.86,
+     "pe_bid": 122.5,
+     "pe_ask": 122.75
+    },
+    {
+     "strike": 25400,
+     "ce_ltp": 132.1,
+     "ce_oi": 119952,
+     "ce_chg_oi": -211,
+     "ce_iv": 13.37,
+     "ce_bid": 131.95,
+     "ce_ask": 132.3,
+     "pe_ltp": 146.6,
+     "pe_oi": 63696,
+     "pe_chg_oi": 18570,
+     "pe_iv": 12.75,
+     "pe_bid": 146.4,
+     "pe_ask": 146.6
+    },
+    {
+     "strike": 25450,
+     "ce_ltp": 109.35,
+     "ce_oi": 45803,
+     "ce_chg_oi": -2724,
+     "ce_iv": 13.28,
+     "ce_bid": 109.05,
+     "ce_ask": 109.35,
+     "pe_ltp": 172.55,
+     "pe_oi": 20185,
+     "pe_chg_oi": -1886,
+     "pe_iv": 12.63,
+     "pe_bid": 172.55,
+     "pe_ask": 172.8
+    },
+    {
+     "strike": 25500,
+     "ce_ltp": 88.8,
+     "ce_oi": 172376,
+     "ce_chg_oi": -25557,
+     "ce_iv": 13.16,
+     "ce_bid": 88.6,
+     "ce_ask": 88.85,
+     "pe_ltp": 203.05,
+     "pe_oi": 66045,
+     "pe_chg_oi": 3596,
+     "pe_iv": 12.56,
+     "pe_bid": 202.85,
+     "pe_ask": 203.3
+    },
+    {
+     "strike": 25550,
+     "ce_ltp": 71.6,
+     "ce_oi": 35278,
+     "ce_chg_oi": 519,
+     "ce_iv": 13.17,
+     "ce_bid": 71.4,
+     "ce_ask": 71.6,
+     "pe_ltp": 234.9,
+     "pe_oi": 3799,
+     "pe_chg_oi": 1032,
+     "pe_iv": 12.48,
+     "pe_bid": 235.15,
+     "pe_ask": 235.65
+    },
+    {
+     "strike": 25600,
+     "ce_ltp": 56.55,
+     "ce_oi": 81143,
+     "ce_chg_oi": -1422,
+     "ce_iv": 13.14,
+     "ce_bid": 56.65,
+     "ce_ask": 56.8,
+     "pe_ltp": 271.45,
+     "pe_oi": 10874,
+     "pe_chg_oi": 803,
+     "pe_iv": 12.45,
+     "pe_bid": 270.7,
+     "pe_ask": 271.4
+    },
+    {
+     "strike": 25650,
+     "ce_ltp": 44.6,
+     "ce_oi": 37481,
+     "ce_chg_oi": 2080,
+     "ce_iv": 13.15,
+     "ce_bid": 44.6,
+     "ce_ask": 44.7,
+     "pe_ltp": 309,
+     "pe_oi": 1156,
+     "pe_chg_oi": 177,
+     "pe_iv": 12.34,
+     "pe_bid": 308.05,
+     "pe_ask": 308.9
+    },
+    {
+     "strike": 25700,
+     "ce_ltp": 34.65,
+     "ce_oi": 89669,
+     "ce_chg_oi": 20798,
+     "ce_iv": 13.12,
+     "ce_bid": 34.65,
+     "ce_ask": 34.8,
+     "pe_ltp": 348.25,
+     "pe_oi": 4445,
+     "pe_chg_oi": 133,
+     "pe_iv": 12.27,
+     "pe_bid": 348.65,
+     "pe_ask": 349.45
+    },
+    {
+     "strike": 25750,
+     "ce_ltp": 27,
+     "ce_oi": 26595,
+     "ce_chg_oi": -10381,
+     "ce_iv": 13.22,
+     "ce_bid": 26.95,
+     "ce_ask": 27,
+     "pe_ltp": 393.7,
+     "pe_oi": 1298,
+     "pe_chg_oi": 203,
+     "pe_iv": 12.45,
+     "pe_bid": 390.3,
+     "pe_ask": 391.6
+    },
+    {
+     "strike": 25800,
+     "ce_ltp": 20.75,
+     "ce_oi": 84313,
+     "ce_chg_oi": 12340,
+     "ce_iv": 13.27,
+     "ce_bid": 20.7,
+     "ce_ask": 20.8,
+     "pe_ltp": 434.35,
+     "pe_oi": 3501,
+     "pe_chg_oi": -10,
+     "pe_iv": 12.64,
+     "pe_bid": 433.75,
+     "pe_ask": 434.4
+    },
+    {
+     "strike": 25850,
+     "ce_ltp": 16.05,
+     "ce_oi": 21477,
+     "ce_chg_oi": -6507,
+     "ce_iv": 13.42,
+     "ce_bid": 15.95,
+     "ce_ask": 16,
+     "pe_ltp": 486.5,
+     "pe_oi": 298,
+     "pe_chg_oi": 6,
+     "pe_iv": 12.77,
+     "pe_bid": 478.55,
+     "pe_ask": 480.6
+    },
+    {
+     "strike": 25900,
+     "ce_ltp": 12.4,
+     "ce_oi": 61583,
+     "ce_chg_oi": 4409,
+     "ce_iv": 13.54,
+     "ce_bid": 12.35,
+     "ce_ask": 12.4,
+     "pe_ltp": 527.05,
+     "pe_oi": 826,
+     "pe_chg_oi": -64,
+     "pe_iv": 12.17,
+     "pe_bid": 525.3,
+     "pe_ask": 527.4
+    },
+    {
+     "strike": 25950,
+     "ce_ltp": 9.5,
+     "ce_oi": 27528,
+     "ce_chg_oi": 657,
+     "ce_iv": 13.7,
+     "ce_bid": 9.5,
+     "ce_ask": 9.55,
+     "pe_ltp": 581.15,
+     "pe_oi": 117,
+     "pe_chg_oi": 9,
+     "pe_iv": 11.47,
+     "pe_bid": 570.85,
+     "pe_ask": 574.55
+    }
+   ],
+   "expiry": "23-Nov-2026"
+  },
+  "BANKNIFTY": {
+   "spot": 62538.7,
+   "atm": 62500,
+   "pcr_oi": 1.29,
+   "max_pain": 61000,
+   "straddle": 798.8,
+   "implied_move_pct": 1.28,
+   "call_walls": [
+    {
+     "strike": 63000,
+     "oi": 25348,
+     "chg_oi": -2953
+    },
+    {
+     "strike": 65000,
+     "oi": 23233,
+     "chg_oi": -2320
+    },
+    {
+     "strike": 64000,
+     "oi": 21189,
+     "chg_oi": -1397
+    }
+   ],
+   "put_walls": [
+    {
+     "strike": 60000,
+     "oi": 43199,
+     "chg_oi": 1598
+    },
+    {
+     "strike": 61000,
+     "oi": 38295,
+     "chg_oi": 4611
+    },
+    {
+     "strike": 62000,
+     "oi": 36933,
+     "chg_oi": 10181
+    }
+   ],
+   "fresh_call_writing": [
+    {
+     "strike": 62500,
+     "chg_oi": 9272
+    },
+    {
+     "strike": 62400,
+     "chg_oi": 4773
+    }
+   ],
+   "fresh_put_writing": [
+    {
+     "strike": 62500,
+     "chg_oi": 12717
+    },
+    {
+     "strike": 62000,
+     "chg_oi": 10181
+    }
+   ],
+   "view": [
+    "Call writers are heaviest at 63,000 (resistance) and put writers at 60,000 (support).",
+    "Put-call ratio 1.29: puts dominate, writers lean bullish.",
+    "ATM straddle \u2248 \u20b9799: the market is pricing about \u00b1799 points to expiry."
+   ],
+   "note": "Context only: in 200 days of NSE data, OI walls, PCR and max pain did not predict moves better than chance.",
+   "strikes": [
+    {
+     "strike": 58800,
+     "ce_ltp": 3769.65,
+     "ce_oi": 1376,
+     "ce_chg_oi": -12,
+     "ce_iv": 0,
+     "ce_bid": 3718.8,
+     "ce_ask": 3736.45,
+     "pe_ltp": 8.55,
+     "pe_oi": 1886,
+     "pe_chg_oi": -512,
+     "pe_iv": 26.98,
+     "pe_bid": 8.3,
+     "pe_ask": 8.5
+    },
+    {
+     "strike": 59600,
+     "ce_ltp": 2870,
+     "ce_oi": 498,
+     "ce_chg_oi": -4,
+     "ce_iv": 0,
+     "ce_bid": 2928.1,
+     "ce_ask": 2952.4,
+     "pe_ltp": 12.35,
+     "pe_oi": 1437,
+     "pe_chg_oi": -95,
+     "pe_iv": 23.14,
+     "pe_bid": 12.35,
+     "pe_ask": 12.45
+    },
+    {
+     "strike": 61300,
+     "ce_ltp": 1269.9,
+     "ce_oi": 2858,
+     "ce_chg_oi": -337,
+     "ce_iv": 10.07,
+     "ce_bid": 1291.05,
+     "ce_ask": 1299.55,
+     "pe_ltp": 66.8,
+     "pe_oi": 8189,
+     "pe_chg_oi": 669,
+     "pe_iv": 17.08,
+     "pe_bid": 66.5,
+     "pe_ask": 66.75
+    },
+    {
+     "strike": 61400,
+     "ce_ltp": 1195,
+     "ce_oi": 1612,
+     "ce_chg_oi": -213,
+     "ce_iv": 12.51,
+     "ce_bid": 1203.65,
+     "ce_ask": 1215.95,
+     "pe_ltp": 78,
+     "pe_oi": 6042,
+     "pe_chg_oi": 601,
+     "pe_iv": 16.89,
+     "pe_bid": 78.05,
+     "pe_ask": 78.35
+    },
+    {
+     "strike": 61500,
+     "ce_ltp": 1123,
+     "ce_oi": 8162,
+     "ce_chg_oi": -399,
+     "ce_iv": 12.52,
+     "ce_bid": 1120,
+     "ce_ask": 1123,
+     "pe_ltp": 90.55,
+     "pe_oi": 20943,
+     "pe_chg_oi": 4724,
+     "pe_iv": 16.77,
+     "pe_bid": 90.95,
+     "pe_ask": 91.05
+    },
+    {
+     "strike": 61600,
+     "ce_ltp": 1044,
+     "ce_oi": 1473,
+     "ce_chg_oi": -331,
+     "ce_iv": 12.61,
+     "ce_bid": 1033.3,
+     "ce_ask": 1038.55,
+     "pe_ltp": 104.85,
+     "pe_oi": 5658,
+     "pe_chg_oi": 1069,
+     "pe_iv": 16.66,
+     "pe_bid": 105.2,
+     "pe_ask": 105.6
+    },
+    {
+     "strike": 61700,
+     "ce_ltp": 956.5,
+     "ce_oi": 2479,
+     "ce_chg_oi": -421,
+     "ce_iv": 12.88,
+     "ce_bid": 950.35,
+     "ce_ask": 956.5,
+     "pe_ltp": 122.5,
+     "pe_oi": 7009,
+     "pe_chg_oi": 2093,
+     "pe_iv": 16.45,
+     "pe_bid": 122.3,
+     "pe_ask": 122.75
+    },
+    {
+     "strike": 61800,
+     "ce_ltp": 875,
+     "ce_oi": 4133,
+     "ce_chg_oi": -667,
+     "ce_iv": 13.18,
+     "ce_bid": 873.4,
+     "ce_ask": 877.25,
+     "pe_ltp": 142.85,
+     "pe_oi": 9716,
+     "pe_chg_oi": 3085,
+     "pe_iv": 16.42,
+     "pe_bid": 142,
+     "pe_ask": 142.55
+    },
+    {
+     "strike": 61900,
+     "ce_ltp": 796.45,
+     "ce_oi": 3570,
+     "ce_chg_oi": -1383,
+     "ce_iv": 13.23,
+     "ce_bid": 796.1,
+     "ce_ask": 798.85,
+     "pe_ltp": 165,
+     "pe_oi": 9022,
+     "pe_chg_oi": 2322,
+     "pe_iv": 16.42,
+     "pe_bid": 165,
+     "pe_ask": 165.6
+    },
+    {
+     "strike": 62000,
+     "ce_ltp": 725,
+     "ce_oi": 22483,
+     "ce_chg_oi": -11408,
+     "ce_iv": 13.55,
+     "ce_bid": 722.55,
+     "ce_ask": 724.95,
+     "pe_ltp": 192.45,
+     "pe_oi": 36933,
+     "pe_chg_oi": 10181,
+     "pe_iv": 16.33,
+     "pe_bid": 192.5,
+     "pe_ask": 193.05
+    },
+    {
+     "strike": 62100,
+     "ce_ltp": 654.55,
+     "ce_oi": 5920,
+     "ce_chg_oi": -2401,
+     "ce_iv": 13.73,
+     "ce_bid": 654.8,
+     "ce_ask": 656,
+     "pe_ltp": 222,
+     "pe_oi": 9737,
+     "pe_chg_oi": 3734,
+     "pe_iv": 16.27,
+     "pe_bid": 222,
+     "pe_ask": 222.45
+    },
+    {
+     "strike": 62200,
+     "ce_ltp": 588.5,
+     "ce_oi": 7837,
+     "ce_chg_oi": -3703,
+     "ce_iv": 13.83,
+     "ce_bid": 589.15,
+     "ce_ask": 589.95,
+     "pe_ltp": 256,
+     "pe_oi": 10360,
+     "pe_chg_oi": 6290,
+     "pe_iv": 16.27,
+     "pe_bid": 256.05,
+     "pe_ask": 256.7
+    },
+    {
+     "strike": 62300,
+     "ce_ltp": 530,
+     "ce_oi": 11502,
+     "ce_chg_oi": -1173,
+     "ce_iv": 14,
+     "ce_bid": 528.45,
+     "ce_ask": 530,
+     "pe_ltp": 293.9,
+     "pe_oi": 12331,
+     "pe_chg_oi": 7677,
+     "pe_iv": 16.31,
+     "pe_bid": 292.55,
+     "pe_ask": 293.55
+    },
+    {
+     "strike": 62400,
+     "ce_ltp": 470.45,
+     "ce_oi": 12892,
+     "ce_chg_oi": 4773,
+     "ce_iv": 14.05,
+     "ce_bid": 469.7,
+     "ce_ask": 471.05,
+     "pe_ltp": 335.7,
+     "pe_oi": 10657,
+     "pe_chg_oi": 6890,
+     "pe_iv": 16.33,
+     "pe_bid": 336.05,
+     "pe_ask": 336.95
+    },
+    {
+     "strike": 62500,
+     "ce_ltp": 416.4,
+     "ce_oi": 36653,
+     "ce_chg_oi": 9272,
+     "ce_iv": 14.14,
+     "ce_bid": 416.65,
+     "ce_ask": 417.8,
+     "pe_ltp": 382.4,
+     "pe_oi": 18724,
+     "pe_chg_oi": 12717,
+     "pe_iv": 16.39,
+     "pe_bid": 381.8,
+     "pe_ask": 382.9
+    },
+    {
+     "strike": 62600,
+     "ce_ltp": 366.45,
+     "ce_oi": 8163,
+     "ce_chg_oi": 3178,
+     "ce_iv": 14.22,
+     "ce_bid": 366.05,
+     "ce_ask": 366.95,
+     "pe_ltp": 432.4,
+     "pe_oi": 3992,
+     "pe_chg_oi": 2804,
+     "pe_iv": 16.52,
+     "pe_bid": 431.55,
+     "pe_ask": 432.7
+    },
+    {
+     "strike": 62700,
+     "ce_ltp": 321.6,
+     "ce_oi": 7183,
+     "ce_chg_oi": 416,
+     "ce_iv": 14.24,
+     "ce_bid": 320.75,
+     "ce_ask": 321.6,
+     "pe_ltp": 487,
+     "pe_oi": 1517,
+     "pe_chg_oi": 1074,
+     "pe_iv": 16.63,
+     "pe_bid": 485,
+     "pe_ask": 486.5
+    },
+    {
+     "strike": 62800,
+     "ce_ltp": 278.7,
+     "ce_oi": 5335,
+     "ce_chg_oi": 330,
+     "ce_iv": 14.27,
+     "ce_bid": 278.45,
+     "ce_ask": 279.2,
+     "pe_ltp": 547,
+     "pe_oi": 766,
+     "pe_chg_oi": 487,
+     "pe_iv": 16.66,
+     "pe_bid": 542.95,
+     "pe_ask": 545.45
+    },
+    {
+     "strike": 62900,
+     "ce_ltp": 241.5,
+     "ce_oi": 3877,
+     "ce_chg_oi": 109,
+     "ce_iv": 14.36,
+     "ce_bid": 241.25,
+     "ce_ask": 241.8,
+     "pe_ltp": 607.05,
+     "pe_oi": 355,
+     "pe_chg_oi": 159,
+     "pe_iv": 16.85,
+     "pe_bid": 606,
+     "pe_ask": 608.05
+    },
+    {
+     "strike": 63000,
+     "ce_ltp": 208.2,
+     "ce_oi": 25348,
+     "ce_chg_oi": -2953,
+     "ce_iv": 14.39,
+     "ce_bid": 207.35,
+     "ce_ask": 208.05,
+     "pe_ltp": 673.4,
+     "pe_oi": 7072,
+     "pe_chg_oi": 2412,
+     "pe_iv": 17.1,
+     "pe_bid": 671.3,
+     "pe_ask": 673.05
+    },
+    {
+     "strike": 63100,
+     "ce_ltp": 178.35,
+     "ce_oi": 5197,
+     "ce_chg_oi": 1078,
+     "ce_iv": 14.51,
+     "ce_bid": 177.95,
+     "ce_ask": 178.8,
+     "pe_ltp": 747.6,
+     "pe_oi": 259,
+     "pe_chg_oi": 97,
+     "pe_iv": 17.84,
+     "pe_bid": 742.05,
+     "pe_ask": 745.4
+    },
+    {
+     "strike": 63200,
+     "ce_ltp": 151.1,
+     "ce_oi": 5334,
+     "ce_chg_oi": 1046,
+     "ce_iv": 14.55,
+     "ce_bid": 150.8,
+     "ce_ask": 151.35,
+     "pe_ltp": 832.25,
+     "pe_oi": 215,
+     "pe_chg_oi": 120,
+     "pe_iv": 17.48,
+     "pe_bid": 814.6,
+     "pe_ask": 820.85
+    },
+    {
+     "strike": 63300,
+     "ce_ltp": 129,
+     "ce_oi": 2973,
+     "ce_chg_oi": -16,
+     "ce_iv": 14.61,
+     "ce_bid": 128.55,
+     "ce_ask": 129,
+     "pe_ltp": 888.65,
+     "pe_oi": 49,
+     "pe_chg_oi": 23,
+     "pe_iv": 18.3,
+     "pe_bid": 891.35,
+     "pe_ask": 898.45
+    },
+    {
+     "strike": 63400,
+     "ce_ltp": 109,
+     "ce_oi": 3262,
+     "ce_chg_oi": 618,
+     "ce_iv": 14.72,
+     "ce_bid": 109.45,
+     "ce_ask": 109.95,
+     "pe_ltp": 980,
+     "pe_oi": 28,
+     "pe_chg_oi": -4,
+     "pe_iv": 17.94,
+     "pe_bid": 967.55,
+     "pe_ask": 982.65
+    },
+    {
+     "strike": 63500,
+     "ce_ltp": 91.75,
+     "ce_oi": 17441,
+     "ce_chg_oi": 290,
+     "ce_iv": 14.82,
+     "ce_bid": 91.5,
+     "ce_ask": 91.7,
+     "pe_ltp": 1066.15,
+     "pe_oi": 408,
+     "pe_chg_oi": 83,
+     "pe_iv": 18.17,
+     "pe_bid": 1051.95,
+     "pe_ask": 1059.6
+    },
+    {
+     "strike": 63600,
+     "ce_ltp": 76.9,
+     "ce_oi": 3932,
+     "ce_chg_oi": 1397,
+     "ce_iv": 14.92,
+     "ce_bid": 77.6,
+     "ce_ask": 78,
+     "pe_ltp": 1150,
+     "pe_oi": 24,
+     "pe_chg_oi": 14,
+     "pe_iv": 18.71,
+     "pe_bid": 1135.6,
+     "pe_ask": 1150.2
+    },
+    {
+     "strike": 63700,
+     "ce_ltp": 65.15,
+     "ce_oi": 4413,
+     "ce_chg_oi": 2712,
+     "ce_iv": 15.01,
+     "ce_bid": 64.95,
+     "ce_ask": 65.2,
+     "pe_ltp": 1270,
+     "pe_oi": 20,
+     "pe_chg_oi": 4,
+     "pe_iv": 19.22,
+     "pe_bid": 1220.8,
+     "pe_ask": 1245.4
+    }
+   ],
+   "expiry": "23-Nov-2026"
+  }
+ },
  "plan": [
   {
    "index": "NIFTY",
    "strategy": "Bear Put Spread",
    "decision": "SKIP",
-   "spot": 25342.7,
+   "spot": 25370.4,
    "legs": [
     {
      "action": "BUY",
      "strike": 25250,
      "type": "PE",
      "est_premium": 179.0,
-     "live": 122.18,
-     "source": "estimate"
+     "live": 84.6,
+     "source": "NSE"
     },
     {
      "action": "SELL",
      "strike": 25050,
      "type": "PE",
      "est_premium": 95.8,
-     "live": 58.95,
-     "source": "estimate"
+     "live": 38.1,
+     "source": "NSE"
     }
    ],
    "entry_value": 83.2,
-   "value_now": 63.23,
-   "pnl_per_lot": -1298,
+   "value_now": 46.5,
+   "pnl_per_lot": -2386,
    "status": "WATCH",
    "hint": "",
-   "price_source": "estimate"
+   "price_source": "NSE"
   },
   {
    "index": "BANKNIFTY",
    "strategy": "Bear Put Spread",
    "decision": "SKIP",
-   "spot": 62487.95,
+   "spot": 62544.85,
    "legs": [
     {
      "action": "BUY",
      "strike": 62000,
      "type": "PE",
      "est_premium": 517.2,
-     "live": 302.43,
-     "source": "estimate"
+     "live": 192.45,
+     "source": "NSE"
     },
     {
      "action": "SELL",
      "strike": 61300,
      "type": "PE",
      "est_premium": 249.9,
-     "live": 122.69,
-     "source": "estimate"
+     "live": 66.8,
+     "source": "NSE"
     }
    ],
    "entry_value": 267.3,
-   "value_now": 179.74,
-   "pnl_per_lot": -2627,
-   "status": "WATCH",
-   "hint": "",
-   "price_source": "estimate"
+   "value_now": 125.65,
+   "pnl_per_lot": -4250,
+   "status": "STOP",
+   "hint": "Half the debit is gone: exit.",
+   "price_source": "NSE"
   }
  ],
  "stocks": [
   {
    "symbol": "CIPLA",
    "grade": "B",
-   "last": 1413.2,
-   "chg_pct": -0.27,
+   "last": 1412.1,
+   "chg_pct": -0.35,
    "entry": 1417.0,
    "stop": 1383.83,
    "t1": 1456.8,
@@ -186,8 +1109,8 @@
   {
    "symbol": "SBIN",
    "grade": "B",
-   "last": 1143.0,
-   "chg_pct": 0.7,
+   "last": 1145.6,
+   "chg_pct": 0.93,
    "entry": 1135.0,
    "stop": 1105.09,
    "t1": 1170.89,
@@ -199,8 +1122,8 @@
   {
    "symbol": "GAIL",
    "grade": "B",
-   "last": 191.08,
-   "chg_pct": 0.57,
+   "last": 190.96,
+   "chg_pct": 0.51,
    "entry": 190.0,
    "stop": 185.03,
    "t1": 195.97,
@@ -212,21 +1135,21 @@
   {
    "symbol": "TVSMOTOR",
    "grade": "B",
-   "last": 4573.0,
-   "chg_pct": 4.67,
+   "last": 4578.9,
+   "chg_pct": 4.8,
    "entry": 4369.0,
    "stop": 4225.48,
    "t1": 4541.22,
    "t2": 4656.04,
    "status": "T1 HIT",
-   "high": 4578.0,
+   "high": 4579.5,
    "low": 4396.5
   },
   {
    "symbol": "APOLLOHOSP",
    "grade": "B",
-   "last": 8713.5,
-   "chg_pct": -1.22,
+   "last": 8738.0,
+   "chg_pct": -0.94,
    "entry": 8821.0,
    "stop": 8570.81,
    "t1": 9121.23,
@@ -238,21 +1161,21 @@
   {
    "symbol": "AXISBANK",
    "grade": "B",
-   "last": 1369.9,
-   "chg_pct": 0.73,
+   "last": 1371.2,
+   "chg_pct": 0.82,
    "entry": 1360.0,
    "stop": 1325.35,
    "t1": 1401.58,
    "t2": 1429.31,
    "status": "TRIGGERED",
-   "high": 1371.0,
+   "high": 1371.5,
    "low": 1357.1
   },
   {
    "symbol": "IDFCFIRSTB",
    "grade": "B",
-   "last": 85.45,
-   "chg_pct": 3.64,
+   "last": 85.46,
+   "chg_pct": 3.65,
    "entry": 82.45,
    "stop": 79.86,
    "t1": 85.56,
@@ -264,8 +1187,8 @@
   {
    "symbol": "GODREJCP",
    "grade": "B",
-   "last": 922.75,
-   "chg_pct": 2.93,
+   "last": 924.3,
+   "chg_pct": 3.11,
    "entry": 896.45,
    "stop": 867.86,
    "t1": 930.76,
@@ -277,8 +1200,8 @@
   {
    "symbol": "ULTRACEMCO",
    "grade": "B",
-   "last": 12532.0,
-   "chg_pct": 0.84,
+   "last": 12535.0,
+   "chg_pct": 0.86,
    "entry": 12428.0,
    "stop": 12107.04,
    "t1": 12813.16,
@@ -290,8 +1213,8 @@
   {
    "symbol": "DLF",
    "grade": "B",
-   "last": 765.3,
-   "chg_pct": 0.13,
+   "last": 766.55,
+   "chg_pct": 0.29,
    "entry": 764.3,
    "stop": 741.31,
    "t1": 791.89,
@@ -303,8 +1226,8 @@
   {
    "symbol": "HINDUNILVR",
    "grade": "B",
-   "last": 2041.1,
-   "chg_pct": 2.41,
+   "last": 2041.8,
+   "chg_pct": 2.45,
    "entry": 1993.0,
    "stop": 1944.43,
    "t1": 2051.28,
@@ -316,8 +1239,8 @@
   {
    "symbol": "BHARTIARTL",
    "grade": "B",
-   "last": 2145.0,
-   "chg_pct": 0.61,
+   "last": 2145.3,
+   "chg_pct": 0.62,
    "entry": 2132.0,
    "stop": 2075.8,
    "t1": 2199.44,
@@ -327,7 +1250,7 @@
    "low": 2136.5
   }
  ],
- "paper_marks": 0,
+ "paper_marks": 3,
  "paper_today": [],
  "paper_open": [
   {
@@ -336,11 +1259,11 @@
    "expiry": "2026-11-23",
    "entry_session": "2026-11-16",
    "credit_rs": 5366,
-   "value_now": -2736,
-   "since_last_evening": -3052,
+   "value_now": -3407,
+   "since_last_evening": -3723,
    "status": "HOLD",
-   "spot": 62487.95,
-   "at": "11:40"
+   "spot": 62544.85,
+   "at": "12:00"
   }
  ],
  "paper_open_adjusted": [
@@ -350,11 +1273,11 @@
    "expiry": "2026-11-23",
    "entry_session": "2026-11-16",
    "credit_rs": 6959,
-   "value_now": -1167,
-   "since_last_evening": 516,
+   "value_now": -1245,
+   "since_last_evening": 438,
    "status": "HOLD",
-   "spot": 62487.95,
-   "at": "11:50"
+   "spot": 62544.85,
+   "at": "12:00"
   }
  ],
  "paper_open_protect": [
@@ -364,11 +1287,11 @@
    "expiry": "2026-11-23",
    "entry_session": "2026-11-16",
    "credit_rs": 5366,
-   "value_now": -2736,
-   "since_last_evening": -3052,
+   "value_now": -3407,
+   "since_last_evening": -3723,
    "status": "HOLD",
-   "spot": 62487.95,
-   "at": "11:40"
+   "spot": 62544.85,
+   "at": "12:00"
   }
  ],
  "momentum": {
