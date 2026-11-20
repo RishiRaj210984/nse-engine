@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-20T06:23:08.806415+05:30",
+ "generated_at": "2026-11-20T07:13:33.633074+05:30",
  "target_session": "2026-11-20",
  "reference_date": "2026-11-19",
  "us_session_used": "2026-11-19",
@@ -39,24 +39,24 @@
   {
    "name": "Crude Oil",
    "symbol": "CL=F",
-   "last": 82.81,
-   "change": -0.54,
+   "last": 82.89,
+   "change": -0.444,
    "change_unit": "%",
    "as_of": "2026-11-19"
   },
   {
    "name": "Dollar Index",
    "symbol": "DX-Y.NYB",
-   "last": 103.92,
-   "change": 0.062,
+   "last": 103.88,
+   "change": 0.02,
    "change_unit": "%",
    "as_of": "2026-11-19"
   },
   {
    "name": "Nikkei 225",
    "symbol": "^N225",
-   "last": 56959.13,
-   "change": -3.499,
+   "last": 57092.69,
+   "change": -3.273,
    "change_unit": "%",
    "as_of": "2026-11-20"
   },
@@ -67,6 +67,14 @@
    "change": -0.908,
    "change_unit": "%",
    "as_of": "2026-11-18"
+  },
+  {
+   "name": "India VIX",
+   "symbol": "^INDIAVIX",
+   "last": 15.8,
+   "change": 1.477,
+   "change_unit": "%",
+   "as_of": "2026-11-19"
   },
   {
    "name": "Nifty 50",
@@ -87,60 +95,81 @@
  ],
  "bias": {
   "label": "BEARISH",
-  "score": -69,
-  "z": -0.856,
-  "model_z": -1.352,
-  "predicted_nifty_move_pct": -0.96,
-  "typical_daily_move_pct": 0.712,
+  "score": -55,
+  "z": -0.614,
+  "model_z": -1.11,
+  "predicted_nifty_move_pct": -0.8,
+  "typical_daily_move_pct": 0.717,
   "source": "pre-open global snapshot",
-  "india_vix": 15.0,
+  "india_vix": 15.8,
   "components": [
    {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": -3.09,
-    "contribution_pct": -1.517
+    "value": -3.03,
+    "contribution_pct": -1.334
    },
    {
     "feature": "nq",
     "label": "Nasdaq futures",
-    "value": -3.49,
-    "contribution_pct": 0.836
+    "value": -3.37,
+    "contribution_pct": 0.706
    },
    {
     "feature": "n225",
     "label": "Nikkei 225",
-    "value": -3.77,
-    "contribution_pct": -0.275
+    "value": -3.52,
+    "contribution_pct": -0.178
    },
    {
     "feature": "ym",
     "label": "Dow futures",
-    "value": -3.63,
-    "contribution_pct": 0.163
-   },
-   {
-    "feature": "ftse",
-    "label": "FTSE 100 (UK)",
-    "value": -1.85,
-    "contribution_pct": -0.15
+    "value": -3.54,
+    "contribution_pct": 0.138
    },
    {
     "feature": "dax",
     "label": "DAX (Germany)",
     "value": -2.24,
-    "contribution_pct": -0.112
+    "contribution_pct": -0.105
+   },
+   {
+    "feature": "inr",
+    "label": "USD/INR",
+    "value": -0.17,
+    "contribution_pct": 0.093
    }
   ]
  },
  "news": {
   "summary": {
-   "score": 0.389,
+   "score": 0.346,
    "count": 39,
    "label": "POSITIVE"
   },
   "weight": 0.248,
   "headlines": [
+   {
+    "title": "Global Market Today: Asian stocks slide as AI fears trigger selloff",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/global-market-today-asian-stocks-slide-as-ai-fears-trigger-selloff/articleshow/136009259.cms",
+    "published": "Fri, 20 Nov 2026 06:32:17 +0530",
+    "sentiment": -0.7
+   },
+   {
+    "title": "Anthropic shares surge 34% in Nasdaq debut, valuation hits $2 trillion",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/2-trillion-anthropic-soars-34-on-wall-street-debut/articleshow/136009222.cms",
+    "published": "Fri, 20 Nov 2026 06:27:11 +0530",
+    "sentiment": 0.612
+   },
+   {
+    "title": "Anthropic's historic debut to put AI's promise and peril on Wall Street trial",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/anthropics-historic-debut-to-put-ais-promise-and-peril-on-wall-street-trial/articleshow/136009180.cms",
+    "published": "Fri, 20 Nov 2026 06:18:29 +0530",
+    "sentiment": -0.103
+   },
    {
     "title": "AMD shares slide 8% as report says China links could invite US scrutiny",
     "source": "ET Markets",
@@ -203,37 +232,16 @@
     "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/us-stocks-nasdaq-rises-over-1-at-open-as-anthropic-ipo-pricing-bolsters-ai-trade/articleshow/135996273.cms",
     "published": "Thu, 19 Nov 2026 20:47:37 +0530",
     "sentiment": 0.735
-   },
-   {
-    "title": "Fund managers turn overweight on India, first such classification since Jan",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/fund-managers-turn-overweight-on-india-first-such-classification-since-jan/articleshow/135996610.cms",
-    "published": "Thu, 19 Nov 2026 20:32:14 +0530",
-    "sentiment": -0.361
-   },
-   {
-    "title": "Investors vs Economists: Should Govt Cut LTCG Tax?",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/investors-vs-economists-should-govt-cut-ltcg-tax/videoshow/135993683.cms",
-    "published": "Thu, 19 Nov 2026 19:01:48 +0530",
-    "sentiment": -0.077
-   },
-   {
-    "title": "Anthropic IPO Highlights: US stocks tumble 2%, head for longest losing streak since 2024 despite strong Anthropic debut",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/anthropic-ipo-stock-price-live-us-market-dow-jones-nasdaq-ai-chip-nvidia-palo-alto-amazon-alphabet-coreweave-microsoft-fed-rate-hike-treasury-yield-news-19th-novmeber-2026/liveblog/135993460.cms",
-    "published": "Thu, 19 Nov 2026 18:41:26 +0530",
-    "sentiment": -0.54
    }
   ]
  },
  "model": {
   "oos_days": 300,
   "directional_calls": 146,
-  "directional_accuracy": 71.9,
-  "sign_accuracy_all_days": 65.3,
-  "gap_corr": 0.67,
-  "gap_sign_pct": 71.3,
+  "directional_accuracy": 73.3,
+  "sign_accuracy_all_days": 65.7,
+  "gap_corr": 0.68,
+  "gap_sign_pct": 68.7,
   "trained_rows": 750,
   "version": 47,
   "bias_threshold": 0.3
@@ -246,8 +254,8 @@
    "lot_size": 65,
    "expiry": "2026-11-23",
    "days_to_expiry": 3.75,
-   "iv_used_pct": 15.0,
-   "expected_move": 388,
+   "iv_used_pct": 15.8,
+   "expected_move": 409,
    "levels": {
     "prev_close": 25514.3,
     "ema20": 24439.47,
@@ -270,24 +278,24 @@
        "action": "BUY",
        "strike": 25500,
        "type": "PE",
-       "est_premium": 139.5
+       "est_premium": 147.7
       },
       {
        "action": "SELL",
        "strike": 25300,
        "type": "PE",
-       "est_premium": 65.3
+       "est_premium": 72.2
       }
      ],
-     "net_premium": -74.2,
-     "max_loss": 4823,
-     "max_reward": 8177,
-     "reward_risk": 1.7,
+     "net_premium": -75.5,
+     "max_loss": 4907,
+     "max_reward": 8093,
+     "reward_risk": 1.65,
      "entry": "Enter on pullbacks that fail below 25,651 (EMA20 / R1 resistance zone)",
-     "target": "Exit spread near \u20b9149.7 or NIFTY at 25,300",
-     "stop_loss": "Spread falls to \u20b937.1, or NIFTY closes above 25,787",
+     "target": "Exit spread near \u20b9150.2 or NIFTY at 25,300",
+     "stop_loss": "Spread falls to \u20b937.7, or NIFTY closes above 25,787",
      "breakeven": [
-      25426
+      25424
      ],
      "notes": "Defined risk. Preferred structure.",
      "verdict": {
@@ -310,26 +318,26 @@
      "legs": [
       {
        "action": "SELL",
-       "strike": 25850,
+       "strike": 25900,
        "type": "CE",
-       "est_premium": 45.6
+       "est_premium": 41.7
       },
       {
        "action": "BUY",
-       "strike": 26050,
+       "strike": 26100,
        "type": "CE",
-       "est_premium": 17.0
+       "est_premium": 16.0
       }
      ],
-     "net_premium": 28.6,
-     "max_loss": 11141,
-     "max_reward": 1859,
-     "reward_risk": 0.17,
-     "entry": "Enter at 10:15 (after the first hour) only if NIFTY is below 25,850",
-     "target": "Buy back at \u20b912.9 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
-     "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,859 per lot)",
+     "net_premium": 25.7,
+     "max_loss": 11330,
+     "max_reward": 1671,
+     "reward_risk": 0.15,
+     "entry": "Enter at 10:15 (after the first hour) only if NIFTY is below 25,900",
+     "target": "Buy back at \u20b911.6 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
+     "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,671 per lot)",
      "breakeven": [
-      25879
+      25926
      ],
      "notes": "Earns time decay; wins if the index does not fall (bull put) / rise (bear call) past the short strike.",
      "verdict": {
@@ -354,18 +362,18 @@
        "action": "BUY",
        "strike": 25500,
        "type": "PE",
-       "est_premium": 139.5
+       "est_premium": 147.7
       }
      ],
-     "net_premium": -139.5,
-     "max_loss": 9068,
-     "max_reward": 8248,
-     "reward_risk": 0.91,
+     "net_premium": -147.7,
+     "max_loss": 9600,
+     "max_reward": 8274,
+     "reward_risk": 0.86,
      "entry": "Enter on pullbacks that fail below 25,651 (EMA20 / R1 resistance zone)",
-     "target": "Premium \u2248 \u20b9266.4 (NIFTY near 25,241)",
-     "stop_loss": "Premium \u20b997.6 (-30%), or NIFTY closes above 25,787",
+     "target": "Premium \u2248 \u20b9275.0 (NIFTY near 25,241)",
+     "stop_loss": "Premium \u20b9103.4 (-30%), or NIFTY closes above 25,787",
      "breakeven": [
-      25360
+      25352
      ],
      "notes": "Max loss = full premium. Theta decay hurts if move is late.",
      "verdict": {
@@ -399,8 +407,8 @@
    "lot_size": 30,
    "expiry": "2026-11-23",
    "days_to_expiry": 3.75,
-   "iv_used_pct": 18.89,
-   "expected_move": 1208,
+   "iv_used_pct": 19.9,
+   "expected_move": 1272,
    "levels": {
     "prev_close": 63063.0,
     "ema20": 59015.9,
@@ -423,24 +431,24 @@
        "action": "BUY",
        "strike": 63100,
        "type": "PE",
-       "est_premium": 479.2
+       "est_premium": 504.9
       },
       {
        "action": "SELL",
        "strike": 62500,
        "type": "PE",
-       "est_premium": 236.5
+       "est_premium": 259.2
       }
      ],
-     "net_premium": -242.7,
-     "max_loss": 7281,
-     "max_reward": 10719,
-     "reward_risk": 1.47,
+     "net_premium": -245.7,
+     "max_loss": 7371,
+     "max_reward": 10629,
+     "reward_risk": 1.44,
      "entry": "Enter on pullbacks that fail below 63,434 (EMA20 / R1 resistance zone)",
-     "target": "Exit spread near \u20b9457.1 or BANKNIFTY at 62,500",
-     "stop_loss": "Spread falls to \u20b9121.3, or BANKNIFTY closes above 63,804",
+     "target": "Exit spread near \u20b9458.3 or BANKNIFTY at 62,500",
+     "stop_loss": "Spread falls to \u20b9122.8, or BANKNIFTY closes above 63,804",
      "breakeven": [
-      62857
+      62854
      ],
      "notes": "Defined risk. Preferred structure.",
      "verdict": {
@@ -463,26 +471,26 @@
      "legs": [
       {
        "action": "SELL",
-       "strike": 64100,
+       "strike": 64200,
        "type": "CE",
-       "est_premium": 142.0
+       "est_premium": 140.4
       },
       {
        "action": "BUY",
-       "strike": 64700,
+       "strike": 64800,
        "type": "CE",
-       "est_premium": 55.3
+       "est_premium": 57.0
       }
      ],
-     "net_premium": 86.7,
-     "max_loss": 15399,
-     "max_reward": 2601,
-     "reward_risk": 0.17,
-     "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is below 64,100",
-     "target": "Buy back at \u20b939.0 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
-     "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b92,601 per lot)",
+     "net_premium": 83.4,
+     "max_loss": 15498,
+     "max_reward": 2502,
+     "reward_risk": 0.16,
+     "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is below 64,200",
+     "target": "Buy back at \u20b937.5 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
+     "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b92,502 per lot)",
      "breakeven": [
-      64187
+      64283
      ],
      "notes": "Earns time decay; wins if the index does not fall (bull put) / rise (bear call) past the short strike.",
      "verdict": {
@@ -507,18 +515,18 @@
        "action": "BUY",
        "strike": 63100,
        "type": "PE",
-       "est_premium": 479.2
+       "est_premium": 504.9
       }
      ],
-     "net_premium": -479.2,
-     "max_loss": 14376,
-     "max_reward": 10996,
-     "reward_risk": 0.76,
+     "net_premium": -504.9,
+     "max_loss": 15147,
+     "max_reward": 10994,
+     "reward_risk": 0.73,
      "entry": "Enter on pullbacks that fail below 63,434 (EMA20 / R1 resistance zone)",
-     "target": "Premium \u2248 \u20b9845.7 (BANKNIFTY near 62,322)",
-     "stop_loss": "Premium \u20b9335.4 (-30%), or BANKNIFTY closes above 63,804",
+     "target": "Premium \u2248 \u20b9871.4 (BANKNIFTY near 62,322)",
+     "stop_loss": "Premium \u20b9353.4 (-30%), or BANKNIFTY closes above 63,804",
      "breakeven": [
-      62621
+      62595
      ],
      "notes": "Max loss = full premium. Theta decay hurts if move is late.",
      "verdict": {
@@ -548,28 +556,28 @@
  },
  "events": [],
  "preopen": {
-  "snapshot_ist": "Fri 20 Nov 06:23 IST",
-  "stage": "preview",
-  "expected_gap_pct": -1.0,
-  "gap_typical_error_pct": 0.3,
-  "expected_day_pct": -0.96,
-  "z": -1.352,
-  "typical_daily_move_pct": 0.712,
+  "snapshot_ist": "Fri 20 Nov 07:13 IST",
+  "stage": "final",
+  "expected_gap_pct": -0.91,
+  "gap_typical_error_pct": 0.31,
+  "expected_day_pct": -0.8,
+  "z": -1.11,
+  "typical_daily_move_pct": 0.717,
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": -3.09
+    "move_pct": -3.03
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": -3.49
+    "move_pct": -3.37
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": -3.63
+    "move_pct": -3.54
    },
    {
     "key": "dax",
@@ -589,22 +597,22 @@
    {
     "key": "n225",
     "name": "Nikkei 225",
-    "move_pct": -3.77
+    "move_pct": -3.52
    },
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": -0.81
+    "move_pct": -0.71
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": -4.7
+    "move_pct": -4.97
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": 0.16
+    "move_pct": 0.12
    },
    {
     "key": "inr",
@@ -616,51 +624,51 @@
    {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": -3.09,
-    "contribution_pct": -1.517
+    "value": -3.03,
+    "contribution_pct": -1.334
    },
    {
     "feature": "nq",
     "label": "Nasdaq futures",
-    "value": -3.49,
-    "contribution_pct": 0.836
+    "value": -3.37,
+    "contribution_pct": 0.706
    },
    {
     "feature": "n225",
     "label": "Nikkei 225",
-    "value": -3.77,
-    "contribution_pct": -0.275
+    "value": -3.52,
+    "contribution_pct": -0.178
    },
    {
     "feature": "ym",
     "label": "Dow futures",
-    "value": -3.63,
-    "contribution_pct": 0.163
-   },
-   {
-    "feature": "ftse",
-    "label": "FTSE 100 (UK)",
-    "value": -1.85,
-    "contribution_pct": -0.15
+    "value": -3.54,
+    "contribution_pct": 0.138
    },
    {
     "feature": "dax",
     "label": "DAX (Germany)",
     "value": -2.24,
-    "contribution_pct": -0.112
+    "contribution_pct": -0.105
+   },
+   {
+    "feature": "inr",
+    "label": "USD/INR",
+    "value": -0.17,
+    "contribution_pct": 0.093
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.67,
-   "gap_sign_pct": 71.3,
-   "directional_calls": 156,
-   "directional_accuracy": 71.2
+   "gap_corr": 0.68,
+   "gap_sign_pct": 68.7,
+   "directional_calls": 159,
+   "directional_accuracy": 73.0
   },
   "vix": 15.57
  },
  "global_table": {
-  "updated": "2026-11-20T06:23:27.536020+05:30",
+  "updated": "2026-11-20T07:13:48.133816+05:30",
   "rows": [
    {
     "group": "US, last close",
@@ -670,7 +678,7 @@
    },
    {
     "group": "US futures now",
-    "move": "S&P -3.09%, Nasdaq -3.49%, Dow -3.63% (since Nifty's close)",
+    "move": "S&P -3.03%, Nasdaq -3.37%, Dow -3.54% (since Nifty's close)",
     "effect": "red",
     "note": "Futures point to a softer open"
    },
@@ -682,13 +690,13 @@
    },
    {
     "group": "Asia today",
-    "move": "Nikkei -4.2%, Hang Seng -2.8%, Kospi -3.7%",
+    "move": "Nikkei -4.0%, Hang Seng -1.6%, Kospi -3.9%",
     "effect": "red",
     "note": "Clearly weak (one market down over 3%)"
    },
    {
     "group": "Crude oil",
-    "move": "WTI ~$83, Brent ~$90 (+0.4%)",
+    "move": "WTI ~$83, Brent ~$90 (+0.6%)",
     "effect": "flat",
     "note": "Steady"
    },
@@ -700,7 +708,7 @@
    },
    {
     "group": "Dollar index",
-    "move": "103.92 (+0.03%)",
+    "move": "103.88 (-0.01%)",
     "effect": "flat",
     "note": "Steady"
    },
@@ -718,9 +726,9 @@
    },
    {
     "group": "Model: Nifty open",
-    "move": "-1.00% (\u00b10.30%)",
+    "move": "-0.91% (\u00b10.31%)",
     "effect": "red",
-    "note": "Combined forecast from all markets (preview)",
+    "note": "Combined forecast from all markets (final)",
     "model": true
    }
   ],
