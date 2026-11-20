@@ -1,8 +1,8 @@
 {
- "generated_at": "2026-11-20T07:13:33.633074+05:30",
- "target_session": "2026-11-20",
- "reference_date": "2026-11-19",
- "us_session_used": "2026-11-19",
+ "generated_at": "2026-11-20T16:18:08.543180+05:30",
+ "target_session": "2026-11-23",
+ "reference_date": "2026-11-20",
+ "us_session_used": "2026-11-20",
  "tickers": [
   {
    "name": "S&P 500",
@@ -39,500 +39,331 @@
   {
    "name": "Crude Oil",
    "symbol": "CL=F",
-   "last": 82.89,
-   "change": -0.444,
+   "last": 81.39,
+   "change": -2.187,
    "change_unit": "%",
-   "as_of": "2026-11-19"
+   "as_of": "2026-11-20"
   },
   {
    "name": "Dollar Index",
    "symbol": "DX-Y.NYB",
-   "last": 103.88,
-   "change": 0.02,
+   "last": 103.85,
+   "change": -0.045,
    "change_unit": "%",
-   "as_of": "2026-11-19"
+   "as_of": "2026-11-20"
   },
   {
    "name": "Nikkei 225",
    "symbol": "^N225",
-   "last": 57092.69,
-   "change": -3.273,
+   "last": 56436.65,
+   "change": -5.059,
    "change_unit": "%",
    "as_of": "2026-11-20"
   },
   {
    "name": "Hang Seng",
    "symbol": "^HSI",
-   "last": 23294.75,
-   "change": -0.908,
+   "last": 22410.8,
+   "change": -1.886,
    "change_unit": "%",
-   "as_of": "2026-11-18"
+   "as_of": "2026-11-20"
   },
   {
    "name": "India VIX",
    "symbol": "^INDIAVIX",
-   "last": 15.8,
-   "change": 1.477,
+   "last": 17.32,
+   "change": 7.511,
    "change_unit": "%",
-   "as_of": "2026-11-19"
+   "as_of": "2026-11-20"
   },
   {
    "name": "Nifty 50",
    "symbol": "^NSEI",
-   "last": 25514.3,
-   "change": 1.135,
+   "last": 25800.6,
+   "change": 1.122,
    "change_unit": "%",
-   "as_of": "2026-11-19"
+   "as_of": "2026-11-20"
   },
   {
    "name": "Bank Nifty",
    "symbol": "^NSEBANK",
-   "last": 63063.0,
-   "change": 1.651,
+   "last": 64635.2,
+   "change": 2.493,
    "change_unit": "%",
-   "as_of": "2026-11-19"
+   "as_of": "2026-11-20"
   }
  ],
  "bias": {
-  "label": "BEARISH",
-  "score": -55,
-  "z": -0.614,
-  "model_z": -1.11,
-  "predicted_nifty_move_pct": -0.8,
-  "typical_daily_move_pct": 0.717,
+  "label": "BULLISH",
+  "score": 58,
+  "z": 0.669,
+  "model_z": 0.13,
+  "predicted_nifty_move_pct": 0.1,
+  "typical_daily_move_pct": 0.78,
   "source": "pre-open global snapshot",
-  "india_vix": 15.8,
+  "india_vix": 17.32,
   "components": [
+   {
+    "feature": "vix",
+    "label": "India VIX level",
+    "value": 17.32,
+    "contribution_pct": 0.103
+   },
+   {
+    "feature": "nprev",
+    "label": "Nifty previous day",
+    "value": 1.12,
+    "contribution_pct": -0.037
+   },
    {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": -3.03,
-    "contribution_pct": -1.334
-   },
-   {
-    "feature": "nq",
-    "label": "Nasdaq futures",
-    "value": -3.37,
-    "contribution_pct": 0.706
-   },
-   {
-    "feature": "n225",
-    "label": "Nikkei 225",
-    "value": -3.52,
-    "contribution_pct": -0.178
+    "value": 0.0,
+    "contribution_pct": -0.029
    },
    {
     "feature": "ym",
     "label": "Dow futures",
-    "value": -3.54,
-    "contribution_pct": 0.138
+    "value": 0.0,
+    "contribution_pct": 0.023
    },
    {
-    "feature": "dax",
-    "label": "DAX (Germany)",
-    "value": -2.24,
-    "contribution_pct": -0.105
+    "feature": "ftse",
+    "label": "FTSE 100 (UK)",
+    "value": 0.0,
+    "contribution_pct": -0.006
    },
    {
-    "feature": "inr",
-    "label": "USD/INR",
-    "value": -0.17,
-    "contribution_pct": 0.093
+    "feature": "cl",
+    "label": "Crude oil",
+    "value": 0.0,
+    "contribution_pct": 0.006
    }
   ]
  },
  "news": {
   "summary": {
-   "score": 0.346,
-   "count": 39,
+   "score": 0.261,
+   "count": 40,
    "label": "POSITIVE"
   },
-  "weight": 0.248,
+  "weight": 0.31,
   "headlines": [
    {
-    "title": "Global Market Today: Asian stocks slide as AI fears trigger selloff",
+    "title": "Anthropic's debut rally fades as shares crack 7% in US pre-market trade",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/global-market-today-asian-stocks-slide-as-ai-fears-trigger-selloff/articleshow/136009259.cms",
-    "published": "Fri, 20 Nov 2026 06:32:17 +0530",
-    "sentiment": -0.7
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/anthropics-debut-rally-fades-as-shares-crack-7-in-pre-market-trade-on-day-2/articleshow/136021174.cms",
+    "published": "Fri, 20 Nov 2026 15:06:25 +0530",
+    "sentiment": 0.586
    },
    {
-    "title": "Anthropic shares surge 34% in Nasdaq debut, valuation hits $2 trillion",
+    "title": "Sharp rupee appreciation may cut IT firms' FY27 earnings by up to 13%: Report",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/2-trillion-anthropic-soars-34-on-wall-street-debut/articleshow/136009222.cms",
-    "published": "Fri, 20 Nov 2026 06:27:11 +0530",
-    "sentiment": 0.612
+    "link": "https://economictimes.indiatimes.com/markets/forex/sharp-rupee-appreciation-may-cut-it-firms-fy27-earnings-by-up-to-13-report/articleshow/136021296.cms",
+    "published": "Fri, 20 Nov 2026 15:06:14 +0530",
+    "sentiment": 0.459
    },
    {
-    "title": "Anthropic's historic debut to put AI's promise and peril on Wall Street trial",
+    "title": "Sebi plans consultation paper to remove FPI constraints absent in other markets",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/anthropics-historic-debut-to-put-ais-promise-and-peril-on-wall-street-trial/articleshow/136009180.cms",
-    "published": "Fri, 20 Nov 2026 06:18:29 +0530",
-    "sentiment": -0.103
-   },
-   {
-    "title": "AMD shares slide 8% as report says China links could invite US scrutiny",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/amd-shares-slide-8-as-report-says-china-links-could-invite-us-scrutiny/articleshow/136002141.cms",
-    "published": "Thu, 19 Nov 2026 23:43:12 +0530",
-    "sentiment": 0.421
-   },
-   {
-    "title": "Amundi CIO says not bearish on France bonds, AI at the start of repricing",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/amundi-cio-says-not-bearish-on-france-bonds-ai-at-the-start-of-repricing/articleshow/135998168.cms",
-    "published": "Thu, 19 Nov 2026 21:31:26 +0530",
-    "sentiment": 0.325
-   },
-   {
-    "title": "Sebi roadmap focuses on faster IPOs, easier foreign investor access: Official",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/sebi-roadmap-focuses-on-faster-ipos-easier-foreign-investor-access-official/articleshow/135998128.cms",
-    "published": "Thu, 19 Nov 2026 21:29:26 +0530",
-    "sentiment": 0.421
-   },
-   {
-    "title": "Six listed REIT firms distribute Rs 3,234 cr in Q2 to over 5.25 lakh unitholders",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/digital-real-estate/realty-news/six-listed-reit-firms-distribute-rs-3234-cr-in-q2-to-over-5-25-lakh-unitholders/articleshow/135998101.cms",
-    "published": "Thu, 19 Nov 2026 21:27:34 +0530",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/sebi-plans-consultation-paper-to-remove-fpi-constraints-absent-in-other-markets/articleshow/136020808.cms",
+    "published": "Fri, 20 Nov 2026 14:49:53 +0530",
     "sentiment": 0.0
    },
    {
-    "title": "Keystone Realtors to launch Rs 5,000 cr worth housing properties in MMR by Mar: CMD",
+    "title": "Indian finance hub eyes dual share model to kickstart public offers: Report",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/digital-real-estate/realty-news/keystone-realtors-to-launch-rs-5000-cr-worth-housing-properties-in-mmr-by-mar-cmd/articleshow/135997982.cms",
-    "published": "Thu, 19 Nov 2026 21:26:22 +0530",
-    "sentiment": 0.226
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/indian-finance-hub-eyes-dual-share-model-to-kickstart-public-offers-report/articleshow/136017941.cms",
+    "published": "Fri, 20 Nov 2026 13:02:59 +0530",
+    "sentiment": 0.296
    },
    {
-    "title": "Signature Global acquires 10-acre land parcels in Gurugram to build realty projects",
+    "title": "Who is Roaring Kitty? The man behind GameStop's meme rally",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/digital-real-estate/realty-news/signature-global-acquires-10-acre-land-parcels-in-gurugram-to-build-realty-projects/articleshow/135997924.cms",
-    "published": "Thu, 19 Nov 2026 21:23:49 +0530",
-    "sentiment": 0.0
-   },
-   {
-    "title": "Walmart raises its outlook for the year for the 3rd time after a solid quarter",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/walmart-raises-its-outlook-for-the-year-for-the-3rd-time-after-a-solid-quarter/articleshow/135997871.cms",
-    "published": "Thu, 19 Nov 2026 21:22:19 +0530",
-    "sentiment": 0.153
-   },
-   {
-    "title": "Palo Alto's raised sales forecast powers rally in cybersecurity stocks",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/palo-altos-raised-sales-forecast-powers-rally-in-cybersecurity-stocks/articleshow/135997775.cms",
-    "published": "Thu, 19 Nov 2026 21:20:59 +0530",
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/who-is-roaring-kitty-the-man-behind-gamestops-meme-rally/slideshow/136017912.cms",
+    "published": "Fri, 20 Nov 2026 12:20:28 +0530",
     "sentiment": 0.382
    },
    {
-    "title": "Nasdaq rallies as record Anthropic IPO revives AI stocks",
+    "title": "Treasury rally spills over to Indian bonds, debt supply slows move",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/us-stocks-nasdaq-rises-over-1-at-open-as-anthropic-ipo-pricing-bolsters-ai-trade/articleshow/135996273.cms",
-    "published": "Thu, 19 Nov 2026 20:47:37 +0530",
-    "sentiment": 0.735
+    "link": "https://economictimes.indiatimes.com/markets/bonds/treasury-rally-spills-over-to-indian-bonds-debt-supply-slows-move/articleshow/136014379.cms",
+    "published": "Fri, 20 Nov 2026 10:49:20 +0530",
+    "sentiment": 0.226
+   },
+   {
+    "title": "Rupee rises past 93 vs USD as portfolio inflows, bear retreat fuel rally",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/forex/rupee-rises-past-93-vs-usd-as-portfolio-inflows-bear-retreat-fuel-rally/articleshow/136014185.cms",
+    "published": "Fri, 20 Nov 2026 10:38:53 +0530",
+    "sentiment": 0.66
+   },
+   {
+    "title": "Rupee strengthens 17 paise to 93.15 against US dollar in early trade",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/forex/rupee-strengthens-17-paise-to-93-15-against-us-dollar-in-early-trade/articleshow/136013858.cms",
+    "published": "Fri, 20 Nov 2026 10:24:03 +0530",
+    "sentiment": 0.459
+   },
+   {
+    "title": "Anthropic shares close 17% higher on first day of trading amid protest, arrests outside Nasdaq",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/anthropic-shares-close-17-higher-on-first-day-of-trading-amid-protest-arrests-outside-nasdaq/videoshow/136013757.cms",
+    "published": "Fri, 20 Nov 2026 10:18:04 +0530",
+    "sentiment": -0.402
+   },
+   {
+    "title": "SELLAS Life Sciences shares plunge 19%: What triggered the sharp sell-off?",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/sellas-life-sciences-shares-plunge-19-what-triggered-the-sharp-sell-off/slideshow/136013890.cms",
+    "published": "Fri, 20 Nov 2026 10:17:39 +0530",
+    "sentiment": -0.612
+   },
+   {
+    "title": "Asian Paints Share Price Live Updates: Asian Paints Bonus Updates",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/stock-liveblog/asian-paints-share-price-live-20-nov-2026/liveblog/136013402.cms",
+    "published": "Fri, 20 Nov 2026 10:02:59 +0530",
+    "sentiment": 0.691
+   },
+   {
+    "title": "ICICI Bank Share Price Live Updates: ICICI Bank Bonus Updates",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/stock-liveblog/icici-bank-share-price-live-updates-20-nov-2026/liveblog/136013270.cms",
+    "published": "Fri, 20 Nov 2026 10:00:52 +0530",
+    "sentiment": 0.691
    }
   ]
  },
  "model": {
   "oos_days": 300,
-  "directional_calls": 146,
-  "directional_accuracy": 73.3,
-  "sign_accuracy_all_days": 65.7,
-  "gap_corr": 0.68,
-  "gap_sign_pct": 68.7,
+  "directional_calls": 36,
+  "directional_accuracy": 72.2,
+  "sign_accuracy_all_days": 51.0,
+  "gap_corr": 0.25,
+  "gap_sign_pct": 55.7,
   "trained_rows": 750,
-  "version": 47,
+  "version": 48,
   "bias_threshold": 0.3
  },
  "options": {
   "NIFTY": {
    "index": "NIFTY",
-   "spot": 25514.3,
-   "atm": 25500,
+   "spot": 25800.6,
+   "atm": 25800,
    "lot_size": 65,
    "expiry": "2026-11-23",
-   "days_to_expiry": 3.75,
-   "iv_used_pct": 15.8,
-   "expected_move": 409,
+   "days_to_expiry": 0.75,
+   "iv_used_pct": 17.32,
+   "expected_move": 203,
    "levels": {
-    "prev_close": 25514.3,
-    "ema20": 24439.47,
-    "support": 25241.3,
-    "resistance": 25650.8,
-    "atr": 313.78,
+    "prev_close": 25800.6,
+    "ema20": 24569.11,
+    "support": 25494.27,
+    "resistance": 25957.87,
+    "atr": 324.48,
     "pivots": {
-     "P": 25377.8,
-     "R1": 25650.8,
-     "S1": 25241.3,
-     "R2": 25787.3,
-     "S2": 24968.3
+     "P": 25651.53,
+     "R1": 25957.87,
+     "S1": 25494.27,
+     "R2": 26115.13,
+     "S2": 25187.93
     }
    },
    "strategies": [
     {
-     "name": "Bear Put Spread",
+     "name": "Bull Call Spread",
      "legs": [
       {
        "action": "BUY",
-       "strike": 25500,
-       "type": "PE",
-       "est_premium": 147.7
+       "strike": 25800,
+       "type": "CE",
+       "est_premium": 82.8
       },
-      {
-       "action": "SELL",
-       "strike": 25300,
-       "type": "PE",
-       "est_premium": 72.2
-      }
-     ],
-     "net_premium": -75.5,
-     "max_loss": 4907,
-     "max_reward": 8093,
-     "reward_risk": 1.65,
-     "entry": "Enter on pullbacks that fail below 25,651 (EMA20 / R1 resistance zone)",
-     "target": "Exit spread near \u20b9150.2 or NIFTY at 25,300",
-     "stop_loss": "Spread falls to \u20b937.7, or NIFTY closes above 25,787",
-     "breakeven": [
-      25424
-     ],
-     "notes": "Defined risk. Preferred structure.",
-     "verdict": {
-      "decision": "SKIP",
-      "dte": 3,
-      "stats": {
-       "trades": 82,
-       "win_pct": 40.2,
-       "avg_pnl": 101,
-       "worst": -5937,
-       "best": 12182,
-       "total": 8337,
-       "sample": "days the model called BEARISH"
-      },
-      "reason": "On days the model called BEARISH, this spread averaged \u20b9101 per lot over 82 trades, but \u20b9-623 over the last 12 (120 days): the edge has faded, so it is skipped."
-     }
-    },
-    {
-     "name": "Bear Call Spread",
-     "legs": [
       {
        "action": "SELL",
        "strike": 25900,
        "type": "CE",
-       "est_premium": 41.7
-      },
-      {
-       "action": "BUY",
-       "strike": 26100,
-       "type": "CE",
-       "est_premium": 16.0
+       "est_premium": 41.9
       }
      ],
-     "net_premium": 25.7,
-     "max_loss": 11330,
-     "max_reward": 1671,
-     "reward_risk": 0.15,
-     "entry": "Enter at 10:15 (after the first hour) only if NIFTY is below 25,900",
-     "target": "Buy back at \u20b911.6 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
-     "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,671 per lot)",
-     "breakeven": [
-      25926
-     ],
-     "notes": "Earns time decay; wins if the index does not fall (bull put) / rise (bear call) past the short strike.",
-     "verdict": {
-      "decision": "SKIP",
-      "dte": 3,
-      "stats": {
-       "trades": 78,
-       "win_pct": 67.9,
-       "avg_pnl": -44,
-       "worst": -6285,
-       "best": 2282,
-       "total": -3472,
-       "sample": "days the model called BEARISH"
-      },
-      "reason": "On days the model called BEARISH, this spread lost on average: 67.9% wins, avg \u20b9-44 per lot over 78 trades."
-     }
-    },
-    {
-     "name": "ATM Put Buy",
-     "legs": [
-      {
-       "action": "BUY",
-       "strike": 25500,
-       "type": "PE",
-       "est_premium": 147.7
-      }
-     ],
-     "net_premium": -147.7,
-     "max_loss": 9600,
-     "max_reward": 8274,
-     "reward_risk": 0.86,
-     "entry": "Enter on pullbacks that fail below 25,651 (EMA20 / R1 resistance zone)",
-     "target": "Premium \u2248 \u20b9275.0 (NIFTY near 25,241)",
-     "stop_loss": "Premium \u20b9103.4 (-30%), or NIFTY closes above 25,787",
-     "breakeven": [
-      25352
-     ],
-     "notes": "Max loss = full premium. Theta decay hurts if move is late.",
-     "verdict": {
-      "decision": "CAUTION",
-      "dte": 3,
-      "reason": "ATM Put Buy is not tested by the options lab.",
-      "stats": null
-     }
-    }
-   ],
-   "premium_note": "Premiums are Black-Scholes estimates from India VIX, not live quotes.",
-   "setup": {
-    "decision": "SKIP",
-    "dte": 3,
-    "stats": {
-     "trades": 82,
-     "win_pct": 40.2,
-     "avg_pnl": 101,
-     "worst": -5937,
-     "best": 12182,
-     "total": 8337,
-     "sample": "days the model called BEARISH"
-    },
-    "reason": "No tested structure qualifies for today. On days the model called BEARISH, this spread averaged \u20b9101 per lot over 82 trades, but \u20b9-623 over the last 12 (120 days): the edge has faded, so it is skipped."
-   }
-  },
-  "BANKNIFTY": {
-   "index": "BANKNIFTY",
-   "spot": 63063.0,
-   "atm": 63100,
-   "lot_size": 30,
-   "expiry": "2026-11-23",
-   "days_to_expiry": 3.75,
-   "iv_used_pct": 19.9,
-   "expected_move": 1272,
-   "levels": {
-    "prev_close": 63063.0,
-    "ema20": 59015.9,
-    "support": 62321.73,
-    "resistance": 63433.63,
-    "atr": 883.79,
-    "pivots": {
-     "P": 62692.37,
-     "R1": 63433.63,
-     "S1": 62321.73,
-     "R2": 63804.27,
-     "S2": 61580.47
-    }
-   },
-   "strategies": [
-    {
-     "name": "Bear Put Spread",
-     "legs": [
-      {
-       "action": "BUY",
-       "strike": 63100,
-       "type": "PE",
-       "est_premium": 504.9
-      },
-      {
-       "action": "SELL",
-       "strike": 62500,
-       "type": "PE",
-       "est_premium": 259.2
-      }
-     ],
-     "net_premium": -245.7,
-     "max_loss": 7371,
-     "max_reward": 10629,
+     "net_premium": -40.9,
+     "max_loss": 2658,
+     "max_reward": 3842,
      "reward_risk": 1.44,
-     "entry": "Enter on pullbacks that fail below 63,434 (EMA20 / R1 resistance zone)",
-     "target": "Exit spread near \u20b9458.3 or BANKNIFTY at 62,500",
-     "stop_loss": "Spread falls to \u20b9122.8, or BANKNIFTY closes above 63,804",
+     "entry": "Enter on dips that hold above 25,494 (EMA20 / S1 support zone)",
+     "target": "Exit spread near \u20b976.4 or NIFTY at 25,900",
+     "stop_loss": "Spread falls to \u20b920.4, or NIFTY closes below 25,188",
      "breakeven": [
-      62854
+      25841
      ],
      "notes": "Defined risk. Preferred structure.",
      "verdict": {
       "decision": "SKIP",
-      "dte": 3,
-      "stats": {
-       "trades": 95,
-       "win_pct": 42.1,
-       "avg_pnl": 52,
-       "worst": -9826,
-       "best": 14810,
-       "total": 4949,
-       "sample": "days the model called BEARISH"
-      },
-      "reason": "On days the model called BEARISH, this spread lost on average: 42.1% wins, avg \u20b952 per lot over 95 trades."
+      "dte": 0,
+      "stats": null,
+      "reason": "Expiry day: a trade opened today can't be tested on NSE's closing prices, and the earlier model test lost money on expiry-day entries."
      }
     },
     {
-     "name": "Bear Call Spread",
+     "name": "Bull Put Spread",
      "legs": [
       {
        "action": "SELL",
-       "strike": 64200,
-       "type": "CE",
-       "est_premium": 140.4
+       "strike": 25600,
+       "type": "PE",
+       "est_premium": 16.5
       },
       {
        "action": "BUY",
-       "strike": 64800,
-       "type": "CE",
-       "est_premium": 57.0
+       "strike": 25500,
+       "type": "PE",
+       "est_premium": 5.8
       }
      ],
-     "net_premium": 83.4,
-     "max_loss": 15498,
-     "max_reward": 2502,
-     "reward_risk": 0.16,
-     "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is below 64,200",
-     "target": "Buy back at \u20b937.5 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
-     "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b92,502 per lot)",
+     "net_premium": 10.7,
+     "max_loss": 5804,
+     "max_reward": 696,
+     "reward_risk": 0.12,
+     "entry": "Enter at 10:15 (after the first hour) only if NIFTY is above 25,600",
+     "target": "Buy back at \u20b94.8 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
+     "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b9696 per lot)",
      "breakeven": [
-      64283
+      25589
      ],
      "notes": "Earns time decay; wins if the index does not fall (bull put) / rise (bear call) past the short strike.",
      "verdict": {
       "decision": "SKIP",
-      "dte": 3,
-      "stats": {
-       "trades": 91,
-       "win_pct": 62.6,
-       "avg_pnl": -984,
-       "worst": -15131,
-       "best": 3828,
-       "total": -89604,
-       "sample": "days the model called BEARISH"
-      },
-      "reason": "On days the model called BEARISH, this spread lost on average: 62.6% wins, avg \u20b9-984 per lot over 91 trades."
+      "dte": 0,
+      "stats": null,
+      "reason": "Expiry day: a trade opened today can't be tested on NSE's closing prices, and the earlier model test lost money on expiry-day entries."
      }
     },
     {
-     "name": "ATM Put Buy",
+     "name": "ATM Call Buy",
      "legs": [
       {
        "action": "BUY",
-       "strike": 63100,
-       "type": "PE",
-       "est_premium": 504.9
+       "strike": 25800,
+       "type": "CE",
+       "est_premium": 82.8
       }
      ],
-     "net_premium": -504.9,
-     "max_loss": 15147,
-     "max_reward": 10994,
-     "reward_risk": 0.73,
-     "entry": "Enter on pullbacks that fail below 63,434 (EMA20 / R1 resistance zone)",
-     "target": "Premium \u2248 \u20b9871.4 (BANKNIFTY near 62,322)",
-     "stop_loss": "Premium \u20b9353.4 (-30%), or BANKNIFTY closes above 63,804",
+     "net_premium": -82.8,
+     "max_loss": 5382,
+     "max_reward": 5209,
+     "reward_risk": 0.97,
+     "entry": "Enter on dips that hold above 25,494 (EMA20 / S1 support zone)",
+     "target": "Premium \u2248 \u20b9162.9 (NIFTY near 25,958)",
+     "stop_loss": "Premium \u20b958.0 (-30%), or NIFTY closes below 25,188",
      "breakeven": [
-      62595
+      25883
      ],
      "notes": "Max loss = full premium. Theta decay hurts if move is late.",
      "verdict": {
       "decision": "CAUTION",
-      "dte": 3,
-      "reason": "ATM Put Buy is not tested by the options lab.",
+      "dte": 0,
+      "reason": "ATM Call Buy is not tested by the options lab.",
       "stats": null
      }
     }
@@ -540,135 +371,256 @@
    "premium_note": "Premiums are Black-Scholes estimates from India VIX, not live quotes.",
    "setup": {
     "decision": "SKIP",
-    "dte": 3,
-    "stats": {
-     "trades": 95,
-     "win_pct": 42.1,
-     "avg_pnl": 52,
-     "worst": -9826,
-     "best": 14810,
-     "total": 4949,
-     "sample": "days the model called BEARISH"
+    "dte": 0,
+    "stats": null,
+    "reason": "No tested structure qualifies for today. Expiry day: a trade opened today can't be tested on NSE's closing prices, and the earlier model test lost money on expiry-day entries."
+   }
+  },
+  "BANKNIFTY": {
+   "index": "BANKNIFTY",
+   "spot": 64635.2,
+   "atm": 64600,
+   "lot_size": 30,
+   "expiry": "2026-11-23",
+   "days_to_expiry": 0.75,
+   "iv_used_pct": 23.72,
+   "expected_move": 695,
+   "levels": {
+    "prev_close": 64635.2,
+    "ema20": 59551.07,
+    "support": 63262.23,
+    "resistance": 65344.48,
+    "atr": 969.39,
+    "pivots": {
+     "P": 63971.52,
+     "R1": 65344.48,
+     "S1": 63262.23,
+     "R2": 66053.77,
+     "S2": 61889.27
+    }
+   },
+   "strategies": [
+    {
+     "name": "Bull Call Spread",
+     "legs": [
+      {
+       "action": "BUY",
+       "strike": 64600,
+       "type": "CE",
+       "est_premium": 299.6
+      },
+      {
+       "action": "SELL",
+       "strike": 64900,
+       "type": "CE",
+       "est_premium": 168.3
+      }
+     ],
+     "net_premium": -131.3,
+     "max_loss": 3939,
+     "max_reward": 5061,
+     "reward_risk": 1.28,
+     "entry": "Enter on dips that hold above 63,262 (EMA20 / S1 support zone)",
+     "target": "Exit spread near \u20b9232.5 or BANKNIFTY at 64,900",
+     "stop_loss": "Spread falls to \u20b965.7, or BANKNIFTY closes below 61,889",
+     "breakeven": [
+      64731
+     ],
+     "notes": "Defined risk. Preferred structure.",
+     "verdict": {
+      "decision": "SKIP",
+      "dte": 0,
+      "stats": null,
+      "reason": "Expiry day: a trade opened today can't be tested on NSE's closing prices, and the earlier model test lost money on expiry-day entries."
+     }
     },
-    "reason": "No tested structure qualifies for today. On days the model called BEARISH, this spread lost on average: 42.1% wins, avg \u20b952 per lot over 95 trades."
+    {
+     "name": "Bull Put Spread",
+     "legs": [
+      {
+       "action": "SELL",
+       "strike": 64000,
+       "type": "PE",
+       "est_premium": 65.6
+      },
+      {
+       "action": "BUY",
+       "strike": 63700,
+       "type": "PE",
+       "est_premium": 27.1
+      }
+     ],
+     "net_premium": 38.5,
+     "max_loss": 7845,
+     "max_reward": 1155,
+     "reward_risk": 0.15,
+     "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is above 64,000",
+     "target": "Buy back at \u20b917.3 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
+     "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,155 per lot)",
+     "breakeven": [
+      63962
+     ],
+     "notes": "Earns time decay; wins if the index does not fall (bull put) / rise (bear call) past the short strike.",
+     "verdict": {
+      "decision": "SKIP",
+      "dte": 0,
+      "stats": null,
+      "reason": "Expiry day: a trade opened today can't be tested on NSE's closing prices, and the earlier model test lost money on expiry-day entries."
+     }
+    },
+    {
+     "name": "ATM Call Buy",
+     "legs": [
+      {
+       "action": "BUY",
+       "strike": 64600,
+       "type": "CE",
+       "est_premium": 299.6
+      }
+     ],
+     "net_premium": -299.6,
+     "max_loss": 8988,
+     "max_reward": 11220,
+     "reward_risk": 1.25,
+     "entry": "Enter on dips that hold above 63,262 (EMA20 / S1 support zone)",
+     "target": "Premium \u2248 \u20b9673.6 (BANKNIFTY near 65,344)",
+     "stop_loss": "Premium \u20b9209.7 (-30%), or BANKNIFTY closes below 61,889",
+     "breakeven": [
+      64900
+     ],
+     "notes": "Max loss = full premium. Theta decay hurts if move is late.",
+     "verdict": {
+      "decision": "CAUTION",
+      "dte": 0,
+      "reason": "ATM Call Buy is not tested by the options lab.",
+      "stats": null
+     }
+    }
+   ],
+   "premium_note": "Premiums are Black-Scholes estimates from India VIX, not live quotes.",
+   "setup": {
+    "decision": "SKIP",
+    "dte": 0,
+    "stats": null,
+    "reason": "No tested structure qualifies for today. Expiry day: a trade opened today can't be tested on NSE's closing prices, and the earlier model test lost money on expiry-day entries."
    }
   }
  },
  "events": [],
  "preopen": {
-  "snapshot_ist": "Fri 20 Nov 07:13 IST",
-  "stage": "final",
-  "expected_gap_pct": -0.91,
-  "gap_typical_error_pct": 0.31,
-  "expected_day_pct": -0.8,
-  "z": -1.11,
-  "typical_daily_move_pct": 0.717,
+  "snapshot_ist": "Fri 20 Nov 16:18 IST",
+  "stage": "preview",
+  "expected_gap_pct": 0.02,
+  "gap_typical_error_pct": 0.39,
+  "expected_day_pct": 0.1,
+  "z": 0.13,
+  "typical_daily_move_pct": 0.78,
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": -3.03
+    "move_pct": 0.0
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": -3.37
+    "move_pct": 0.0
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": -3.54
+    "move_pct": 0.0
    },
    {
     "key": "dax",
     "name": "DAX (Germany)",
-    "move_pct": -2.24
+    "move_pct": 0.0
    },
    {
     "key": "ftse",
     "name": "FTSE 100 (UK)",
-    "move_pct": -1.85
+    "move_pct": 0.0
    },
    {
     "key": "stoxx",
     "name": "Euro Stoxx 50",
-    "move_pct": -1.78
+    "move_pct": 0.0
    },
    {
     "key": "n225",
     "name": "Nikkei 225",
-    "move_pct": -3.52
+    "move_pct": 0.0
    },
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": -0.71
+    "move_pct": 0.0
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": -4.97
+    "move_pct": 0.0
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": 0.12
+    "move_pct": 0.0
    },
    {
     "key": "inr",
     "name": "USD/INR",
-    "move_pct": -0.17
+    "move_pct": 0.0
    }
   ],
   "drivers": [
    {
+    "feature": "vix",
+    "label": "India VIX level",
+    "value": 17.32,
+    "contribution_pct": 0.103
+   },
+   {
+    "feature": "nprev",
+    "label": "Nifty previous day",
+    "value": 1.12,
+    "contribution_pct": -0.037
+   },
+   {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": -3.03,
-    "contribution_pct": -1.334
-   },
-   {
-    "feature": "nq",
-    "label": "Nasdaq futures",
-    "value": -3.37,
-    "contribution_pct": 0.706
-   },
-   {
-    "feature": "n225",
-    "label": "Nikkei 225",
-    "value": -3.52,
-    "contribution_pct": -0.178
+    "value": 0.0,
+    "contribution_pct": -0.029
    },
    {
     "feature": "ym",
     "label": "Dow futures",
-    "value": -3.54,
-    "contribution_pct": 0.138
+    "value": 0.0,
+    "contribution_pct": 0.023
    },
    {
-    "feature": "dax",
-    "label": "DAX (Germany)",
-    "value": -2.24,
-    "contribution_pct": -0.105
+    "feature": "ftse",
+    "label": "FTSE 100 (UK)",
+    "value": 0.0,
+    "contribution_pct": -0.006
    },
    {
-    "feature": "inr",
-    "label": "USD/INR",
-    "value": -0.17,
-    "contribution_pct": 0.093
+    "feature": "cl",
+    "label": "Crude oil",
+    "value": 0.0,
+    "contribution_pct": 0.006
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.68,
-   "gap_sign_pct": 68.7,
-   "directional_calls": 159,
-   "directional_accuracy": 73.0
+   "gap_corr": 0.25,
+   "gap_sign_pct": 55.7,
+   "directional_calls": 45,
+   "directional_accuracy": 75.6
   },
-  "vix": 15.57
+  "vix": 17.32
  },
  "global_table": {
-  "updated": "2026-11-20T07:13:48.133816+05:30",
+  "updated": "2026-11-20T16:18:23.349995+05:30",
   "rows": [
    {
     "group": "US, last close",
@@ -678,27 +630,27 @@
    },
    {
     "group": "US futures now",
-    "move": "S&P -3.03%, Nasdaq -3.37%, Dow -3.54% (since Nifty's close)",
-    "effect": "red",
-    "note": "Futures point to a softer open"
+    "move": "S&P +0.00%, Nasdaq +0.00%, Dow +0.00% (since Nifty's close)",
+    "effect": "flat",
+    "note": "Flat"
    },
    {
     "group": "Europe, last close",
-    "move": "DAX -1.1%, FTSE -0.9%, Euro Stoxx -0.7%",
+    "move": "DAX -1.4%, FTSE -0.4%, Euro Stoxx -1.6%",
     "effect": "red",
     "note": "Weak"
    },
    {
     "group": "Asia today",
-    "move": "Nikkei -4.0%, Hang Seng -1.6%, Kospi -3.9%",
+    "move": "Nikkei -5.1%, Hang Seng -3.8%, Kospi -5.2%",
     "effect": "red",
     "note": "Clearly weak (one market down over 3%)"
    },
    {
     "group": "Crude oil",
-    "move": "WTI ~$83, Brent ~$90 (+0.6%)",
-    "effect": "flat",
-    "note": "Steady"
+    "move": "WTI ~$81, Brent ~$88 (-1.3%)",
+    "effect": "green",
+    "note": "Falling oil helps India"
    },
    {
     "group": "US 10-year yield",
@@ -708,32 +660,32 @@
    },
    {
     "group": "Dollar index",
-    "move": "103.88 (-0.01%)",
+    "move": "103.84 (-0.05%)",
     "effect": "flat",
     "note": "Steady"
    },
    {
     "group": "Rupee",
-    "move": "93.28 per $ (+0.00%)",
-    "effect": "flat",
-    "note": "Steady"
+    "move": "92.69 per $ (-0.63%)",
+    "effect": "green",
+    "note": "Rupee strengthening"
    },
    {
     "group": "India VIX (fear)",
-    "move": "16.11 (+3.8%)",
-    "effect": "flat",
-    "note": "Normal"
+    "move": "17.32 (+7.5%)",
+    "effect": "red",
+    "note": "Fear rising: wider swings"
    },
    {
     "group": "Model: Nifty open",
-    "move": "-0.91% (\u00b10.31%)",
-    "effect": "red",
-    "note": "Combined forecast from all markets (final)",
+    "move": "+0.02% (\u00b10.39%)",
+    "effect": "flat",
+    "note": "Combined forecast from all markets (preview)",
     "model": true
    }
   ],
   "tilt": "negative",
-  "score": -5
+  "score": -3
  },
  "notes": [
   "GIFT Nifty has no free data feed; the pre-open model reads what drives it (US/Dow futures, Europe, Asia, crude, rupee).",

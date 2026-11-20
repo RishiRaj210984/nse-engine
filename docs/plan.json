@@ -1,331 +1,246 @@
 {
- "generated_at": "2026-11-20T07:14:00.963674+05:30",
- "session": "2026-11-20",
- "stage": "final",
+ "generated_at": "2026-11-20T16:18:30.278485+05:30",
+ "session": "2026-11-23",
+ "stage": "preview",
  "expected_open": {
-  "gap_pct": -0.91,
-  "error_pct": 0.31,
-  "day_pct": -0.8,
-  "snapshot": "Fri 20 Nov 07:13 IST",
-  "stage": "final",
-  "tip": "Big gap down expected. Place no market orders at 09:15. Stocks that open above their T1 are skipped. Let the first hour settle before any option entry.",
+  "gap_pct": 0.02,
+  "error_pct": 0.39,
+  "day_pct": 0.1,
+  "snapshot": "Fri 20 Nov 16:18 IST",
+  "stage": "preview",
+  "tip": "Flat open expected. Normal entry windows apply.",
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": -3.03
+    "move_pct": 0.0
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": -3.37
+    "move_pct": 0.0
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": -3.54
+    "move_pct": 0.0
    },
    {
     "key": "dax",
     "name": "DAX (Germany)",
-    "move_pct": -2.24
+    "move_pct": 0.0
    },
    {
     "key": "ftse",
     "name": "FTSE 100 (UK)",
-    "move_pct": -1.85
+    "move_pct": 0.0
    },
    {
     "key": "stoxx",
     "name": "Euro Stoxx 50",
-    "move_pct": -1.78
+    "move_pct": 0.0
    },
    {
     "key": "n225",
     "name": "Nikkei 225",
-    "move_pct": -3.52
+    "move_pct": 0.0
    },
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": -0.71
+    "move_pct": 0.0
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": -4.97
+    "move_pct": 0.0
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": 0.12
+    "move_pct": 0.0
    },
    {
     "key": "inr",
     "name": "USD/INR",
-    "move_pct": -0.17
+    "move_pct": 0.0
    }
   ],
   "drivers": [
    {
+    "feature": "vix",
+    "label": "India VIX level",
+    "value": 17.32,
+    "contribution_pct": 0.103
+   },
+   {
+    "feature": "nprev",
+    "label": "Nifty previous day",
+    "value": 1.12,
+    "contribution_pct": -0.037
+   },
+   {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": -3.03,
-    "contribution_pct": -1.334
-   },
-   {
-    "feature": "nq",
-    "label": "Nasdaq futures",
-    "value": -3.37,
-    "contribution_pct": 0.706
-   },
-   {
-    "feature": "n225",
-    "label": "Nikkei 225",
-    "value": -3.52,
-    "contribution_pct": -0.178
+    "value": 0.0,
+    "contribution_pct": -0.029
    },
    {
     "feature": "ym",
     "label": "Dow futures",
-    "value": -3.54,
-    "contribution_pct": 0.138
+    "value": 0.0,
+    "contribution_pct": 0.023
    },
    {
-    "feature": "dax",
-    "label": "DAX (Germany)",
-    "value": -2.24,
-    "contribution_pct": -0.105
+    "feature": "ftse",
+    "label": "FTSE 100 (UK)",
+    "value": 0.0,
+    "contribution_pct": -0.006
    },
    {
-    "feature": "inr",
-    "label": "USD/INR",
-    "value": -0.17,
-    "contribution_pct": 0.093
+    "feature": "cl",
+    "label": "Crude oil",
+    "value": 0.0,
+    "contribution_pct": 0.006
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.68,
-   "gap_sign_pct": 68.7,
-   "directional_calls": 159,
-   "directional_accuracy": 73.0
+   "gap_corr": 0.25,
+   "gap_sign_pct": 55.7,
+   "directional_calls": 45,
+   "directional_accuracy": 75.6
   }
  },
- "headline": "Market bias DOWN \u2014 favour selling rallies / puts",
- "bias": "BEARISH",
- "score": -55,
- "bias_track_record_pct": 73.3,
+ "headline": "Market bias UP \u2014 favour buying dips",
+ "bias": "BULLISH",
+ "score": 58,
+ "bias_track_record_pct": 72.2,
  "options": [
   {
    "index": "NIFTY",
-   "strategy": "Bear Put Spread",
-   "legs": "BUY 25500 PE + SELL 25300 PE",
+   "strategy": "Bull Call Spread",
+   "legs": "BUY 25800 CE + SELL 25900 CE",
    "expiry": "2026-11-23",
    "lot_size": 65,
-   "entry": "Enter on pullbacks that fail below 25,651 (EMA20 / R1 resistance zone)",
-   "target": "Exit spread near \u20b9150.2 or NIFTY at 25,300",
-   "stop_loss": "Spread falls to \u20b937.7, or NIFTY closes above 25,787",
-   "max_loss": 4907,
-   "max_reward": 8093,
-   "reward_risk": 1.65,
+   "entry": "Enter on dips that hold above 25,494 (EMA20 / S1 support zone)",
+   "target": "Exit spread near \u20b976.4 or NIFTY at 25,900",
+   "stop_loss": "Spread falls to \u20b920.4, or NIFTY closes below 25,188",
+   "max_loss": 2658,
+   "max_reward": 3842,
+   "reward_risk": 1.44,
    "decision": "SKIP",
-   "decision_reason": "No tested structure qualifies for today. On days the model called BEARISH, this spread averaged \u20b9101 per lot over 82 trades, but \u20b9-623 over the last 12 (120 days): the edge has faded, so it is skipped.",
+   "decision_reason": "No tested structure qualifies for today. Expiry day: a trade opened today can't be tested on NSE's closing prices, and the earlier model test lost money on expiry-day entries.",
    "enter_at": "09:45\u201311:00 IST",
    "exit_by": "15:00 IST same day if no target",
-   "setup_stats": {
-    "trades": 82,
-    "win_pct": 40.2,
-    "avg_pnl": 101,
-    "worst": -5937,
-    "best": 12182,
-    "total": 8337,
-    "sample": "days the model called BEARISH"
-   },
+   "setup_stats": null,
    "test": null,
-   "money_needed": 56276,
+   "money_needed": 45300,
    "money_basis": "margin for the sold options (estimate)"
   },
   {
    "index": "BANKNIFTY",
-   "strategy": "Bear Put Spread",
-   "legs": "BUY 63100 PE + SELL 62500 PE",
+   "strategy": "Bull Call Spread",
+   "legs": "BUY 64600 CE + SELL 64900 CE",
    "expiry": "2026-11-23",
    "lot_size": 30,
-   "entry": "Enter on pullbacks that fail below 63,434 (EMA20 / R1 resistance zone)",
-   "target": "Exit spread near \u20b9458.3 or BANKNIFTY at 62,500",
-   "stop_loss": "Spread falls to \u20b9122.8, or BANKNIFTY closes above 63,804",
-   "max_loss": 7371,
-   "max_reward": 10629,
-   "reward_risk": 1.44,
+   "entry": "Enter on dips that hold above 63,262 (EMA20 / S1 support zone)",
+   "target": "Exit spread near \u20b9232.5 or BANKNIFTY at 64,900",
+   "stop_loss": "Spread falls to \u20b965.7, or BANKNIFTY closes below 61,889",
+   "max_loss": 3939,
+   "max_reward": 5061,
+   "reward_risk": 1.28,
    "decision": "SKIP",
-   "decision_reason": "No tested structure qualifies for today. On days the model called BEARISH, this spread lost on average: 42.1% wins, avg \u20b952 per lot over 95 trades.",
+   "decision_reason": "No tested structure qualifies for today. Expiry day: a trade opened today can't be tested on NSE's closing prices, and the earlier model test lost money on expiry-day entries.",
    "enter_at": "09:45\u201311:00 IST",
    "exit_by": "15:00 IST same day if no target",
-   "setup_stats": {
-    "trades": 95,
-    "win_pct": 42.1,
-    "avg_pnl": 52,
-    "worst": -9826,
-    "best": 14810,
-    "total": 4949,
-    "sample": "days the model called BEARISH"
-   },
+   "setup_stats": null,
    "test": null,
-   "money_needed": 70409,
+   "money_needed": 55320,
    "money_basis": "margin for the sold options (estimate)"
   }
  ],
  "stocks": [
   {
-   "symbol": "HEROMOTOCO",
+   "symbol": "INDUSINDBK",
    "grade": "B",
-   "action": "BUY HEROMOTOCO near \u20b95,556.00 (skip if it opens above \u20b95,779.79) \u00b7 SL \u20b95,369.51 \u00b7 T1 \u20b95,779.79 \u00b7 T2 \u20b95,928.99",
-   "entry": 5556.0,
+   "action": "BUY INDUSINDBK near \u20b91,003.00 (skip if it opens above \u20b91,047.99) \u00b7 SL \u20b9965.51 \u00b7 T1 \u20b91,047.99 \u00b7 T2 \u20b91,077.98 \u00b7 Qty 2 for \u20b910k @1% risk",
+   "entry": 1003.0,
    "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
    "exit_by": "day 2, 15:15 IST",
-   "stop": 5369.51,
-   "t1": 5779.79,
-   "t2": 5928.99,
-   "win_prob": 53.8,
-   "vol_badge": "2.4x Vol Surge"
+   "stop": 965.51,
+   "t1": 1047.99,
+   "t2": 1077.98,
+   "win_prob": 53.4,
+   "vol_badge": "6.0x Vol Surge"
   },
   {
-   "symbol": "IDFCFIRSTB",
+   "symbol": "PERSISTENT",
    "grade": "B",
-   "action": "BUY IDFCFIRSTB near \u20b986.05 (skip if it opens above \u20b989.40) \u00b7 SL \u20b983.26 \u00b7 T1 \u20b989.40 \u00b7 T2 \u20b991.63 \u00b7 Qty 35 for \u20b910k @1% risk",
-   "entry": 86.05,
+   "action": "BUY PERSISTENT near \u20b96,124.00 (skip if it opens above \u20b96,380.83) \u00b7 SL \u20b95,909.97 \u00b7 T1 \u20b96,380.83 \u00b7 T2 \u20b96,552.06",
+   "entry": 6124.0,
    "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
    "exit_by": "day 2, 15:15 IST",
-   "stop": 83.26,
-   "t1": 89.4,
-   "t2": 91.63,
-   "win_prob": 53.8,
-   "vol_badge": "2.3x Vol Surge"
-  },
-  {
-   "symbol": "TVSMOTOR",
-   "grade": "B",
-   "action": "BUY TVSMOTOR near \u20b94,601.40 (skip if it opens above \u20b94,786.22) \u00b7 SL \u20b94,447.38 \u00b7 T1 \u20b94,786.22 \u00b7 T2 \u20b94,909.44",
-   "entry": 4601.4,
-   "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
-   "exit_by": "day 2, 15:15 IST",
-   "stop": 4447.38,
-   "t1": 4786.22,
-   "t2": 4909.44,
-   "win_prob": 53.8,
-   "vol_badge": "2.0x Vol Surge"
-  },
-  {
-   "symbol": "EICHERMOT",
-   "grade": "B",
-   "action": "BUY EICHERMOT near \u20b98,058.50 (skip if it opens above \u20b98,382.38) \u00b7 SL \u20b97,788.60 \u00b7 T1 \u20b98,382.38 \u00b7 T2 \u20b98,598.30",
-   "entry": 8058.5,
-   "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
-   "exit_by": "day 2, 15:15 IST",
-   "stop": 7788.6,
-   "t1": 8382.38,
-   "t2": 8598.3,
-   "win_prob": 53.8,
-   "vol_badge": "1.6x Vol Surge"
+   "stop": 5909.97,
+   "t1": 6380.83,
+   "t2": 6552.06,
+   "win_prob": 53.4,
+   "vol_badge": "3.2x Vol Surge"
   }
  ],
  "stock_options": [
   {
-   "symbol": "HEROMOTOCO",
+   "symbol": "INDUSINDBK",
    "kind": "CE",
    "side": "BUY",
    "grade": "B",
-   "trigger": 5556.0,
-   "stop": 5369.51,
-   "t1": 5779.79,
-   "lot": 150,
-   "strike": 5550.0,
-   "premium": 33615,
+   "trigger": 1003.0,
+   "stop": 965.51,
+   "t1": 1047.99,
+   "lot": 700,
+   "strike": 1000.0,
+   "premium": 24080,
    "tiers": {
-    "5K": {
-     "strike": 6250.0,
-     "premium": 4995
-    },
+    "5K": null,
     "10K": {
-     "strike": 6050.0,
-     "premium": 9525
+     "strike": 1070.0,
+     "premium": 9415
     },
     "15K": {
-     "strike": 5900.0,
-     "premium": 13752
+     "strike": 1040.0,
+     "premium": 14385
     }
    }
   },
   {
-   "symbol": "IDFCFIRSTB",
+   "symbol": "PERSISTENT",
    "kind": "CE",
    "side": "BUY",
    "grade": "B",
-   "trigger": 86.05,
-   "stop": 83.26,
-   "t1": 89.4,
-   "lot": 9275,
-   "strike": 86.0,
-   "premium": 34688,
-   "tiers": {
-    "5K": null,
-    "10K": null,
-    "15K": null
-   }
-  },
-  {
-   "symbol": "TVSMOTOR",
-   "kind": "CE",
-   "side": "BUY",
-   "grade": "B",
-   "trigger": 4601.4,
-   "stop": 4447.38,
-   "t1": 4786.22,
-   "lot": 175,
-   "strike": 4600.0,
-   "premium": 29904,
+   "trigger": 6124.0,
+   "stop": 5909.97,
+   "t1": 6380.83,
+   "lot": 125,
+   "strike": 6100.0,
+   "premium": 29231,
    "tiers": {
     "5K": {
-     "strike": 5200.0,
-     "premium": 3644
+     "strike": 7000.0,
+     "premium": 3548
     },
     "10K": {
-     "strike": 5000.0,
-     "premium": 7691
+     "strike": 6600.0,
+     "premium": 9965
     },
     "15K": {
-     "strike": 4850.0,
-     "premium": 14476
-    }
-   }
-  },
-  {
-   "symbol": "EICHERMOT",
-   "kind": "CE",
-   "side": "BUY",
-   "grade": "B",
-   "trigger": 8058.5,
-   "stop": 7788.6,
-   "t1": 8382.38,
-   "lot": 100,
-   "strike": 8100.0,
-   "premium": 28910,
-   "tiers": {
-    "5K": null,
-    "10K": {
-     "strike": 8800.0,
-     "premium": 7720
-    },
-    "15K": {
-     "strike": 8500.0,
-     "premium": 13680
+     "strike": 6400.0,
+     "premium": 15000
     }
    }
   }
  ],
  "capital": 15000,
- "momentum_money": 10620,
+ "momentum_money": 5253,
  "put_gate_open": false,
  "market_gate_open": true,
  "events": [],
@@ -333,85 +248,85 @@
  "no_trade_reason": null,
  "timeline": [
   {
-   "date": "2026-11-20",
+   "date": "2026-11-23",
    "start": "07:45",
    "end": "09:00",
    "kind": "prep",
    "title": "Read the final plan",
    "do": "The ~07:15 run is final (US close, Dow and US futures, Europe, Asia open). Read the expected open, bias and trades. Set price alerts at each entry and stop-loss.",
-   "when": "Fri 20 Nov \u00b7 07:45\u201309:00"
+   "when": "Mon 23 Nov \u00b7 07:45\u201309:00"
   },
   {
-   "date": "2026-11-20",
+   "date": "2026-11-23",
    "start": "09:00",
    "end": "09:15",
    "kind": "wait",
    "title": "Pre-open",
    "do": "Place no market orders. Note where your stocks are indicated to open.",
-   "when": "Fri 20 Nov \u00b7 09:00\u201309:15"
+   "when": "Mon 23 Nov \u00b7 09:00\u201309:15"
   },
   {
-   "date": "2026-11-20",
+   "date": "2026-11-23",
    "start": "09:15",
    "end": "09:30",
    "kind": "wait",
    "title": "Wait",
    "do": "Opening 15 min is the most volatile. Cancel any stock that opens above its T1 or below its SL.",
-   "when": "Fri 20 Nov \u00b7 09:15\u201309:30"
+   "when": "Mon 23 Nov \u00b7 09:15\u201309:30"
   },
   {
-   "date": "2026-11-20",
+   "date": "2026-11-23",
    "start": "09:30",
    "end": "10:30",
    "kind": "act",
    "title": "Stock buy window",
    "do": "Buy only if price is holding above the entry and the 15-min opening high. Place the SL order immediately.",
-   "when": "Fri 20 Nov \u00b7 09:30\u201310:30"
+   "when": "Mon 23 Nov \u00b7 09:30\u201310:30"
   },
   {
-   "date": "2026-11-20",
+   "date": "2026-11-23",
    "start": "09:45",
    "end": "11:00",
    "kind": "act",
    "title": "Options window",
    "do": "Spreads / ATM buys only if the index respects the support/resistance shown. Iron condor / fly only after 10:00 with the index inside the range.",
-   "when": "Fri 20 Nov \u00b7 09:45\u201311:00"
+   "when": "Mon 23 Nov \u00b7 09:45\u201311:00"
   },
   {
-   "date": "2026-11-20",
+   "date": "2026-11-23",
    "start": "11:30",
    "end": "14:30",
    "kind": "manage",
    "title": "Manage only",
    "do": "No new stock entries. If it did not trigger, skip it. Keep stop-loss orders in place.",
-   "when": "Fri 20 Nov \u00b7 11:30\u201314:30"
+   "when": "Mon 23 Nov \u00b7 11:30\u201314:30"
   },
   {
-   "date": "2026-11-20",
+   "date": "2026-11-23",
    "start": "14:30",
    "end": "15:00",
    "kind": "exit",
    "title": "Option buyers exit",
    "do": "Exit option buys by 15:00 if target not hit (time decay). Spreads/condors: hold only if still inside the plan.",
-   "when": "Fri 20 Nov \u00b7 14:30\u201315:00"
+   "when": "Mon 23 Nov \u00b7 14:30\u201315:00"
   },
   {
-   "date": "2026-11-20",
+   "date": "2026-11-23",
    "start": "16:30",
    "end": "17:00",
    "kind": "review",
    "title": "Review",
    "do": "The engine grades today's plan. Check the Results tab: what worked, what the gap was.",
-   "when": "Fri 20 Nov \u00b7 16:30\u201317:00"
+   "when": "Mon 23 Nov \u00b7 16:30\u201317:00"
   },
   {
-   "date": "2026-11-23",
+   "date": "2026-11-25",
    "start": "09:15",
    "end": "15:15",
    "kind": "exit",
    "title": "Day 2: exit by 15:15",
    "do": "Book half at T1, trail SL to entry. Exit everything still open by 15:15 (this is a 1\u20132 day setup).",
-   "when": "Mon 23 Nov \u00b7 09:15\u201315:15"
+   "when": "Wed 25 Nov \u00b7 09:15\u201315:15"
   },
   {
    "date": "2026-11-23",

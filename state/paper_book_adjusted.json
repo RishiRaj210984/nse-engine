@@ -1,84 +1,5 @@
 {
- "open": {
-  "BANKNIFTY": {
-   "index": "BANKNIFTY",
-   "strategy": "Iron Condor",
-   "legs": [
-    {
-     "action": "SELL",
-     "strike": 62500,
-     "type": "CE",
-     "est_premium": 188.5
-    },
-    {
-     "action": "BUY",
-     "strike": 63300,
-     "type": "CE",
-     "est_premium": 75.2
-    },
-    {
-     "action": "SELL",
-     "strike": 59600,
-     "type": "PE",
-     "est_premium": 152.2
-    },
-    {
-     "action": "BUY",
-     "strike": 58800,
-     "type": "PE",
-     "est_premium": 54.1
-    }
-   ],
-   "lot": 30,
-   "expiry": "2026-11-23",
-   "entry_session": "2026-11-16",
-   "entry_spot": 61655.6,
-   "v_e": -231.979578900653,
-   "credit_rs": 6959,
-   "iv0": 0.1845,
-   "vix0": 15.762499809265137,
-   "mark": -2199,
-   "groups": [
-    {
-     "legs": [
-      {
-       "action": "SELL",
-       "strike": 62500,
-       "type": "CE",
-       "est_premium": 188.5
-      },
-      {
-       "action": "BUY",
-       "strike": 63300,
-       "type": "CE",
-       "est_premium": 75.2
-      }
-     ],
-     "v0": -186.88937778706895
-    },
-    {
-     "legs": [
-      {
-       "action": "SELL",
-       "strike": 62200,
-       "type": "PE"
-      },
-      {
-       "action": "BUY",
-       "strike": 61400,
-       "type": "PE"
-      }
-     ],
-     "v0": -273.52039063957636
-    }
-   ],
-   "realized": 34.034133525259676,
-   "credit0": 231.979578900653,
-   "credit_all": 505.49996954022936,
-   "adjusted": "rolled the put spread to 62,200",
-   "extra_cost": 250
-  }
- },
+ "open": {},
  "closed": [
   {
    "index": "NIFTY",
@@ -109,6 +30,16 @@
    "exit_session": "2026-11-05",
    "reason": "STOP: loss reached 1x credit (after adjustment: rolled the put spread to 55,100)",
    "pnl": -8995
+  },
+  {
+   "index": "BANKNIFTY",
+   "strategy": "Iron Condor",
+   "expiry": "2026-11-23",
+   "entry_session": "2026-11-16",
+   "credit_rs": 6959,
+   "exit_session": "2026-11-20",
+   "reason": "STOP: loss reached 1x credit (after adjustment: rolled the put spread to 62,200)",
+   "pnl": -7773
   }
  ],
  "days": [
@@ -289,10 +220,18 @@
     "BANKNIFTY: still open (expiry 23 Nov), worth Rs -2,199 now"
    ],
    "total": -12899
+  },
+  {
+   "session": "2026-11-20",
+   "pnl": -5574,
+   "detail": [
+    "BANKNIFTY: STOP: loss reached 1x credit, trade result Rs -7,773 after costs"
+   ],
+   "total": -18473
   }
  ],
  "before": {
-  "session": "2026-11-19",
+  "session": "2026-11-20",
   "open": {
    "BANKNIFTY": {
     "index": "BANKNIFTY",
@@ -331,7 +270,7 @@
     "credit_rs": 6959,
     "iv0": 0.1845,
     "vix0": 15.762499809265137,
-    "mark": -1683,
+    "mark": -2199,
     "groups": [
      {
       "legs": [
