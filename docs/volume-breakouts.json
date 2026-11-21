@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-11-20T16:18:25.952627+05:30",
+ "generated_at": "2026-11-21T14:15:50.829948+05:30",
  "market_open": false,
  "volume_projected": false,
  "bias": {
-  "label": "BULLISH",
-  "score": 58
+  "label": "RANGEBOUND",
+  "score": -27
  },
  "rules": {
   "vol_mult": 1.5,
@@ -69,7 +69,7 @@
    "rr_t2": 2.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 1.797841203116809,
+    "log_vol_ratio": 1.7978921197308797,
     "rsi": 69.8161716122074,
     "dist_high_pct": 0.0,
     "ext_ema20": 10.545547726220672,
@@ -77,14 +77,28 @@
     "day_chg": 8.59091360239772,
     "ret5": 9.689410894614902,
     "rs20": 4.20973170264709,
-    "bias_score": 58.0,
-    "news_sent": 0.428,
+    "bias_score": -27.0,
+    "news_sent": 0.127,
     "mkt_above50": 1.0,
     "mkt_ret20": 13.720897339093053
    },
    "r1_a": 1.0780757324786696,
    "r2_a": 2.1561514649573392,
    "news": [
+    {
+     "title": "IndusInd Bank\u2019s Stock Crash: What It Means for Investors",
+     "source": "Kotak Neo",
+     "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPX19LQVY1Zk5GVTROVTFBZk1TM3lNSW5Ldl9tYmowZ1lLel9IeE52bk1WTlNzMUpNSmNrUTZPSVZ6dW5wWUdQaFVtMFFnMDV1bnR5cDJ5X083eEowczFNUW1XWHZsTTk2c2hVYUg0OHBIcjN1UHVES3FSSVNCbC0zVktvZ3RvWlBzMUpHNTVjeUJnQQ?oc=5",
+     "published": "Thu, 19 Nov 2026 08:00:00 GMT",
+     "sentiment": -0.542
+    },
+    {
+     "title": "Indusind Bank Ltd rises 8.59% in Friday's session",
+     "source": "Global Banking & Finance Review",
+     "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQX1lqaHh2UTRzZUVSMUZXbXNORkRWMWpMZ1U5MXJ2eGNNOE1oLWxpVUQ0c2tyOUs2bnpUWVNwcmE5Vld6T3FqbkRlUlFJZlN2a2J3dEdqbzNMZFhfeW9Nd3c2VW45S2xQUWh0S2lSZ3l5OW9SS0p0R1R4aEJ5NzdrOVpEa3plTl9FTWJNTmtWZXZKaVU?oc=5",
+     "published": "Fri, 20 Nov 2026 14:34:03 GMT",
+     "sentiment": 0.0
+    },
     {
      "title": "IndusInd Bank shares jump 8% on volume surge, near 52-week high",
      "source": "Business Standard",
@@ -93,36 +107,22 @@
      "sentiment": 0.612
     },
     {
-     "title": "Nifty Bank Record High: IndusInd Bank share price sees biggest single-day gain in more than five years",
-     "source": "CNBC TV18",
-     "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxQMzQ2MmQ0c3cwcTBBWWQzOUZLT2stdmhraDdOQ0FSV1hrSF9UVUJkSUtqclhyMHBwc0pVNHdkTzZvSDhCaEFYWEhsa2hKZWVlVTgxSkhPYjRuZDVoOERoM0w3aGR5QUQzeDRSWjdxenZiVkl2dS1FeWs5REV1U3ZnbzVTTHJCVGxyTXd6RTFBMVlERnlfbERKWXNNOC1OV1dZb3k5cU9JVE9GMTZ2NlJyQ1RRbWFIaGFBbGxJd1BtTHlLMzdpamNGaGtEOEJQMUw1T2xkWNIB2gFBVV95cUxPQjh6c0JjVXJ5SmF0TXlVMjgwcHVVX3k4c192NHdhUHZLUVpBM0tMM1JTSmctaXhyRE9JQ2EyZnBVZ1pQak93YkRWQ2VIU0dCN0JET0tYV0ZFWV90Zmx5WWxpb1k0N1Z4TzY3Q3Q4WFVuajdtYm1Td19CeTUxZVViSzhGeGlFQTg2TmliYS1nWFZhektxZ0hQdThYRnhaTWFRbmRlaHdEaDE5cE95ZGR1MmhmZHJqb0dUYjI3UjRLVDZlZkQzZjBTTmE0dk9LZzdpZ19HVDlGUVFmZw?oc=5",
-     "published": "Fri, 20 Nov 2026 09:37:54 GMT",
+     "title": "Nifty Bank Record High: IndusInd Bank share price sees biggest single-day gain in more than five years - CNBC TV18",
+     "source": "LinkedIn",
+     "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQcllxdjFtaGZvVlJjM1UwS082eUo3NjNvZEwtNmhCOGlhZ1BzaTF2SEpRTGtSbzdsRVBZczR1bV9oVHprSzhKQS1zeHJmVzBBLTgzdDhiYlZzRlBwTGFMbUZ2aktGYy1NdGE0cklaOHNDVE9iX09VNVYtTE0wLWYySFpfbTBaT2Q5RFJIaHF5SnpoNWxrMHVWcy1zaG5pUnBQVGdHUjZhNVljRDFwdFVXV1U2WUQzNmVf?oc=5",
+     "published": "Fri, 20 Nov 2026 09:52:58 GMT",
      "sentiment": 0.852
     },
     {
-     "title": "IndusInd Bank Share Price - Live NSE: INDUSINDBK Stock Price & Chart",
-     "source": "Upstox",
-     "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5tWVVkR3VNZVlTUnVsRUhCNENPSXVWTElhYXJ6OTVRMDZEWWVYUW95Z2R1YmlMN0NlWkNYQjhIalV1elBPbjd3OTVsXzhWRDU1b014VmxKTWFTal9YX05iNUxzY29CbkJYOG1kSQ?oc=5",
-     "published": "Tue, 17 Nov 2026 22:49:18 GMT",
-     "sentiment": 0.296
-    },
-    {
-     "title": "IndusInd Bank promoters restructure pledges for refinancing",
-     "source": "scanx.trade",
-     "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPRlNUM1JsSTRHVGdZOW40aVlUQXlkX2U1OTZvVWZVZWxQV0ZOcnFuanBaRi1kQ2VGRlJZbGUyRy11bjZGeDVIamV1LXpBQnA2cW5OcDVqTEJuSmQ4dFdZaVd5RkpCX1FsZHR6UDNmeDV6Tm02WEUycGY3cWp2U2prVVdvWU9CVGd6TTRBbFVsSm9YclpyZmctaldiaUtOQXVlY2hpZXlDOUo5ekM5dXVILTE1OWFTUUJGMkJTMmhDdw?oc=5",
-     "published": "Wed, 18 Nov 2026 21:02:31 GMT",
-     "sentiment": 0.0
-    },
-    {
-     "title": "Nifty Bank at new high, tops 64,000; HDFC, ICICI Bank soar up to 21% in Nov",
-     "source": "Business Standard",
-     "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPVGpOamhFUktDYk4xTlNQVFRaWko4WFN0RFNQTlA3RFdDdTFTRDYwRy1hRG9hc0FOQ1RHa1FrVjY2YzVZRDNzMjRrQklQMjFKOXAxQVRQMW45dFVNSnhVdktqa3FhRkpmYUdBbW8tR2dGclR0ZlhyY1lva1cwMkZTUGpCOV9HOWEzOXNkNnVZdWQwNWo1Sm1lVkJRd0hzUE9vdTBWc3B4YmtDdmdJOERQYkV4LXl2cEZPWll3WUpJRWlMZmdYRzdncVo1Rmo2VVVPR0xULUJB0gHbAUFVX3lxTFB0OVY5VkJKQWs3VHZPT1NRX0tCYmx1NEpjVjJXUjZyS1QyN19zVU50TXVKb29UQ1p3X01ITGk3dEExa3lUNENlS2lFNmwzcmdYSEQxTTRQUFNYQlkyWDFzUnpvai1QNU1wOHlUOWJSR1VVRDhhZW80Q2lXYTZhb25JQzc2SGk3RDFPS3Z0SzJWS1doeVNBU2ItRGs5cV8xNHo4WENhNmFHT255Ukgtc21ibm1EQzQxMmlsX3ZOOVpkNzV0SEJVSXctbzVWcFRFTE1oeEYycV9abndnSQ?oc=5",
-     "published": "Fri, 20 Nov 2026 06:38:13 GMT",
-     "sentiment": 0.718
+     "title": "IndusInd Bank ends ex-CEO Kathpalia's employment, seeks to recover pay",
+     "source": "cfo.economictimes.indiatimes.com",
+     "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPUGdLQjNPUHBDbFgzV0t1UkV3N2tLRmxwOGExQ195UHY0aXo1eWtNWkh1UlV5bkhlZlpyaURGWTk5b2dGekdSUDdTV0tFVEpzV1ppSGhQQThQWVhuYnlldmc3VjlDcVNwMjVOZVNsWFZZbkh3blYyU2dBNDJqMUx1VkUzelV6Y3VKUk1lbnBjTkp6cDQ3RDNOTTI0UmZ4VktYQzlJakg1X0M3Zi1fRzZtTjI4ZUtYR18zRlREZzAzMExfMGpLMENTbU1xMUN3cXJZVEFkNGhR0gHWAUFVX3lxTE9QZ0tCM09QcENsWDNXS3VSRXc3a0tGbHA4YTFDX3lQdjRpejV5a01aSHVSVXluSGVmWnJpREZZOTlvZ0Z6R1JQN1NXS0VUSnNXWmlIaFBBOFBZWG5ieWV2ZzdWOUNxU3AyNU5lU2xYVlluSHduVjJTZ0E0MmoxTHVWRTN6VXpjdUpSTWVucGNOSnpwNDdEM05NMjRSZnhWS1hDOUlqSDVfQzdmLV9HNm1OMjhlS1hHXzNGVERnMDMwTF8wakswQ1NtTXExQ3dxcllUQWQ0aFE?oc=5",
+     "published": "Sat, 21 Nov 2026 03:23:38 GMT",
+     "sentiment": -0.103
     }
    ],
    "news_sentiment": {
-    "score": 0.428,
+    "score": 0.127,
     "count": 8,
     "label": "POSITIVE"
    },
@@ -172,22 +172,36 @@
    "rr_t2": 2.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 1.1781711915931117,
-    "rsi": 62.338413348125535,
+    "log_vol_ratio": 1.1783716046456405,
+    "rsi": 62.33841334813089,
     "dist_high_pct": 1.858974358974359,
     "ext_ema20": 3.1557181317360516,
-    "atr_pct": 2.7959303309462973,
+    "atr_pct": 2.795930330946229,
     "day_chg": 4.149659863945576,
     "ret5": 2.0156588372480355,
     "rs20": -7.040294604139641,
-    "bias_score": 58.0,
-    "news_sent": 0.223,
+    "bias_score": -27.0,
+    "news_sent": 0.314,
     "mkt_above50": 1.0,
     "mkt_ret20": 13.720897339093053
    },
-   "r1_a": 0.9247212279487452,
-   "r2_a": 1.8494424558974851,
+   "r1_a": 0.9247212279487679,
+   "r2_a": 1.8494424558975306,
    "news": [
+    {
+     "title": "Persistent Systems Limited (PERSISTENT.NS) Stock Price, News, Quote & History",
+     "source": "Yahoo! Finance Canada",
+     "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5LbFYxLXZ1a0g5V3FIUWZNOU0zeF8tTl96bkJqa3dYTnVQZUlmWm1scVg1V1gwM2xpMjNKWlBYc2NTSWFOaWJvREhpcGtyMk8xdXE0NGl1Z1pLcm84WHc?oc=5",
+     "published": "Thu, 19 Nov 2026 05:04:53 GMT",
+     "sentiment": -0.226
+    },
+    {
+     "title": "Persistent Systems rises 4.15% in Friday's session",
+     "source": "Global Banking & Finance Review",
+     "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNZDFQdzJwVXhpdVBQeDVBTTdYcEYxaFpZamxQQlJNbDRfQU5RR28xWXNyZ0JkLVE5OXFxZ3VYR21pTGFXdHl1TXFYQjhKV0VpSnFNOHp6dU1XY3FycVlxQlRTQVdLcUxxQlZMSm85LUNSdkFISGNlc2lTU1dMeU9kNDU2UkpsaHFQT1BlSHJkS0JMQnVW?oc=5",
+     "published": "Fri, 20 Nov 2026 14:34:00 GMT",
+     "sentiment": 0.0
+    },
     {
      "title": "TCS, Infosys, Persistent Systems, other IT stocks rally up to 4% on AI rout despite Anthropic\u2019s stellar de",
      "source": "The Economic Times",
@@ -196,36 +210,22 @@
      "sentiment": 0.382
     },
     {
-     "title": "Persistent Systems Limited (PERSISTENT.NS) Stock Price, News, Quote & History",
-     "source": "Yahoo! Finance Canada",
-     "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5LbFYxLXZ1a0g5V3FIUWZNOU0zeF8tTl96bkJqa3dYTnVQZUlmWm1scVg1V1gwM2xpMjNKWlBYc2NTSWFOaWJvREhpcGtyMk8xdXE0NGl1Z1pLcm84WHc?oc=5",
-     "published": "Wed, 18 Nov 2026 09:50:24 GMT",
-     "sentiment": -0.226
-    },
-    {
-     "title": "Top stock picks for today: Experts recommend Persistent Systems, HDFC Bank, Oberoi Realty and more",
+     "title": "Top stock picks for today: Experts recommend Dabur, JK Cement, Persistent Systems, HDFC Bank and more",
      "source": "CNBC TV18",
      "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPY29LNlVKRVF3Uk1pSlNsR0EtVEVSenVaRC00TG02ZTktSlVCYWhiS1N4UnlCN2xOOEtIbjc1eWl3SFlMVkN1UW9tcHNFLUJpckx1ZUc2REhDLWV1UjBhMFY2d3FGdUhZWUxuZl9YbWE0elM3Nk9MbTVBWEwxYW5QMHdNUGFKX1hqbUd0d1VXckY5UU5aT29hblpmOFdBWmFLYzhUeU8wMzdLRmFySFlOMmg5aDFlRHdDN2xJUUVhMlVjaHd1TlJ3MkEtRUtzN1ZH0gHWAUFVX3lxTE5ESi1rdHdDY0EwVkpFZVRNSkY3X216R2J2STB4RTBWZ2c2QnZQeDRWbzZSV3JDdHA4WWhLdHNNdy15Qy0wcDFtekFpS1pSSzBzeGE3blhWdXc4S3RBRUtiMkR1RHlaTHB4MXBmekdfSUZJakRGbXFFc0dxdjVvUF9IVEhCb2hVNFFxeG9VMGVHYVliRWNPTWRHcXRyeUpZaVFPXzZ4QVZvMEpLNDg3WUpkZlp4M2tDU21WWnlsYm9XNGRQczM3ZV9rYjEwM1gyRTVoQUJHclE?oc=5",
      "published": "Fri, 20 Nov 2026 07:23:23 GMT",
-     "sentiment": 0.511
+     "sentiment": 0.713
     },
     {
-     "title": "Persistent Systems allots QIP shares at \u20b95,550; SBI, ICICI lead demand",
-     "source": "scanx.trade",
-     "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNaU5fTXExNmpKZ2h1dDZZS1JIWFFPVHJfbXNRWnE4cDhhRXdOUVNwaTRvZF83OUhvcHhmTjFfQlJNSEZIVllycXhCakpLUnZKTXhGSS1PaDdBblgtN0VjZXREcV84VzNKMGpRSXlnd2Q1ZGs0Wl9SZVNpU3R0N1hwNkNuMFpFVnkxQkpZbXBWREJrb2JwUWZJUHFablhJLWVDYTZUUmM0RGt1dVlySE9WSkFDdw?oc=5",
-     "published": "Wed, 18 Nov 2026 20:23:00 GMT",
-     "sentiment": 0.178
-    },
-    {
-     "title": "Nifty IT jumps over 1% as TCS, Tech Mahindra, HCL Tech gain; Indian IT stocks buck global AI selloff",
-     "source": "Moneycontrol.com",
-     "link": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxNeTRUTUx4TEtKSm9BY18taHVxbjlUQVVOUkw3X0pWUnR6QWVnWGRvOENfdXNsNWhEQjhIcFdEbEh2ajhfbDRjQ0J3aHd1MnJQQWZoMVM5RlpVbjB6amNzWWRUYjI3TzY5TmxqcHhRbnUzQ09VVkd5YUUzR0VyT3k1cWdqcm83VVNVY2JieVBkY0RQZ2FNY1V4MDRWS090bDNiUlV6cmppWm1Nb0dra1E0S1gxcVBBOVBOelg2aUtWbDhLeDBiWFJXZlo0WGhObWxWYlA0YXZDbmFGenBMZjhCbFpJeDhVWS02QlpmN0NnOWw2cl9vX0Z5VNIB-AFBVV95cUxNeTRUTUx4TEtKSm9BY18taHVxbjlUQVVOUkw3X0pWUnR6QWVnWGRvOENfdXNsNWhEQjhIcFdEbEh2ajhfbDRjQ0J3aHd1MnJQQWZoMVM5RlpVbjB6amNzWWRUYjI3TzY5TmxqcHhRbnUzQ09VVkd5YUUzR0VyT3k1cWdqcm83VVNVY2JieVBkY0RQZ2FNY1V4MDRWS090bDNiUlV6cmppWm1Nb0dra1E0S1gxcVBBOVBOelg2aUtWbDhLeDBiWFJXZlo0WGhObWxWYlA0YXZDbmFGenBMZjhCbFpJeDhVWS02QlpmN0NnOWw2cl9vX0Z5VA?oc=5",
-     "published": "Fri, 20 Nov 2026 04:21:18 GMT",
-     "sentiment": 0.681
+     "title": "Khaitan & Co advises Persistent Systems on \u20b97,600 crore acquisition financing",
+     "source": "Bar and Bench",
+     "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxORUlhdzlfMTZIRHdHMFc0SWxHLXVnTHhTN3NQa2pyVFpPcEc0M0VzZFJHTjJ6LTFma1Fhb2VYY21MNzJmVk5ieG9TN1huMjVWOThuOXBoNWthQkVCSmJ0RlcwTW9TVk0tNFl4YUpDdDdxamRiZUhCb1M4QWR1VV9jN0tycjVSWTRnRHdjM2Y2OUJFSHpNN1RjeHBnZXNuWHd5Z0JqWFotMVFOR0Q5OXRNYUtLNDFCXzIwcHBYRDM0NNIBzAFBVV95cUxONVVBV2RRN1dfc2JVNnBRRnVERjFOT3VWank3RjFncU14XzlmZzZZdUFjYWpRLUltLVJLR3Y4NUNvTjNTZ3VCX3BaQW40UHg1ZDAyRkVFZGlQclNhYzNzQ2Fnb2tOX3R6bjRYOWMwQVJ3VmZiTU92R2JzbVZUZjAySWhXMlprTWIyeFc3RmF1SUdCMnV0NnZpWW9kdTg5cVU4UTNoWURnU2hPWE92QVpjVll3a0FFRzVXX0R5bG9TM1E5cmxxeXgxZV9sVnY?oc=5",
+     "published": "Thu, 19 Nov 2026 04:00:49 GMT",
+     "sentiment": 0.0
     }
    ],
    "news_sentiment": {
-    "score": 0.223,
+    "score": 0.314,
     "count": 8,
     "label": "POSITIVE"
    },
@@ -277,21 +277,21 @@
    "rr_t2": 2.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 1.2546561232111335,
-    "rsi": 63.410159081210864,
+    "log_vol_ratio": 1.2547633256276238,
+    "rsi": 63.41015908119567,
     "dist_high_pct": 4.183124970782832,
     "ext_ema20": 3.3618717441753487,
-    "atr_pct": 3.378613995377253,
+    "atr_pct": 3.3786139953777448,
     "day_chg": 2.239096088773884,
     "ret5": 2.894474909855771,
     "rs20": -4.400911075839931,
-    "bias_score": 58.0,
-    "news_sent": 0.203,
+    "bias_score": -27.0,
+    "news_sent": 0.295,
     "mkt_above50": 1.0,
     "mkt_ret20": 13.720897339093053
    },
-   "r1_a": 1.1437109892837405,
-   "r2_a": 2.287421978567487,
+   "r1_a": 1.1437109892835742,
+   "r2_a": 2.287421978567155,
    "news": [
     {
      "title": "Coforge Ltd Breaks Consolidation, Reaches Rs 2,153 High",
@@ -301,37 +301,37 @@
      "sentiment": 0.052
     },
     {
-     "title": "News by CNBC TV18 on TradingView, 2026-11-18 \u2014 cnbctv:6074cc30a094b:0",
-     "source": "TradingView",
-     "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE8yRGx3czc1VW9QYUV0dWRYam9NUnZTcEw0czJuMW9tTm0zTXV2Yl9uUUQ4Qm9JbndIM3RtQkFBR0ZrVWdjeWlmRzdNLUFGRW4xNTdvY0tQZ0NZWFgyTVk2TlNTdTBkdGs?oc=5",
-     "published": "Wed, 18 Nov 2026 03:42:00 GMT",
+     "title": "Coforge Share Price Today: Price Action Near One-Year High",
+     "source": "Univest",
+     "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQTzFnWlFOSTE1QjR1NGM5QTZKZkFkMDBTc21kalRkdWx5WGtNMW5WdnVjZEVQRUVSZzA3R2UwLXM1X25Ma1lBc2JrRnMtQktVOURWWEZYY2dHdjBHR0FnVHNJTGJhMmVmZXRIbmN3NUJDTWV0SHFITFB0aUplYW5vdWwwUE9sOGo1?oc=5",
+     "published": "Fri, 20 Nov 2026 03:59:00 GMT",
+     "sentiment": 0.296
+    },
+    {
+     "title": "ICICI Bank to Meesho: Top 5 stocks hit record highs on November 20; how much have they gained?",
+     "source": "Upstox",
+     "link": "https://news.google.com/rss/articles/CBMilwJBVV95cUxPTldXb0xQZVlYdnI2WFFUTU5SR291ZHpvUFUydzI1YVRqc1V3UVkyTmRzc0VSYld2Z3VmdDFCQlpUTnVGWEhNcDZzWE1aMGhKdjlrckFVaTY3XzRUVjN3M294c29zQlA0elE3Z3BuSWpZNGtjV0VVUG9WSzNaRVJNTmJRQ1FBVUNBcXJIcm12NndlUWZNTV9kMmVIcE5nSmhHcWlPNDlCTy1YUUxMa2FsNXU5S1lqVlZvWEVaakZFbXh2OWJTVVV5eVE1NzVyZ2JoRkQ5YlRWQ3QyMHU1djZ3VXRGUW93QWdBLU1kd1ViWHhycnY1YWp0MllnWUktSXZvYWQ4WGsyNGNRa1Q5aU1fMllNT09ESUU?oc=5",
+     "published": "Fri, 20 Nov 2026 08:58:17 GMT",
+     "sentiment": 0.66
+    },
+    {
+     "title": "Coforge rises 2.24% in Friday's session",
+     "source": "Global Banking & Finance Review",
+     "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPZkx0NUZ3NVFlOWR1N2g3MGxrVlpyT2pTS011VFR4MWxTVFoydWFHSWRySGRheWdOR29JY1VYVkdaRUhqOG0xcUJCRE5Tek1WXzlfZUJ1aG1SdE5idDdoTTZnV1BXakJNazhoVHBrQXpqQjl2Y1ZMQ1I0VDluM0d2eTZR?oc=5",
+     "published": "Fri, 20 Nov 2026 14:09:50 GMT",
      "sentiment": 0.0
     },
     {
-     "title": "This midcap IT stock remains CLSA's 'high-conviction' bet among its peers; Check return potential",
-     "source": "CNBC TV18",
-     "link": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxOUE9xZHhpa1RLVVp2SnY5QXdLeUs5WEl5SXJ0clJxbDl1Q0d3QXE4QUxSV2RlbjFQOW5UVFJONTNoWGJLOUVnOVdpR3RsZFhTT1diYV96aEFIaXBrNndGaG5RMFY0UERjTWRicWdlYVQzOTFGLWxMbWEyV1JTMDNFZTJIWFN3WVpmc3JscE9WR0ltbGJ2NzcwQWEwZ1lvOXdLSUFsWlptTmZ6dWNEck54Y1VsZ2FUa0JvZmVkRllsS2Zka2U0T0dLcUxYV25DOXNhTFd3ajJRVFUwdXhQcDY0eVYtZ2lRTVpQZVZpZXNpNmNNRFJZU1hCNVRtajFQQdIBgwJBVV95cUxQRkwxRFBOWXV6ZExzaDQ3dzQydHVJSXdCdnBDTXV0R3hMY25DZWpKZnNudTJaQnNkT08wR2g4WE1hbTJneXJjWmhYdWRGQlVPbTMwZDdMU0xHWjlEajBoOUtvdVVCVkc1c2RUcUtCZmxuZ0xlVE90dm1LQ0R0N2xUTng3NmxkV1RBTUJRRnVCOGZWOVdRZ2NkbkdCbG15LXJTckFDMDh6TGYtMzFZc1FpVUJvcHZKa1JrV09Bd1dmUWJ5Rm9UYy1LR21zOFZ1b0t1LUd6SDI1MUJrcjFmaGVZQzd3ZVZROU05bmlZSXlLRU1pU2VUc0FGQl9weUswT3NCSGdN?oc=5",
-     "published": "Wed, 18 Nov 2026 03:42:27 GMT",
-     "sentiment": 0.0
-    },
-    {
-     "title": "Indian IT Sector Growth May Stay Weak For 2-3 Years As AI-Led Pricing Pressure Hits Contracts",
-     "source": "Kotak Neo",
-     "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPb0x1bWN3b0tjMTZKRkJhQS1FZmU1ampnNk9rYmgzU1Q2S0ZtMGwtc3RSLUNOMEttclhoY2ZHaGRhdHdtaFZFSXN4b3BQOEJJT2s4dHVIZDlFM3VTc0E5eVVEdm9hWmlqUjNZMHFFcVRqSXZvVlFkWmw3YVp3OU5xQWp4blJSUXd3R2VaMVItdFktOTRqcDY1eEpxc1ZpMll0eUVwbGFQeW94Z1Zlc1k5UVpmbEptVGFDdElJMW0tTXcyc3AycTVhd3V5ai0tWktZb25vNw?oc=5",
-     "published": "Tue, 17 Nov 2026 12:19:23 GMT",
-     "sentiment": -0.202
-    },
-    {
-     "title": "Zee Business. . Stock In Action BirlaSoft \u0914\u0930 Coforge \u092e\u0947\u0902 \u0936\u093e\u0928\u0926\u093e\u0930 \u0924\u0947\u091c\u0940, \u0906\u0917\u0947 \u0915\u094d\u092f\u093e? NSE \u092e\u0947\u0902 \u091c\u093e\u0930\u0940 \u0939\u0948 \u092e\u091c\u092c\u0942\u0924\u0940, \u0915\u094d\u092f\u093e \u0915\u0930\u0947\u0902? Maruti \u0914\u0930 Hyundai \u0928\u0947 \u0915\u0948\u0938\u0947 \u0915\u093f\u092f\u093e \u0915\u092e\u093e\u0932? HDFC Bank \u0915\u094d\u092f\u094b\u0902 \u092c\u0928\u093e \u0930\u0949\u0915\u0947\u091f? Union Bank \u092e\u0947\u0902 \u0905\u092d\u0940 \u092d\u0940 \u0916\u0930\u0940\u0926\u093e\u0930",
-     "source": "Facebook",
-     "link": "https://news.google.com/rss/articles/CBMi1wRBVV95cUxQYk8wb2czVVFXMmRfeFV1cjR6anVHV25BMGlyc2NIbHVnNTUwbDdRNzltYkU1RGlZWDdVRDI0U3IzQllsQmxSallqYTZmazJ1MjVYS3VpZkN4RG1FejA0eVpPUEJMRUVHRHltd2k2ZFlxWDZvWHJIZk84ODUxNXM3Wkk0cnUtNVZRN1hUX2pObUxqVGZPdkdVbHgtN25DRTNzN0ZsbGVfc0c3bElPWks2dDk1aW1OQnhYMHljellIbHBiWEh2ZUxNT3dlVE5vQTRmMnBLODlrN1ktRjNSajVQd2lxLXROVGdMVm5ld3ZadU1MQzB0MnRwcDJQM3Mxa3dodlcxamhDZHpvNFlZRld1UW9YVk1yaFVDVDJrNHVMekttSlJzMVBpQlRHVW1MdzNjOHk4RFNOR1c2QVF0b1FackFOSXhTbVQ2Uk43YkVSUkxSblNWX3g3STRSVnRralBsM1dSOGJlX0ZDam9UQ2dwSk1rVkxfTnpsd2FoR1p1SXBVVllYM1VsVDNtZkhONjNRTy1Ja2xPVmpxN0E4S3Y0R01qVzBOTFpfNlV0YUszU2Rxa1p6ZFZSRHNuN25DS1k3NlktR3VoV0FLOHozb09UYW9taGlwUm43NlF1eGNrZjNyaE9ucXdzRDBZOGVoaTdmeF94N004NTJxWkZ3bVhzaDlaaHVWUDVJd29IZGpqaWd4RUZTNGk3eXZLTXZyZ3pmalJPRl93UHRXRnFWb09qSk1xVkdLTVJPdWZlN1ZSZHZ5X0VQbzE0TmI4WDN3SjJCSVROc2s3aw?oc=5",
-     "published": "Fri, 20 Nov 2026 09:23:16 GMT",
-     "sentiment": 0.0
+     "title": "TCS, Infosys, Persistent Systems, other IT stocks rally up to 4% on AI rout despite Anthropic\u2019s stellar de",
+     "source": "The Economic Times",
+     "link": "https://news.google.com/rss/articles/CBMipgJBVV95cUxQdTh6NWhIVDVZTFMtdVFCcHFWSTZoWWtYaGRoZkNBaHFINC1JYzEzR1lyMHFMRElKRFFodWdrZW1WclJIZ2Y1dHUtOTA3alRHSFVVVU1wQXE2ZzFrRzZCSTkzUlZaaEVEOE45OHFsR3hyOUpOSS10Wk4zdURhWERLWE1wTFBWal9aSG84eDhINEJEYjVXV05PLTdMNXZzQTVtSEVtSkV0UjFZUjNZRUxuWURPWTRueVB2N1hWeFdmQW5mZFFhVE1vUVYtcldWQlNNdXBMdDgzNlpqWG9RUENydmhZMTBOajVpbDYwR3hIN0YxU3kzTm9zZDhhMHJVaTJHSFdFSFM5MjNGbTVpYTRLYnpZLXNFOUZSWXVKV2Z4TGl1X1p2SFHSAZ8CQVVfeXFMTU9YTHdZWFBLZFNNZDN6V0JJR29ES3Zjak9JR2hoV1l0TjY4cFFZbHdqeEs3Nmhaam13U05TQ0w0YTBXYXFwRlR0NDRWeXFfclFQaGs0LVg5TU1LTmZnU2NnMktIOXdYdlZsWWlGcFQ3U0hLaUFWZXhWUXUwY3o1UGdfNFRMZWV0c2xVTUswaFRYMVNlRElac0JRWUpmVkFsTTBoVk9WOGNidzdTd0JjOFJrQ20yUldKYjV5cGNRRjVrWUFWVXJOd0lUZHU0SkYyVFJ3d1pBVC1lZEFmTFpwUmpXeDZtRzRzWEdoMDFnNUItVGRobm1odjJHODdzN05FYzJZMlJzMG15bDhVYnkyU1JHX2Vuc3dUOVljQkl2WDg?oc=5",
+     "published": "Fri, 20 Nov 2026 04:43:38 GMT",
+     "sentiment": 0.382
     }
    ],
    "news_sentiment": {
-    "score": 0.203,
-    "count": 7,
+    "score": 0.295,
+    "count": 8,
     "label": "POSITIVE"
    },
    "win_prob": 53.4,
@@ -380,7 +380,7 @@
    "rr_t2": 2.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 1.1718800193952135,
+    "log_vol_ratio": 1.1719175951517495,
     "rsi": 78.14659509417825,
     "dist_high_pct": 0.27586206896551724,
     "ext_ema20": 9.855552920062639,
@@ -388,8 +388,8 @@
     "day_chg": 4.72189664442797,
     "ret5": 8.640120210368153,
     "rs20": 5.58603335397625,
-    "bias_score": 58.0,
-    "news_sent": 0.278,
+    "bias_score": -27.0,
+    "news_sent": 0.273,
     "mkt_above50": 1.0,
     "mkt_ret20": 13.720897339093053
    },
@@ -400,15 +400,29 @@
      "title": "Axis Bank Share Price - Live NSE: AXISBANK Stock Price & Chart",
      "source": "Upstox",
      "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1sRHdudklyeHpNVkNfMmpDYkhZLVo3VXBVUjByU0JkekxYNUVNMFphV0R5Vi1vQUd1YVBRU3llVDRCLTcwSnRTMnktT2VvaTVHVWZkSXB6Ylh2cnRpU0J6Y2pJOUVPRDQ?oc=5",
-     "published": "Wed, 18 Nov 2026 08:32:34 GMT",
+     "published": "Fri, 20 Nov 2026 17:02:25 GMT",
      "sentiment": 0.296
     },
     {
-     "title": "Stocks to watch: Voltas, Dilip Buildcon, Paytm, NLC India, Axis Bank, PNB",
-     "source": "Business Standard",
-     "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxQZEZwTDhHNHpFUmxjS2lKbExBTUhBYXpvWTdybEVRT2xHZjBzOV9iSTI0aDFGd0lNTy03d1JLUkNGcDBjUjRoUy1BUkN2akxNaW5BVnFtbjl2U1ZWUXNrRmQtTDlSekVfenlhSmozUVFiNXRxNlpVSF95bTNlZktRMGRDeHUtdVZJajIwTk9CT1ptbTFRTnFzU0t6eEN6b2h4LThlZDRNWEthbTNfZV81eFktdk9tOW1VaXJfUjJ2ZTh4U1R2a1VhVUlaSkhHU3fSAdQBQVVfeXFMTWFQeU9qMkxuRTY5UzZWOEhHNlRVZ2dfLW16ampRS0VWR2I1WHl2SW5mUEJfbXI4MkdQWE4xYVVqZTlrTF9EUG9WNUpVbDNpZFROWEZFZ3duRERsM2tGdm9RNk5vTXZiVVBYNjFfY2lwRmRLRmJhb2lHcVF2ZDRJYkxxeUVHRTlnV3FVM3RTaDl4Z0VyS3dHZW9MYV9ieUdvZEh2ZTNpdVRVVHhheHRLRjFiQlJlNkhqVHR3cXlaZ2pOOEpETzIzVW52OThIODJLUi1QQkU?oc=5",
-     "published": "Fri, 20 Nov 2026 02:42:48 GMT",
+     "title": "F&O Buildup Report Nov 20: 123 Long Signals; Axis Bank Leads",
+     "source": "NiftyTrader",
+     "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNaVhnVEFpYTMzejZzT3RyNXZGc2hvd0N4ODc4TzFuVUQ0MTRrODhINlowbDU5RFFPblpDaER1QkxWWWVMWlFXbFpSb0VaYUFNRlphWEw1bXAyOTJYTFkzRGlnTU1MR2QtSXFyb1YyckVnMDRvaWYwMjl6bVdOMVJKbmdOMA?oc=5",
+     "published": "Fri, 20 Nov 2026 15:31:34 GMT",
      "sentiment": 0.0
+    },
+    {
+     "title": "BFSI stocks in a week: Bank Nifty hits record high; PNB, Axis Bank lead gains, FinTechs slide",
+     "source": "bfsi.economictimes.indiatimes.com",
+     "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxNM0kxa3R5Ulpwa0prRng1VkU2VVRzbWxKQkx2WFJRcVJiRzdpRXZYMnFUWmc1MDVYbXEwT1FBaFhaemFnRWlrX3FfWnpjMkJLLW1NaGtjZ3VXQ3lod0R0b0NIT01felNxS2JuOHYwTGtIb2JSbURkRjMxUF91UkRadXRCTWlpeVF4Xzhmb3kwV0poVDhBdUFrZEJxRVZUN2JXSjJOMFFQMmxudFEzN2tZSmdYV1J4N1F3cnBGNlVwelRYc0Fxd0M5Y1IwNTAtWE5zdWttTmRxNzlQSmVXbzJsX0tma2RycER6blHSAeoBQVVfeXFMTTNJMWt0eVJacGtKa0Z4NVZFNlVUc21sSkJMdlhSUXFSYkc3aUV2WDJxVFpnNTA1WG1xME9RQWhYWnphZ0Vpa19xX1p6YzJCSy1tTWhrY2d1V0N5aHdEdG9DSE9NX3pTcUtibjh2MExrSG9iUm1EZEYzMVBfdVJEWnV0Qk1paXlReF84Zm95MFdKaFQ4QXVBa2RCcUVWVDdiV0oyTjBRUDJsbnRRMzdrWUpnWFdSeDdRd3JwRjZVcHpUWHNBcXdDOWNSMDUwLVhOc3VrbU5kcTc5UEplV28ybF9LZmtkcnBEem5R?oc=5",
+     "published": "Fri, 20 Nov 2026 12:52:48 GMT",
+     "sentiment": 0.71
+    },
+    {
+     "title": "Axis Bank Ltd. Opens 3.04% Lower in Sharp Gap Down as Technicals Point to Mixed Signals",
+     "source": "MarketsMojo",
+     "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQbDhQdnZkNm5JblA4bk9NQkVXZ2FCLXJWMUlsaklycVpPUnlGd2c5dzVDeXF4WGpmbHhuV21ZTUJYV2RIRWdOQ3d6RVN3VmYyTy1JMkZ4aW5zakdDQTRTVlY2elBVUmx1eXVwVUpHV2dJTjdQdExSU0cza0dqbUY2NGJWVnM5TWk0bGVSM1gyMVVmWVV2ZDJtQWstX3o0WUpYQ05fQkRCNmstTkljVExqQ1RaVGZGYU9saGVpZVY0T1ZVQQ?oc=5",
+     "published": "Sat, 21 Nov 2026 05:33:17 GMT",
+     "sentiment": -0.296
     },
     {
      "title": "Nifty hits 10-month high; Apollo Hospitals, Axis Bank lead midday rally",
@@ -416,24 +430,10 @@
      "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxOSDVkVGkxLXZ6TE1pM1lWSjJjX2FzR0p0UFZ4c0RhQ2J3cjhneHpkXy1ETGFQX1FFQ3JXU0F1VW4za1hVMDlWVGlQai12Z1RYU2NEOEdObUJZQWR0blVMOUd4SXFKTC1vc3lNRnFzelMtSXVSSUhoOFhia2N3ck80VWwxeWVHUjlzSGppZWI0OFZFQjZhUGJDaXpSQWhrcHpVVGJlZWlDdER3SHdIMEhVc0MxUnlGalpVLUdOd3RhczFURElSYmlRMXZCTmFrVFVTWGtR0gHaAUFVX3lxTE5LLU1OcW5PTFlLMlJzb3Vka0RqbXFzRWdvdDFpZ0dQQjNoME1ULXIwSVBzZnlndm1lbW94ZXhtdTdpcGNLMTRvVDQxRzhZYXdHMkxYZ2g1YmdxZGEwb2hZS2JFQ1BRaHBianh6VnlXd09udFVCTGRCY1NUSlZmaFJocWp2UTREVVVaX0FLaS1ReTJIaXFJOV9Qa1g5eWpnNC1oX3ZJdWZNVldlTUdyckdGdlh2cVlheDJHUjFRZkJOdUgxX2RlQUpLd0lUUEg1Ujg5b3Q5NnRMM0JR?oc=5",
      "published": "Fri, 20 Nov 2026 07:28:40 GMT",
      "sentiment": 0.649
-    },
-    {
-     "title": "Axis Bank Ltd (UZC.HM) stock price, news, quote and history",
-     "source": "Yahoo Finance Australia",
-     "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1DNGN6ZDY4RkRWRHFkUk5VX19QVmxJVWl2T1BZVnhaUU9BSWZ1SFhycWFGMS1QZkVMbkFlTGtTMVY0V1B1ZElMbW40ZVRYaUI3TzdsNw?oc=5",
-     "published": "Thu, 19 Nov 2026 20:35:28 GMT",
-     "sentiment": 0.0
-    },
-    {
-     "title": "Axis Bank Allots 3.41 Lakh Shares Under ESOP, RSU Schemes; Shares Fall Nearly 0.7%",
-     "source": "HDFC Sky",
-     "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNTnltTkdvX0VFUmpCNjN2bkY4OHdsVkRhY2JGdEtDVzJCQ1ZwOVh0UDJFTktJSmp3bFV1Y1Vaakpub2ZURUNKVnh1b3R6MXRGZUxLcVdUcVoxb1NINEhTUk5hWWNNbi00M3Y0UWJPcEdWRjB3ZzVuYnVrQjJwZmM4VXFqNmItRExwVE5aMG1aWFFXaFVhaU1HMlpyWGh6MW1OTDl6NUdDY1dyUm1pQzU2Rnpn?oc=5",
-     "published": "Wed, 18 Nov 2026 09:59:54 GMT",
-     "sentiment": 0.527
     }
    ],
    "news_sentiment": {
-    "score": 0.278,
+    "score": 0.273,
     "count": 8,
     "label": "POSITIVE"
    },
@@ -483,22 +483,36 @@
    "rr_t2": 2.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 0.9869631175196812,
-    "rsi": 70.45692134635594,
+    "log_vol_ratio": 0.9870339133784363,
+    "rsi": 70.45692134635651,
     "dist_high_pct": 0.8887691893347698,
     "ext_ema20": 7.767778104038503,
-    "atr_pct": 2.3930755000006005,
+    "atr_pct": 2.3930755000001547,
     "day_chg": 5.287251087205314,
     "ret5": 7.9052310579404095,
     "rs20": 7.260100754141208,
-    "bias_score": 58.0,
-    "news_sent": 0.633,
+    "bias_score": -27.0,
+    "news_sent": 0.395,
     "mkt_above50": 1.0,
     "mkt_ret20": 13.720897339093053
    },
-   "r1_a": 0.8554270223713524,
-   "r2_a": 1.7108540447427132,
+   "r1_a": 0.8554270223715118,
+   "r2_a": 1.7108540447430318,
    "news": [
+    {
+     "title": "Apollo Hospitals Share Price - Live NSE: APOLLOHOSP Stock Price & Chart",
+     "source": "Upstox",
+     "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9tOGU1TFY5eEZXQ0hKeFR0MUNSYkdVX0VGLXhlSHFtNzRZd1UyTHVQNUI5cmI4cjFOdFMtTlNsd2h4WUFEak1BTTRWZ3V5Ymt6d1pqRVlKR212TDJWN2VFWi1rSzE0andENTNsMldmVFU?oc=5",
+     "published": "Fri, 20 Nov 2026 16:44:19 GMT",
+     "sentiment": 0.296
+    },
+    {
+     "title": "Apollo Hospitals Hits Record High As Macquarie Double Upgrades Stock, Sees 20% Upside",
+     "source": "TradingView",
+     "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQU3Z5SjZLeHc3ZWE1X2xFRk9GdWFQZ05fQ0xTTTV2akdvNFdLN1RUWWROQzVJVUpLc0M4WktSOWpybUlwN2lmYkNVWHFQajVrd3V5NFFpMHJRWkpyX3pMeGZQeHZ6b3RndjFrYmR0VGh4MGpybHJNeE51UzRoQ3pONEEtUmMyVzFlUExYQXJ1QlRIY3N1T2VPbmZUZFJoOE45Z2d5OTdvMUNrT0o0VHBBamt6Qjk3X25sRHBiTlZyLS16WGVZWm5aUF9IaF9mN25nT1FhMXhWQQ?oc=5",
+     "published": "Fri, 20 Nov 2026 13:31:28 GMT",
+     "sentiment": 0.612
+    },
     {
      "title": "Max Healthcare, Apollo Hospitals shares rally up to 5% as Macquarie double upgrades",
      "source": "BusinessLine",
@@ -519,24 +533,10 @@
      "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOQ1Q3V2FWUGwtNEstWDJfc0dQR0plQUQydm9lY0FRWW4yWjVzUnRmU01sWmNYaEZOTFFwZWVtVlh0RjljU2JnQWk0TkNaN3NycnBTcWNUSWl4Vkhva2FLSGY4WmJaZGw0QnNsVEtITDlaeVhmcjVlM0ZVWTZreEFrOTRvLXhZSThhLXFTVHFZNUNRak15X2dtU1p0Ymt1OWdCU0hyNWJsZFlnTzZqdDRvYmY5T3J1MlpRcUh0Xw?oc=5",
      "published": "Fri, 20 Nov 2026 08:10:14 GMT",
      "sentiment": 0.735
-    },
-    {
-     "title": "Max Healthcare, Apollo Hospitals, other healthcare stocks surge over 5% despite volatile market; what\u2019s behind the surge?",
-     "source": "Upstox",
-     "link": "https://news.google.com/rss/articles/CBMihgJBVV95cUxNZmlaWVdaeEFlYlVNN1NXeXhwV2lBN1RLVUQ3LUZtb2t2ekQyaml3eWhRMzdQQ1R1NFNxX0Q2UE9lSzRXRFpDT214M0xmdlhFekdhLV9xTVNXOEFwc19DUzAzRnlvbV9UZjJvNkh4bFdYcUpPN3B3eWp1QzJKYzIteTNqUnQwNFB2b2QxQmpFcW5TcXJkTTRZY3dYNGxJa1RMZ1FQSHJjak1MUDB2WGxiS296bV93elRrOFdESk94eGh6ZHpfVExDQ2Q4amI1WlJxZ3Rhbm5BZW1FbHM2bWdCLVlLOTh5cHpKX09RN1drX1F0YU9abElPVjlnOHByOEtWZ2o4bDZB?oc=5",
-     "published": "Fri, 20 Nov 2026 05:37:12 GMT",
-     "sentiment": 0.681
-    },
-    {
-     "title": "Macquarie double upgrade: Max Healthcare, Apollo Hospitals shares rise up to 4.5%, become top Nifty...",
-     "source": "Moneycontrol.com",
-     "link": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxPcHp3RW11T01oaUVma0g1bENPUHBaRlhuQTVETXZJVUNBcU8wcVd6VWlvQ0JJU3JxVjlHRzJfTE1JQkxxXzBvblFRWldndVFrLUJMQUtfekN1ZGk4LU0wOFNTVUd1T05laVF3RlNaSUREMnZpLXUxd1Y0Q1FnRUNLRmFmQWYzUHNBRUJ6dWZLM0JXS0NLazJKaGNOY3FFd0ZsOEc4c0d2M05lSXNKelFWWWhacmVjYktXeDZtczZOOU1kdTRCZ1owM2p3bVh1ci1iUmxfdjFtWGRBcXh2OGNFSFNKeGVOaHJ3TWZQUHhISzFCemVMUjhkdTd5YWvSAYICQVVfeXFMTWJ1ZEhTS3V3d2FlVk1vOXAwN2Ywc2Q4b3BPSkFYYm1lWlpRTHA1bGpoWXFjbExmazdkWk0xbmN3dmFPYzBqVW50UDRwcWZRMVlXRE5rcV9aTVlKT3V6dDZVMWVZOF9RaGFCdlpkNE9ZM3RSQktLQTNNbUZHT0lOckVDZUp1TFR0YTFlLWtWWDVKVWRmakNzYUMwazVUUEhhSUl1TVNTWDFIbHVCR095RU5CY0oyOXh6YVRSUnNpMEJvNEFSYUl1UTVLaWxKUWp0OW4tTlFwWGd4QVIzWG9ubkd3VDBBSnE4Rll5NkFGMkNSX0hERGpfSDFZVE5lUmpzX05R?oc=5",
-     "published": "Fri, 20 Nov 2026 06:07:56 GMT",
-     "sentiment": 0.827
     }
    ],
    "news_sentiment": {
-    "score": 0.633,
+    "score": 0.395,
     "count": 8,
     "label": "POSITIVE"
    },
@@ -586,7 +586,7 @@
    "rr_t2": 2.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 0.9723743376091504,
+    "log_vol_ratio": 0.9724896241843992,
     "rsi": 76.02538237567009,
     "dist_high_pct": 0.25628248024489214,
     "ext_ema20": 11.422840959675318,
@@ -594,8 +594,8 @@
     "day_chg": 3.1054529398778508,
     "ret5": 9.001089155126806,
     "rs20": 11.713301407549736,
-    "bias_score": 58.0,
-    "news_sent": 0.521,
+    "bias_score": -27.0,
+    "news_sent": 0.558,
     "mkt_above50": 1.0,
     "mkt_ret20": 13.720897339093053
    },
@@ -610,18 +610,18 @@
      "sentiment": 0.852
     },
     {
+     "title": "Maruti, M&M, Hero Moto, Eicher rally up to 5%; what's driving auto stocks?",
+     "source": "Business Standard",
+     "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxQLWl5RXlRQy1SMFViZWFGLTRkZHQ4VkFGUEZjNmdSc0RQdmJCODFyVENjMlhDd19QS0N1b3lEYjh5MklBU3Z5MmZ5RjZlWV9wOWY0WlRtX3ZsaGo3bjNWc203UnFGaUFZM1M5bjB5YS1KZmRYY0EzX1dPdGk1Sk5QRm5leEUtYW52bjFreXd2MDhmVC1PQUZTYjlScEdxQ0JYUm9PTnVYWEFWTHN0X1NZZmFGeURwM0pCdHBaVXNfX0h5X3lBZlBDMG8tYUZpSUxW0gHWAUFVX3lxTE12ZHlNaXE3S20zUXRfNlhmbXR5QTQ1QUdiNHRxUTJXT2ZfZGh6TFpXb2pYME5SVHJEcy16dlZFdGtiSGNqY1Q4ZTJ2UTRxSzhJYUtqd0RCbTBQTnBpUnBlVVdoRnptLXotTk1jcEN0QmtFc1FZUzFLRmZzdXlMaWZXZzkxdkY0V0pxVzdEQ1NLRkNEczVoTlNCcUIwQy1FdnZQVzJLWXM0bkVSQlU1b3BtZ0dGb0VkZjFnX1d0YXcxODBTSTBLLTVURFF2YmdRZ2ludVducVE?oc=5",
+     "published": "Thu, 19 Nov 2026 05:16:32 GMT",
+     "sentiment": 0.735
+    },
+    {
      "title": "Maruti Suzuki Shares Surge 6% As Nifty Auto Jumps 2.6% Amid Falling Crude Oil Prices",
      "source": "Kotak Neo",
      "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNQm51SzhubHl1RmNjUkltWExZVGZNcEVyUVMySEhuTVloVHdKV3A0OTVyNWgzLThZcHYyZ1pQRGwzTDA1QlNqZVJ0Nk9pNi0wdm5qY1lKLW1lS3pFQmtybk0wZVpuMjJ4bi1zSUYwV0c5bEZHOVJ2dktnYk5NZTc1M2xsbWtiVjAwc1RYVGpDLUpNSEdnVzJEZXZkRno4a3VOenV4dEd5ellaakR5eHotUlllTTdUSkdaaHUxVERna2tIWGxHVHc?oc=5",
      "published": "Thu, 19 Nov 2026 07:15:43 GMT",
      "sentiment": 0.599
-    },
-    {
-     "title": "Maruti Suzuki, Hyundai market share falls to 12-year low in first half of FY25 as new entrants gain ground",
-     "source": "ET Auto",
-     "link": "https://news.google.com/rss/articles/CBMilgJBVV95cUxPRUdEbkRUV2RpeU9pVkVQbEhVLU1vN2VQV3B4Z1MzVFNYUlZCeHdnMjVEcWlqczBOSW5nNDlGUGU0V0FXeXd6QnI4WkY0X3RmQVYxWUQ0WnlKT3NMRHV5SERabUxoNHhLdlhwVVlJMmxkM2VGRlBfay1ucnJpVXV1OF9vRFU5a0JKV1hVSmtTSmljbm84c21kLXd5UjBQMkpwNElKeHdqdU5hVFJDUDI2aWJLSTBPWWhUaUFoNjEzSWdEcVdNdlFYNVF6Q1RwbnlGaEdTN1E2MVRQSFYzR1RyMUpVdmR4VkJxdDZvZm0tLVRzMzN6c1NXLTFUUko4VV95QU42cUpmY1VwQzFJUEhtSEpfMjF0Z9IBkAJBVV95cUxPdVA3Z1FkakxPQmt2R0xtaDhqT0hBd1o0TVFtRk9QZGdwU3dSR05neFR4V1l2dEVpbTc3RHRCOHRLbEx1bkRMUXc3Vkkxc19lUnFSQUNVRFZaNDkzVloyYU9vNk5fUFhPRWdweGVMOVhOczAwX1JyOEZrMm5hbkQzVGU0bnQ4UDhzR29QLTg1aGgtWmk4WXFTUEJPQjR2TDF6eHdSNlplVWNnTjlXOXJmWGpUMFl1VnVtUVA3ZFl2eE1lR0MtWnZ3eFUxdVhQV3U1bXEyUmw0cDYxZ2FCdUFoN2hBaEw5SFZxM01yVkNtQnk2dk1jQkNqaS1Yc3IzRU9rSW9TMUxZRGVZOTcyMUg3eQ?oc=5",
-     "published": "Thu, 19 Nov 2026 17:20:31 GMT",
-     "sentiment": 0.318
     },
     {
      "title": "Why Maruti Suzuki India Share Price is Rising",
@@ -631,15 +631,15 @@
      "sentiment": 0.296
     },
     {
-     "title": "Maruti Suzuki India Ltd. (MARUTI) Share Price Rise Streak: second straight session with 10.04% cumulative gain",
-     "source": "Univest",
-     "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNRjY4MVItTlBGRVJNeWRwenNuaTRfMjN6WkJZWXJoVTZrU2g4WFUwSG8xZGRWZm1xZEJQQkc3cXpyMW1EYjVTS04yN092YVRwZkxfMmJFb2ZfNkxqajNpWGR4YVdVQ01XaURUNkxPalpmX3dMbm9HOGhUUGRBQ0ltdDJldDYtakZ1anpKTTNfdw?oc=5",
-     "published": "Fri, 20 Nov 2026 07:29:00 GMT",
-     "sentiment": 0.758
+     "title": "Maruti Suzuki India shares gain nearly 7% for best day in 15 months - Here's what is aiding the rally",
+     "source": "CNBC TV18",
+     "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxQWmhQT1ZUOTVkMUN2ZlRmY2V5bl9zdm5RR2hVc1UwakpYWlZhWlJheEpuVlNaZGcwOThYZzZTM1Q1SHREVE9UblpSS1E3b2hlRGZoVWZVWndhRzdVVURhVHl6bVNMb0dET3lqekVVQkdZNC1SV2Zvd0pNN3BQMUptempyU2VCaWNqWlRXVl9MWGdrUWRNMkhiZy1GWExDcUlKblVaNVVhUGlKREJ2bDdPWWl0eko2N29QdE5EVTNvRkEwOVJLQktLeFg0RHBfd2Vwa3VfWjJYSjhYTm9XSnFvOVBYWXN0UXU1aDg0M9IB8gFBVV95cUxPQjllQW5oODdqN2s1QmgtR0FvZGJyME15bVNWVlhjMG52RWJUemVFS0NtQ0RDY3c4MC1WWXZwQ0FVRnAxc2pQTVZHR3hkaEEyUXZVVmZtTWFjUTdBbGlCNGlFM2dUTVdQcnhmR0swQXR2ZXduWjN0dXVVTHVtdUg1WTNlMTFlN0xjUXBHYzdLOExsTzFwTTRDbWJubHdsblNyRjVSMzh1Mk8xcEYwLWJ1bFI0eTBTVVRPTTJkMmpNTnRzdmxxd1hLWlphYklzbkZieTZabkxwV2kyMGF2SWxXY2VrdVJZTW5fbXdyRGc4Z0pqQQ?oc=5",
+     "published": "Thu, 19 Nov 2026 06:07:43 GMT",
+     "sentiment": 0.908
     }
    ],
    "news_sentiment": {
-    "score": 0.521,
+    "score": 0.558,
     "count": 8,
     "label": "POSITIVE"
    },
@@ -689,7 +689,7 @@
    "rr_t2": 2.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 0.6745422495891208,
+    "log_vol_ratio": 0.6745543666153604,
     "rsi": 75.6898027251541,
     "dist_high_pct": 0.0,
     "ext_ema20": 7.8017450074052475,
@@ -697,14 +697,21 @@
     "day_chg": 3.0175159235668714,
     "ret5": 6.933884297520665,
     "rs20": 4.357219105513632,
-    "bias_score": 58.0,
-    "news_sent": 0.202,
+    "bias_score": -27.0,
+    "news_sent": 0.433,
     "mkt_above50": 1.0,
     "mkt_ret20": 13.720897339093053
    },
    "r1_a": 0.45742808266779184,
    "r2_a": 0.9148561653355906,
    "news": [
+    {
+     "title": "UltraTech Cement Ltd rises 3.02% in Friday's session",
+     "source": "Global Banking & Finance Review",
+     "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPMkZKczZZYk1sZWFqWVJWekVyYXducUhxakcteDJSU0ozQnlpOFc5MEc3T0hEUlZmdW1FSFl5dlZKbVUySkJzcmpoZ2k2c3NkS2l6WER5eVA4QUZFUnNnVjFrZkxNYlowSGd3Y0lEQXBucE1KNDNuUUxFcTgya3RIM1plTHNCOHo0YmszbkNBVGd5ajU2eDhr?oc=5",
+     "published": "Fri, 20 Nov 2026 14:34:02 GMT",
+     "sentiment": 0.0
+    },
     {
      "title": "Ultratech Cement Share Price - Live NSE: ULTRACEMCO Stock Price & Chart",
      "source": "Upstox",
@@ -713,36 +720,29 @@
      "sentiment": 0.296
     },
     {
+     "title": "7,107 Call Contracts on UltraTech Cement Ltd Signal Near-Term Upside Interest Ahead of 23-Nov Expiry",
+     "source": "MarketsMojo",
+     "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxOYXpVdXVFWlBVR3hLakpUcURtNG9RQzFTUXNMRTloS3hxNXBXUHNzOTJCamZvS0NnQmY0aHJILTN0NVBQdi1uOXdIcWpjVDhSUndDUGlSeGtnZW96LU9oSVkyWGpXU1U5dHkxNDNuaFZyZWRqZkJNNHNOckpsZ0pvQzZLN0FkRW5qdktVNHZxaDF3Y1VXNldpS085MzRMZE9FVFcyaWtQRHF4RDlMSDlnbzFUZzFqWUs5OEV4bXpmdkRzUkZhM1QxYkRZTHZJbVVx?oc=5",
+     "published": "Sat, 21 Nov 2026 04:40:48 GMT",
+     "sentiment": 0.459
+    },
+    {
+     "title": "Ultratech Cement Ltd. (ULTRACEMCO) Share Price hits fresh 52-week high at Rs 12,920",
+     "source": "Univest",
+     "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQMngxTTg0a0FtLUtBcTl4TkxreDE1SUd2dGMwT2dCZFVDVjB1bTNDVWtiT1h5QzJHUER5eUxCZzZsRkl5VS16V1RETC0zZmFFamMxVEUtSHlxZzRldzdmaTdBdG1QLWo2cXRjcmloNHozNlY1ZXUySFJPa3dXY242WG9ubTJMRXN2LWEzZHd3?oc=5",
+     "published": "Fri, 20 Nov 2026 09:53:00 GMT",
+     "sentiment": 0.542
+    },
+    {
      "title": "Ultratech Cement Share Price near 52-week high, key view",
      "source": "Univest",
      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQUGw4aDhiU2ZBTXgxalo1MDQzLVNmVFA4bEFKMlBWc1FlNG94RzVua2lJNXZqMjBMNkZmb2R0UGJ2ZC1xR1MtZ25pd2k2aW5MSW92MzBGckgyVTBLVmgxUlpSaXlBWWd3SFNyaDR0WlhybnBPc3BIOE1EQkY1LXcyM1BYRWpZMUFsQWpxRlhETWE3b0VD?oc=5",
      "published": "Fri, 20 Nov 2026 03:59:00 GMT",
      "sentiment": 0.296
-    },
-    {
-     "title": "Large-Cap Cement Stocks: UltraTech vs Grasim vs JK Lakshmi",
-     "source": "Univest",
-     "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxOYVRvTHFmQllKeFo3SnhhaDN4Q2l4U2FLM2N3TERZNlVkU0p6N3ZaM3pFVVg0OEhWOTItYmFuOUhkMVNIN1lZRXY0dlA1STB2MzMwLWFkUHdZVl9lRHBtV1JiaFJDRXR1ZHNmTFc2ZkFQX183dldvYkgySkk3SUZWbHQteUprNU1pel9ad3hIVEhOaVdfSklfYUxqMk5EaFRYLVNSUlEtcGZISHRzTDBOTUNTYzd3X0hybG5VaEZDQVpyYVB4UG5jNmM1b3JQRm1ybGhvMlhaaw?oc=5",
-     "published": "Wed, 18 Nov 2026 04:59:00 GMT",
-     "sentiment": 0.389
-    },
-    {
-     "title": "Buy, Sell or Neutral? Motilal Oswal\u2019s verdict on 8 stocks after Q2 results - UltraTech, ABB India, Grasim, Amber, Eicher, OIL, Vi & Tata Motors PV: Which stocks to Buy, Hold or Sell After Q2 FY27 results",
-     "source": "The Economic Times",
-     "link": "https://news.google.com/rss/articles/CBMi-wJBVV95cUxQNmhtVzVMM1VWcFJ1WU5MX3Y3VDhDSWlCRmpWMlBFMDdLU0MxaER5R3YyZjJ1bzViVmRib3BMNW5RSlhnTlkxbk5BVlBWNFJpZmdweWFVUkpMcFp4RWFJVUg4UnpLZGI1YktWWFFCYmJwdUM2WEthemtOYVN6OUFJb3ktVGhSdkZNSzMzYXVvaTYtQm9oOG5qV0UxTFZJSFh3NGkwc3hBcnRuY3NvckN1NEg0M0hIOV9OWEhCd3dpYnE0NjhrbFFTT3liZnZPUHZIcFQ3TXNvQTV0QXRBOWlfX1VvNUI0dHZmWEdTeC0yTDFJNEZyVUU5YUttV0laX0M2dkVBMU5QMXRaellSOU0yMXJQNlB2ai04c3k1aHdoMl9jdWp6dFVabng0SC1rZjQ1Vm5POHdhOFNtakxYeVlnYkloQzhGMDc5NHdEYV9GcXZ2ZVRfU19hN2dZbGNrU05jN3B1U1RCMFgzX0pQcnV6NjItZ291anVtQjBB?oc=5",
-     "published": "Wed, 18 Nov 2026 04:41:00 GMT",
-     "sentiment": 0.153
-    },
-    {
-     "title": "Fitch Affirms UltraTech Cement's BBB- Ratings, Maintains Stable Outlook",
-     "source": "marketscreener.com",
-     "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOeHdkNVNoZWJJcjU0U3J4QUduWUJBbzEtUkVQTXFCd2NKZldiWFpONDRzU3ZzT2oxbVdrcDJQUC1HZDJWWk5WbGVVSEZJNGJkWkgtaVQxazZ5WlpWYm5VYUxsS3NBV3kzNVZJTXloRU16cF9najRFNFN6UnAwa2gtUjV4UmNNWHB3TGV6YTgyS1dPTFp2S1hoUzlfYXpnVElzcXY5d0Q4dEVIVDVLMTJ0ckc1SjZUUHNqX1J4QUp0OA?oc=5",
-     "published": "Wed, 18 Nov 2026 02:20:16 GMT",
-     "sentiment": 0.296
     }
    ],
    "news_sentiment": {
-    "score": 0.202,
+    "score": 0.433,
     "count": 8,
     "label": "POSITIVE"
    },
@@ -792,7 +792,7 @@
    "rr_t2": 2.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 0.6003749818469104,
+    "log_vol_ratio": 0.6005680531992571,
     "rsi": 77.954328989612,
     "dist_high_pct": 0.5115512095993335,
     "ext_ema20": 8.854375816866899,
@@ -800,14 +800,35 @@
     "day_chg": 2.94475694408598,
     "ret5": 5.223880597014929,
     "rs20": 8.1723401624624,
-    "bias_score": 58.0,
-    "news_sent": 0.343,
+    "bias_score": -27.0,
+    "news_sent": 0.216,
     "mkt_above50": 1.0,
     "mkt_ret20": 13.720897339093053
    },
    "r1_a": 0.7367838847625262,
    "r2_a": 1.4735677695250524,
    "news": [
+    {
+     "title": "HDFC Bank Limited (HDB) Stock Price, News, Quote & History",
+     "source": "Yahoo! Finance Canada",
+     "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5OR1M3THRtTERvWDhiSGhfemR6Q0xDSUQwMVFpZlNFMWh6LU1FV1RnZGlONW82UTFHVkw3bGtfVkZDRWMtSHVtYzB3QmdXSzJI?oc=5",
+     "published": "Fri, 20 Nov 2026 17:34:06 GMT",
+     "sentiment": -0.226
+    },
+    {
+     "title": "HDFC Bank Share Price - Live NSE: HDFCBANK Stock Price & Chart",
+     "source": "Upstox",
+     "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1haXVDV2V3Wm5yQXBKZFJjZjkyQ0syd3BZWnRJZmo5UEdhckVTeTViZWtfVnkyRF9LVGRwSXZwMEo4Q1lUSDZfUzFlQmM1bEJhaFZEMXhSRHQ3S0h0THNBdXBB?oc=5",
+     "published": "Fri, 20 Nov 2026 14:02:24 GMT",
+     "sentiment": 0.296
+    },
+    {
+     "title": "HDFC Bank Market Capitalisation Reclaims \u20b913 Lakh Crore After \u20b92.38 Lakh Crore Addition in 15 Sessions",
+     "source": "Kotak Neo",
+     "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNUTVPN19SYjAybFp6UU9NVldPeEtER05YME9haVJvUGpaLWZmYy1IeHVDeTZ5WmlaYkJzSmVxdDF0ZVJDTDNHVzdPVG1udWtrbDg0SXJYVG4tNXRQWU9faE9aSENRRjdEY09IYnFROVpWT0tlbG5LY054YmVKcmZjSi1haDE4NE9pQTkzamZR?oc=5",
+     "published": "Fri, 20 Nov 2026 15:55:53 GMT",
+     "sentiment": 0.0
+    },
     {
      "title": "Stock Of The Day Buy HDFC Bank Futures on decline: SL 800 Tgt 828, 835, 842 -New MD Anup Bagchi is meeting with Investors in Singapore is very encouraging #StockOfTheDay #HDFCBank #StockMarketToday #AnilSinghvi",
      "source": "Facebook",
@@ -819,33 +840,12 @@
      "title": "HDFC Bank Limited (HDFCBANK.NS) Stock Price, News, Quote & History",
      "source": "Yahoo! Finance Canada",
      "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5XTzhGSUFMZ1NyVWthWVk2cEZ3RHZQc0VuT3BxQTBWM3B2V2hIQTBBOENtV0loTTBwXy0tczFvQXEwZlRLTlVhS2hmSkdJb3hFX3JlSlJBTU1weTg?oc=5",
-     "published": "Thu, 19 Nov 2026 19:00:50 GMT",
+     "published": "Fri, 20 Nov 2026 14:50:48 GMT",
      "sentiment": -0.226
-    },
-    {
-     "title": "Nifty Bank at new high, tops 64,000; HDFC, ICICI Bank soar up to 21% in Nov",
-     "source": "Business Standard",
-     "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPVGpOamhFUktDYk4xTlNQVFRaWko4WFN0RFNQTlA3RFdDdTFTRDYwRy1hRG9hc0FOQ1RHa1FrVjY2YzVZRDNzMjRrQklQMjFKOXAxQVRQMW45dFVNSnhVdktqa3FhRkpmYUdBbW8tR2dGclR0ZlhyY1lva1cwMkZTUGpCOV9HOWEzOXNkNnVZdWQwNWo1Sm1lVkJRd0hzUE9vdTBWc3B4YmtDdmdJOERQYkV4LXl2cEZPWll3WUpJRWlMZmdYRzdncVo1Rmo2VVVPR0xULUJB0gHbAUFVX3lxTFB0OVY5VkJKQWs3VHZPT1NRX0tCYmx1NEpjVjJXUjZyS1QyN19zVU50TXVKb29UQ1p3X01ITGk3dEExa3lUNENlS2lFNmwzcmdYSEQxTTRQUFNYQlkyWDFzUnpvai1QNU1wOHlUOWJSR1VVRDhhZW80Q2lXYTZhb25JQzc2SGk3RDFPS3Z0SzJWS1doeVNBU2ItRGs5cV8xNHo4WENhNmFHT255Ukgtc21ibm1EQzQxMmlsX3ZOOVpkNzV0SEJVSXctbzVWcFRFTE1oeEYycV9abndnSQ?oc=5",
-     "published": "Fri, 20 Nov 2026 06:38:13 GMT",
-     "sentiment": 0.718
-    },
-    {
-     "title": "HDFC Bank shares surges 1.6% as banking stocks rally to fresh highs",
-     "source": "BusinessLine",
-     "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxOZGhESklmd21iY2kydVlYQklteHE4MnZtd1NyWnYzQXFqcWFkUl9GQk9wQlRuZ1RkY1lxeWdzUm05Ym16czJqb21hdGJnam1UYzJDUEhxVDVzRS1sVTRDSDNjVy1DenJmR1FOM0RTNW91NVVVSjhvTVVPNWhhQVN3U3k1LWQtSFltbW9DTmxUaFpYbzRjV1lVNlFYbWVKdjZGMlVXREROQS1zS0ZSbVpaRUlzbFM4emFNdm9WQTVwM1F5OHh2WG81RF9hZ1h4eFQtQVpr0gHaAUFVX3lxTE4yY01mSDZiZWpIbmZsRHUxVXdQVEQzbTlXSkZTTl9TbFhBQ29Oc3NidmliZ29RREV1UldPTW1KQXg0UXk3RlBpMTFRbkZHdmxqbVd0T2ZCdTNqT0s1SUVIZEJtSVdabDFUNDFZVkNRQ1pNZlkyT055ZmxaQ1JpT0hnUUdSd0VBQmRkSEUyNzBnZnZKY0JlNkxyUGFFbWR4R3BKblpPeWIzaVE1Qlg0ZTU0TUlwSlNaVUFHYkFoVUt4S2YteGVlSE1zVTE1d0dLaDdiMkQ4eC1SbjJ3?oc=5",
-     "published": "Fri, 20 Nov 2026 07:49:33 GMT",
-     "sentiment": 0.836
-    },
-    {
-     "title": "HDFCBANK Option Chain: Live NSE Option Chain Data, OI & Price",
-     "source": "Kotak Neo",
-     "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPVGtXUDZCVlBSOXAyaXFzSzdwVV9vVWJoeE9SekVMUURpa0VFUXpmQTYxamNiYlN0bm83bGVmUzhNYkRsZjh0Y0pHTWhPU2lROHZMQUtLVjdUR1h4M0lIYmVaUlNmSDItVks1LXlaVGpDMnlyLW1HbXVocFdxMkZpZkEzSlpQS3luamhz?oc=5",
-     "published": "Fri, 20 Nov 2026 08:08:20 GMT",
-     "sentiment": 0.0
     }
    ],
    "news_sentiment": {
-    "score": 0.343,
+    "score": 0.216,
     "count": 8,
     "label": "POSITIVE"
    },
@@ -895,7 +895,7 @@
    "rr_t2": 2.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 0.5677348381525466,
+    "log_vol_ratio": 0.5678821319056687,
     "rsi": 78.53418941423591,
     "dist_high_pct": 0.6232644975937818,
     "ext_ema20": 9.662350930012508,
@@ -903,8 +903,8 @@
     "day_chg": 0.384752055613502,
     "ret5": 4.805727372955149,
     "rs20": 7.67323269338851,
-    "bias_score": 58.0,
-    "news_sent": 0.103,
+    "bias_score": -27.0,
+    "news_sent": 0.157,
     "mkt_above50": 1.0,
     "mkt_ret20": 13.720897339093053
    },
@@ -915,7 +915,7 @@
      "title": "Bank of Baroda Share Price - Live NSE: BANKBARODA Stock Price & Chart",
      "source": "Upstox",
      "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9kMkkzR1p5aVA1NFZxUnNWWnVHdWpRMlZmMkYwNEVWUU1NcnhJbnBVdWFqVDV6d2ZURkxtV0VhYlI4X1BUbjZyd19kZGYtSklkendYamc4ZDNsZkNqb0RDVFlWNA?oc=5",
-     "published": "Wed, 18 Nov 2026 18:57:20 GMT",
+     "published": "Thu, 19 Nov 2026 17:59:37 GMT",
      "sentiment": 0.296
     },
     {
@@ -926,29 +926,29 @@
      "sentiment": 0.0
     },
     {
-     "title": "CBI arrests Bank of Baroda branch manager, two agents in \u20b99 lakh bribery case",
-     "source": "CNBC TV18",
-     "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNcUJmQXR6WWY3eHZJSkhRelZpMkVFS2IwMFVQQ0pkX0k5U3d5MDVtUEZmVFdJMGV0cUtHS015cVoxMXFfTVFGeEljdk82aDcycWp5Yk1LX1ZMQmt4QWg4OXktdkt2M3hUOUxxRlNYMWk1SDllTVVRSjR5Y2pFRVpYZ09WaUJ6U3Q5bEdQLTBtcGx4WXhmR3NRYXBXMGZjUmxCMms4eWZnODNkd1NfWGFvLXUxSHAxdGFoR3BiQmdCYWU3Z216cGtxeGVkTGU5Z2fSAdQBQVVfeXFMUFlHYThCZFg1aHhhY3lQSl9ReXU2U1ZBVzB6SDJENVJSNkhPaTV4NWZJdXpLZFEyS3pqRS1YeE95UzJ3YXF6UnFnWGM5N0g3X2FRWmZCaURCd3lRT1VEZlI5NGhGLWc4NDdJUml5TExGd1hGeWJlNDJodGhDaXFDc0RVR0ZiVDJfZ0Q0V3VobXBrdkhYYldFMy1jYTAyXzZSTXZDeWJDRHR2djFGR0NZYlhLalUzNHFPWTVBM0FhSUhsN2w2U0FfSzBmUldmZklNZWxiOUI?oc=5",
-     "published": "Fri, 20 Nov 2026 06:13:40 GMT",
-     "sentiment": -0.44
-    },
-    {
-     "title": "SBI vs Bank of Baroda 2027: PSU Bank Valuation Compared",
-     "source": "Univest",
-     "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5UQjJONl9xd2FjYkxaTFljenpXclhtQWhpZEFRakNhb1BVbENjMmlrd2F0eVlic2lVTThnX2xMRGZyUGY5MEZ5eDlZTGpwSjJnRGtyZnRmVnF0d3loRDFpQnZkTjZveENxaXdVZFctcm9EZUU?oc=5",
-     "published": "Fri, 20 Nov 2026 05:24:00 GMT",
+     "title": "Bank of Baroda injects \u20b980.10 crore into pension fund subsidiary",
+     "source": "scanx.trade",
+     "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNWVctQi1HVUh6SHhzeTY5SU56ZTdOVlFvaWg5OVVVbk5XMXhVM05PZUZjQVd3cURzQzZiRERHeWFReEN1T0lGaUc3em5iSElEMmx0WC1XQnJBaVRIcDZtdDBfTlVndFVUbW5mbVNLb19ObUZBX1FnVmcyd1d2SFhwZVIzeWYzODFYZUotOVl1MFNPQ2psZW5UdFI4OVBKNm5vMllLdGFQVk5yX3FXVmF5YjlsSFNGUEct?oc=5",
+     "published": "Wed, 18 Nov 2026 13:52:03 GMT",
      "sentiment": 0.0
     },
     {
-     "title": "Bank of Baroda to host investor meet with BofA Securities on Nov 23",
-     "source": "scanx.trade",
-     "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQbTJ2ZnBvOXhWaEdtV21rYnI5R1BkTFA2YjdMdzMtTEZPYkgxQWJib3QyczVpSy0teGZQaFpzOFhfeUcxVjZ2bVdLTkhBMlBqX1ZTX3NSS0RQNno0QUlianBybV9qeE10aTZaeDhxUXVhY0RxVlRhbi1faUFoLUVlSF9xOU9wV2laek1XY0NVRDdWWl9OTHpZSS1IOUVLT0kwVkpYS1RXVW9PTjZiRjNJ?oc=5",
-     "published": "Thu, 19 Nov 2026 12:01:47 GMT",
-     "sentiment": 0.296
+     "title": "Bank Nifty Gains Over 8,500 Points in 15 Sessions: How Much Higher Can It Go?",
+     "source": "NiftyTrader",
+     "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE8zWWdTTW1vaFctZi1kWXE4ODFmczRvLVBXbjFob0VSYUNyM3dhSUlnaHRMSjM5eWp6TlVJQllwajg4TkRxbzdrdGFVZUxudWx5RzE4ZVBZeGhVelZqQTVtaGpjVF9hNUtKZFdHVkVoUU5lSTQzQlBYMQ?oc=5",
+     "published": "Thu, 19 Nov 2026 11:26:24 GMT",
+     "sentiment": 0.599
+    },
+    {
+     "title": "Nifty Bank hits fresh record high above 63,000; IDFC First Bank, Bank of Baroda, PNB lead gains",
+     "source": "bfsi.economictimes.indiatimes.com",
+     "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxONURjNFdWWllGMW9nNnc1aDlWNzFNa1ItYWVQdDlMRHc2bjQ5YVhFemszWnBmSW5taU1MMjF5UWl2UjVHSDBRSlNEVnpZZmxXQUoxdFRyZEY2VndIOTl3XzZuUHN2ZG4tbmcwRXA0eVZRRFZxMFRRMHVNRnhEdXVUa1FONEs5RjQwdmJKR09jMUwxa2VSSERtaVFHRVc4Tk5Vc1k2M1p0VEhuUU9HTmFET2dpekNJYzBfUmNuVVpvbVJxOVVmdW5NT3FXQWd4RHJUNGllYmVfZGNSR1ZvLW5iOWNTbFFGamMtMnBEMdIB7AFBVV95cUxONURjNFdWWllGMW9nNnc1aDlWNzFNa1ItYWVQdDlMRHc2bjQ5YVhFemszWnBmSW5taU1MMjF5UWl2UjVHSDBRSlNEVnpZZmxXQUoxdFRyZEY2VndIOTl3XzZuUHN2ZG4tbmcwRXA0eVZRRFZxMFRRMHVNRnhEdXVUa1FONEs5RjQwdmJKR09jMUwxa2VSSERtaVFHRVc4Tk5Vc1k2M1p0VEhuUU9HTmFET2dpekNJYzBfUmNuVVpvbVJxOVVmdW5NT3FXQWd4RHJUNGllYmVfZGNSR1ZvLW5iOWNTbFFGamMtMnBEMQ?oc=5",
+     "published": "Thu, 19 Nov 2026 13:11:27 GMT",
+     "sentiment": 0.802
     }
    ],
    "news_sentiment": {
-    "score": 0.103,
+    "score": 0.157,
     "count": 8,
     "label": "POSITIVE"
    },
@@ -998,7 +998,7 @@
    "rr_t2": 2.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 0.5181603494330789,
+    "log_vol_ratio": 0.5187515182652368,
     "rsi": 73.10004227547282,
     "dist_high_pct": 0.7714298793247767,
     "ext_ema20": 8.378932611963496,
@@ -1006,8 +1006,8 @@
     "day_chg": 2.1245309237540644,
     "ret5": 6.118703141671644,
     "rs20": 1.1459749650067685,
-    "bias_score": 58.0,
-    "news_sent": 0.166,
+    "bias_score": -27.0,
+    "news_sent": 0.298,
     "mkt_above50": 1.0,
     "mkt_ret20": 13.720897339093053
    },
@@ -1015,10 +1015,17 @@
    "r2_a": 1.309885679759918,
    "news": [
     {
+     "title": "Canara Bank rises 2.12% in Friday's session",
+     "source": "Global Banking & Finance Review",
+     "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxORUg1eVZSeEZBNjd6Q29mYWRSSkRqTHBpbTdZQXB2enh4Yk1peXBzbFRWRFRiQ29hcmpWRGFjMDJNcEZtTXpaV0FjSmwtOWhLT29GcTJ3OXdxaFBLLW1rcWF4MXlNT0tsNmlMUmYxdG9yLUctZ1NvcENHYXI5dGJTZk9rWGs?oc=5",
+     "published": "Fri, 20 Nov 2026 14:34:03 GMT",
+     "sentiment": 0.0
+    },
+    {
      "title": "Canara Bank Share Price - Live NSE: CANBK Stock Price & Chart",
      "source": "Upstox",
      "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5WRFh4d2VXcmV1N083elQyNWo0Zllrd1FYZFZ5M0R5bVJXc2dscTJ1MUxZLWJxXzBnUmRaZEc2TTV2YS1HME9Sby02cXBKcHFURWNkV1BiQjFNWE56TTZN?oc=5",
-     "published": "Thu, 19 Nov 2026 04:14:06 GMT",
+     "published": "Thu, 19 Nov 2026 03:34:21 GMT",
      "sentiment": 0.296
     },
     {
@@ -1029,29 +1036,22 @@
      "sentiment": 0.0
     },
     {
+     "title": "Canara Bank Share Price Rise Streak: Price and Peer Read",
+     "source": "Univest",
+     "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE4zLVhyVGpheWxsenl0aHZlT0JZalNCbzdzNzVNa2NqRklSd2JqSVNCWTRZa3V2cG1jZE0wWVFoVGNXdFFCaS1QRm44MW9YX2xpV3owWWxqaHdxUEg3SDNJSE1acGIyVnFmcThIUVFXeU5peGhXbkllRHJCUFNVZ2M?oc=5",
+     "published": "Fri, 20 Nov 2026 08:34:00 GMT",
+     "sentiment": 0.296
+    },
+    {
      "title": "GIC Re appoints Canara Bank, Bank of India EDs as non-exec directors",
      "source": "scanx.trade",
      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOQ0U4d1VmZFcyZlZDYkF1eHBSNUZ2ZGxBRFFoTS11MUNHNXVTaHFVVkh6Z05PZjM0enVMc19DS0NoT1hORFBlSHVLb2E1cDVJTlpxb0FlOTlJcU5JQmxfcFdDX3JSekZ6OUJUVnh2elFXMkhyVGotOFlVSFJyV1U2dVdoNndOMC1yN28wakRTWmdKVmJiZ1ZpekstZE5RbmNfNXU0bXFUaGJxUG11bDBzUU14N1NaMW5xeHc?oc=5",
      "published": "Thu, 19 Nov 2026 19:48:53 GMT",
      "sentiment": 0.0
-    },
-    {
-     "title": "Stock Radar: Canara Bank stock showing signs of reversal; trades above crucial moving averages, says Gaura",
-     "source": "The Economic Times",
-     "link": "https://news.google.com/rss/articles/CBMingJBVV95cUxPYXNnOGhHWEk2NWVWWUMyOFNQUy0waUZJU2dCbWxFcmNKR3JOZElBSF9RbzM2TkpjVks2dEJRbnJVQUFBbFREUlZNY2dVOHR0Z2MzUVFNdUg5Mkw1Q2g1YUtmNUh0RkpTYVZCbTdwbkRTaktXSGk5TE16NnVsMXVVbjBoc2IyUXdUR045ZzEzNmwwOXVRMG9XaFJUYTdSNTFmNV83UzVYOFJnMk1CSzB3VjNfbDdGVnpOZFEyWTVzbHA1dHAwekozeXBLV2x2bjFtMExtSE1nTXVNaDFNMF9rT2d1bnNvS2xXSlZKc0RLNDFJVEZGeW9mUEpDWUxKeVZZazlPcDBIQlVpYlNyeVduNVJmQ2F4UWxOMlZselF30gGXAkFVX3lxTE9Iai1GLXhlVW14ZVVpcno4X1VoRXJIbjhaOVN6S1JlRU9Ca2wxMHVvVXMyb2lEbTVQQXNpWmJzcEtuMmNYRUJGNGpCYWZlWlZJZ1VWVHJoSjRvUFhrSVFtcHlKQzJrUWJ4U056NVV0NUQ1bGxIdFI1UmNDc0kzNzJhY1RKVEhldnhfSTBxY0pkclBmcy1KY3pMMFNVMFRtSlNBX0ZEc19ha3pNZ01iZTJmWm1JOVFHczRlNklMeGlLMjlOQTJhVmZJUl84VS1XdU43WU5aNlNsTzhTOWtZQm5aY2ZyVEpqc1JwN0RnOVRYajhkM1I0MU1WcWV1T05pTE1yYmlWVmpFQ1BXajBLYWhsUUZvX3Vzdw?oc=5",
-     "published": "Tue, 17 Nov 2026 23:30:00 GMT",
-     "sentiment": 0.0
-    },
-    {
-     "title": "PNB vs Canara Bank: Valuation, Q2 Profit and Asset Quality",
-     "source": "Univest",
-     "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOdXRBY3kxZTJIeEFkaEFaTDJOUmFxbklDbnhiTEFLQ1VzS1ZLckl4TXlFYVNsTmp6eUNmRG5PTTJvM2hXZDJESU5jeUJ4QVpxdmZvQ25XZHZVdVlxMjNSS0NreFhCaFpOZG5RalBTOEVkMWMyMzljT29JMzh1OEZzMG9NVlhlQzJ5TVBxcEVESkVmN1VhRjRwZ0ViNlAtNTNXQ0ZDbWJqbU1GRlVf?oc=5",
-     "published": "Tue, 17 Nov 2026 15:22:21 GMT",
-     "sentiment": 0.542
     }
    ],
    "news_sentiment": {
-    "score": 0.166,
+    "score": 0.298,
     "count": 8,
     "label": "POSITIVE"
    },
@@ -1101,7 +1101,7 @@
    "rr_t2": 2.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 0.5095621600854706,
+    "log_vol_ratio": 0.5095960805871249,
     "rsi": 62.32715917137232,
     "dist_high_pct": 3.460430600399754,
     "ext_ema20": 4.118100162113825,
@@ -1109,7 +1109,7 @@
     "day_chg": 2.0102308060797602,
     "ret5": -0.6078472918425448,
     "rs20": -2.3079983867930087,
-    "bias_score": 58.0,
+    "bias_score": -27.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 13.720897339093053
@@ -1164,7 +1164,7 @@
    "rr_t2": 2.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 0.4649026700583362,
+    "log_vol_ratio": 0.4650115944518438,
     "rsi": 73.74092105714905,
     "dist_high_pct": 0.8838383838383838,
     "ext_ema20": 6.74340788736012,
@@ -1172,7 +1172,7 @@
     "day_chg": 2.213541666666674,
     "ret5": 3.4596375617792496,
     "rs20": 4.635680120386776,
-    "bias_score": 58.0,
+    "bias_score": -27.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 13.720897339093053
@@ -1227,7 +1227,7 @@
    "rr_t2": 2.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 0.4091232816429655,
+    "log_vol_ratio": 0.4093127713696978,
     "rsi": 70.11490402748142,
     "dist_high_pct": 0.38812368015173787,
     "ext_ema20": 8.986083668067835,
@@ -1235,7 +1235,7 @@
     "day_chg": 1.4061580959443543,
     "ret5": 9.705809821277068,
     "rs20": 2.7966655496734605,
-    "bias_score": 58.0,
+    "bias_score": -27.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 13.720897339093053
@@ -1290,7 +1290,7 @@
    "rr_t2": 2.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 0.32770468848326606,
+    "log_vol_ratio": 0.32771200091037034,
     "rsi": 64.78746830924192,
     "dist_high_pct": 1.1184291910216628,
     "ext_ema20": 4.189815581462764,
@@ -1298,7 +1298,7 @@
     "day_chg": 0.3713527851458842,
     "ret5": 1.4477211796246614,
     "rs20": -0.9676196275316684,
-    "bias_score": 58.0,
+    "bias_score": -27.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 13.720897339093053
@@ -1353,7 +1353,7 @@
    "rr_t2": 2.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 0.24332465249591298,
+    "log_vol_ratio": 0.24342255807997776,
     "rsi": 66.45134763720134,
     "dist_high_pct": 0.9943723535985688,
     "ext_ema20": 4.770795202622891,
@@ -1361,7 +1361,7 @@
     "day_chg": -0.2477485675162372,
     "ret5": 2.1134593993325845,
     "rs20": 1.779857567801768,
-    "bias_score": 58.0,
+    "bias_score": -27.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 13.720897339093053
@@ -1416,21 +1416,21 @@
    "rr_t2": 2.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 0.24208378551211507,
-    "rsi": 62.44253411871948,
+    "log_vol_ratio": 0.2421567990100578,
+    "rsi": 62.44253414217155,
     "dist_high_pct": 0.0,
-    "ext_ema20": 3.8821819499168075,
-    "atr_pct": 2.3594029513183292,
+    "ext_ema20": 3.882181947705532,
+    "atr_pct": 2.3594029552652858,
     "day_chg": 1.7013232514177634,
     "ret5": 4.486303066740849,
     "rs20": -4.169329501566477,
-    "bias_score": 58.0,
+    "bias_score": -27.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 13.720897339093053
    },
-   "r1_a": 0.4648019240638093,
-   "r2_a": 0.9296038481276098,
+   "r1_a": 0.46480192328625963,
+   "r2_a": 0.9296038465725104,
    "news": [],
    "news_sentiment": null,
    "win_prob": 53.4,
@@ -1479,7 +1479,7 @@
    "rr_t2": 2.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 0.2219006925481369,
+    "log_vol_ratio": 0.22195884105496663,
     "rsi": 64.44289247992319,
     "dist_high_pct": 0.0,
     "ext_ema20": 5.280298947302442,
@@ -1487,7 +1487,7 @@
     "day_chg": 2.499209111040801,
     "ret5": 6.180772881043484,
     "rs20": -4.350113285372892,
-    "bias_score": 58.0,
+    "bias_score": -27.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 13.720897339093053

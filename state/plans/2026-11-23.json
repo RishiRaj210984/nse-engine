@@ -1,53 +1,53 @@
 {
  "bias": {
-  "generated_at": "2026-11-20T16:18:08.543180+05:30",
+  "generated_at": "2026-11-21T14:15:35.563713+05:30",
   "target_session": "2026-11-23",
   "reference_date": "2026-11-20",
   "bias": {
-   "label": "BULLISH",
-   "score": 58,
-   "z": 0.669,
-   "model_z": 0.13,
-   "predicted_nifty_move_pct": 0.1,
-   "typical_daily_move_pct": 0.78,
+   "label": "RANGEBOUND",
+   "score": -27,
+   "z": -0.275,
+   "model_z": -0.895,
+   "predicted_nifty_move_pct": -0.7,
+   "typical_daily_move_pct": 0.781,
    "source": "pre-open global snapshot",
    "india_vix": 17.32,
    "components": [
     {
-     "feature": "vix",
-     "label": "India VIX level",
-     "value": 17.32,
-     "contribution_pct": 0.103
-    },
-    {
-     "feature": "nprev",
-     "label": "Nifty previous day",
-     "value": 1.12,
-     "contribution_pct": -0.037
-    },
-    {
      "feature": "es",
      "label": "S&P 500 futures",
-     "value": 0.0,
-     "contribution_pct": -0.029
+     "value": -2.81,
+     "contribution_pct": -2.185
+    },
+    {
+     "feature": "nq",
+     "label": "Nasdaq futures",
+     "value": -3.8,
+     "contribution_pct": 0.895
     },
     {
      "feature": "ym",
      "label": "Dow futures",
-     "value": 0.0,
-     "contribution_pct": 0.023
+     "value": -1.78,
+     "contribution_pct": 0.845
     },
     {
-     "feature": "ftse",
-     "label": "FTSE 100 (UK)",
-     "value": 0.0,
-     "contribution_pct": -0.006
+     "feature": "dax",
+     "label": "DAX (Germany)",
+     "value": -0.91,
+     "contribution_pct": -0.17
     },
     {
      "feature": "cl",
      "label": "Crude oil",
-     "value": 0.0,
-     "contribution_pct": 0.006
+     "value": 2.4,
+     "contribution_pct": -0.168
+    },
+    {
+     "feature": "ftse",
+     "label": "FTSE 100 (UK)",
+     "value": -0.46,
+     "contribution_pct": -0.138
     }
    ]
   },
@@ -77,42 +77,20 @@
     },
     "strategies": [
      {
-      "name": "Bull Call Spread",
+      "name": "Iron Condor",
       "legs": [
-       {
-        "action": "BUY",
-        "strike": 25800,
-        "type": "CE",
-        "est_premium": 82.8
-       },
        {
         "action": "SELL",
-        "strike": 25900,
+        "strike": 26000,
         "type": "CE",
-        "est_premium": 41.9
-       }
-      ],
-      "net_premium": -40.9,
-      "max_loss": 2658,
-      "max_reward": 3842,
-      "reward_risk": 1.44,
-      "entry": "Enter on dips that hold above 25,494 (EMA20 / S1 support zone)",
-      "target": "Exit spread near \u20b976.4 or NIFTY at 25,900",
-      "stop_loss": "Spread falls to \u20b920.4, or NIFTY closes below 25,188",
-      "breakeven": [
-       25841
-      ],
-      "notes": "Defined risk. Preferred structure.",
-      "verdict": {
-       "decision": "SKIP",
-       "dte": 0,
-       "stats": null,
-       "reason": "Expiry day: a trade opened today can't be tested on NSE's closing prices, and the earlier model test lost money on expiry-day entries."
-      }
-     },
-     {
-      "name": "Bull Put Spread",
-      "legs": [
+        "est_premium": 18.1
+       },
+       {
+        "action": "BUY",
+        "strike": 26100,
+        "type": "CE",
+        "est_premium": 6.6
+       },
        {
         "action": "SELL",
         "strike": 25600,
@@ -126,17 +104,50 @@
         "est_premium": 5.8
        }
       ],
-      "net_premium": 10.7,
-      "max_loss": 5804,
-      "max_reward": 696,
-      "reward_risk": 0.12,
-      "entry": "Enter at 10:15 (after the first hour) only if NIFTY is above 25,600",
-      "target": "Buy back at \u20b94.8 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
-      "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b9696 per lot)",
+      "net_premium": 22.2,
+      "max_loss": 5057,
+      "max_reward": 1443,
+      "reward_risk": 0.29,
+      "entry": "Enter at 10:15 (after the first hour) only if NIFTY is between 25,600 and 26,000",
+      "target": "Buy back at \u20b910.0 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
+      "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,443 per lot)",
       "breakeven": [
-       25589
+       25578,
+       26022
       ],
-      "notes": "Earns time decay; wins if the index does not fall (bull put) / rise (bear call) past the short strike.",
+      "notes": "Hedged premium selling. Check SPAN margin with your broker.",
+      "test": {
+       "wing": 150,
+       "legs": [
+        {
+         "action": "SELL",
+         "strike": 26000,
+         "type": "CE",
+         "est_premium": 18.1
+        },
+        {
+         "action": "BUY",
+         "strike": 26150,
+         "type": "CE",
+         "est_premium": 3.8
+        },
+        {
+         "action": "SELL",
+         "strike": 25600,
+         "type": "PE",
+         "est_premium": 16.5
+        },
+        {
+         "action": "BUY",
+         "strike": 25450,
+         "type": "PE",
+         "est_premium": 3.2
+        }
+       ],
+       "net_premium": 27.6,
+       "max_loss": 7956,
+       "max_reward": 1794
+      },
       "verdict": {
        "decision": "SKIP",
        "dte": 0,
@@ -145,30 +156,49 @@
       }
      },
      {
-      "name": "ATM Call Buy",
+      "name": "Iron Fly (hedged short straddle)",
       "legs": [
        {
-        "action": "BUY",
+        "action": "SELL",
         "strike": 25800,
         "type": "CE",
         "est_premium": 82.8
+       },
+       {
+        "action": "SELL",
+        "strike": 25800,
+        "type": "PE",
+        "est_premium": 78.8
+       },
+       {
+        "action": "BUY",
+        "strike": 26000,
+        "type": "CE",
+        "est_premium": 18.1
+       },
+       {
+        "action": "BUY",
+        "strike": 25600,
+        "type": "PE",
+        "est_premium": 16.5
        }
       ],
-      "net_premium": -82.8,
-      "max_loss": 5382,
-      "max_reward": 5209,
-      "reward_risk": 0.97,
-      "entry": "Enter on dips that hold above 25,494 (EMA20 / S1 support zone)",
-      "target": "Premium \u2248 \u20b9162.9 (NIFTY near 25,958)",
-      "stop_loss": "Premium \u20b958.0 (-30%), or NIFTY closes below 25,188",
+      "net_premium": 127.0,
+      "max_loss": 4745,
+      "max_reward": 8255,
+      "reward_risk": 1.74,
+      "entry": "Enter only if NIFTY opens within \u00b150 of 25,800",
+      "target": "Buy back at \u20b988.9 (keep ~30% of credit)",
+      "stop_loss": "NIFTY moves beyond 25,700 / 25,900",
       "breakeven": [
-       25883
+       25673,
+       25927
       ],
-      "notes": "Max loss = full premium. Theta decay hurts if move is late.",
+      "notes": "Higher reward, tighter range. Never run an unhedged straddle.",
       "verdict": {
        "decision": "CAUTION",
        "dte": 0,
-       "reason": "ATM Call Buy is not tested by the options lab.",
+       "reason": "Iron Fly (hedged short straddle) is not tested by the options lab.",
        "stats": null
       }
      }
@@ -206,42 +236,20 @@
     },
     "strategies": [
      {
-      "name": "Bull Call Spread",
+      "name": "Iron Condor",
       "legs": [
-       {
-        "action": "BUY",
-        "strike": 64600,
-        "type": "CE",
-        "est_premium": 299.6
-       },
        {
         "action": "SELL",
-        "strike": 64900,
+        "strike": 65300,
         "type": "CE",
-        "est_premium": 168.3
-       }
-      ],
-      "net_premium": -131.3,
-      "max_loss": 3939,
-      "max_reward": 5061,
-      "reward_risk": 1.28,
-      "entry": "Enter on dips that hold above 63,262 (EMA20 / S1 support zone)",
-      "target": "Exit spread near \u20b9232.5 or BANKNIFTY at 64,900",
-      "stop_loss": "Spread falls to \u20b965.7, or BANKNIFTY closes below 61,889",
-      "breakeven": [
-       64731
-      ],
-      "notes": "Defined risk. Preferred structure.",
-      "verdict": {
-       "decision": "SKIP",
-       "dte": 0,
-       "stats": null,
-       "reason": "Expiry day: a trade opened today can't be tested on NSE's closing prices, and the earlier model test lost money on expiry-day entries."
-      }
-     },
-     {
-      "name": "Bull Put Spread",
-      "legs": [
+        "est_premium": 65.2
+       },
+       {
+        "action": "BUY",
+        "strike": 65600,
+        "type": "CE",
+        "est_premium": 27.7
+       },
        {
         "action": "SELL",
         "strike": 64000,
@@ -255,17 +263,18 @@
         "est_premium": 27.1
        }
       ],
-      "net_premium": 38.5,
-      "max_loss": 7845,
-      "max_reward": 1155,
-      "reward_risk": 0.15,
-      "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is above 64,000",
-      "target": "Buy back at \u20b917.3 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
-      "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,155 per lot)",
+      "net_premium": 76.0,
+      "max_loss": 6720,
+      "max_reward": 2280,
+      "reward_risk": 0.34,
+      "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is between 64,000 and 65,300",
+      "target": "Buy back at \u20b934.2 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
+      "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b92,280 per lot)",
       "breakeven": [
-       63962
+       63924,
+       65376
       ],
-      "notes": "Earns time decay; wins if the index does not fall (bull put) / rise (bear call) past the short strike.",
+      "notes": "Hedged premium selling. Check SPAN margin with your broker.",
       "verdict": {
        "decision": "SKIP",
        "dte": 0,
@@ -274,30 +283,49 @@
       }
      },
      {
-      "name": "ATM Call Buy",
+      "name": "Iron Fly (hedged short straddle)",
       "legs": [
        {
-        "action": "BUY",
+        "action": "SELL",
         "strike": 64600,
         "type": "CE",
         "est_premium": 299.6
+       },
+       {
+        "action": "SELL",
+        "strike": 64600,
+        "type": "PE",
+        "est_premium": 255.8
+       },
+       {
+        "action": "BUY",
+        "strike": 65200,
+        "type": "CE",
+        "est_premium": 84.4
+       },
+       {
+        "action": "BUY",
+        "strike": 64000,
+        "type": "PE",
+        "est_premium": 65.6
        }
       ],
-      "net_premium": -299.6,
-      "max_loss": 8988,
-      "max_reward": 11220,
-      "reward_risk": 1.25,
-      "entry": "Enter on dips that hold above 63,262 (EMA20 / S1 support zone)",
-      "target": "Premium \u2248 \u20b9673.6 (BANKNIFTY near 65,344)",
-      "stop_loss": "Premium \u20b9209.7 (-30%), or BANKNIFTY closes below 61,889",
+      "net_premium": 405.4,
+      "max_loss": 5838,
+      "max_reward": 12162,
+      "reward_risk": 2.08,
+      "entry": "Enter only if BANKNIFTY opens within \u00b1100 of 64,600",
+      "target": "Buy back at \u20b9283.8 (keep ~30% of credit)",
+      "stop_loss": "BANKNIFTY moves beyond 64,300 / 64,900",
       "breakeven": [
-       64900
+       64195,
+       65005
       ],
-      "notes": "Max loss = full premium. Theta decay hurts if move is late.",
+      "notes": "Higher reward, tighter range. Never run an unhedged straddle.",
       "verdict": {
        "decision": "CAUTION",
        "dte": 0,
-       "reason": "ATM Call Buy is not tested by the options lab.",
+       "reason": "Iron Fly (hedged short straddle) is not tested by the options lab.",
        "stats": null
       }
      }
@@ -315,7 +343,7 @@
    "oos_days": 300,
    "directional_calls": 36,
    "directional_accuracy": 72.2,
-   "sign_accuracy_all_days": 51.0,
+   "sign_accuracy_all_days": 51.3,
    "gap_corr": 0.25,
    "gap_sign_pct": 55.7,
    "trained_rows": 750,
@@ -324,46 +352,46 @@
   }
  },
  "plan": {
-  "generated_at": "2026-11-20T16:18:30.278485+05:30",
+  "generated_at": "2026-11-21T14:15:56.059233+05:30",
   "session": "2026-11-23",
   "stage": "preview",
   "expected_open": {
-   "gap_pct": 0.02,
+   "gap_pct": -0.3,
    "error_pct": 0.39,
-   "day_pct": 0.1,
-   "snapshot": "Fri 20 Nov 16:18 IST",
+   "day_pct": -0.7,
+   "snapshot": "Sat 21 Nov 14:15 IST",
    "stage": "preview",
-   "tip": "Flat open expected. Normal entry windows apply.",
+   "tip": "Moderate gap down expected. Use limit orders only, and wait for 09:30.",
    "markets": [
     {
      "key": "es",
      "name": "S&P 500 futures",
-     "move_pct": 0.0
+     "move_pct": -2.81
     },
     {
      "key": "nq",
      "name": "Nasdaq futures",
-     "move_pct": 0.0
+     "move_pct": -3.8
     },
     {
      "key": "ym",
      "name": "Dow futures",
-     "move_pct": 0.0
+     "move_pct": -1.78
     },
     {
      "key": "dax",
      "name": "DAX (Germany)",
-     "move_pct": 0.0
+     "move_pct": -0.91
     },
     {
      "key": "ftse",
      "name": "FTSE 100 (UK)",
-     "move_pct": 0.0
+     "move_pct": -0.46
     },
     {
      "key": "stoxx",
      "name": "Euro Stoxx 50",
-     "move_pct": 0.0
+     "move_pct": -0.95
     },
     {
      "key": "n225",
@@ -373,60 +401,60 @@
     {
      "key": "cl",
      "name": "Crude oil",
-     "move_pct": 0.0
+     "move_pct": 2.4
     },
     {
      "key": "gold",
      "name": "Gold",
-     "move_pct": 0.0
+     "move_pct": -1.38
     },
     {
      "key": "dxy",
      "name": "Dollar index",
-     "move_pct": 0.0
+     "move_pct": -0.05
     },
     {
      "key": "inr",
      "name": "USD/INR",
-     "move_pct": 0.0
+     "move_pct": -0.03
     }
    ],
    "drivers": [
     {
-     "feature": "vix",
-     "label": "India VIX level",
-     "value": 17.32,
-     "contribution_pct": 0.103
-    },
-    {
-     "feature": "nprev",
-     "label": "Nifty previous day",
-     "value": 1.12,
-     "contribution_pct": -0.037
-    },
-    {
      "feature": "es",
      "label": "S&P 500 futures",
-     "value": 0.0,
-     "contribution_pct": -0.029
+     "value": -2.81,
+     "contribution_pct": -2.185
+    },
+    {
+     "feature": "nq",
+     "label": "Nasdaq futures",
+     "value": -3.8,
+     "contribution_pct": 0.895
     },
     {
      "feature": "ym",
      "label": "Dow futures",
-     "value": 0.0,
-     "contribution_pct": 0.023
+     "value": -1.78,
+     "contribution_pct": 0.845
     },
     {
-     "feature": "ftse",
-     "label": "FTSE 100 (UK)",
-     "value": 0.0,
-     "contribution_pct": -0.006
+     "feature": "dax",
+     "label": "DAX (Germany)",
+     "value": -0.91,
+     "contribution_pct": -0.17
     },
     {
      "feature": "cl",
      "label": "Crude oil",
-     "value": 0.0,
-     "contribution_pct": 0.006
+     "value": 2.4,
+     "contribution_pct": -0.168
+    },
+    {
+     "feature": "ftse",
+     "label": "FTSE 100 (UK)",
+     "value": -0.46,
+     "contribution_pct": -0.138
     }
    ],
    "wf": {
@@ -437,51 +465,82 @@
     "directional_accuracy": 75.6
    }
   },
-  "headline": "Market bias UP \u2014 favour buying dips",
-  "bias": "BULLISH",
-  "score": 58,
+  "headline": "Market bias SIDEWAYS \u2014 favour hedged premium selling",
+  "bias": "RANGEBOUND",
+  "score": -27,
   "bias_track_record_pct": 72.2,
   "options": [
    {
     "index": "NIFTY",
-    "strategy": "Bull Call Spread",
-    "legs": "BUY 25800 CE + SELL 25900 CE",
+    "strategy": "Iron Condor",
+    "legs": "SELL 26000 CE + BUY 26100 CE + SELL 25600 PE + BUY 25500 PE",
     "expiry": "2026-11-23",
     "lot_size": 65,
-    "entry": "Enter on dips that hold above 25,494 (EMA20 / S1 support zone)",
-    "target": "Exit spread near \u20b976.4 or NIFTY at 25,900",
-    "stop_loss": "Spread falls to \u20b920.4, or NIFTY closes below 25,188",
-    "max_loss": 2658,
-    "max_reward": 3842,
-    "reward_risk": 1.44,
+    "entry": "Enter at 10:15 (after the first hour) only if NIFTY is between 25,600 and 26,000",
+    "target": "Buy back at \u20b910.0 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
+    "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,443 per lot)",
+    "max_loss": 5057,
+    "max_reward": 1443,
+    "reward_risk": 0.29,
     "decision": "SKIP",
     "decision_reason": "No tested structure qualifies for today. Expiry day: a trade opened today can't be tested on NSE's closing prices, and the earlier model test lost money on expiry-day entries.",
-    "enter_at": "09:45\u201311:00 IST",
-    "exit_by": "15:00 IST same day if no target",
+    "enter_at": "10:15 IST, after the first hour",
+    "exit_by": "target / stop, else expiry 2026-11-23",
     "setup_stats": null,
-    "test": null,
-    "money_needed": 45300,
+    "test": {
+     "wing": 150,
+     "legs": [
+      {
+       "action": "SELL",
+       "strike": 26000,
+       "type": "CE",
+       "est_premium": 18.1
+      },
+      {
+       "action": "BUY",
+       "strike": 26150,
+       "type": "CE",
+       "est_premium": 3.8
+      },
+      {
+       "action": "SELL",
+       "strike": 25600,
+       "type": "PE",
+       "est_premium": 16.5
+      },
+      {
+       "action": "BUY",
+       "strike": 25450,
+       "type": "PE",
+       "est_premium": 3.2
+      }
+     ],
+     "net_premium": 27.6,
+     "max_loss": 7956,
+     "max_reward": 1794
+    },
+    "money_needed": 76182,
     "money_basis": "margin for the sold options (estimate)"
    },
    {
     "index": "BANKNIFTY",
-    "strategy": "Bull Call Spread",
-    "legs": "BUY 64600 CE + SELL 64900 CE",
+    "strategy": "Iron Condor",
+    "legs": "SELL 65300 CE + BUY 65600 CE + SELL 64000 PE + BUY 63700 PE",
     "expiry": "2026-11-23",
     "lot_size": 30,
-    "entry": "Enter on dips that hold above 63,262 (EMA20 / S1 support zone)",
-    "target": "Exit spread near \u20b9232.5 or BANKNIFTY at 64,900",
-    "stop_loss": "Spread falls to \u20b965.7, or BANKNIFTY closes below 61,889",
-    "max_loss": 3939,
-    "max_reward": 5061,
-    "reward_risk": 1.28,
+    "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is between 64,000 and 65,300",
+    "target": "Buy back at \u20b934.2 (keep ~55% of credit), else hold to expiry Mon 23 Nov",
+    "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b92,280 per lot)",
+    "max_loss": 6720,
+    "max_reward": 2280,
+    "reward_risk": 0.34,
     "decision": "SKIP",
     "decision_reason": "No tested structure qualifies for today. Expiry day: a trade opened today can't be tested on NSE's closing prices, and the earlier model test lost money on expiry-day entries.",
-    "enter_at": "09:45\u201311:00 IST",
-    "exit_by": "15:00 IST same day if no target",
+    "enter_at": "10:15 IST, after the first hour",
+    "exit_by": "target / stop, else expiry 2026-11-23",
     "setup_stats": null,
     "test": null,
-    "money_needed": 55320,
+    "money_needed": 90162,
     "money_basis": "margin for the sold options (estimate)"
    }
   ],
