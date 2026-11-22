@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-21T14:15:35.563713+05:30",
+ "generated_at": "2026-11-23T00:07:26.607247+05:30",
  "target_session": "2026-11-23",
  "reference_date": "2026-11-20",
  "us_session_used": "2026-11-20",
@@ -39,8 +39,8 @@
   {
    "name": "Crude Oil",
    "symbol": "CL=F",
-   "last": 83.98,
-   "change": 0.925,
+   "last": 83.41,
+   "change": 0.24,
    "change_unit": "%",
    "as_of": "2026-11-20"
   },
@@ -57,6 +57,14 @@
    "symbol": "^N225",
    "last": 56436.65,
    "change": -5.059,
+   "change_unit": "%",
+   "as_of": "2026-11-20"
+  },
+  {
+   "name": "Hang Seng",
+   "symbol": "^HSI",
+   "last": 22410.8,
+   "change": -1.886,
    "change_unit": "%",
    "as_of": "2026-11-20"
   },
@@ -87,60 +95,116 @@
  ],
  "bias": {
   "label": "RANGEBOUND",
-  "score": -27,
-  "z": -0.275,
-  "model_z": -0.895,
-  "predicted_nifty_move_pct": -0.7,
-  "typical_daily_move_pct": 0.781,
+  "score": 18,
+  "z": 0.183,
+  "model_z": -0.177,
+  "predicted_nifty_move_pct": -0.13,
+  "typical_daily_move_pct": 0.752,
   "source": "pre-open global snapshot",
   "india_vix": 17.32,
   "components": [
    {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": -2.81,
-    "contribution_pct": -2.185
+    "value": -3.26,
+    "contribution_pct": -1.122
    },
    {
     "feature": "nq",
     "label": "Nasdaq futures",
-    "value": -3.8,
-    "contribution_pct": 0.895
+    "value": -4.43,
+    "contribution_pct": 0.851
    },
    {
     "feature": "ym",
     "label": "Dow futures",
-    "value": -1.78,
-    "contribution_pct": 0.845
+    "value": -2.13,
+    "contribution_pct": 0.198
+   },
+   {
+    "feature": "cl",
+    "label": "Crude oil",
+    "value": 2.14,
+    "contribution_pct": -0.153
    },
    {
     "feature": "dax",
     "label": "DAX (Germany)",
     "value": -0.91,
-    "contribution_pct": -0.17
+    "contribution_pct": -0.113
    },
    {
-    "feature": "cl",
-    "label": "Crude oil",
-    "value": 2.4,
-    "contribution_pct": -0.168
-   },
-   {
-    "feature": "ftse",
-    "label": "FTSE 100 (UK)",
-    "value": -0.46,
-    "contribution_pct": -0.138
+    "feature": "gold",
+    "label": "Gold",
+    "value": -2.03,
+    "contribution_pct": 0.112
    }
   ]
  },
  "news": {
   "summary": {
-   "score": 0.365,
-   "count": 39,
+   "score": 0.174,
+   "count": 40,
    "label": "POSITIVE"
   },
   "weight": 0.31,
   "headlines": [
+   {
+    "title": "South Korea prepares market stabilisation funds after KOSPI hits 10-month low",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/south-korea-prepares-market-stabilisation-funds-after-kospi-hits-10-month-low/articleshow/136073016.cms",
+    "published": "Sun, 22 Nov 2026 17:15:31 +0530",
+    "sentiment": -0.273
+   },
+   {
+    "title": "Crude oil futures brace for OPEC+ output decision amid supply glut concerns: Analysts",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/commodities/crude-oil-futures-brace-for-opec-output-decision-amid-supply-glut-concerns-analysts/articleshow/136072428.cms",
+    "published": "Sun, 22 Nov 2026 16:30:27 +0530",
+    "sentiment": -0.572
+   },
+   {
+    "title": "Why gold\u2019s five-year winning streak is under threat after dramatic selloff",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/commodities/why-golds-five-year-winning-streak-is-under-threat-after-dramatic-selloff/articleshow/136070323.cms",
+    "published": "Sun, 22 Nov 2026 13:51:09 +0530",
+    "sentiment": -0.459
+   },
+   {
+    "title": "InvIT IPO rush gathers pace; 4-5 private trusts likely to go public by Mar 2027",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/ipos/fpos/invit-ipo-rush-gathers-pace-4-5-private-trusts-likely-to-go-public-by-mar-2027/articleshow/136069094.cms",
+    "published": "Sun, 22 Nov 2026 12:15:10 +0530",
+    "sentiment": 0.477
+   },
+   {
+    "title": "5 penny stocks plunge up to 68% in six months. Do you own any?",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/5-penny-stocks-plunge-up-to-68-in-six-months-do-you-own-any/slideshow/136069072.cms",
+    "published": "Sun, 22 Nov 2026 12:03:45 +0530",
+    "sentiment": -0.494
+   },
+   {
+    "title": "Reliance Brands FY26 revenue up 3.8% to Rs 3,390.9 crore; loss narrows to Rs 137 crore",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/reliance-brands-fy26-revenue-up-3-8-to-rs-3390-9-crore-loss-narrows-to-rs-137-crore/articleshow/136068185.cms",
+    "published": "Sun, 22 Nov 2026 11:14:52 +0530",
+    "sentiment": -0.318
+   },
+   {
+    "title": "Anthropic's post-debut stumble delivers reality check for AI trade",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/anthropics-post-debut-stumble-delivers-reality-check-for-ai-trade/articleshow/136066633.cms",
+    "published": "Sun, 22 Nov 2026 09:00:15 +0530",
+    "sentiment": 0.0
+   },
+   {
+    "title": "Nifty eyes 26,200 as rally strengthens; 6 sectors signal outperformance",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/nifty-eyes-26200-as-rally-strengthens-6-sectors-signal-outperformance/articleshow/136050218.cms",
+    "published": "Sat, 21 Nov 2026 15:09:05 +0530",
+    "sentiment": 0.807
+   },
    {
     "title": "Stocks to buy: HSBC lists 19 Indian stocks that saw FY27 earnings upgrades, check target prices",
     "source": "ET Markets",
@@ -168,72 +232,16 @@
     "link": "https://economictimes.indiatimes.com/markets/stocks/news/market-winners-max-healthcare-deepak-fertilisers-among-10-stocks-that-surged-up-to-14-in-last-week/slideshow/136046616.cms",
     "published": "Sat, 21 Nov 2026 11:21:22 +0530",
     "sentiment": 0.477
-   },
-   {
-    "title": "US Treasury yields drop for day and week; AI trade concern spurs safe-haven bid",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/bonds/us-treasury-yields-drop-for-day-and-week-ai-trade-concern-spurs-safe-haven-bid/articleshow/136045682.cms",
-    "published": "Sat, 21 Nov 2026 10:53:49 +0530",
-    "sentiment": -0.077
-   },
-   {
-    "title": "Dollar weaker as Fed-fueled rally stalls; lower US yields help yen",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/forex/forex-news/dollar-weaker-as-fed-fueled-rally-stalls-lower-us-yields-help-yen/articleshow/136045620.cms",
-    "published": "Sat, 21 Nov 2026 10:50:04 +0530",
-    "sentiment": 0.052
-   },
-   {
-    "title": "Crude prices may normalise to USD 70 by end-2027 as global oil market moves into surplus: Report",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/commodities/news/crude-prices-may-normalise-to-usd-70-by-end-2027-as-global-oil-market-moves-into-surplus-report/articleshow/136045576.cms",
-    "published": "Sat, 21 Nov 2026 10:46:52 +0530",
-    "sentiment": -0.572
-   },
-   {
-    "title": "Gold's slide deepens as AI rout, rate-hike bets hurt bullion",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/commodities/news/golds-slide-deepens-as-ai-rout-rate-hike-bets-hurt-bullion/articleshow/136045549.cms",
-    "published": "Sat, 21 Nov 2026 10:44:11 +0530",
-    "sentiment": -0.527
-   },
-   {
-    "title": "UK stocks sink as global selloff weighs on banks and miners",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/uk-stocks-sink-as-global-selloff-weighs-on-banks-and-miners/articleshow/136045502.cms",
-    "published": "Sat, 21 Nov 2026 10:42:07 +0530",
-    "sentiment": -0.459
-   },
-   {
-    "title": "European shares post worst week in over a year as AI trade unravels",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/european-shares-post-worst-week-in-over-a-year-as-ai-trade-unravels/articleshow/136045442.cms",
-    "published": "Sat, 21 Nov 2026 10:38:46 +0530",
-    "sentiment": -0.44
-   },
-   {
-    "title": "Tech leads global stocks rout, Treasury yields fall",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/tech-leads-global-stocks-rout-treasury-yields-fall/articleshow/136045354.cms",
-    "published": "Sat, 21 Nov 2026 10:35:25 +0530",
-    "sentiment": 0.202
-   },
-   {
-    "title": "Wall Street Week Ahead: 'Black Friday' brings consumer spending into focus for AI-rocked market",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/wall-street-week-ahead-black-friday-brings-consumer-spending-into-focus-for-ai-rocked-market/articleshow/136044202.cms",
-    "published": "Sat, 21 Nov 2026 09:18:02 +0530",
-    "sentiment": 0.0
    }
   ]
  },
  "model": {
   "oos_days": 300,
-  "directional_calls": 36,
-  "directional_accuracy": 72.2,
-  "sign_accuracy_all_days": 51.3,
-  "gap_corr": 0.25,
-  "gap_sign_pct": 55.7,
+  "directional_calls": 97,
+  "directional_accuracy": 69.1,
+  "sign_accuracy_all_days": 63.3,
+  "gap_corr": 0.53,
+  "gap_sign_pct": 69.0,
   "trained_rows": 750,
   "version": 48,
   "bias_threshold": 0.3
@@ -528,28 +536,28 @@
  },
  "events": [],
  "preopen": {
-  "snapshot_ist": "Sat 21 Nov 14:15 IST",
+  "snapshot_ist": "Mon 23 Nov 00:07 IST",
   "stage": "preview",
-  "expected_gap_pct": -0.3,
-  "gap_typical_error_pct": 0.39,
-  "expected_day_pct": -0.7,
-  "z": -0.895,
-  "typical_daily_move_pct": 0.781,
+  "expected_gap_pct": -0.4,
+  "gap_typical_error_pct": 0.33,
+  "expected_day_pct": -0.13,
+  "z": -0.177,
+  "typical_daily_move_pct": 0.752,
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": -2.81
+    "move_pct": -3.26
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": -3.8
+    "move_pct": -4.43
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": -1.78
+    "move_pct": -2.13
    },
    {
     "key": "dax",
@@ -574,12 +582,12 @@
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": 2.4
+    "move_pct": 2.14
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": -1.38
+    "move_pct": -2.03
    },
    {
     "key": "dxy",
@@ -596,51 +604,51 @@
    {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": -2.81,
-    "contribution_pct": -2.185
+    "value": -3.26,
+    "contribution_pct": -1.122
    },
    {
     "feature": "nq",
     "label": "Nasdaq futures",
-    "value": -3.8,
-    "contribution_pct": 0.895
+    "value": -4.43,
+    "contribution_pct": 0.851
    },
    {
     "feature": "ym",
     "label": "Dow futures",
-    "value": -1.78,
-    "contribution_pct": 0.845
+    "value": -2.13,
+    "contribution_pct": 0.198
+   },
+   {
+    "feature": "cl",
+    "label": "Crude oil",
+    "value": 2.14,
+    "contribution_pct": -0.153
    },
    {
     "feature": "dax",
     "label": "DAX (Germany)",
     "value": -0.91,
-    "contribution_pct": -0.17
+    "contribution_pct": -0.113
    },
    {
-    "feature": "cl",
-    "label": "Crude oil",
-    "value": 2.4,
-    "contribution_pct": -0.168
-   },
-   {
-    "feature": "ftse",
-    "label": "FTSE 100 (UK)",
-    "value": -0.46,
-    "contribution_pct": -0.138
+    "feature": "gold",
+    "label": "Gold",
+    "value": -2.03,
+    "contribution_pct": 0.112
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.25,
-   "gap_sign_pct": 55.7,
-   "directional_calls": 45,
-   "directional_accuracy": 75.6
+   "gap_corr": 0.53,
+   "gap_sign_pct": 69.0,
+   "directional_calls": 113,
+   "directional_accuracy": 71.7
   },
   "vix": 17.32
  },
  "global_table": {
-  "updated": "2026-11-21T14:15:47.563659+05:30",
+  "updated": "2026-11-23T00:07:39.773331+05:30",
   "rows": [
    {
     "group": "US, last close",
@@ -650,7 +658,7 @@
    },
    {
     "group": "US futures now",
-    "move": "S&P -2.81%, Nasdaq -3.80%, Dow -1.78% (since Nifty's close)",
+    "move": "S&P -3.26%, Nasdaq -4.43%, Dow -2.13% (since Nifty's close)",
     "effect": "red",
     "note": "Futures point to a softer open"
    },
@@ -686,7 +694,7 @@
    },
    {
     "group": "Rupee",
-    "move": "92.67 per $ (-0.65%)",
+    "move": "92.66 per $ (-0.66%)",
     "effect": "green",
     "note": "Rupee strengthening"
    },
@@ -698,7 +706,7 @@
    },
    {
     "group": "Model: Nifty open",
-    "move": "-0.30% (\u00b10.39%)",
+    "move": "-0.40% (\u00b10.33%)",
     "effect": "red",
     "note": "Combined forecast from all markets (preview)",
     "model": true
