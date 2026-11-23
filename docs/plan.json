@@ -1,29 +1,29 @@
 {
- "generated_at": "2026-11-23T05:17:21.014156+05:30",
+ "generated_at": "2026-11-23T07:13:50.096623+05:30",
  "session": "2026-11-23",
- "stage": "preview",
+ "stage": "final",
  "expected_open": {
-  "gap_pct": -0.31,
-  "error_pct": 0.3,
-  "day_pct": -0.27,
-  "snapshot": "Mon 23 Nov 05:16 IST",
-  "stage": "preview",
-  "tip": "Moderate gap down expected. Use limit orders only, and wait for 09:30.",
+  "gap_pct": -0.05,
+  "error_pct": 0.31,
+  "day_pct": -0.08,
+  "snapshot": "Mon 23 Nov 07:13 IST",
+  "stage": "final",
+  "tip": "Flat open expected. Normal entry windows apply.",
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": -1.79
+    "move_pct": -1.13
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": -2.1
+    "move_pct": -1.68
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": -1.19
+    "move_pct": -0.51
    },
    {
     "key": "dax",
@@ -48,17 +48,17 @@
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": 1.45
+    "move_pct": 1.86
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": -0.28
+    "move_pct": 0.81
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": -0.04
+    "move_pct": -0.11
    },
    {
     "key": "inr",
@@ -70,52 +70,52 @@
    {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": -1.79,
-    "contribution_pct": -0.623
+    "value": -1.13,
+    "contribution_pct": -0.432
    },
    {
     "feature": "nq",
     "label": "Nasdaq futures",
-    "value": -2.1,
-    "contribution_pct": 0.335
+    "value": -1.68,
+    "contribution_pct": 0.354
    },
    {
     "feature": "cl",
     "label": "Crude oil",
-    "value": 1.45,
-    "contribution_pct": -0.096
-   },
-   {
-    "feature": "vix",
-    "label": "India VIX level",
-    "value": 17.32,
-    "contribution_pct": 0.083
+    "value": 1.86,
+    "contribution_pct": -0.091
    },
    {
     "feature": "dax",
     "label": "DAX (Germany)",
     "value": -0.91,
-    "contribution_pct": -0.062
+    "contribution_pct": -0.087
    },
    {
-    "feature": "ym",
-    "label": "Dow futures",
-    "value": -1.19,
-    "contribution_pct": 0.04
+    "feature": "vix",
+    "label": "India VIX level",
+    "value": 17.32,
+    "contribution_pct": 0.084
+   },
+   {
+    "feature": "dxy",
+    "label": "Dollar index",
+    "value": -0.11,
+    "contribution_pct": 0.042
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.65,
-   "gap_sign_pct": 70.7,
-   "directional_calls": 141,
-   "directional_accuracy": 72.3
+   "gap_corr": 0.68,
+   "gap_sign_pct": 69.7,
+   "directional_calls": 158,
+   "directional_accuracy": 72.8
   }
  },
  "headline": "Market bias SIDEWAYS \u2014 favour hedged premium selling",
  "bias": "RANGEBOUND",
- "score": -3,
- "bias_track_record_pct": 71.5,
+ "score": 25,
+ "bias_track_record_pct": 73.6,
  "options": [
   {
    "index": "NIFTY",
