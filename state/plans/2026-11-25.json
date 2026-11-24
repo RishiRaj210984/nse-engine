@@ -1,53 +1,53 @@
 {
  "bias": {
-  "generated_at": "2026-11-24T16:17:51.811019+05:30",
+  "generated_at": "2026-11-24T17:06:09.027636+05:30",
   "target_session": "2026-11-25",
   "reference_date": "2026-11-23",
   "bias": {
    "label": "BULLISH",
-   "score": 84,
-   "z": 1.223,
-   "model_z": 0.744,
-   "predicted_nifty_move_pct": 0.58,
-   "typical_daily_move_pct": 0.779,
+   "score": 87,
+   "z": 1.325,
+   "model_z": 0.664,
+   "predicted_nifty_move_pct": 0.52,
+   "typical_daily_move_pct": 0.78,
    "source": "pre-open global snapshot",
    "india_vix": 17.7,
    "components": [
     {
      "feature": "es",
      "label": "S&P 500 futures",
-     "value": 1.13,
-     "contribution_pct": 0.877
-    },
-    {
-     "feature": "nq",
-     "label": "Nasdaq futures",
-     "value": 1.67,
-     "contribution_pct": -0.338
-    },
-    {
-     "feature": "ym",
-     "label": "Dow futures",
-     "value": 0.73,
-     "contribution_pct": -0.331
+     "value": 0.8,
+     "contribution_pct": 0.454
     },
     {
      "feature": "cl",
      "label": "Crude oil",
-     "value": -2.87,
-     "contribution_pct": 0.22
+     "value": -3.0,
+     "contribution_pct": 0.165
+    },
+    {
+     "feature": "nq",
+     "label": "Nasdaq futures",
+     "value": 1.19,
+     "contribution_pct": -0.158
+    },
+    {
+     "feature": "ym",
+     "label": "Dow futures",
+     "value": 0.5,
+     "contribution_pct": -0.151
     },
     {
      "feature": "ftse",
      "label": "FTSE 100 (UK)",
-     "value": 0.67,
-     "contribution_pct": 0.185
+     "value": 0.49,
+     "contribution_pct": 0.111
     },
     {
-     "feature": "dxy",
-     "label": "Dollar index",
-     "value": 0.29,
-     "contribution_pct": -0.143
+     "feature": "vix",
+     "label": "India VIX level",
+     "value": 17.7,
+     "contribution_pct": 0.08
     }
    ]
   },
@@ -361,57 +361,57 @@
   },
   "model": {
    "oos_days": 300,
-   "directional_calls": 39,
-   "directional_accuracy": 71.8,
+   "directional_calls": 48,
+   "directional_accuracy": 68.8,
    "sign_accuracy_all_days": 51.7,
-   "gap_corr": 0.23,
-   "gap_sign_pct": 55.3,
+   "gap_corr": 0.25,
+   "gap_sign_pct": 60.0,
    "trained_rows": 750,
    "version": 50,
    "bias_threshold": 0.3
   }
  },
  "plan": {
-  "generated_at": "2026-11-24T16:18:14.635124+05:30",
+  "generated_at": "2026-11-24T17:06:31.476420+05:30",
   "session": "2026-11-25",
   "stage": "preview",
   "expected_open": {
-   "gap_pct": 0.04,
+   "gap_pct": 0.08,
    "error_pct": 0.39,
-   "day_pct": 0.58,
-   "snapshot": "Tue 24 Nov 16:17 IST",
+   "day_pct": 0.52,
+   "snapshot": "Tue 24 Nov 17:06 IST",
    "stage": "preview",
    "tip": "Flat open expected. Normal entry windows apply.",
    "markets": [
     {
      "key": "es",
      "name": "S&P 500 futures",
-     "move_pct": 1.13
+     "move_pct": 0.8
     },
     {
      "key": "nq",
      "name": "Nasdaq futures",
-     "move_pct": 1.67
+     "move_pct": 1.19
     },
     {
      "key": "ym",
      "name": "Dow futures",
-     "move_pct": 0.73
+     "move_pct": 0.5
     },
     {
      "key": "dax",
      "name": "DAX (Germany)",
-     "move_pct": 0.68
+     "move_pct": 0.41
     },
     {
      "key": "ftse",
      "name": "FTSE 100 (UK)",
-     "move_pct": 0.67
+     "move_pct": 0.49
     },
     {
      "key": "stoxx",
      "name": "Euro Stoxx 50",
-     "move_pct": 0.76
+     "move_pct": 0.46
     },
     {
      "key": "n225",
@@ -421,17 +421,17 @@
     {
      "key": "cl",
      "name": "Crude oil",
-     "move_pct": -2.87
+     "move_pct": -3.0
     },
     {
      "key": "gold",
      "name": "Gold",
-     "move_pct": -0.01
+     "move_pct": 0.11
     },
     {
      "key": "dxy",
      "name": "Dollar index",
-     "move_pct": 0.29
+     "move_pct": 0.12
     },
     {
      "key": "inr",
@@ -443,52 +443,52 @@
     {
      "feature": "es",
      "label": "S&P 500 futures",
-     "value": 1.13,
-     "contribution_pct": 0.877
-    },
-    {
-     "feature": "nq",
-     "label": "Nasdaq futures",
-     "value": 1.67,
-     "contribution_pct": -0.338
-    },
-    {
-     "feature": "ym",
-     "label": "Dow futures",
-     "value": 0.73,
-     "contribution_pct": -0.331
+     "value": 0.8,
+     "contribution_pct": 0.454
     },
     {
      "feature": "cl",
      "label": "Crude oil",
-     "value": -2.87,
-     "contribution_pct": 0.22
+     "value": -3.0,
+     "contribution_pct": 0.165
+    },
+    {
+     "feature": "nq",
+     "label": "Nasdaq futures",
+     "value": 1.19,
+     "contribution_pct": -0.158
+    },
+    {
+     "feature": "ym",
+     "label": "Dow futures",
+     "value": 0.5,
+     "contribution_pct": -0.151
     },
     {
      "feature": "ftse",
      "label": "FTSE 100 (UK)",
-     "value": 0.67,
-     "contribution_pct": 0.185
+     "value": 0.49,
+     "contribution_pct": 0.111
     },
     {
-     "feature": "dxy",
-     "label": "Dollar index",
-     "value": 0.29,
-     "contribution_pct": -0.143
+     "feature": "vix",
+     "label": "India VIX level",
+     "value": 17.7,
+     "contribution_pct": 0.08
     }
    ],
    "wf": {
     "oos_days": 300,
-    "gap_corr": 0.23,
-    "gap_sign_pct": 55.3,
-    "directional_calls": 46,
-    "directional_accuracy": 71.7
+    "gap_corr": 0.25,
+    "gap_sign_pct": 60.0,
+    "directional_calls": 61,
+    "directional_accuracy": 65.6
    }
   },
   "headline": "Market bias UP \u2014 favour buying dips",
   "bias": "BULLISH",
-  "score": 84,
-  "bias_track_record_pct": 71.8,
+  "score": 87,
+  "bias_track_record_pct": 68.8,
   "options": [
    {
     "index": "NIFTY",
