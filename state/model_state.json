@@ -3448,5 +3448,45 @@
    }
   },
   "note": "news_weight 0.31\u21920.336; ranker OFF: no out-of-sample edge, using rule stats only"
+ },
+ {
+  "version": 50,
+  "created_at": "2026-11-24T16:17:32.549781+05:30",
+  "params": {
+   "vol_mult": 1.5,
+   "rsi_lo": 55,
+   "rsi_hi": 70,
+   "near_high_pct": 2.0,
+   "sl_atr": 1.25,
+   "t1_atr": 1.5,
+   "t2_atr": 2.5,
+   "bias_threshold": 0.3,
+   "vix_high": 18.0,
+   "news_weight": 0.354,
+   "max_day_chg": 99.0,
+   "regime_gate": 1,
+   "cost_pct": 0.25
+  },
+  "weights": null,
+  "metrics": {
+   "samples": 2556,
+   "live_samples": 435,
+   "rule_trades": 731,
+   "base_win_rate": 0.5327,
+   "avg_win_r": 0.727,
+   "avg_loss_r": 0.558,
+   "expectancy_r": 0.127,
+   "holdout_logloss": 0.6994,
+   "baseline_logloss": 0.6933,
+   "holdout_auc": 0.502,
+   "holdout_n": 512,
+   "bias_wf": {
+    "oos_days": 500,
+    "directional_calls": 136,
+    "directional_accuracy": 63.2,
+    "sign_accuracy_all_days": 56.2
+   }
+  },
+  "note": "news_weight 0.336\u21920.354; ranker OFF: no out-of-sample edge, using rule stats only"
  }
 ]

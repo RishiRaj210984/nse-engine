@@ -1,64 +1,64 @@
 {
- "generated_at": "2026-11-24T09:34:17.319387+05:30",
+ "generated_at": "2026-11-24T16:18:14.635124+05:30",
  "session": "2026-11-25",
  "stage": "preview",
  "expected_open": {
-  "gap_pct": 0.09,
+  "gap_pct": 0.04,
   "error_pct": 0.39,
-  "day_pct": 0.83,
-  "snapshot": "Tue 24 Nov 09:33 IST",
+  "day_pct": 0.58,
+  "snapshot": "Tue 24 Nov 16:17 IST",
   "stage": "preview",
   "tip": "Flat open expected. Normal entry windows apply.",
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": 1.88
+    "move_pct": 1.13
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": 3.05
+    "move_pct": 1.67
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": 1.06
+    "move_pct": 0.73
    },
    {
     "key": "dax",
     "name": "DAX (Germany)",
-    "move_pct": 1.37
+    "move_pct": 0.68
    },
    {
     "key": "ftse",
     "name": "FTSE 100 (UK)",
-    "move_pct": 0.8
+    "move_pct": 0.67
    },
    {
     "key": "stoxx",
     "name": "Euro Stoxx 50",
-    "move_pct": 1.36
+    "move_pct": 0.76
    },
    {
     "key": "n225",
     "name": "Nikkei 225",
-    "move_pct": 3.84
+    "move_pct": 3.54
    },
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": -3.22
+    "move_pct": -2.87
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": 0.2
+    "move_pct": -0.01
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": 0.36
+    "move_pct": 0.29
    },
    {
     "key": "inr",
@@ -70,38 +70,38 @@
    {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": 1.88,
-    "contribution_pct": 1.477
+    "value": 1.13,
+    "contribution_pct": 0.877
    },
    {
     "feature": "nq",
     "label": "Nasdaq futures",
-    "value": 3.05,
-    "contribution_pct": -0.622
+    "value": 1.67,
+    "contribution_pct": -0.338
    },
    {
     "feature": "ym",
     "label": "Dow futures",
-    "value": 1.06,
-    "contribution_pct": -0.493
-   },
-   {
-    "feature": "dax",
-    "label": "DAX (Germany)",
-    "value": 1.37,
-    "contribution_pct": 0.267
+    "value": 0.73,
+    "contribution_pct": -0.331
    },
    {
     "feature": "cl",
     "label": "Crude oil",
-    "value": -3.22,
-    "contribution_pct": 0.246
+    "value": -2.87,
+    "contribution_pct": 0.22
    },
    {
     "feature": "ftse",
     "label": "FTSE 100 (UK)",
-    "value": 0.8,
-    "contribution_pct": 0.223
+    "value": 0.67,
+    "contribution_pct": 0.185
+   },
+   {
+    "feature": "dxy",
+    "label": "Dollar index",
+    "value": 0.29,
+    "contribution_pct": -0.143
    }
   ],
   "wf": {
@@ -114,7 +114,7 @@
  },
  "headline": "Market bias UP \u2014 favour buying dips",
  "bias": "BULLISH",
- "score": 92,
+ "score": 84,
  "bias_track_record_pct": 71.8,
  "options": [
   {
@@ -130,16 +130,16 @@
    "max_reward": 2282,
    "reward_risk": 0.13,
    "decision": "SKIP",
-   "decision_reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (57.4% wins, avg \u20b9-241 per lot over 108 trades). A good-looking slice is not trusted on its own.",
+   "decision_reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (58.0% wins, avg \u20b9-235 per lot over 112 trades). A good-looking slice is not trusted on its own.",
    "enter_at": "10:15 IST, after the first hour",
    "exit_by": "target / stop, else expiry 2026-12-01",
    "setup_stats": {
-    "trades": 108,
-    "win_pct": 57.4,
-    "avg_pnl": -241,
+    "trades": 112,
+    "win_pct": 58.0,
+    "avg_pnl": -235,
     "worst": -9210,
     "best": 3650,
-    "total": -26077,
+    "total": -26381,
     "sample": "days the model called BULLISH"
    },
    "test": null,
@@ -159,16 +159,16 @@
    "max_reward": 7944,
    "reward_risk": 0.12,
    "decision": "SKIP",
-   "decision_reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (67.8% wins, avg \u20b9-58 per lot over 118 trades). A good-looking slice is not trusted on its own.",
+   "decision_reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (69.8% wins, avg \u20b9-22 per lot over 126 trades). A good-looking slice is not trusted on its own.",
    "enter_at": "10:15 IST, after the first hour",
    "exit_by": "target / stop, else expiry 2026-12-29",
    "setup_stats": {
-    "trades": 118,
-    "win_pct": 67.8,
-    "avg_pnl": -58,
+    "trades": 126,
+    "win_pct": 69.8,
+    "avg_pnl": -22,
     "worst": -14563,
     "best": 4611,
-    "total": -6877,
+    "total": -2798,
     "sample": "days the model called BULLISH"
    },
    "test": null,

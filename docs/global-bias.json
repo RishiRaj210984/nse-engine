@@ -1,8 +1,8 @@
 {
- "generated_at": "2026-11-24T09:33:47.010976+05:30",
+ "generated_at": "2026-11-24T16:17:51.811019+05:30",
  "target_session": "2026-11-25",
  "reference_date": "2026-11-23",
- "us_session_used": "2026-11-23",
+ "us_session_used": "2026-11-24",
  "tickers": [
   {
    "name": "S&P 500",
@@ -39,32 +39,32 @@
   {
    "name": "Crude Oil",
    "symbol": "CL=F",
-   "last": 79.9,
-   "change": -4.858,
+   "last": 80.13,
+   "change": -0.05,
    "change_unit": "%",
-   "as_of": "2026-11-23"
+   "as_of": "2026-11-24"
   },
   {
    "name": "Dollar Index",
    "symbol": "DX-Y.NYB",
-   "last": 104.26,
-   "change": 0.435,
+   "last": 104.19,
+   "change": -0.125,
    "change_unit": "%",
-   "as_of": "2026-11-23"
+   "as_of": "2026-11-24"
   },
   {
    "name": "Nikkei 225",
    "symbol": "^N225",
-   "last": 58753.88,
-   "change": 4.106,
+   "last": 58644.63,
+   "change": 3.912,
    "change_unit": "%",
    "as_of": "2026-11-24"
   },
   {
    "name": "Hang Seng",
    "symbol": "^HSI",
-   "last": 22298.63,
-   "change": -0.38,
+   "last": 22219.65,
+   "change": -0.733,
    "change_unit": "%",
    "as_of": "2026-11-24"
   },
@@ -95,10 +95,10 @@
  ],
  "bias": {
   "label": "BULLISH",
-  "score": 92,
-  "z": 1.607,
-  "model_z": 1.063,
-  "predicted_nifty_move_pct": 0.83,
+  "score": 84,
+  "z": 1.223,
+  "model_z": 0.744,
+  "predicted_nifty_move_pct": 0.58,
   "typical_daily_move_pct": 0.779,
   "source": "pre-open global snapshot",
   "india_vix": 17.7,
@@ -106,49 +106,91 @@
    {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": 1.88,
-    "contribution_pct": 1.477
+    "value": 1.13,
+    "contribution_pct": 0.877
    },
    {
     "feature": "nq",
     "label": "Nasdaq futures",
-    "value": 3.05,
-    "contribution_pct": -0.622
+    "value": 1.67,
+    "contribution_pct": -0.338
    },
    {
     "feature": "ym",
     "label": "Dow futures",
-    "value": 1.06,
-    "contribution_pct": -0.493
-   },
-   {
-    "feature": "dax",
-    "label": "DAX (Germany)",
-    "value": 1.37,
-    "contribution_pct": 0.267
+    "value": 0.73,
+    "contribution_pct": -0.331
    },
    {
     "feature": "cl",
     "label": "Crude oil",
-    "value": -3.22,
-    "contribution_pct": 0.246
+    "value": -2.87,
+    "contribution_pct": 0.22
    },
    {
     "feature": "ftse",
     "label": "FTSE 100 (UK)",
-    "value": 0.8,
-    "contribution_pct": 0.223
+    "value": 0.67,
+    "contribution_pct": 0.185
+   },
+   {
+    "feature": "dxy",
+    "label": "Dollar index",
+    "value": 0.29,
+    "contribution_pct": -0.143
    }
   ]
  },
  "news": {
   "summary": {
-   "score": 0.243,
-   "count": 39,
+   "score": 0.203,
+   "count": 40,
    "label": "POSITIVE"
   },
-  "weight": 0.336,
+  "weight": 0.354,
   "headlines": [
+   {
+    "title": "RBI DG asks primary dealers to bid responsibly in G-Sec underwriting auctions",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/bonds/rbi-dg-asks-primary-dealers-to-bid-responsibly-in-g-sec-underwriting-auctions/articleshow/136125661.cms",
+    "published": "Tue, 24 Nov 2026 14:56:23 +0530",
+    "sentiment": 0.0
+   },
+   {
+    "title": "IIFCL IPO: Govt plans to sell part of its stake, company to issue fresh shares",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/ipos/fpos/iifcl-ipo-govt-plans-to-sell-part-of-its-stake-company-to-issue-fresh-shares/articleshow/136124476.cms",
+    "published": "Tue, 24 Nov 2026 14:02:38 +0530",
+    "sentiment": 0.542
+   },
+   {
+    "title": "Investors mint Rs 34.61 lakh cr in November as markets rally nearly 11%",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/investors-mint-rs-34-61-lakh-cr-in-november-as-markets-rally-nearly-11/articleshow/136123662.cms",
+    "published": "Tue, 24 Nov 2026 13:28:46 +0530",
+    "sentiment": 0.382
+   },
+   {
+    "title": "HDFC Bank, Reliance Industries among 10 stocks with highest DII holding in Q2. See full list",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/hdfc-bank-reliance-industries-among-10-stocks-with-highest-dii-holding-in-q2-see-full-list/slideshow/136126992.cms",
+    "published": "Tue, 24 Nov 2026 11:45:03 +0530",
+    "sentiment": 0.0
+   },
+   {
+    "title": "The LTCG debate: Why markets need tax stability and not ad-hoc fixes",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/the-ltcg-debate-why-markets-need-tax-stability-and-not-ad-hoc-fixes/articleshow/136121257.cms",
+    "published": "Tue, 24 Nov 2026 11:38:55 +0530",
+    "sentiment": 0.0
+   },
+   {
+    "title": "Bitcoin fails to hold Nvidia bump with crypto headwinds in focus",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/cryptocurrency/bitcoin-fails-to-hold-nvidia-bump-with-crypto-headwinds-in-focus/articleshow/136119619.cms",
+    "published": "Tue, 24 Nov 2026 10:10:09 +0530",
+    "sentiment": -0.421
+   },
    {
     "title": "South Korea\u2019s Kospi rockets 8% as AI-linked stocks get breather after Jensen Huang\u2019s return as Nvidia CEO. Worst over?",
     "source": "ET Markets",
@@ -190,48 +232,6 @@
     "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/global-markets-wall-street-soars-on-huangs-return-to-nvidia-treasury-yields-rise/articleshow/136116751.cms",
     "published": "Tue, 24 Nov 2026 06:24:33 +0530",
     "sentiment": 0.586
-   },
-   {
-    "title": "NSEL releases Rs 1,950 crore in one-time settlement, ends 14-year payment default",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/nsel-releases-rs-1950-crore-in-one-time-settlement-ends-14-year-payment-default/articleshow/136104164.cms",
-    "published": "Mon, 23 Nov 2026 18:43:56 +0530",
-    "sentiment": -0.494
-   },
-   {
-    "title": "Nasdaq surges 6%, Dow soars 1,400 pts as markets rebound on Huang\u2019s return: Stock Market Live Updates",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/stock-market-live-updates-dow-jones-nasdaq-sp-500-nvidia-meta-anthropic-amd-micron-tesla-ai-chip-earnings-fed-rate-treasury-yield-news-23rd-november-2026/liveblog/136104474.cms",
-    "published": "Mon, 23 Nov 2026 18:42:48 +0530",
-    "sentiment": 0.7
-   },
-   {
-    "title": "Adani Airport raises $300 mn from 360 ONE Asset, taking total equity infusion to $1.35 bn",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/adani-airport-raises-300-mn-from-360-one-asset-taking-total-equity-infusion-to-1-35-bn/articleshow/136104118.cms",
-    "published": "Mon, 23 Nov 2026 18:41:12 +0530",
-    "sentiment": 0.361
-   },
-   {
-    "title": "Nasdaq futures surge 3% as battered AI stocks gain ground",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/nasdaq-futures-surge-3-as-battered-ai-stocks-gain-ground/articleshow/136104059.cms",
-    "published": "Mon, 23 Nov 2026 18:39:42 +0530",
-    "sentiment": 0.735
-   },
-   {
-    "title": "Rupee reversal, debt supply drag India bonds in holiday-shortened week",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/bonds/rupee-reversal-debt-supply-drag-india-bonds-in-holiday-shortened-week/articleshow/136103987.cms",
-    "published": "Mon, 23 Nov 2026 18:37:06 +0530",
-    "sentiment": -0.527
-   },
-   {
-    "title": "Rupee retreats with stocks as rally takes a breather, positive bias lingers",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/forex/rupee-retreats-with-stocks-as-rally-takes-a-breather-positive-bias-lingers/articleshow/136098391.cms",
-    "published": "Mon, 23 Nov 2026 15:58:38 +0530",
-    "sentiment": 0.7
    }
   ]
  },
@@ -243,7 +243,7 @@
   "gap_corr": 0.23,
   "gap_sign_pct": 55.3,
   "trained_rows": 750,
-  "version": 49,
+  "version": 50,
   "bias_threshold": 0.3
  },
  "options": {
@@ -302,15 +302,15 @@
       "decision": "SKIP",
       "dte": 6,
       "stats": {
-       "trades": 108,
-       "win_pct": 57.4,
-       "avg_pnl": -241,
+       "trades": 112,
+       "win_pct": 58.0,
+       "avg_pnl": -235,
        "worst": -9210,
        "best": 3650,
-       "total": -26077,
+       "total": -26381,
        "sample": "days the model called BULLISH"
       },
-      "reason": "On days the model called BULLISH, this spread lost overall (57.4% wins, avg \u20b9-241 per lot over 108 trades). A good-looking slice is not trusted on its own."
+      "reason": "On days the model called BULLISH, this spread lost overall (58.0% wins, avg \u20b9-235 per lot over 112 trades). A good-looking slice is not trusted on its own."
      }
     },
     {
@@ -344,15 +344,15 @@
       "decision": "SKIP",
       "dte": 6,
       "stats": {
-       "trades": 109,
-       "win_pct": 37.6,
+       "trades": 113,
+       "win_pct": 38.1,
        "avg_pnl": -652,
        "worst": -8128,
        "best": 10202,
-       "total": -71141,
+       "total": -73766,
        "sample": "days the model called BULLISH"
       },
-      "reason": "On days the model called BULLISH, this spread lost overall (37.6% wins, avg \u20b9-652 per lot over 109 trades). A good-looking slice is not trusted on its own."
+      "reason": "On days the model called BULLISH, this spread lost overall (38.1% wins, avg \u20b9-652 per lot over 113 trades). A good-looking slice is not trusted on its own."
      }
     },
     {
@@ -389,15 +389,15 @@
     "decision": "SKIP",
     "dte": 6,
     "stats": {
-     "trades": 108,
-     "win_pct": 57.4,
-     "avg_pnl": -241,
+     "trades": 112,
+     "win_pct": 58.0,
+     "avg_pnl": -235,
      "worst": -9210,
      "best": 3650,
-     "total": -26077,
+     "total": -26381,
      "sample": "days the model called BULLISH"
     },
-    "reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (57.4% wins, avg \u20b9-241 per lot over 108 trades). A good-looking slice is not trusted on its own."
+    "reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (58.0% wins, avg \u20b9-235 per lot over 112 trades). A good-looking slice is not trusted on its own."
    }
   },
   "BANKNIFTY": {
@@ -455,15 +455,15 @@
       "decision": "SKIP",
       "dte": 34,
       "stats": {
-       "trades": 118,
-       "win_pct": 67.8,
-       "avg_pnl": -58,
+       "trades": 126,
+       "win_pct": 69.8,
+       "avg_pnl": -22,
        "worst": -14563,
        "best": 4611,
-       "total": -6877,
+       "total": -2798,
        "sample": "days the model called BULLISH"
       },
-      "reason": "On days the model called BULLISH, this spread lost overall (67.8% wins, avg \u20b9-58 per lot over 118 trades). A good-looking slice is not trusted on its own."
+      "reason": "On days the model called BULLISH, this spread lost overall (69.8% wins, avg \u20b9-22 per lot over 126 trades). A good-looking slice is not trusted on its own."
      }
     },
     {
@@ -497,15 +497,15 @@
       "decision": "SKIP",
       "dte": 34,
       "stats": {
-       "trades": 127,
-       "win_pct": 43.3,
-       "avg_pnl": -671,
+       "trades": 135,
+       "win_pct": 43.7,
+       "avg_pnl": -549,
        "worst": -11570,
        "best": 11404,
-       "total": -85245,
+       "total": -74198,
        "sample": "days the model called BULLISH"
       },
-      "reason": "On days the model called BULLISH, this spread lost overall (43.3% wins, avg \u20b9-671 per lot over 127 trades). A good-looking slice is not trusted on its own."
+      "reason": "On days the model called BULLISH, this spread lost overall (43.7% wins, avg \u20b9-549 per lot over 135 trades). A good-looking slice is not trusted on its own."
      }
     },
     {
@@ -542,77 +542,77 @@
     "decision": "SKIP",
     "dte": 34,
     "stats": {
-     "trades": 118,
-     "win_pct": 67.8,
-     "avg_pnl": -58,
+     "trades": 126,
+     "win_pct": 69.8,
+     "avg_pnl": -22,
      "worst": -14563,
      "best": 4611,
-     "total": -6877,
+     "total": -2798,
      "sample": "days the model called BULLISH"
     },
-    "reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (67.8% wins, avg \u20b9-58 per lot over 118 trades). A good-looking slice is not trusted on its own."
+    "reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (69.8% wins, avg \u20b9-22 per lot over 126 trades). A good-looking slice is not trusted on its own."
    }
   }
  },
  "events": [],
  "preopen": {
-  "snapshot_ist": "Tue 24 Nov 09:33 IST",
+  "snapshot_ist": "Tue 24 Nov 16:17 IST",
   "stage": "preview",
-  "expected_gap_pct": 0.09,
+  "expected_gap_pct": 0.04,
   "gap_typical_error_pct": 0.39,
-  "expected_day_pct": 0.83,
-  "z": 1.063,
+  "expected_day_pct": 0.58,
+  "z": 0.744,
   "typical_daily_move_pct": 0.779,
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": 1.88
+    "move_pct": 1.13
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": 3.05
+    "move_pct": 1.67
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": 1.06
+    "move_pct": 0.73
    },
    {
     "key": "dax",
     "name": "DAX (Germany)",
-    "move_pct": 1.37
+    "move_pct": 0.68
    },
    {
     "key": "ftse",
     "name": "FTSE 100 (UK)",
-    "move_pct": 0.8
+    "move_pct": 0.67
    },
    {
     "key": "stoxx",
     "name": "Euro Stoxx 50",
-    "move_pct": 1.36
+    "move_pct": 0.76
    },
    {
     "key": "n225",
     "name": "Nikkei 225",
-    "move_pct": 3.84
+    "move_pct": 3.54
    },
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": -3.22
+    "move_pct": -2.87
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": 0.2
+    "move_pct": -0.01
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": 0.36
+    "move_pct": 0.29
    },
    {
     "key": "inr",
@@ -624,38 +624,38 @@
    {
     "feature": "es",
     "label": "S&P 500 futures",
-    "value": 1.88,
-    "contribution_pct": 1.477
+    "value": 1.13,
+    "contribution_pct": 0.877
    },
    {
     "feature": "nq",
     "label": "Nasdaq futures",
-    "value": 3.05,
-    "contribution_pct": -0.622
+    "value": 1.67,
+    "contribution_pct": -0.338
    },
    {
     "feature": "ym",
     "label": "Dow futures",
-    "value": 1.06,
-    "contribution_pct": -0.493
-   },
-   {
-    "feature": "dax",
-    "label": "DAX (Germany)",
-    "value": 1.37,
-    "contribution_pct": 0.267
+    "value": 0.73,
+    "contribution_pct": -0.331
    },
    {
     "feature": "cl",
     "label": "Crude oil",
-    "value": -3.22,
-    "contribution_pct": 0.246
+    "value": -2.87,
+    "contribution_pct": 0.22
    },
    {
     "feature": "ftse",
     "label": "FTSE 100 (UK)",
-    "value": 0.8,
-    "contribution_pct": 0.223
+    "value": 0.67,
+    "contribution_pct": 0.185
+   },
+   {
+    "feature": "dxy",
+    "label": "Dollar index",
+    "value": 0.29,
+    "contribution_pct": -0.143
    }
   ],
   "wf": {
@@ -668,7 +668,7 @@
   "vix": 17.7
  },
  "global_table": {
-  "updated": "2026-11-24T09:34:04.620550+05:30",
+  "updated": "2026-11-24T16:18:06.780410+05:30",
   "rows": [
    {
     "group": "US, last close",
@@ -678,25 +678,25 @@
    },
    {
     "group": "US futures now",
-    "move": "S&P +1.88%, Nasdaq +3.05%, Dow +1.06% (since Nifty's close)",
+    "move": "S&P +1.13%, Nasdaq +1.67%, Dow +0.73% (since Nifty's close)",
     "effect": "green",
     "note": "Futures point to a firmer open"
    },
    {
     "group": "Europe, last close",
-    "move": "DAX +2.1%, FTSE +1.3%, Euro Stoxx +2.2%",
-    "effect": "green",
-    "note": "Supportive"
+    "move": "DAX -0.6%, FTSE -0.1%, Euro Stoxx -0.5%",
+    "effect": "red",
+    "note": "Weak"
    },
    {
     "group": "Asia today",
-    "move": "Nikkei +4.1%, Hang Seng -0.4%, Kospi +7.2%",
+    "move": "Nikkei +3.9%, Hang Seng -0.8%, Kospi +6.3%",
     "effect": "green",
     "note": "Strong"
    },
    {
     "group": "Crude oil",
-    "move": "WTI ~$80, Brent ~$86 (-0.3%)",
+    "move": "WTI ~$80, Brent ~$87 (+0.1%)",
     "effect": "flat",
     "note": "Steady"
    },
@@ -708,7 +708,7 @@
    },
    {
     "group": "Dollar index",
-    "move": "104.26 (-0.05%)",
+    "move": "104.19 (-0.13%)",
     "effect": "flat",
     "note": "Steady"
    },
@@ -726,14 +726,14 @@
    },
    {
     "group": "Model: Nifty open",
-    "move": "+0.09% (\u00b10.39%)",
+    "move": "+0.04% (\u00b10.39%)",
     "effect": "flat",
     "note": "Combined forecast from all markets (preview)",
     "model": true
    }
   ],
   "tilt": "positive",
-  "score": 4
+  "score": 2
  },
  "notes": [
   "GIFT Nifty has no free data feed; the pre-open model reads what drives it (US/Dow futures, Europe, Asia, crude, rupee).",
