@@ -1,0 +1,8 @@
+[
+ {
+  "task": "premarket",
+  "at": "2026-11-25T07:13:28.040591+05:30",
+  "error": "RuntimeError: Nifty data unavailable from Yahoo Finance right now",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/nse-engine/nse-engine/backend/engine.py\", line 69, in <module>\n    main(task)\n  File \"/home/runner/work/nse-engine/nse-engine/backend/engine.py\", line 27, in main\n    out = jobs.premarket()\n          ^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/nse-engine/nse-engine/backend/jobs.py\", line 226, in premarket\n    bias = macro.global_bias(force=True)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/nse-engine/nse-engine/backend/macro.py\", line 167, in global_bias\n    raise RuntimeError(\"Nifty data unavailable from Yahoo Finance right now\")\nRuntimeError: Nifty data unavailable from Yahoo Finance right now\n"
+ }
+]
