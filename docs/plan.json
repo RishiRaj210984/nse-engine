@@ -1,136 +1,136 @@
 {
- "generated_at": "2026-11-25T08:15:50.404902+05:30",
- "session": "2026-11-25",
- "stage": "final",
+ "generated_at": "2026-11-25T15:58:48.571355+05:30",
+ "session": "2026-11-26",
+ "stage": "preview",
  "expected_open": {
-  "gap_pct": 0.3,
-  "error_pct": 0.31,
-  "day_pct": 0.35,
-  "snapshot": "Wed 25 Nov 08:15 IST",
-  "stage": "final",
-  "tip": "Moderate gap up expected. Use limit orders only, and wait for 09:30.",
+  "gap_pct": 0.03,
+  "error_pct": 0.39,
+  "day_pct": 0.1,
+  "snapshot": "Wed 25 Nov 15:58 IST",
+  "stage": "preview",
+  "tip": "Flat open expected. Normal entry windows apply.",
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": 0.56
+    "move_pct": 0.0
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": -0.14
+    "move_pct": 0.0
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": 1.39
+    "move_pct": 0.0
    },
    {
     "key": "dax",
     "name": "DAX (Germany)",
-    "move_pct": -0.04
+    "move_pct": 0.0
    },
    {
     "key": "ftse",
     "name": "FTSE 100 (UK)",
-    "move_pct": 0.62
+    "move_pct": 0.0
    },
    {
     "key": "stoxx",
     "name": "Euro Stoxx 50",
-    "move_pct": 0.12
+    "move_pct": 0.0
    },
    {
     "key": "n225",
     "name": "Nikkei 225",
-    "move_pct": 0.24
+    "move_pct": 0.0
    },
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": -2.05
+    "move_pct": 0.0
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": -1.65
+    "move_pct": 0.0
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": -0.03
+    "move_pct": 0.0
    },
    {
     "key": "inr",
     "name": "USD/INR",
-    "move_pct": -0.01
+    "move_pct": 0.0
    }
   ],
   "drivers": [
    {
-    "feature": "es",
-    "label": "S&P 500 futures",
-    "value": 0.56,
-    "contribution_pct": 0.177
+    "feature": "vix",
+    "label": "India VIX level",
+    "value": 17.7,
+    "contribution_pct": 0.111
    },
    {
-    "feature": "cl",
-    "label": "Crude oil",
-    "value": -2.05,
-    "contribution_pct": 0.122
+    "feature": "nprev",
+    "label": "Nifty previous day",
+    "value": 1.85,
+    "contribution_pct": -0.044
+   },
+   {
+    "feature": "es",
+    "label": "S&P 500 futures",
+    "value": 0.0,
+    "contribution_pct": -0.026
    },
    {
     "feature": "ym",
     "label": "Dow futures",
-    "value": 1.39,
-    "contribution_pct": -0.104
+    "value": 0.0,
+    "contribution_pct": 0.023
    },
    {
-    "feature": "vix",
-    "label": "India VIX level",
-    "value": 17.7,
-    "contribution_pct": 0.084
-   },
-   {
-    "feature": "nq",
-    "label": "Nasdaq futures",
-    "value": -0.14,
-    "contribution_pct": 0.03
+    "feature": "cl",
+    "label": "Crude oil",
+    "value": 0.0,
+    "contribution_pct": 0.007
    },
    {
     "feature": "ftse",
     "label": "FTSE 100 (UK)",
-    "value": 0.62,
-    "contribution_pct": 0.019
+    "value": 0.0,
+    "contribution_pct": -0.006
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.72,
-   "gap_sign_pct": 70.7,
-   "directional_calls": 153,
-   "directional_accuracy": 74.5
+   "gap_corr": 0.23,
+   "gap_sign_pct": 56.0,
+   "directional_calls": 46,
+   "directional_accuracy": 78.3
   }
  },
  "headline": "Market bias UP \u2014 favour buying dips",
  "bias": "BULLISH",
- "score": 68,
- "bias_track_record_pct": 74.3,
+ "score": 59,
+ "bias_track_record_pct": 75.6,
  "options": [
   {
    "index": "NIFTY",
    "strategy": "Bull Put Spread",
-   "legs": "SELL 24800 PE + BUY 24500 PE",
+   "legs": "SELL 25300 PE + BUY 25000 PE",
    "expiry": "2026-12-01",
    "lot_size": 65,
-   "entry": "Enter at 10:15 (after the first hour) only if NIFTY is above 24,800",
-   "target": "Buy back at \u20b915.8 (keep ~55% of credit), else hold to expiry Tue 01 Dec",
-   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b92,282 per lot)",
-   "max_loss": 17218,
-   "max_reward": 2282,
+   "entry": "Enter at 10:15 (after the first hour) only if NIFTY is above 25,300",
+   "target": "Buy back at \u20b915.4 (keep ~55% of credit), else hold to expiry Tue 01 Dec",
+   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b92,230 per lot)",
+   "max_loss": 17270,
+   "max_reward": 2230,
    "reward_risk": 0.13,
    "decision": "SKIP",
-   "decision_reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (58.0% wins, avg \u20b9-235 per lot over 112 trades). A good-looking slice is not trusted on its own.",
+   "decision_reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost on average: 58.0% wins, avg \u20b9-235 per lot over 112 trades.",
    "enter_at": "10:15 IST, after the first hour",
    "exit_by": "target / stop, else expiry 2026-12-01",
    "setup_stats": {
@@ -143,20 +143,20 @@
     "sample": "days the model called BULLISH"
    },
    "test": null,
-   "money_needed": 60255,
+   "money_needed": 60865,
    "money_basis": "margin for the sold options (estimate)"
   },
   {
    "index": "BANKNIFTY",
    "strategy": "Bull Put Spread",
-   "legs": "SELL 58200 PE + BUY 55800 PE",
+   "legs": "SELL 59400 PE + BUY 57000 PE",
    "expiry": "2026-12-29",
    "lot_size": 30,
-   "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is above 58,200",
-   "target": "Buy back at \u20b9119.2 (keep ~55% of credit), else hold to expiry Tue 29 Dec",
-   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b97,944 per lot)",
-   "max_loss": 64056,
-   "max_reward": 7944,
+   "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is above 59,400",
+   "target": "Buy back at \u20b9115.7 (keep ~55% of credit), else hold to expiry Tue 29 Dec",
+   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b97,716 per lot)",
+   "max_loss": 64284,
+   "max_reward": 7716,
    "reward_risk": 0.12,
    "decision": "SKIP",
    "decision_reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (69.8% wins, avg \u20b9-22 per lot over 126 trades). A good-looking slice is not trusted on its own.",
@@ -172,91 +172,208 @@
     "sample": "days the model called BULLISH"
    },
    "test": null,
-   "money_needed": 138351,
+   "money_needed": 139022,
    "money_basis": "margin for the sold options (estimate)"
   }
  ],
  "stocks": [
   {
-   "symbol": "PERSISTENT",
+   "symbol": "HDFCLIFE",
    "grade": "B",
-   "action": "BUY PERSISTENT near \u20b96,282.50 (skip if it opens above \u20b96,544.08) \u00b7 SL \u20b96,064.52 \u00b7 T1 \u20b96,544.08 \u00b7 T2 \u20b96,718.46",
-   "entry": 6282.5,
+   "action": "BUY HDFCLIFE near \u20b9601.30 (skip if it opens above \u20b9627.07) \u00b7 SL \u20b9579.83 \u00b7 T1 \u20b9627.07 \u00b7 T2 \u20b9644.24 \u00b7 Qty 4 for \u20b910k @1% risk",
+   "entry": 601.3,
    "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
    "exit_by": "day 2, 15:15 IST",
-   "stop": 6064.52,
-   "t1": 6544.08,
-   "t2": 6718.46,
+   "stop": 579.83,
+   "t1": 627.07,
+   "t2": 644.24,
+   "win_prob": 53.3,
+   "vol_badge": "2.9x Vol Surge"
+  },
+  {
+   "symbol": "BRITANNIA",
+   "grade": "B",
+   "action": "BUY BRITANNIA near \u20b95,076.20 (skip if it opens above \u20b95,263.23) \u00b7 SL \u20b94,920.34 \u00b7 T1 \u20b95,263.23 \u00b7 T2 \u20b95,387.92",
+   "entry": 5076.2,
+   "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
+   "exit_by": "day 2, 15:15 IST",
+   "stop": 4920.34,
+   "t1": 5263.23,
+   "t2": 5387.92,
    "win_prob": 53.3,
    "vol_badge": "2.1x Vol Surge"
   },
   {
-   "symbol": "COFORGE",
+   "symbol": "CIPLA",
    "grade": "B",
-   "action": "BUY COFORGE near \u20b92,142.30 (skip if it opens above \u20b92,247.82) \u00b7 SL \u20b92,054.37 \u00b7 T1 \u20b92,247.82 \u00b7 T2 \u20b92,318.16 \u00b7 Qty 1 for \u20b910k @1% risk",
-   "entry": 2142.3,
+   "action": "BUY CIPLA near \u20b91,433.20 (skip if it opens above \u20b91,474.55) \u00b7 SL \u20b91,398.74 \u00b7 T1 \u20b91,474.55 \u00b7 T2 \u20b91,502.12 \u00b7 Qty 2 for \u20b910k @1% risk",
+   "entry": 1433.2,
    "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
    "exit_by": "day 2, 15:15 IST",
-   "stop": 2054.37,
-   "t1": 2247.82,
-   "t2": 2318.16,
+   "stop": 1398.74,
+   "t1": 1474.55,
+   "t2": 1502.12,
    "win_prob": 53.3,
-   "vol_badge": "1.5x Vol Surge"
+   "vol_badge": "1.8x Vol Surge"
+  },
+  {
+   "symbol": "INDIGO",
+   "grade": "B",
+   "action": "BUY INDIGO near \u20b95,720.00 (skip if it opens above \u20b95,945.31) \u00b7 SL \u20b95,532.24 \u00b7 T1 \u20b95,945.31 \u00b7 T2 \u20b96,095.51",
+   "entry": 5720.0,
+   "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
+   "exit_by": "day 2, 15:15 IST",
+   "stop": 5532.24,
+   "t1": 5945.31,
+   "t2": 6095.51,
+   "win_prob": 53.3,
+   "vol_badge": "1.7x Vol Surge"
+  },
+  {
+   "symbol": "HEROMOTOCO",
+   "grade": "B",
+   "action": "BUY HEROMOTOCO near \u20b95,751.50 (skip if it opens above \u20b95,974.39) \u00b7 SL \u20b95,565.76 \u00b7 T1 \u20b95,974.39 \u00b7 T2 \u20b96,122.98",
+   "entry": 5751.5,
+   "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
+   "exit_by": "day 2, 15:15 IST",
+   "stop": 5565.76,
+   "t1": 5974.39,
+   "t2": 6122.98,
+   "win_prob": 53.3,
+   "vol_badge": "1.7x Vol Surge"
   }
  ],
  "stock_options": [
   {
-   "symbol": "PERSISTENT",
+   "symbol": "HDFCLIFE",
    "kind": "CE",
    "side": "BUY",
    "grade": "B",
-   "trigger": 6282.5,
-   "stop": 6064.52,
-   "t1": 6544.08,
-   "lot": 125,
-   "strike": 6300.0,
-   "premium": 30125,
+   "trigger": 601.3,
+   "stop": 579.83,
+   "t1": 627.07,
+   "lot": 1100,
+   "strike": 600.0,
+   "premium": 25300,
    "tiers": {
-    "5K": null,
+    "5K": {
+     "strike": 670.0,
+     "premium": 4037
+    },
     "10K": {
-     "strike": 7000.0,
-     "premium": 6600
+     "strike": 640.0,
+     "premium": 9053
     },
     "15K": {
-     "strike": 6700.0,
-     "premium": 12981
+     "strike": 625.0,
+     "premium": 13618
     }
    }
   },
   {
-   "symbol": "COFORGE",
+   "symbol": "BRITANNIA",
    "kind": "CE",
    "side": "BUY",
    "grade": "B",
-   "trigger": 2142.3,
-   "stop": 2054.37,
-   "t1": 2247.82,
-   "lot": 475,
-   "strike": 2140.0,
-   "premium": 38190,
+   "trigger": 5076.2,
+   "stop": 4920.34,
+   "t1": 5263.23,
+   "lot": 125,
+   "strike": 5100.0,
+   "premium": 17528,
    "tiers": {
     "5K": {
-     "strike": 2340.0,
-     "premium": 4038
+     "strike": 5500.0,
+     "premium": 4369
     },
     "10K": {
-     "strike": 2400.0,
-     "premium": 8289
+     "strike": 5300.0,
+     "premium": 8862
     },
     "15K": {
-     "strike": 2320.0,
-     "premium": 14321
+     "strike": 5150.0,
+     "premium": 14610
+    }
+   }
+  },
+  {
+   "symbol": "CIPLA",
+   "kind": "CE",
+   "side": "BUY",
+   "grade": "B",
+   "trigger": 1433.2,
+   "stop": 1398.74,
+   "t1": 1474.55,
+   "lot": 425,
+   "strike": 1430.0,
+   "premium": 17935,
+   "tiers": {
+    "5K": {
+     "strike": 1530.0,
+     "premium": 4611
+    },
+    "10K": {
+     "strike": 1480.0,
+     "premium": 9180
+    },
+    "15K": {
+     "strike": 1450.0,
+     "premium": 13791
+    }
+   }
+  },
+  {
+   "symbol": "INDIGO",
+   "kind": "CE",
+   "side": "BUY",
+   "grade": "B",
+   "trigger": 5720.0,
+   "stop": 5532.24,
+   "t1": 5945.31,
+   "lot": 150,
+   "strike": 5700.0,
+   "premium": 31872,
+   "tiers": {
+    "5K": {
+     "strike": 6400.0,
+     "premium": 4338
+    },
+    "10K": {
+     "strike": 6150.0,
+     "premium": 8988
+    },
+    "15K": {
+     "strike": 6000.0,
+     "premium": 14018
+    }
+   }
+  },
+  {
+   "symbol": "HEROMOTOCO",
+   "kind": "CE",
+   "side": "BUY",
+   "grade": "B",
+   "trigger": 5751.5,
+   "stop": 5565.76,
+   "t1": 5974.39,
+   "lot": 150,
+   "strike": 5750.0,
+   "premium": 32652,
+   "tiers": {
+    "5K": null,
+    "10K": {
+     "strike": 6200.0,
+     "premium": 9765
+    },
+    "15K": {
+     "strike": 6050.0,
+     "premium": 14618
     }
    }
   }
  ],
  "capital": 15000,
- "momentum_money": 15832,
+ "momentum_money": 14908,
  "put_gate_open": false,
  "market_gate_open": true,
  "events": [],
@@ -264,85 +381,85 @@
  "no_trade_reason": null,
  "timeline": [
   {
-   "date": "2026-11-25",
+   "date": "2026-11-26",
    "start": "07:45",
    "end": "09:00",
    "kind": "prep",
    "title": "Read the final plan",
    "do": "The ~07:15 run is final (US close, Dow and US futures, Europe, Asia open). Read the expected open, bias and trades. Set price alerts at each entry and stop-loss.",
-   "when": "Wed 25 Nov \u00b7 07:45\u201309:00"
+   "when": "Thu 26 Nov \u00b7 07:45\u201309:00"
   },
   {
-   "date": "2026-11-25",
+   "date": "2026-11-26",
    "start": "09:00",
    "end": "09:15",
    "kind": "wait",
    "title": "Pre-open",
    "do": "Place no market orders. Note where your stocks are indicated to open.",
-   "when": "Wed 25 Nov \u00b7 09:00\u201309:15"
+   "when": "Thu 26 Nov \u00b7 09:00\u201309:15"
   },
   {
-   "date": "2026-11-25",
+   "date": "2026-11-26",
    "start": "09:15",
    "end": "09:30",
    "kind": "wait",
    "title": "Wait",
    "do": "Opening 15 min is the most volatile. Cancel any stock that opens above its T1 or below its SL.",
-   "when": "Wed 25 Nov \u00b7 09:15\u201309:30"
+   "when": "Thu 26 Nov \u00b7 09:15\u201309:30"
   },
   {
-   "date": "2026-11-25",
+   "date": "2026-11-26",
    "start": "09:30",
    "end": "10:30",
    "kind": "act",
    "title": "Stock buy window",
    "do": "Buy only if price is holding above the entry and the 15-min opening high. Place the SL order immediately.",
-   "when": "Wed 25 Nov \u00b7 09:30\u201310:30"
+   "when": "Thu 26 Nov \u00b7 09:30\u201310:30"
   },
   {
-   "date": "2026-11-25",
+   "date": "2026-11-26",
    "start": "09:45",
    "end": "11:00",
    "kind": "act",
    "title": "Options window",
    "do": "Spreads / ATM buys only if the index respects the support/resistance shown. Iron condor / fly only after 10:00 with the index inside the range.",
-   "when": "Wed 25 Nov \u00b7 09:45\u201311:00"
+   "when": "Thu 26 Nov \u00b7 09:45\u201311:00"
   },
   {
-   "date": "2026-11-25",
+   "date": "2026-11-26",
    "start": "11:30",
    "end": "14:30",
    "kind": "manage",
    "title": "Manage only",
    "do": "No new stock entries. If it did not trigger, skip it. Keep stop-loss orders in place.",
-   "when": "Wed 25 Nov \u00b7 11:30\u201314:30"
+   "when": "Thu 26 Nov \u00b7 11:30\u201314:30"
   },
   {
-   "date": "2026-11-25",
+   "date": "2026-11-26",
    "start": "14:30",
    "end": "15:00",
    "kind": "exit",
    "title": "Option buyers exit",
    "do": "Exit option buys by 15:00 if target not hit (time decay). Spreads/condors: hold only if still inside the plan.",
-   "when": "Wed 25 Nov \u00b7 14:30\u201315:00"
+   "when": "Thu 26 Nov \u00b7 14:30\u201315:00"
   },
   {
-   "date": "2026-11-25",
+   "date": "2026-11-26",
    "start": "16:30",
    "end": "17:00",
    "kind": "review",
    "title": "Review",
    "do": "The engine grades today's plan. Check the Results tab: what worked, what the gap was.",
-   "when": "Wed 25 Nov \u00b7 16:30\u201317:00"
+   "when": "Thu 26 Nov \u00b7 16:30\u201317:00"
   },
   {
-   "date": "2026-11-26",
+   "date": "2026-11-27",
    "start": "09:15",
    "end": "15:15",
    "kind": "exit",
    "title": "Day 2: exit by 15:15",
    "do": "Book half at T1, trail SL to entry. Exit everything still open by 15:15 (this is a 1\u20132 day setup).",
-   "when": "Thu 26 Nov \u00b7 09:15\u201315:15"
+   "when": "Fri 27 Nov \u00b7 09:15\u201315:15"
   },
   {
    "date": "2026-12-01",
