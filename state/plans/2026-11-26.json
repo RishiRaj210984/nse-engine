@@ -1,12 +1,12 @@
 {
  "bias": {
-  "generated_at": "2026-11-25T15:58:20.585166+05:30",
+  "generated_at": "2026-11-25T16:18:12.053479+05:30",
   "target_session": "2026-11-26",
   "reference_date": "2026-11-25",
   "bias": {
    "label": "BULLISH",
-   "score": 59,
-   "z": 0.678,
+   "score": 65,
+   "z": 0.775,
    "model_z": 0.13,
    "predicted_nifty_move_pct": 0.1,
    "typical_daily_move_pct": 0.78,
@@ -23,13 +23,13 @@
      "feature": "nprev",
      "label": "Nifty previous day",
      "value": 1.85,
-     "contribution_pct": -0.044
+     "contribution_pct": -0.045
     },
     {
      "feature": "es",
      "label": "S&P 500 futures",
      "value": 0.0,
-     "contribution_pct": -0.026
+     "contribution_pct": -0.025
     },
     {
      "feature": "ym",
@@ -107,15 +107,15 @@
        "decision": "SKIP",
        "dte": 5,
        "stats": {
-        "trades": 112,
-        "win_pct": 58.0,
-        "avg_pnl": -235,
+        "trades": 110,
+        "win_pct": 57.3,
+        "avg_pnl": -270,
         "worst": -9210,
         "best": 3650,
-        "total": -26381,
+        "total": -29759,
         "sample": "days the model called BULLISH"
        },
-       "reason": "On days the model called BULLISH, this spread lost on average: 58.0% wins, avg \u20b9-235 per lot over 112 trades."
+       "reason": "On days the model called BULLISH, this spread lost on average: 57.3% wins, avg \u20b9-270 per lot over 110 trades."
       }
      },
      {
@@ -149,15 +149,15 @@
        "decision": "SKIP",
        "dte": 5,
        "stats": {
-        "trades": 113,
-        "win_pct": 38.1,
-        "avg_pnl": -652,
+        "trades": 112,
+        "win_pct": 36.6,
+        "avg_pnl": -687,
         "worst": -8128,
         "best": 10202,
-        "total": -73766,
+        "total": -76991,
         "sample": "days the model called BULLISH"
        },
-       "reason": "On days the model called BULLISH, this spread lost on average: 38.1% wins, avg \u20b9-652 per lot over 113 trades."
+       "reason": "On days the model called BULLISH, this spread lost on average: 36.6% wins, avg \u20b9-687 per lot over 112 trades."
       }
      },
      {
@@ -194,15 +194,15 @@
      "decision": "SKIP",
      "dte": 5,
      "stats": {
-      "trades": 112,
-      "win_pct": 58.0,
-      "avg_pnl": -235,
+      "trades": 110,
+      "win_pct": 57.3,
+      "avg_pnl": -270,
       "worst": -9210,
       "best": 3650,
-      "total": -26381,
+      "total": -29759,
       "sample": "days the model called BULLISH"
      },
-     "reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost on average: 58.0% wins, avg \u20b9-235 per lot over 112 trades."
+     "reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost on average: 57.3% wins, avg \u20b9-270 per lot over 110 trades."
     }
    },
    "BANKNIFTY": {
@@ -260,15 +260,15 @@
        "decision": "SKIP",
        "dte": 33,
        "stats": {
-        "trades": 126,
-        "win_pct": 69.8,
-        "avg_pnl": -22,
+        "trades": 124,
+        "win_pct": 70.2,
+        "avg_pnl": -19,
         "worst": -14563,
         "best": 4611,
-        "total": -2798,
+        "total": -2469,
         "sample": "days the model called BULLISH"
        },
-       "reason": "On days the model called BULLISH, this spread lost overall (69.8% wins, avg \u20b9-22 per lot over 126 trades). A good-looking slice is not trusted on its own."
+       "reason": "On days the model called BULLISH, this spread lost overall (70.2% wins, avg \u20b9-19 per lot over 124 trades). A good-looking slice is not trusted on its own."
       }
      },
      {
@@ -302,15 +302,15 @@
        "decision": "SKIP",
        "dte": 33,
        "stats": {
-        "trades": 135,
-        "win_pct": 43.7,
-        "avg_pnl": -549,
+        "trades": 133,
+        "win_pct": 42.9,
+        "avg_pnl": -539,
         "worst": -11570,
         "best": 11404,
-        "total": -74198,
+        "total": -71760,
         "sample": "days the model called BULLISH"
        },
-       "reason": "On days the model called BULLISH, this spread lost overall (43.7% wins, avg \u20b9-549 per lot over 135 trades). A good-looking slice is not trusted on its own."
+       "reason": "On days the model called BULLISH, this spread lost overall (42.9% wins, avg \u20b9-539 per lot over 133 trades). A good-looking slice is not trusted on its own."
       }
      },
      {
@@ -347,15 +347,15 @@
      "decision": "SKIP",
      "dte": 33,
      "stats": {
-      "trades": 126,
-      "win_pct": 69.8,
-      "avg_pnl": -22,
+      "trades": 124,
+      "win_pct": 70.2,
+      "avg_pnl": -19,
       "worst": -14563,
       "best": 4611,
-      "total": -2798,
+      "total": -2469,
       "sample": "days the model called BULLISH"
      },
-     "reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (69.8% wins, avg \u20b9-22 per lot over 126 trades). A good-looking slice is not trusted on its own."
+     "reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (70.2% wins, avg \u20b9-19 per lot over 124 trades). A good-looking slice is not trusted on its own."
     }
    }
   },
@@ -363,23 +363,23 @@
    "oos_days": 300,
    "directional_calls": 41,
    "directional_accuracy": 75.6,
-   "sign_accuracy_all_days": 52.3,
+   "sign_accuracy_all_days": 52.7,
    "gap_corr": 0.23,
-   "gap_sign_pct": 56.0,
+   "gap_sign_pct": 55.3,
    "trained_rows": 750,
-   "version": 50,
+   "version": 51,
    "bias_threshold": 0.3
   }
  },
  "plan": {
-  "generated_at": "2026-11-25T15:58:48.571355+05:30",
+  "generated_at": "2026-11-25T16:18:36.103641+05:30",
   "session": "2026-11-26",
   "stage": "preview",
   "expected_open": {
    "gap_pct": 0.03,
    "error_pct": 0.39,
    "day_pct": 0.1,
-   "snapshot": "Wed 25 Nov 15:58 IST",
+   "snapshot": "Wed 25 Nov 16:18 IST",
    "stage": "preview",
    "tip": "Flat open expected. Normal entry windows apply.",
    "markets": [
@@ -450,13 +450,13 @@
      "feature": "nprev",
      "label": "Nifty previous day",
      "value": 1.85,
-     "contribution_pct": -0.044
+     "contribution_pct": -0.045
     },
     {
      "feature": "es",
      "label": "S&P 500 futures",
      "value": 0.0,
-     "contribution_pct": -0.026
+     "contribution_pct": -0.025
     },
     {
      "feature": "ym",
@@ -480,14 +480,14 @@
    "wf": {
     "oos_days": 300,
     "gap_corr": 0.23,
-    "gap_sign_pct": 56.0,
+    "gap_sign_pct": 55.3,
     "directional_calls": 46,
     "directional_accuracy": 78.3
    }
   },
   "headline": "Market bias UP \u2014 favour buying dips",
   "bias": "BULLISH",
-  "score": 59,
+  "score": 65,
   "bias_track_record_pct": 75.6,
   "options": [
    {
@@ -503,16 +503,16 @@
     "max_reward": 2230,
     "reward_risk": 0.13,
     "decision": "SKIP",
-    "decision_reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost on average: 58.0% wins, avg \u20b9-235 per lot over 112 trades.",
+    "decision_reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost on average: 57.3% wins, avg \u20b9-270 per lot over 110 trades.",
     "enter_at": "10:15 IST, after the first hour",
     "exit_by": "target / stop, else expiry 2026-12-01",
     "setup_stats": {
-     "trades": 112,
-     "win_pct": 58.0,
-     "avg_pnl": -235,
+     "trades": 110,
+     "win_pct": 57.3,
+     "avg_pnl": -270,
      "worst": -9210,
      "best": 3650,
-     "total": -26381,
+     "total": -29759,
      "sample": "days the model called BULLISH"
     },
     "test": null,
@@ -532,16 +532,16 @@
     "max_reward": 7716,
     "reward_risk": 0.12,
     "decision": "SKIP",
-    "decision_reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (69.8% wins, avg \u20b9-22 per lot over 126 trades). A good-looking slice is not trusted on its own.",
+    "decision_reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (70.2% wins, avg \u20b9-19 per lot over 124 trades). A good-looking slice is not trusted on its own.",
     "enter_at": "10:15 IST, after the first hour",
     "exit_by": "target / stop, else expiry 2026-12-29",
     "setup_stats": {
-     "trades": 126,
-     "win_pct": 69.8,
-     "avg_pnl": -22,
+     "trades": 124,
+     "win_pct": 70.2,
+     "avg_pnl": -19,
      "worst": -14563,
      "best": 4611,
-     "total": -2798,
+     "total": -2469,
      "sample": "days the model called BULLISH"
     },
     "test": null,
@@ -553,66 +553,66 @@
    {
     "symbol": "HDFCLIFE",
     "grade": "B",
-    "action": "BUY HDFCLIFE near \u20b9601.30 (skip if it opens above \u20b9627.07) \u00b7 SL \u20b9579.83 \u00b7 T1 \u20b9627.07 \u00b7 T2 \u20b9644.24 \u00b7 Qty 4 for \u20b910k @1% risk",
+    "action": "BUY HDFCLIFE near \u20b9601.30 (skip if it opens above \u20b9627.07) \u00b7 SL \u20b9575.53 \u00b7 T1 \u20b9627.07 \u00b7 T2 \u20b9644.24 \u00b7 Qty 3 for \u20b910k @1% risk",
     "entry": 601.3,
     "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
     "exit_by": "day 2, 15:15 IST",
-    "stop": 579.83,
+    "stop": 575.53,
     "t1": 627.07,
     "t2": 644.24,
-    "win_prob": 53.3,
+    "win_prob": 53.9,
     "vol_badge": "2.9x Vol Surge"
    },
    {
     "symbol": "BRITANNIA",
     "grade": "B",
-    "action": "BUY BRITANNIA near \u20b95,076.20 (skip if it opens above \u20b95,263.23) \u00b7 SL \u20b94,920.34 \u00b7 T1 \u20b95,263.23 \u00b7 T2 \u20b95,387.92",
+    "action": "BUY BRITANNIA near \u20b95,076.20 (skip if it opens above \u20b95,263.23) \u00b7 SL \u20b94,889.17 \u00b7 T1 \u20b95,263.23 \u00b7 T2 \u20b95,387.92",
     "entry": 5076.2,
     "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
     "exit_by": "day 2, 15:15 IST",
-    "stop": 4920.34,
+    "stop": 4889.17,
     "t1": 5263.23,
     "t2": 5387.92,
-    "win_prob": 53.3,
+    "win_prob": 53.9,
     "vol_badge": "2.1x Vol Surge"
    },
    {
     "symbol": "CIPLA",
     "grade": "B",
-    "action": "BUY CIPLA near \u20b91,433.20 (skip if it opens above \u20b91,474.55) \u00b7 SL \u20b91,398.74 \u00b7 T1 \u20b91,474.55 \u00b7 T2 \u20b91,502.12 \u00b7 Qty 2 for \u20b910k @1% risk",
+    "action": "BUY CIPLA near \u20b91,433.20 (skip if it opens above \u20b91,474.55) \u00b7 SL \u20b91,391.85 \u00b7 T1 \u20b91,474.55 \u00b7 T2 \u20b91,502.12 \u00b7 Qty 2 for \u20b910k @1% risk",
     "entry": 1433.2,
     "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
     "exit_by": "day 2, 15:15 IST",
-    "stop": 1398.74,
+    "stop": 1391.85,
     "t1": 1474.55,
     "t2": 1502.12,
-    "win_prob": 53.3,
+    "win_prob": 53.9,
     "vol_badge": "1.8x Vol Surge"
    },
    {
     "symbol": "INDIGO",
     "grade": "B",
-    "action": "BUY INDIGO near \u20b95,720.00 (skip if it opens above \u20b95,945.31) \u00b7 SL \u20b95,532.24 \u00b7 T1 \u20b95,945.31 \u00b7 T2 \u20b96,095.51",
+    "action": "BUY INDIGO near \u20b95,720.00 (skip if it opens above \u20b95,945.31) \u00b7 SL \u20b95,494.69 \u00b7 T1 \u20b95,945.31 \u00b7 T2 \u20b96,095.51",
     "entry": 5720.0,
     "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
     "exit_by": "day 2, 15:15 IST",
-    "stop": 5532.24,
+    "stop": 5494.69,
     "t1": 5945.31,
     "t2": 6095.51,
-    "win_prob": 53.3,
+    "win_prob": 53.9,
     "vol_badge": "1.7x Vol Surge"
    },
    {
     "symbol": "HEROMOTOCO",
     "grade": "B",
-    "action": "BUY HEROMOTOCO near \u20b95,751.50 (skip if it opens above \u20b95,974.39) \u00b7 SL \u20b95,565.76 \u00b7 T1 \u20b95,974.39 \u00b7 T2 \u20b96,122.98",
+    "action": "BUY HEROMOTOCO near \u20b95,751.50 (skip if it opens above \u20b95,974.39) \u00b7 SL \u20b95,528.61 \u00b7 T1 \u20b95,974.39 \u00b7 T2 \u20b96,122.98",
     "entry": 5751.5,
     "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
     "exit_by": "day 2, 15:15 IST",
-    "stop": 5565.76,
+    "stop": 5528.61,
     "t1": 5974.39,
     "t2": 6122.98,
-    "win_prob": 53.3,
+    "win_prob": 53.9,
     "vol_badge": "1.7x Vol Surge"
    }
   ],
@@ -623,7 +623,7 @@
     "side": "BUY",
     "grade": "B",
     "trigger": 601.3,
-    "stop": 579.83,
+    "stop": 575.53,
     "t1": 627.07,
     "lot": 1100,
     "strike": 600.0,
@@ -649,7 +649,7 @@
     "side": "BUY",
     "grade": "B",
     "trigger": 5076.2,
-    "stop": 4920.34,
+    "stop": 4889.17,
     "t1": 5263.23,
     "lot": 125,
     "strike": 5100.0,
@@ -675,7 +675,7 @@
     "side": "BUY",
     "grade": "B",
     "trigger": 1433.2,
-    "stop": 1398.74,
+    "stop": 1391.85,
     "t1": 1474.55,
     "lot": 425,
     "strike": 1430.0,
@@ -701,7 +701,7 @@
     "side": "BUY",
     "grade": "B",
     "trigger": 5720.0,
-    "stop": 5532.24,
+    "stop": 5494.69,
     "t1": 5945.31,
     "lot": 150,
     "strike": 5700.0,
@@ -727,7 +727,7 @@
     "side": "BUY",
     "grade": "B",
     "trigger": 5751.5,
-    "stop": 5565.76,
+    "stop": 5528.61,
     "t1": 5974.39,
     "lot": 150,
     "strike": 5750.0,
@@ -860,7 +860,7 @@
    "grade": "B",
    "passed": true,
    "entry": 601.3,
-   "stop": 579.83,
+   "stop": 575.53,
    "t1": 627.07,
    "t2": 644.24,
    "atr": 17.18,
@@ -872,7 +872,7 @@
    "grade": "B",
    "passed": true,
    "entry": 5076.2,
-   "stop": 4920.34,
+   "stop": 4889.17,
    "t1": 5263.23,
    "t2": 5387.92,
    "atr": 124.69,
@@ -884,7 +884,7 @@
    "grade": "B",
    "passed": true,
    "entry": 1433.2,
-   "stop": 1398.74,
+   "stop": 1391.85,
    "t1": 1474.55,
    "t2": 1502.12,
    "atr": 27.57,
@@ -896,7 +896,7 @@
    "grade": "B",
    "passed": true,
    "entry": 5720.0,
-   "stop": 5532.24,
+   "stop": 5494.69,
    "t1": 5945.31,
    "t2": 6095.51,
    "atr": 150.21,
@@ -908,7 +908,7 @@
    "grade": "B",
    "passed": true,
    "entry": 5751.5,
-   "stop": 5565.76,
+   "stop": 5528.61,
    "t1": 5974.39,
    "t2": 6122.98,
    "atr": 148.59,
@@ -920,7 +920,7 @@
    "grade": "B",
    "passed": true,
    "entry": 87.47,
-   "stop": 84.53,
+   "stop": 83.94,
    "t1": 91.0,
    "t2": 93.35,
    "atr": 2.35,
@@ -932,7 +932,7 @@
    "grade": "B",
    "passed": false,
    "entry": 1925.0,
-   "stop": 1864.24,
+   "stop": 1852.09,
    "t1": 1997.91,
    "t2": 2046.52,
    "atr": 48.61,
@@ -944,7 +944,7 @@
    "grade": "B",
    "passed": false,
    "entry": 2141.8,
-   "stop": 2080.34,
+   "stop": 2068.05,
    "t1": 2215.55,
    "t2": 2264.72,
    "atr": 49.17,
@@ -956,7 +956,7 @@
    "grade": "B",
    "passed": false,
    "entry": 963.0,
-   "stop": 931.72,
+   "stop": 925.47,
    "t1": 1000.53,
    "t2": 1025.55,
    "atr": 25.02,
@@ -968,7 +968,7 @@
    "grade": "B",
    "passed": false,
    "entry": 3319.6,
-   "stop": 3211.06,
+   "stop": 3189.36,
    "t1": 3449.84,
    "t2": 3536.67,
    "atr": 86.83,
@@ -980,7 +980,7 @@
    "grade": "B",
    "passed": false,
    "entry": 309.25,
-   "stop": 300.49,
+   "stop": 298.74,
    "t1": 319.76,
    "t2": 326.76,
    "atr": 7.0,
@@ -992,7 +992,7 @@
    "grade": "B",
    "passed": false,
    "entry": 1926.3,
-   "stop": 1871.45,
+   "stop": 1860.48,
    "t1": 1992.12,
    "t2": 2036.0,
    "atr": 43.88,

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-25T15:58:20.585166+05:30",
+ "generated_at": "2026-11-25T16:18:12.053479+05:30",
  "target_session": "2026-11-26",
  "reference_date": "2026-11-25",
  "us_session_used": "2026-11-25",
@@ -39,16 +39,16 @@
   {
    "name": "Crude Oil",
    "symbol": "CL=F",
-   "last": 81.91,
-   "change": -0.171,
+   "last": 81.28,
+   "change": -0.938,
    "change_unit": "%",
    "as_of": "2026-11-25"
   },
   {
    "name": "Dollar Index",
    "symbol": "DX-Y.NYB",
-   "last": 104.0,
-   "change": 0.187,
+   "last": 103.98,
+   "change": 0.166,
    "change_unit": "%",
    "as_of": "2026-11-25"
   },
@@ -95,8 +95,8 @@
  ],
  "bias": {
   "label": "BULLISH",
-  "score": 59,
-  "z": 0.678,
+  "score": 65,
+  "z": 0.775,
   "model_z": 0.13,
   "predicted_nifty_move_pct": 0.1,
   "typical_daily_move_pct": 0.78,
@@ -113,13 +113,13 @@
     "feature": "nprev",
     "label": "Nifty previous day",
     "value": 1.85,
-    "contribution_pct": -0.044
+    "contribution_pct": -0.045
    },
    {
     "feature": "es",
     "label": "S&P 500 futures",
     "value": 0.0,
-    "contribution_pct": -0.026
+    "contribution_pct": -0.025
    },
    {
     "feature": "ym",
@@ -143,11 +143,11 @@
  },
  "news": {
   "summary": {
-   "score": 0.232,
+   "score": 0.258,
    "count": 39,
    "label": "POSITIVE"
   },
-  "weight": 0.354,
+  "weight": 0.375,
   "headlines": [
    {
     "title": "Why are investors betting on Abercrombie's growth story?",
@@ -169,6 +169,13 @@
     "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/hpe-shares-crash-17-stock-suffers-its-worst-ever-single-day-fall-heres-why/slideshow/136148964.cms",
     "published": "Wed, 25 Nov 2026 10:08:14 +0530",
     "sentiment": -0.66
+   },
+   {
+    "title": "Maruti Suzuki Share Price Live Updates: Maruti Suzuki Bonus Updates",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/stock-liveblog/maruti-suzuki-share-price-today-live-updates-25-nov-2026/liveblog/136148282.cms",
+    "published": "Wed, 25 Nov 2026 10:03:14 +0530",
+    "sentiment": 0.691
    },
    {
     "title": "Rupee pares FY27 losses, climbs 56 paise to 92.29/USD",
@@ -225,13 +232,6 @@
     "link": "https://economictimes.indiatimes.com/markets/commodities/news/gold-ticks-lower-ahead-of-us-inflation-data/articleshow/136145643.cms",
     "published": "Wed, 25 Nov 2026 07:26:22 +0530",
     "sentiment": -0.296
-   },
-   {
-    "title": "Stock Market Live Updates | Closing Bell: Sensex soars 1,502 pts, Nifty ends above 25,800; bank, pharma indices jump up to 2%",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/live-blog/bse-sensex-today-nifty50-stock-market-live-updates-gift-nifty-tata-steel-hindalco-share-price-25-november-2026/liveblog/136145716.cms",
-    "published": "Wed, 25 Nov 2026 07:11:52 +0530",
-    "sentiment": 0.691
    }
   ]
  },
@@ -239,11 +239,11 @@
   "oos_days": 300,
   "directional_calls": 41,
   "directional_accuracy": 75.6,
-  "sign_accuracy_all_days": 52.3,
+  "sign_accuracy_all_days": 52.7,
   "gap_corr": 0.23,
-  "gap_sign_pct": 56.0,
+  "gap_sign_pct": 55.3,
   "trained_rows": 750,
-  "version": 50,
+  "version": 51,
   "bias_threshold": 0.3
  },
  "options": {
@@ -302,15 +302,15 @@
       "decision": "SKIP",
       "dte": 5,
       "stats": {
-       "trades": 112,
-       "win_pct": 58.0,
-       "avg_pnl": -235,
+       "trades": 110,
+       "win_pct": 57.3,
+       "avg_pnl": -270,
        "worst": -9210,
        "best": 3650,
-       "total": -26381,
+       "total": -29759,
        "sample": "days the model called BULLISH"
       },
-      "reason": "On days the model called BULLISH, this spread lost on average: 58.0% wins, avg \u20b9-235 per lot over 112 trades."
+      "reason": "On days the model called BULLISH, this spread lost on average: 57.3% wins, avg \u20b9-270 per lot over 110 trades."
      }
     },
     {
@@ -344,15 +344,15 @@
       "decision": "SKIP",
       "dte": 5,
       "stats": {
-       "trades": 113,
-       "win_pct": 38.1,
-       "avg_pnl": -652,
+       "trades": 112,
+       "win_pct": 36.6,
+       "avg_pnl": -687,
        "worst": -8128,
        "best": 10202,
-       "total": -73766,
+       "total": -76991,
        "sample": "days the model called BULLISH"
       },
-      "reason": "On days the model called BULLISH, this spread lost on average: 38.1% wins, avg \u20b9-652 per lot over 113 trades."
+      "reason": "On days the model called BULLISH, this spread lost on average: 36.6% wins, avg \u20b9-687 per lot over 112 trades."
      }
     },
     {
@@ -389,15 +389,15 @@
     "decision": "SKIP",
     "dte": 5,
     "stats": {
-     "trades": 112,
-     "win_pct": 58.0,
-     "avg_pnl": -235,
+     "trades": 110,
+     "win_pct": 57.3,
+     "avg_pnl": -270,
      "worst": -9210,
      "best": 3650,
-     "total": -26381,
+     "total": -29759,
      "sample": "days the model called BULLISH"
     },
-    "reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost on average: 58.0% wins, avg \u20b9-235 per lot over 112 trades."
+    "reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost on average: 57.3% wins, avg \u20b9-270 per lot over 110 trades."
    }
   },
   "BANKNIFTY": {
@@ -455,15 +455,15 @@
       "decision": "SKIP",
       "dte": 33,
       "stats": {
-       "trades": 126,
-       "win_pct": 69.8,
-       "avg_pnl": -22,
+       "trades": 124,
+       "win_pct": 70.2,
+       "avg_pnl": -19,
        "worst": -14563,
        "best": 4611,
-       "total": -2798,
+       "total": -2469,
        "sample": "days the model called BULLISH"
       },
-      "reason": "On days the model called BULLISH, this spread lost overall (69.8% wins, avg \u20b9-22 per lot over 126 trades). A good-looking slice is not trusted on its own."
+      "reason": "On days the model called BULLISH, this spread lost overall (70.2% wins, avg \u20b9-19 per lot over 124 trades). A good-looking slice is not trusted on its own."
      }
     },
     {
@@ -497,15 +497,15 @@
       "decision": "SKIP",
       "dte": 33,
       "stats": {
-       "trades": 135,
-       "win_pct": 43.7,
-       "avg_pnl": -549,
+       "trades": 133,
+       "win_pct": 42.9,
+       "avg_pnl": -539,
        "worst": -11570,
        "best": 11404,
-       "total": -74198,
+       "total": -71760,
        "sample": "days the model called BULLISH"
       },
-      "reason": "On days the model called BULLISH, this spread lost overall (43.7% wins, avg \u20b9-549 per lot over 135 trades). A good-looking slice is not trusted on its own."
+      "reason": "On days the model called BULLISH, this spread lost overall (42.9% wins, avg \u20b9-539 per lot over 133 trades). A good-looking slice is not trusted on its own."
      }
     },
     {
@@ -542,21 +542,21 @@
     "decision": "SKIP",
     "dte": 33,
     "stats": {
-     "trades": 126,
-     "win_pct": 69.8,
-     "avg_pnl": -22,
+     "trades": 124,
+     "win_pct": 70.2,
+     "avg_pnl": -19,
      "worst": -14563,
      "best": 4611,
-     "total": -2798,
+     "total": -2469,
      "sample": "days the model called BULLISH"
     },
-    "reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (69.8% wins, avg \u20b9-22 per lot over 126 trades). A good-looking slice is not trusted on its own."
+    "reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (70.2% wins, avg \u20b9-19 per lot over 124 trades). A good-looking slice is not trusted on its own."
    }
   }
  },
  "events": [],
  "preopen": {
-  "snapshot_ist": "Wed 25 Nov 15:58 IST",
+  "snapshot_ist": "Wed 25 Nov 16:18 IST",
   "stage": "preview",
   "expected_gap_pct": 0.03,
   "gap_typical_error_pct": 0.39,
@@ -631,13 +631,13 @@
     "feature": "nprev",
     "label": "Nifty previous day",
     "value": 1.85,
-    "contribution_pct": -0.044
+    "contribution_pct": -0.045
    },
    {
     "feature": "es",
     "label": "S&P 500 futures",
     "value": 0.0,
-    "contribution_pct": -0.026
+    "contribution_pct": -0.025
    },
    {
     "feature": "ym",
@@ -661,14 +661,14 @@
   "wf": {
    "oos_days": 300,
    "gap_corr": 0.23,
-   "gap_sign_pct": 56.0,
+   "gap_sign_pct": 55.3,
    "directional_calls": 46,
    "directional_accuracy": 78.3
   },
   "vix": 17.7
  },
  "global_table": {
-  "updated": "2026-11-25T15:58:35.609998+05:30",
+  "updated": "2026-11-25T16:18:27.260275+05:30",
   "rows": [
    {
     "group": "US, last close",
@@ -684,7 +684,7 @@
    },
    {
     "group": "Europe, last close",
-    "move": "DAX -0.1%, FTSE +0.4%, Euro Stoxx -0.1%",
+    "move": "DAX +0.0%, FTSE +0.4%, Euro Stoxx -0.1%",
     "effect": "flat",
     "note": "Mixed / flat"
    },
@@ -696,7 +696,7 @@
    },
    {
     "group": "Crude oil",
-    "move": "WTI ~$82, Brent ~$89 (-0.2%)",
+    "move": "WTI ~$81, Brent ~$88 (-0.9%)",
     "effect": "flat",
     "note": "Steady"
    },
@@ -708,7 +708,7 @@
    },
    {
     "group": "Dollar index",
-    "move": "104.01 (+0.19%)",
+    "move": "103.98 (+0.16%)",
     "effect": "flat",
     "note": "Steady"
    },
