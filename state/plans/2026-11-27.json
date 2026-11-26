@@ -1,22 +1,22 @@
 {
  "bias": {
-  "generated_at": "2026-11-26T15:31:41.138824+05:30",
+  "generated_at": "2026-11-26T16:18:12.608302+05:30",
   "target_session": "2026-11-27",
   "reference_date": "2026-11-26",
   "bias": {
    "label": "BULLISH",
-   "score": 65,
-   "z": 0.78,
+   "score": 71,
+   "z": 0.896,
    "model_z": 0.14,
    "predicted_nifty_move_pct": 0.11,
    "typical_daily_move_pct": 0.775,
    "source": "pre-open global snapshot",
-   "india_vix": 16.86,
+   "india_vix": 16.83,
    "components": [
     {
      "feature": "vix",
      "label": "India VIX level",
-     "value": 16.85,
+     "value": 16.83,
      "contribution_pct": 0.083
     },
     {
@@ -59,8 +59,8 @@
     "lot_size": 65,
     "expiry": "2026-12-01",
     "days_to_expiry": 4.75,
-    "iv_used_pct": 16.86,
-    "expected_move": 498,
+    "iv_used_pct": 16.83,
+    "expected_move": 497,
     "levels": {
      "prev_close": 25884.5,
      "ema20": 24862.96,
@@ -83,22 +83,22 @@
         "action": "SELL",
         "strike": 25450,
         "type": "PE",
-        "est_premium": 47.4
+        "est_premium": 47.2
        },
        {
         "action": "BUY",
         "strike": 25200,
         "type": "PE",
-        "est_premium": 16.6
+        "est_premium": 16.5
        }
       ],
-      "net_premium": 30.8,
-      "max_loss": 14248,
-      "max_reward": 2002,
+      "net_premium": 30.7,
+      "max_loss": 14254,
+      "max_reward": 1996,
       "reward_risk": 0.14,
       "entry": "Enter at 10:15 (after the first hour) only if NIFTY is above 25,450",
-      "target": "Buy back at \u20b913.9 (keep ~55% of credit), else hold to expiry Tue 01 Dec",
-      "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b92,002 per lot)",
+      "target": "Buy back at \u20b913.8 (keep ~55% of credit), else hold to expiry Tue 01 Dec",
+      "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,996 per lot)",
       "breakeven": [
        25419
       ],
@@ -107,15 +107,15 @@
        "decision": "SKIP",
        "dte": 4,
        "stats": {
-        "trades": 110,
-        "win_pct": 57.3,
-        "avg_pnl": -270,
+        "trades": 113,
+        "win_pct": 57.5,
+        "avg_pnl": -264,
         "worst": -9210,
         "best": 3650,
-        "total": -29759,
+        "total": -29841,
         "sample": "days the model called BULLISH"
        },
-       "reason": "On days the model called BULLISH, this spread lost on average: 57.3% wins, avg \u20b9-270 per lot over 110 trades."
+       "reason": "On days the model called BULLISH, this spread lost on average: 57.5% wins, avg \u20b9-264 per lot over 113 trades."
       }
      },
      {
@@ -125,18 +125,18 @@
         "action": "BUY",
         "strike": 25900,
         "type": "CE",
-        "est_premium": 201.8
+        "est_premium": 201.5
        },
        {
         "action": "SELL",
         "strike": 26150,
         "type": "CE",
-        "est_premium": 101.0
+        "est_premium": 100.8
        }
       ],
-      "net_premium": -100.8,
-      "max_loss": 6552,
-      "max_reward": 9698,
+      "net_premium": -100.7,
+      "max_loss": 6546,
+      "max_reward": 9704,
       "reward_risk": 1.48,
       "entry": "Enter on dips that hold above 25,754 (EMA20 / S1 support zone)",
       "target": "Exit spread near \u20b9190.3 or NIFTY at 26,150",
@@ -149,15 +149,15 @@
        "decision": "SKIP",
        "dte": 4,
        "stats": {
-        "trades": 112,
-        "win_pct": 36.6,
-        "avg_pnl": -687,
+        "trades": 114,
+        "win_pct": 36.8,
+        "avg_pnl": -719,
         "worst": -8128,
         "best": 10202,
-        "total": -76991,
+        "total": -81992,
         "sample": "days the model called BULLISH"
        },
-       "reason": "On days the model called BULLISH, this spread lost on average: 36.6% wins, avg \u20b9-687 per lot over 112 trades."
+       "reason": "On days the model called BULLISH, this spread lost on average: 36.8% wins, avg \u20b9-719 per lot over 114 trades."
       }
      },
      {
@@ -167,16 +167,16 @@
         "action": "BUY",
         "strike": 25900,
         "type": "CE",
-        "est_premium": 201.8
+        "est_premium": 201.5
        }
       ],
-      "net_premium": -201.8,
-      "max_loss": 13117,
+      "net_premium": -201.5,
+      "max_loss": 13098,
       "max_reward": 3660,
       "reward_risk": 0.28,
       "entry": "Enter on dips that hold above 25,754 (EMA20 / S1 support zone)",
-      "target": "Premium \u2248 \u20b9258.1 (NIFTY near 25,995)",
-      "stop_loss": "Premium \u20b9141.3 (-30%), or NIFTY closes below 25,623",
+      "target": "Premium \u2248 \u20b9257.8 (NIFTY near 25,995)",
+      "stop_loss": "Premium \u20b9141.0 (-30%), or NIFTY closes below 25,623",
       "breakeven": [
        26102
       ],
@@ -194,15 +194,15 @@
      "decision": "SKIP",
      "dte": 4,
      "stats": {
-      "trades": 110,
-      "win_pct": 57.3,
-      "avg_pnl": -270,
+      "trades": 113,
+      "win_pct": 57.5,
+      "avg_pnl": -264,
       "worst": -9210,
       "best": 3650,
-      "total": -29759,
+      "total": -29841,
       "sample": "days the model called BULLISH"
      },
-     "reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost on average: 57.3% wins, avg \u20b9-270 per lot over 110 trades."
+     "reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost on average: 57.5% wins, avg \u20b9-264 per lot over 113 trades."
     }
    },
    "BANKNIFTY": {
@@ -212,8 +212,8 @@
     "lot_size": 30,
     "expiry": "2026-12-29",
     "days_to_expiry": 32.75,
-    "iv_used_pct": 23.19,
-    "expected_move": 4414,
+    "iv_used_pct": 23.16,
+    "expected_move": 4407,
     "levels": {
      "prev_close": 63535.3,
      "ema20": 60524.86,
@@ -236,39 +236,39 @@
         "action": "SELL",
         "strike": 59600,
         "type": "PE",
-        "est_premium": 352.1
+        "est_premium": 350.6
        },
        {
         "action": "BUY",
         "strike": 57400,
         "type": "PE",
-        "est_premium": 110.3
+        "est_premium": 109.6
        }
       ],
-      "net_premium": 241.8,
-      "max_loss": 58746,
-      "max_reward": 7254,
+      "net_premium": 241.0,
+      "max_loss": 58770,
+      "max_reward": 7230,
       "reward_risk": 0.12,
       "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is above 59,600",
-      "target": "Buy back at \u20b9108.8 (keep ~55% of credit), else hold to expiry Tue 29 Dec",
-      "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b97,254 per lot)",
+      "target": "Buy back at \u20b9108.5 (keep ~55% of credit), else hold to expiry Tue 29 Dec",
+      "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b97,230 per lot)",
       "breakeven": [
-       59358
+       59359
       ],
       "notes": "Earns time decay; wins if the index does not fall (bull put) / rise (bear call) past the short strike.",
       "verdict": {
        "decision": "SKIP",
        "dte": 32,
        "stats": {
-        "trades": 124,
-        "win_pct": 70.2,
-        "avg_pnl": -19,
+        "trades": 126,
+        "win_pct": 69.0,
+        "avg_pnl": -62,
         "worst": -14563,
         "best": 4611,
-        "total": -2469,
+        "total": -7918,
         "sample": "days the model called BULLISH"
        },
-       "reason": "On days the model called BULLISH, this spread lost overall (70.2% wins, avg \u20b9-19 per lot over 124 trades). A good-looking slice is not trusted on its own."
+       "reason": "On days the model called BULLISH, this spread lost overall (69.0% wins, avg \u20b9-62 per lot over 126 trades). A good-looking slice is not trusted on its own."
       }
      },
      {
@@ -278,22 +278,22 @@
         "action": "BUY",
         "strike": 63500,
         "type": "CE",
-        "est_premium": 1964.7
+        "est_premium": 1962.1
        },
        {
         "action": "SELL",
         "strike": 65700,
         "type": "CE",
-        "est_premium": 1033.7
+        "est_premium": 1031.2
        }
       ],
-      "net_premium": -931.0,
-      "max_loss": 27930,
-      "max_reward": 38070,
+      "net_premium": -930.9,
+      "max_loss": 27927,
+      "max_reward": 38073,
       "reward_risk": 1.36,
       "entry": "Enter on dips that hold above 63,210 (EMA20 / S1 support zone)",
       "target": "Exit spread near \u20b91692.4 or BANKNIFTY at 65,700",
-      "stop_loss": "Spread falls to \u20b9465.5, or BANKNIFTY closes below 62,885",
+      "stop_loss": "Spread falls to \u20b9465.4, or BANKNIFTY closes below 62,885",
       "breakeven": [
        64431
       ],
@@ -302,15 +302,15 @@
        "decision": "SKIP",
        "dte": 32,
        "stats": {
-        "trades": 133,
-        "win_pct": 42.9,
-        "avg_pnl": -539,
+        "trades": 135,
+        "win_pct": 43.0,
+        "avg_pnl": -570,
         "worst": -11570,
         "best": 11404,
-        "total": -71760,
+        "total": -77051,
         "sample": "days the model called BULLISH"
        },
-       "reason": "On days the model called BULLISH, this spread lost overall (42.9% wins, avg \u20b9-539 per lot over 133 trades). A good-looking slice is not trusted on its own."
+       "reason": "On days the model called BULLISH, this spread lost overall (43.0% wins, avg \u20b9-570 per lot over 135 trades). A good-looking slice is not trusted on its own."
       }
      },
      {
@@ -320,18 +320,18 @@
         "action": "BUY",
         "strike": 63500,
         "type": "CE",
-        "est_premium": 1964.7
+        "est_premium": 1962.1
        }
       ],
-      "net_premium": -1964.7,
-      "max_loss": 58941,
+      "net_premium": -1962.1,
+      "max_loss": 58863,
       "max_reward": 7386,
       "reward_risk": 0.13,
       "entry": "Enter on dips that hold above 63,210 (EMA20 / S1 support zone)",
-      "target": "Premium \u2248 \u20b92210.9 (BANKNIFTY near 63,983)",
-      "stop_loss": "Premium \u20b91375.3 (-30%), or BANKNIFTY closes below 62,885",
+      "target": "Premium \u2248 \u20b92208.3 (BANKNIFTY near 63,983)",
+      "stop_loss": "Premium \u20b91373.5 (-30%), or BANKNIFTY closes below 62,885",
       "breakeven": [
-       65465
+       65462
       ],
       "notes": "Max loss = full premium. Theta decay hurts if move is late.",
       "verdict": {
@@ -347,15 +347,15 @@
      "decision": "SKIP",
      "dte": 32,
      "stats": {
-      "trades": 124,
-      "win_pct": 70.2,
-      "avg_pnl": -19,
+      "trades": 126,
+      "win_pct": 69.0,
+      "avg_pnl": -62,
       "worst": -14563,
       "best": 4611,
-      "total": -2469,
+      "total": -7918,
       "sample": "days the model called BULLISH"
      },
-     "reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (70.2% wins, avg \u20b9-19 per lot over 124 trades). A good-looking slice is not trusted on its own."
+     "reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (69.0% wins, avg \u20b9-62 per lot over 126 trades). A good-looking slice is not trusted on its own."
     }
    }
   },
@@ -367,19 +367,19 @@
    "gap_corr": 0.22,
    "gap_sign_pct": 54.3,
    "trained_rows": 750,
-   "version": 51,
+   "version": 52,
    "bias_threshold": 0.3
   }
  },
  "plan": {
-  "generated_at": "2026-11-26T15:32:05.514257+05:30",
+  "generated_at": "2026-11-26T16:18:38.358811+05:30",
   "session": "2026-11-27",
   "stage": "preview",
   "expected_open": {
    "gap_pct": 0.04,
    "error_pct": 0.39,
    "day_pct": 0.11,
-   "snapshot": "Thu 26 Nov 15:31 IST",
+   "snapshot": "Thu 26 Nov 16:18 IST",
    "stage": "preview",
    "tip": "Flat open expected. Normal entry windows apply.",
    "markets": [
@@ -443,7 +443,7 @@
     {
      "feature": "vix",
      "label": "India VIX level",
-     "value": 16.85,
+     "value": 16.83,
      "contribution_pct": 0.083
     },
     {
@@ -487,7 +487,7 @@
   },
   "headline": "Market bias UP \u2014 favour buying dips",
   "bias": "BULLISH",
-  "score": 65,
+  "score": 71,
   "bias_track_record_pct": 77.5,
   "options": [
    {
@@ -497,22 +497,22 @@
     "expiry": "2026-12-01",
     "lot_size": 65,
     "entry": "Enter at 10:15 (after the first hour) only if NIFTY is above 25,450",
-    "target": "Buy back at \u20b913.9 (keep ~55% of credit), else hold to expiry Tue 01 Dec",
-    "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b92,002 per lot)",
-    "max_loss": 14248,
-    "max_reward": 2002,
+    "target": "Buy back at \u20b913.8 (keep ~55% of credit), else hold to expiry Tue 01 Dec",
+    "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,996 per lot)",
+    "max_loss": 14254,
+    "max_reward": 1996,
     "reward_risk": 0.14,
     "decision": "SKIP",
-    "decision_reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost on average: 57.3% wins, avg \u20b9-270 per lot over 110 trades.",
+    "decision_reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost on average: 57.5% wins, avg \u20b9-264 per lot over 113 trades.",
     "enter_at": "10:15 IST, after the first hour",
     "exit_by": "target / stop, else expiry 2026-12-01",
     "setup_stats": {
-     "trades": 110,
-     "win_pct": 57.3,
-     "avg_pnl": -270,
+     "trades": 113,
+     "win_pct": 57.5,
+     "avg_pnl": -264,
      "worst": -9210,
      "best": 3650,
-     "total": -29759,
+     "total": -29841,
      "sample": "days the model called BULLISH"
     },
     "test": null,
@@ -526,22 +526,22 @@
     "expiry": "2026-12-29",
     "lot_size": 30,
     "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is above 59,600",
-    "target": "Buy back at \u20b9108.8 (keep ~55% of credit), else hold to expiry Tue 29 Dec",
-    "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b97,254 per lot)",
-    "max_loss": 58746,
-    "max_reward": 7254,
+    "target": "Buy back at \u20b9108.5 (keep ~55% of credit), else hold to expiry Tue 29 Dec",
+    "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b97,230 per lot)",
+    "max_loss": 58770,
+    "max_reward": 7230,
     "reward_risk": 0.12,
     "decision": "SKIP",
-    "decision_reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (70.2% wins, avg \u20b9-19 per lot over 124 trades). A good-looking slice is not trusted on its own.",
+    "decision_reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (69.0% wins, avg \u20b9-62 per lot over 126 trades). A good-looking slice is not trusted on its own.",
     "enter_at": "10:15 IST, after the first hour",
     "exit_by": "target / stop, else expiry 2026-12-29",
     "setup_stats": {
-     "trades": 124,
-     "win_pct": 70.2,
-     "avg_pnl": -19,
+     "trades": 126,
+     "win_pct": 69.0,
+     "avg_pnl": -62,
      "worst": -14563,
      "best": 4611,
-     "total": -2469,
+     "total": -7918,
      "sample": "days the model called BULLISH"
     },
     "test": null,
@@ -553,66 +553,53 @@
    {
     "symbol": "BRITANNIA",
     "grade": "B",
-    "action": "BUY BRITANNIA near \u20b95,185.00 (skip if it opens above \u20b95,383.19) \u00b7 SL \u20b94,986.81 \u00b7 T1 \u20b95,383.19 \u00b7 T2 \u20b95,515.31",
+    "action": "BUY BRITANNIA near \u20b95,185.00 (skip if it opens above \u20b95,383.19) \u00b7 SL \u20b95,019.84 \u00b7 T1 \u20b95,383.19 \u00b7 T2 \u20b95,515.31",
     "entry": 5185.0,
     "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
     "exit_by": "day 2, 15:15 IST",
-    "stop": 4986.81,
+    "stop": 5019.84,
     "t1": 5383.19,
     "t2": 5515.31,
-    "win_prob": 53.9,
+    "win_prob": 52.8,
     "vol_badge": "2.7x Vol Surge"
    },
    {
     "symbol": "HCLTECH",
     "grade": "B",
-    "action": "BUY HCLTECH near \u20b91,468.60 (skip if it opens above \u20b91,529.38) \u00b7 SL \u20b91,407.82 \u00b7 T1 \u20b91,529.38 \u00b7 T2 \u20b91,569.91 \u00b7 Qty 1 for \u20b910k @1% risk",
+    "action": "BUY HCLTECH near \u20b91,468.60 (skip if it opens above \u20b91,529.38) \u00b7 SL \u20b91,417.95 \u00b7 T1 \u20b91,529.38 \u00b7 T2 \u20b91,569.91 \u00b7 Qty 1 for \u20b910k @1% risk",
     "entry": 1468.6,
     "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
     "exit_by": "day 2, 15:15 IST",
-    "stop": 1407.82,
+    "stop": 1417.95,
     "t1": 1529.38,
     "t2": 1569.91,
-    "win_prob": 53.9,
+    "win_prob": 52.8,
     "vol_badge": "1.7x Vol Surge"
    },
    {
     "symbol": "GODREJCP",
     "grade": "B",
-    "action": "BUY GODREJCP near \u20b9947.50 (skip if it opens above \u20b9985.46) \u00b7 SL \u20b9909.54 \u00b7 T1 \u20b9985.46 \u00b7 T2 \u20b91,010.76 \u00b7 Qty 2 for \u20b910k @1% risk",
+    "action": "BUY GODREJCP near \u20b9947.50 (skip if it opens above \u20b9985.46) \u00b7 SL \u20b9915.87 \u00b7 T1 \u20b9985.46 \u00b7 T2 \u20b91,010.76 \u00b7 Qty 3 for \u20b910k @1% risk",
     "entry": 947.5,
     "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
     "exit_by": "day 2, 15:15 IST",
-    "stop": 909.54,
+    "stop": 915.87,
     "t1": 985.46,
     "t2": 1010.76,
-    "win_prob": 53.9,
+    "win_prob": 52.8,
     "vol_badge": "1.6x Vol Surge"
    },
    {
     "symbol": "HINDUNILVR",
     "grade": "B",
-    "action": "BUY HINDUNILVR near \u20b92,130.80 (skip if it opens above \u20b92,204.61) \u00b7 SL \u20b92,056.99 \u00b7 T1 \u20b92,204.61 \u00b7 T2 \u20b92,253.81 \u00b7 Qty 1 for \u20b910k @1% risk",
+    "action": "BUY HINDUNILVR near \u20b92,130.80 (skip if it opens above \u20b92,204.61) \u00b7 SL \u20b92,069.29 \u00b7 T1 \u20b92,204.61 \u00b7 T2 \u20b92,253.81 \u00b7 Qty 1 for \u20b910k @1% risk",
     "entry": 2130.8,
     "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
     "exit_by": "day 2, 15:15 IST",
-    "stop": 2056.99,
+    "stop": 2069.29,
     "t1": 2204.61,
     "t2": 2253.81,
-    "win_prob": 53.9,
-    "vol_badge": "1.6x Vol Surge"
-   },
-   {
-    "symbol": "INFY",
-    "grade": "B",
-    "action": "BUY INFY near \u20b91,183.00 (skip if it opens above \u20b91,237.63) \u00b7 SL \u20b91,128.37 \u00b7 T1 \u20b91,237.63 \u00b7 T2 \u20b91,274.05 \u00b7 Qty 1 for \u20b910k @1% risk",
-    "entry": 1183.0,
-    "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
-    "exit_by": "day 2, 15:15 IST",
-    "stop": 1128.37,
-    "t1": 1237.63,
-    "t2": 1274.05,
-    "win_prob": 53.9,
+    "win_prob": 52.8,
     "vol_badge": "1.5x Vol Surge"
    }
   ],
@@ -623,23 +610,23 @@
     "side": "BUY",
     "grade": "B",
     "trigger": 5185.0,
-    "stop": 4986.81,
+    "stop": 5019.84,
     "t1": 5383.19,
     "lot": 125,
     "strike": 5200.0,
-    "premium": 18031,
+    "premium": 18481,
     "tiers": {
      "5K": {
       "strike": 5600.0,
-      "premium": 4550
+      "premium": 4238
      },
      "10K": {
       "strike": 5400.0,
-      "premium": 9209
+      "premium": 9612
      },
      "15K": {
       "strike": 5300.0,
-      "premium": 12985
+      "premium": 13288
      }
     }
    },
@@ -649,23 +636,23 @@
     "side": "BUY",
     "grade": "B",
     "trigger": 1468.6,
-    "stop": 1407.82,
+    "stop": 1417.95,
     "t1": 1529.38,
     "lot": 400,
     "strike": 1460.0,
-    "premium": 23400,
+    "premium": 23692,
     "tiers": {
      "5K": {
-      "strike": 1620.0,
-      "premium": 4728
+      "strike": 1640.0,
+      "premium": 4072
      },
      "10K": {
       "strike": 1560.0,
-      "premium": 8892
+      "premium": 9268
      },
      "15K": {
       "strike": 1520.0,
-      "premium": 13332
+      "premium": 13688
      }
     }
    },
@@ -675,23 +662,23 @@
     "side": "BUY",
     "grade": "B",
     "trigger": 947.5,
-    "stop": 909.54,
+    "stop": 915.87,
     "t1": 985.46,
-    "lot": 500,
+    "lot": 600,
     "strike": 950.0,
-    "premium": 12250,
+    "premium": 14550,
     "tiers": {
      "5K": {
-      "strike": 1000.0,
-      "premium": 4925
+      "strike": 1010.0,
+      "premium": 4440
      },
      "10K": {
       "strike": 970.0,
-      "premium": 8535
+      "premium": 9912
      },
      "15K": {
       "strike": 950.0,
-      "premium": 12250
+      "premium": 14550
      }
     }
    },
@@ -701,55 +688,29 @@
     "side": "BUY",
     "grade": "B",
     "trigger": 2130.8,
-    "stop": 2056.99,
+    "stop": 2069.29,
     "t1": 2204.61,
     "lot": 300,
     "strike": 2140.0,
-    "premium": 16884,
+    "premium": 17520,
     "tiers": {
      "5K": {
       "strike": 2280.0,
-      "premium": 4314
+      "premium": 4440
      },
      "10K": {
       "strike": 2200.0,
-      "premium": 9630
+      "premium": 9930
      },
      "15K": {
       "strike": 2160.0,
-      "premium": 14019
-     }
-    }
-   },
-   {
-    "symbol": "INFY",
-    "kind": "CE",
-    "side": "BUY",
-    "grade": "B",
-    "trigger": 1183.0,
-    "stop": 1128.37,
-    "t1": 1237.63,
-    "lot": 400,
-    "strike": 1180.0,
-    "premium": 20340,
-    "tiers": {
-     "5K": {
-      "strike": 1294.0,
-      "premium": 4840
-     },
-     "10K": {
-      "strike": 1240.0,
-      "premium": 9808
-     },
-     "15K": {
-      "strike": 1214.0,
-      "premium": 13700
+      "premium": 14505
      }
     }
    }
   ],
   "capital": 15000,
-  "momentum_money": 12909,
+  "momentum_money": 12886,
   "put_gate_open": false,
   "market_gate_open": true,
   "events": [],
@@ -863,7 +824,7 @@
    "grade": "B",
    "passed": true,
    "entry": 5185.0,
-   "stop": 4986.81,
+   "stop": 5019.84,
    "t1": 5383.19,
    "t2": 5515.31,
    "atr": 132.13,
@@ -875,7 +836,7 @@
    "grade": "B",
    "passed": true,
    "entry": 1468.6,
-   "stop": 1407.82,
+   "stop": 1417.95,
    "t1": 1529.38,
    "t2": 1569.91,
    "atr": 40.52,
@@ -887,7 +848,7 @@
    "grade": "B",
    "passed": true,
    "entry": 947.5,
-   "stop": 909.54,
+   "stop": 915.87,
    "t1": 985.46,
    "t2": 1010.76,
    "atr": 25.3,
@@ -899,22 +860,10 @@
    "grade": "B",
    "passed": true,
    "entry": 2130.8,
-   "stop": 2056.99,
+   "stop": 2069.29,
    "t1": 2204.61,
    "t2": 2253.81,
    "atr": 49.2,
-   "skip_reason": null
-  },
-  {
-   "symbol": "INFY",
-   "name": "Infosys",
-   "grade": "B",
-   "passed": true,
-   "entry": 1183.0,
-   "stop": 1128.37,
-   "t1": 1237.63,
-   "t2": 1274.05,
-   "atr": 36.42,
    "skip_reason": null
   },
   {
@@ -923,7 +872,7 @@
    "grade": "B",
    "passed": false,
    "entry": 196.54,
-   "stop": 188.71,
+   "stop": 190.01,
    "t1": 204.37,
    "t2": 209.59,
    "atr": 5.22,
@@ -935,22 +884,10 @@
    "grade": "B",
    "passed": false,
    "entry": 862.0,
-   "stop": 830.31,
+   "stop": 835.59,
    "t1": 893.69,
    "t2": 914.82,
    "atr": 21.13,
-   "skip_reason": null
-  },
-  {
-   "symbol": "TCS",
-   "name": "Tata Consultancy Services",
-   "grade": "B",
-   "passed": false,
-   "entry": 2640.3,
-   "stop": 2529.22,
-   "t1": 2751.38,
-   "t2": 2825.44,
-   "atr": 74.05,
    "skip_reason": null
   },
   {
@@ -959,10 +896,34 @@
    "grade": "B",
    "passed": false,
    "entry": 594.4,
-   "stop": 568.85,
+   "stop": 573.11,
    "t1": 619.95,
    "t2": 636.98,
    "atr": 17.03,
+   "skip_reason": null
+  },
+  {
+   "symbol": "TCS",
+   "name": "Tata Consultancy Services",
+   "grade": "B",
+   "passed": false,
+   "entry": 2640.3,
+   "stop": 2547.73,
+   "t1": 2751.38,
+   "t2": 2825.44,
+   "atr": 74.05,
+   "skip_reason": null
+  },
+  {
+   "symbol": "INFY",
+   "name": "Infosys",
+   "grade": "B",
+   "passed": false,
+   "entry": 1183.0,
+   "stop": 1137.48,
+   "t1": 1237.63,
+   "t2": 1274.05,
+   "atr": 36.42,
    "skip_reason": null
   },
   {
@@ -971,7 +932,7 @@
    "grade": "B",
    "passed": false,
    "entry": 1450.0,
-   "stop": 1406.86,
+   "stop": 1414.05,
    "t1": 1493.14,
    "t2": 1521.89,
    "atr": 28.76,
@@ -983,7 +944,7 @@
    "grade": "B",
    "passed": false,
    "entry": 5789.0,
-   "stop": 5571.26,
+   "stop": 5607.55,
    "t1": 6006.74,
    "t2": 6151.89,
    "atr": 145.16,
@@ -995,7 +956,7 @@
    "grade": "B",
    "passed": false,
    "entry": 1915.7,
-   "stop": 1853.14,
+   "stop": 1863.56,
    "t1": 1978.26,
    "t2": 2019.97,
    "atr": 41.71,

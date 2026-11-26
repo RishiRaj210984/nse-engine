@@ -1,17 +1,17 @@
 {
- "generated_at": "2026-11-26T15:31:57.807381+05:30",
+ "generated_at": "2026-11-26T16:18:33.170553+05:30",
  "market_open": false,
  "volume_projected": false,
  "bias": {
   "label": "BULLISH",
-  "score": 65
+  "score": 71
  },
  "rules": {
   "vol_mult": 1.5,
   "rsi_lo": 55,
   "rsi_hi": 70,
   "near_high_pct": 2.0,
-  "sl_atr": 1.5,
+  "sl_atr": 1.25,
   "t1_atr": 1.5,
   "t2_atr": 2.5,
   "max_day_chg": 7.0,
@@ -19,15 +19,15 @@
  },
  "market_gate_open": true,
  "model": {
-  "version": 51,
-  "updated": "2026-11-25T16:17:57.344776+05:30",
+  "version": 52,
+  "updated": "2026-11-26T16:17:56.924708+05:30",
   "ranker_on": false,
-  "samples": 2587,
-  "live_samples": 466,
-  "base_win_rate": 0.5386,
-  "expectancy_r": 0.105,
-  "holdout_auc": 0.495,
-  "note": "sl_atr 1.25\u21921.5; news_weight 0.354\u21920.375; max_day_chg 99.0\u21927.0; ranker OFF: no out-of-sample edge, using rule stats only"
+  "samples": 2603,
+  "live_samples": 482,
+  "base_win_rate": 0.5278,
+  "expectancy_r": 0.108,
+  "holdout_auc": 0.482,
+  "note": "sl_atr 1.5\u21921.25; news_weight 0.375\u21920.378; ranker OFF: no out-of-sample edge, using rule stats only"
  },
  "candidates": [
   {
@@ -36,7 +36,7 @@
    "bar_date": "2026-11-26",
    "cmp": 5185.0,
    "day_chg": 2.14,
-   "vol_ratio": 2.73,
+   "vol_ratio": 2.71,
    "vol_badge": "2.7x Vol Surge",
    "volume_projected": false,
    "rsi": 67.2,
@@ -54,7 +54,7 @@
    "checks_passed": 4,
    "passed": true,
    "entry": 5185.0,
-   "stop": 4986.81,
+   "stop": 5019.84,
    "t1": 5383.19,
    "t2": 5515.31,
    "pivots": {
@@ -64,12 +64,12 @@
     "R2": 5356.47,
     "S2": 4898.87
    },
-   "risk_per_share": 198.19,
-   "rr_t1": 1.0,
-   "rr_t2": 1.67,
+   "risk_per_share": 165.16,
+   "rr_t1": 1.2,
+   "rr_t2": 2.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 1.0036813568675487,
+    "log_vol_ratio": 0.998131288103991,
     "rsi": 67.18907326125156,
     "dist_high_pct": 0.544748204161021,
     "ext_ema20": 6.898803740039283,
@@ -77,8 +77,8 @@
     "day_chg": 2.1433316358950627,
     "ret5": 10.951805685552829,
     "rs20": -0.07313194881841678,
-    "bias_score": 65.0,
-    "news_sent": 0.072,
+    "bias_score": 71.0,
+    "news_sent": -0.06,
     "mkt_above50": 1.0,
     "mkt_ret20": 13.779272299695599
    },
@@ -86,24 +86,17 @@
    "r2_a": 1.297758825963038,
    "news": [
     {
-     "title": "Britannia Industries to hold analyst meets with Wellington, Citadel in Dec",
-     "source": "scanx.trade",
-     "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPMUlSd2Q4MjZfYXNKZEJQWkFXZUptZmtlM19rTjNNRndIUHdyM1ZSM3paVmd3bWVlOEtxQUZkSkRnbEJLTjNCaGdmRnptTGl4UDNUYVdtSkZXclR6aEVVN3F5d0RJUXF6bUxvem9uUjRkajFfR0ZwN3IxdFk4cU12SWdBaEhKcTJvRXA1NzRuSnQ2NEJiTjdjS0ZiODBrTjRQZ3EtRDdESXE2NjBQMUMtNEFGSEJmcEMzWVVN?oc=5",
-     "published": "Wed, 25 Nov 2026 14:42:26 GMT",
-     "sentiment": 0.0
-    },
-    {
-     "title": "How Nvidia stock skyrocketing 31% will change risk-return outlook for mutual funds? Experts weigh in as Jensen returns",
-     "source": "Livemint",
-     "link": "https://news.google.com/rss/articles/CBMikgJBVV95cUxNOHpLRUlJc0RSQWYyWnZVTEtaOTROM1FuRVJqVVRkY1gtUGJMOTNfVGFELXhURWhfM0FqYUlzVHdxV2JlNU54UWhGLXZlU25FMW1aeFR0cEliN2ZkQVBVRlJZUXczUDg5WkxmT3pkMk1PN2Z2MU4zZlRvT0plWGpVQUUzVkJzVEc5OTZQTzB4NXgza1o3UkxJX3U3SzFvLUtmcFRVLUhubl9HR3lCVmZBblZxOUk3WmVSN2NLNV9wYjZZTWhNbGlDanBYYTRfaVZsSWY1eWFaM1BUTXFybEVaQ1diUUpja3hzZEdBYlJGc2tRdGZGUjQxaEZxRnBFcWMzOEZlRXptTGJYbUlLSndkcThB0gGXAkFVX3lxTE4tY2FOX2lHQUEtZDNYc1U3X19tUWhKcUNHU04xQndBZ0trdHUybXNtU0psQnhNSnlJVjNmUjVDV0xmRElla3hQZmEtR0ZHSEozTjBUOEN5V2loVnNiczVQNDVTc2V1RUFJRy1OYmNmd0JOU1FYNzR3M1ZvVHdqbWV5aURUelcwZ3pKQjRObFNMZ0tKMHlBRnNMRlRUc0VqS08ybERZN2F0RXNWbnZ3MlNGMjVOd0Q1ZjBJeS1FNVA2WUczb254WU02c2NUUzAxTlBTVTZRM2VJbXhYT3o1aGNEdXpyTmJ4cWZBNFZLLUFvRDYyR1EzcDQ3ZzNVRExNVmx3Q1VPZGlFbk9kUi1tRTVuZ2lnTWpmSQ?oc=5",
-     "published": "Tue, 24 Nov 2026 09:50:45 GMT",
-     "sentiment": 0.0
-    },
-    {
      "title": "Britannia Industries Stock: Trading, Earnings and Momentum",
      "source": "Kalkine India",
      "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxPRXhwVldONTQtZFItU29Oc2R6dmsxZ2hyN0hZd1dKeS16QmgtakFIMU5LdDFjRzF4UzgzeU4weTRGN3duamdJNVJ0WWIzTHQ2NGJzbmVlWmtDSm9BQ3lvZ004QWVyLXM3V3h5d01FNW9ZWUEwNXpRUE5pQ05IMUwwTHhGZXZMMnNDSGdhRUsxZ1A3M2JwLUJWTWFrT25FbXNTM3QyRE5LWTBRbldTTm00Q0MzY3ptS1g4ZmJURjN3c19pZno0SkhUTlBBVE9uQmExNlJyWFdmek5LM1c0djU3djlTd0M?oc=5",
      "published": "Tue, 24 Nov 2026 12:40:00 GMT",
+     "sentiment": 0.0
+    },
+    {
+     "title": "Britannia Industries to hold analyst meets with Wellington, Citadel in Dec",
+     "source": "scanx.trade",
+     "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPMUlSd2Q4MjZfYXNKZEJQWkFXZUptZmtlM19rTjNNRndIUHdyM1ZSM3paVmd3bWVlOEtxQUZkSkRnbEJLTjNCaGdmRnptTGl4UDNUYVdtSkZXclR6aEVVN3F5d0RJUXF6bUxvem9uUjRkajFfR0ZwN3IxdFk4cU12SWdBaEhKcTJvRXA1NzRuSnQ2NEJiTjdjS0ZiODBrTjRQZ3EtRDdESXE2NjBQMUMtNEFGSEJmcEMzWVVN?oc=5",
+     "published": "Wed, 25 Nov 2026 14:42:26 GMT",
      "sentiment": 0.0
     },
     {
@@ -114,24 +107,31 @@
      "sentiment": 0.0
     },
     {
-     "title": "Britannia Industries Ltd Rallies 2.95% and Approaches Key Moving Averages Amid Mixed Momentum",
-     "source": "MarketsMojo",
-     "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQQnFOT0dLR2pGSGItQ3lXMlo2RjJhX2toVFkyZV9GUVcxMl9ETHowbTl6VW5xMkFlSkZ5M2F2cTlGUXVDZmNaNGl1alB1bEg4S05nb1ZuTFdtV3VIUXdMNU9ubmNfNHI1WkZILTlYLXc0NnB0Sms2ZlkwT3NfTnA2WU1rd013UTBDeEVub0VZd2o0TDVDV0NlN0ZrSVRjNU51VGxWQ01rNGRrNUxBakppY3d3UjVQX1BkWXNYaTZtcC15QWMtOXhkMzln?oc=5",
-     "published": "Wed, 25 Nov 2026 09:20:23 GMT",
-     "sentiment": 0.382
+     "title": "Britannia stock: VP Sales Rahul Mahajan to leave on November 30",
+     "source": "ad-hoc-news.de",
+     "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNREw5RTVWTHB4XzhUUzRwbGpMSTd5c3dKWFNTbndjNTQ0VnUtTHozZm9Bd0pGb1ZmWjlrdS04c2hxSVNMcUIyWDl6UGR1dFo3bHZDWUF3d3YyVWpORFN6ZWlvUmhNNjltWktBbFprOE1NbGE5U0tKOWp3WmQtTnA0NlZ1QWNyZy1hemFDb2lCbXR5TXVhSmhqSHd5YzBWQW1TRm15Q0FQSGhWVDVaVHU4U2xTXy1KMUFvanp2Y0JR?oc=5",
+     "published": "Tue, 24 Nov 2026 01:35:45 GMT",
+     "sentiment": -0.052
+    },
+    {
+     "title": "JioStar Layoffs: 150 Jobs at Risk in Fresh Workforce Cuts, Employees to Get Six Months' Salary",
+     "source": "Livemint",
+     "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPZ251Z3BnT3F6bTVoY1gwV3ZabnVKdGxuVFFycVRvbkVDc0dJRUNLVEMycFVTZFQzX2x5VlZ3clpPeFBvX1hKWjJzYlhHdkY4OVFYNUdHYUJZMzlDMG4xZkpzeGJYTGFkVWt2QS1CN2psaWdGc2wxTFp0WmpvanRQZzVEZXU2bGFxQXctdGljVF9PZV9sT3NQcElSaDJPTldfMUZXZnhyYVVmWlkwMm9uU1gwVTNsdmxXTVVrVWsxS25NQThuakVWWlUyaDU2T0lTNE1lSFdZTTc5UXM?oc=5",
+     "published": "Wed, 25 Nov 2026 12:50:20 GMT",
+     "sentiment": -0.25
     }
    ],
    "news_sentiment": {
-    "score": 0.072,
-    "count": 8,
+    "score": -0.06,
+    "count": 5,
     "label": "NEUTRAL"
    },
-   "win_prob": 53.9,
-   "expected_r": 0.1,
+   "win_prob": 52.8,
+   "expected_r": 0.11,
    "model_used": false,
    "grade": "B",
    "skip_reason": null,
-   "action": "BUY BRITANNIA near \u20b95,185.00 (skip if it opens above \u20b95,383.19) \u00b7 SL \u20b94,986.81 \u00b7 T1 \u20b95,383.19 \u00b7 T2 \u20b95,515.31"
+   "action": "BUY BRITANNIA near \u20b95,185.00 (skip if it opens above \u20b95,383.19) \u00b7 SL \u20b95,019.84 \u00b7 T1 \u20b95,383.19 \u00b7 T2 \u20b95,515.31"
   },
   {
    "symbol": "HCLTECH",
@@ -139,7 +139,7 @@
    "bar_date": "2026-11-26",
    "cmp": 1468.6,
    "day_chg": 6.42,
-   "vol_ratio": 1.68,
+   "vol_ratio": 1.66,
    "vol_badge": "1.7x Vol Surge",
    "volume_projected": false,
    "rsi": 67.4,
@@ -157,7 +157,7 @@
    "checks_passed": 4,
    "passed": true,
    "entry": 1468.6,
-   "stop": 1407.82,
+   "stop": 1417.95,
    "t1": 1529.38,
    "t2": 1569.91,
    "pivots": {
@@ -167,26 +167,26 @@
     "R2": 1523.67,
     "S2": 1358.47
    },
-   "risk_per_share": 60.78,
-   "rr_t1": 1.0,
-   "rr_t2": 1.67,
+   "risk_per_share": 50.65,
+   "rr_t1": 1.2,
+   "rr_t2": 2.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 0.5204649653458039,
-    "rsi": 67.4098876126713,
+    "log_vol_ratio": 0.5052701977259438,
+    "rsi": 67.40988763024889,
     "dist_high_pct": 0.027231069711538464,
-    "ext_ema20": 6.3625045107959854,
-    "atr_pct": 2.759236831452212,
+    "ext_ema20": 6.3625045109605205,
+    "atr_pct": 2.759236831732595,
     "day_chg": 6.420288085937509,
     "ret5": 9.21395321730223,
     "rs20": -10.35673880772816,
-    "bias_score": 65.0,
-    "news_sent": 0.079,
+    "bias_score": 71.0,
+    "news_sent": 0.147,
     "mkt_above50": 1.0,
     "mkt_ret20": 13.779272299695599
    },
-   "r1_a": 0.6794635581181353,
-   "r2_a": 1.3589271162362706,
+   "r1_a": 0.6794635580490909,
+   "r2_a": 1.3589271160981817,
    "news": [
     {
      "title": "HCL Tech Share Price Today, HCL Tech Stock Price Live NSE/BSE Updates",
@@ -196,18 +196,18 @@
      "sentiment": 0.296
     },
     {
+     "title": "Top Gainers & Losers Today, November 26, 2026 at 3:30 PM IST",
+     "source": "HDFC Sky",
+     "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1oaktNd2M2OVR1RndJNlBONU1saG1kSXR5LVZLU0c0RnhGd1ZlNk9FSzUxVnVnY0Y5dUJ5ZVMyUHljOWFGb0xOa19oOGhETWlBYjdjSVJSLUw4YXFUR0VHQnRWUnE5NkRIM19Wa2w1YXYxOXVqNlpqN25GYw?oc=5",
+     "published": "Thu, 26 Nov 2026 10:29:54 GMT",
+     "sentiment": -0.382
+    },
+    {
      "title": "HCL Technologies Share Price - Live NSE: HCLTECH Stock Price & Chart",
      "source": "Upstox",
      "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5VakFpRExUYldXMkNsOENVSHQ2NUIyNDhRZklKbjVtZGJBMzFsSXpfRGJyVzdQWkxCb0oyYnZIMTRBblBmZl9WRmlRVTZ3Qm8tR1dJS21pQkl6WGpWOWJ0dllEMVpKZEJTaE8w?oc=5",
      "published": "Wed, 25 Nov 2026 10:50:54 GMT",
      "sentiment": 0.296
-    },
-    {
-     "title": "Top Gainers & Losers Today, November 26, 2026 at 12:00 PM IST",
-     "source": "HDFC Sky",
-     "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTFAxbnNTMDRkNGNVSWYzUHU1MkdwcmpFM3hpTWliOWR4RmRleC12SGt2RmdSUnR5YUZreFRVWll0Mm1vYU1HWWV3ckJTMVlfSnJHcVdLeDhYRGladHZ3NUhsQ05jS2tIUFgzaUg0Y1VFcUVZbFU2dWJDTQ?oc=5",
-     "published": "Thu, 26 Nov 2026 06:34:03 GMT",
-     "sentiment": -0.382
     },
     {
      "title": "HCL Technologies Share Price Today: Price Rise Analysis",
@@ -217,24 +217,24 @@
      "sentiment": 0.296
     },
     {
-     "title": "Infosys, Mphasis and TCS Shares Rally as Nifty IT Gains Over 2%; Why Are IT Stocks Rising Today?",
-     "source": "Kotak Neo",
-     "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOZGNRVXd2MlJ4LTVfRlUwWWU5YU8yYXNtOGZNSEl2MWxzOWh0d2thTVVFTTNfV3gydlQzcEtJYTdNWUptUWRyczBaTzRwY1JuOTlhVlBQRENJSkUtdElfalo2YkZWbGUwc1RHZGoxV2gya1U0Q0RtSTg3Z2xKdmFPYTk4M1owaEhOY0xsdnJ2d3lXbWFIYllmTjRHeG1HcHVYN0NUWE9vTUxvY0IyT29ZN2o2SG90UjdzbG00RWtIeWt1R1FEZGFwLVdnalI?oc=5",
-     "published": "Wed, 25 Nov 2026 06:44:30 GMT",
-     "sentiment": 0.827
+     "title": "Top Gainers & Losers Today, November 26, 2026 at 12:00 PM IST",
+     "source": "HDFC Sky",
+     "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTFAxbnNTMDRkNGNVSWYzUHU1MkdwcmpFM3hpTWliOWR4RmRleC12SGt2RmdSUnR5YUZreFRVWll0Mm1vYU1HWWV3ckJTMVlfSnJHcVdLeDhYRGladHZ3NUhsQ05jS2tIUFgzaUg0Y1VFcUVZbFU2dWJDTQ?oc=5",
+     "published": "Thu, 26 Nov 2026 06:34:03 GMT",
+     "sentiment": -0.382
     }
    ],
    "news_sentiment": {
-    "score": 0.079,
+    "score": 0.147,
     "count": 8,
-    "label": "NEUTRAL"
+    "label": "POSITIVE"
    },
-   "win_prob": 53.9,
-   "expected_r": 0.1,
+   "win_prob": 52.8,
+   "expected_r": 0.11,
    "model_used": false,
    "grade": "B",
    "skip_reason": null,
-   "action": "BUY HCLTECH near \u20b91,468.60 (skip if it opens above \u20b91,529.38) \u00b7 SL \u20b91,407.82 \u00b7 T1 \u20b91,529.38 \u00b7 T2 \u20b91,569.91 \u00b7 Qty 1 for \u20b910k @1% risk"
+   "action": "BUY HCLTECH near \u20b91,468.60 (skip if it opens above \u20b91,529.38) \u00b7 SL \u20b91,417.95 \u00b7 T1 \u20b91,529.38 \u00b7 T2 \u20b91,569.91 \u00b7 Qty 1 for \u20b910k @1% risk"
   },
   {
    "symbol": "GODREJCP",
@@ -242,7 +242,7 @@
    "bar_date": "2026-11-26",
    "cmp": 947.5,
    "day_chg": -1.61,
-   "vol_ratio": 1.62,
+   "vol_ratio": 1.61,
    "vol_badge": "1.6x Vol Surge",
    "volume_projected": false,
    "rsi": 67.2,
@@ -260,7 +260,7 @@
    "checks_passed": 4,
    "passed": true,
    "entry": 947.5,
-   "stop": 909.54,
+   "stop": 915.87,
    "t1": 985.46,
    "t2": 1010.76,
    "pivots": {
@@ -270,26 +270,26 @@
     "R2": 968.37,
     "S2": 923.57
    },
-   "risk_per_share": 37.96,
-   "rr_t1": 1.0,
-   "rr_t2": 1.67,
+   "risk_per_share": 31.63,
+   "rr_t1": 1.2,
+   "rr_t2": 2.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 0.48020277977437315,
-    "rsi": 67.23265458460315,
+    "log_vol_ratio": 0.4740782625250915,
+    "rsi": 67.23265458440332,
     "dist_high_pct": 1.6095534787123573,
-    "ext_ema20": 6.2334036206737276,
-    "atr_pct": 2.6706504981704895,
+    "ext_ema20": 6.233403620671241,
+    "atr_pct": 2.6706504981879466,
     "day_chg": -1.6095534787123555,
     "ret5": 5.694683149960067,
     "rs20": 1.235504406415866,
-    "bias_score": 65.0,
-    "news_sent": 0.489,
+    "bias_score": 71.0,
+    "news_sent": 0.486,
     "mkt_above50": 1.0,
     "mkt_ret20": 13.779272299695599
    },
-   "r1_a": 0.4123134338472699,
-   "r2_a": 0.8246268676945397,
+   "r1_a": 0.4123134338445747,
+   "r2_a": 0.8246268676891494,
    "news": [
     {
      "title": "NIFTY FMCG surges 17% in a month: Falling palm oil, price hikes and demand recovery fuel rally; 7 factors explained",
@@ -313,31 +313,31 @@
      "sentiment": 0.0
     },
     {
-     "title": "Stock Market Update 26 November 2026: Sensex Drops Over 150 Points; Nifty 50 Below 25,750 in Early Trade",
-     "source": "Kotak Neo",
-     "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQazZmZzFJeFNOOWhnM2pZUjlZM096TENxc05IbkVZdC1HNmJ5MUpnVHdjQUMwMlFiWkhiclVLaHJVTVRoTkFSUUFsM1o0NlFNNm81VHY5Yl9QVE1jQ2NHdVZMd3B1MUtqV2EyNFpSVXA4czh5b0RUTllseEZGS2FNbTcxZjBiaWJHckVxNF8tbmktOUNhb3RZ?oc=5",
-     "published": "Thu, 26 Nov 2026 04:13:52 GMT",
-     "sentiment": 0.402
-    },
-    {
      "title": "Godrej Consumer Products Shares: Volume, Earnings and Technical Readings",
      "source": "Kalkine India",
      "link": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxQaTA5LUFfeHVIUU1UZ1JPSVM3T0RNNVZKRXV6WTNPU3BNWFB0bTVSc2lyc0IzZ3l4MGw3MDU5N3V4WFNmYUVFRGh3TFVmZG50ZWU1YVJIbFlrMDBiTEs1TUlCRmU5cmx1WThBeVc1SHI3VE01U1BKWXZQeHptb0gwYk1zVGwwb0ZhNXptRDRGMXdmM0hBMFZrc0x2UjRSTGpMYnQwakl4bGxiUW9oSC1NeGNzVDdDYmphUXJ1Z09zdnZaaW1ONVJMbjJjemo5VEQwVFV4Mnd6T05OZHRoOEl4SjllWk9NUmJyb1YybkZSRQ?oc=5",
      "published": "Tue, 24 Nov 2026 12:40:00 GMT",
      "sentiment": 0.296
+    },
+    {
+     "title": "Zydus Wellness Share Price: 14.6% CAGR in 3 Years",
+     "source": "Univest",
+     "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNcmlXdEJGcmJEX21TOWp4ZkxjbkJaeXEtY2FnUlVlczdYSlBqS01OOUFjUnA3S0JaX05fSjg1QzBFdl9tdU5SSDFJbGoxUDNUSUpEZlVaREtjY1oySjF3SmxRYV9fTE9TbldRN1BzcFFOczZ3LWZYRVhURjlfZ0NSZjBUZGY0bFZYdHdZb2s2cFdxenhVWlVqSXUxSUU4UV9NVTVLbndPX2Q5OGY0QmlmbnVmMnRCWW8?oc=5",
+     "published": "Wed, 25 Nov 2026 09:18:00 GMT",
+     "sentiment": 0.625
     }
    ],
    "news_sentiment": {
-    "score": 0.489,
+    "score": 0.486,
     "count": 8,
     "label": "POSITIVE"
    },
-   "win_prob": 53.9,
-   "expected_r": 0.1,
+   "win_prob": 52.8,
+   "expected_r": 0.11,
    "model_used": false,
    "grade": "B",
    "skip_reason": null,
-   "action": "BUY GODREJCP near \u20b9947.50 (skip if it opens above \u20b9985.46) \u00b7 SL \u20b9909.54 \u00b7 T1 \u20b9985.46 \u00b7 T2 \u20b91,010.76 \u00b7 Qty 2 for \u20b910k @1% risk"
+   "action": "BUY GODREJCP near \u20b9947.50 (skip if it opens above \u20b9985.46) \u00b7 SL \u20b9915.87 \u00b7 T1 \u20b9985.46 \u00b7 T2 \u20b91,010.76 \u00b7 Qty 3 for \u20b910k @1% risk"
   },
   {
    "symbol": "HINDUNILVR",
@@ -345,8 +345,8 @@
    "bar_date": "2026-11-26",
    "cmp": 2130.8,
    "day_chg": -0.51,
-   "vol_ratio": 1.56,
-   "vol_badge": "1.6x Vol Surge",
+   "vol_ratio": 1.53,
+   "vol_badge": "1.5x Vol Surge",
    "volume_projected": false,
    "rsi": 69.9,
    "ema20": 1997.91,
@@ -363,7 +363,7 @@
    "checks_passed": 4,
    "passed": true,
    "entry": 2130.8,
-   "stop": 2056.99,
+   "stop": 2069.29,
    "t1": 2204.61,
    "t2": 2253.81,
    "pivots": {
@@ -373,12 +373,12 @@
     "R2": 2190.53,
     "S2": 2091.13
    },
-   "risk_per_share": 73.81,
-   "rr_t1": 1.0,
-   "rr_t2": 1.67,
+   "risk_per_share": 61.51,
+   "rr_t1": 1.2,
+   "rr_t2": 2.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 0.44460012313470054,
+    "log_vol_ratio": 0.42296611064736034,
     "rsi": 69.93064844812125,
     "dist_high_pct": 1.838112279046656,
     "ext_ema20": 6.651204353196238,
@@ -386,8 +386,8 @@
     "day_chg": -0.5135866910647713,
     "ret5": 6.914202148927506,
     "rs20": 4.538015973667786,
-    "bias_score": 65.0,
-    "news_sent": 0.445,
+    "bias_score": 71.0,
+    "news_sent": 0.342,
     "mkt_above50": 1.0,
     "mkt_ret20": 13.779272299695599
    },
@@ -409,6 +409,13 @@
      "sentiment": 0.382
     },
     {
+     "title": "Hindustan Unilever advances Wednesday, outperforms competitors",
+     "source": "MarketWatch",
+     "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxQLWJFb3dKUEp1QTRCeGFXNGNNeEJoNm9pa1RkWHM4OVIxb0ZOd1BuUHpDLWk4ZTF5N2NwaTBkTVM5ZGZuTndlNWQ5eXZSNXpIRHN4U29HcmFMVE45eFNQc3NwZ1NQMEpOVmVDSENORXdZSmJ0OGd4YVRXZml3R3NPZ2IwQ0VKcGx0YjlaY3NrTnVJSmEzOWFyRTNmYkFJQmNKaHdoOVhqVE9RTmtfUFdoeGNDajFMNVhwU1pFTUV5ZUVWbW1nRzZLUXp4b0VHTC1TM1FHcm1R?oc=5",
+     "published": "Wed, 25 Nov 2026 10:32:00 GMT",
+     "sentiment": 0.0
+    },
+    {
      "title": "Top Gainers & Losers Today, November 25, 2026 at 3:30 PM IST",
      "source": "HDFC Sky",
      "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1BTUQ3XzUzNDVtUUdOeVg4SDJ1a1lRSGF2WXkwV1ViR2hfUXBTVWdTYjRWOUFTdXZrMEwzNGk5cGVqR2IxTlZUNC1sY0VLWlhrNXF2Sl9kblVhQVo2dWZGZVBlQy1jT0FhQWk3dVRPQWtOU2k4MHVBQV9zQQ?oc=5",
@@ -421,26 +428,433 @@
      "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxOb05GRnBSdllzMloyNU5HQU1pWVljbWJTeWxRb1hPUHNnb2FvcGc1LVF5SkxGV3VIaGFRazZSWHZZZmJ5RGNJUWl3UU5fSGd2NWZfNHIwUWFWOFZYenhvaGgxLW9BY2N2VHBpdWo2UHROS2QxQUM4Q3REaFNNajJTSGE0SllEUkEtWFplbTBKRUNmRklZUWpxNUJZVUZmY09WYjFNU2w5eW9EcllyN1V5MHFEcWFaOHgwOUNGLWh4cWMtLU44bi1QMUg0dDV0ZEZvcGZrb0sybXdLZGVqNXc?oc=5",
      "published": "Wed, 25 Nov 2026 19:04:21 GMT",
      "sentiment": 0.856
-    },
-    {
-     "title": "Nifty FMCG index soars 3%; Dabur, Godrej Consumer, HUL rally up to 8%",
-     "source": "Business Standard",
-     "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPLW4xRW1HeVJ1ZkVtUnVZdXViY3dROWRSTnN5dUtEemFCaUdOY0Nxd3h2ZVQ4TEdkcmpZM0wtMGFieGVSSFZ6T2lNRi04SlJINmFOdzRudWhOQm9pYjFmQnFhYUpyRlFUZjRmOHBVRkxEYzI3Z2dxVnlKTEt4NHRHMzdSRy04SE5JSzBOaXFvRk5fdThNVXh2NnI0TDRRdmRvM082T2twQ2RBaXpQMUZFQzFteTVaR2YtcEdWTXFGT1pXbHFvWHJIX1ExY9IB0AFBVV95cUxQZDBuVzRzOHJVam9tb0V1dXIzNWRKZUQ3aE1UT1RZNXNWcmNXQmJoVW9pcERfclhEZGpjVHVmdFlOQW5yNXV3WlNOa1hDcXU1NkdEeHBOYzNFYWtmSlBwZGVnUXg5c0FURGc2Zlp3WUdWSjl6dzdMaDdLRlNfbDBzQlRieXVuaWwzb3ZGeGhSblBWRXZReXpKc1BWU1RTRzh6RFh0TGRVeUVWNGF5UWdUUVphenU0RU1XSW1McVFSTUk4djl5U0ZaUVc4aFUzU09L?oc=5",
-     "published": "Wed, 25 Nov 2026 09:45:04 GMT",
-     "sentiment": 0.807
     }
    ],
    "news_sentiment": {
-    "score": 0.445,
+    "score": 0.342,
     "count": 8,
     "label": "POSITIVE"
    },
-   "win_prob": 53.9,
-   "expected_r": 0.1,
+   "win_prob": 52.8,
+   "expected_r": 0.11,
    "model_used": false,
    "grade": "B",
    "skip_reason": null,
-   "action": "BUY HINDUNILVR near \u20b92,130.80 (skip if it opens above \u20b92,204.61) \u00b7 SL \u20b92,056.99 \u00b7 T1 \u20b92,204.61 \u00b7 T2 \u20b92,253.81 \u00b7 Qty 1 for \u20b910k @1% risk"
+   "action": "BUY HINDUNILVR near \u20b92,130.80 (skip if it opens above \u20b92,204.61) \u00b7 SL \u20b92,069.29 \u00b7 T1 \u20b92,204.61 \u00b7 T2 \u20b92,253.81 \u00b7 Qty 1 for \u20b910k @1% risk"
+  }
+ ],
+ "near_misses": [
+  {
+   "symbol": "WIPRO",
+   "name": "Wipro",
+   "bar_date": "2026-11-26",
+   "cmp": 196.54,
+   "day_chg": 3.96,
+   "vol_ratio": 1.79,
+   "vol_badge": "1.8x Vol Surge",
+   "volume_projected": false,
+   "rsi": 61.7,
+   "ema20": 189.66,
+   "ema50": 184.35,
+   "high20": 202.0,
+   "dist_high_pct": 2.7,
+   "atr": 5.22,
+   "checks": {
+    "volume": true,
+    "momentum": true,
+    "trend": true,
+    "breakout": false
+   },
+   "checks_passed": 3,
+   "passed": false,
+   "entry": 196.54,
+   "stop": 190.01,
+   "t1": 204.37,
+   "t2": 209.59,
+   "pivots": {
+    "P": 194.85,
+    "R1": 199.09,
+    "S1": 192.29,
+    "R2": 201.65,
+    "S2": 188.05
+   },
+   "risk_per_share": 6.53,
+   "rr_t1": 1.2,
+   "rr_t2": 2.0,
+   "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
+   "features": {
+    "log_vol_ratio": 0.5807825564909747,
+    "rsi": 61.69157063520071,
+    "dist_high_pct": 2.7029736207263304,
+    "ext_ema20": 3.6278896244746006,
+    "atr_pct": 2.656177085943358,
+    "day_chg": 3.9619096077583293,
+    "ret5": 6.157499154189683,
+    "rs20": -8.677671611924032,
+    "bias_score": 71.0,
+    "news_sent": 0.313,
+    "mkt_above50": 1.0,
+    "mkt_ret20": 13.779272299695599
+   },
+   "r1_a": 0.4891013873298628,
+   "r2_a": 0.9782027746597256,
+   "news": [
+    {
+     "title": "Wipro Share Price Rises Over 3% After Finance Operations Deal With BP; Around 3,000 Employees to Join IT Major",
+     "source": "Kotak Neo",
+     "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOejBLczJYVDQ4ZVQ2Qldrblhud1M1eU5NRDdNWlhyX2ZKUXVhS3haS3NtV3FaNzFENTdOMFU4cHZGbWdvNEZ5OTNlNVZxWk1ReC16YzJ4bDVja2JEeHMwQUJHN244bVpxbjljM05OWWhiUUhGSkJLQkkxbXdvakx1Z05xMkdGUkU5cXJFZGlxeV94RWl3b201WDJGMXJURHdGemxqekNVdUlzbmxLRjhWTGhRSkJaazd0WV9kVThn?oc=5",
+     "published": "Thu, 26 Nov 2026 03:45:29 GMT",
+     "sentiment": 0.527
+    },
+    {
+     "title": "Wipro shares jump 4% on partnership with BP, emerges top Nifty IT gainer",
+     "source": "Business Standard",
+     "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxQazZVd1psMW9kZ3hFTTZaanl1NVpkM3BFRGFXSTVnU3ZfaDJqaGx4bjNTdjhOb2FoWkZWUWQwMTg3eEVlOU40UXpITFlBQnRWZzNXaGh1aDJQNV9rWm1kYVA3UXZNNmhIZ1JrRG1iOHRfRkk0a3I1cG1qaFpDcmZSbWF1T1FmT01UZEtwY3ZvNDBFUzhOaVNLZGhDdXlJci0wWUUtNmkyTmF4VjFzTnV2UjQwcXRxajVRTXN5LXRmUDZrc2k3VGNuYWRUVWRlS3B2Q2Nqa2dHUlQ3WThGQXpLZzBQTUnSAeoBQVVfeXFMUFF2QWg4QXAtNUtPa19hWkpXUS1PbDhHQ2NtZTV5VUFKN1paVEdORWFHMVp4cFNjVGVVdG1icTZHZXhKa29GWGtnZzNTY0xaWmpJbFJvWjZObkxtcFhQdklTZ2tiNFZlbWxtN2kyWDZLb3hPNGxRVnRlNFVwVmpoQkVHZTZIb3ZHUjBMeEl0eVZqNU5scTVnS2pZMzRLeE5DaVo1TTV0Uy1lOEhaZVd4R0JkUHVkakM5UVdma1NmaTY0d3lyay14ZzFZd0FFbmtucnJ2NjlKUFJ3RVdpOVFQWS01TlBjM2NNM0dn?oc=5",
+     "published": "Thu, 26 Nov 2026 06:59:06 GMT",
+     "sentiment": 0.691
+    },
+    {
+     "title": "Wipro Limited (WIT) Stock Price, News, Quote & History",
+     "source": "Yahoo! Finance Canada",
+     "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE11TnBRUTJocWdiZWlxS2tIaXlmdGVUWE95ODZEdF91bEdTT3JrV1p3R29ZNmp2U084elpYdHd6VTRoQktGbGlyQ2tIT2ZfOUlJ?oc=5",
+     "published": "Wed, 25 Nov 2026 15:47:19 GMT",
+     "sentiment": -0.226
+    },
+    {
+     "title": "Wipro Shares Rally 4% After bp Hands Over Finance Work",
+     "source": "Equitypandit",
+     "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQcEM2Z0tUWXd6M2kyVW5GVFN3MFZXOHdnNmhfa0JIZ3ZESlBFVHJqOEFRODJNc3BONndWdTVhTVB1amZ2RERVdExoVjNFcUZJOWVoUUpfaHh2S0dQSW5xZVdWOUNjUDYxeUFjbHFORHFDV3M2Q0VJY1Q4VTNUSnBLV0N3VUxqX0YzSEZJ?oc=5",
+     "published": "Thu, 26 Nov 2026 04:50:39 GMT",
+     "sentiment": 0.586
+    },
+    {
+     "title": "NIFTY50 and SENSEX put a resilient show on Thursday; Wipro, ABSL AMC, KPIL, Abbot and others cross 200 EMA levels",
+     "source": "Upstox",
+     "link": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxQVmlvMnJZcGFDbEdidTRqWDFzNHNGMlZ3Uk1pallpT2Q4a3hwWWlmaEdJWl92ckdwZlh4Y2ZiWkltdGpZRVI5TVN0eE9ESTFCc3VDamRsN0NtNFp3R2NGUFA1QjVLVjZQOG5sWVdDMDlMbGZJcENwUTlPanpVamJWVzNTcTZ4UnBXcXlld2hyUUctWEpkM2s4VGpwYWxGLVVFSDFTTVZCYjNiOGRXa1drb3lEcmtXc3k2MDRwN3JITGlVcTZFMWd2ZGU0cUVMZ0xmRlVxa0FNQ1R4UHJuVVA5ZFZkSTR2SDZxSmRkcEpwZXNTWjlwRGVfRWRPOXNYUQ?oc=5",
+     "published": "Thu, 26 Nov 2026 09:06:02 GMT",
+     "sentiment": 0.0
+    }
+   ],
+   "news_sentiment": {
+    "score": 0.313,
+    "count": 8,
+    "label": "POSITIVE"
+   },
+   "win_prob": 52.8,
+   "expected_r": 0.11,
+   "model_used": false,
+   "grade": "B",
+   "skip_reason": null,
+   "action": "BUY WIPRO near \u20b9196.54 (skip if it opens above \u20b9204.37) \u00b7 SL \u20b9190.01 \u00b7 T1 \u20b9204.37 \u00b7 T2 \u20b9209.59 \u00b7 Qty 15 for \u20b910k @1% risk"
+  },
+  {
+   "symbol": "HDFCBANK",
+   "name": "HDFC Bank",
+   "bar_date": "2026-11-26",
+   "cmp": 862.0,
+   "day_chg": 1.87,
+   "vol_ratio": 1.68,
+   "vol_badge": "1.7x Vol Surge",
+   "volume_projected": false,
+   "rsi": 72.9,
+   "ema20": 794.38,
+   "ema50": 759.37,
+   "high20": 871.6,
+   "dist_high_pct": 1.1,
+   "atr": 21.13,
+   "checks": {
+    "volume": true,
+    "momentum": false,
+    "trend": true,
+    "breakout": true
+   },
+   "checks_passed": 3,
+   "passed": false,
+   "entry": 862.0,
+   "stop": 835.59,
+   "t1": 893.69,
+   "t2": 914.82,
+   "pivots": {
+    "P": 859.3,
+    "R1": 874.3,
+    "S1": 847.0,
+    "R2": 886.6,
+    "S2": 832.0
+   },
+   "risk_per_share": 26.41,
+   "rr_t1": 1.2,
+   "rr_t2": 2.0,
+   "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
+   "features": {
+    "log_vol_ratio": 0.516779547949632,
+    "rsi": 72.88998862118207,
+    "dist_high_pct": 1.1014199007387382,
+    "ext_ema20": 8.51284926002791,
+    "atr_pct": 2.4512548615663907,
+    "day_chg": 1.867169412082581,
+    "ret5": 6.663363726924421,
+    "rs20": 12.948158533933164,
+    "bias_score": 71.0,
+    "news_sent": 0.138,
+    "mkt_above50": 1.0,
+    "mkt_ret20": 13.779272299695599
+   },
+   "r1_a": 0.5821152093876992,
+   "r2_a": 1.1642304187753985,
+   "news": [
+    {
+     "title": "HDFC Bank Limited (HDFCBANK.NS) Stock Price, News, Quote & History",
+     "source": "Yahoo! Finance Canada",
+     "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5XTzhGSUFMZ1NyVWthWVk2cEZ3RHZQc0VuT3BxQTBWM3B2V2hIQTBBOENtV0loTTBwXy0tczFvQXEwZlRLTlVhS2hmSkdJb3hFX3JlSlJBTU1weTg?oc=5",
+     "published": "Wed, 25 Nov 2026 20:58:27 GMT",
+     "sentiment": -0.226
+    },
+    {
+     "title": "HDFC Bank Share Price - Live NSE: HDFCBANK Stock Price & Chart",
+     "source": "Upstox",
+     "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1haXVDV2V3Wm5yQXBKZFJjZjkyQ0syd3BZWnRJZmo5UEdhckVTeTViZWtfVnkyRF9LVGRwSXZwMEo4Q1lUSDZfUzFlQmM1bEJhaFZEMXhSRHQ3S0h0THNBdXBB?oc=5",
+     "published": "Wed, 25 Nov 2026 22:31:22 GMT",
+     "sentiment": 0.296
+    },
+    {
+     "title": "HDFC Bank vaults 30% from Oct low; surpasses Airtel in market cap ranking",
+     "source": "Business Standard",
+     "link": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxNWEMyaE5fV1JHZmlCQUhhUW9xdW5EbGpfRnhTYkt3bW1xaEFaT1BxN1FtUmRLRU0wREs1Q1cwczlOMmxZaVQxZXdsUXQtb1JJRDZ0WjFFY0JwejJqWGlKeEMyTlpEV3dRdktwTFIwMS1sSGpmYmxId0YxVklhWFRxWUVqeGJkZ21sdFRJci1xNmYzb1gtLTBqWTN6SW40Mk12aVRWWmVtY2FWeGo1S3dLeVR4cHZfZFpLemFLa2QwQWttb0FJVGJyamVYYkZZYnJZWS0yTGdMbVBnZUhsSGVuZ3o5LUd4ZjdpdXdkRU1ua3luUdIB9wFBVV95cUxQeGh0Sk9XX25INGx5bHU2OVpzTmo0dnVjQTBCMm53bjVNQjhWTnZCZm5DWFpNMEdpSHdGbWJ0YU9YbEx1d0t3ZFRzVkl3QWhZMF9CekpmcWhiM1NkdWpWXzVrbF9oZjVta1k3Mk5UbmxRQnZ2SDRzTnNPdk5qT210QUVWTmdYSld4bFYtWFlBWTV4ZzJWOTlJOHhoeXRxb2JwZU1WTTFjRWVfZ2FPSlJtdzlvSkRNOHpfMXlsRmdVUUVJckcwT241UFhfTWtUZGpaM0x6LThIS0RqUU1qZW5raVhkbEgxeG1OSmFqX1ZqXzZUOWpSMER3?oc=5",
+     "published": "Thu, 26 Nov 2026 06:18:34 GMT",
+     "sentiment": -0.273
+    },
+    {
+     "title": "HDFC Bank shares rise 2.5% as board approves key Director re-appointment",
+     "source": "BusinessLine",
+     "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxPdGRiNU5uYWI5bWFfNTBja3BvT1I2WGhxeng5MW8xVGRCclgwMzRIenVpZ1N1cFFiYXd5R19jNGNFcFRsMnAtTDRZclVzWDFWUjlWRnNsTWk1NEttZ04wV2c3U1lCM1lwYklfa3RLMzRJMkZaZVk4M1FnTU43Rk41SENUQ1lhaWJlMHp5WG5CLXctYnY3NzJISHBGLVlwT1hMSGpzLU54YzF1UUdWWldZMGxFaVFwTnM2MTZ0QkZYNHFFbmx1WkFzbDAzSW9WN1EzSGZ3X2FsRGxSdHVGSU45dWdONNIB6gFBVV95cUxPRjkxSkJtdHdGOWRQcWI0V2dlRzFyT2llSkl4Z1lpdndHNkhwUWVqS0FZVTRiU3hWZTVkYVNERGNSU2d6YTBWOHNjXzZKRjdUUTBFeDZseW0yMFlkOF9ybWlRclNCTl9WTUVlT0ZrRU5CejBLMVhlTG5iVENPaHZNeUZ0ZHpGajdjSGNnNThWT0s3cnpqMjI2RVBrM2VndFNkZzZLQVhrd0FGczRBMmJJQlhuRUFIcnFDSXcyN2VtQ2FLZ3Q3ZFVWZS1kSHozRWhXRWlmVGFaOUU5UmtOcjdmZFdHOVZlVTRSaHc?oc=5",
+     "published": "Thu, 26 Nov 2026 05:52:18 GMT",
+     "sentiment": 0.599
+    },
+    {
+     "title": "HDFC Bank Limited (HDB) Stock Price, News, Quote & History",
+     "source": "Yahoo! Finance Canada",
+     "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5OR1M3THRtTERvWDhiSGhfemR6Q0xDSUQwMVFpZlNFMWh6LU1FV1RnZGlONW82UTFHVkw3bGtfVkZDRWMtSHVtYzB3QmdXSzJI?oc=5",
+     "published": "Wed, 25 Nov 2026 15:55:19 GMT",
+     "sentiment": -0.226
+    }
+   ],
+   "news_sentiment": {
+    "score": 0.138,
+    "count": 8,
+    "label": "POSITIVE"
+   },
+   "win_prob": 52.8,
+   "expected_r": 0.11,
+   "model_used": false,
+   "grade": "B",
+   "skip_reason": null,
+   "action": "BUY HDFCBANK near \u20b9862.00 (skip if it opens above \u20b9893.69) \u00b7 SL \u20b9835.59 \u00b7 T1 \u20b9893.69 \u00b7 T2 \u20b9914.82 \u00b7 Qty 3 for \u20b910k @1% risk"
+  },
+  {
+   "symbol": "HDFCLIFE",
+   "name": "HDFC Life",
+   "bar_date": "2026-11-26",
+   "cmp": 594.4,
+   "day_chg": -1.15,
+   "vol_ratio": 1.57,
+   "vol_badge": "1.6x Vol Surge",
+   "volume_projected": false,
+   "rsi": 60.6,
+   "ema20": 571.98,
+   "ema50": 557.63,
+   "high20": 609.75,
+   "dist_high_pct": 2.52,
+   "atr": 17.03,
+   "checks": {
+    "volume": true,
+    "momentum": true,
+    "trend": true,
+    "breakout": false
+   },
+   "checks_passed": 3,
+   "passed": false,
+   "entry": 594.4,
+   "stop": 573.11,
+   "t1": 619.95,
+   "t2": 636.98,
+   "pivots": {
+    "P": 599.02,
+    "R1": 604.28,
+    "S1": 589.13,
+    "R2": 614.17,
+    "S2": 583.87
+   },
+   "risk_per_share": 21.29,
+   "rr_t1": 1.2,
+   "rr_t2": 2.0,
+   "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
+   "features": {
+    "log_vol_ratio": 0.4484314099887509,
+    "rsi": 60.6122073181626,
+    "dist_high_pct": 2.517421170305453,
+    "ext_ema20": 3.920470315278912,
+    "atr_pct": 2.8655822186837665,
+    "day_chg": -1.1475076532484363,
+    "ret5": 3.2841050241637637,
+    "rs20": 1.952825182580309,
+    "bias_score": 71.0,
+    "news_sent": 0.1,
+    "mkt_above50": 1.0,
+    "mkt_ret20": 13.779272299695599
+   },
+   "r1_a": 0.5802459372841996,
+   "r2_a": 1.1604918745683925,
+   "news": [
+    {
+     "title": "HDFC Life Insurance Share Price - Live NSE: HDFCLIFE Stock Price & Chart",
+     "source": "Upstox",
+     "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9rbmpVWmJiOEVqYWFGbHNBdFhudURwc01vMGRrM3lYdFZYRkNlRTc2cThBbXNDZ3pFVDhjUVEzOGQ3ZVl0dGhmUG8zSWlJZGlHZE0yNURUTUFtN1ZzNXlQQ1ZXUkxpb3Bjd3dj?oc=5",
+     "published": "Wed, 25 Nov 2026 21:27:11 GMT",
+     "sentiment": 0.296
+    },
+    {
+     "title": "Insurance stocks in demand: PB Fintech, Max Life, HDFC Life rally up to 8%",
+     "source": "Business Standard",
+     "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxQbV91OXN3cmZtRnNDeGNzWlZnbVZ1RjF6blBvVVFkdzF0eXB1UnR5UWJSeDJUOHBaUFpjR3psY1pQSkJUd0N6MXFXYjFZcDRPQV92cS1pbTh6eXZlTC1tMEdWWkRYSjVfYjJtSU53ZVBsVjhoR0Y5QWZMeDdJQlE5SzBRbDRQb0RkNU83WWVDa0NWdUdPVm8tcXRfOUdRLWZKSWNyVl9TRlJVT0pkSUplaFJ2WERiT1BjazF4RDFEUDZtOUg0bmZwMmNFSXVqX2pkOElB0gHYAUFVX3lxTE5QT0dWTDRCMmZnQm5RWjFBeURyWFZPYy1lTlhRamJyMk5oZnY2aGtTOTFtbDNZU1NrUEQxeDdKMnNOLVlnWnZyNFpCeHpFZ3hBOHc2bTh2UTNRc3V1T1NJcC1FZGFObGJrRUliaUc3MFJ5TjNXU2ZBSzV3Mzg2aXpOQUV3bkt4anJQY3NKTmtGYUEtMkVoZ1IxVEtUSUFMVW44SS13TFJvejA2aGtnaXc3RTFYWHBkV3FzUFpjZDVlUHkwVDhhOFFJRFVHMk93dTloWDJEdUJ1Yg?oc=5",
+     "published": "Wed, 25 Nov 2026 04:44:30 GMT",
+     "sentiment": 0.273
+    },
+    {
+     "title": "HDFC Life RTA KFin Technologies moves corporate office to Hyderabad",
+     "source": "scanx.trade",
+     "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOMXNUcnI0c2lLOGhVbG4yNHpjck00UFdqLWRqeWtOU001Tmx1N251akg5LUs0UjlKRmhtejM4R1pCVHMxUnNhNmtTaGRUQUZuVnk1N2RGc3pqTmVscHN6eC1ZUmlITUZZYXcwaUlLeWp2aFI5czNLU3ppY25sUTVYczRKQWlEYkVmNzhZMDlHWU96N0JOVjFsT1RTQWgtcGFSV1diVEJIR0pEZFJERkxlZjBxaUJhS0lzaGtKbndR?oc=5",
+     "published": "Wed, 25 Nov 2026 16:46:18 GMT",
+     "sentiment": 0.0
+    },
+    {
+     "title": "PB Fintech, HDFC Life, Turtlemint shares surge up to 8% as IRDAI sets up expert committee on distribution reforms",
+     "source": "BusinessLine",
+     "link": "https://news.google.com/rss/articles/CBMimAJBVV95cUxNdTQ1QkszZTZ6VEh1Yk1nd2xMd0RhZ1ZWYndYdnp6V2NZRElKWnZxLUJ1V3NZT1ZNbjNoQTczTkN1UlJhTnFrOXRvUVotNVc4bnFJMjh1cUtkSVZXT0NkaEF0djNZYnBuQUdtcnY2dUlIZUF5cGhmcGNBMG1rQXBTMmVuN3ctRUxKaW9qa080RmY0cFJYVWF6UmJra3ByTXVzRTJZLWpOTmRnZ3VoQ0k5UGtIaF9aeGhjMGJvWEtVbElsMl9OTHFPVEdXdWxGSzFocWJGeU1wMUtfREdxWWt3YjZjeXNfRVZOUnJkemlpSU5vR0U0b2twLW5acGRxUHF3N2pMVmpialhZNnFFdmhHS3RQSGxQSEw20gGfAkFVX3lxTE1oUmlQLWM1WFNoRW83aU5YT01xQVplMURtUUYySHNSWklrTTg2LVpqTUYzMjRJX0YxaVpzLXpZYzhJaW9zYXdfV0JqWXpNeWJncC1TNzJSYklmdFNXV0ZYcGp6N3A4bzF5TXI0ZTdaS2pxcDNVeHdXb3FBbnF3NVpwQUVPQkNGbEs1RTQtU3ZiVlY5allJcmtvdGRPZ1MxUHNWTndFUjJncW1obFdneGlvX0o3TTZVdmplRlRkVEphOV85b0lvRXJxMmhyb0JSb3FlckYxQi1zS2IxWWQ4cUNqS3dENHVxaDRiTFJqZEEtSXVXLU9wOWhaVExMQ3RZT1doTEJ0eEtVWGJ5UWZhVWJ3aUpIUkVfOUh2d0NtOUV3?oc=5",
+     "published": "Wed, 25 Nov 2026 06:40:35 GMT",
+     "sentiment": 0.612
+    },
+    {
+     "title": "Top Gainers & Losers Today, November 25, 2026 at 12:00 PM",
+     "source": "HDFC Sky",
+     "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5Bdmdzak9BTExUR2F1Qkh3UURuMVUzRFJXajF4R29fSlBuOEtJeFl4MWZpMWh6eUc3S1h2TGp0WUVmRzdlcDhCZXZZcS15NDQ1azhLX25QS3JNeEg5WGNLbng4YzBVSnV3UlM4a0ZNZVZZb0V4Y2dxMw?oc=5",
+     "published": "Wed, 25 Nov 2026 06:41:27 GMT",
+     "sentiment": -0.382
+    }
+   ],
+   "news_sentiment": {
+    "score": 0.1,
+    "count": 8,
+    "label": "NEUTRAL"
+   },
+   "win_prob": 52.8,
+   "expected_r": 0.11,
+   "model_used": false,
+   "grade": "B",
+   "skip_reason": null,
+   "action": "BUY HDFCLIFE near \u20b9594.40 (skip if it opens above \u20b9619.95) \u00b7 SL \u20b9573.11 \u00b7 T1 \u20b9619.95 \u00b7 T2 \u20b9636.98 \u00b7 Qty 4 for \u20b910k @1% risk"
+  },
+  {
+   "symbol": "TCS",
+   "name": "Tata Consultancy Services",
+   "bar_date": "2026-11-26",
+   "cmp": 2640.3,
+   "day_chg": 4.89,
+   "vol_ratio": 1.56,
+   "vol_badge": "1.6x Vol Surge",
+   "volume_projected": false,
+   "rsi": 70.8,
+   "ema20": 2444.34,
+   "ema50": 2374.19,
+   "high20": 2640.3,
+   "dist_high_pct": 0.0,
+   "atr": 74.05,
+   "checks": {
+    "volume": true,
+    "momentum": false,
+    "trend": true,
+    "breakout": true
+   },
+   "checks_passed": 3,
+   "passed": false,
+   "entry": 2640.3,
+   "stop": 2547.73,
+   "t1": 2751.38,
+   "t2": 2825.44,
+   "pivots": {
+    "P": 2601.4,
+    "R1": 2679.2,
+    "S1": 2562.5,
+    "R2": 2718.1,
+    "S2": 2484.7
+   },
+   "risk_per_share": 92.57,
+   "rr_t1": 1.2,
+   "rr_t2": 2.0,
+   "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
+   "features": {
+    "log_vol_ratio": 0.44542201037680534,
+    "rsi": 70.80435908239713,
+    "dist_high_pct": 0.0,
+    "ext_ema20": 8.016697642923344,
+    "atr_pct": 2.8047901639300528,
+    "day_chg": 4.886187487155524,
+    "ret5": 10.96028782635532,
+    "rs20": -8.036144737802942,
+    "bias_score": 71.0,
+    "news_sent": 0.245,
+    "mkt_above50": 1.0,
+    "mkt_ret20": 13.779272299695599
+   },
+   "r1_a": 0.5252859202459342,
+   "r2_a": 1.0505718404918745,
+   "news": [
+    {
+     "title": "Tata Consultancy Services Limited (TCS.NS) stock price, news, quote and history",
+     "source": "Yahoo Finance Singapore",
+     "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE4yZG1MMUJWTjQzeUxZdV9QMF90azdyZlhNOTctMFZTMTYyRVhVWlZKbDFRenlSZXN2aEpLWTRkVHlROVpBNmpZYWZ5V3EwZ2FQU2loLQ?oc=5",
+     "published": "Tue, 24 Nov 2026 15:41:05 GMT",
+     "sentiment": -0.226
+    },
+    {
+     "title": "Tata Sons Board Meeting on November 30 Puts Tata Group Stocks in Focus; TCS, Tata Steel Gain Over 2% While Trent and Indian Hotels Decline",
+     "source": "Kotak Neo",
+     "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxPTGRkSVdLZVFxb3dvcWlUM3Z3dEFrTXY4RlFTWVNvWmljbUFIMnB4Vm1sNjRLVDVtcGhWaHZGX2lUQnVqaTJSZk9NOXdSYTVMN3pBWE52ZTQ4b2xpUjhENDQwWHJHNDN6dHpfdjVaS01OazhjT0Y4U0ZzOWtnbTg2QWhneE1PUDVkcGlkTFYzVXBUeGx5T1VqQ2ZMMl9lLXZ3SFczTGhUSWZ6ajg1T2xpUFkyaVhhcDlYSXQybWxuaGtLdkd6Mk5kSGxkQW5DVkJCQy1lNGl4LXNTVHNCT19yTw?oc=5",
+     "published": "Thu, 26 Nov 2026 09:21:14 GMT",
+     "sentiment": 0.527
+    },
+    {
+     "title": "Top Gainers & Losers Today, November 26, 2026 at 3:30 PM IST",
+     "source": "HDFC Sky",
+     "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1oaktNd2M2OVR1RndJNlBONU1saG1kSXR5LVZLU0c0RnhGd1ZlNk9FSzUxVnVnY0Y5dUJ5ZVMyUHljOWFGb0xOa19oOGhETWlBYjdjSVJSLUw4YXFUR0VHQnRWUnE5NkRIM19Wa2w1YXYxOXVqNlpqN25GYw?oc=5",
+     "published": "Thu, 26 Nov 2026 10:29:54 GMT",
+     "sentiment": -0.382
+    },
+    {
+     "title": "Stock markets climb in early trade on foreign fund inflows, buying in IT shares",
+     "source": "The Hindu",
+     "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPRUpSbzBQNGN1dExBSW9halFUNlYzNm5KVDhpVW1MS1lSNEVSQ1lkTlBkdkJoS1hfVWtnUFZpUVdBXzB1dGYzbW8xM1B3Z0RUZXBXYWhyUXVaWGF6NEE1VURqZU0tUDNOMlV4d1lTcDBfUGItYTNOS01GVXJuc2I0dnNIWHVmU0h3UGVDSkhUaHc0NE5vTGxnWTJUdVNkeHNnZHFiRTJOanLSAagBQVVfeXFMT0VKUm8wUDRjdXRMQUlvYWpRVDZWMzZuSlQ4aVVtTEtZUjRFUkNZZE5QZHZCaEtYX1VrZ1BWaVFXQV8wdXRmM21vMTNQd2dEVGVwV2FoclF1WlhhejRBNVVEamVNLVAzTjJVeHdZU3AwX1BiLWEzTktNRlVybnNiNHZzSFh1ZlNId1BlQ0pIVGh3NDROb0xsZ1kyVHVTZHhzZ2RxYkUyTmpy?oc=5",
+     "published": "Thu, 26 Nov 2026 05:15:16 GMT",
+     "sentiment": 0.494
+    },
+    {
+     "title": "Tata Consultancy Services Ltd. Surges 3.02% to Day's High...",
+     "source": "MarketsMojo",
+     "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQOUwxRVViWi1WMS12T3FfTHkxcXlwY1QwcFpIOUN6LXM1TG95YURaSDlQR3lrdml6akZ5QlRhaGpKc3BfaXVJcXVoLXRNeWRTY01KMGdtZGNyU2VxZmphUWxpMGdtZXRGTm95NkR4MXA5WDJpaE9RUV9KbHFiMDl0UjNPUUhzbzBFNEpYN01XZ1FLQVJERlpyV0tJZnVtemVHSG15S0ZtNDY5aURJSEpFb0JSRTB6X0lVU1dCMDNQUENId0xTNXBSYnNfeXlDaEtOV0E?oc=5",
+     "published": "Thu, 26 Nov 2026 09:22:10 GMT",
+     "sentiment": 0.421
+    }
+   ],
+   "news_sentiment": {
+    "score": 0.245,
+    "count": 8,
+    "label": "POSITIVE"
+   },
+   "win_prob": 52.8,
+   "expected_r": 0.11,
+   "model_used": false,
+   "grade": "B",
+   "skip_reason": null,
+   "action": "BUY TCS near \u20b92,640.30 (skip if it opens above \u20b92,751.38) \u00b7 SL \u20b92,547.73 \u00b7 T1 \u20b92,751.38 \u00b7 T2 \u20b92,825.44 \u00b7 Qty 1 for \u20b910k @1% risk"
   },
   {
    "symbol": "INFY",
@@ -448,7 +862,7 @@
    "bar_date": "2026-11-26",
    "cmp": 1183.0,
    "day_chg": 4.69,
-   "vol_ratio": 1.52,
+   "vol_ratio": 1.49,
    "vol_badge": "1.5x Vol Surge",
    "volume_projected": false,
    "rsi": 62.7,
@@ -458,15 +872,15 @@
    "dist_high_pct": 1.32,
    "atr": 36.42,
    "checks": {
-    "volume": true,
+    "volume": false,
     "momentum": true,
     "trend": true,
     "breakout": true
    },
-   "checks_passed": 4,
-   "passed": true,
+   "checks_passed": 3,
+   "passed": false,
    "entry": 1183.0,
-   "stop": 1128.37,
+   "stop": 1137.48,
    "t1": 1237.63,
    "t2": 1274.05,
    "pivots": {
@@ -476,12 +890,12 @@
     "R2": 1208.8,
     "S2": 1135.4
    },
-   "risk_per_share": 54.63,
-   "rr_t1": 1.0,
-   "rr_t2": 1.67,
+   "risk_per_share": 45.52,
+   "rr_t1": 1.2,
+   "rr_t2": 2.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 0.41958863825829096,
+    "log_vol_ratio": 0.39949384247326597,
     "rsi": 62.7043046723706,
     "dist_high_pct": 1.3179886707187056,
     "ext_ema20": 5.02948550072595,
@@ -489,7 +903,7 @@
     "day_chg": 4.690265486725664,
     "ret5": 6.691914493537032,
     "rs20": -9.729438164034176,
-    "bias_score": 65.0,
+    "bias_score": 71.0,
     "news_sent": 0.266,
     "mkt_above50": 1.0,
     "mkt_ret20": 13.779272299695599
@@ -538,426 +952,12 @@
     "count": 8,
     "label": "POSITIVE"
    },
-   "win_prob": 53.9,
-   "expected_r": 0.1,
+   "win_prob": 52.8,
+   "expected_r": 0.11,
    "model_used": false,
    "grade": "B",
    "skip_reason": null,
-   "action": "BUY INFY near \u20b91,183.00 (skip if it opens above \u20b91,237.63) \u00b7 SL \u20b91,128.37 \u00b7 T1 \u20b91,237.63 \u00b7 T2 \u20b91,274.05 \u00b7 Qty 1 for \u20b910k @1% risk"
-  }
- ],
- "near_misses": [
-  {
-   "symbol": "WIPRO",
-   "name": "Wipro",
-   "bar_date": "2026-11-26",
-   "cmp": 196.54,
-   "day_chg": 3.96,
-   "vol_ratio": 1.8,
-   "vol_badge": "1.8x Vol Surge",
-   "volume_projected": false,
-   "rsi": 61.7,
-   "ema20": 189.66,
-   "ema50": 184.35,
-   "high20": 202.0,
-   "dist_high_pct": 2.7,
-   "atr": 5.22,
-   "checks": {
-    "volume": true,
-    "momentum": true,
-    "trend": true,
-    "breakout": false
-   },
-   "checks_passed": 3,
-   "passed": false,
-   "entry": 196.54,
-   "stop": 188.71,
-   "t1": 204.37,
-   "t2": 209.59,
-   "pivots": {
-    "P": 194.85,
-    "R1": 199.09,
-    "S1": 192.29,
-    "R2": 201.65,
-    "S2": 188.05
-   },
-   "risk_per_share": 7.83,
-   "rr_t1": 1.0,
-   "rr_t2": 1.67,
-   "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
-   "features": {
-    "log_vol_ratio": 0.5896031428857144,
-    "rsi": 61.69157063519384,
-    "dist_high_pct": 2.7029736207263304,
-    "ext_ema20": 3.6278896244746006,
-    "atr_pct": 2.6561770859434484,
-    "day_chg": 3.9619096077583293,
-    "ret5": 6.157499154189683,
-    "rs20": -8.677671611924032,
-    "bias_score": 65.0,
-    "news_sent": 0.313,
-    "mkt_above50": 1.0,
-    "mkt_ret20": 13.779272299695599
-   },
-   "r1_a": 0.48910138732984615,
-   "r2_a": 0.9782027746596923,
-   "news": [
-    {
-     "title": "Wipro Share Price Rises Over 3% After Finance Operations Deal With BP; Around 3,000 Employees to Join IT Major",
-     "source": "Kotak Neo",
-     "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOejBLczJYVDQ4ZVQ2Qldrblhud1M1eU5NRDdNWlhyX2ZKUXVhS3haS3NtV3FaNzFENTdOMFU4cHZGbWdvNEZ5OTNlNVZxWk1ReC16YzJ4bDVja2JEeHMwQUJHN244bVpxbjljM05OWWhiUUhGSkJLQkkxbXdvakx1Z05xMkdGUkU5cXJFZGlxeV94RWl3b201WDJGMXJURHdGemxqekNVdUlzbmxLRjhWTGhRSkJaazd0WV9kVThn?oc=5",
-     "published": "Thu, 26 Nov 2026 03:45:29 GMT",
-     "sentiment": 0.527
-    },
-    {
-     "title": "Wipro shares jump 4% on partnership with BP, emerges top Nifty IT gainer",
-     "source": "Business Standard",
-     "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxQazZVd1psMW9kZ3hFTTZaanl1NVpkM3BFRGFXSTVnU3ZfaDJqaGx4bjNTdjhOb2FoWkZWUWQwMTg3eEVlOU40UXpITFlBQnRWZzNXaGh1aDJQNV9rWm1kYVA3UXZNNmhIZ1JrRG1iOHRfRkk0a3I1cG1qaFpDcmZSbWF1T1FmT01UZEtwY3ZvNDBFUzhOaVNLZGhDdXlJci0wWUUtNmkyTmF4VjFzTnV2UjQwcXRxajVRTXN5LXRmUDZrc2k3VGNuYWRUVWRlS3B2Q2Nqa2dHUlQ3WThGQXpLZzBQTUnSAeoBQVVfeXFMUFF2QWg4QXAtNUtPa19hWkpXUS1PbDhHQ2NtZTV5VUFKN1paVEdORWFHMVp4cFNjVGVVdG1icTZHZXhKa29GWGtnZzNTY0xaWmpJbFJvWjZObkxtcFhQdklTZ2tiNFZlbWxtN2kyWDZLb3hPNGxRVnRlNFVwVmpoQkVHZTZIb3ZHUjBMeEl0eVZqNU5scTVnS2pZMzRLeE5DaVo1TTV0Uy1lOEhaZVd4R0JkUHVkakM5UVdma1NmaTY0d3lyay14ZzFZd0FFbmtucnJ2NjlKUFJ3RVdpOVFQWS01TlBjM2NNM0dn?oc=5",
-     "published": "Thu, 26 Nov 2026 06:59:06 GMT",
-     "sentiment": 0.691
-    },
-    {
-     "title": "Wipro Limited (WIT) Stock Price, News, Quote & History",
-     "source": "Yahoo! Finance Canada",
-     "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE11TnBRUTJocWdiZWlxS2tIaXlmdGVUWE95ODZEdF91bEdTT3JrV1p3R29ZNmp2U084elpYdHd6VTRoQktGbGlyQ2tIT2ZfOUlJ?oc=5",
-     "published": "Wed, 25 Nov 2026 15:47:19 GMT",
-     "sentiment": -0.226
-    },
-    {
-     "title": "Wipro Shares Rally 4% After bp Hands Over Finance Work",
-     "source": "Equitypandit",
-     "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQcEM2Z0tUWXd6M2kyVW5GVFN3MFZXOHdnNmhfa0JIZ3ZESlBFVHJqOEFRODJNc3BONndWdTVhTVB1amZ2RERVdExoVjNFcUZJOWVoUUpfaHh2S0dQSW5xZVdWOUNjUDYxeUFjbHFORHFDV3M2Q0VJY1Q4VTNUSnBLV0N3VUxqX0YzSEZJ?oc=5",
-     "published": "Thu, 26 Nov 2026 04:50:39 GMT",
-     "sentiment": 0.586
-    },
-    {
-     "title": "NIFTY50 and SENSEX put a resilient show on Thursday; Wipro, ABSL AMC, KPIL, Abbot and others cross 200 EMA levels",
-     "source": "Upstox",
-     "link": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxQVmlvMnJZcGFDbEdidTRqWDFzNHNGMlZ3Uk1pallpT2Q4a3hwWWlmaEdJWl92ckdwZlh4Y2ZiWkltdGpZRVI5TVN0eE9ESTFCc3VDamRsN0NtNFp3R2NGUFA1QjVLVjZQOG5sWVdDMDlMbGZJcENwUTlPanpVamJWVzNTcTZ4UnBXcXlld2hyUUctWEpkM2s4VGpwYWxGLVVFSDFTTVZCYjNiOGRXa1drb3lEcmtXc3k2MDRwN3JITGlVcTZFMWd2ZGU0cUVMZ0xmRlVxa0FNQ1R4UHJuVVA5ZFZkSTR2SDZxSmRkcEpwZXNTWjlwRGVfRWRPOXNYUQ?oc=5",
-     "published": "Thu, 26 Nov 2026 09:06:02 GMT",
-     "sentiment": 0.0
-    }
-   ],
-   "news_sentiment": {
-    "score": 0.313,
-    "count": 8,
-    "label": "POSITIVE"
-   },
-   "win_prob": 53.9,
-   "expected_r": 0.1,
-   "model_used": false,
-   "grade": "B",
-   "skip_reason": null,
-   "action": "BUY WIPRO near \u20b9196.54 (skip if it opens above \u20b9204.37) \u00b7 SL \u20b9188.71 \u00b7 T1 \u20b9204.37 \u00b7 T2 \u20b9209.59 \u00b7 Qty 12 for \u20b910k @1% risk"
-  },
-  {
-   "symbol": "HDFCBANK",
-   "name": "HDFC Bank",
-   "bar_date": "2026-11-26",
-   "cmp": 862.0,
-   "day_chg": 1.87,
-   "vol_ratio": 1.68,
-   "vol_badge": "1.7x Vol Surge",
-   "volume_projected": false,
-   "rsi": 72.9,
-   "ema20": 794.38,
-   "ema50": 759.37,
-   "high20": 871.6,
-   "dist_high_pct": 1.1,
-   "atr": 21.13,
-   "checks": {
-    "volume": true,
-    "momentum": false,
-    "trend": true,
-    "breakout": true
-   },
-   "checks_passed": 3,
-   "passed": false,
-   "entry": 862.0,
-   "stop": 830.31,
-   "t1": 893.69,
-   "t2": 914.82,
-   "pivots": {
-    "P": 859.3,
-    "R1": 874.3,
-    "S1": 847.0,
-    "R2": 886.6,
-    "S2": 832.0
-   },
-   "risk_per_share": 31.69,
-   "rr_t1": 1.0,
-   "rr_t2": 1.67,
-   "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
-   "features": {
-    "log_vol_ratio": 0.5213525225931356,
-    "rsi": 72.88998862118207,
-    "dist_high_pct": 1.1014199007387382,
-    "ext_ema20": 8.51284926002791,
-    "atr_pct": 2.4512548615663907,
-    "day_chg": 1.867169412082581,
-    "ret5": 6.663363726924421,
-    "rs20": 12.948158533933164,
-    "bias_score": 65.0,
-    "news_sent": 0.206,
-    "mkt_above50": 1.0,
-    "mkt_ret20": 13.779272299695599
-   },
-   "r1_a": 0.5821152093876992,
-   "r2_a": 1.1642304187753985,
-   "news": [
-    {
-     "title": "HDFC Bank Limited (HDFCBANK.NS) Stock Price, News, Quote & History",
-     "source": "Yahoo! Finance Canada",
-     "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5XTzhGSUFMZ1NyVWthWVk2cEZ3RHZQc0VuT3BxQTBWM3B2V2hIQTBBOENtV0loTTBwXy0tczFvQXEwZlRLTlVhS2hmSkdJb3hFX3JlSlJBTU1weTg?oc=5",
-     "published": "Wed, 25 Nov 2026 20:58:27 GMT",
-     "sentiment": -0.226
-    },
-    {
-     "title": "HDFC Bank Share Price - Live NSE: HDFCBANK Stock Price & Chart",
-     "source": "Upstox",
-     "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1haXVDV2V3Wm5yQXBKZFJjZjkyQ0syd3BZWnRJZmo5UEdhckVTeTViZWtfVnkyRF9LVGRwSXZwMEo4Q1lUSDZfUzFlQmM1bEJhaFZEMXhSRHQ3S0h0THNBdXBB?oc=5",
-     "published": "Wed, 25 Nov 2026 15:51:51 GMT",
-     "sentiment": 0.296
-    },
-    {
-     "title": "HDFC Bank vaults 30% from Oct low; surpasses Airtel in market cap ranking",
-     "source": "Business Standard",
-     "link": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxNWEMyaE5fV1JHZmlCQUhhUW9xdW5EbGpfRnhTYkt3bW1xaEFaT1BxN1FtUmRLRU0wREs1Q1cwczlOMmxZaVQxZXdsUXQtb1JJRDZ0WjFFY0JwejJqWGlKeEMyTlpEV3dRdktwTFIwMS1sSGpmYmxId0YxVklhWFRxWUVqeGJkZ21sdFRJci1xNmYzb1gtLTBqWTN6SW40Mk12aVRWWmVtY2FWeGo1S3dLeVR4cHZfZFpLemFLa2QwQWttb0FJVGJyamVYYkZZYnJZWS0yTGdMbVBnZUhsSGVuZ3o5LUd4ZjdpdXdkRU1ua3luUdIB9wFBVV95cUxQeGh0Sk9XX25INGx5bHU2OVpzTmo0dnVjQTBCMm53bjVNQjhWTnZCZm5DWFpNMEdpSHdGbWJ0YU9YbEx1d0t3ZFRzVkl3QWhZMF9CekpmcWhiM1NkdWpWXzVrbF9oZjVta1k3Mk5UbmxRQnZ2SDRzTnNPdk5qT210QUVWTmdYSld4bFYtWFlBWTV4ZzJWOTlJOHhoeXRxb2JwZU1WTTFjRWVfZ2FPSlJtdzlvSkRNOHpfMXlsRmdVUUVJckcwT241UFhfTWtUZGpaM0x6LThIS0RqUU1qZW5raVhkbEgxeG1OSmFqX1ZqXzZUOWpSMER3?oc=5",
-     "published": "Thu, 26 Nov 2026 06:18:34 GMT",
-     "sentiment": -0.273
-    },
-    {
-     "title": "HDFC Bank shares rise 2.5% as board approves key Director re-appointment",
-     "source": "BusinessLine",
-     "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxPdGRiNU5uYWI5bWFfNTBja3BvT1I2WGhxeng5MW8xVGRCclgwMzRIenVpZ1N1cFFiYXd5R19jNGNFcFRsMnAtTDRZclVzWDFWUjlWRnNsTWk1NEttZ04wV2c3U1lCM1lwYklfa3RLMzRJMkZaZVk4M1FnTU43Rk41SENUQ1lhaWJlMHp5WG5CLXctYnY3NzJISHBGLVlwT1hMSGpzLU54YzF1UUdWWldZMGxFaVFwTnM2MTZ0QkZYNHFFbmx1WkFzbDAzSW9WN1EzSGZ3X2FsRGxSdHVGSU45dWdONNIB6gFBVV95cUxPRjkxSkJtdHdGOWRQcWI0V2dlRzFyT2llSkl4Z1lpdndHNkhwUWVqS0FZVTRiU3hWZTVkYVNERGNSU2d6YTBWOHNjXzZKRjdUUTBFeDZseW0yMFlkOF9ybWlRclNCTl9WTUVlT0ZrRU5CejBLMVhlTG5iVENPaHZNeUZ0ZHpGajdjSGNnNThWT0s3cnpqMjI2RVBrM2VndFNkZzZLQVhrd0FGczRBMmJJQlhuRUFIcnFDSXcyN2VtQ2FLZ3Q3ZFVWZS1kSHozRWhXRWlmVGFaOUU5UmtOcjdmZFdHOVZlVTRSaHc?oc=5",
-     "published": "Thu, 26 Nov 2026 05:52:18 GMT",
-     "sentiment": 0.599
-    },
-    {
-     "title": "HDFC Bank Limited (HDB) Stock Price, News, Quote & History",
-     "source": "Yahoo! Finance Canada",
-     "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5OR1M3THRtTERvWDhiSGhfemR6Q0xDSUQwMVFpZlNFMWh6LU1FV1RnZGlONW82UTFHVkw3bGtfVkZDRWMtSHVtYzB3QmdXSzJI?oc=5",
-     "published": "Wed, 25 Nov 2026 15:55:19 GMT",
-     "sentiment": -0.226
-    }
-   ],
-   "news_sentiment": {
-    "score": 0.206,
-    "count": 8,
-    "label": "POSITIVE"
-   },
-   "win_prob": 53.9,
-   "expected_r": 0.1,
-   "model_used": false,
-   "grade": "B",
-   "skip_reason": null,
-   "action": "BUY HDFCBANK near \u20b9862.00 (skip if it opens above \u20b9893.69) \u00b7 SL \u20b9830.31 \u00b7 T1 \u20b9893.69 \u00b7 T2 \u20b9914.82 \u00b7 Qty 3 for \u20b910k @1% risk"
-  },
-  {
-   "symbol": "TCS",
-   "name": "Tata Consultancy Services",
-   "bar_date": "2026-11-26",
-   "cmp": 2640.3,
-   "day_chg": 4.89,
-   "vol_ratio": 1.57,
-   "vol_badge": "1.6x Vol Surge",
-   "volume_projected": false,
-   "rsi": 70.8,
-   "ema20": 2444.34,
-   "ema50": 2374.19,
-   "high20": 2640.3,
-   "dist_high_pct": 0.0,
-   "atr": 74.05,
-   "checks": {
-    "volume": true,
-    "momentum": false,
-    "trend": true,
-    "breakout": true
-   },
-   "checks_passed": 3,
-   "passed": false,
-   "entry": 2640.3,
-   "stop": 2529.22,
-   "t1": 2751.38,
-   "t2": 2825.44,
-   "pivots": {
-    "P": 2601.4,
-    "R1": 2679.2,
-    "S1": 2562.5,
-    "R2": 2718.1,
-    "S2": 2484.7
-   },
-   "risk_per_share": 111.08,
-   "rr_t1": 1.0,
-   "rr_t2": 1.67,
-   "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
-   "features": {
-    "log_vol_ratio": 0.452938677190363,
-    "rsi": 70.80435906469553,
-    "dist_high_pct": 0.0,
-    "ext_ema20": 8.016697642838565,
-    "atr_pct": 2.804790163821464,
-    "day_chg": 4.886187487155524,
-    "ret5": 10.96028782635532,
-    "rs20": -8.036144737802942,
-    "bias_score": 65.0,
-    "news_sent": 0.254,
-    "mkt_above50": 1.0,
-    "mkt_ret20": 13.779272299695599
-   },
-   "r1_a": 0.5252859202662709,
-   "r2_a": 1.050571840532548,
-   "news": [
-    {
-     "title": "Tata Consultancy Services Limited (TCS.NS) stock price, news, quote and history",
-     "source": "Yahoo Finance Singapore",
-     "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE4yZG1MMUJWTjQzeUxZdV9QMF90azdyZlhNOTctMFZTMTYyRVhVWlZKbDFRenlSZXN2aEpLWTRkVHlROVpBNmpZYWZ5V3EwZ2FQU2loLQ?oc=5",
-     "published": "Tue, 24 Nov 2026 15:41:05 GMT",
-     "sentiment": -0.226
-    },
-    {
-     "title": "Tata Sons Board Meeting on November 30 Puts Tata Group Stocks in Focus; TCS, Tata Steel Gain Over 2% While Trent and Indian Hotels Decline",
-     "source": "Kotak Neo",
-     "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxPTGRkSVdLZVFxb3dvcWlUM3Z3dEFrTXY4RlFTWVNvWmljbUFIMnB4Vm1sNjRLVDVtcGhWaHZGX2lUQnVqaTJSZk9NOXdSYTVMN3pBWE52ZTQ4b2xpUjhENDQwWHJHNDN6dHpfdjVaS01OazhjT0Y4U0ZzOWtnbTg2QWhneE1PUDVkcGlkTFYzVXBUeGx5T1VqQ2ZMMl9lLXZ3SFczTGhUSWZ6ajg1T2xpUFkyaVhhcDlYSXQybWxuaGtLdkd6Mk5kSGxkQW5DVkJCQy1lNGl4LXNTVHNCT19yTw?oc=5",
-     "published": "Thu, 26 Nov 2026 09:21:14 GMT",
-     "sentiment": 0.527
-    },
-    {
-     "title": "Stock markets climb in early trade on foreign fund inflows, buying in IT shares",
-     "source": "The Hindu",
-     "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPRUpSbzBQNGN1dExBSW9halFUNlYzNm5KVDhpVW1MS1lSNEVSQ1lkTlBkdkJoS1hfVWtnUFZpUVdBXzB1dGYzbW8xM1B3Z0RUZXBXYWhyUXVaWGF6NEE1VURqZU0tUDNOMlV4d1lTcDBfUGItYTNOS01GVXJuc2I0dnNIWHVmU0h3UGVDSkhUaHc0NE5vTGxnWTJUdVNkeHNnZHFiRTJOanLSAagBQVVfeXFMT0VKUm8wUDRjdXRMQUlvYWpRVDZWMzZuSlQ4aVVtTEtZUjRFUkNZZE5QZHZCaEtYX1VrZ1BWaVFXQV8wdXRmM21vMTNQd2dEVGVwV2FoclF1WlhhejRBNVVEamVNLVAzTjJVeHdZU3AwX1BiLWEzTktNRlVybnNiNHZzSFh1ZlNId1BlQ0pIVGh3NDROb0xsZ1kyVHVTZHhzZ2RxYkUyTmpy?oc=5",
-     "published": "Thu, 26 Nov 2026 05:15:16 GMT",
-     "sentiment": 0.494
-    },
-    {
-     "title": "Stock markets climb in early trade on foreign fund inflows, buying in IT shares",
-     "source": "The New Indian Express",
-     "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOU2NBeHFNVS0tOXpnVXVUekl2UDFQR3dlZlZESm9NMmJiREF3cGZ2YmJyVlFLTkw4TWVzT2E2VE15S3ViQndXckNHblNYeldROHpqMGhndHJhRGRYdlNDekhfN19hSHNpdWhwRFpfWThjd2F6LXVlRndIRjlLdTlLZVBpUlA0YlJ0Rk9KajdMclh6RHRIaXI4Qjl3V1pYWDJJYmFqcS1abEVZeDN3OTBMYmtmZ0ZoS2FveUprZkpKRlotWklzUjNsUW9PaE_SAdoBQVVfeXFMT1dxc05IQmk2czJqczVJUVB5akpJRGpLQ2Y5TnVnWmNfRC1HbHRfeHUxRTFzUzFmajRkeEp1ZUdWTWtLQXAxZWdZR2RPbGtMVjNfWGV1am1IbzBkejhoeFVXbHZpVnNNRjUwZk5GSl9KaDZEY0VlOThxVDlhLWtObnl3LTNiMmhiQW5iV1hOaG5Qc0xlbUZQbGh1Vk9HUDZLV3Z0YldLTTV1WHhsQ0F6QVNaS05RdEJCc0pDa2RreDVWWTBKX2lUN21uWlZQNllBdU56N0xJb0lDcVE?oc=5",
-     "published": "Thu, 26 Nov 2026 04:46:03 GMT",
-     "sentiment": 0.494
-    },
-    {
-     "title": "TCS Share Price",
-     "source": "Upstox",
-     "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE4xa3lkaFFielNzaEh0c3oxTzdzMzV1MDk5TzFMYnoweVkwWG02cVBRTHZSUmM2Q1JpYVpsN2l2VmZwMFpwUzI5cm5WOUFHSGE1c2ZsRjRTWWl3MmlNOGdQUmdkSlZLUUxqRUctcGVsdDA?oc=5",
-     "published": "Wed, 25 Nov 2026 07:51:57 GMT",
-     "sentiment": 0.296
-    }
-   ],
-   "news_sentiment": {
-    "score": 0.254,
-    "count": 8,
-    "label": "POSITIVE"
-   },
-   "win_prob": 53.9,
-   "expected_r": 0.1,
-   "model_used": false,
-   "grade": "B",
-   "skip_reason": null,
-   "action": "BUY TCS near \u20b92,640.30 (skip if it opens above \u20b92,751.38) \u00b7 SL \u20b92,529.22 \u00b7 T1 \u20b92,751.38 \u00b7 T2 \u20b92,825.44"
-  },
-  {
-   "symbol": "HDFCLIFE",
-   "name": "HDFC Life",
-   "bar_date": "2026-11-26",
-   "cmp": 594.4,
-   "day_chg": -1.15,
-   "vol_ratio": 1.57,
-   "vol_badge": "1.6x Vol Surge",
-   "volume_projected": false,
-   "rsi": 60.6,
-   "ema20": 571.98,
-   "ema50": 557.63,
-   "high20": 609.75,
-   "dist_high_pct": 2.52,
-   "atr": 17.03,
-   "checks": {
-    "volume": true,
-    "momentum": true,
-    "trend": true,
-    "breakout": false
-   },
-   "checks_passed": 3,
-   "passed": false,
-   "entry": 594.4,
-   "stop": 568.85,
-   "t1": 619.95,
-   "t2": 636.98,
-   "pivots": {
-    "P": 599.02,
-    "R1": 604.28,
-    "S1": 589.13,
-    "R2": 614.17,
-    "S2": 583.87
-   },
-   "risk_per_share": 25.55,
-   "rr_t1": 1.0,
-   "rr_t2": 1.67,
-   "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
-   "features": {
-    "log_vol_ratio": 0.45338927623665615,
-    "rsi": 60.6122073181626,
-    "dist_high_pct": 2.517421170305453,
-    "ext_ema20": 3.920470315278912,
-    "atr_pct": 2.8655822186837665,
-    "day_chg": -1.1475076532484363,
-    "ret5": 3.2841050241637637,
-    "rs20": 1.952825182580309,
-    "bias_score": 65.0,
-    "news_sent": 0.137,
-    "mkt_above50": 1.0,
-    "mkt_ret20": 13.779272299695599
-   },
-   "r1_a": 0.5802459372841996,
-   "r2_a": 1.1604918745683925,
-   "news": [
-    {
-     "title": "HDFC Life Insurance Share Price - Live NSE: HDFCLIFE Stock Price & Chart",
-     "source": "Upstox",
-     "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9rbmpVWmJiOEVqYWFGbHNBdFhudURwc01vMGRrM3lYdFZYRkNlRTc2cThBbXNDZ3pFVDhjUVEzOGQ3ZVl0dGhmUG8zSWlJZGlHZE0yNURUTUFtN1ZzNXlQQ1ZXUkxpb3Bjd3dj?oc=5",
-     "published": "Wed, 25 Nov 2026 20:29:02 GMT",
-     "sentiment": 0.296
-    },
-    {
-     "title": "HDFC Life RTA KFin Technologies moves corporate office to Hyderabad",
-     "source": "scanx.trade",
-     "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOMXNUcnI0c2lLOGhVbG4yNHpjck00UFdqLWRqeWtOU001Tmx1N251akg5LUs0UjlKRmhtejM4R1pCVHMxUnNhNmtTaGRUQUZuVnk1N2RGc3pqTmVscHN6eC1ZUmlITUZZYXcwaUlLeWp2aFI5czNLU3ppY25sUTVYczRKQWlEYkVmNzhZMDlHWU96N0JOVjFsT1RTQWgtcGFSV1diVEJIR0pEZFJERkxlZjBxaUJhS0lzaGtKbndR?oc=5",
-     "published": "Wed, 25 Nov 2026 16:46:18 GMT",
-     "sentiment": 0.0
-    },
-    {
-     "title": "Insurance stocks in demand: PB Fintech, Max Life, HDFC Life rally up to 8%",
-     "source": "Business Standard",
-     "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxQbV91OXN3cmZtRnNDeGNzWlZnbVZ1RjF6blBvVVFkdzF0eXB1UnR5UWJSeDJUOHBaUFpjR3psY1pQSkJUd0N6MXFXYjFZcDRPQV92cS1pbTh6eXZlTC1tMEdWWkRYSjVfYjJtSU53ZVBsVjhoR0Y5QWZMeDdJQlE5SzBRbDRQb0RkNU83WWVDa0NWdUdPVm8tcXRfOUdRLWZKSWNyVl9TRlJVT0pkSUplaFJ2WERiT1BjazF4RDFEUDZtOUg0bmZwMmNFSXVqX2pkOElB0gHYAUFVX3lxTE5QT0dWTDRCMmZnQm5RWjFBeURyWFZPYy1lTlhRamJyMk5oZnY2aGtTOTFtbDNZU1NrUEQxeDdKMnNOLVlnWnZyNFpCeHpFZ3hBOHc2bTh2UTNRc3V1T1NJcC1FZGFObGJrRUliaUc3MFJ5TjNXU2ZBSzV3Mzg2aXpOQUV3bkt4anJQY3NKTmtGYUEtMkVoZ1IxVEtUSUFMVW44SS13TFJvejA2aGtnaXc3RTFYWHBkV3FzUFpjZDVlUHkwVDhhOFFJRFVHMk93dTloWDJEdUJ1Yg?oc=5",
-     "published": "Wed, 25 Nov 2026 04:44:30 GMT",
-     "sentiment": 0.273
-    },
-    {
-     "title": "PB Fintech, HDFC Life, Turtlemint shares surge up to 8% as IRDAI sets up expert committee on distribution reforms",
-     "source": "BusinessLine",
-     "link": "https://news.google.com/rss/articles/CBMimAJBVV95cUxNdTQ1QkszZTZ6VEh1Yk1nd2xMd0RhZ1ZWYndYdnp6V2NZRElKWnZxLUJ1V3NZT1ZNbjNoQTczTkN1UlJhTnFrOXRvUVotNVc4bnFJMjh1cUtkSVZXT0NkaEF0djNZYnBuQUdtcnY2dUlIZUF5cGhmcGNBMG1rQXBTMmVuN3ctRUxKaW9qa080RmY0cFJYVWF6UmJra3ByTXVzRTJZLWpOTmRnZ3VoQ0k5UGtIaF9aeGhjMGJvWEtVbElsMl9OTHFPVEdXdWxGSzFocWJGeU1wMUtfREdxWWt3YjZjeXNfRVZOUnJkemlpSU5vR0U0b2twLW5acGRxUHF3N2pMVmpialhZNnFFdmhHS3RQSGxQSEw20gGfAkFVX3lxTE1oUmlQLWM1WFNoRW83aU5YT01xQVplMURtUUYySHNSWklrTTg2LVpqTUYzMjRJX0YxaVpzLXpZYzhJaW9zYXdfV0JqWXpNeWJncC1TNzJSYklmdFNXV0ZYcGp6N3A4bzF5TXI0ZTdaS2pxcDNVeHdXb3FBbnF3NVpwQUVPQkNGbEs1RTQtU3ZiVlY5allJcmtvdGRPZ1MxUHNWTndFUjJncW1obFdneGlvX0o3TTZVdmplRlRkVEphOV85b0lvRXJxMmhyb0JSb3FlckYxQi1zS2IxWWQ4cUNqS3dENHVxaDRiTFJqZEEtSXVXLU9wOWhaVExMQ3RZT1doTEJ0eEtVWGJ5UWZhVWJ3aUpIUkVfOUh2d0NtOUV3?oc=5",
-     "published": "Wed, 25 Nov 2026 06:40:35 GMT",
-     "sentiment": 0.612
-    },
-    {
-     "title": "HDFC Life Insurance NSE:HDFCLIFE RTA Address Change Dec 2026",
-     "source": "Kalkine India",
-     "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPY1VEY0tYRUppLUdjREFOcXd4QXN2d2ZlYWN1NEkwakp1d2xUczM2LVVheDNCdmxpWDBXU3M1ZlM0bF9KaS1RZlhqYWR1SWVDTUJhUC1VSTV2ZXhxVG11alMzYXBkeUo0UjJxUkV1bEEyVUdBYkVaMDZydEp6bjlUVXZWZTFQTFF6VUZFQVBTR2dRd1FoZjd1MXQzRzhFVERSd0ZoUjBkS19qYUhXdVA3MVdnLTlkYmgzbXdiSEg5dkg1SkdXRDhsVldIX2pmdVJjd0E?oc=5",
-     "published": "Wed, 25 Nov 2026 17:00:00 GMT",
-     "sentiment": 0.0
-    }
-   ],
-   "news_sentiment": {
-    "score": 0.137,
-    "count": 8,
-    "label": "POSITIVE"
-   },
-   "win_prob": 53.9,
-   "expected_r": 0.1,
-   "model_used": false,
-   "grade": "B",
-   "skip_reason": null,
-   "action": "BUY HDFCLIFE near \u20b9594.40 (skip if it opens above \u20b9619.95) \u00b7 SL \u20b9568.85 \u00b7 T1 \u20b9619.95 \u00b7 T2 \u20b9636.98 \u00b7 Qty 3 for \u20b910k @1% risk"
+   "action": "BUY INFY near \u20b91,183.00 (skip if it opens above \u20b91,237.63) \u00b7 SL \u20b91,137.48 \u00b7 T1 \u20b91,237.63 \u00b7 T2 \u20b91,274.05 \u00b7 Qty 2 for \u20b910k @1% risk"
   },
   {
    "symbol": "CIPLA",
@@ -965,8 +965,8 @@
    "bar_date": "2026-11-26",
    "cmp": 1450.0,
    "day_chg": 1.17,
-   "vol_ratio": 1.19,
-   "vol_badge": "1.2x Vol Surge",
+   "vol_ratio": 1.15,
+   "vol_badge": "1.1x Vol Surge",
    "volume_projected": false,
    "rsi": 67.2,
    "ema20": 1401.39,
@@ -983,7 +983,7 @@
    "checks_passed": 3,
    "passed": false,
    "entry": 1450.0,
-   "stop": 1406.86,
+   "stop": 1414.05,
    "t1": 1493.14,
    "t2": 1521.89,
    "pivots": {
@@ -993,12 +993,12 @@
     "R2": 1494.07,
     "S2": 1405.67
    },
-   "risk_per_share": 43.14,
-   "rr_t1": 1.0,
-   "rr_t2": 1.67,
+   "risk_per_share": 35.95,
+   "rr_t1": 1.2,
+   "rr_t2": 2.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 0.1735793261440724,
+    "log_vol_ratio": 0.1390563465429353,
     "rsi": 67.15427213500203,
     "dist_high_pct": 1.4878744514445208,
     "ext_ema20": 3.468558166648994,
@@ -1006,25 +1006,61 @@
     "day_chg": 1.1722055121749175,
     "ret5": 2.3288637967536996,
     "rs20": -6.3718648922881815,
-    "bias_score": 65.0,
-    "news_sent": 0.0,
+    "bias_score": 71.0,
+    "news_sent": 0.272,
     "mkt_above50": 1.0,
     "mkt_ret20": 13.779272299695599
    },
    "r1_a": 0.7661916274297874,
    "r2_a": 1.5323832548595828,
-   "news": [],
+   "news": [
+    {
+     "title": "CIPLA Share Price Today - Cipla on NSE/BSE",
+     "source": "scanx.trade",
+     "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE16ajcyUzZmWGstaG5SaDJCRlZ5N3hGVXdCUVRKR0V1SVdjUWhtUUdnQUhmNnVKeHFOZ0s2WGx1SzFqWnQybGEwXzNyUjZnZw?oc=5",
+     "published": "Wed, 25 Nov 2026 05:43:09 GMT",
+     "sentiment": 0.296
+    },
+    {
+     "title": "Cipla Secures USFDA Approval for First Generic Flovent HFA Inhaler; Shares Rise 0.86%",
+     "source": "HDFC Sky",
+     "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNQWMzTm9wZDJmQlU4OG52Z3BZRVpGRFVNb2VWSVBBOUZnc2FSbmIxc2NfWE1CbjNWbGduLWZsSEgtSk1OaXZscWNaei0zVXhmejd6Mkh1UzV6bEdtSEdlZExocG1GVGZvUDBKYlAzTGxETDBFN0NKeDMxclNBdXk4ODBqRnhKbTRNQWc5b1RaUHB6cEhpSy1JQ2lBa041dldwVEVubExR?oc=5",
+     "published": "Wed, 25 Nov 2026 04:19:18 GMT",
+     "sentiment": 0.765
+    },
+    {
+     "title": "Cipla Ltd. Share Price Rise Streak in healthcare context",
+     "source": "Univest",
+     "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTFAtNnNteE9PNDZuRnFjSHZuMENGcWpGRXR3ZTRxdGE2aTE2aWFBUk4yTWlHcUFYaVFBTGs4X2p4Ynp2eDBiY2tTR08xeHljRmlaREZfTEZlaklmdE1aUm5odUdZS08yb0NLQTdtNGNHZGZ3TkZLZms0WElyVVc?oc=5",
+     "published": "Thu, 26 Nov 2026 05:57:00 GMT",
+     "sentiment": 0.296
+    },
+    {
+     "title": "Cipla shares rise 3% after USFDA nod for asthma treatment drug",
+     "source": "CNBC TV18",
+     "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxONzJ6Ull3QVk5Ukw4aWhqNUt3MEg4UlBROUd4TmMteUJPbWtDb0JfX0JsLXhkX3JjdzZHQnQ1VE55b3dnWUJyZnVfU25oMjFSTGZuYlJiSlEtQjBDeXdvSnNFcGwzWGU2YjcxdnAzT25nVFB2RXd0YzhPTzBSSnpzZTVRQVZkbEN2aDlyOVF6YUw1a2VsVGlCZERjdWhhWmFEaUxscHNzY3nSAa4BQVVfeXFMUGFrV1p4MVRqLXhxaURmeXFTSk9Bb2daVk53NHVzX2toQTVzLXdLUEJnc0EzR01KTFE2WnlpLW5nRmFJZloxd2ViVlZDVmhJWWxEbHp6S05YcGtVcXF6QTF1QUtVaWdEbURXcjdFVWh5S0lzSUpVZUhuSzQ2R284SU1TQ1UzdEN6OUk5RTRNWWp1VXRKMWxsMHQ1Z0VXU2pBREFkanNIRWlYNDA1VU1n?oc=5",
+     "published": "Wed, 25 Nov 2026 06:48:45 GMT",
+     "sentiment": 0.296
+    },
+    {
+     "title": "Cipla, Teva Get USFDA Nod for Generic Flovent HFA Inhaler",
+     "source": "Rediff MoneyWiz",
+     "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNTDZPQ3lVZ2NyOWhoZFBzSUVyWDZQTVozQW1kYVpNOVoycnA4dVhhSVl4ZlRHYTBoYTVnNkprTGtETHhxNlRWRmF5N2NlYTVvZ29Na0pWVDFDd0tFcG5nbHQ1Sk8tUzduaXpTbDIyRjc2dXo1em5zTElVLU54NThiUDl0Qmdrb3RhcHExNGpqSVUyZC1Mbmg4TDZPaDZYY0FxLVF5QW9TZmJFaVNqZXVCQktB0gGyAUFVX3lxTE1MNk9DeVVnY3I5aGhkUHNJRXJYNlBNWjNBbWRhWk05WjJycDh1WGFJWXhmVEdhMGhhNWc2SmtMa0RMeHE2VFZGYXk3Y2VhNW9nb01rSlZUMUN3S0VwbmdsdDVKTy1TN25pelNsMjJGNzZ1ejV6bnNMSVUtTng1OGJQOXRCZ2tvdGFwcTE0ampJVTJkLUxuaDhMNk9oNlhjQXEtUXlBb1NmYkVpU2pldUJCS0E?oc=5",
+     "published": "Wed, 25 Nov 2026 07:09:05 GMT",
+     "sentiment": 0.0
+    }
+   ],
    "news_sentiment": {
-    "score": 0.0,
-    "count": 0,
-    "label": "NO NEWS"
+    "score": 0.272,
+    "count": 8,
+    "label": "POSITIVE"
    },
-   "win_prob": 53.9,
-   "expected_r": 0.1,
+   "win_prob": 52.8,
+   "expected_r": 0.11,
    "model_used": false,
    "grade": "B",
    "skip_reason": null,
-   "action": "BUY CIPLA near \u20b91,450.00 (skip if it opens above \u20b91,493.14) \u00b7 SL \u20b91,406.86 \u00b7 T1 \u20b91,493.14 \u00b7 T2 \u20b91,521.89 \u00b7 Qty 2 for \u20b910k @1% risk"
+   "action": "BUY CIPLA near \u20b91,450.00 (skip if it opens above \u20b91,493.14) \u00b7 SL \u20b91,414.05 \u00b7 T1 \u20b91,493.14 \u00b7 T2 \u20b91,521.89 \u00b7 Qty 2 for \u20b910k @1% risk"
   },
   {
    "symbol": "HEROMOTOCO",
@@ -1050,7 +1086,7 @@
    "checks_passed": 3,
    "passed": false,
    "entry": 5789.0,
-   "stop": 5571.26,
+   "stop": 5607.55,
    "t1": 6006.74,
    "t2": 6151.89,
    "pivots": {
@@ -1060,34 +1096,34 @@
     "R2": 5882.0,
     "S2": 5681.0
    },
-   "risk_per_share": 217.74,
-   "rr_t1": 1.0,
-   "rr_t2": 1.67,
+   "risk_per_share": 181.45,
+   "rr_t1": 1.2,
+   "rr_t2": 2.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": 0.13377509622921807,
-    "rsi": 69.13716325417154,
+    "log_vol_ratio": 0.1313542767947147,
+    "rsi": 69.13716325417674,
     "dist_high_pct": 0.6691832532601236,
     "ext_ema20": 6.492391556304811,
-    "atr_pct": 2.5074740751251228,
+    "atr_pct": 2.507474075124986,
     "day_chg": 0.652003825089098,
     "ret5": 10.203693127736525,
     "rs20": -2.847012071660715,
-    "bias_score": 65.0,
+    "bias_score": 71.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 13.779272299695599
    },
-   "r1_a": 0.3203413133573,
-   "r2_a": 0.6406826267146,
+   "r1_a": 0.3203413133573174,
+   "r2_a": 0.6406826267146348,
    "news": [],
    "news_sentiment": null,
-   "win_prob": 53.9,
-   "expected_r": 0.1,
+   "win_prob": 52.8,
+   "expected_r": 0.11,
    "model_used": false,
    "grade": "B",
    "skip_reason": null,
-   "action": "BUY HEROMOTOCO near \u20b95,789.00 (skip if it opens above \u20b96,006.74) \u00b7 SL \u20b95,571.26 \u00b7 T1 \u20b96,006.74 \u00b7 T2 \u20b96,151.89"
+   "action": "BUY HEROMOTOCO near \u20b95,789.00 (skip if it opens above \u20b96,006.74) \u00b7 SL \u20b95,607.55 \u00b7 T1 \u20b96,006.74 \u00b7 T2 \u20b96,151.89"
   },
   {
    "symbol": "SUNPHARMA",
@@ -1095,7 +1131,7 @@
    "bar_date": "2026-11-26",
    "cmp": 1915.7,
    "day_chg": 0.77,
-   "vol_ratio": 0.99,
+   "vol_ratio": 0.96,
    "vol_badge": "1.0x Vol Surge",
    "volume_projected": false,
    "rsi": 65.2,
@@ -1113,7 +1149,7 @@
    "checks_passed": 3,
    "passed": false,
    "entry": 1915.7,
-   "stop": 1853.14,
+   "stop": 1863.56,
    "t1": 1978.26,
    "t2": 2019.97,
    "pivots": {
@@ -1123,34 +1159,34 @@
     "R2": 1951.77,
     "S2": 1874.17
    },
-   "risk_per_share": 62.56,
-   "rr_t1": 1.0,
-   "rr_t2": 1.67,
+   "risk_per_share": 52.14,
+   "rr_t1": 1.2,
+   "rr_t2": 2.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": -0.013267371920578641,
-    "rsi": 65.23447167669869,
+    "log_vol_ratio": -0.04364433365636115,
+    "rsi": 65.23447167670605,
     "dist_high_pct": 1.450695657596263,
     "ext_ema20": 3.152613248141023,
-    "atr_pct": 2.1772206399827536,
+    "atr_pct": 2.177220639982846,
     "day_chg": 0.773274653965017,
     "ret5": 2.361739309210531,
     "rs20": -4.385713335174213,
-    "bias_score": 65.0,
+    "bias_score": 71.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 13.779272299695599
    },
-   "r1_a": 0.4323613491976345,
-   "r2_a": 0.8647226983952745,
+   "r1_a": 0.43236134919761615,
+   "r2_a": 0.8647226983952377,
    "news": [],
    "news_sentiment": null,
-   "win_prob": 53.9,
-   "expected_r": 0.1,
+   "win_prob": 52.8,
+   "expected_r": 0.11,
    "model_used": false,
    "grade": "B",
    "skip_reason": null,
-   "action": "BUY SUNPHARMA near \u20b91,915.70 (skip if it opens above \u20b91,978.26) \u00b7 SL \u20b91,853.14 \u00b7 T1 \u20b91,978.26 \u00b7 T2 \u20b92,019.97 \u00b7 Qty 1 for \u20b910k @1% risk"
+   "action": "BUY SUNPHARMA near \u20b91,915.70 (skip if it opens above \u20b91,978.26) \u00b7 SL \u20b91,863.56 \u00b7 T1 \u20b91,978.26 \u00b7 T2 \u20b92,019.97 \u00b7 Qty 1 for \u20b910k @1% risk"
   },
   {
    "symbol": "TECHM",
@@ -1158,7 +1194,7 @@
    "bar_date": "2026-11-26",
    "cmp": 1854.7,
    "day_chg": 2.97,
-   "vol_ratio": 0.98,
+   "vol_ratio": 0.96,
    "vol_badge": "1.0x Vol Surge",
    "volume_projected": false,
    "rsi": 67.1,
@@ -1176,7 +1212,7 @@
    "checks_passed": 3,
    "passed": false,
    "entry": 1854.7,
-   "stop": 1783.32,
+   "stop": 1795.21,
    "t1": 1926.08,
    "t2": 1973.67,
    "pivots": {
@@ -1186,12 +1222,12 @@
     "R2": 1892.1,
     "S2": 1786.3
    },
-   "risk_per_share": 71.38,
-   "rr_t1": 1.0,
-   "rr_t2": 1.67,
+   "risk_per_share": 59.49,
+   "rr_t1": 1.2,
+   "rr_t2": 2.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": -0.01815720328372945,
+    "log_vol_ratio": -0.040881620953017714,
     "rsi": 67.07526570106934,
     "dist_high_pct": 0.28494886172715056,
     "ext_ema20": 4.92833729509945,
@@ -1199,7 +1235,7 @@
     "day_chg": 2.9702421413676294,
     "ret5": 5.982854352678579,
     "rs20": -11.388860122693512,
-    "bias_score": 65.0,
+    "bias_score": 71.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 13.779272299695599
@@ -1208,12 +1244,12 @@
    "r2_a": 0.785894542135719,
    "news": [],
    "news_sentiment": null,
-   "win_prob": 53.9,
-   "expected_r": 0.1,
+   "win_prob": 52.8,
+   "expected_r": 0.11,
    "model_used": false,
    "grade": "B",
    "skip_reason": null,
-   "action": "BUY TECHM near \u20b91,854.70 (skip if it opens above \u20b91,926.08) \u00b7 SL \u20b91,783.32 \u00b7 T1 \u20b91,926.08 \u00b7 T2 \u20b91,973.67 \u00b7 Qty 1 for \u20b910k @1% risk"
+   "action": "BUY TECHM near \u20b91,854.70 (skip if it opens above \u20b91,926.08) \u00b7 SL \u20b91,795.21 \u00b7 T1 \u20b91,926.08 \u00b7 T2 \u20b91,973.67 \u00b7 Qty 1 for \u20b910k @1% risk"
   },
   {
    "symbol": "SBILIFE",
@@ -1221,7 +1257,7 @@
    "bar_date": "2026-11-26",
    "cmp": 1842.3,
    "day_chg": 1.01,
-   "vol_ratio": 0.97,
+   "vol_ratio": 0.95,
    "vol_badge": "1.0x Vol Surge",
    "volume_projected": false,
    "rsi": 63.9,
@@ -1239,7 +1275,7 @@
    "checks_passed": 3,
    "passed": false,
    "entry": 1842.3,
-   "stop": 1777.21,
+   "stop": 1788.06,
    "t1": 1907.39,
    "t2": 1950.78,
    "pivots": {
@@ -1249,12 +1285,12 @@
     "R2": 1871.77,
     "S2": 1795.57
    },
-   "risk_per_share": 65.09,
-   "rr_t1": 1.0,
-   "rr_t2": 1.67,
+   "risk_per_share": 54.24,
+   "rr_t1": 1.2,
+   "rr_t2": 2.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": -0.031652046834000094,
+    "log_vol_ratio": -0.046188246779435345,
     "rsi": 63.90166151093147,
     "dist_high_pct": 1.0579995258794308,
     "ext_ema20": 3.814280082918753,
@@ -1262,7 +1298,7 @@
     "day_chg": 1.008828563395281,
     "ret5": 3.036915482557334,
     "rs20": -0.9623679011576236,
-    "bias_score": 65.0,
+    "bias_score": 71.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 13.779272299695599
@@ -1271,12 +1307,12 @@
    "r2_a": 0.6790770366318031,
    "news": [],
    "news_sentiment": null,
-   "win_prob": 53.9,
-   "expected_r": 0.1,
+   "win_prob": 52.8,
+   "expected_r": 0.11,
    "model_used": false,
    "grade": "B",
    "skip_reason": null,
-   "action": "BUY SBILIFE near \u20b91,842.30 (skip if it opens above \u20b91,907.39) \u00b7 SL \u20b91,777.21 \u00b7 T1 \u20b91,907.39 \u00b7 T2 \u20b91,950.78 \u00b7 Qty 1 for \u20b910k @1% risk"
+   "action": "BUY SBILIFE near \u20b91,842.30 (skip if it opens above \u20b91,907.39) \u00b7 SL \u20b91,788.06 \u00b7 T1 \u20b91,907.39 \u00b7 T2 \u20b91,950.78 \u00b7 Qty 1 for \u20b910k @1% risk"
   },
   {
    "symbol": "ULTRACEMCO",
@@ -1284,7 +1320,7 @@
    "bar_date": "2026-11-26",
    "cmp": 12737.0,
    "day_chg": -0.49,
-   "vol_ratio": 0.8,
+   "vol_ratio": 0.78,
    "vol_badge": "0.8x Vol Surge",
    "volume_projected": false,
    "rsi": 66.9,
@@ -1302,7 +1338,7 @@
    "checks_passed": 3,
    "passed": false,
    "entry": 12737.0,
-   "stop": 12341.38,
+   "stop": 12407.32,
    "t1": 13132.62,
    "t2": 13396.37,
    "pivots": {
@@ -1312,12 +1348,12 @@
     "R2": 12931.0,
     "S2": 12531.0
    },
-   "risk_per_share": 395.62,
-   "rr_t1": 1.0,
-   "rr_t2": 1.67,
+   "risk_per_share": 329.68,
+   "rr_t1": 1.2,
+   "rr_t2": 2.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": -0.22496271036003412,
+    "log_vol_ratio": -0.24403493133997686,
     "rsi": 66.8795207054423,
     "dist_high_pct": 1.932553125962427,
     "ext_ema20": 4.47257089966564,
@@ -1325,7 +1361,7 @@
     "day_chg": -0.49218749999999645,
     "ret5": 2.4863212101705834,
     "rs20": 0.4539115568066521,
-    "bias_score": 65.0,
+    "bias_score": 71.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 13.779272299695599
@@ -1334,12 +1370,12 @@
    "r2_a": 0.7355543547914511,
    "news": [],
    "news_sentiment": null,
-   "win_prob": 53.9,
-   "expected_r": 0.1,
+   "win_prob": 52.8,
+   "expected_r": 0.11,
    "model_used": false,
    "grade": "B",
    "skip_reason": null,
-   "action": "BUY ULTRACEMCO near \u20b912,737.00 (skip if it opens above \u20b913,132.62) \u00b7 SL \u20b912,341.38 \u00b7 T1 \u20b913,132.62 \u00b7 T2 \u20b913,396.37"
+   "action": "BUY ULTRACEMCO near \u20b912,737.00 (skip if it opens above \u20b913,132.62) \u00b7 SL \u20b912,407.32 \u00b7 T1 \u20b913,132.62 \u00b7 T2 \u20b913,396.37"
   },
   {
    "symbol": "BEL",
@@ -1347,7 +1383,7 @@
    "bar_date": "2026-11-26",
    "cmp": 404.5,
    "day_chg": 0.05,
-   "vol_ratio": 0.78,
+   "vol_ratio": 0.77,
    "vol_badge": "0.8x Vol Surge",
    "volume_projected": false,
    "rsi": 60.5,
@@ -1365,7 +1401,7 @@
    "checks_passed": 3,
    "passed": false,
    "entry": 404.5,
-   "stop": 392.46,
+   "stop": 394.47,
    "t1": 416.54,
    "t2": 424.57,
    "pivots": {
@@ -1375,34 +1411,34 @@
     "R2": 412.8,
     "S2": 398.9
    },
-   "risk_per_share": 12.04,
-   "rr_t1": 1.0,
-   "rr_t2": 1.67,
+   "risk_per_share": 10.03,
+   "rr_t1": 1.2,
+   "rr_t2": 2.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": -0.2545105321907923,
-    "rsi": 60.47442499291491,
+    "log_vol_ratio": -0.26344250284720383,
+    "rsi": 60.474424992950155,
     "dist_high_pct": 1.3414634146341464,
     "ext_ema20": 2.4501529921613807,
-    "atr_pct": 1.9843590681178414,
+    "atr_pct": 1.984359068118523,
     "day_chg": 0.04947123746481541,
     "ret5": 2.1980829902354504,
     "rs20": -3.8458610806728633,
-    "bias_score": 65.0,
+    "bias_score": 71.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 13.779272299695599
    },
-   "r1_a": 0.5170228489518628,
-   "r2_a": 1.0340456979037327,
+   "r1_a": 0.5170228489516853,
+   "r2_a": 1.0340456979033776,
    "news": [],
    "news_sentiment": null,
-   "win_prob": 53.9,
-   "expected_r": 0.1,
+   "win_prob": 52.8,
+   "expected_r": 0.11,
    "model_used": false,
    "grade": "B",
    "skip_reason": null,
-   "action": "BUY BEL near \u20b9404.50 (skip if it opens above \u20b9416.54) \u00b7 SL \u20b9392.46 \u00b7 T1 \u20b9416.54 \u00b7 T2 \u20b9424.57 \u00b7 Qty 8 for \u20b910k @1% risk"
+   "action": "BUY BEL near \u20b9404.50 (skip if it opens above \u20b9416.54) \u00b7 SL \u20b9394.47 \u00b7 T1 \u20b9416.54 \u00b7 T2 \u20b9424.57 \u00b7 Qty 9 for \u20b910k @1% risk"
   },
   {
    "symbol": "IDFCFIRSTB",
@@ -1410,7 +1446,7 @@
    "bar_date": "2026-11-26",
    "cmp": 86.71,
    "day_chg": -0.87,
-   "vol_ratio": 0.76,
+   "vol_ratio": 0.75,
    "vol_badge": "0.8x Vol Surge",
    "volume_projected": false,
    "rsi": 64.8,
@@ -1428,7 +1464,7 @@
    "checks_passed": 3,
    "passed": false,
    "entry": 86.71,
-   "stop": 83.29,
+   "stop": 83.86,
    "t1": 90.13,
    "t2": 92.42,
    "pivots": {
@@ -1438,12 +1474,12 @@
     "R2": 88.17,
     "S2": 85.37
    },
-   "risk_per_share": 3.42,
-   "rr_t1": 1.0,
-   "rr_t2": 1.67,
+   "risk_per_share": 2.85,
+   "rr_t1": 1.2,
+   "rr_t2": 2.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": -0.28045857954660525,
+    "log_vol_ratio": -0.2849884732354303,
     "rsi": 64.8332678582008,
     "dist_high_pct": 1.6670460598953325,
     "ext_ema20": 6.064612812597492,
@@ -1451,7 +1487,7 @@
     "day_chg": -0.8688717567441717,
     "ret5": 5.166770520203512,
     "rs20": 7.731375602252988,
-    "bias_score": 65.0,
+    "bias_score": 71.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 13.779272299695599
@@ -1460,12 +1496,12 @@
    "r2_a": 0.6395096725637919,
    "news": [],
    "news_sentiment": null,
-   "win_prob": 53.9,
-   "expected_r": 0.1,
+   "win_prob": 52.8,
+   "expected_r": 0.11,
    "model_used": false,
    "grade": "B",
    "skip_reason": null,
-   "action": "BUY IDFCFIRSTB near \u20b986.71 (skip if it opens above \u20b990.13) \u00b7 SL \u20b983.29 \u00b7 T1 \u20b990.13 \u00b7 T2 \u20b992.42 \u00b7 Qty 29 for \u20b910k @1% risk"
+   "action": "BUY IDFCFIRSTB near \u20b986.71 (skip if it opens above \u20b990.13) \u00b7 SL \u20b983.86 \u00b7 T1 \u20b990.13 \u00b7 T2 \u20b992.42 \u00b7 Qty 35 for \u20b910k @1% risk"
   },
   {
    "symbol": "TVSMOTOR",
@@ -1473,7 +1509,7 @@
    "bar_date": "2026-11-26",
    "cmp": 4550.1,
    "day_chg": -1.3,
-   "vol_ratio": 0.69,
+   "vol_ratio": 0.67,
    "vol_badge": "0.7x Vol Surge",
    "volume_projected": false,
    "rsi": 60.7,
@@ -1491,7 +1527,7 @@
    "checks_passed": 3,
    "passed": false,
    "entry": 4550.1,
-   "stop": 4376.7,
+   "stop": 4405.6,
    "t1": 4723.51,
    "t2": 4839.11,
    "pivots": {
@@ -1501,12 +1537,12 @@
     "R2": 4643.23,
     "S2": 4493.63
    },
-   "risk_per_share": 173.41,
-   "rr_t1": 1.0,
-   "rr_t2": 1.67,
+   "risk_per_share": 144.5,
+   "rr_t1": 1.2,
+   "rr_t2": 2.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": -0.36900220445215587,
+    "log_vol_ratio": -0.3998593696390832,
     "rsi": 60.67679855628407,
     "dist_high_pct": 1.8550074025251686,
     "ext_ema20": 2.7503289237198025,
@@ -1514,7 +1550,7 @@
     "day_chg": -1.2993471224240771,
     "ret5": 4.145115533445876,
     "rs20": -2.4482202405752274,
-    "bias_score": 65.0,
+    "bias_score": 71.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 13.779272299695599
@@ -1523,12 +1559,12 @@
    "r2_a": 0.8056263861548156,
    "news": [],
    "news_sentiment": null,
-   "win_prob": 53.9,
-   "expected_r": 0.1,
+   "win_prob": 52.8,
+   "expected_r": 0.11,
    "model_used": false,
    "grade": "B",
    "skip_reason": null,
-   "action": "BUY TVSMOTOR near \u20b94,550.10 (skip if it opens above \u20b94,723.51) \u00b7 SL \u20b94,376.70 \u00b7 T1 \u20b94,723.51 \u00b7 T2 \u20b94,839.11"
+   "action": "BUY TVSMOTOR near \u20b94,550.10 (skip if it opens above \u20b94,723.51) \u00b7 SL \u20b94,405.60 \u00b7 T1 \u20b94,723.51 \u00b7 T2 \u20b94,839.11"
   },
   {
    "symbol": "GRASIM",
@@ -1536,8 +1572,8 @@
    "bar_date": "2026-11-26",
    "cmp": 3179.0,
    "day_chg": 0.54,
-   "vol_ratio": 0.66,
-   "vol_badge": "0.7x Vol Surge",
+   "vol_ratio": 0.64,
+   "vol_badge": "0.6x Vol Surge",
    "volume_projected": false,
    "rsi": 60.1,
    "ema20": 3088.39,
@@ -1554,7 +1590,7 @@
    "checks_passed": 3,
    "passed": false,
    "entry": 3179.0,
-   "stop": 3075.76,
+   "stop": 3092.97,
    "t1": 3282.24,
    "t2": 3351.07,
    "pivots": {
@@ -1564,12 +1600,12 @@
     "R2": 3213.8,
     "S2": 3111.2
    },
-   "risk_per_share": 103.24,
-   "rr_t1": 1.0,
-   "rr_t2": 1.67,
+   "risk_per_share": 86.03,
+   "rr_t1": 1.2,
+   "rr_t2": 2.0,
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
-    "log_vol_ratio": -0.41790824795276776,
+    "log_vol_ratio": -0.4404724896450457,
     "rsi": 60.12412577648844,
     "dist_high_pct": 1.8524235875270145,
     "ext_ema20": 2.933846761631931,
@@ -1577,7 +1613,7 @@
     "day_chg": 0.5376344086021501,
     "ret5": 3.8210320052253444,
     "rs20": -4.188816339648893,
-    "bias_score": 65.0,
+    "bias_score": 71.0,
     "news_sent": 0.0,
     "mkt_above50": 1.0,
     "mkt_ret20": 13.779272299695599
@@ -1586,75 +1622,12 @@
    "r2_a": 0.5056174576129143,
    "news": [],
    "news_sentiment": null,
-   "win_prob": 53.9,
-   "expected_r": 0.1,
+   "win_prob": 52.8,
+   "expected_r": 0.11,
    "model_used": false,
    "grade": "B",
    "skip_reason": null,
-   "action": "BUY GRASIM near \u20b93,179.00 (skip if it opens above \u20b93,282.24) \u00b7 SL \u20b93,075.76 \u00b7 T1 \u20b93,282.24 \u00b7 T2 \u20b93,351.07"
-  },
-  {
-   "symbol": "DRREDDY",
-   "name": "Dr Reddy's",
-   "bar_date": "2026-11-26",
-   "cmp": 1392.0,
-   "day_chg": -0.43,
-   "vol_ratio": 0.59,
-   "vol_badge": "0.6x Vol Surge",
-   "volume_projected": false,
-   "rsi": 65.8,
-   "ema20": 1363.5,
-   "ema50": 1305.45,
-   "high20": 1408.3,
-   "dist_high_pct": 1.16,
-   "atr": 25.11,
-   "checks": {
-    "volume": false,
-    "momentum": true,
-    "trend": true,
-    "breakout": true
-   },
-   "checks_passed": 3,
-   "passed": false,
-   "entry": 1392.0,
-   "stop": 1354.34,
-   "t1": 1429.66,
-   "t2": 1454.77,
-   "pivots": {
-    "P": 1393.77,
-    "R1": 1402.13,
-    "S1": 1383.63,
-    "R2": 1412.27,
-    "S2": 1375.27
-   },
-   "risk_per_share": 37.66,
-   "rr_t1": 1.0,
-   "rr_t2": 1.67,
-   "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
-   "features": {
-    "log_vol_ratio": -0.5206999676584682,
-    "rsi": 65.75526571450881,
-    "dist_high_pct": 1.1574272713892613,
-    "ext_ema20": 2.090545251198561,
-    "atr_pct": 1.8036304837805495,
-    "day_chg": -0.42918454935622075,
-    "ret5": -0.4434237868967572,
-    "rs20": -7.51973031496278,
-    "bias_score": 65.0,
-    "news_sent": 0.0,
-    "mkt_above50": 1.0,
-    "mkt_ret20": 13.779272299695599
-   },
-   "r1_a": 0.40361367798632725,
-   "r2_a": 0.8072273559726636,
-   "news": [],
-   "news_sentiment": null,
-   "win_prob": 53.9,
-   "expected_r": 0.1,
-   "model_used": false,
-   "grade": "B",
-   "skip_reason": null,
-   "action": "BUY DRREDDY near \u20b91,392.00 (skip if it opens above \u20b91,429.66) \u00b7 SL \u20b91,354.34 \u00b7 T1 \u20b91,429.66 \u00b7 T2 \u20b91,454.77 \u00b7 Qty 2 for \u20b910k @1% risk"
+   "action": "BUY GRASIM near \u20b93,179.00 (skip if it opens above \u20b93,282.24) \u00b7 SL \u20b93,092.97 \u00b7 T1 \u20b93,282.24 \u00b7 T2 \u20b93,351.07 \u00b7 Qty 1 for \u20b910k @1% risk"
   }
  ],
  "scanned": 82,
