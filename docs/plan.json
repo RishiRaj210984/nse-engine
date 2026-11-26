@@ -1,29 +1,29 @@
 {
- "generated_at": "2026-11-26T00:07:51.840118+05:30",
+ "generated_at": "2026-11-26T07:14:01.675252+05:30",
  "session": "2026-11-26",
- "stage": "preview",
+ "stage": "final",
  "expected_open": {
-  "gap_pct": 1.45,
-  "error_pct": 0.34,
-  "day_pct": 0.68,
-  "snapshot": "Thu 26 Nov 00:07 IST",
-  "stage": "preview",
+  "gap_pct": 1.63,
+  "error_pct": 0.31,
+  "day_pct": 0.66,
+  "snapshot": "Thu 26 Nov 07:13 IST",
+  "stage": "final",
   "tip": "Big gap up expected. Place no market orders at 09:15. Stocks that open above their T1 are skipped. Let the first hour settle before any option entry.",
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": 0.61
+    "move_pct": 1.47
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": -0.46
+    "move_pct": 1.01
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": 2.12
+    "move_pct": 2.48
    },
    {
     "key": "dax",
@@ -43,22 +43,22 @@
    {
     "key": "n225",
     "name": "Nikkei 225",
-    "move_pct": 0.96
+    "move_pct": 2.66
    },
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": 1.1
+    "move_pct": 1.77
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": -1.82
+    "move_pct": -1.01
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": -0.26
+    "move_pct": -0.14
    },
    {
     "key": "inr",
@@ -68,54 +68,54 @@
   ],
   "drivers": [
    {
+    "feature": "es",
+    "label": "S&P 500 futures",
+    "value": 1.47,
+    "contribution_pct": 0.504
+   },
+   {
     "feature": "inr",
     "label": "USD/INR",
     "value": -0.74,
-    "contribution_pct": 0.416
+    "contribution_pct": 0.483
+   },
+   {
+    "feature": "nq",
+    "label": "Nasdaq futures",
+    "value": 1.01,
+    "contribution_pct": -0.174
    },
    {
     "feature": "ym",
     "label": "Dow futures",
-    "value": 2.12,
-    "contribution_pct": -0.223
-   },
-   {
-    "feature": "es",
-    "label": "S&P 500 futures",
-    "value": 0.61,
-    "contribution_pct": 0.217
+    "value": 2.48,
+    "contribution_pct": -0.166
    },
    {
     "feature": "dax",
     "label": "DAX (Germany)",
     "value": -1.13,
-    "contribution_pct": -0.103
+    "contribution_pct": -0.093
    },
    {
-    "feature": "n225",
-    "label": "Nikkei 225",
-    "value": 0.96,
-    "contribution_pct": 0.102
-   },
-   {
-    "feature": "dxy",
-    "label": "Dollar index",
-    "value": -0.26,
-    "contribution_pct": 0.097
+    "feature": "cl",
+    "label": "Crude oil",
+    "value": 1.77,
+    "contribution_pct": -0.088
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.51,
-   "gap_sign_pct": 68.7,
-   "directional_calls": 105,
-   "directional_accuracy": 70.5
+   "gap_corr": 0.68,
+   "gap_sign_pct": 70.0,
+   "directional_calls": 159,
+   "directional_accuracy": 73.0
   }
  },
  "headline": "Market bias UP \u2014 favour buying dips",
  "bias": "BULLISH",
- "score": 93,
- "bias_track_record_pct": 69.2,
+ "score": 92,
+ "bias_track_record_pct": 73.1,
  "options": [
   {
    "index": "NIFTY",
@@ -144,6 +144,35 @@
    },
    "test": null,
    "money_needed": 60865,
+   "money_basis": "margin for the sold options (estimate)"
+  },
+  {
+   "index": "BANKNIFTY",
+   "strategy": "Bull Put Spread",
+   "legs": "SELL 59400 PE + BUY 57000 PE",
+   "expiry": "2026-12-29",
+   "lot_size": 30,
+   "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is above 59,400",
+   "target": "Buy back at \u20b9115.7 (keep ~55% of credit), else hold to expiry Tue 29 Dec",
+   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b97,710 per lot)",
+   "max_loss": 64290,
+   "max_reward": 7710,
+   "reward_risk": 0.12,
+   "decision": "SKIP",
+   "decision_reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (70.2% wins, avg \u20b9-19 per lot over 124 trades). A good-looking slice is not trusted on its own.",
+   "enter_at": "10:15 IST, after the first hour",
+   "exit_by": "target / stop, else expiry 2026-12-29",
+   "setup_stats": {
+    "trades": 124,
+    "win_pct": 70.2,
+    "avg_pnl": -19,
+    "worst": -14563,
+    "best": 4611,
+    "total": -2469,
+    "sample": "days the model called BULLISH"
+   },
+   "test": null,
+   "money_needed": 139022,
    "money_basis": "margin for the sold options (estimate)"
   }
  ],
