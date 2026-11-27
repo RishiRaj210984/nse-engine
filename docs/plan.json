@@ -1,12 +1,12 @@
 {
- "generated_at": "2026-11-27T15:37:54.809061+05:30",
+ "generated_at": "2026-11-27T16:18:24.512868+05:30",
  "session": "2026-11-30",
  "stage": "preview",
  "expected_open": {
   "gap_pct": 0.06,
   "error_pct": 0.39,
-  "day_pct": 0.14,
-  "snapshot": "Fri 27 Nov 15:37 IST",
+  "day_pct": 0.13,
+  "snapshot": "Fri 27 Nov 16:18 IST",
   "stage": "preview",
   "tip": "Flat open expected. Normal entry windows apply.",
   "markets": [
@@ -70,8 +70,8 @@
    {
     "feature": "vix",
     "label": "India VIX level",
-    "value": 16.65,
-    "contribution_pct": 0.074
+    "value": 16.55,
+    "contribution_pct": 0.071
    },
    {
     "feature": "nprev",
@@ -108,14 +108,14 @@
    "oos_days": 300,
    "gap_corr": 0.27,
    "gap_sign_pct": 54.0,
-   "directional_calls": 47,
-   "directional_accuracy": 78.7
+   "directional_calls": 77,
+   "directional_accuracy": 62.3
   }
  },
  "headline": "Market bias UP \u2014 favour buying dips",
  "bias": "BULLISH",
- "score": 51,
- "bias_track_record_pct": 75.6,
+ "score": 60,
+ "bias_track_record_pct": 64.2,
  "options": [
   {
    "index": "NIFTY",
@@ -124,22 +124,22 @@
    "expiry": "2026-12-01",
    "lot_size": 65,
    "entry": "Enter at 10:15 (after the first hour) only if NIFTY is above 25,350",
-   "target": "Buy back at \u20b98.6 (keep ~55% of credit), else hold to expiry Tue 01 Dec",
-   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,235 per lot)",
-   "max_loss": 8515,
-   "max_reward": 1235,
-   "reward_risk": 0.15,
+   "target": "Buy back at \u20b98.5 (keep ~55% of credit), else hold to expiry Tue 01 Dec",
+   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,222 per lot)",
+   "max_loss": 8528,
+   "max_reward": 1222,
+   "reward_risk": 0.14,
    "decision": "SKIP",
-   "decision_reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (57.5% wins, avg \u20b9-264 per lot over 113 trades). A good-looking slice is not trusted on its own.",
+   "decision_reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (59.7% wins, avg \u20b9-189 per lot over 139 trades). A good-looking slice is not trusted on its own.",
    "enter_at": "10:15 IST, after the first hour",
    "exit_by": "target / stop, else expiry 2026-12-01",
    "setup_stats": {
-    "trades": 113,
-    "win_pct": 57.5,
-    "avg_pnl": -264,
+    "trades": 139,
+    "win_pct": 59.7,
+    "avg_pnl": -189,
     "worst": -9210,
     "best": 3650,
-    "total": -29841,
+    "total": -26291,
     "sample": "days the model called BULLISH"
    },
    "test": null,
@@ -153,22 +153,22 @@
    "expiry": "2026-12-29",
    "lot_size": 30,
    "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is above 59,400",
-   "target": "Buy back at \u20b997.7 (keep ~55% of credit), else hold to expiry Tue 29 Dec",
-   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b96,513 per lot)",
-   "max_loss": 53487,
-   "max_reward": 6513,
+   "target": "Buy back at \u20b996.3 (keep ~55% of credit), else hold to expiry Tue 29 Dec",
+   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b96,423 per lot)",
+   "max_loss": 53577,
+   "max_reward": 6423,
    "reward_risk": 0.12,
    "decision": "SKIP",
-   "decision_reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (69.0% wins, avg \u20b9-62 per lot over 126 trades). A good-looking slice is not trusted on its own.",
+   "decision_reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (70.3% wins, avg \u20b9-24 per lot over 158 trades). A good-looking slice is not trusted on its own.",
    "enter_at": "10:15 IST, after the first hour",
    "exit_by": "target / stop, else expiry 2026-12-29",
    "setup_stats": {
-    "trades": 126,
-    "win_pct": 69.0,
-    "avg_pnl": -62,
+    "trades": 158,
+    "win_pct": 70.3,
+    "avg_pnl": -24,
     "worst": -14563,
     "best": 4611,
-    "total": -7918,
+    "total": -3909,
     "sample": "days the model called BULLISH"
    },
    "test": null,
@@ -176,95 +176,15 @@
    "money_basis": "margin for the sold options (estimate)"
   }
  ],
- "stocks": [
-  {
-   "symbol": "HAL",
-   "grade": "B",
-   "action": "BUY HAL near \u20b95,074.00 (skip if it opens above \u20b95,265.73) \u00b7 SL \u20b94,914.23 \u00b7 T1 \u20b95,265.73 \u00b7 T2 \u20b95,393.54",
-   "entry": 5074.0,
-   "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
-   "exit_by": "day 2, 15:15 IST",
-   "stop": 4914.23,
-   "t1": 5265.73,
-   "t2": 5393.54,
-   "win_prob": 52.8,
-   "vol_badge": "3.0x Vol Surge"
-  },
-  {
-   "symbol": "BEL",
-   "grade": "B",
-   "action": "BUY BEL near \u20b9411.45 (skip if it opens above \u20b9423.92) \u00b7 SL \u20b9401.06 \u00b7 T1 \u20b9423.92 \u00b7 T2 \u20b9432.23 \u00b7 Qty 9 for \u20b910k @1% risk",
-   "entry": 411.45,
-   "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
-   "exit_by": "day 2, 15:15 IST",
-   "stop": 401.06,
-   "t1": 423.92,
-   "t2": 432.23,
-   "win_prob": 52.8,
-   "vol_badge": "1.5x Vol Surge"
-  }
- ],
- "stock_options": [
-  {
-   "symbol": "HAL",
-   "kind": "CE",
-   "side": "BUY",
-   "grade": "B",
-   "trigger": 5074.0,
-   "stop": 4914.23,
-   "t1": 5265.73,
-   "lot": 150,
-   "strike": 5050.0,
-   "premium": 28046,
-   "tiers": {
-    "5K": {
-     "strike": 5700.0,
-     "premium": 3716
-    },
-    "10K": {
-     "strike": 5400.0,
-     "premium": 9742
-    },
-    "15K": {
-     "strike": 5300.0,
-     "premium": 13320
-    }
-   }
-  },
-  {
-   "symbol": "BEL",
-   "kind": "CE",
-   "side": "BUY",
-   "grade": "B",
-   "trigger": 411.45,
-   "stop": 401.06,
-   "t1": 423.92,
-   "lot": 1425,
-   "strike": 410.0,
-   "premium": 18354,
-   "tiers": {
-    "5K": {
-     "strike": 440.0,
-     "premium": 4988
-    },
-    "10K": {
-     "strike": 425.0,
-     "premium": 9832
-    },
-    "15K": {
-     "strike": 420.0,
-     "premium": 12212
-    }
-   }
-  }
- ],
+ "stocks": [],
+ "stock_options": [],
  "capital": 15000,
- "momentum_money": 7663,
+ "momentum_money": 7617,
  "put_gate_open": false,
  "market_gate_open": true,
  "events": [],
  "stock_track_record": null,
- "no_trade_reason": null,
+ "no_trade_reason": "No stock passed all 4 rules with a positive expected value. Sitting out is a valid decision.",
  "timeline": [
   {
    "date": "2026-11-30",

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-27T15:37:27.132514+05:30",
+ "generated_at": "2026-11-27T16:18:05.594044+05:30",
  "target_session": "2026-11-30",
  "reference_date": "2026-11-27",
  "us_session_used": "2026-11-27",
@@ -21,6 +21,14 @@
    "as_of": "2026-11-25"
   },
   {
+   "name": "Dow Jones",
+   "symbol": "^DJI",
+   "last": 50182.95,
+   "change": 0.328,
+   "change_unit": "%",
+   "as_of": "2026-11-25"
+  },
+  {
    "name": "US 10Y Yield",
    "symbol": "^TNX",
    "last": 4.85,
@@ -31,16 +39,16 @@
   {
    "name": "Crude Oil",
    "symbol": "CL=F",
-   "last": 85.7,
-   "change": 2.414,
+   "last": 85.72,
+   "change": 2.438,
    "change_unit": "%",
    "as_of": "2026-11-27"
   },
   {
    "name": "Dollar Index",
    "symbol": "DX-Y.NYB",
-   "last": 103.82,
-   "change": 0.148,
+   "last": 103.84,
+   "change": 0.161,
    "change_unit": "%",
    "as_of": "2026-11-27"
   },
@@ -63,8 +71,8 @@
   {
    "name": "India VIX",
    "symbol": "^INDIAVIX",
-   "last": 16.65,
-   "change": -1.143,
+   "last": 16.55,
+   "change": -1.752,
    "change_unit": "%",
    "as_of": "2026-11-27"
   },
@@ -87,60 +95,92 @@
  ],
  "bias": {
   "label": "BULLISH",
-  "score": 51,
-  "z": 0.567,
-  "model_z": 0.176,
-  "predicted_nifty_move_pct": 0.14,
-  "typical_daily_move_pct": 0.777,
-  "source": "pre-open global snapshot",
-  "india_vix": 16.65,
+  "score": 60,
+  "z": 0.7,
+  "model_z": 0.094,
+  "predicted_nifty_move_pct": 0.076,
+  "typical_daily_move_pct": 0.803,
+  "source": "daily close model",
+  "india_vix": 16.55,
   "components": [
    {
     "feature": "vix",
     "label": "India VIX level",
-    "value": 16.65,
-    "contribution_pct": 0.074
+    "value": 16.545,
+    "contribution_pct": 0.054
    },
    {
-    "feature": "nprev",
-    "label": "Nifty previous day",
-    "value": -1.07,
-    "contribution_pct": 0.035
+    "feature": "nifty_ext",
+    "label": "Nifty vs EMA20 %",
+    "value": 2.701,
+    "contribution_pct": 0.039
    },
    {
-    "feature": "ym",
-    "label": "Dow futures",
+    "feature": "dxy",
+    "label": "Dollar index %",
+    "value": 0.161,
+    "contribution_pct": -0.038
+   },
+   {
+    "feature": "nifty_prev",
+    "label": "Nifty previous day %",
+    "value": -1.071,
+    "contribution_pct": 0.029
+   },
+   {
+    "feature": "vix_chg",
+    "label": "India VIX change",
+    "value": -0.295,
+    "contribution_pct": -0.029
+   },
+   {
+    "feature": "spx",
+    "label": "S&P 500 overnight %",
     "value": 0.0,
-    "contribution_pct": 0.013
+    "contribution_pct": -0.023
    },
    {
-    "feature": "nq",
-    "label": "Nasdaq futures",
-    "value": 0.0,
-    "contribution_pct": -0.006
-   },
-   {
-    "feature": "es",
-    "label": "S&P 500 futures",
-    "value": 0.0,
-    "contribution_pct": -0.005
-   },
-   {
-    "feature": "cl",
-    "label": "Crude oil",
+    "feature": "ndx",
+    "label": "Nasdaq minus S&P (tech tilt) %",
     "value": 0.0,
     "contribution_pct": 0.004
+   },
+   {
+    "feature": "crude",
+    "label": "Crude oil %",
+    "value": 2.438,
+    "contribution_pct": -0.001
+   },
+   {
+    "feature": "tnx",
+    "label": "US 10Y yield chg (pts)",
+    "value": 0.0,
+    "contribution_pct": 0.0
    }
   ]
  },
  "news": {
   "summary": {
-   "score": 0.155,
+   "score": 0.253,
    "count": 40,
    "label": "POSITIVE"
   },
-  "weight": 0.378,
+  "weight": 0.359,
   "headlines": [
+   {
+    "title": "Eurozone bond yields rise as investors return to riskier assets, oil prices rebound",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/eurozone-bond-yields-rise-as-investors-return-to-riskier-assets-oil-prices-rebound/articleshow/136218279.cms",
+    "published": "Fri, 27 Nov 2026 15:56:25 +0530",
+    "sentiment": -0.178
+   },
+   {
+    "title": "Rupee rally takes a hit as AI trade revival dents shares, currency sees weekly dip",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/forex/rupee-rally-takes-a-hit-as-ai-trade-revival-dents-shares-currency-sees-weekly-dip/articleshow/136218142.cms",
+    "published": "Fri, 27 Nov 2026 15:53:05 +0530",
+    "sentiment": 0.586
+   },
    {
     "title": "Can SpaceX's AI ambitions drive further upside in its stock?",
     "source": "ET Markets",
@@ -163,6 +203,34 @@
     "sentiment": 0.153
    },
    {
+    "title": "Nestle India Share Price Live Updates: Nestle India Bonus Updates",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/stock-liveblog/nestle-india-share-price-today-live-27-nov-2026/liveblog/136209163.cms",
+    "published": "Fri, 27 Nov 2026 10:05:03 +0530",
+    "sentiment": 0.691
+   },
+   {
+    "title": "Tata Motors PV Share Price Live Updates: Tata Motors PV Bonus Updates",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/stock-liveblog/tata-motors-pv-stock-price-today-live-27-nov-2026/liveblog/136209148.cms",
+    "published": "Fri, 27 Nov 2026 10:04:35 +0530",
+    "sentiment": 0.691
+   },
+   {
+    "title": "Bharti Airtel Share Price Live Updates: Bharti Airtel Bonus Updates",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/stock-liveblog/bharti-airtel-share-price-live-27-nov-2026/liveblog/136209136.cms",
+    "published": "Fri, 27 Nov 2026 10:04:14 +0530",
+    "sentiment": 0.691
+   },
+   {
+    "title": "BPCL Share Price Live Updates: BPCL Bonus Updates",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/stock-liveblog/bpcl-stock-price-live-updates-27-nov-2026/liveblog/136209119.cms",
+    "published": "Fri, 27 Nov 2026 10:03:56 +0530",
+    "sentiment": 0.691
+   },
+   {
     "title": "ICICI Bank Share Price Live Updates: ICICI Bank Dividend Updates",
     "source": "ET Markets",
     "link": "https://economictimes.indiatimes.com/markets/stocks/stock-liveblog/icici-bank-stock-price-today-live-27-nov-2026/liveblog/136209072.cms",
@@ -170,73 +238,29 @@
     "sentiment": 0.459
    },
    {
+    "title": "Coal India Share Price Live Updates: Coal India Ltd Bonus Updates",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/stock-liveblog/coal-india-ltd-share-price-live-27-nov-2026/liveblog/136209046.cms",
+    "published": "Fri, 27 Nov 2026 10:02:43 +0530",
+    "sentiment": 0.691
+   },
+   {
     "title": "HDFC Bank, SBI, 8 other stocks JPMorgan is bullish on as markets gear up to enter 2027. See full list",
     "source": "ET Markets",
     "link": "https://economictimes.indiatimes.com/markets/stocks/news/hdfc-bank-sbi-8-other-stocks-jpmorgan-is-bullish-on-as-markets-gear-up-to-enter-2027-see-full-list/slideshow/136208713.cms",
     "published": "Fri, 27 Nov 2026 09:35:05 +0530",
     "sentiment": 0.421
-   },
-   {
-    "title": "HCL Technologies among 7 stocks showing White Marubozu Pattern",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/hcl-technologies-among-7-stocks-showing-white-marubozu-pattern/slideshow/136208369.cms",
-    "published": "Fri, 27 Nov 2026 09:15:14 +0530",
-    "sentiment": 0.0
-   },
-   {
-    "title": "Positive breakout: These 4 stocks close above their 200 DMAs",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/positive-breakout-these-4-stocks-close-above-their-200-dmas/slideshow/136208471.cms",
-    "published": "Fri, 27 Nov 2026 09:11:45 +0530",
-    "sentiment": 0.727
-   },
-   {
-    "title": "Sun TV Network among 4 stocks closing above VWAP",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/sun-tv-network-among-4-stocks-closing-above-vwap/slideshow/136208195.cms",
-    "published": "Fri, 27 Nov 2026 09:01:32 +0530",
-    "sentiment": 0.0
-   },
-   {
-    "title": "Gold jumps 2%, silver hits 6% upper circuit on MCX as bullion rebounds from multi-month lows: Gold Silver Rates Live Updates",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/live-blog/live-updates-gold-rate-today-27th-november-24k-22k-20k-18-carat-mcx-gold-silver-price-in-delhi-hyderabad-chennai-bengaluru-citywise/liveblog/136208041.cms",
-    "published": "Fri, 27 Nov 2026 08:59:30 +0530",
-    "sentiment": 0.178
-   },
-   {
-    "title": "Bharat Coking Coal among 5 stocks showing RSI trending up",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/bharat-coking-coal-among-5-stocks-showing-rsi-trending-up/slideshow/136208088.cms",
-    "published": "Fri, 27 Nov 2026 08:54:46 +0530",
-    "sentiment": 0.0
-   },
-   {
-    "title": "Dubai seals deal for $159 billion Islamic banking giant",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/dubai-seals-deal-for-159-billion-islamic-banking-giant/articleshow/136206936.cms",
-    "published": "Fri, 27 Nov 2026 07:42:29 +0530",
-    "sentiment": 0.0
-   },
-   {
-    "title": "Brent trades near month's high as Mideast conflict threatens supply",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/commodities/news/brent-trades-near-months-high-as-mideast-conflict-threatens-supply/articleshow/136207059.cms",
-    "published": "Fri, 27 Nov 2026 07:37:52 +0530",
-    "sentiment": -0.599
    }
   ]
  },
  "model": {
-  "oos_days": 300,
-  "directional_calls": 41,
-  "directional_accuracy": 75.6,
-  "sign_accuracy_all_days": 53.0,
-  "gap_corr": 0.27,
-  "gap_sign_pct": 54.0,
+  "oos_days": 250,
+  "directional_calls": 123,
+  "directional_accuracy": 64.2,
+  "sign_accuracy_all_days": 60.4,
   "trained_rows": 750,
-  "version": 52,
-  "bias_threshold": 0.3
+  "version": 53,
+  "bias_threshold": 0.2
  },
  "options": {
   "NIFTY": {
@@ -246,8 +270,8 @@
    "lot_size": 65,
    "expiry": "2026-12-01",
    "days_to_expiry": 1.75,
-   "iv_used_pct": 16.65,
-   "expected_move": 295,
+   "iv_used_pct": 16.55,
+   "expected_move": 293,
    "levels": {
     "prev_close": 25607.2,
     "ema20": 24933.84,
@@ -270,22 +294,22 @@
        "action": "SELL",
        "strike": 25350,
        "type": "PE",
-       "est_premium": 29.3
+       "est_premium": 28.9
       },
       {
        "action": "BUY",
        "strike": 25200,
        "type": "PE",
-       "est_premium": 10.3
+       "est_premium": 10.1
       }
      ],
-     "net_premium": 19.0,
-     "max_loss": 8515,
-     "max_reward": 1235,
-     "reward_risk": 0.15,
+     "net_premium": 18.8,
+     "max_loss": 8528,
+     "max_reward": 1222,
+     "reward_risk": 0.14,
      "entry": "Enter at 10:15 (after the first hour) only if NIFTY is above 25,350",
-     "target": "Buy back at \u20b98.6 (keep ~55% of credit), else hold to expiry Tue 01 Dec",
-     "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,235 per lot)",
+     "target": "Buy back at \u20b98.5 (keep ~55% of credit), else hold to expiry Tue 01 Dec",
+     "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,222 per lot)",
      "breakeven": [
       25331
      ],
@@ -294,15 +318,15 @@
       "decision": "SKIP",
       "dte": 1,
       "stats": {
-       "trades": 113,
-       "win_pct": 57.5,
-       "avg_pnl": -264,
+       "trades": 139,
+       "win_pct": 59.7,
+       "avg_pnl": -189,
        "worst": -9210,
        "best": 3650,
-       "total": -29841,
+       "total": -26291,
        "sample": "days the model called BULLISH"
       },
-      "reason": "On days the model called BULLISH, this spread lost overall (57.5% wins, avg \u20b9-264 per lot over 113 trades). A good-looking slice is not trusted on its own."
+      "reason": "On days the model called BULLISH, this spread lost overall (59.7% wins, avg \u20b9-189 per lot over 139 trades). A good-looking slice is not trusted on its own."
      }
     },
     {
@@ -312,22 +336,22 @@
        "action": "BUY",
        "strike": 25600,
        "type": "CE",
-       "est_premium": 125.5
+       "est_premium": 124.7
       },
       {
        "action": "SELL",
        "strike": 25750,
        "type": "CE",
-       "est_premium": 62.7
+       "est_premium": 62.1
       }
      ],
-     "net_premium": -62.8,
-     "max_loss": 4082,
-     "max_reward": 5668,
-     "reward_risk": 1.39,
+     "net_premium": -62.6,
+     "max_loss": 4069,
+     "max_reward": 5681,
+     "reward_risk": 1.4,
      "entry": "Enter on dips that hold above 25,479 (EMA20 / S1 support zone)",
-     "target": "Exit spread near \u20b9115.1 or NIFTY at 25,750",
-     "stop_loss": "Spread falls to \u20b931.4, or NIFTY closes below 25,351",
+     "target": "Exit spread near \u20b9115.0 or NIFTY at 25,750",
+     "stop_loss": "Spread falls to \u20b931.3, or NIFTY closes below 25,351",
      "breakeven": [
       25663
      ],
@@ -336,15 +360,15 @@
       "decision": "SKIP",
       "dte": 1,
       "stats": {
-       "trades": 114,
-       "win_pct": 36.8,
-       "avg_pnl": -719,
+       "trades": 144,
+       "win_pct": 36.1,
+       "avg_pnl": -720,
        "worst": -8128,
        "best": 10202,
-       "total": -81992,
+       "total": -103683,
        "sample": "days the model called BULLISH"
       },
-      "reason": "On days the model called BULLISH, this spread lost overall (36.8% wins, avg \u20b9-719 per lot over 114 trades). A good-looking slice is not trusted on its own."
+      "reason": "On days the model called BULLISH, this spread lost overall (36.1% wins, avg \u20b9-720 per lot over 144 trades). A good-looking slice is not trusted on its own."
      }
     },
     {
@@ -354,18 +378,18 @@
        "action": "BUY",
        "strike": 25600,
        "type": "CE",
-       "est_premium": 125.5
+       "est_premium": 124.7
       }
      ],
-     "net_premium": -125.5,
-     "max_loss": 8158,
-     "max_reward": 7308,
+     "net_premium": -124.7,
+     "max_loss": 8106,
+     "max_reward": 7310,
      "reward_risk": 0.9,
      "entry": "Enter on dips that hold above 25,479 (EMA20 / S1 support zone)",
-     "target": "Premium \u2248 \u20b9237.9 (NIFTY near 25,822)",
-     "stop_loss": "Premium \u20b987.8 (-30%), or NIFTY closes below 25,351",
+     "target": "Premium \u2248 \u20b9237.2 (NIFTY near 25,822)",
+     "stop_loss": "Premium \u20b987.3 (-30%), or NIFTY closes below 25,351",
      "breakeven": [
-      25726
+      25725
      ],
      "notes": "Max loss = full premium. Theta decay hurts if move is late.",
      "verdict": {
@@ -381,15 +405,15 @@
     "decision": "SKIP",
     "dte": 1,
     "stats": {
-     "trades": 113,
-     "win_pct": 57.5,
-     "avg_pnl": -264,
+     "trades": 139,
+     "win_pct": 59.7,
+     "avg_pnl": -189,
      "worst": -9210,
      "best": 3650,
-     "total": -29841,
+     "total": -26291,
      "sample": "days the model called BULLISH"
     },
-    "reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (57.5% wins, avg \u20b9-264 per lot over 113 trades). A good-looking slice is not trusted on its own."
+    "reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (59.7% wins, avg \u20b9-189 per lot over 139 trades). A good-looking slice is not trusted on its own."
    }
   },
   "BANKNIFTY": {
@@ -399,8 +423,8 @@
    "lot_size": 30,
    "expiry": "2026-12-29",
    "days_to_expiry": 29.75,
-   "iv_used_pct": 22.42,
-   "expected_move": 4036,
+   "iv_used_pct": 22.29,
+   "expected_move": 4011,
    "levels": {
     "prev_close": 63040.9,
     "ema20": 60764.49,
@@ -423,39 +447,39 @@
        "action": "SELL",
        "strike": 59400,
        "type": "PE",
-       "est_premium": 318.1
+       "est_premium": 312.3
       },
       {
        "action": "BUY",
        "strike": 57400,
        "type": "PE",
-       "est_premium": 101.0
+       "est_premium": 98.2
       }
      ],
-     "net_premium": 217.1,
-     "max_loss": 53487,
-     "max_reward": 6513,
+     "net_premium": 214.1,
+     "max_loss": 53577,
+     "max_reward": 6423,
      "reward_risk": 0.12,
      "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is above 59,400",
-     "target": "Buy back at \u20b997.7 (keep ~55% of credit), else hold to expiry Tue 29 Dec",
-     "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b96,513 per lot)",
+     "target": "Buy back at \u20b996.3 (keep ~55% of credit), else hold to expiry Tue 29 Dec",
+     "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b96,423 per lot)",
      "breakeven": [
-      59183
+      59186
      ],
      "notes": "Earns time decay; wins if the index does not fall (bull put) / rise (bear call) past the short strike.",
      "verdict": {
       "decision": "SKIP",
       "dte": 29,
       "stats": {
-       "trades": 126,
-       "win_pct": 69.0,
-       "avg_pnl": -62,
+       "trades": 158,
+       "win_pct": 70.3,
+       "avg_pnl": -24,
        "worst": -14563,
        "best": 4611,
-       "total": -7918,
+       "total": -3909,
        "sample": "days the model called BULLISH"
       },
-      "reason": "On days the model called BULLISH, this spread lost overall (69.0% wins, avg \u20b9-62 per lot over 126 trades). A good-looking slice is not trusted on its own."
+      "reason": "On days the model called BULLISH, this spread lost overall (70.3% wins, avg \u20b9-24 per lot over 158 trades). A good-looking slice is not trusted on its own."
      }
     },
     {
@@ -465,22 +489,22 @@
        "action": "BUY",
        "strike": 63000,
        "type": "CE",
-       "est_premium": 1798.8
+       "est_premium": 1789.0
       },
       {
        "action": "SELL",
        "strike": 65000,
        "type": "CE",
-       "est_premium": 948.3
+       "est_premium": 939.0
       }
      ],
-     "net_premium": -850.5,
-     "max_loss": 25515,
-     "max_reward": 34485,
+     "net_premium": -850.0,
+     "max_loss": 25500,
+     "max_reward": 34500,
      "reward_risk": 1.35,
      "entry": "Enter on dips that hold above 62,689 (EMA20 / S1 support zone)",
-     "target": "Exit spread near \u20b91540.2 or BANKNIFTY at 65,000",
-     "stop_loss": "Spread falls to \u20b9425.2, or BANKNIFTY closes below 62,336",
+     "target": "Exit spread near \u20b91540.0 or BANKNIFTY at 65,000",
+     "stop_loss": "Spread falls to \u20b9425.0, or BANKNIFTY closes below 62,336",
      "breakeven": [
       63850
      ],
@@ -489,15 +513,15 @@
       "decision": "SKIP",
       "dte": 29,
       "stats": {
-       "trades": 135,
-       "win_pct": 43.0,
-       "avg_pnl": -570,
+       "trades": 167,
+       "win_pct": 42.5,
+       "avg_pnl": -585,
        "worst": -11570,
        "best": 11404,
-       "total": -77051,
+       "total": -97810,
        "sample": "days the model called BULLISH"
       },
-      "reason": "On days the model called BULLISH, this spread lost overall (43.0% wins, avg \u20b9-570 per lot over 135 trades). A good-looking slice is not trusted on its own."
+      "reason": "On days the model called BULLISH, this spread lost overall (42.5% wins, avg \u20b9-585 per lot over 167 trades). A good-looking slice is not trusted on its own."
      }
     },
     {
@@ -507,18 +531,18 @@
        "action": "BUY",
        "strike": 63000,
        "type": "CE",
-       "est_premium": 1798.8
+       "est_premium": 1789.0
       }
      ],
-     "net_premium": -1798.8,
-     "max_loss": 53964,
-     "max_reward": 10250,
+     "net_premium": -1789.0,
+     "max_loss": 53670,
+     "max_reward": 10253,
      "reward_risk": 0.19,
      "entry": "Enter on dips that hold above 62,689 (EMA20 / S1 support zone)",
-     "target": "Premium \u2248 \u20b92140.5 (BANKNIFTY near 63,662)",
-     "stop_loss": "Premium \u20b91259.2 (-30%), or BANKNIFTY closes below 62,336",
+     "target": "Premium \u2248 \u20b92130.8 (BANKNIFTY near 63,662)",
+     "stop_loss": "Premium \u20b91252.3 (-30%), or BANKNIFTY closes below 62,336",
      "breakeven": [
-      64799
+      64789
      ],
      "notes": "Max loss = full premium. Theta decay hurts if move is late.",
      "verdict": {
@@ -534,26 +558,26 @@
     "decision": "SKIP",
     "dte": 29,
     "stats": {
-     "trades": 126,
-     "win_pct": 69.0,
-     "avg_pnl": -62,
+     "trades": 158,
+     "win_pct": 70.3,
+     "avg_pnl": -24,
      "worst": -14563,
      "best": 4611,
-     "total": -7918,
+     "total": -3909,
      "sample": "days the model called BULLISH"
     },
-    "reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (69.0% wins, avg \u20b9-62 per lot over 126 trades). A good-looking slice is not trusted on its own."
+    "reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (70.3% wins, avg \u20b9-24 per lot over 158 trades). A good-looking slice is not trusted on its own."
    }
   }
  },
  "events": [],
  "preopen": {
-  "snapshot_ist": "Fri 27 Nov 15:37 IST",
+  "snapshot_ist": "Fri 27 Nov 16:18 IST",
   "stage": "preview",
   "expected_gap_pct": 0.06,
   "gap_typical_error_pct": 0.39,
-  "expected_day_pct": 0.14,
-  "z": 0.176,
+  "expected_day_pct": 0.13,
+  "z": 0.173,
   "typical_daily_move_pct": 0.777,
   "markets": [
    {
@@ -616,8 +640,8 @@
    {
     "feature": "vix",
     "label": "India VIX level",
-    "value": 16.65,
-    "contribution_pct": 0.074
+    "value": 16.55,
+    "contribution_pct": 0.071
    },
    {
     "feature": "nprev",
@@ -654,13 +678,13 @@
    "oos_days": 300,
    "gap_corr": 0.27,
    "gap_sign_pct": 54.0,
-   "directional_calls": 47,
-   "directional_accuracy": 78.7
+   "directional_calls": 77,
+   "directional_accuracy": 62.3
   },
-  "vix": 16.65
+  "vix": 16.55
  },
  "global_table": {
-  "updated": "2026-11-27T15:37:42.963707+05:30",
+  "updated": "2026-11-27T16:18:20.932066+05:30",
   "rows": [
    {
     "group": "US, last close",
@@ -676,7 +700,7 @@
    },
    {
     "group": "Europe, last close",
-    "move": "DAX +0.8%, FTSE +0.7%, Euro Stoxx +1.2%",
+    "move": "DAX +0.8%, FTSE +0.7%, Euro Stoxx +1.3%",
     "effect": "green",
     "note": "Supportive"
    },
@@ -700,7 +724,7 @@
    },
    {
     "group": "Dollar index",
-    "move": "103.82 (+0.15%)",
+    "move": "103.84 (+0.17%)",
     "effect": "flat",
     "note": "Steady"
    },
@@ -712,7 +736,7 @@
    },
    {
     "group": "India VIX (fear)",
-    "move": "16.66 (-5.7%)",
+    "move": "16.55 (-6.4%)",
     "effect": "green",
     "note": "Fear easing"
    },

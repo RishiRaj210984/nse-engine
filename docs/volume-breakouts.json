@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-11-27T15:37:48.225375+05:30",
+ "generated_at": "2026-11-27T16:18:23.189815+05:30",
  "market_open": false,
  "volume_projected": false,
  "bias": {
   "label": "BULLISH",
-  "score": 51
+  "score": 60
  },
  "rules": {
   "vol_mult": 1.5,
@@ -19,15 +19,15 @@
  },
  "market_gate_open": true,
  "model": {
-  "version": 52,
-  "updated": "2026-11-26T16:17:56.924708+05:30",
+  "version": 53,
+  "updated": "2026-11-27T16:17:52.362351+05:30",
   "ranker_on": false,
-  "samples": 2603,
-  "live_samples": 482,
-  "base_win_rate": 0.5278,
-  "expectancy_r": 0.108,
-  "holdout_auc": 0.482,
-  "note": "sl_atr 1.5\u21921.25; news_weight 0.375\u21920.378; ranker OFF: no out-of-sample edge, using rule stats only"
+  "samples": 2632,
+  "live_samples": 511,
+  "base_win_rate": 0.5021,
+  "expectancy_r": 0.087,
+  "holdout_auc": 0.452,
+  "note": "bias_threshold 0.3\u21920.2; news_weight 0.378\u21920.359; ranker OFF: no out-of-sample edge, using rule stats only"
  },
  "candidates": [
   {
@@ -70,21 +70,28 @@
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
     "log_vol_ratio": 1.0977208126942026,
-    "rsi": 61.93611282536861,
+    "rsi": 61.93611282534961,
     "dist_high_pct": 1.4374514374514373,
     "ext_ema20": 4.193970185556006,
-    "atr_pct": 2.51906099673547,
+    "atr_pct": 2.519060996736475,
     "day_chg": 3.348539577026477,
     "ret5": 6.596638655462184,
     "rs20": -8.194205440772961,
-    "bias_score": 51.0,
-    "news_sent": 0.332,
+    "bias_score": 60.0,
+    "news_sent": 0.375,
     "mkt_above50": 1.0,
     "mkt_ret20": 12.81276214180389
    },
-   "r1_a": 0.8267017575838279,
-   "r2_a": 1.653403515167663,
+   "r1_a": 0.826701757583498,
+   "r2_a": 1.653403515167003,
    "news": [
+    {
+     "title": "BEML, Bharat Dynamics, GRSE, and HAL share price display buying interest. What's driving the rally?",
+     "source": "India Infoline",
+     "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPYi1la2hFNXBpTVhXc2h0WXg1UnJBQW9oSXBhWmRRVERNeV96TGt2TTAxTGZ6cnFFSXpqZzAzVW9GR0JTanhsc0hlX2NZQVYzeFB0RElqVU8yRVNYWEFuT2NiMVV4c3psaHNpUmNadEdnX09KMnRodTk2dTdnYlltTU9XU3BFLTMyaE5UUUF0ZzVISTJISlQ1ZHhJSjJyOG10YlFGcGlmRmthek9OdWdXZGY5Y3dHQjhKY3JoY3Q3c1d3VzItQkhMQ1VDb2pGRkNIU0h5eQ?oc=5",
+     "published": "Fri, 27 Nov 2026 10:36:07 GMT",
+     "sentiment": 0.836
+    },
     {
      "title": "Why Defence Stocks are Up Today: \u20b93.7 Lakh Crore Project Pipeline Puts BEL, Solar Industries and HAL in Focus",
      "source": "Kotak Neo",
@@ -98,13 +105,6 @@
      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPc1FNMS1DUzdXUTZZdmFHa1lyQWNQX1VITUVGNzNuNUF0UVJocDJxNEUwdFgtTkRqQUVoZkNrX0dWdHFBclRpM0pfMFRobVB1N1ZGUXNILUN3WC1RN21tMkhqNDVEdEJTQi01TGFnRHVRZDMzbkgzM0VxbFNRY2pReUZtVmF2Tno2YVVncjBMMWViSmtNTFZiUTEybw?oc=5",
      "published": "Fri, 27 Nov 2026 04:54:00 GMT",
      "sentiment": 0.296
-    },
-    {
-     "title": "BEML, Data Patterns, Solar Industries, other defence stocks rally up to 11%. What Choice analysts are sayi",
-     "source": "The Economic Times",
-     "link": "https://news.google.com/rss/articles/CBMilAJBVV95cUxOR201VjJvTGNoUVB1YkU1Sy1UTVh3QmRvb1lpajBnLXkzaE1DUW9ob2dBTG95UlZJcGVIV3pSRXloN3NQWjE0SElQZ1lhWEpsZlpPU1ItTlFCbnQ3NU1oSG1VNUxYcTloXzVOUVJJS0g0YTFEODRRcmZYclB3WFZXTy1lalZJV1ExT21tRU1QSHdjMDdRX05UM0RlR1F5UnRScGF1ZF9wS00tZWNQTHJ5amx3T3lkX2g5eS1VWVdTa2VBdERja1BFaGVRZlRXbTB4MFZYZ09qN0l1eFhmUWVhRTZfaE54MjVOZXBXUEkzeTJNLWhldHJjU1E1R3c2NmtwZFlXNHpaYlA4VnhtMWdEVVFtU1nSAY4CQVVfeXFMT2JuU3hrRG9QbVY2NjViUlhvUmhZeGRSTkoxYTU0VHJaYWxGUU9qWlRGQ1JJaFZNWmtTWUt0blYzUEN6TVpuRXdQRzhaRDNJajN1aDZfazZOTVlwT3RTNmowVUtRR0N2eXdUeHllUDd4amN1c3g2ZUF2Q2lNMDYtZXlzanM5ZFBrRkpacFM5UU1mWlZ4QnRZU2w1b2lmdEN5YW5GWW5PVGpOUGRUWEdlcDdtNjBhNkROSlQ4WktFU1RRTEhlOGNuNzEyTnhlQXVLOW93RFpjbDY5RjRGc3h0SDY2VmtFSHJPY1NJRjZ2ZVM2aXFlNEpoTk4wR19UWDlpUnJENmtOLUdmd2tIbnBn?oc=5",
-     "published": "Fri, 27 Nov 2026 08:05:33 GMT",
-     "sentiment": 0.459
     },
     {
      "title": "HAL, BDL Shares Jump 4% as Defence Stocks Rally",
@@ -122,14 +122,14 @@
     }
    ],
    "news_sentiment": {
-    "score": 0.332,
+    "score": 0.375,
     "count": 8,
     "label": "POSITIVE"
    },
-   "win_prob": 52.8,
-   "expected_r": 0.11,
+   "win_prob": 50.2,
+   "expected_r": 0.09,
    "model_used": false,
-   "grade": "B",
+   "grade": "C",
    "skip_reason": null,
    "action": "BUY HAL near \u20b95,074.00 (skip if it opens above \u20b95,265.73) \u00b7 SL \u20b94,914.23 \u00b7 T1 \u20b95,265.73 \u00b7 T2 \u20b95,393.54"
   },
@@ -173,20 +173,20 @@
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
     "log_vol_ratio": 0.4109373854569191,
-    "rsi": 64.85998076522317,
+    "rsi": 64.85998076517843,
     "dist_high_pct": 0.735823351741556,
     "ext_ema20": 3.7942171280908044,
-    "atr_pct": 2.019816983890598,
+    "atr_pct": 2.019816983889978,
     "day_chg": 1.7181735987716218,
     "ret5": 1.7936664475622477,
     "rs20": 0.4251641814482676,
-    "bias_score": 51.0,
-    "news_sent": 0.137,
+    "bias_score": 60.0,
+    "news_sent": 0.174,
     "mkt_above50": 1.0,
     "mkt_ret20": 12.81276214180389
    },
-   "r1_a": 0.6036508183239895,
-   "r2_a": 1.207301636647979,
+   "r1_a": 0.6036508183241748,
+   "r2_a": 1.2073016366483496,
    "news": [
     {
      "title": "Bharat Electronics Ltd (BEL-NS) Share Price Today, Live Chart and News",
@@ -225,14 +225,14 @@
     }
    ],
    "news_sentiment": {
-    "score": 0.137,
+    "score": 0.174,
     "count": 8,
     "label": "POSITIVE"
    },
-   "win_prob": 52.8,
-   "expected_r": 0.11,
+   "win_prob": 50.2,
+   "expected_r": 0.09,
    "model_used": false,
-   "grade": "B",
+   "grade": "C",
    "skip_reason": null,
    "action": "BUY BEL near \u20b9411.45 (skip if it opens above \u20b9423.92) \u00b7 SL \u20b9401.06 \u00b7 T1 \u20b9423.92 \u00b7 T2 \u20b9432.23 \u00b7 Qty 9 for \u20b910k @1% risk"
   }
@@ -278,20 +278,20 @@
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
     "log_vol_ratio": 0.4241953413610548,
-    "rsi": 55.84224448218887,
+    "rsi": 55.84224448219184,
     "dist_high_pct": 5.243415654087066,
     "ext_ema20": 1.8143454111441137,
-    "atr_pct": 4.007428624068821,
+    "atr_pct": 4.007428624068457,
     "day_chg": 3.5500000000000087,
     "ret5": 1.4698677119059367,
     "rs20": -7.251827627899643,
-    "bias_score": 51.0,
+    "bias_score": 60.0,
     "news_sent": -0.004,
     "mkt_above50": 1.0,
     "mkt_ret20": 12.81276214180389
    },
-   "r1_a": 0.36548894287065414,
-   "r2_a": 0.7309778857413137,
+   "r1_a": 0.3654889428706873,
+   "r2_a": 0.73097788574138,
    "news": [
     {
      "title": "Coforge Share Price Falls 5% Over Block Deal Fear",
@@ -322,11 +322,11 @@
      "sentiment": 0.052
     },
     {
-     "title": "Coforge Ltd shares fall 6% as Advent stake-sale report drives reaction",
-     "source": "Multibagg AI",
-     "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOeEZ4Qjl6MWdISUFQQkQySDJzYWFydTN0VVNqTnh1OE5KSy0teEdibkZrOXY5aW1FNjdHWTFXU1RTU2QwNmFab0s4c0N4ZUMzTXZiaDc3bUJUeTYteWw0NC10U2duMFJVZmx6dlFRY3pNSTdrR1kwaHQzaXc4aFhyY0h5ZGlXb2pRV09oU21TdWRIdHJ0ZUxkWXM1a2dPeEpaUFBSdl9MXzUzcmM?oc=5",
-     "published": "Thu, 26 Nov 2026 21:32:24 GMT",
-     "sentiment": 0.296
+     "title": "Coforge Share Price Falls Over 5% Amid Block Deal Concerns on NSE and BSE; Advent May Offload Up to 10% Stake",
+     "source": "Kotak Neo",
+     "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPZ2NNbDliSERXTkc5Q2VmTVZialN5dnl0ckc2NUxWM0pSdEJYNFhQSVplV05RQkNkazM3UDRhdFZEbFJQTHdYenZMREtzTUc0WHJlal9UcGQ0b1JtaUN6WGJHNnVVQ0p6ZF9Fd3pJSWwxZWdtMndqQVpPZlY2b0JUM1dpRm50NzJzWTVhOGtfUndMWXhlcEp4U2hGX2tZUTE2UGJQWGxJUmo?oc=5",
+     "published": "Thu, 26 Nov 2026 09:49:49 GMT",
+     "sentiment": -0.44
     }
    ],
    "news_sentiment": {
@@ -334,10 +334,10 @@
     "count": 8,
     "label": "NEUTRAL"
    },
-   "win_prob": 52.8,
-   "expected_r": 0.11,
+   "win_prob": 50.2,
+   "expected_r": 0.09,
    "model_used": false,
-   "grade": "B",
+   "grade": "C",
    "skip_reason": null,
    "action": "BUY COFORGE near \u20b92,071.00 (skip if it opens above \u20b92,195.49) \u00b7 SL \u20b91,967.26 \u00b7 T1 \u20b92,195.49 \u00b7 T2 \u20b92,278.48"
   },
@@ -388,8 +388,8 @@
     "day_chg": 1.9354838709677358,
     "ret5": 7.48299319727892,
     "rs20": -4.741626710887337,
-    "bias_score": 51.0,
-    "news_sent": 0.16,
+    "bias_score": 60.0,
+    "news_sent": 0.079,
     "mkt_above50": 1.0,
     "mkt_ret20": 12.81276214180389
    },
@@ -433,14 +433,14 @@
     }
    ],
    "news_sentiment": {
-    "score": 0.16,
+    "score": 0.079,
     "count": 8,
-    "label": "POSITIVE"
+    "label": "NEUTRAL"
    },
-   "win_prob": 52.8,
-   "expected_r": 0.11,
+   "win_prob": 50.2,
+   "expected_r": 0.09,
    "model_used": false,
-   "grade": "B",
+   "grade": "C",
    "skip_reason": null,
    "action": "BUY PERSISTENT near \u20b96,320.00 (skip if it opens above \u20b96,591.10) \u00b7 SL \u20b96,094.08 \u00b7 T1 \u20b96,591.10 \u00b7 T2 \u20b96,771.84"
   },
@@ -491,21 +491,14 @@
     "day_chg": 0.6151128472222211,
     "ret5": 3.371691281392697,
     "rs20": 7.8610139276257485,
-    "bias_score": 51.0,
-    "news_sent": 0.127,
+    "bias_score": 60.0,
+    "news_sent": 0.267,
     "mkt_above50": 1.0,
     "mkt_ret20": 12.81276214180389
    },
    "r1_a": 0.3027410704908103,
    "r2_a": 0.6054821409816206,
    "news": [
-    {
-     "title": "Stock markets trade marginally higher after US Fed rate hike; NSE IPO in focus",
-     "source": "DD News",
-     "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNcjhEMjNJeEx2ckRNZnFTcEFOSFpQTjhwY21Pc0dEOGJ3dGNBVk5UZjkwYzBNbVFyNVpKUjBjNFAxa2E2ZlZ1SU9KcnlnaWM0ZTRkVVpDaXphaGJDMjUzNjB6YWpCR29yWjl3U2xjMUhhbk45MkxWaWMzTmN4RFBaSFM3SFhydzhxS05kT095dG9fVWQzc1ZCNllVZXFqWDhzVkwxajF3?oc=5",
-     "published": "Fri, 27 Nov 2026 06:53:23 GMT",
-     "sentiment": -0.103
-    },
     {
      "title": "IndiGo up 22% in a month; Anand Rathi sees macro tailwinds aiding recovery",
      "source": "Business Standard",
@@ -521,6 +514,13 @@
      "sentiment": 0.557
     },
     {
+     "title": "Indian Stock Market: Seven Shares and Their Trading Patterns",
+     "source": "Kalkine India",
+     "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNajVOVFFLeE9vXzFLbUYwYzU1emNQNDE4SUNTd2RkNFNFTDJLbXBUTTBuOTVJQ1otU29uNzVyTV8xM0VUXzNMNnRQTmE4Z0tJMzI4TFBEZEdRN0RBeHFCY0V2UXR6RjQ0THhja1pEVVZ3UDlBenpXRGpyY2I0Z3RVRXpESW1TcXExUW9jMzdxUGZ0eU5EZTlXeTNLQk9FSmJrOHRlZGZNRUZNamlXWGFVOVp4aGdTRkFtVF85UEQ0YmNrV2s?oc=5",
+     "published": "Thu, 26 Nov 2026 11:44:00 GMT",
+     "sentiment": 0.296
+    },
+    {
      "title": "Analysts identify Apollo Tyres, Adani Ports, Eicher Motors and InterGlobe Aviation as top picks",
      "source": "CNBC TV18",
      "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOeldmWHRnQXVCQkZBMFhKR3J2SWYwaTNnQUFxak9HUV91U0VVT2xEU2hFMW5ZaDZQNk5vV3dTQkNLd3Z6THVtRlpKcXQtemdtWlZMY0doNk5FNVBNdEkzaFJBV1pVclRQZ09FRXpEd2lVYkZnVkwxU2R0SUZSaU14UFNISC1sbEpYR1VaeXhBNUx3MHB2SVRqUEJqY3laRHV6VVhLM28telZITi0wc19RcFpVVDN1S1pXOFNqdzA4UFAtRUNM?oc=5",
@@ -528,22 +528,22 @@
      "sentiment": 0.202
     },
     {
-     "title": "Indian Stock Market: Seven Shares and Their Trading Patterns",
-     "source": "Kalkine India",
-     "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNajVOVFFLeE9vXzFLbUYwYzU1emNQNDE4SUNTd2RkNFNFTDJLbXBUTTBuOTVJQ1otU29uNzVyTV8xM0VUXzNMNnRQTmE4Z0tJMzI4TFBEZEdRN0RBeHFCY0V2UXR6RjQ0THhja1pEVVZ3UDlBenpXRGpyY2I0Z3RVRXpESW1TcXExUW9jMzdxUGZ0eU5EZTlXeTNLQk9FSmJrOHRlZGZNRUZNamlXWGFVOVp4aGdTRkFtVF85UEQ0YmNrV2s?oc=5",
-     "published": "Thu, 26 Nov 2026 11:44:00 GMT",
-     "sentiment": 0.296
+     "title": "Stock markets recover from afternoon losses to end higher for second consecutive session",
+     "source": "United News of India",
+     "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxPdFk1MmVFeFh4dTVYc3JZbld4cU1mWXladkFiaUtWSms2YjBpLTMzV3E5MjJEcFVqSTNrdTlQVVlSVE1tV2NFX1EwdUJsS2NxWG9KTGdrN3J4OGlPOU5KTUEzZlZLTUxpYk5vOFBQTUhmVW9aOTByWW9pUTIxRFdMcDU4U1NvUGo0NF9DNXRubWYxU1pMV1VkQWRyeGhMUVk3Tm5iRC1ZRWp4di1IeGpGTy1pZk1qR3FKbGRuTzYzcWxJTkhYOTRMSmgzY0RVTXhwSHBN?oc=5",
+     "published": "Wed, 25 Nov 2026 22:11:00 GMT",
+     "sentiment": -0.318
     }
    ],
    "news_sentiment": {
-    "score": 0.127,
+    "score": 0.267,
     "count": 8,
     "label": "POSITIVE"
    },
-   "win_prob": 52.8,
-   "expected_r": 0.11,
+   "win_prob": 50.2,
+   "expected_r": 0.09,
    "model_used": false,
-   "grade": "B",
+   "grade": "C",
    "skip_reason": null,
    "action": "BUY INDIGO near \u20b95,659.60 (skip if it opens above \u20b95,874.63) \u00b7 SL \u20b95,480.40 \u00b7 T1 \u20b95,874.63 \u00b7 T2 \u20b96,017.99"
   },
@@ -594,7 +594,7 @@
     "day_chg": 0.7436330027016824,
     "ret5": 2.8482780178124223,
     "rs20": -1.4549860348911814,
-    "bias_score": 51.0,
+    "bias_score": 60.0,
     "news_sent": 0.144,
     "mkt_above50": 1.0,
     "mkt_ret20": 12.81276214180389
@@ -606,7 +606,7 @@
      "title": "SBI Life Insurance Share Price - Live NSE: SBILIFE Stock Price & Chart",
      "source": "Upstox",
      "link": "https://news.google.com/rss/articles/CBMickFVX3lxTFBTTmROWmpjYkFySUlmSWdDcV9uT08td00tU21ISjVVQk04TVVPeFdLRWlJQVctS2MzeVdLeEV6UFFzNUlvMEk5MGVlVk1mLWVwQ3VsMHl5MkdzRGdJNmV3YldpR3JHd0pmSGgwLW1IRThEQQ?oc=5",
-     "published": "Thu, 26 Nov 2026 07:51:46 GMT",
+     "published": "Fri, 27 Nov 2026 08:51:50 GMT",
      "sentiment": 0.296
     },
     {
@@ -631,11 +631,11 @@
      "sentiment": 0.0
     },
     {
-     "title": "Top 6 Insurance Stocks To Buy In India In November 2026",
-     "source": "Samco",
-     "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPUFFuWGwyWlVDMG1SS3RHeUVYYkVlTkFESnlOcFcxTjd1Y1p6OVpDblVxWElnQWdoM3pXcFRFZmV0a0lDRmt2X29nTnFIZ0VfbUxnY0FlLVdhbWVJSTFJdW9ZaHg1a2xnT0gyR1ZwZFFBZTNqcUQwS0NYVFloZFBTT0dxdG5WRnpWZkx3dGFBN2VDRWc?oc=5",
-     "published": "Wed, 25 Nov 2026 06:51:46 GMT",
-     "sentiment": 0.202
+     "title": "HDFC Life Insurance Share Price Falls 2.2% on Valuation",
+     "source": "Univest",
+     "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPQXpjRFktb2hfajdfWWtzaHdDWm5GaUxkMF90aGdOMjE0a2tSbFYtX283SzMwemg4a25UckFQQzRLanRPQVJiZWtMRUV0Q1pkWkpaVlk1ZnFsVWN0SnE1dFpfMDV5RThPeHJXRlNjZ3BsRldNRm9iR3JUNFVub190UFJQUWFUczQ5SXd1aA?oc=5",
+     "published": "Tue, 24 Nov 2026 11:45:18 GMT",
+     "sentiment": 0.0
     }
    ],
    "news_sentiment": {
@@ -643,10 +643,10 @@
     "count": 8,
     "label": "POSITIVE"
    },
-   "win_prob": 52.8,
-   "expected_r": 0.11,
+   "win_prob": 50.2,
+   "expected_r": 0.09,
    "model_used": false,
-   "grade": "B",
+   "grade": "C",
    "skip_reason": null,
    "action": "BUY SBILIFE near \u20b91,856.00 (skip if it opens above \u20b91,919.25) \u00b7 SL \u20b91,803.29 \u00b7 T1 \u20b91,919.25 \u00b7 T2 \u20b91,961.41 \u00b7 Qty 1 for \u20b910k @1% risk"
   },
@@ -690,20 +690,20 @@
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
     "log_vol_ratio": -0.22255764872817163,
-    "rsi": 60.20798409853569,
+    "rsi": 60.20798409853497,
     "dist_high_pct": 1.740245388374318,
     "ext_ema20": 2.5454080148964,
-    "atr_pct": 2.3771107390673247,
+    "atr_pct": 2.3771107390679607,
     "day_chg": 0.4682524603260019,
     "ret5": 1.3988703996337337,
     "rs20": -4.890400516991367,
-    "bias_score": 51.0,
+    "bias_score": 60.0,
     "news_sent": 0.173,
     "mkt_above50": 1.0,
     "mkt_ret20": 12.81276214180389
    },
-   "r1_a": 0.38690122825392126,
-   "r2_a": 0.7738024565078514,
+   "r1_a": 0.3869012282538178,
+   "r2_a": 0.7738024565076445,
    "news": [
     {
      "title": "Power Grid Corporation of India Ltd (POWERGRID-NS) Share Price Today, Live Chart and News",
@@ -720,17 +720,17 @@
      "sentiment": 0.0
     },
     {
-     "title": "India's power sector needs \u20b9200 trillion investments by 2047: Manohar Lal",
-     "source": "Business Standard",
-     "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNZ0p6bTBWTlJMR0FtbGM4SFdFc2JXeXB1X2NTM29pZ0Jvd2gxcVM5OHcyaVp2NUZvWm9ielRJdW5VODIyNGVGRGNYXzVEOW9oak0tOFljZzV5alhGNkRfSkI4ZXVvc1pmeGxrVG9keGd5NWNTZlY4T3U0U1d2Wm5oRWNTY3Zwc1JZZXhlbWc3ZWdLZFcyc3N3by1jUGhTTFhQWFRncnpKdDRZZ3JaQURreC1LTk5xQ3JNT0o0eEppRTlmYnpyMDBRSkN5eTdCbG9MTUhBUXpn0gHbAUFVX3lxTE81WVl1ZHJ2SzVHSURUVlJmRUZNRHBkVlMwN0lQN2x0TVdDaEg5bHBDYXZJV3RYeE5TdW9zOGFZTEozNjhKMkoybTJPSWtHMlNMQndMdHNvMmVxM1BFNXg2NXktVnRIell2dVlmNGs4Mml2SXBPSVEwaTRvWjM0a2prTUN4QTVWZS05dHpqVTBzZDJYRUN6WHhUc2hicHd6ZHZuN3pFOXU4QTBHd0gybWpmYTMwTGdLTGxZUmtRbExETUY0MmZuQTlXRkM5cjBDejRrWjRuMmRwRmwxMA?oc=5",
-     "published": "Fri, 27 Nov 2026 09:41:15 GMT",
-     "sentiment": 0.0
-    },
-    {
      "title": "Power Grid to seek board nod for \u20b945,000 Cr borrowing plan",
      "source": "scanx.trade",
      "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQOHZpMGdPZWdqWG9KVHRUenV1S1Y0NmtBU3VIYVNqaW5JVDE5VzctOG14bl9NOXJZaXVyYjFLbVJncUNPbEYwMVJTSEZncUJsejNWM2NUZklpMEFyZkxRbUlaQmcwMGRWUlF6U0UtQjZyekIydUU4TnRDdmdKRDZiUm5obzF5TXhBWDR6RnV6T29tSXF6Z1JwTU00ajh6cXJQME02RnVhUlJnSGs?oc=5",
      "published": "Wed, 25 Nov 2026 21:02:05 GMT",
+     "sentiment": 0.0
+    },
+    {
+     "title": "India's power sector needs \u20b9200 trillion investments by 2047: Manohar Lal",
+     "source": "Business Standard",
+     "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNZ0p6bTBWTlJMR0FtbGM4SFdFc2JXeXB1X2NTM29pZ0Jvd2gxcVM5OHcyaVp2NUZvWm9ielRJdW5VODIyNGVGRGNYXzVEOW9oak0tOFljZzV5alhGNkRfSkI4ZXVvc1pmeGxrVG9keGd5NWNTZlY4T3U0U1d2Wm5oRWNTY3Zwc1JZZXhlbWc3ZWdLZFcyc3N3by1jUGhTTFhQWFRncnpKdDRZZ3JaQURreC1LTk5xQ3JNT0o0eEppRTlmYnpyMDBRSkN5eTdCbG9MTUhBUXpn0gHbAUFVX3lxTE81WVl1ZHJ2SzVHSURUVlJmRUZNRHBkVlMwN0lQN2x0TVdDaEg5bHBDYXZJV3RYeE5TdW9zOGFZTEozNjhKMkoybTJPSWtHMlNMQndMdHNvMmVxM1BFNXg2NXktVnRIell2dVlmNGs4Mml2SXBPSVEwaTRvWjM0a2prTUN4QTVWZS05dHpqVTBzZDJYRUN6WHhUc2hicHd6ZHZuN3pFOXU4QTBHd0gybWpmYTMwTGdLTGxZUmtRbExETUY0MmZuQTlXRkM5cjBDejRrWjRuMmRwRmwxMA?oc=5",
+     "published": "Fri, 27 Nov 2026 09:41:15 GMT",
      "sentiment": 0.0
     },
     {
@@ -746,10 +746,10 @@
     "count": 8,
     "label": "POSITIVE"
    },
-   "win_prob": 52.8,
-   "expected_r": 0.11,
+   "win_prob": 50.2,
+   "expected_r": 0.09,
    "model_used": false,
-   "grade": "B",
+   "grade": "C",
    "skip_reason": null,
    "action": "BUY POWERGRID near \u20b9268.20 (skip if it opens above \u20b9277.76) \u00b7 SL \u20b9260.23 \u00b7 T1 \u20b9277.76 \u00b7 T2 \u20b9284.14 \u00b7 Qty 12 for \u20b910k @1% risk"
   },
@@ -800,7 +800,7 @@
     "day_chg": -0.7399460365032362,
     "ret5": -1.3705527095138725,
     "rs20": -9.345641735083232,
-    "bias_score": 51.0,
+    "bias_score": 60.0,
     "news_sent": 0.351,
     "mkt_above50": 1.0,
     "mkt_ret20": 12.81276214180389
@@ -849,10 +849,10 @@
     "count": 8,
     "label": "POSITIVE"
    },
-   "win_prob": 52.8,
-   "expected_r": 0.11,
+   "win_prob": 50.2,
+   "expected_r": 0.09,
    "model_used": false,
-   "grade": "B",
+   "grade": "C",
    "skip_reason": null,
    "action": "BUY DRREDDY near \u20b91,381.70 (skip if it opens above \u20b91,419.36) \u00b7 SL \u20b91,350.32 \u00b7 T1 \u20b91,419.36 \u00b7 T2 \u20b91,444.47 \u00b7 Qty 3 for \u20b910k @1% risk"
   },
@@ -903,14 +903,28 @@
     "day_chg": -0.9740707679098959,
     "ret5": 0.5088688662573171,
     "rs20": 6.582745249036992,
-    "bias_score": 51.0,
-    "news_sent": 0.242,
+    "bias_score": 60.0,
+    "news_sent": 0.245,
     "mkt_above50": 1.0,
     "mkt_ret20": 12.81276214180389
    },
    "r1_a": 0.43540392424510477,
    "r2_a": 0.8708078484902095,
    "news": [
+    {
+     "title": "Reliance and Jio to invest Rs 10 lakh crore over seven years for India\u2019s AI transformation: Mukesh Ambani",
+     "source": "DD News",
+     "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPaWs3X3BQVldRaV94YUpJVDViMnBXNFpHY2s2NlplbjN1dnFhVERfM2dXeUc2T3FyRnh2N2lyNHd4S3BYSDlaUTQ1RWVSZDdQY19VdW9KTlRGbkZJcFFNTlg3WDA2SGI3dVRLTEMydjEzUEF6TDk4SnhOYkJYRV8zeXlDTGdNQ2hncEZpZHNsdzEtYy15RGRqX2JNLTlHUlRaUElDUXQwNjhtN1V6dzNTVWtCMkxLdE5PLU82S1JtNG9PYUY3QklDcQ?oc=5",
+     "published": "Thu, 26 Nov 2026 09:41:36 GMT",
+     "sentiment": 0.0
+    },
+    {
+     "title": "Reliance Industries Promoters Buy Rs 194 Cr Worth Of Shares In Two Sessions",
+     "source": "BW Businessworld",
+     "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQWWJaWXJKWlkyVEJVWkx3bTBjeUg0WmExYkRMZWRDQW5PT2lyeUdaRHYzOHI1ZlhmUFI4Skk3NW1KcTlBUUdid1NILWpsSHltNkpQUmdnT3o1SEx2cDhoVVhYdmhrR2sxR2pWcVJfOHlUb0hhdDFfa1J0Z1lhSUdJWTNqbEFQR1NKZE4zd0ZGV0p6eDBOT1pSXzF1WVp3dEtOSktMaTJnNkhNYVlnX2NBcHhva2hOSzVKVm1V?oc=5",
+     "published": "Thu, 26 Nov 2026 12:17:26 GMT",
+     "sentiment": 0.477
+    },
     {
      "title": "Reliance Industries Share Price rise and valuation view",
      "source": "Univest",
@@ -919,43 +933,29 @@
      "sentiment": 0.296
     },
     {
-     "title": "Reliance Industries Promoters Buy Rs 194 Cr Worth Of Shares In Two Sessions",
-     "source": "TradingView",
-     "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQTlpXamVYRTZ5OGpKdWZDTENxZVdzb0JpNkhzaDlnS1JLN0M2QUVFWkZHMzJQQzJLLVhOa1c3aTFydWVJSENvVzhWQ2oxRWhiTzdpNDFVc1lUaDhBVk5QM0dKSEVEWjhOMUFtUXFiWjI4Q1lVcGp5N2ZCbmRDLS1NanU0QUNkcTduekFnbGNPdDVTMG1PS2NLYU9yMmtUeE5nbXJ2Mm5QOEJGclVVNDgzUlRLQ1h6Q1U4Snk4ZEllTVdSN0hmM25TMWpBUDU?oc=5",
-     "published": "Tue, 24 Nov 2026 10:14:14 GMT",
-     "sentiment": 0.477
+     "title": "Reliance Industries Ltd is Rated Hold by MarketsMOJO",
+     "source": "MarketsMojo",
+     "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQQmQ5dUdlb1RyanZmYUdYd0VGVlRHWkliaENvZUw3WjJnVFQwbEM5WlU0T0NuNkR4T0w1ZlBqSnk2eEkyS09vQzZ1QzZJYVlZQkg3MThpdmR3T0dGVG44aFp6N0VjdUotSzBGa2Vxb0lKOFZWb3k3ejFzc1dHeHpPVUxVd3djSnkwOHF2NmlrckNwdG9DMURrLXlabE92aV9iNlZzS2pfRVZ1OTBKTzMxZFROZk8?oc=5",
+     "published": "Fri, 27 Nov 2026 02:59:23 GMT",
+     "sentiment": 0.0
     },
     {
      "title": "Reliance Industries rallies Thursday, outperforms competitors",
      "source": "MarketWatch",
-     "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNVmQ4OFlkdE9tRGFNWHF2amlncGNJdHdwLUZsa2hwbHdMcmY0cmZDenFuVHZTS0Q5RUY2NDV2ekp6emU5QVlHbXVHeWRWSmNiTGFCVlJrcXVxZ2xNd1lYWF9Rd2lEbE9XV2FtS3Q4SFNFQ0lld0s4S214azZIR3JWLXRzekV1dEdPX21YSEl1TnVtWWoyN0xOWmdrbjZmQXpuSkxkaWFFaHpRZGF2dklpbmRNcGplSUpQQWx4LUdqQ3pXSjNNYTllbmdKV2xOWUU?oc=5",
+     "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPS0NMZWhHYi1YY21aYXRMM0lIUEVTS3hocVVFRzJxbEk4NU5BQkJJLW53b0szMHF3bl9KX0ZJWVA0blZLWGdlOEJaYy12Q3NiWDUzbi10QnU2YXlHM29UOFYzUmNVeVBQcDUxdnY2alZHcURxUWQwQWhqYWFxVFk1SjYyRzNOLTBSUDlqUDU0NWh0a1FaRl9VV3ZYYzRmUGc2eDZjLWoxR2NvSEVIYWpGQzRFQmpqR0k?oc=5",
      "published": "Thu, 26 Nov 2026 10:30:00 GMT",
      "sentiment": 0.382
-    },
-    {
-     "title": "From TVS to Tata: Inside India's biggest corporate family feuds | Reliance Industries | Raymonds",
-     "source": "Business Standard",
-     "link": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxNeW5IZFpZVUQzdFh5RUVNLVdWNjFXSDlhR3FERHAzTTRzLWJ5ekpaZmpqZzY5VXpPQkRFWk80dTdVYVZiWlc0dnN2WEowdHhJUTlMdUtyYmxFME5WdHlFaHh1Ry1UcEVKNzN2c010c1hwaWNvUG94N2x6VkFmQlZJOWlCa20wLXlVUnRoSHB2WlBlREx1X2hPQ2hUbnFKclNGLWM3SDBFOUQwZ0dEOW04V1lpekt5dDU1VFU1c0YwRjAzWEg4enExSHg3U2x2aTdmRFdjNDdBcm9zbTRMLVBkYjZrZzZpSXNNX2U2OEdvMTVKUQ?oc=5",
-     "published": "Wed, 25 Nov 2026 14:55:00 GMT",
-     "sentiment": -0.34
-    },
-    {
-     "title": "Reliance Industries Share Price Prediction for Tomorrow: Key Levels for 27 Nov 2026",
-     "source": "Univest",
-     "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNNmNubXdYSHo2QlBxZDc0N1R6U1czS3E1czZKS3ZDTFQwS3pGTjRwdGhIUll6cDJyTF81OFc5RjVUaVFYZU9FclJwX0xwcWpvTTRmSG02aEJRajZhSU9QYktnWVd4ZnNrdkNOQWw2dmV0V3pPel96UGJGQjdQcDNrSHlEdThwajFkYmt4ZzJVOE1rcWJKVllrdVZXMFJJQQ?oc=5",
-     "published": "Thu, 26 Nov 2026 13:16:12 GMT",
-     "sentiment": 0.296
     }
    ],
    "news_sentiment": {
-    "score": 0.242,
+    "score": 0.245,
     "count": 8,
     "label": "POSITIVE"
    },
-   "win_prob": 52.8,
-   "expected_r": 0.11,
+   "win_prob": 50.2,
+   "expected_r": 0.09,
    "model_used": false,
-   "grade": "B",
+   "grade": "C",
    "skip_reason": null,
    "action": "BUY RELIANCE near \u20b91,382.60 (skip if it opens above \u20b91,428.88) \u00b7 SL \u20b91,344.03 \u00b7 T1 \u20b91,428.88 \u00b7 T2 \u20b91,459.73 \u00b7 Qty 2 for \u20b910k @1% risk"
   },
@@ -999,20 +999,20 @@
    "trail_rule": "After T1: book half, move SL to entry, trail 0.5\u00d7ATR below highest close.",
    "features": {
     "log_vol_ratio": -0.7628888340707147,
-    "rsi": 57.10551971036774,
+    "rsi": 57.10551971058763,
     "dist_high_pct": 0.8426966292134831,
-    "ext_ema20": 2.6030040111440167,
-    "atr_pct": 2.8327787720948816,
+    "ext_ema20": 2.603004011145149,
+    "atr_pct": 2.832778772074285,
     "day_chg": 1.4294950075425694,
     "ret5": 1.568119695007919,
     "rs20": -4.030019460756118,
-    "bias_score": 51.0,
+    "bias_score": 60.0,
     "news_sent": 0.084,
     "mkt_above50": 1.0,
     "mkt_ret20": 12.81276214180389
    },
-   "r1_a": 0.17417173392339025,
-   "r2_a": 0.348343467846776,
+   "r1_a": 0.17417173392465665,
+   "r2_a": 0.34834346784930875,
    "news": [
     {
      "title": "ABB to acquire Ziehl-Abegg for $2.65 billion to boost HVAC portfolio",
@@ -1055,10 +1055,10 @@
     "count": 8,
     "label": "NEUTRAL"
    },
-   "win_prob": 52.8,
-   "expected_r": 0.11,
+   "win_prob": 50.2,
+   "expected_r": 0.09,
    "model_used": false,
-   "grade": "B",
+   "grade": "C",
    "skip_reason": null,
    "action": "BUY ABB near \u20b97,060.00 (skip if it opens above \u20b97,359.99) \u00b7 SL \u20b96,810.01 \u00b7 T1 \u20b97,359.99 \u00b7 T2 \u20b97,559.99"
   }
