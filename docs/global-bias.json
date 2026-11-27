@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-27T07:13:26.836963+05:30",
+ "generated_at": "2026-11-27T07:24:35.490020+05:30",
  "target_session": "2026-11-27",
  "reference_date": "2026-11-26",
  "us_session_used": "2026-11-26",
@@ -39,34 +39,34 @@
   {
    "name": "Crude Oil",
    "symbol": "CL=F",
-   "last": 85.43,
-   "change": 2.091,
+   "last": 85.44,
+   "change": 2.103,
    "change_unit": "%",
    "as_of": "2026-11-26"
   },
   {
    "name": "Dollar Index",
    "symbol": "DX-Y.NYB",
-   "last": 103.8,
-   "change": 0.123,
+   "last": 103.79,
+   "change": 0.117,
    "change_unit": "%",
    "as_of": "2026-11-26"
   },
   {
    "name": "Nikkei 225",
    "symbol": "^N225",
-   "last": 57904.01,
-   "change": 0.704,
+   "last": 57897.76,
+   "change": 0.693,
    "change_unit": "%",
    "as_of": "2026-11-27"
   },
   {
    "name": "Hang Seng",
    "symbol": "^HSI",
-   "last": 22226.88,
-   "change": 1.188,
+   "last": 22398.09,
+   "change": 0.77,
    "change_unit": "%",
-   "as_of": "2026-11-26"
+   "as_of": "2026-11-27"
   },
   {
    "name": "India VIX",
@@ -96,8 +96,8 @@
  "bias": {
   "label": "BULLISH",
   "score": 78,
-  "z": 1.048,
-  "model_z": 0.352,
+  "z": 1.047,
+  "model_z": 0.351,
   "predicted_nifty_move_pct": 0.25,
   "typical_daily_move_pct": 0.721,
   "source": "pre-open global snapshot",
@@ -124,8 +124,8 @@
    {
     "feature": "n225",
     "label": "Nikkei 225",
-    "value": 0.81,
-    "contribution_pct": 0.025
+    "value": 0.79,
+    "contribution_pct": 0.024
    },
    {
     "feature": "ftse",
@@ -556,12 +556,12 @@
  },
  "events": [],
  "preopen": {
-  "snapshot_ist": "Fri 27 Nov 07:13 IST",
+  "snapshot_ist": "Fri 27 Nov 07:24 IST",
   "stage": "final",
   "expected_gap_pct": 0.27,
   "gap_typical_error_pct": 0.31,
   "expected_day_pct": 0.25,
-  "z": 0.352,
+  "z": 0.351,
   "typical_daily_move_pct": 0.721,
   "markets": [
    {
@@ -597,7 +597,7 @@
    {
     "key": "n225",
     "name": "Nikkei 225",
-    "move_pct": 0.81
+    "move_pct": 0.79
    },
    {
     "key": "cl",
@@ -642,8 +642,8 @@
    {
     "feature": "n225",
     "label": "Nikkei 225",
-    "value": 0.81,
-    "contribution_pct": 0.025
+    "value": 0.79,
+    "contribution_pct": 0.024
    },
    {
     "feature": "ftse",
@@ -668,7 +668,7 @@
   "vix": 16.84
  },
  "global_table": {
-  "updated": "2026-11-27T07:13:39.206758+05:30",
+  "updated": "2026-11-27T07:24:48.800783+05:30",
   "rows": [
    {
     "group": "US, last close",
@@ -690,7 +690,7 @@
    },
    {
     "group": "Asia today",
-    "move": "Nikkei +0.7%, Hang Seng +0.2%, Kospi +1.6%",
+    "move": "Nikkei +0.7%, Hang Seng +0.7%, Kospi +2.1%",
     "effect": "green",
     "note": "Strong"
    },
@@ -708,7 +708,7 @@
    },
    {
     "group": "Dollar index",
-    "move": "103.80 (+0.13%)",
+    "move": "103.79 (+0.12%)",
     "effect": "flat",
     "note": "Steady"
    },
