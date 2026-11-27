@@ -1,14 +1,14 @@
 {
- "generated_at": "2026-11-27T07:25:02.727815+05:30",
- "session": "2026-11-27",
- "stage": "final",
+ "generated_at": "2026-11-27T15:37:54.809061+05:30",
+ "session": "2026-11-30",
+ "stage": "preview",
  "expected_open": {
-  "gap_pct": 0.27,
-  "error_pct": 0.31,
-  "day_pct": 0.25,
-  "snapshot": "Fri 27 Nov 07:24 IST",
-  "stage": "final",
-  "tip": "Moderate gap up expected. Use limit orders only, and wait for 09:30.",
+  "gap_pct": 0.06,
+  "error_pct": 0.39,
+  "day_pct": 0.14,
+  "snapshot": "Fri 27 Nov 15:37 IST",
+  "stage": "preview",
+  "tip": "Flat open expected. Normal entry windows apply.",
   "markets": [
    {
     "key": "es",
@@ -28,22 +28,22 @@
    {
     "key": "dax",
     "name": "DAX (Germany)",
-    "move_pct": 0.33
+    "move_pct": 0.0
    },
    {
     "key": "ftse",
     "name": "FTSE 100 (UK)",
-    "move_pct": 0.37
+    "move_pct": 0.0
    },
    {
     "key": "stoxx",
     "name": "Euro Stoxx 50",
-    "move_pct": 0.25
+    "move_pct": 0.0
    },
    {
     "key": "n225",
     "name": "Nikkei 225",
-    "move_pct": 0.79
+    "move_pct": 0.0
    },
    {
     "key": "cl",
@@ -63,74 +63,74 @@
    {
     "key": "inr",
     "name": "USD/INR",
-    "move_pct": -0.11
+    "move_pct": 0.0
    }
   ],
   "drivers": [
    {
     "feature": "vix",
     "label": "India VIX level",
-    "value": 16.84,
-    "contribution_pct": 0.073
+    "value": 16.65,
+    "contribution_pct": 0.074
    },
    {
-    "feature": "inr",
-    "label": "USD/INR",
-    "value": -0.11,
-    "contribution_pct": 0.056
+    "feature": "nprev",
+    "label": "Nifty previous day",
+    "value": -1.07,
+    "contribution_pct": 0.035
    },
    {
-    "feature": "dax",
-    "label": "DAX (Germany)",
-    "value": 0.33,
-    "contribution_pct": 0.033
+    "feature": "ym",
+    "label": "Dow futures",
+    "value": 0.0,
+    "contribution_pct": 0.013
    },
    {
-    "feature": "n225",
-    "label": "Nikkei 225",
-    "value": 0.79,
-    "contribution_pct": 0.024
-   },
-   {
-    "feature": "ftse",
-    "label": "FTSE 100 (UK)",
-    "value": 0.37,
-    "contribution_pct": 0.02
+    "feature": "nq",
+    "label": "Nasdaq futures",
+    "value": 0.0,
+    "contribution_pct": -0.006
    },
    {
     "feature": "es",
     "label": "S&P 500 futures",
     "value": 0.0,
-    "contribution_pct": -0.017
+    "contribution_pct": -0.005
+   },
+   {
+    "feature": "cl",
+    "label": "Crude oil",
+    "value": 0.0,
+    "contribution_pct": 0.004
    }
   ],
   "wf": {
    "oos_days": 300,
-   "gap_corr": 0.67,
-   "gap_sign_pct": 70.7,
-   "directional_calls": 160,
-   "directional_accuracy": 73.1
+   "gap_corr": 0.27,
+   "gap_sign_pct": 54.0,
+   "directional_calls": 47,
+   "directional_accuracy": 78.7
   }
  },
  "headline": "Market bias UP \u2014 favour buying dips",
  "bias": "BULLISH",
- "score": 78,
- "bias_track_record_pct": 72.8,
+ "score": 51,
+ "bias_track_record_pct": 75.6,
  "options": [
   {
    "index": "NIFTY",
    "strategy": "Bull Put Spread",
-   "legs": "SELL 25450 PE + BUY 25200 PE",
+   "legs": "SELL 25350 PE + BUY 25200 PE",
    "expiry": "2026-12-01",
    "lot_size": 65,
-   "entry": "Enter at 10:15 (after the first hour) only if NIFTY is above 25,450",
-   "target": "Buy back at \u20b913.8 (keep ~55% of credit), else hold to expiry Tue 01 Dec",
-   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,996 per lot)",
-   "max_loss": 14254,
-   "max_reward": 1996,
-   "reward_risk": 0.14,
+   "entry": "Enter at 10:15 (after the first hour) only if NIFTY is above 25,350",
+   "target": "Buy back at \u20b98.6 (keep ~55% of credit), else hold to expiry Tue 01 Dec",
+   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b91,235 per lot)",
+   "max_loss": 8515,
+   "max_reward": 1235,
+   "reward_risk": 0.15,
    "decision": "SKIP",
-   "decision_reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost on average: 57.5% wins, avg \u20b9-264 per lot over 113 trades.",
+   "decision_reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (57.5% wins, avg \u20b9-264 per lot over 113 trades). A good-looking slice is not trusted on its own.",
    "enter_at": "10:15 IST, after the first hour",
    "exit_by": "target / stop, else expiry 2026-12-01",
    "setup_stats": {
@@ -143,20 +143,20 @@
     "sample": "days the model called BULLISH"
    },
    "test": null,
-   "money_needed": 56400,
+   "money_needed": 46939,
    "money_basis": "margin for the sold options (estimate)"
   },
   {
    "index": "BANKNIFTY",
    "strategy": "Bull Put Spread",
-   "legs": "SELL 59600 PE + BUY 57400 PE",
+   "legs": "SELL 59400 PE + BUY 57400 PE",
    "expiry": "2026-12-29",
    "lot_size": 30,
-   "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is above 59,600",
-   "target": "Buy back at \u20b9108.5 (keep ~55% of credit), else hold to expiry Tue 29 Dec",
-   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b97,236 per lot)",
-   "max_loss": 58764,
-   "max_reward": 7236,
+   "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is above 59,400",
+   "target": "Buy back at \u20b997.7 (keep ~55% of credit), else hold to expiry Tue 29 Dec",
+   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b96,513 per lot)",
+   "max_loss": 53487,
+   "max_reward": 6513,
    "reward_risk": 0.12,
    "decision": "SKIP",
    "decision_reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (69.0% wins, avg \u20b9-62 per lot over 126 trades). A good-looking slice is not trusted on its own.",
@@ -172,172 +172,94 @@
     "sample": "days the model called BULLISH"
    },
    "test": null,
-   "money_needed": 130521,
+   "money_needed": 121825,
    "money_basis": "margin for the sold options (estimate)"
   }
  ],
  "stocks": [
   {
-   "symbol": "BRITANNIA",
+   "symbol": "HAL",
    "grade": "B",
-   "action": "BUY BRITANNIA near \u20b95,185.00 (skip if it opens above \u20b95,383.19) \u00b7 SL \u20b95,019.84 \u00b7 T1 \u20b95,383.19 \u00b7 T2 \u20b95,515.31",
-   "entry": 5185.0,
+   "action": "BUY HAL near \u20b95,074.00 (skip if it opens above \u20b95,265.73) \u00b7 SL \u20b94,914.23 \u00b7 T1 \u20b95,265.73 \u00b7 T2 \u20b95,393.54",
+   "entry": 5074.0,
    "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
    "exit_by": "day 2, 15:15 IST",
-   "stop": 5019.84,
-   "t1": 5383.19,
-   "t2": 5515.31,
+   "stop": 4914.23,
+   "t1": 5265.73,
+   "t2": 5393.54,
    "win_prob": 52.8,
-   "vol_badge": "2.7x Vol Surge"
+   "vol_badge": "3.0x Vol Surge"
   },
   {
-   "symbol": "HCLTECH",
+   "symbol": "BEL",
    "grade": "B",
-   "action": "BUY HCLTECH near \u20b91,468.60 (skip if it opens above \u20b91,529.38) \u00b7 SL \u20b91,417.95 \u00b7 T1 \u20b91,529.38 \u00b7 T2 \u20b91,569.91 \u00b7 Qty 1 for \u20b910k @1% risk",
-   "entry": 1468.6,
+   "action": "BUY BEL near \u20b9411.45 (skip if it opens above \u20b9423.92) \u00b7 SL \u20b9401.06 \u00b7 T1 \u20b9423.92 \u00b7 T2 \u20b9432.23 \u00b7 Qty 9 for \u20b910k @1% risk",
+   "entry": 411.45,
    "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
    "exit_by": "day 2, 15:15 IST",
-   "stop": 1417.95,
-   "t1": 1529.38,
-   "t2": 1569.91,
-   "win_prob": 52.8,
-   "vol_badge": "1.7x Vol Surge"
-  },
-  {
-   "symbol": "GODREJCP",
-   "grade": "B",
-   "action": "BUY GODREJCP near \u20b9947.50 (skip if it opens above \u20b9985.46) \u00b7 SL \u20b9915.87 \u00b7 T1 \u20b9985.46 \u00b7 T2 \u20b91,010.76 \u00b7 Qty 3 for \u20b910k @1% risk",
-   "entry": 947.5,
-   "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
-   "exit_by": "day 2, 15:15 IST",
-   "stop": 915.87,
-   "t1": 985.46,
-   "t2": 1010.76,
-   "win_prob": 52.8,
-   "vol_badge": "1.6x Vol Surge"
-  },
-  {
-   "symbol": "HINDUNILVR",
-   "grade": "B",
-   "action": "BUY HINDUNILVR near \u20b92,130.80 (skip if it opens above \u20b92,204.61) \u00b7 SL \u20b92,069.29 \u00b7 T1 \u20b92,204.61 \u00b7 T2 \u20b92,253.81 \u00b7 Qty 1 for \u20b910k @1% risk",
-   "entry": 2130.8,
-   "enter_at": "09:30\u201310:30 IST, only above the 15-min opening high",
-   "exit_by": "day 2, 15:15 IST",
-   "stop": 2069.29,
-   "t1": 2204.61,
-   "t2": 2253.81,
+   "stop": 401.06,
+   "t1": 423.92,
+   "t2": 432.23,
    "win_prob": 52.8,
    "vol_badge": "1.5x Vol Surge"
   }
  ],
  "stock_options": [
   {
-   "symbol": "BRITANNIA",
+   "symbol": "HAL",
    "kind": "CE",
    "side": "BUY",
    "grade": "B",
-   "trigger": 5185.0,
-   "stop": 5019.84,
-   "t1": 5383.19,
-   "lot": 125,
-   "strike": 5200.0,
-   "premium": 18481,
+   "trigger": 5074.0,
+   "stop": 4914.23,
+   "t1": 5265.73,
+   "lot": 150,
+   "strike": 5050.0,
+   "premium": 28046,
    "tiers": {
     "5K": {
-     "strike": 5600.0,
-     "premium": 4238
+     "strike": 5700.0,
+     "premium": 3716
     },
     "10K": {
      "strike": 5400.0,
-     "premium": 9612
+     "premium": 9742
     },
     "15K": {
      "strike": 5300.0,
-     "premium": 13288
+     "premium": 13320
     }
    }
   },
   {
-   "symbol": "HCLTECH",
+   "symbol": "BEL",
    "kind": "CE",
    "side": "BUY",
    "grade": "B",
-   "trigger": 1468.6,
-   "stop": 1417.95,
-   "t1": 1529.38,
-   "lot": 400,
-   "strike": 1460.0,
-   "premium": 23692,
+   "trigger": 411.45,
+   "stop": 401.06,
+   "t1": 423.92,
+   "lot": 1425,
+   "strike": 410.0,
+   "premium": 18354,
    "tiers": {
     "5K": {
-     "strike": 1640.0,
-     "premium": 4072
+     "strike": 440.0,
+     "premium": 4988
     },
     "10K": {
-     "strike": 1560.0,
-     "premium": 9268
+     "strike": 425.0,
+     "premium": 9832
     },
     "15K": {
-     "strike": 1520.0,
-     "premium": 13688
-    }
-   }
-  },
-  {
-   "symbol": "GODREJCP",
-   "kind": "CE",
-   "side": "BUY",
-   "grade": "B",
-   "trigger": 947.5,
-   "stop": 915.87,
-   "t1": 985.46,
-   "lot": 600,
-   "strike": 950.0,
-   "premium": 14550,
-   "tiers": {
-    "5K": {
-     "strike": 1010.0,
-     "premium": 4440
-    },
-    "10K": {
-     "strike": 970.0,
-     "premium": 9912
-    },
-    "15K": {
-     "strike": 950.0,
-     "premium": 14550
-    }
-   }
-  },
-  {
-   "symbol": "HINDUNILVR",
-   "kind": "CE",
-   "side": "BUY",
-   "grade": "B",
-   "trigger": 2130.8,
-   "stop": 2069.29,
-   "t1": 2204.61,
-   "lot": 300,
-   "strike": 2140.0,
-   "premium": 17520,
-   "tiers": {
-    "5K": {
-     "strike": 2280.0,
-     "premium": 4440
-    },
-    "10K": {
-     "strike": 2200.0,
-     "premium": 9930
-    },
-    "15K": {
-     "strike": 2160.0,
-     "premium": 14505
+     "strike": 420.0,
+     "premium": 12212
     }
    }
   }
  ],
  "capital": 15000,
- "momentum_money": 12894,
+ "momentum_money": 7663,
  "put_gate_open": false,
  "market_gate_open": true,
  "events": [],
@@ -345,85 +267,85 @@
  "no_trade_reason": null,
  "timeline": [
   {
-   "date": "2026-11-27",
+   "date": "2026-11-30",
    "start": "07:45",
    "end": "09:00",
    "kind": "prep",
    "title": "Read the final plan",
    "do": "The ~07:15 run is final (US close, Dow and US futures, Europe, Asia open). Read the expected open, bias and trades. Set price alerts at each entry and stop-loss.",
-   "when": "Fri 27 Nov \u00b7 07:45\u201309:00"
+   "when": "Mon 30 Nov \u00b7 07:45\u201309:00"
   },
   {
-   "date": "2026-11-27",
+   "date": "2026-11-30",
    "start": "09:00",
    "end": "09:15",
    "kind": "wait",
    "title": "Pre-open",
    "do": "Place no market orders. Note where your stocks are indicated to open.",
-   "when": "Fri 27 Nov \u00b7 09:00\u201309:15"
+   "when": "Mon 30 Nov \u00b7 09:00\u201309:15"
   },
   {
-   "date": "2026-11-27",
+   "date": "2026-11-30",
    "start": "09:15",
    "end": "09:30",
    "kind": "wait",
    "title": "Wait",
    "do": "Opening 15 min is the most volatile. Cancel any stock that opens above its T1 or below its SL.",
-   "when": "Fri 27 Nov \u00b7 09:15\u201309:30"
+   "when": "Mon 30 Nov \u00b7 09:15\u201309:30"
   },
   {
-   "date": "2026-11-27",
+   "date": "2026-11-30",
    "start": "09:30",
    "end": "10:30",
    "kind": "act",
    "title": "Stock buy window",
    "do": "Buy only if price is holding above the entry and the 15-min opening high. Place the SL order immediately.",
-   "when": "Fri 27 Nov \u00b7 09:30\u201310:30"
+   "when": "Mon 30 Nov \u00b7 09:30\u201310:30"
   },
   {
-   "date": "2026-11-27",
+   "date": "2026-11-30",
    "start": "09:45",
    "end": "11:00",
    "kind": "act",
    "title": "Options window",
    "do": "Spreads / ATM buys only if the index respects the support/resistance shown. Iron condor / fly only after 10:00 with the index inside the range.",
-   "when": "Fri 27 Nov \u00b7 09:45\u201311:00"
+   "when": "Mon 30 Nov \u00b7 09:45\u201311:00"
   },
   {
-   "date": "2026-11-27",
+   "date": "2026-11-30",
    "start": "11:30",
    "end": "14:30",
    "kind": "manage",
    "title": "Manage only",
    "do": "No new stock entries. If it did not trigger, skip it. Keep stop-loss orders in place.",
-   "when": "Fri 27 Nov \u00b7 11:30\u201314:30"
+   "when": "Mon 30 Nov \u00b7 11:30\u201314:30"
   },
   {
-   "date": "2026-11-27",
+   "date": "2026-11-30",
    "start": "14:30",
    "end": "15:00",
    "kind": "exit",
    "title": "Option buyers exit",
    "do": "Exit option buys by 15:00 if target not hit (time decay). Spreads/condors: hold only if still inside the plan.",
-   "when": "Fri 27 Nov \u00b7 14:30\u201315:00"
+   "when": "Mon 30 Nov \u00b7 14:30\u201315:00"
   },
   {
-   "date": "2026-11-27",
+   "date": "2026-11-30",
    "start": "16:30",
    "end": "17:00",
    "kind": "review",
    "title": "Review",
    "do": "The engine grades today's plan. Check the Results tab: what worked, what the gap was.",
-   "when": "Fri 27 Nov \u00b7 16:30\u201317:00"
+   "when": "Mon 30 Nov \u00b7 16:30\u201317:00"
   },
   {
-   "date": "2026-11-30",
+   "date": "2026-12-01",
    "start": "09:15",
    "end": "15:15",
    "kind": "exit",
    "title": "Day 2: exit by 15:15",
    "do": "Book half at T1, trail SL to entry. Exit everything still open by 15:15 (this is a 1\u20132 day setup).",
-   "when": "Mon 30 Nov \u00b7 09:15\u201315:15"
+   "when": "Tue 01 Dec \u00b7 09:15\u201315:15"
   },
   {
    "date": "2026-12-01",
