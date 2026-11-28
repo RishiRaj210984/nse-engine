@@ -1,44 +1,44 @@
 {
- "generated_at": "2026-11-27T16:18:24.512868+05:30",
+ "generated_at": "2026-11-28T14:56:56.413718+05:30",
  "session": "2026-11-30",
  "stage": "preview",
  "expected_open": {
-  "gap_pct": 0.06,
+  "gap_pct": 0.15,
   "error_pct": 0.39,
-  "day_pct": 0.13,
-  "snapshot": "Fri 27 Nov 16:18 IST",
+  "day_pct": 0.32,
+  "snapshot": "Sat 28 Nov 14:56 IST",
   "stage": "preview",
   "tip": "Flat open expected. Normal entry windows apply.",
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": 0.0
+    "move_pct": 0.95
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": 0.0
+    "move_pct": 1.53
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": 0.0
+    "move_pct": 0.86
    },
    {
     "key": "dax",
     "name": "DAX (Germany)",
-    "move_pct": 0.0
+    "move_pct": -0.04
    },
    {
     "key": "ftse",
     "name": "FTSE 100 (UK)",
-    "move_pct": 0.0
+    "move_pct": 0.07
    },
    {
     "key": "stoxx",
     "name": "Euro Stoxx 50",
-    "move_pct": 0.0
+    "move_pct": -0.12
    },
    {
     "key": "n225",
@@ -48,17 +48,17 @@
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": 0.0
+    "move_pct": -1.9
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": 0.0
+    "move_pct": 1.5
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": 0.0
+    "move_pct": 0.2
    },
    {
     "key": "inr",
@@ -68,40 +68,40 @@
   ],
   "drivers": [
    {
+    "feature": "es",
+    "label": "S&P 500 futures",
+    "value": 0.95,
+    "contribution_pct": 1.075
+   },
+   {
+    "feature": "nq",
+    "label": "Nasdaq futures",
+    "value": 1.53,
+    "contribution_pct": -0.557
+   },
+   {
+    "feature": "ym",
+    "label": "Dow futures",
+    "value": 0.86,
+    "contribution_pct": -0.479
+   },
+   {
+    "feature": "cl",
+    "label": "Crude oil",
+    "value": -1.9,
+    "contribution_pct": 0.128
+   },
+   {
     "feature": "vix",
     "label": "India VIX level",
     "value": 16.55,
     "contribution_pct": 0.071
    },
    {
-    "feature": "nprev",
-    "label": "Nifty previous day",
-    "value": -1.07,
-    "contribution_pct": 0.035
-   },
-   {
-    "feature": "ym",
-    "label": "Dow futures",
-    "value": 0.0,
-    "contribution_pct": 0.013
-   },
-   {
-    "feature": "nq",
-    "label": "Nasdaq futures",
-    "value": 0.0,
-    "contribution_pct": -0.006
-   },
-   {
-    "feature": "es",
-    "label": "S&P 500 futures",
-    "value": 0.0,
-    "contribution_pct": -0.005
-   },
-   {
-    "feature": "cl",
-    "label": "Crude oil",
-    "value": 0.0,
-    "contribution_pct": 0.004
+    "feature": "dxy",
+    "label": "Dollar index",
+    "value": 0.2,
+    "contribution_pct": -0.067
    }
   ],
   "wf": {
@@ -114,7 +114,7 @@
  },
  "headline": "Market bias UP \u2014 favour buying dips",
  "bias": "BULLISH",
- "score": 60,
+ "score": 65,
  "bias_track_record_pct": 64.2,
  "options": [
   {
@@ -153,10 +153,10 @@
    "expiry": "2026-12-29",
    "lot_size": 30,
    "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is above 59,400",
-   "target": "Buy back at \u20b996.3 (keep ~55% of credit), else hold to expiry Tue 29 Dec",
-   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b96,423 per lot)",
-   "max_loss": 53577,
-   "max_reward": 6423,
+   "target": "Buy back at \u20b996.4 (keep ~55% of credit), else hold to expiry Tue 29 Dec",
+   "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b96,429 per lot)",
+   "max_loss": 53571,
+   "max_reward": 6429,
    "reward_risk": 0.12,
    "decision": "SKIP",
    "decision_reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (70.3% wins, avg \u20b9-24 per lot over 158 trades). A good-looking slice is not trusted on its own.",

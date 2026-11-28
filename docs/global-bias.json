@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-27T16:18:05.594044+05:30",
+ "generated_at": "2026-11-28T14:56:36.764538+05:30",
  "target_session": "2026-11-30",
  "reference_date": "2026-11-27",
  "us_session_used": "2026-11-27",
@@ -7,48 +7,48 @@
   {
    "name": "S&P 500",
    "symbol": "^GSPC",
-   "last": 7182.78,
-   "change": -0.254,
+   "last": 7297.49,
+   "change": 1.597,
    "change_unit": "%",
-   "as_of": "2026-11-25"
+   "as_of": "2026-11-27"
   },
   {
    "name": "Nasdaq",
    "symbol": "^IXIC",
-   "last": 23585.8,
-   "change": -0.622,
+   "last": 24129.5,
+   "change": 2.305,
    "change_unit": "%",
-   "as_of": "2026-11-25"
+   "as_of": "2026-11-27"
   },
   {
    "name": "Dow Jones",
    "symbol": "^DJI",
-   "last": 50182.95,
-   "change": 0.328,
+   "last": 50774.94,
+   "change": 1.18,
    "change_unit": "%",
-   "as_of": "2026-11-25"
+   "as_of": "2026-11-27"
   },
   {
    "name": "US 10Y Yield",
    "symbol": "^TNX",
-   "last": 4.85,
-   "change": -0.056,
+   "last": 4.94,
+   "change": 0.088,
    "change_unit": "pts",
-   "as_of": "2026-11-25"
+   "as_of": "2026-11-27"
   },
   {
    "name": "Crude Oil",
    "symbol": "CL=F",
-   "last": 85.72,
-   "change": 2.438,
+   "last": 83.08,
+   "change": -0.717,
    "change_unit": "%",
    "as_of": "2026-11-27"
   },
   {
    "name": "Dollar Index",
    "symbol": "DX-Y.NYB",
-   "last": 103.84,
-   "change": 0.161,
+   "last": 104.01,
+   "change": 0.328,
    "change_unit": "%",
    "as_of": "2026-11-27"
   },
@@ -72,7 +72,7 @@
    "name": "India VIX",
    "symbol": "^INDIAVIX",
    "last": 16.55,
-   "change": -1.752,
+   "change": -1.722,
    "change_unit": "%",
    "as_of": "2026-11-27"
   },
@@ -95,18 +95,36 @@
  ],
  "bias": {
   "label": "BULLISH",
-  "score": 60,
-  "z": 0.7,
-  "model_z": 0.094,
-  "predicted_nifty_move_pct": 0.076,
+  "score": 65,
+  "z": 0.78,
+  "model_z": 0.327,
+  "predicted_nifty_move_pct": 0.263,
   "typical_daily_move_pct": 0.803,
   "source": "daily close model",
   "india_vix": 16.55,
   "components": [
    {
+    "feature": "spx",
+    "label": "S&P 500 overnight %",
+    "value": 1.597,
+    "contribution_pct": 0.485
+   },
+   {
+    "feature": "ndx",
+    "label": "Nasdaq minus S&P (tech tilt) %",
+    "value": 0.708,
+    "contribution_pct": -0.244
+   },
+   {
+    "feature": "dxy",
+    "label": "Dollar index %",
+    "value": 0.328,
+    "contribution_pct": -0.077
+   },
+   {
     "feature": "vix",
     "label": "India VIX level",
-    "value": 16.545,
+    "value": 16.55,
     "contribution_pct": 0.054
    },
    {
@@ -116,10 +134,10 @@
     "contribution_pct": 0.039
    },
    {
-    "feature": "dxy",
-    "label": "Dollar index %",
-    "value": 0.161,
-    "contribution_pct": -0.038
+    "feature": "tnx",
+    "label": "US 10Y yield chg (pts)",
+    "value": 0.088,
+    "contribution_pct": -0.036
    },
    {
     "feature": "nifty_prev",
@@ -130,126 +148,108 @@
    {
     "feature": "vix_chg",
     "label": "India VIX change",
-    "value": -0.295,
+    "value": -0.29,
     "contribution_pct": -0.029
-   },
-   {
-    "feature": "spx",
-    "label": "S&P 500 overnight %",
-    "value": 0.0,
-    "contribution_pct": -0.023
-   },
-   {
-    "feature": "ndx",
-    "label": "Nasdaq minus S&P (tech tilt) %",
-    "value": 0.0,
-    "contribution_pct": 0.004
    },
    {
     "feature": "crude",
     "label": "Crude oil %",
-    "value": 2.438,
-    "contribution_pct": -0.001
-   },
-   {
-    "feature": "tnx",
-    "label": "US 10Y yield chg (pts)",
-    "value": 0.0,
+    "value": -0.717,
     "contribution_pct": 0.0
    }
   ]
  },
  "news": {
   "summary": {
-   "score": 0.253,
-   "count": 40,
+   "score": 0.189,
+   "count": 39,
    "label": "POSITIVE"
   },
   "weight": 0.359,
   "headlines": [
    {
-    "title": "Eurozone bond yields rise as investors return to riskier assets, oil prices rebound",
+    "title": "Jaiprakash Power Ventures, CarTrade Tech among 11 smallcap stocks that plunged the most in a year, but mutual funds raised stakes",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/eurozone-bond-yields-rise-as-investors-return-to-riskier-assets-oil-prices-rebound/articleshow/136218279.cms",
-    "published": "Fri, 27 Nov 2026 15:56:25 +0530",
-    "sentiment": -0.178
-   },
-   {
-    "title": "Rupee rally takes a hit as AI trade revival dents shares, currency sees weekly dip",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/forex/rupee-rally-takes-a-hit-as-ai-trade-revival-dents-shares-currency-sees-weekly-dip/articleshow/136218142.cms",
-    "published": "Fri, 27 Nov 2026 15:53:05 +0530",
-    "sentiment": 0.586
-   },
-   {
-    "title": "Can SpaceX's AI ambitions drive further upside in its stock?",
-    "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/can-spacexs-ai-ambitions-drive-further-upside-in-its-stock/slideshow/136213079.cms",
-    "published": "Fri, 27 Nov 2026 12:23:29 +0530",
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/jaiprakash-power-ventures-cartrade-tech-among-11-smallcap-stocks-that-plunged-the-most-in-a-year-but-mutual-funds-raised-stakes/slideshow/136242594.cms",
+    "published": "Sat, 28 Nov 2026 14:01:12 +0530",
     "sentiment": 0.0
    },
    {
-    "title": "India bonds decline ahead of fresh debt sale as elevated oil prices fan inflation worries",
+    "title": "Concurrent Gainers: 9 stocks that gain for 5 days in a row",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/bonds/india-bonds-decline-ahead-of-fresh-debt-sale-as-elevated-oil-prices-fan-inflation-worries/articleshow/136211546.cms",
-    "published": "Fri, 27 Nov 2026 11:40:03 +0530",
-    "sentiment": -0.178
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/concurrent-gainers-9-stocks-that-gain-for-5-days-in-a-row/slideshow/136241215.cms",
+    "published": "Sat, 28 Nov 2026 12:36:28 +0530",
+    "sentiment": 0.527
    },
    {
-    "title": "Nvidia stock plunges 35% from record high: Is it a buying opportunity?",
+    "title": "LIC portfolio stocks! 10 stocks where LIC had the highest stake in Q2. How many do you own?",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/nvidia-stock-plunges-35-from-record-high-is-it-a-buying-opportunity/slideshow/136209377.cms",
-    "published": "Fri, 27 Nov 2026 10:07:47 +0530",
-    "sentiment": 0.153
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/lic-portfolio-stocks-10-stocks-where-lic-had-the-highest-stake-in-q2-how-many-do-you-own/slideshow/136241053.cms",
+    "published": "Sat, 28 Nov 2026 12:23:47 +0530",
+    "sentiment": 0.0
    },
    {
-    "title": "Nestle India Share Price Live Updates: Nestle India Bonus Updates",
+    "title": "Bond market to stay cautious ahead of RBI policy: Equirus",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/stock-liveblog/nestle-india-share-price-today-live-27-nov-2026/liveblog/136209163.cms",
-    "published": "Fri, 27 Nov 2026 10:05:03 +0530",
-    "sentiment": 0.691
+    "link": "https://economictimes.indiatimes.com/markets/bonds/bond-market-to-stay-cautious-ahead-of-rbi-policy-equirus/articleshow/136240295.cms",
+    "published": "Sat, 28 Nov 2026 11:43:58 +0530",
+    "sentiment": -0.103
    },
    {
-    "title": "Tata Motors PV Share Price Live Updates: Tata Motors PV Bonus Updates",
+    "title": "From war premium to demand concerns: What is driving the sharp fall in crude oil prices?",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/stock-liveblog/tata-motors-pv-stock-price-today-live-27-nov-2026/liveblog/136209148.cms",
-    "published": "Fri, 27 Nov 2026 10:04:35 +0530",
-    "sentiment": 0.691
+    "link": "https://economictimes.indiatimes.com/markets/commodities/news/from-war-premium-to-demand-concerns-what-is-driving-the-sharp-fall-in-crude-oil-prices/articleshow/136238953.cms",
+    "published": "Sat, 28 Nov 2026 10:35:56 +0530",
+    "sentiment": -0.844
    },
    {
-    "title": "Bharti Airtel Share Price Live Updates: Bharti Airtel Bonus Updates",
+    "title": "Microcap winners: Greaves Cotton, Thomas Cook among 10 stocks with gains of up to 50%",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/stock-liveblog/bharti-airtel-share-price-live-27-nov-2026/liveblog/136209136.cms",
-    "published": "Fri, 27 Nov 2026 10:04:14 +0530",
-    "sentiment": 0.691
+    "link": "https://economictimes.indiatimes.com/markets/stocks/news/microcap-winners-greaves-cotton-thomas-cook-among-10-stocks-with-gains-of-up-to-50/slideshow/136238905.cms",
+    "published": "Sat, 28 Nov 2026 10:21:49 +0530",
+    "sentiment": 0.649
    },
    {
-    "title": "BPCL Share Price Live Updates: BPCL Bonus Updates",
+    "title": "Gold pares gains as Fed hike risks linger, eyes first weekly rise in three weeks",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/stock-liveblog/bpcl-stock-price-live-updates-27-nov-2026/liveblog/136209119.cms",
-    "published": "Fri, 27 Nov 2026 10:03:56 +0530",
-    "sentiment": 0.691
+    "link": "https://economictimes.indiatimes.com/markets/commodities/news/gold-pares-gains-as-fed-hike-risks-linger-eyes-first-weekly-rise-in-three-weeks/articleshow/136237788.cms",
+    "published": "Sat, 28 Nov 2026 09:22:36 +0530",
+    "sentiment": -0.077
    },
    {
-    "title": "ICICI Bank Share Price Live Updates: ICICI Bank Dividend Updates",
+    "title": "Dollar set for weekly gain as risk appetite returns",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/stock-liveblog/icici-bank-stock-price-today-live-27-nov-2026/liveblog/136209072.cms",
-    "published": "Fri, 27 Nov 2026 10:03:08 +0530",
-    "sentiment": 0.459
+    "link": "https://economictimes.indiatimes.com/markets/forex/forex-news/dollar-set-for-weekly-gain-as-risk-appetite-returns/articleshow/136237831.cms",
+    "published": "Sat, 28 Nov 2026 09:21:52 +0530",
+    "sentiment": 0.318
    },
    {
-    "title": "Coal India Share Price Live Updates: Coal India Ltd Bonus Updates",
+    "title": "European shares log strong weekly gains; markets await Spanish election",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/stock-liveblog/coal-india-ltd-share-price-live-27-nov-2026/liveblog/136209046.cms",
-    "published": "Fri, 27 Nov 2026 10:02:43 +0530",
-    "sentiment": 0.691
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/european-shares-log-strong-weekly-gains-markets-await-spanish-election/articleshow/136237685.cms",
+    "published": "Sat, 28 Nov 2026 09:18:20 +0530",
+    "sentiment": 0.718
    },
    {
-    "title": "HDFC Bank, SBI, 8 other stocks JPMorgan is bullish on as markets gear up to enter 2027. See full list",
+    "title": "Wall St Week Ahead: Volatile stock market confronts jobs data, rate view as next tests",
     "source": "ET Markets",
-    "link": "https://economictimes.indiatimes.com/markets/stocks/news/hdfc-bank-sbi-8-other-stocks-jpmorgan-is-bullish-on-as-markets-gear-up-to-enter-2027-see-full-list/slideshow/136208713.cms",
-    "published": "Fri, 27 Nov 2026 09:35:05 +0530",
-    "sentiment": 0.421
+    "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/wall-st-week-ahead-volatile-stock-market-confronts-jobs-data-rate-view-as-next-tests/articleshow/136237710.cms",
+    "published": "Sat, 28 Nov 2026 09:17:47 +0530",
+    "sentiment": -0.226
+   },
+   {
+    "title": "OPEC+ set to keep oil production targets steady: Report",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/commodities/opec-set-to-keep-oil-production-targets-steady-report/articleshow/136232084.cms",
+    "published": "Sat, 28 Nov 2026 00:16:42 +0530",
+    "sentiment": 0.0
+   },
+   {
+    "title": "Copper sweeps higher as China offers stock market support",
+    "source": "ET Markets",
+    "link": "https://economictimes.indiatimes.com/markets/commodities/copper-sweeps-higher-as-china-offers-stock-market-support/articleshow/136232015.cms",
+    "published": "Sat, 28 Nov 2026 00:13:45 +0530",
+    "sentiment": 0.402
    }
   ]
  },
@@ -336,7 +336,7 @@
        "action": "BUY",
        "strike": 25600,
        "type": "CE",
-       "est_premium": 124.7
+       "est_premium": 124.8
       },
       {
        "action": "SELL",
@@ -345,12 +345,12 @@
        "est_premium": 62.1
       }
      ],
-     "net_premium": -62.6,
-     "max_loss": 4069,
-     "max_reward": 5681,
-     "reward_risk": 1.4,
+     "net_premium": -62.7,
+     "max_loss": 4075,
+     "max_reward": 5675,
+     "reward_risk": 1.39,
      "entry": "Enter on dips that hold above 25,479 (EMA20 / S1 support zone)",
-     "target": "Exit spread near \u20b9115.0 or NIFTY at 25,750",
+     "target": "Exit spread near \u20b9115.1 or NIFTY at 25,750",
      "stop_loss": "Spread falls to \u20b931.3, or NIFTY closes below 25,351",
      "breakeven": [
       25663
@@ -378,16 +378,16 @@
        "action": "BUY",
        "strike": 25600,
        "type": "CE",
-       "est_premium": 124.7
+       "est_premium": 124.8
       }
      ],
-     "net_premium": -124.7,
-     "max_loss": 8106,
+     "net_premium": -124.8,
+     "max_loss": 8112,
      "max_reward": 7310,
      "reward_risk": 0.9,
      "entry": "Enter on dips that hold above 25,479 (EMA20 / S1 support zone)",
-     "target": "Premium \u2248 \u20b9237.2 (NIFTY near 25,822)",
-     "stop_loss": "Premium \u20b987.3 (-30%), or NIFTY closes below 25,351",
+     "target": "Premium \u2248 \u20b9237.3 (NIFTY near 25,822)",
+     "stop_loss": "Premium \u20b987.4 (-30%), or NIFTY closes below 25,351",
      "breakeven": [
       25725
      ],
@@ -424,7 +424,7 @@
    "expiry": "2026-12-29",
    "days_to_expiry": 29.75,
    "iv_used_pct": 22.29,
-   "expected_move": 4011,
+   "expected_move": 4012,
    "levels": {
     "prev_close": 63040.9,
     "ema20": 60764.49,
@@ -447,22 +447,22 @@
        "action": "SELL",
        "strike": 59400,
        "type": "PE",
-       "est_premium": 312.3
+       "est_premium": 312.6
       },
       {
        "action": "BUY",
        "strike": 57400,
        "type": "PE",
-       "est_premium": 98.2
+       "est_premium": 98.3
       }
      ],
-     "net_premium": 214.1,
-     "max_loss": 53577,
-     "max_reward": 6423,
+     "net_premium": 214.3,
+     "max_loss": 53571,
+     "max_reward": 6429,
      "reward_risk": 0.12,
      "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is above 59,400",
-     "target": "Buy back at \u20b996.3 (keep ~55% of credit), else hold to expiry Tue 29 Dec",
-     "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b96,423 per lot)",
+     "target": "Buy back at \u20b996.4 (keep ~55% of credit), else hold to expiry Tue 29 Dec",
+     "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b96,429 per lot)",
      "breakeven": [
       59186
      ],
@@ -489,13 +489,13 @@
        "action": "BUY",
        "strike": 63000,
        "type": "CE",
-       "est_premium": 1789.0
+       "est_premium": 1789.5
       },
       {
        "action": "SELL",
        "strike": 65000,
        "type": "CE",
-       "est_premium": 939.0
+       "est_premium": 939.5
       }
      ],
      "net_premium": -850.0,
@@ -531,18 +531,18 @@
        "action": "BUY",
        "strike": 63000,
        "type": "CE",
-       "est_premium": 1789.0
+       "est_premium": 1789.5
       }
      ],
-     "net_premium": -1789.0,
-     "max_loss": 53670,
+     "net_premium": -1789.5,
+     "max_loss": 53685,
      "max_reward": 10253,
      "reward_risk": 0.19,
      "entry": "Enter on dips that hold above 62,689 (EMA20 / S1 support zone)",
-     "target": "Premium \u2248 \u20b92130.8 (BANKNIFTY near 63,662)",
-     "stop_loss": "Premium \u20b91252.3 (-30%), or BANKNIFTY closes below 62,336",
+     "target": "Premium \u2248 \u20b92131.3 (BANKNIFTY near 63,662)",
+     "stop_loss": "Premium \u20b91252.6 (-30%), or BANKNIFTY closes below 62,336",
      "breakeven": [
-      64789
+      64790
      ],
      "notes": "Max loss = full premium. Theta decay hurts if move is late.",
      "verdict": {
@@ -572,43 +572,43 @@
  },
  "events": [],
  "preopen": {
-  "snapshot_ist": "Fri 27 Nov 16:18 IST",
+  "snapshot_ist": "Sat 28 Nov 14:56 IST",
   "stage": "preview",
-  "expected_gap_pct": 0.06,
+  "expected_gap_pct": 0.15,
   "gap_typical_error_pct": 0.39,
-  "expected_day_pct": 0.13,
-  "z": 0.173,
+  "expected_day_pct": 0.32,
+  "z": 0.415,
   "typical_daily_move_pct": 0.777,
   "markets": [
    {
     "key": "es",
     "name": "S&P 500 futures",
-    "move_pct": 0.0
+    "move_pct": 0.95
    },
    {
     "key": "nq",
     "name": "Nasdaq futures",
-    "move_pct": 0.0
+    "move_pct": 1.53
    },
    {
     "key": "ym",
     "name": "Dow futures",
-    "move_pct": 0.0
+    "move_pct": 0.86
    },
    {
     "key": "dax",
     "name": "DAX (Germany)",
-    "move_pct": 0.0
+    "move_pct": -0.04
    },
    {
     "key": "ftse",
     "name": "FTSE 100 (UK)",
-    "move_pct": 0.0
+    "move_pct": 0.07
    },
    {
     "key": "stoxx",
     "name": "Euro Stoxx 50",
-    "move_pct": 0.0
+    "move_pct": -0.12
    },
    {
     "key": "n225",
@@ -618,17 +618,17 @@
    {
     "key": "cl",
     "name": "Crude oil",
-    "move_pct": 0.0
+    "move_pct": -1.9
    },
    {
     "key": "gold",
     "name": "Gold",
-    "move_pct": 0.0
+    "move_pct": 1.5
    },
    {
     "key": "dxy",
     "name": "Dollar index",
-    "move_pct": 0.0
+    "move_pct": 0.2
    },
    {
     "key": "inr",
@@ -638,40 +638,40 @@
   ],
   "drivers": [
    {
+    "feature": "es",
+    "label": "S&P 500 futures",
+    "value": 0.95,
+    "contribution_pct": 1.075
+   },
+   {
+    "feature": "nq",
+    "label": "Nasdaq futures",
+    "value": 1.53,
+    "contribution_pct": -0.557
+   },
+   {
+    "feature": "ym",
+    "label": "Dow futures",
+    "value": 0.86,
+    "contribution_pct": -0.479
+   },
+   {
+    "feature": "cl",
+    "label": "Crude oil",
+    "value": -1.9,
+    "contribution_pct": 0.128
+   },
+   {
     "feature": "vix",
     "label": "India VIX level",
     "value": 16.55,
     "contribution_pct": 0.071
    },
    {
-    "feature": "nprev",
-    "label": "Nifty previous day",
-    "value": -1.07,
-    "contribution_pct": 0.035
-   },
-   {
-    "feature": "ym",
-    "label": "Dow futures",
-    "value": 0.0,
-    "contribution_pct": 0.013
-   },
-   {
-    "feature": "nq",
-    "label": "Nasdaq futures",
-    "value": 0.0,
-    "contribution_pct": -0.006
-   },
-   {
-    "feature": "es",
-    "label": "S&P 500 futures",
-    "value": 0.0,
-    "contribution_pct": -0.005
-   },
-   {
-    "feature": "cl",
-    "label": "Crude oil",
-    "value": 0.0,
-    "contribution_pct": 0.004
+    "feature": "dxy",
+    "label": "Dollar index",
+    "value": 0.2,
+    "contribution_pct": -0.067
    }
   ],
   "wf": {
@@ -684,72 +684,72 @@
   "vix": 16.55
  },
  "global_table": {
-  "updated": "2026-11-27T16:18:20.932066+05:30",
+  "updated": "2026-11-28T14:56:49.599954+05:30",
   "rows": [
    {
     "group": "US, last close",
-    "move": "S&P 500 -0.2%, Nasdaq -0.6%, Dow +0.3%",
-    "effect": "red",
-    "note": "Negative lead for India"
+    "move": "S&P 500 +1.6%, Nasdaq +2.3%, Dow +1.2%",
+    "effect": "green",
+    "note": "Positive lead for India"
    },
    {
     "group": "US futures now",
-    "move": "S&P +0.00%, Nasdaq +0.00%, Dow +0.00% (since Nifty's close)",
-    "effect": "flat",
-    "note": "Flat"
+    "move": "S&P +0.95%, Nasdaq +1.53%, Dow +0.86% (since Nifty's close)",
+    "effect": "green",
+    "note": "Futures point to a firmer open"
    },
    {
     "group": "Europe, last close",
-    "move": "DAX +0.8%, FTSE +0.7%, Euro Stoxx +1.3%",
+    "move": "DAX +0.9%, FTSE +0.8%, Euro Stoxx +1.2%",
     "effect": "green",
     "note": "Supportive"
    },
    {
     "group": "Asia today",
-    "move": "Nikkei +2.1%, Hang Seng +3.3%, Kospi +4.3%",
+    "move": "Nikkei +2.1%, Hang Seng +2.1%, Kospi +4.3%",
     "effect": "green",
     "note": "Strong"
    },
    {
     "group": "Crude oil",
-    "move": "WTI ~$86, Brent ~$92 (+2.1%)",
-    "effect": "red",
-    "note": "Rising oil hurts India"
+    "move": "WTI ~$83, Brent ~$91 (-0.2%)",
+    "effect": "flat",
+    "note": "Steady"
    },
    {
     "group": "US 10-year yield",
-    "move": "4.85% (-5 bp)",
-    "effect": "green",
-    "note": "Easing yields help"
+    "move": "4.94% (+9 bp)",
+    "effect": "red",
+    "note": "High yields pull money from emerging markets"
    },
    {
     "group": "Dollar index",
-    "move": "103.84 (+0.17%)",
+    "move": "104.01 (+0.00%)",
     "effect": "flat",
     "note": "Steady"
    },
    {
     "group": "Rupee",
-    "move": "92.98 per $ (+0.59%)",
+    "move": "92.99 per $ (+0.60%)",
     "effect": "red",
     "note": "Rupee weakening"
    },
    {
     "group": "India VIX (fear)",
-    "move": "16.55 (-6.4%)",
-    "effect": "green",
-    "note": "Fear easing"
+    "move": "16.55 (-1.8%)",
+    "effect": "flat",
+    "note": "Normal"
    },
    {
     "group": "Model: Nifty open",
-    "move": "+0.06% (\u00b10.39%)",
+    "move": "+0.15% (\u00b10.39%)",
     "effect": "flat",
     "note": "Combined forecast from all markets (preview)",
     "model": true
    }
   ],
-  "tilt": "mixed",
-  "score": 1
+  "tilt": "positive",
+  "score": 2
  },
  "notes": [
   "GIFT Nifty has no free data feed; the pre-open model reads what drives it (US/Dow futures, Europe, Asia, crude, rupee).",

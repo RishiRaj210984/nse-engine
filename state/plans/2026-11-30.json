@@ -1,22 +1,40 @@
 {
  "bias": {
-  "generated_at": "2026-11-27T16:18:05.594044+05:30",
+  "generated_at": "2026-11-28T14:56:36.764538+05:30",
   "target_session": "2026-11-30",
   "reference_date": "2026-11-27",
   "bias": {
    "label": "BULLISH",
-   "score": 60,
-   "z": 0.7,
-   "model_z": 0.094,
-   "predicted_nifty_move_pct": 0.076,
+   "score": 65,
+   "z": 0.78,
+   "model_z": 0.327,
+   "predicted_nifty_move_pct": 0.263,
    "typical_daily_move_pct": 0.803,
    "source": "daily close model",
    "india_vix": 16.55,
    "components": [
     {
+     "feature": "spx",
+     "label": "S&P 500 overnight %",
+     "value": 1.597,
+     "contribution_pct": 0.485
+    },
+    {
+     "feature": "ndx",
+     "label": "Nasdaq minus S&P (tech tilt) %",
+     "value": 0.708,
+     "contribution_pct": -0.244
+    },
+    {
+     "feature": "dxy",
+     "label": "Dollar index %",
+     "value": 0.328,
+     "contribution_pct": -0.077
+    },
+    {
      "feature": "vix",
      "label": "India VIX level",
-     "value": 16.545,
+     "value": 16.55,
      "contribution_pct": 0.054
     },
     {
@@ -26,10 +44,10 @@
      "contribution_pct": 0.039
     },
     {
-     "feature": "dxy",
-     "label": "Dollar index %",
-     "value": 0.161,
-     "contribution_pct": -0.038
+     "feature": "tnx",
+     "label": "US 10Y yield chg (pts)",
+     "value": 0.088,
+     "contribution_pct": -0.036
     },
     {
      "feature": "nifty_prev",
@@ -40,31 +58,13 @@
     {
      "feature": "vix_chg",
      "label": "India VIX change",
-     "value": -0.295,
+     "value": -0.29,
      "contribution_pct": -0.029
-    },
-    {
-     "feature": "spx",
-     "label": "S&P 500 overnight %",
-     "value": 0.0,
-     "contribution_pct": -0.023
-    },
-    {
-     "feature": "ndx",
-     "label": "Nasdaq minus S&P (tech tilt) %",
-     "value": 0.0,
-     "contribution_pct": 0.004
     },
     {
      "feature": "crude",
      "label": "Crude oil %",
-     "value": 2.438,
-     "contribution_pct": -0.001
-    },
-    {
-     "feature": "tnx",
-     "label": "US 10Y yield chg (pts)",
-     "value": 0.0,
+     "value": -0.717,
      "contribution_pct": 0.0
     }
    ]
@@ -143,7 +143,7 @@
         "action": "BUY",
         "strike": 25600,
         "type": "CE",
-        "est_premium": 124.7
+        "est_premium": 124.8
        },
        {
         "action": "SELL",
@@ -152,12 +152,12 @@
         "est_premium": 62.1
        }
       ],
-      "net_premium": -62.6,
-      "max_loss": 4069,
-      "max_reward": 5681,
-      "reward_risk": 1.4,
+      "net_premium": -62.7,
+      "max_loss": 4075,
+      "max_reward": 5675,
+      "reward_risk": 1.39,
       "entry": "Enter on dips that hold above 25,479 (EMA20 / S1 support zone)",
-      "target": "Exit spread near \u20b9115.0 or NIFTY at 25,750",
+      "target": "Exit spread near \u20b9115.1 or NIFTY at 25,750",
       "stop_loss": "Spread falls to \u20b931.3, or NIFTY closes below 25,351",
       "breakeven": [
        25663
@@ -185,16 +185,16 @@
         "action": "BUY",
         "strike": 25600,
         "type": "CE",
-        "est_premium": 124.7
+        "est_premium": 124.8
        }
       ],
-      "net_premium": -124.7,
-      "max_loss": 8106,
+      "net_premium": -124.8,
+      "max_loss": 8112,
       "max_reward": 7310,
       "reward_risk": 0.9,
       "entry": "Enter on dips that hold above 25,479 (EMA20 / S1 support zone)",
-      "target": "Premium \u2248 \u20b9237.2 (NIFTY near 25,822)",
-      "stop_loss": "Premium \u20b987.3 (-30%), or NIFTY closes below 25,351",
+      "target": "Premium \u2248 \u20b9237.3 (NIFTY near 25,822)",
+      "stop_loss": "Premium \u20b987.4 (-30%), or NIFTY closes below 25,351",
       "breakeven": [
        25725
       ],
@@ -231,7 +231,7 @@
     "expiry": "2026-12-29",
     "days_to_expiry": 29.75,
     "iv_used_pct": 22.29,
-    "expected_move": 4011,
+    "expected_move": 4012,
     "levels": {
      "prev_close": 63040.9,
      "ema20": 60764.49,
@@ -254,22 +254,22 @@
         "action": "SELL",
         "strike": 59400,
         "type": "PE",
-        "est_premium": 312.3
+        "est_premium": 312.6
        },
        {
         "action": "BUY",
         "strike": 57400,
         "type": "PE",
-        "est_premium": 98.2
+        "est_premium": 98.3
        }
       ],
-      "net_premium": 214.1,
-      "max_loss": 53577,
-      "max_reward": 6423,
+      "net_premium": 214.3,
+      "max_loss": 53571,
+      "max_reward": 6429,
       "reward_risk": 0.12,
       "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is above 59,400",
-      "target": "Buy back at \u20b996.3 (keep ~55% of credit), else hold to expiry Tue 29 Dec",
-      "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b96,423 per lot)",
+      "target": "Buy back at \u20b996.4 (keep ~55% of credit), else hold to expiry Tue 29 Dec",
+      "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b96,429 per lot)",
       "breakeven": [
        59186
       ],
@@ -296,13 +296,13 @@
         "action": "BUY",
         "strike": 63000,
         "type": "CE",
-        "est_premium": 1789.0
+        "est_premium": 1789.5
        },
        {
         "action": "SELL",
         "strike": 65000,
         "type": "CE",
-        "est_premium": 939.0
+        "est_premium": 939.5
        }
       ],
       "net_premium": -850.0,
@@ -338,18 +338,18 @@
         "action": "BUY",
         "strike": 63000,
         "type": "CE",
-        "est_premium": 1789.0
+        "est_premium": 1789.5
        }
       ],
-      "net_premium": -1789.0,
-      "max_loss": 53670,
+      "net_premium": -1789.5,
+      "max_loss": 53685,
       "max_reward": 10253,
       "reward_risk": 0.19,
       "entry": "Enter on dips that hold above 62,689 (EMA20 / S1 support zone)",
-      "target": "Premium \u2248 \u20b92130.8 (BANKNIFTY near 63,662)",
-      "stop_loss": "Premium \u20b91252.3 (-30%), or BANKNIFTY closes below 62,336",
+      "target": "Premium \u2248 \u20b92131.3 (BANKNIFTY near 63,662)",
+      "stop_loss": "Premium \u20b91252.6 (-30%), or BANKNIFTY closes below 62,336",
       "breakeven": [
-       64789
+       64790
       ],
       "notes": "Max loss = full premium. Theta decay hurts if move is late.",
       "verdict": {
@@ -388,46 +388,46 @@
   }
  },
  "plan": {
-  "generated_at": "2026-11-27T16:18:24.512868+05:30",
+  "generated_at": "2026-11-28T14:56:56.413718+05:30",
   "session": "2026-11-30",
   "stage": "preview",
   "expected_open": {
-   "gap_pct": 0.06,
+   "gap_pct": 0.15,
    "error_pct": 0.39,
-   "day_pct": 0.13,
-   "snapshot": "Fri 27 Nov 16:18 IST",
+   "day_pct": 0.32,
+   "snapshot": "Sat 28 Nov 14:56 IST",
    "stage": "preview",
    "tip": "Flat open expected. Normal entry windows apply.",
    "markets": [
     {
      "key": "es",
      "name": "S&P 500 futures",
-     "move_pct": 0.0
+     "move_pct": 0.95
     },
     {
      "key": "nq",
      "name": "Nasdaq futures",
-     "move_pct": 0.0
+     "move_pct": 1.53
     },
     {
      "key": "ym",
      "name": "Dow futures",
-     "move_pct": 0.0
+     "move_pct": 0.86
     },
     {
      "key": "dax",
      "name": "DAX (Germany)",
-     "move_pct": 0.0
+     "move_pct": -0.04
     },
     {
      "key": "ftse",
      "name": "FTSE 100 (UK)",
-     "move_pct": 0.0
+     "move_pct": 0.07
     },
     {
      "key": "stoxx",
      "name": "Euro Stoxx 50",
-     "move_pct": 0.0
+     "move_pct": -0.12
     },
     {
      "key": "n225",
@@ -437,17 +437,17 @@
     {
      "key": "cl",
      "name": "Crude oil",
-     "move_pct": 0.0
+     "move_pct": -1.9
     },
     {
      "key": "gold",
      "name": "Gold",
-     "move_pct": 0.0
+     "move_pct": 1.5
     },
     {
      "key": "dxy",
      "name": "Dollar index",
-     "move_pct": 0.0
+     "move_pct": 0.2
     },
     {
      "key": "inr",
@@ -457,40 +457,40 @@
    ],
    "drivers": [
     {
+     "feature": "es",
+     "label": "S&P 500 futures",
+     "value": 0.95,
+     "contribution_pct": 1.075
+    },
+    {
+     "feature": "nq",
+     "label": "Nasdaq futures",
+     "value": 1.53,
+     "contribution_pct": -0.557
+    },
+    {
+     "feature": "ym",
+     "label": "Dow futures",
+     "value": 0.86,
+     "contribution_pct": -0.479
+    },
+    {
+     "feature": "cl",
+     "label": "Crude oil",
+     "value": -1.9,
+     "contribution_pct": 0.128
+    },
+    {
      "feature": "vix",
      "label": "India VIX level",
      "value": 16.55,
      "contribution_pct": 0.071
     },
     {
-     "feature": "nprev",
-     "label": "Nifty previous day",
-     "value": -1.07,
-     "contribution_pct": 0.035
-    },
-    {
-     "feature": "ym",
-     "label": "Dow futures",
-     "value": 0.0,
-     "contribution_pct": 0.013
-    },
-    {
-     "feature": "nq",
-     "label": "Nasdaq futures",
-     "value": 0.0,
-     "contribution_pct": -0.006
-    },
-    {
-     "feature": "es",
-     "label": "S&P 500 futures",
-     "value": 0.0,
-     "contribution_pct": -0.005
-    },
-    {
-     "feature": "cl",
-     "label": "Crude oil",
-     "value": 0.0,
-     "contribution_pct": 0.004
+     "feature": "dxy",
+     "label": "Dollar index",
+     "value": 0.2,
+     "contribution_pct": -0.067
     }
    ],
    "wf": {
@@ -503,7 +503,7 @@
   },
   "headline": "Market bias UP \u2014 favour buying dips",
   "bias": "BULLISH",
-  "score": 60,
+  "score": 65,
   "bias_track_record_pct": 64.2,
   "options": [
    {
@@ -542,10 +542,10 @@
     "expiry": "2026-12-29",
     "lot_size": 30,
     "entry": "Enter at 10:15 (after the first hour) only if BANKNIFTY is above 59,400",
-    "target": "Buy back at \u20b996.3 (keep ~55% of credit), else hold to expiry Tue 29 Dec",
-    "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b96,423 per lot)",
-    "max_loss": 53577,
-    "max_reward": 6423,
+    "target": "Buy back at \u20b996.4 (keep ~55% of credit), else hold to expiry Tue 29 Dec",
+    "stop_loss": "Exit if the loss reaches 1\u00d7 credit (\u2248\u20b96,429 per lot)",
+    "max_loss": 53571,
+    "max_reward": 6429,
     "reward_risk": 0.12,
     "decision": "SKIP",
     "decision_reason": "No tested structure qualifies for today. On days the model called BULLISH, this spread lost overall (70.3% wins, avg \u20b9-24 per lot over 158 trades). A good-looking slice is not trusted on its own.",
